@@ -1,0 +1,14 @@
+{
+  "name": "baghcheh-desktop",
+  "private": true,
+  "license": "AGPL-3.0-or-later",
+  "description": "Baghcheh home hub: the website packaged as a desktop app, with sync over the home network.",
+  "scripts": {
+    "tauri": "tauri",
+    "dev": "tauri dev",
+    "build": "tauri build"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "باغچه",
+  "short_name": "باغچه",
+  "description": "آموزش رایگان و تعاملی برای کودکان فارسی‌زبان",
+  "lang": "fa",
+  "dir": "rtl",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbf7ef",
+  "theme_color": "#2f7d4f",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

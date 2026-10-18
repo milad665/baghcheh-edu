@@ -1,0 +1,54 @@
+// Baghcheh for Android: the website in a WebView, plus sync with the home hub (desktop/) over the home Wi-Fi.
+// No libraries, so the APK stays small. The site is copied from the repository root at build time.
+plugins {
+    id "com.android.application" version "9.2.1"
+}
+
+android {
+    namespace = "org.baghcheh.app"
+    compileSdk = 36
+
+    defaultConfig {
+        applicationId = "org.baghcheh.app"
+        minSdk = 24
+        targetSdk = 36
+        versionCode = 1
+        versionName = "1.0.0"
+    }
+
+    // Release signing comes from environment variables (see open.html). Without them the APK is signed
+    // with the debug key: it installs, but later versions signed with a real key cannot update it.
+    signingConfigs {
+        release {
+            def ks = System.getenv("BAGHCHEH_KEYSTORE")
+            if (ks) {
+                storeFile = file(ks)
+                storePassword = System.getenv("BAGHCHEH_KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("BAGHCHEH_KEY_ALIAS")
+                keyPassword = System.getenv("BAGHCHEH_KEY_PASSWORD")
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled = true
+            shrinkResources = true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            signingConfig = System.getenv("BAGHCHEH_KEYSTORE") ? signingConfigs.release : signingConfigs.debug
+        }
+    }
+
+    sourceSets {
+        main.assets.srcDirs += [layout.buildDirectory.dir("site").get().asFile]
+    }
+}
+
+def copySite = tasks.register("copySite", Copy) {
+    from(rootDir.parentFile) {
+        include "*.html", "manifest.webmanifest", "icon.svg", "js/**", "css/**", "fonts/**", "audio/**"
+        exclude "**/*.md"
+    }
+    into layout.buildDirectory.dir("site/site")
+}
+tasks.named("preBuild") { dependsOn copySite }

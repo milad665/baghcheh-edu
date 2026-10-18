@@ -1,0 +1,26 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Local Claude Code preview settings
+.claude/
+
+# Built installers and packages (published as GitHub release files, not committed)
+*.apk
+*.aab
+*.dmg
+*.msi
+*.exe
+*.AppImage
+*.deb
+*.rpm
+*.zip
+
+# Signing keys must never be committed
+*.keystore
+*.jks
+*.p12
+*.pem

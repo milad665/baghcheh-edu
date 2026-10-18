@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>باغچه — متن‌باز و میزبانی</title>
+  <meta name="description" content="باغچه متن‌باز است. هر کسی می‌تواند آن را رایگان میزبانی کند، بدون اینترنت پخش کند یا درس تازه بنویسد.">
+  <meta name="theme-color" content="#2f7d4f">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="index.html">🌱 باغچه</a>
+    <nav class="site-nav" aria-label="بخش‌ها">
+      <a href="index.html">کلاس</a>
+      <a href="guide.html">راهنمای والدین</a>
+      <a href="method.html">روش و پشتوانهٔ علمی</a>
+      <a href="policies.html">اصول و سیاست‌ها</a>
+      <a href="open.html" aria-current="page">متن‌باز و میزبانی</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<article class="prose">
+  <h1>متن‌باز و میزبانی</h1>
+  <p class="lead">باغچه مال همه است. کد و محتوای آن آزاد است تا مدرسه‌ها، معلم‌ها، خیریه‌ها و هر کسی که بخواهد، بتواند آن را در هر جایی، از جمله روی سرورهای داخل ایران، رایگان در اختیار کودکان بگذارد. هر نسخهٔ تازه، راهی است که اگر یکی بسته شد، راه دیگر باز بماند.</p>
+
+  <h2 id="source">کد منبع</h2>
+  <p>مخزن عمومی باغچه: <a lang="en" dir="ltr" id="repo-url" href="https://github.com/milad665/baghcheh-edu">github.com/milad665/baghcheh-edu</a></p>
+  <ul>
+    <li><strong>کد</strong> (وب‌سایت، برنامهٔ رایانه و اندروید): پروانهٔ <span lang="en" dir="ltr">GNU AGPL 3.0</span> یا نسخه‌های بعدی. می‌توانید آزادانه استفاده، میزبانی و تغییرش دهید. اگر نسخهٔ تغییریافته‌ای را منتشر یا روی سرور اجرا کنید، باید کد همان نسخه را هم با همین پروانه در اختیار کاربرانش بگذارید.</li>
+    <li><strong>محتوای آموزشی</strong> (درس‌ها، متن‌ها، راهنما): پروانهٔ <span lang="en" dir="ltr">Creative Commons BY-SA 4.0</span>. می‌توانید آزادانه استفاده، چاپ، ترجمه و تغییر دهید، به شرط ذکر منبع («مشارکت‌کنندگان باغچه») و انتشار تغییرات با همین پروانه.</li>
+  </ul>
+
+  <h2 id="host">میزبانی در پنج دقیقه</h2>
+  <p>باغچه فقط چند فایل ساده است: بدون پایگاه‌داده، بدون برنامهٔ سمت سرور، بدون نیاز به ساختن (build). همهٔ فایل‌ها را روی <strong>هر وب‌سرور ایستا</strong> کپی کنید و تمام.</p>
+  <ul>
+    <li>هر هاست اشتراکی یا سرور مجازی با <span lang="en" dir="ltr">nginx</span> یا <span lang="en" dir="ltr">Apache</span>، در داخل یا خارج ایران</li>
+    <li>فضای ذخیره‌سازی ابری (<span lang="en" dir="ltr">object storage</span>) با قابلیت میزبانی سایت ایستا، مثلاً در سرویس‌های ابری ایرانی</li>
+    <li><span lang="en" dir="ltr">GitHub Pages</span>، <span lang="en" dir="ltr">Cloudflare Pages</span> یا <span lang="en" dir="ltr">Netlify</span> (رایگان)</li>
+    <li>شبکهٔ محلی یک مدرسه یا کتابخانه، حتی بدون اینترنت</li>
+  </ul>
+  <p>برای شبکهٔ محلی، روی یک رایانه که پایتون دارد، در پوشهٔ باغچه این را اجرا کنید و بقیه با نشانی <span lang="en" dir="ltr">http://&lt;IP-این-رایانه&gt;:8000</span> وصل شوند:</p>
+  <pre lang="en" dir="ltr" class="card" style="overflow-x:auto">python3 -m http.server 8000</pre>
+
+  <h3>چک‌لیست میزبان خوب</h3>
+  <ul>
+    <li>تا جای ممکن از <span lang="en" dir="ltr">HTTPS</span> استفاده کنید؛ نصب باغچه و کار آفلاین آن فقط با <span lang="en" dir="ltr">HTTPS</span> کار می‌کند.</li>
+    <li><strong>گزارش دسترسی سرور</strong> (<span lang="en" dir="ltr">access log</span>) را خاموش کنید یا زود پاک کنید، تا نشانی IP خانواده‌ها نگه داشته نشود.</li>
+    <li>تبلیغ، ابزار آمارگیری یا هر اسکریپت بیرونی اضافه نکنید. <a href="policies.html#open">چرا؟</a></li>
+    <li>اگر محتوا را تغییر دادید، در صفحهٔ «متن‌باز و میزبانی» بنویسید چه چیزی را عوض کرده‌اید.</li>
+    <li>هر وقت نسخهٔ تازه‌ای آمد، فایل‌ها را جایگزین کنید. پیشرفت بچه‌ها روی دستگاه خودشان است و پاک نمی‌شود.</li>
+  </ul>
+
+  <h2 id="offline">پخش بدون اینترنت</h2>
+  <p>وقتی اینترنت قطع یا کند است، باغچه را می‌شود دست‌به‌دست کرد:</p>
+  <ol>
+    <li>کل پوشهٔ باغچه را فشرده (<span lang="en" dir="ltr">zip</span>) کنید. حجمش کم است.</li>
+    <li>آن را با بلوتوث، فلش، کارت حافظه یا پیام‌رسان به دیگران بدهید.</li>
+    <li>گیرنده فایل را باز می‌کند و روی <span lang="en" dir="ltr">index.html</span> می‌زند. درس‌ها در مرورگر باز می‌شوند، بدون هیچ اینترنتی.</li>
+  </ol>
+  <p class="hint">نکته: وقتی باغچه مستقیم از فایل باز شود، همه‌چیز کار می‌کند، ولی امکان نصب در دسترس نیست.</p>
+
+  <h2 id="apps">برنامه‌های رایانه و اندروید</h2>
+  <p>خود سایت به هیچ برنامه‌ای نیاز ندارد. این برنامه‌ها همان فایل‌های سایت را بسته‌بندی می‌کنند تا خانواده‌ها پیشرفت بچه‌ها را روی رایانه خانه نگه دارند و در وای‌فای خانه همگام کنند (<a href="guide.html#home-app">راهنمای والدین</a>).</p>
+  <ul>
+    <li><strong>رایانه</strong> (ویندوز، مک، لینوکس): پوشه <span lang="en" dir="ltr">desktop/</span>، ساخته‌شده با <span lang="en" dir="ltr">Tauri</span>. حجم نصب‌کننده چند مگابایت است.</li>
+    <li><strong>اندروید:</strong> پوشه <span lang="en" dir="ltr">android/</span>، یک <span lang="en" dir="ltr">WebView</span> ساده بدون هیچ کتابخانه‌ای. حجم <span lang="en" dir="ltr">APK</span> کمتر از ۲۰۰ کیلوبایت است.</li>
+    <li><strong>آیپد و آیفون:</strong> برنامه جداگانه ندارند؛ نشانی رایانه خانه را در <span lang="en" dir="ltr">Safari</span> باز می‌کنند.</li>
+  </ul>
+
+  <h3>ساختن رایگان با گیت‌هاب</h3>
+  <p>در مخزن عمومی، در بخش <span lang="en" dir="ltr">Actions</span> گردش‌کار <span lang="en" dir="ltr">Apps</span> را اجرا کنید (<span lang="en" dir="ltr">Run workflow</span>). همه نصب‌کننده‌ها روی سرورهای رایگان گیت‌هاب ساخته می‌شوند و در همان صفحه قابل دریافت‌اند. اگر برچسبی مثل <span lang="en" dir="ltr">v1.0.0</span> بسازید، یک انتشار پیش‌نویس (<span lang="en" dir="ltr">draft release</span>) هم با همه فایل‌ها ساخته می‌شود.</p>
+  <p>برای امضای <span lang="en" dir="ltr">APK</span>، یک بار کلید بسازید و آن را در تنظیمات مخزن به‌صورت <span lang="en" dir="ltr">secret</span> بگذارید (نام‌ها در فایل <span lang="en" dir="ltr">.github/workflows/apps.yml</span> آمده است). این کلید را گم نکنید: نسخه‌های بعدی فقط با همان کلید می‌توانند نسخه نصب‌شده را به‌روز کنند. برنامه‌های ویندوز و مک امضا نمی‌شوند، چون گواهی‌اش پولی است؛ راهنمای والدین توضیح می‌دهد با هشدار «ناشر ناشناس» چه کنند.</p>
+
+  <h3>ساختن روی رایانه خودتان</h3>
+  <p>برنامه رایانه به <span lang="en" dir="ltr">Rust</span> و <span lang="en" dir="ltr">Node.js</span> نیاز دارد (و در لینوکس، کتابخانه‌های <span lang="en" dir="ltr">webkit2gtk</span>):</p>
+  <pre lang="en" dir="ltr" class="card" style="overflow-x:auto">cd desktop
+npm install
+npx tauri build</pre>
+  <p>برنامه اندروید به <span lang="en" dir="ltr">JDK 17</span> و <span lang="en" dir="ltr">Android SDK</span> نیاز دارد:</p>
+  <pre lang="en" dir="ltr" class="card" style="overflow-x:auto">cd android
+./gradlew assembleRelease</pre>
+
+  <h3>گذاشتن برنامه‌ها روی نسخه خودتان</h3>
+  <p>فایل <span lang="en" dir="ltr">APK</span> را با نام <span lang="en" dir="ltr">downloads/baghcheh.apk</span> کنار فایل‌های سایت بگذارید تا پیوند راهنمای والدین کار کند. نصب‌کننده‌های رایانه را هم می‌توانید در همان پوشه بگذارید. برنامه رایانه خانه، <span lang="en" dir="ltr">APK</span> را خودش هم به تبلت‌های خانه می‌دهد.</p>
+
+  <h2 id="contribute">چطور کمک کنیم؟</h2>
+  <ul>
+    <li><strong>معلم‌ها:</strong> درس‌ها را بازبینی کنید، اشتباه‌ها را گزارش دهید، درس تازه بنویسید. درس‌ها دادهٔ ساده‌اند (در فایل <span lang="en" dir="ltr">js/content.js</span>) و برای نوشتنشان لازم نیست برنامه‌نویس باشید.</li>
+    <li><strong>صداپیشه‌ها:</strong> صدای حرف‌ها، کلمه‌ها و دستورها را ضبط کنید تا روی دستگاه‌هایی که صدای فارسی ندارند هم بشود درس را شنید.</li>
+    <li><strong>گویشوران زبان‌های دیگر ایران:</strong> توضیح‌ها و صداها را به ترکی، کردی، بلوچی، عربی، لری و زبان‌های دیگر برگردانید.</li>
+    <li><strong>تصویرگرها:</strong> تصویرهای ساده و سبک (<span lang="en" dir="ltr">SVG</span>) برای جایگزینی شکلک‌ها.</li>
+    <li><strong>پژوهشگرها:</strong> به ما کمک کنید اثر باغچه را با روشی درست و با حفظ حریم خصوصی بسنجیم.</li>
+    <li><strong>میزبان‌ها:</strong> یک نسخه روی سرور خودتان راه بیندازید و نشانی‌اش را با دیگران در میان بگذارید.</li>
+  </ul>
+  <p>همهٔ مشارکت‌ها را می‌شود بی‌نام یا با نام مستعار انجام داد. <a href="policies.html#contributors">امنیت مشارکت‌کنندگان</a></p>
+</article>
+</main>
+
+<footer class="site-footer">
+  باغچه رایگان است و رایگان می‌ماند — بدون تبلیغ، بدون ثبت‌نام، بدون ردیابی.
+  · <a href="policies.html">اصول و سیاست‌ها</a> · <a href="open.html">کد و محتوا آزاد است</a>
+</footer>
+<script src="js/common.js"></script>
+</body>
+</html>
