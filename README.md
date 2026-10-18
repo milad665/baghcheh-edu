@@ -20,6 +20,7 @@ The full commitments are in `policies.html`.
 ## Structure
 
 ```
+CURRICULUM.md       the content plan: every subject, garden and lesson, what it covers, which content types
 index.html          children's app (profiles, gardens, lessons, placement check)
 guide.html          parent guide (including the level ↔ age table)
 method.html         method and evidence, with references
@@ -37,6 +38,7 @@ js/strokes.js       stroke order of every letter, drawn as SVG paths
 js/app.js           routing and screens
 sw.js               offline cache
 tools/check-reading.js  checks reading lessons use only letters taught so far (node)
+tools/check-plan.js     checks the lessons match CURRICULUM.md (node)
 audio/  fonts/      optional recorded audio / self-hosted Vazirmatn font
 ```
 
@@ -98,6 +100,9 @@ APK on mirrors as `downloads/baghcheh.apk`; CI also embeds it in the hub so tabl
 
 ## Adding a lesson
 
+Start from `CURRICULUM.md`: it lists every planned lesson with its id, garden, order, what it covers and the content
+types it uses. Change the plan in the same commit as the lesson, then run `node tools/check-plan.js`.
+
 Lessons are plain data in `js/lessons/<subject>.js`, one file per subject, each pushing into `B.LESSONS`. Each has `id`, `subject` (`read` | `math` | `feel`),
 `level` (`seed` | `sprout` | `sapling` | `tree` | `forest`, or `null` for every level), `emoji`, `title` and `steps`.
 
@@ -143,7 +148,39 @@ dots to count, and the words said aloud when it is tapped (used for pictures).
 |-----------|--------|--------|
 | `story`   | A short animated picture story or explanation with play, pause and replay. `cast` {id: emoji or short text such as `"۳ + ۲ = ۵"`}, `scenes` [{`caption`, `say`, `audio`, `at`}] where `at` is {id: [x, y] or [x, y, {size, flip, act}] or `null` to hide}; x and y are percentages of the stage from the top left, an actor stays where it is until a scene moves it, and `act` is `bounce`, `spin`, `grow` or `shake`. Captions are read aloud. Optional `prompt`, `bg` (CSS background), `tall`, and `question`, `options`, `answer`, `pic` to ask about the story at the end | only with `question` |
 
+**Coding** (`js/steps/coding.js`, used by «فکر و برنامه‌نویسی»). Block coding in the spirit of ScratchJr and Code.org's early courses.
+The child lines up blocks by tapping, dragging, or the keyboard's arrow keys (Backspace takes one out), presses «اجرا» and
+watches the character follow the program block by block. No timers, points or losing: a program that misses is
+"let's fix it". Tapping a block in the program takes it out and the next block goes in its place. After two runs that
+miss, the first block that went wrong is coloured (or the empty place, when blocks are missing). With "reduce motion"
+on, the character jumps from square to square.
+
+| Step type   | Fields | Scored |
+|-------------|--------|--------|
+| `code`      | `goal` [x, y], optional `start` [x, y] (default [0, 0]), `size` [columns, rows] (default [5, 5]), `walls` [[x, y], …] (x from the left, y from the top, from 0), `blocks` (`"arrows"`: up, down, left, right; or `"turn"`: forward, turn right, turn left, with `face` up \| down \| left \| right for the way the character looks at the start), `repeat: true` (adds a repeat block; tap its count to change it, 2 to 5), `max` (most blocks the program may use, to ask for a repeat), `given` (a program to fix, e.g. `["right", {repeat: 3, body: ["up"]}]`; runs before the child changes it don't count as tries), `hero`, `goalPic`, `wall` (emoji), `prompt`, `say`. Right on the first try when the first run reaches the goal | yes |
+| `unplugged` | `text`: a game for home without a screen, written for the parent (e.g. a parent plays a robot that follows the child's spoken instructions). Ends every thinking lesson | no |
+
+**English** (`js/steps/english.js`). English is spoken with the device's English voice (`B.speakEn` in
+`js/english-voice.js`; any text written only in Latin letters that goes through `B.speak` is spoken in English too) and
+written left to right. Steps of English lessons carry `en: true` (set in `js/lessons/english.js`), so the games and
+`story` above also mark their English text `lang="en" dir="ltr"`.
+
+| Step type | Fields | Scored |
+|-----------|--------|--------|
+| `words`   | `words` [{pic or color or dots, en, audio}]: tap each picture to hear it and say it aloud; optional `show` (write the word, from Sprout on), `prompt` | no |
+| `listen`  | `say` (English to hear, or `audio`), `options` (emoji, or {pic or color or dots, label, en, value}), `answer` (the option's value: its pic, color, dots or label by default), optional `prompt`, `quiet` (don't repeat the Persian question), `show` (a letter, word or picture shown above). Options with `en` say it when tapped; with no `say`, their words are read out | yes |
+| `letter`  | `letter`, `words` [{pic, en}] starting with its sound, optional `like` (a Persian letter with a similar sound), `say`, `audio` (a recording of the sound) | no |
+| `tip`     | `text`: how parents can practise at home, even without knowing English; optional `pic` | no |
+
 Any step can take `audio: "audio/file.mp3"` to play a recording instead of the device voice.
+
+**Science** (`js/steps/science.js`). Inquiry steps: the child guesses, tries and sees.
+
+| Step type | Fields | Scored |
+|-----------|--------|--------|
+| `test`    | `kind` (`float`: a basin of water, or `magnet`), `items` [{pic, say, yes}] where `yes` means it floats / the magnet pulls it, optional `prompt`, `ask`, `yesLabel`, `noLabel`, `yesSaw`, `noSaw`. The child guesses, then watches it happen; guesses are never marked wrong | no |
+| `shadow`  | Drag the sun (or use the buttons or arrow keys) and watch a tree's shadow. `tasks` [{prompt, want}] where `want` is `short`, `long`, `left` or `right`; optional `thing`, `prompt`, and `question`, `options`, `answer`, `pic` asked at the end | only with `question` |
+| `home`    | A safe experiment for home, written for the parent: `pic`, `text` (one line for the child, read aloud), `need` [things], `steps` [what to do], optional `ask` (a question for the child) | no |
 
 **Adding a step type or a subject.** A new file can add step types with `B.engine.steps.mytype = function (s, box, done) { … }`
 (call `done(scored, firstTry)` at the end; `B.engine` also shares `choice`, `speakBtn`, `nextBtn`, `doneButton`, `pick`, `nums`).
@@ -183,7 +220,7 @@ You can also help without money: review lessons, record audio, translate, or hos
   [GNU AGPL-3.0-or-later](LICENSE). You may use, host and change it freely. If you distribute a modified
   version or run one on a server for others, you must publish its source under the same license, so a
   modified copy with hidden tracking can't stay hidden.
-- **Educational content** (lessons in `js/lessons/` and `js/content.js`, the text in `js/strings.js`, the info pages, `STYLE.md`, `audio/`):
+- **Educational content** (lessons in `js/lessons/` and `js/content.js`, the plan in `CURRICULUM.md`, the text in `js/strings.js`, the info pages, `STYLE.md`, `audio/`):
   [CC BY-SA 4.0](LICENSE-CONTENT). Credit "Baghcheh contributors / مشارکت‌کنندگان باغچه" and share changes under the same license.
 
 Copyright (C) 2026 Baghcheh contributors. Copyright is held collectively so contributors can stay anonymous.

@@ -2,11 +2,11 @@
    Each VERSION is one complete snapshot of the site: it is downloaded in full on install and then served
    from the cache, so old and new files are never mixed. Bump VERSION on every release (and add new files
    to FILES); open pages switch to the new snapshot by reloading once (see js/common.js). */
-var VERSION = "baghcheh-v15";
+var VERSION = "baghcheh-v16";
 var FILES = [
   "./", "index.html", "guide.html", "method.html", "policies.html", "open.html",
   "css/style.css", "js/common.js", "js/strings.js", "js/content.js",
-  "js/lessons/read.js", "js/lessons/math.js", "js/lessons/feel.js", "js/engine.js", "js/games.js", "js/strokes.js", "js/anim.js", "js/sync.js", "js/activities.js", "js/plan.js", "js/app.js",
+  "js/lessons/read.js", "js/lessons/math.js", "js/lessons/feel.js", "js/engine.js", "js/games.js", "js/strokes.js", "js/anim.js", "js/lessons/science.js", "js/steps/science.js", "js/english-voice.js", "js/steps/english.js", "js/lessons/english.js", "js/sync.js", "js/activities.js", "js/lessons/health.js", "js/steps/health.js", "js/lessons/thinking.js", "js/steps/coding.js", "js/plan.js", "js/app.js",
   "manifest.webmanifest", "icon.svg"
 ];
 

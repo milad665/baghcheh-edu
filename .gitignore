@@ -5,8 +5,9 @@ Thumbs.db
 .idea/
 .vscode/
 
-# Local Claude Code preview settings
-.claude/
+# Local Claude Code settings (project skills in .claude/skills/ are shared)
+.claude/*
+!.claude/skills/
 
 # Built installers and packages (published as GitHub release files, not committed)
 *.apk

@@ -326,3 +326,97 @@ Object.assign(B.T, {
   pause: "⏸ مکث",
   replay: "↻ از اول"
 });
+
+// ---------- زبان انگلیسی (js/steps/english.js) ----------
+Object.assign(B.T, {
+  enWordsPrompt: "روی هر تصویر بزن و گوش کن. بعد خودت بلند بگو.",
+  enSayIt: "حالا یک بار دیگر همه را بلند بگو.",
+  enListenPrompt: "گوش کن و تصویرش را پیدا کن.",
+  enListenAgain: "🔊 دوباره گوش کن",
+  enLetterPrompt: "به صدای اول هر کلمه گوش کن.",
+  enLetterLike: "صدایش شبیه «{fa}» است.",
+  enNoVoice: "این دستگاه صدای انگلیسی ندارد. اگر می‌توانید، این را برای کودک بخوانید:",
+  enTipTitle: "برای والدین: تمرین در خانه"
+});
+
+// ---------- علوم: آزمایش‌ها، خورشید و سایه، آزمایش در خانه (js/steps/science.js) ----------
+Object.assign(B.T, {
+  sci_float_ask: "روی آب می‌ماند یا فرو می‌رود؟",
+  sci_float_yesLabel: "🛶 روی آب می‌ماند",
+  sci_float_noLabel: "⚓ فرو می‌رود",
+  sci_float_yesSaw: "روی آب ماند",
+  sci_float_noSaw: "فرو رفت",
+  sci_magnet_ask: "آهنربا این را می‌کشد؟",
+  sci_magnet_yesLabel: "🧲 می‌کشد",
+  sci_magnet_noLabel: "✋ نمی‌کشد",
+  sci_magnet_yesSaw: "آهنربا کشید",
+  sci_magnet_noSaw: "آهنربا نکشید",
+  sciWatch: "حالا ببینیم چه می‌شود…",
+  sciGuessRight: "درست حدس زدی!",
+  sciGuessNew: "حدس زدی و امتحان کردی. حالا می‌دانی!",
+  sciShadowPrompt: "خورشید را جابه‌جا کن و سایه درخت را ببین.",
+  sciSunAria: "جای خورشید در آسمان",
+  sciSunEarlier: "خورشید را به طرف صبح ببر",
+  sciSunLater: "خورشید را به طرف عصر ببر",
+  sciMorning: "صبح",
+  sciNoon: "ظهر",
+  sciEvening: "عصر",
+  sciShadowShort: "سایه کوتاه است",
+  sciShadowMid: "سایه متوسط است",
+  sciShadowLong: "سایه بلند است",
+  sciHomeTitle: "🏠 آزمایش در خانه (برای والدین)",
+  sciHomeNote: "وسیله‌هایش در هر خانه‌ای پیدا می‌شود. در تمام مدت کنار کودک بمانید.",
+  sciHomeNeed: "وسیله‌ها:",
+  sciHomeDo: "چه کنیم:",
+  sciHomeAsk: "از کودک بپرسید:"
+});
+
+// ---------- سلامت و ایمنی (js/steps/health.js و js/lessons/health.js) ----------
+Object.assign(B.T, {
+  hlDid: "انجام دادم!",
+  hlParentsTitle: "برای والدین:",
+  hlGuideBefore: "بیشتر بخوانید: ",
+  hlGuideLink: "سلامت و ایمنی در راهنمای والدین"
+});
+
+// ---------- فکر و برنامه‌نویسی: بازی برنامه‌نویسی روی جدول (js/steps/coding.js) ----------
+Object.assign(B.T, {
+  codePrompt: "قطعه‌ها را بچین و «اجرا» را بزن.",
+  codeRun: "▶ اجرا",
+  codeUp: "بالا",
+  codeDown: "پایین",
+  codeLeft: "چپ",
+  codeRight: "راست",
+  codeForward: "یک خانه جلو",
+  codeForwardShort: "جلو",
+  codeTurnLeft: "به چپ بچرخ",
+  codeTurnRight: "به راست بچرخ",
+  codeRepeat: "تکرار",
+  codeRepeatAdd: "گذاشتن قطعه تکرار",
+  codeTimes: "{n} بار",
+  codeLoopAria: "{n} بار تکرار. بزن تا تعدادش عوض شود.",
+  codeLoopRemove: "برداشتن این تکرار",
+  codeLoopBodyAria: "قطعه‌های داخل تکرار",
+  codeAddAria: "گذاشتن «{name}»",
+  codeBlockAria: "«{name}». بزن تا برداشته شود.",
+  codeSlotAria: "قطعه بعدی اینجا می‌آید",
+  codeSlotPick: "بزن تا قطعه بعدی اینجا بیاید",
+  codeProgramAria: "برنامه",
+  codePaletteAria: "قطعه‌ها",
+  codeGridAria: "صفحه بازی",
+  codeHint: "روی قطعه بزن، یا بکش و در برنامه بینداز. برای برداشتن، روی قطعه‌ای که در برنامه است بزن.",
+  codeKeys: "با صفحه‌کلید: کلیدهای جهت‌نما قطعه می‌گذارند و Backspace آخری را برمی‌دارد.",
+  codeKeysTurn: "با صفحه‌کلید: ↑ جلو، ← و → چرخیدن، Backspace برداشتن.",
+  codeEmpty: "اول چند قطعه بچین، بعد «اجرا» را بزن.",
+  codeBumpWall: "راه بسته بود! بیا برنامه را درست کنیم.",
+  codeBumpEdge: "داشت از صفحه بیرون می‌رفت! بیا برنامه را درست کنیم.",
+  codeShort: "هنوز نرسیده. بیا برنامه را درست کنیم.",
+  codeBugHint: "به قطعه رنگی نگاه کن؛ اشکال از همین‌جا شروع شد.",
+  codeNeedMore: "تا اینجا درست رفت. چند قطعه دیگر لازم است.",
+  codeFull: "جا تمام شد! یکی را بردار.",
+  codeFullRepeat: "جا تمام شد! با «تکرار» برنامه را کوتاه‌تر کن.",
+  codeUsed: "{used} قطعه از {max} قطعه",
+  codeReached: "رسید!",
+  unpluggedFor: "این بخش را به پدر یا مادرت نشان بده.",
+  unpluggedTitle: "بازی بدون صفحه، برای خانه"
+});
