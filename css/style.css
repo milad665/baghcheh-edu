@@ -523,6 +523,75 @@ input.pair-code { font-size: 2rem; letter-spacing: 0.4em; text-align: center; ma
   .slot { font-size: 2.2rem; }
 }
 
+/* ---------- Parent plan, week and calendar (js/plan.js) ---------- */
+.day-picks { display: flex; flex-wrap: wrap; gap: 8px; }
+.day-pick {
+  font: inherit; padding: 8px 14px; min-height: 44px; border-radius: 999px; cursor: pointer;
+  border: 2px solid var(--line); background: var(--surface); color: var(--ink);
+}
+.day-pick[aria-pressed="true"] { border-color: var(--primary); background: var(--soft-good); font-weight: 700; }
+.plan-field { display: flex; align-items: center; gap: 8px; }
+.plan-input { font: inherit; padding: 8px 10px; border-radius: 10px; border: 2px solid var(--line); background: var(--surface); color: var(--ink); }
+
+.week { display: grid; gap: 10px; }
+.day-card { border: 1px solid var(--line); border-radius: 14px; padding: 10px 14px; background: var(--bg); }
+.day-card.planned { border-color: var(--sprout); }
+.day-card.is-today { border-width: 2px; border-color: var(--primary); }
+.day-head { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.today-tag { background: var(--primary); color: var(--primary-ink); border-radius: 999px; padding: 0 10px; font-size: 0.8rem; }
+.day-items { list-style: none; margin: 6px 0 0; padding: 0; }
+.day-items li { display: flex; gap: 6px; align-items: baseline; flex-wrap: wrap; padding: 2px 0; }
+.day-items .check {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 20px; height: 20px; border: 2px solid var(--line); border-radius: 6px; font-size: 0.8rem; color: var(--good);
+}
+.day-items li.is-done .check { border-color: var(--good); background: var(--soft-good); }
+.day-items li.activity label { cursor: pointer; }
+.day-items input[type="checkbox"] { width: 18px; height: 18px; vertical-align: middle; }
+
+.progress-row { margin: 10px 0 16px; }
+.progress-row .progress { margin: 6px 0; }
+
+.cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin: 12px 0; }
+.cal-head { text-align: center; font-weight: 700; color: var(--muted); }
+.cal-day {
+  font: inherit; color: var(--ink); background: var(--bg); border: 2px solid transparent; border-radius: 12px;
+  min-height: 56px; padding: 4px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+}
+.cal-day:hover, .cal-day:focus-visible { border-color: var(--primary); }
+.cal-day.planned { border: 2px dashed var(--sprout); }
+.cal-day.is-today { border: 2px solid var(--primary); font-weight: 800; }
+.cal-day.learned { background: var(--soft-good); }
+.cal-day .dots { display: flex; gap: 3px; min-height: 8px; }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
+.dot.learn { background: var(--good); }
+.dot.act { background: var(--accent); }
+.box.planned { display: inline-block; width: 12px; height: 12px; border: 2px dashed var(--sprout); border-radius: 3px; vertical-align: middle; }
+.cal-legend { display: flex; gap: 16px; flex-wrap: wrap; }
+.day-details ul { padding-right: 1.2em; }
+
+.print-only { display: none; }
+
+@media print {
+  .site-header, .site-footer, .no-print { display: none !important; }
+  .print-only { display: block; }
+  body { background: #fff; color: #000; font-size: 13pt; }
+  main { padding: 0; max-width: none; }
+  .card { border: none; box-shadow: none; padding: 0; }
+  .print-area .print-only h1 { font-size: 18pt; margin: 0 0 4pt; }
+  .day-card { break-inside: avoid; border: 1px solid #999; background: #fff; }
+  .day-card.is-today { border: 1px solid #999; }
+  .today-tag { display: none; }
+  .day-items .check { border-color: #555; color: #000; }
+  .day-items input[type="checkbox"] { -webkit-appearance: none; appearance: none; border: 2px solid #555; border-radius: 4px; }
+  .day-items input[type="checkbox"]:checked::after { content: "✓"; display: block; font-size: 12px; line-height: 14px; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .cal { gap: 3px; }
+  .cal-day { min-height: 44px; border-radius: 8px; }
+}
+
 /* ---------- Games in lessons (js/games.js) ---------- */
 :root { --sky: #dff0fb; --grass: #cfe8c0; }
 @media (prefers-color-scheme: dark) {

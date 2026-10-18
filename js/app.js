@@ -115,7 +115,15 @@
       el("a", { class: "btn quiet", href: "#/", text: B.t("switchChild") }),
       el("a", { class: "btn quiet", href: "#/parent", text: B.t("parents") })
     ]));
-    var due = dueReviews(p);
+    // With a weekly plan, today's lessons come first (reviews are already part of them).
+    var today = B.todayAgenda(p);
+    if (today && today.items.length) {
+      app.appendChild(el("h2", { text: B.t("todayPlanTitle") }));
+      app.appendChild(el("p", { class: "hint", text: B.t("todayPlanHint") }));
+      app.appendChild(lessonGrid(p, today.items.map(function (it) { return it.lesson; })));
+      if (today.activity) app.appendChild(el("p", { class: "note", text: "🏡 " + B.t("todayActivity", { text: today.activity.text }) }));
+    }
+    var due = today ? [] : dueReviews(p);
     if (due.length) {
       app.appendChild(el("h2", { text: B.t("reviewTitle") }));
       app.appendChild(el("p", { class: "hint", text: B.t("reviewHint") }));
@@ -188,6 +196,7 @@
         rec.box = -1;
       }
       p.lessons[id] = rec;
+      B.logLesson(p, id);
       B.save();
       B.noteProgress();
       clear();
@@ -229,6 +238,11 @@
         el("div", { class: "row" }, [select, el("a", { class: "btn secondary", href: "#/place/" + sub.id, text: B.t("placement") })])
       ]));
     });
+    app.appendChild(el("div", { class: "card", style: "margin:14px 0" }, [
+      el("h2", { style: "margin-top:0", text: B.t("planCardTitle") }),
+      el("p", { class: "hint", text: B.t("planCardHint", { name: p.name }) }),
+      el("a", { class: "btn", href: "#/plan", text: B.t("planOpen") })
+    ]));
     app.appendChild(el("div", { class: "card", style: "margin:14px 0" }, [
       el("h2", { style: "margin-top:0", text: B.t("backupTitle") }),
       el("p", { class: "hint", text: lastBackupText() }),
@@ -395,6 +409,7 @@
       case "parent": return viewParent();
       case "place": return viewPlacement(parts[1]);
       case "backup": return viewBackup();
+      case "plan": return B.currentProfile() ? B.viewPlan(app, B.currentProfile(), "#/parent") : go("#/");
       case "sync":
       case "pair":
         if (!B.sync || !B.sync.available) return go("#/");

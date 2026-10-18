@@ -90,6 +90,19 @@ window.B = B;
       Object.keys(p.lessons).forEach(function (id) {
         if (rank(p.lessons[id]) > rank(here.lessons[id])) { here.lessons[id] = copy(p.lessons[id]); r.changed = true; }
       });
+      // Learning log (js/plan.js): days from both copies are combined.
+      Object.keys(p.log || {}).forEach(function (day) {
+        here.log = here.log || {};
+        var mine = here.log[day] = here.log[day] || { l: [], a: [] }, theirs = p.log[day] || {};
+        ["l", "a"].forEach(function (f) {
+          (theirs[f] || []).forEach(function (id) { if (mine[f].indexOf(id) < 0) { mine[f].push(id); r.changed = true; } });
+        });
+      });
+      // Weekly plan: the copy saved last wins.
+      if (p.plan && (!here.plan || (p.plan.updatedAt || 0) > (here.plan.updatedAt || 0))) {
+        here.plan = copy(p.plan);
+        r.changed = true;
+      }
       if ((p.updatedAt || 0) > (here.updatedAt || 0)) {
         here.name = p.name;
         here.avatar = p.avatar;
