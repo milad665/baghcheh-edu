@@ -15,6 +15,8 @@ concrete → pictorial → abstract math). See `method.html` for the method and 
 
 The full commitments are in `policies.html`.
 
+[💚 Support Baghcheh](https://buy.stripe.com/bJecMY8Nh56s4JG0o88og01) · it's free for every child, funded by donations.
+
 ## Structure
 
 ```
@@ -132,6 +134,16 @@ Before publishing a new lesson, have it reviewed by at least one Persian-speakin
 2. Bump `VERSION` in `sw.js`, or returning visitors keep the old files.
 3. Update the date at the top of `policies.html` if the policies changed.
 4. For the apps, bump `version` in `desktop/src-tauri/tauri.conf.json` and `Cargo.toml`, and `versionCode`/`versionName` in `android/build.gradle`.
+
+## Support
+
+Baghcheh is free for every child and always will be. Hosting, recorded lesson audio and teacher review
+are paid for by voluntary donations.
+
+**[💚 Support Baghcheh](https://buy.stripe.com/bJecMY8Nh56s4JG0o88og01)** (pay any amount, via Stripe)
+
+Donations give no say over the content and no access to any data about children or families.
+You can also help without money: review lessons, record audio, translate, or host a mirror (see `open.html`).
 
 ## License
 

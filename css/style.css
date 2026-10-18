@@ -169,6 +169,7 @@ table.levels th, table.levels td { border-bottom: 1px solid var(--line); padding
 .btn.secondary { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
 .btn.quiet { background: transparent; color: var(--muted); font-weight: 400; padding: 8px 12px; }
 .btn:disabled { opacity: 0.4; cursor: default; }
+a.btn { text-decoration: none; display: inline-flex; align-items: center; }
 
 .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
 .spacer { flex: 1; }

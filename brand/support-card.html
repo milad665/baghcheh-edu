@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; width: 1200px; height: 1200px; }
+  body {
+    background: #fbf7ef;
+    font-family: "Vazirmatn", "Noto Sans Arabic", "Geeza Pro", "Segoe UI", Tahoma, sans-serif;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: #2b2a27; position: relative; overflow: hidden;
+  }
+  .ground { position: absolute; bottom: 0; left: 0; right: 0; height: 170px; background: #efe4cf; }
+  .ground::before { content: ""; position: absolute; top: -14px; left: 0; right: 0; height: 28px; background: #b98552; border-radius: 14px; opacity: .85; }
+  svg.plant { width: 520px; height: 520px; margin-top: -60px; }
+  h1 { font-size: 168px; margin: -10px 0 0; line-height: 1.2; color: #2f7d4f; font-weight: 800; }
+  p.fa { font-size: 52px; margin: 6px 0 0; color: #4a4741; }
+  p.en { font-size: 34px; margin: 18px 0 0; color: #8a857a; direction: ltr; letter-spacing: .5px; font-family: "Helvetica Neue", Arial, sans-serif; }
+  .dots span { position: absolute; border-radius: 50%; opacity: .55; }
+</style>
+</head>
+<body>
+  <div class="dots">
+    <span style="width:46px;height:46px;background:#e8a33d;top:140px;left:170px"></span>
+    <span style="width:28px;height:28px;background:#6fb35a;top:260px;right:190px"></span>
+    <span style="width:34px;height:34px;background:#275f73;top:120px;right:330px;opacity:.35"></span>
+    <span style="width:22px;height:22px;background:#e8a33d;top:390px;left:300px;opacity:.4"></span>
+  </div>
+  <svg class="plant" viewBox="0 0 64 64" aria-hidden="true">
+    <path d="M32 58V30" stroke="#2f7d4f" stroke-width="3.2" stroke-linecap="round"/>
+    <path d="M32 36c-2-10-10-15-20-14 1 10 9 16 20 14z" fill="#6fb35a"/>
+    <path d="M32 31c2-11 11-17 22-16-1 11-10 18-22 16z" fill="#2f7d4f"/>
+  </svg>
+  <h1>باغچه</h1>
+  <p class="fa">آموزش رایگان برای همه کودکان</p>
+  <p class="en">Baghcheh · free learning for every child</p>
+  <div class="ground"></div>
+</body>
+</html>

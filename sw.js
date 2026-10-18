@@ -2,7 +2,7 @@
    Each VERSION is one complete snapshot of the site: it is downloaded in full on install and then served
    from the cache, so old and new files are never mixed. Bump VERSION on every release (and add new files
    to FILES); open pages switch to the new snapshot by reloading once (see js/common.js). */
-var VERSION = "baghcheh-v10";
+var VERSION = "baghcheh-v11";
 var FILES = [
   "./", "index.html", "guide.html", "method.html", "policies.html", "open.html",
   "css/style.css", "js/common.js", "js/strings.js", "js/content.js", "js/engine.js", "js/sync.js", "js/app.js",
