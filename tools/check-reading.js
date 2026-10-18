@@ -8,8 +8,13 @@ var fs = require("fs");
 var path = require("path");
 var vm = require("vm");
 
+// content.js first (it creates B.LESSONS), then every subject's lesson file.
 var ctx = { window: {} };
-vm.runInNewContext(fs.readFileSync(path.join(__dirname, "..", "js", "content.js"), "utf8"), ctx);
+var js = path.join(__dirname, "..", "js");
+vm.runInNewContext(fs.readFileSync(path.join(js, "content.js"), "utf8"), ctx);
+fs.readdirSync(path.join(js, "lessons")).filter(function (f) { return /\.js$/.test(f); }).sort().forEach(function (f) {
+  vm.runInNewContext(fs.readFileSync(path.join(js, "lessons", f), "utf8"), ctx);
+});
 var LESSONS = ctx.window.B.LESSONS;
 
 // What each lesson teaches, in order. «Y» = «ی» as a consonant.

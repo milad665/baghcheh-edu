@@ -28,7 +28,8 @@ open.html           open source, self-hosting, contributing
 css/style.css
 js/common.js        on-device storage, backup/merge, speech, Persian digits
 js/sync.js          pairing and sync with the home hub (inactive on normal mirrors)
-js/content.js       curriculum DATA: levels, lessons, placement check  ← teachers edit this
+js/content.js       curriculum DATA shared by all subjects: levels, subjects, placement check
+js/lessons/*.js     the lessons, one file per subject (read.js, math.js, feel.js)  ← teachers edit these
 js/engine.js        lesson step types
 js/app.js           routing and screens
 sw.js               offline cache
@@ -94,7 +95,7 @@ APK on mirrors as `downloads/baghcheh.apk`; CI also embeds it in the hub so tabl
 
 ## Adding a lesson
 
-Lessons are plain data in `js/content.js`. Each has `id`, `subject` (`read` | `math` | `feel`),
+Lessons are plain data in `js/lessons/<subject>.js`, one file per subject, each pushing into `B.LESSONS`. Each has `id`, `subject` (`read` | `math` | `feel`),
 `level` (`seed` | `sprout` | `sapling` | `tree` | `forest`, or `null` for every level), `emoji`, `title` and `steps`.
 
 | Step type  | Fields | Scored |
@@ -151,7 +152,7 @@ You can also help without money: review lessons, record audio, translate, or hos
   [GNU AGPL-3.0-or-later](LICENSE). You may use, host and change it freely. If you distribute a modified
   version or run one on a server for others, you must publish its source under the same license, so a
   modified copy with hidden tracking can't stay hidden.
-- **Educational content** (lessons in `js/content.js`, the text in `js/strings.js`, the info pages, `STYLE.md`, `audio/`):
+- **Educational content** (lessons in `js/lessons/` and `js/content.js`, the text in `js/strings.js`, the info pages, `STYLE.md`, `audio/`):
   [CC BY-SA 4.0](LICENSE-CONTENT). Credit "Baghcheh contributors / مشارکت‌کنندگان باغچه" and share changes under the same license.
 
 Copyright (C) 2026 Baghcheh contributors. Copyright is held collectively so contributors can stay anonymous.
