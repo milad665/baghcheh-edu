@@ -522,3 +522,148 @@ input.pair-code { font-size: 2rem; letter-spacing: 0.4em; text-align: center; ma
   .card .stick { height: 40px; width: 3px; }
   .slot { font-size: 2.2rem; }
 }
+
+/* ---------- Games in lessons (js/games.js) ---------- */
+:root { --sky: #dff0fb; --grass: #cfe8c0; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --sky: #22343f; --grass: #263a26; }
+}
+.face { display: inline-flex; align-items: center; justify-content: center; gap: 4px; line-height: 1.25; pointer-events: none; }
+.face.stack { flex-direction: column; }
+.face.word, .face .word { font-family: var(--font-letters); font-size: 2.2rem; }
+.face.pic, .face-pic { font-size: 2.6rem; }
+.face.num, .face .num { font-size: 2.2rem; font-weight: 800; }
+.face .dots { display: grid; grid-template-columns: repeat(5, 12px); gap: 5px; direction: ltr; }
+.face .dots i { width: 12px; height: 12px; border-radius: 50%; background: var(--try); }
+
+.card-btn, .tile-btn {
+  min-width: 84px; min-height: 84px; padding: 6px 12px; border-radius: var(--radius);
+  border: 3px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer;
+  transition: transform 0.15s, border-color 0.15s, background 0.15s;
+}
+.card-btn:focus-visible, .tile-btn:focus-visible, .basket:focus-visible, .food:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+.card-btn.picked, .tile-btn.picked { border-color: var(--primary); background: var(--soft-good); transform: translateY(-4px); }
+.card-btn.matched { border-color: var(--good); background: var(--soft-good); cursor: default; }
+.card-btn.show, .tile-btn.show, .basket.show { border-color: var(--good); border-style: dashed; }
+.card-btn.wrong, .tile-btn.wrong, .basket.wrong, .feed-animal.wrong { animation: shake 0.35s; }
+.card-btn.down { background: repeating-linear-gradient(45deg, var(--sprout) 0 10px, var(--sapling) 10px 20px); border-color: var(--sapling); }
+.card-btn.down.show { border-color: var(--accent); border-style: dashed; }
+.card-btn.down .face { visibility: hidden; }
+.pairs { display: flex; flex-direction: column; gap: 22px; margin: 12px 0; }
+.card-row, .tray { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.card-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 120px)); justify-content: center; gap: 10px; margin: 12px 0; }
+.card-grid .card-btn { min-width: 0; width: 100%; aspect-ratio: 1; padding: 4px; }
+.tray { margin: 14px 0 6px; min-height: 90px; }
+.tile-btn.used { visibility: hidden; }
+.tray.letters .face, .slots.letters .face { font-family: var(--font-letters); font-size: 2.6rem; }
+
+.slots { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 12px auto; padding: 10px; border: 2px dashed transparent; border-radius: var(--radius); }
+.slot-box {
+  position: relative; min-width: 84px; min-height: 84px; padding: 4px 10px; border-radius: 14px;
+  border: 3px dashed var(--line); background: var(--bg); display: flex; align-items: center; justify-content: center;
+}
+.slot-box.filled { border-style: solid; border-color: var(--good); background: var(--surface); animation: pop 0.3s; }
+.slot-n { position: absolute; bottom: -24px; font-size: 0.9rem; color: var(--muted); }
+.slots.cards { margin-bottom: 30px; }
+.slots.joined .slot-box { opacity: 0.4; transition: opacity 0.6s; }
+.build-pic { font-size: 4.5rem; line-height: 1.3; margin: 0; }
+
+.baskets { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; margin: 12px 0; }
+.basket {
+  min-width: 150px; min-height: 140px; padding: 10px; border-radius: 20px 20px 46px 46px; border: 4px solid var(--wood);
+  background: var(--surface); color: var(--ink); cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.basket-label .face, .basket-label .face .word { font-size: 2.4rem; }
+.basket-in { display: flex; flex-wrap: wrap; justify-content: center; gap: 2px 6px; max-width: 200px; min-height: 40px; }
+.basket-in .face.pic, .basket-in .face-pic { font-size: 1.7rem; }
+.basket-in .face.word, .basket-in .face .word, .basket-in .face.num, .basket-in .face .num { font-size: 1.6rem; }
+.basket-in .face .dots { grid-template-columns: repeat(5, 7px); gap: 3px; }
+.basket-in .face .dots i { width: 7px; height: 7px; }
+
+.draggable { touch-action: none; user-select: none; -webkit-user-select: none; }
+.dragging { opacity: 0.35; }
+.drag-ghost { position: fixed; z-index: 50; margin: 0; pointer-events: none; opacity: 0.92; box-shadow: var(--shadow); transform: scale(1.08); }
+.drop-over { border-color: var(--primary) !important; background: var(--soft-good) !important; }
+
+.feed { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; margin: 6px 0; }
+.feed-who { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.feed-animal { font-size: 5rem; line-height: 1.1; display: inline-block; }
+.feed-animal.happy { animation: hop 0.5s 3; }
+.feed-sign { font-size: 2rem; font-weight: 800; background: var(--surface); border: 3px solid var(--wood); border-radius: 12px; padding: 0 14px; }
+.plate {
+  display: grid; grid-template-columns: repeat(5, 54px); grid-auto-rows: 54px; gap: 4px; align-content: center; justify-content: center;
+  min-width: 310px; min-height: 140px; padding: 14px 20px; border-radius: 48px; border: 3px solid var(--line);
+  background: var(--surface); box-shadow: inset 0 0 0 10px var(--bg);
+}
+.tray.table { max-width: 560px; margin: 12px auto 6px; padding: 8px; border-radius: var(--radius); border: 2px solid var(--line); background: var(--bg); min-height: 70px; }
+.food { position: relative; width: 54px; height: 54px; padding: 0; font-size: 2.1rem; line-height: 1; border: 2px solid transparent; border-radius: 12px; background: none; cursor: pointer; }
+.food .n { position: absolute; top: -4px; left: -4px; background: var(--good); color: #fff; border-radius: 999px; font-size: 0.8rem; min-width: 22px; line-height: 22px; }
+.food.eaten { animation: eat 0.6s forwards; }
+@keyframes eat { to { transform: scale(0); opacity: 0; } }
+@keyframes hop { 50% { transform: translateY(-14px) scale(1.06); } }
+
+.pattern { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
+.pat-item { min-width: 72px; min-height: 72px; padding: 2px 8px; display: flex; align-items: center; justify-content: center; border-radius: 14px; background: var(--surface); border: 2px solid var(--line); }
+.pat-item.hole { border: 3px dashed var(--line); background: var(--bg); }
+.pat-item.hole.now { border-color: var(--accent); }
+.pat-item.filled { border-style: solid; border-color: var(--good); animation: pop 0.3s; }
+
+/* ---------- Animations (js/anim.js): how a letter is written, picture stories ---------- */
+.intro-letter { display: flex; justify-content: center; align-items: center; gap: 12px 28px; flex-wrap: wrap; }
+.intro-letter .letter-big { margin: 0; }
+.write-panel { margin: 0; display: flex; flex-direction: column; align-items: center; }
+.write-panel .write-svg { width: 190px; height: 190px; background: var(--surface); border: 2px solid var(--line); border-radius: var(--radius); }
+.write-panel figcaption { font-size: 0.9rem; color: var(--muted); display: flex; flex-direction: column; align-items: center; }
+.write-base { stroke: var(--line); stroke-width: 2; stroke-dasharray: 6 6; }
+.write-ghost path { fill: none; stroke: var(--line); stroke-linecap: round; stroke-linejoin: round; }
+.write-ink path { fill: none; stroke: var(--ink); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; transition: opacity 0.6s; }
+.write-pen { fill: var(--accent); }
+.trace-wrap .write-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.trace-wrap .write-ink path { stroke: var(--primary); }
+
+.stage {
+  position: relative; width: 100%; max-width: 680px; aspect-ratio: 16 / 9; margin: 0 auto; overflow: hidden;
+  border-radius: var(--radius); border: 2px solid var(--line); background: linear-gradient(var(--sky) 66%, var(--grass) 66%);
+}
+.stage.tall { aspect-ratio: 4 / 3; }
+.actor {
+  position: absolute; left: 50%; top: 50%; line-height: 1; white-space: nowrap; font-size: clamp(2rem, 7vw, 3.6rem); font-weight: 800;
+  transform: translate(-50%, -50%) scale(calc(var(--size, 1) * var(--flip, 1)), var(--size, 1));
+  transition: left 1.2s ease-in-out, top 1.2s ease-in-out, transform 1.2s ease-in-out, opacity 0.6s;
+}
+.actor-in { display: inline-block; }
+.stage.snap .actor { transition: none; }
+.act-bounce { animation: hop 0.6s 2; }
+.act-spin { animation: spin 1.2s; }
+.act-grow { animation: grow 1.2s; }
+.act-shake { animation: shake 0.5s 3; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes grow { 50% { transform: scale(1.4); } }
+.caption { font-size: 1.35rem; font-weight: 700; min-height: 2.6em; margin: 8px 0; }
+.scene-dots { display: flex; justify-content: center; gap: 6px; margin-top: 8px; }
+.scene-dots i { width: 10px; height: 10px; border-radius: 50%; background: var(--line); transition: transform 0.3s; }
+.scene-dots i.seen { background: var(--sprout); }
+.scene-dots i.on { background: var(--accent); transform: scale(1.3); }
+
+@media (min-width: 768px) {
+  .card-btn, .tile-btn, .slot-box { min-width: 104px; min-height: 104px; }
+  .face.word, .face .word, .face.num, .face .num { font-size: 2.6rem; }
+  .face.pic, .face-pic { font-size: 3.2rem; }
+  .tray.letters .face, .slots.letters .face { font-size: 3.2rem; }
+  .write-panel .write-svg { width: 220px; height: 220px; }
+  .basket { min-width: 180px; min-height: 160px; }
+}
+@media (max-width: 480px) {
+  .card-btn, .tile-btn, .slot-box { min-width: 64px; min-height: 64px; padding: 4px 8px; }
+  .face.word, .face .word, .face.num, .face .num { font-size: 1.8rem; }
+  .face.pic, .face-pic { font-size: 2.1rem; }
+  .tray.letters .face, .slots.letters .face { font-size: 2.1rem; }
+  .card-grid { gap: 6px; }
+  .basket { min-width: 120px; min-height: 120px; }
+  .plate { grid-template-columns: repeat(5, 44px); grid-auto-rows: 44px; min-width: 0; padding: 12px; }
+  .food { width: 44px; height: 44px; font-size: 1.7rem; }
+  .feed-animal { font-size: 4rem; }
+  .pat-item { min-width: 56px; min-height: 56px; }
+  .write-panel .write-svg { width: 150px; height: 150px; }
+  .caption { font-size: 1.15rem; }
+}

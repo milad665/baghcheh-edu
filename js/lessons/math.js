@@ -24,6 +24,28 @@ B.LESSONS.push(
     ]
   },
 
+  {
+    id: "math-seed-3", subject: "math", level: "seed", emoji: "🐰", title: "بازی غذا دادن",
+    steps: [
+      { type: "story", prompt: "به قصه نگاه کن و بشمار",
+        cast: { hen: "🐔", c1: "🐥", c2: "🐥", c3: "🐥", grain: "🌾" },
+        scenes: [
+          { caption: "مرغ در حیاط دانه می‌خورد.", at: { hen: [78, 60, { size: 1.5 }], grain: [60, 78, { size: 0.8 }] } },
+          { caption: "یک جوجه آمد.", at: { c1: [44, 72, { act: "bounce" }] } },
+          { caption: "باز هم یک جوجه آمد.", at: { c2: [34, 74, { act: "bounce" }] } },
+          { caption: "باز هم یک جوجه آمد.", at: { c3: [24, 72, { act: "bounce" }] } }
+        ],
+        question: "چند جوجه پیش مرغ آمد؟", pic: true,
+        options: [{ label: "🐥🐥", value: 2 }, { label: "🐥🐥🐥", value: 3 }, { label: "🐥🐥🐥🐥", value: 4 }], answer: 3 },
+      { type: "feed", animal: "🐰", food: "🥕", n: 3, prompt: "خرگوش گرسنه است. سه تا هویج به او بده." },
+      { type: "pairs", prompt: "بشمار و هر دسته را با دسته‌ای جفت کن که به همان تعداد است",
+        pairs: [[{ dots: 2 }, "🍎🍎"], [{ dots: 4 }, "🐟🐟🐟🐟"], [{ dots: 1 }, "⭐"], [{ dots: 3 }, "🎈🎈🎈"]] },
+      { type: "feed", animal: "🐿️", food: "🌰", n: 5, prompt: "سنجاب گرسنه است. پنج تا به او بده." },
+      { type: "pattern", prompt: "بعدی کدام است؟", seq: ["🍎", "🍌", "🍎", "🍌", "🍎", "🍌"], blanks: [5], options: ["🍌", "🍎", "🍇"] },
+      { type: "order", prompt: "از کم به زیاد بچین", ltr: true, items: [{ dots: 1 }, { dots: 2 }, { dots: 3 }, { dots: 4 }] }
+    ]
+  },
+
   // ---------------- Math: Sprout (from objects, to pictures, to numbers) ----------------
   {
     id: "math-sprout-1", subject: "math", level: "sprout", emoji: "🔟", title: "قاب ده‌تایی",
@@ -109,6 +131,27 @@ B.LESSONS.push(
     ]
   },
 
+  {
+    id: "math-sprout-8", subject: "math", level: "sprout", emoji: "🥕", title: "بازی جمع",
+    steps: [
+      { type: "story", prompt: "ببین سیب‌ها چه می‌شوند",
+        cast: { a1: "🍎", a2: "🍎", a3: "🍎", b1: "🍏", b2: "🍏", sum: "۳ + ۲ = ۵" },
+        scenes: [
+          { caption: "اینجا سه سیب قرمز هست.", at: { a1: [12, 62], a2: [22, 62], a3: [32, 62] } },
+          { caption: "آنجا دو سیب سبز هست.", at: { b1: [72, 62], b2: [82, 62] } },
+          { caption: "سیب‌ها را کنار هم می‌گذاریم.", at: { b1: [42, 62], b2: [52, 62] } },
+          { caption: "روی هم پنج سیب شد. سه به‌علاوه دو می‌شود پنج.", at: { sum: [32, 24, { size: 0.8, act: "grow" }] } }
+        ] },
+      { type: "feed", animal: "🐰", food: "🥕", a: 3, b: 2, prompt: "جواب این جمع را حساب کن و همان‌قدر هویج به خرگوش بده." },
+      { type: "feed", animal: "🐿️", food: "🌰", a: 4, b: 3, prompt: "جواب این جمع را حساب کن و همان‌قدر به سنجاب بده." },
+      { type: "pairs", prompt: "هر عدد را با نقطه‌هایش جفت کن",
+        pairs: [[3, { dots: 3 }], [5, { dots: 5 }], [7, { dots: 7 }], [9, { dots: 9 }]] },
+      { type: "feed", animal: "🐔", food: "🌽", a: 5, b: 4, prompt: "جواب این جمع را حساب کن و همان‌قدر ذرت به مرغ بده." },
+      { type: "order", prompt: "عددها را از کوچک به بزرگ بچین", ltr: true, items: [3, 6, 8, 12, 15] },
+      { type: "pattern", prompt: "دوتا دوتا بشمار. جای خالی را پر کن.", ltr: true, seq: [2, 4, 6, 8, 10], blanks: [3], options: [7, 8, 9] }
+    ]
+  },
+
   // ---------------- Math: Sapling (to 100: making ten, tens and ones, comparing, adding and taking away, measuring, money) ----------------
   // Lessons are listed in teaching order; ids are only names, so new ones keep counting up.
   {
@@ -175,6 +218,27 @@ B.LESSONS.push(
       { type: "compare", a: 45, b: 45, pic: "tens", ask: "symbol" },
       { type: "compare", a: 89, b: 98, ask: "symbol" },
       { type: "compare", a: 70, b: 69, ask: "symbol" }
+    ]
+  },
+  {
+    id: "math-sapling-12", subject: "math", level: "sapling", emoji: "👟", title: "زوج و فرد، الگوی عددها",
+    steps: [
+      { type: "story", prompt: "ببین زوج و فرد یعنی چه",
+        cast: { s1: "👟", s2: "👟", s3: "👟", s4: "👟", s5: "👟", s6: "👟", s7: "👟", even: "۶ زوج", odd: "۷ فرد" },
+        scenes: [
+          { caption: "شش لنگه کفش داریم.", at: { s1: [12, 64], s2: [26, 64], s3: [40, 64], s4: [54, 64], s5: [68, 64], s6: [82, 64] } },
+          { caption: "لنگه‌ها را دوتا دوتا جفت می‌کنیم.", at: { s1: [18, 64], s2: [25, 64], s3: [41, 64], s4: [48, 64], s5: [64, 64], s6: [71, 64] } },
+          { caption: "همه جفت شدند و هیچ لنگه‌ای تنها نماند. پس شش زوج است.", at: { even: [45, 24, { size: 0.8, act: "grow" }] } },
+          { caption: "حالا یک لنگه کفش دیگر می‌آید.", at: { even: null, s7: [88, 64, { act: "bounce" }] } },
+          { caption: "این یکی جفت ندارد و تنها می‌ماند. پس هفت فرد است.", at: { s7: [88, 64, { act: "shake" }], odd: [45, 24, { size: 0.8, act: "grow" }] } }
+        ] },
+      { type: "sort", prompt: "زوج‌ها را در یک سبد و فردها را در سبد دیگر بگذار.",
+        baskets: [{ label: "زوج", value: "even" }, { label: "فرد", value: "odd" }],
+        items: [{ dots: 4, basket: "even" }, { dots: 7, basket: "odd" }, { label: 6, basket: "even" }, { label: 9, basket: "odd" },
+          { label: 12, basket: "even" }, { label: 15, basket: "odd" }] },
+      { type: "pattern", prompt: "ده‌تا ده‌تا بشمار. جای خالی را پر کن.", ltr: true, seq: [10, 20, 30, 40, 50], blanks: [3], options: [35, 40, 41] },
+      { type: "pattern", prompt: "پنج‌تا پنج‌تا بشمار. جاهای خالی را پر کن.", ltr: true, seq: [5, 10, 15, 20, 25, 30], blanks: [2, 4], options: [15, 25, 20, 11] },
+      { type: "order", prompt: "عددها را از کوچک به بزرگ بچین", ltr: true, items: [27, 45, 54, 72, 90] }
     ]
   },
   {

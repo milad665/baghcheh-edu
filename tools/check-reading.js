@@ -1,7 +1,8 @@
 /* Checks that every word a child decodes in the reading lessons uses only letters taught so far.
    Run from the project folder:  node tools/check-reading.js
    Checked: intro example words, blend parts and words, words shown in "choose" steps, word options,
-   passage text and passage options. Not checked: instructions and questions (the grown-up reads them),
+   passage text and passage options, and the words and letters on game tiles and cards (build, pairs, sort,
+   order, pattern). Not checked: instructions and questions (the grown-up reads them),
    and the letter shapes in "find the letter" steps (other letters are there on purpose).
    Consonant «و» (v) and «ی» (y) are spotted by a rough rule and reported as warnings. */
 var fs = require("fs");
@@ -19,10 +20,10 @@ var LESSONS = ctx.window.B.LESSONS;
 
 // What each lesson teaches, in order. «Y» = «ی» as a consonant.
 var TEACHES = {
-  "read-sprout-1": "آاب", "read-sprout-2": "دم", "read-sprout-3": "سَ",
-  "read-sapling-1": "وت", "read-sapling-2": "ری", "read-sapling-3": "نز", "read-sapling-4": "شِ", "read-sapling-5": "کُ",
+  "read-sprout-1": "آاب", "read-sprout-2": "دم", "read-sprout-3": "سَ", "read-sprout-4": "",
+  "read-sapling-1": "وت", "read-sapling-2": "ری", "read-sapling-3": "نز", "read-sapling-4": "شِ", "read-sapling-5": "کُ", "read-sapling-18": "",
   "read-sapling-6": "",
-  "read-sapling-7": "ه", "read-sapling-8": "پل", "read-sapling-9": "جگ", "read-sapling-10": "چخ", "read-sapling-11": "فق",
+  "read-sapling-7": "ه", "read-sapling-8": "پل", "read-sapling-9": "جگ", "read-sapling-10": "چخ", "read-sapling-11": "فق", "read-sapling-19": "",
   "read-sapling-12": "Yژ", "read-sapling-13": "صث", "read-sapling-14": "ذضظ", "read-sapling-15": "طح", "read-sapling-16": "عغ",
   "read-sapling-17": "ًّ"
 };
@@ -57,11 +58,22 @@ function texts(s) {
     // Word options (not letter shapes, not pictures).
     if (!s.pic && !/پیدا کن|کدام «|نشانه/.test(s.prompt)) s.options.forEach(function (o) { t.push(typeof o === "object" ? o.label : o); });
   }
+  // Games: every word or letter shown on a tile or card is read by the child.
+  function shown(v) {
+    var t = typeof v === "object" && v !== null ? v.label : v;
+    if (typeof t === "string" && /[؀-ۿ]/.test(t)) return t;
+    return null;
+  }
+  if (s.type === "build") t = t.concat([s.word], s.parts, s.extra || []);
+  if (s.type === "pairs") s.pairs.forEach(function (p) { t.push(shown(p[0]), shown(p[1])); });
+  if (s.type === "sort") s.items.concat(s.baskets).forEach(function (v) { t.push(shown(v)); });
+  if (s.type === "order") s.items.forEach(function (v) { t.push(shown(v)); });
+  if (s.type === "pattern") s.seq.concat(s.options).forEach(function (v) { t.push(shown(v)); });
   if (s.type === "passage") {
     t.push(s.text);
     if (!s.pic) s.options.forEach(function (o) { t.push(typeof o === "object" ? o.label : o); });
   }
-  return t;
+  return t.filter(function (x) { return x != null; });
 }
 
 var known = "", errors = 0, warnings = 0, seen = {};

@@ -238,3 +238,38 @@ B.t = function (key, vars) {
   if (vars) s = s.replace(/\{(\w+)\}/g, function (m, k) { return vars[k]; });
   return s;
 };
+
+// ---------- بازی‌ها و پویانمایی‌های درس‌ها (js/games.js و js/anim.js) ----------
+Object.assign(B.T, {
+  dragHint: "رویش بزن، یا بکش و بینداز.",
+  gameShowItem: "ببین، این یکی درست است.",
+  gameShowPlace: "ببین، جای درستش اینجاست.",
+  gameShowPair: "ببین، این دو تا با هم جفت‌اند.",
+  slotAria: "جای {n}",
+  pairsPrompt: "جفت‌ها را پیدا کن",
+  pairsHiddenPrompt: "کارت‌ها را برگردان و جفت‌ها را پیدا کن",
+  pairsNow: "حالا جفتش را پیدا کن.",
+  pairsKeepLooking: "جفت نبودند. به جایشان خوب نگاه کن.",
+  pairsRemember: "جفتش را قبلاً دیده بودی. یادت هست کجا بود؟",
+  cardHidden: "کارت {n}",
+  buildPrompt: "کلمه‌اش را بساز",
+  orderPrompt: "به ترتیب بچین",
+  sortNow: "حالا جایش را انتخاب کن.",
+  sortPickFirst: "اول یکی را انتخاب کن.",
+  basketAria: "سبد {name}",
+  feedPrompt: "ببین چند تا می‌خواهد. همان‌قدر به او بده.",
+  feedGive: "بفرما!",
+  feedMore: "هنوز گرسنه است. باز هم بده.",
+  feedLess: "زیاد شد! چند تا را بردار.",
+  feedYum: "نوش جان!",
+  plateAria: "بشقاب",
+  plateGive: "در بشقاب بگذار",
+  plateTake: "از بشقاب بردار",
+  patternPrompt: "جای خالی را پر کن",
+  writeCaption: "ببین چطور نوشته می‌شود",
+  writeAgain: "↻ دوباره ببین",
+  writeAria: "نوشتن «{letter}»",
+  play: "▶ پخش",
+  pause: "⏸ مکث",
+  replay: "↻ از اول"
+});

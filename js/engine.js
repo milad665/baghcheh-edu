@@ -33,7 +33,7 @@ window.B = B;
       // An option may carry a ready-made picture (o.node) instead of a text label.
       var b = o && o.node
         ? el("button", { class: "opt node", type: "button", "aria-label": o.aria || String(value) }, [o.node])
-        : el("button", { class: "opt" + (opts.pic ? " pic" : ""), type: "button", text: label });
+        : el("button", { class: "opt" + (opts.pic ? " pic" : ""), type: "button", text: label, "aria-label": opts.pic ? String(value) : label });
       b.addEventListener("click", function () {
         if (b.disabled) return;
         if (String(value) === String(opts.answer)) {
@@ -69,7 +69,11 @@ window.B = B;
   var steps = {};
 
   steps.intro = function (s, box, done) {
-    box.appendChild(el("p", { class: "letter-big", text: s.letter }));
+    // Beside the printed letter, an animation shows how it is written (s.write names the letter to animate
+    // when s.letter is not a plain letter, e.g. «او» → «و»; set write: "" to leave it out).
+    var write = B.writePanel && B.writePanel(s.write != null ? s.write : s.letter);
+    var big = el("p", { class: "letter-big", text: s.letter });
+    box.appendChild(write ? el("div", { class: "intro-letter" }, [big, write]) : big);
     box.appendChild(el("p", { class: "prompt", text: s.text }));
     var forms = el("div", { class: "forms" });
     (s.forms || []).forEach(function (f) { forms.appendChild(el("span", null, [f[0], el("small", { text: f[1] })])); });
@@ -124,7 +128,9 @@ window.B = B;
     box.appendChild(el("p", { class: "prompt", text: s.prompt }));
     var size = window.innerWidth <= 480 ? 260 : window.innerWidth >= 768 ? 400 : 300;
     var canvas = el("canvas", { width: size * 2, height: size * 2, style: "width:" + size + "px;height:" + size + "px" });
-    box.appendChild(el("div", { class: "trace-wrap" }, [el("div", { class: "ghost", text: s.letter }), canvas]));
+    // The handwriting model from js/strokes.js when there is one (the same one the intro animates), else the printed letter.
+    var model = B.writeLetter && B.writeLetter(s.letter, { ghost: 24, fade: true });
+    box.appendChild(el("div", { class: "trace-wrap" }, [model ? model.svg : el("div", { class: "ghost", text: s.letter }), canvas]));
     var ctx = canvas.getContext("2d");
     ctx.scale(2, 2);
     ctx.lineWidth = 14;
@@ -147,7 +153,9 @@ window.B = B;
     clear.addEventListener("click", function () { ctx.clearRect(0, 0, size, size); ink = 0; next.disabled = true; });
     var next = nextBtn(B.t("traceDone"), function () { done(false); });
     next.disabled = true;
-    box.appendChild(el("div", { class: "row", style: "justify-content:center;margin-top:12px" }, [clear, next]));
+    var watch = model ? el("button", { class: "btn quiet", type: "button", text: B.t("writeAgain"), onclick: function () { model.play(); } }) : null;
+    box.appendChild(el("div", { class: "row", style: "justify-content:center;margin-top:12px" }, [watch, clear, next]));
+    if (model) setTimeout(model.play, 300);
   };
 
   // Concrete: tap each object to count it, then say how many.
@@ -629,6 +637,10 @@ window.B = B;
     box.appendChild(reply);
     box.appendChild(el("div", { class: "row", style: "justify-content:center" }, [nextBtn(B.t("finish"), function () { done(false); })]));
   };
+
+  /* Shared with the files that add more step types (js/games.js, js/anim.js, …): each does
+     B.engine.steps.mytype = function (s, box, done) { … } and calls done(scored, firstTry) when finished. */
+  B.engine = { steps: steps, choice: choice, speakBtn: speakBtn, nextBtn: nextBtn, doneButton: doneButton, pick: pick, nums: nums };
 
   /* Runs a lesson. onFinish(result) gets {scored, firstTry}. */
   B.playLesson = function (lesson, root, onFinish, onExit) {

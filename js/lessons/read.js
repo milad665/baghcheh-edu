@@ -26,6 +26,30 @@ B.LESSONS.push(
     ]
   },
 
+  {
+    id: "read-seed-3", subject: "read", level: "seed", emoji: "🎴", title: "بازی ببین و پیدا کن",
+    steps: [
+      { type: "story", prompt: "به قصه نگاه کن و گوش بده",
+        cast: { tree: "🌳", sun: "☀️", girl: "👧", ball: "⚽", cat: "🐈" },
+        scenes: [
+          { caption: "سارا در حیاط توپ‌بازی می‌کند.", at: { tree: [14, 52, { size: 1.8 }], sun: [88, 16], girl: [72, 62, { size: 1.2 }], ball: [56, 74, { size: 0.7 }] } },
+          { caption: "گربه از پشت درخت بیرون می‌آید.", at: { cat: [24, 72, { flip: true }] } },
+          { caption: "توپ قِل می‌خورد و می‌رود پیش گربه.", at: { ball: [42, 76, { size: 0.7, act: "spin" }] } },
+          { caption: "گربه با توپ بازی می‌کند. سارا می‌خندد.", at: { cat: [33, 70, { flip: true, act: "bounce" }], girl: [64, 62, { size: 1.2, act: "bounce" }] } }
+        ],
+        question: "گربه با چه بازی کرد؟", pic: true,
+        options: [{ label: "🧶", value: "کاموا" }, { label: "⚽", value: "توپ" }, { label: "🪁", value: "بادبادک" }], answer: "توپ" },
+      { type: "pairs", prompt: "جفت هر شکل را پیدا کن",
+        pairs: [["ب", "ب"], ["م", "م"], ["س", "س"], ["آ", "آ"]] },
+      { type: "pairs", hidden: true, pairs: [["🐈", "🐈"], ["🌳", "🌳"], ["☀️", "☀️"]] },
+      { type: "order", prompt: "اول دانه بود. بعد چه شد؟ به ترتیب بچین.", numbered: true,
+        items: ["🌰", "🌱", "🌿", "🌳"] },
+      { type: "pattern", prompt: "بعدی کدام است؟", seq: ["🔴", "🔵", "🔴", "🔵", "🔴", "🔵"], options: ["🔴", "🔵", "🟡"] },
+      { type: "order", prompt: "اول تخم بود. بعد چه شد؟ به ترتیب بچین.", numbered: true,
+        items: ["🥚", "🐣", "🐥", "🐔"] }
+    ]
+  },
+
   // ---------------- Reading: Sprout (first letters, syllables and words) ----------------
   {
     id: "read-sprout-1", subject: "read", level: "sprout", emoji: "💧", title: "«آ» و «ب»",
@@ -84,13 +108,29 @@ B.LESSONS.push(
     ]
   },
 
+  {
+    id: "read-sprout-4", subject: "read", level: "sprout", emoji: "🧩", title: "بازی حرف‌ها و صداها",
+    steps: [
+      { type: "pairs", prompt: "هر حرف را با تصویری جفت کن که اسمش با صدای همان حرف شروع می‌شود",
+        pairs: [["آ", { pic: "💧", say: "آب" }], ["ب", { pic: "👨", say: "بابا" }], ["س", { pic: "🧺", say: "سبد" }], ["م", { pic: "🐟", say: "ماهی" }]] },
+      { type: "build", pic: "🌬️", word: "باد", parts: ["ب", "ا", "د"], extra: ["م"], say: "باد" },
+      { type: "build", pic: "👨", word: "بابا", parts: ["با", "با"], extra: ["دا"], say: "بابا" },
+      { type: "sort", prompt: "اسم هر تصویر با کدام صدا شروع می‌شود؟ آن را در سبد همان حرف بگذار.",
+        baskets: [{ label: "ب" }, { label: "س" }],
+        items: [{ pic: "🧺", say: "سبد", basket: "س" }, { pic: "🌬️", say: "باد", basket: "ب" }, { pic: "🍎", say: "سیب", basket: "س" },
+          { pic: "🌧️", say: "باران", basket: "ب" }, { pic: "🧄", say: "سیر", basket: "س" }, { pic: "👨", say: "بابا", basket: "ب" }] },
+      { type: "build", pic: "🧺", word: "سَبَد", parts: ["سَ", "بَد"], extra: ["با"], say: "سبد" },
+      { type: "build", pic: "🌰", word: "بادام", parts: ["با", "دام"], extra: ["سَ"], say: "بادام" }
+    ]
+  },
+
   // ---------------- Reading: Sapling (the remaining first letters, short vowels, sentences) ----------------
   // Letters follow the first-grade textbook order after «س»: او، ت، ر، ای، ن، ز، ش، اِ، اُ، ک.
   // Words and passages use only letters taught earlier; instructions and questions are for the grown-up to read aloud.
   {
     id: "read-sapling-1", subject: "read", level: "sapling", emoji: "👃", title: "«او» و «ت»",
     steps: [
-      { type: "intro", letter: "او", text: "این «او» است؛ مثل صدای آخر «بو». «و» به حرف بعدی نمی‌چسبد.", say: "او. مثل بو",
+      { type: "intro", letter: "او", write: "و", text: "این «او» است؛ مثل صدای آخر «بو». «و» به حرف بعدی نمی‌چسبد.", say: "او. مثل بو",
         forms: [["او", "اول کلمه"], ["و", "بعد از حرف"], ["ـو", "چسبیده"]], example: { pic: "👃", word: "بو" } },
       { type: "intro", letter: "ت", text: "این «ت» است؛ مثل صدای آخر «دَست».", say: "ت. مثل دست",
         forms: [["ت", "تنها"], ["تـ", "اول"], ["ـتـ", "وسط"], ["ـت", "آخر"]], example: { pic: "✋", word: "دَست" } },
@@ -112,7 +152,7 @@ B.LESSONS.push(
     steps: [
       { type: "intro", letter: "ر", text: "این «ر» است؛ مثل صدای آخر «اَبر». «ر» به حرف بعدی نمی‌چسبد.", say: "ر. مثل ابر",
         forms: [["ر", "تنها"], ["ـر", "آخر"]], example: { pic: "☁️", word: "اَبر" } },
-      { type: "intro", letter: "ای", text: "این «ای» است؛ مثل صدای وسط «سیب».", say: "ای. مثل سیب",
+      { type: "intro", letter: "ای", write: "ی", text: "این «ای» است؛ مثل صدای وسط «سیب».", say: "ای. مثل سیب",
         forms: [["ای", "اول کلمه"], ["ـیـ", "وسط"], ["ی", "آخر"], ["ـی", "چسبیده"]], example: { pic: "🍎", word: "سیب" } },
       { type: "choose", prompt: "«ر» را پیدا کن", say: "ر را پیدا کن", options: ["ز", "د", "ر", "و"], answer: "ر" },
       { type: "choose", prompt: "«ـیـ» را پیدا کن", say: "ای را پیدا کن", options: ["ـنـ", "ـیـ", "ـبـ", "ـتـ"], answer: "ـیـ" },
@@ -189,6 +229,22 @@ B.LESSONS.push(
         options: [{ label: "🪁", value: "بادبادَک" }, { label: "🕊️", value: "کَبوتَر" }, { label: "🚗", value: "ماشین" }], answer: "بادبادَک", pic: true },
       { type: "passage", text: "اُردَک در آب است. کَبوتَر سَر بام است.", question: "کدام سر بام است؟",
         options: [{ label: "🦆", value: "اُردَک" }, { label: "🕊️", value: "کَبوتَر" }], answer: "کَبوتَر", pic: true }
+    ]
+  },
+  {
+    id: "read-sapling-18", subject: "read", level: "sapling", emoji: "🧩", title: "بازی کلمه‌ها",
+    steps: [
+      { type: "pairs", hidden: true, prompt: "کارت‌ها را برگردان و هر کلمه را با تصویرش جفت کن.",
+        pairs: [["موش", "🐭"], ["نان", "🍞"], ["کِتاب", "📖"], ["دَست", "✋"]] },
+      { type: "build", pic: "📖", word: "کِتاب", parts: ["کِ", "تا", "ب"], extra: ["شِ"], say: "کتاب" },
+      { type: "build", pic: "🚗", word: "ماشین", parts: ["ما", "شین"], extra: ["مو"], say: "ماشین" },
+      { type: "sort", prompt: "هر کلمه را بخوان و در سبد حرف اولش بگذار.",
+        baskets: [{ label: "ک" }, { label: "م" }],
+        items: [{ label: "کِتاب", basket: "ک" }, { label: "مادَر", basket: "م" }, { label: "کَبوتَر", basket: "ک" },
+          { label: "موش", basket: "م" }, { label: "کُت", basket: "ک" }, { label: "مِداد", basket: "م" }] },
+      { type: "order", prompt: "کلمه‌ها را به ترتیب بچین تا جمله درست شود.", items: ["موش", "با", "ماشین", "می‌رود."] },
+      { type: "build", pic: "🐝", word: "زَنبور", parts: ["زَن", "بور"], extra: ["نا"], say: "زنبور" },
+      { type: "order", prompt: "کلمه‌ها را به ترتیب بچین تا جمله درست شود.", items: ["اُردَک", "در", "آب", "است."] }
     ]
   },
   {
@@ -311,6 +367,20 @@ B.LESSONS.push(
       { type: "choose", show: "🐘", prompt: "کدام کلمه «فیل» است؟", say: "کدام کلمه فیل است؟", options: ["بَرف", "فیل", "کَفش"], answer: "فیل" },
       { type: "passage", text: "اِمروز بَرف آمد. آرَش کَفش پوشید و بیرون رَفت.", question: "امروز چه آمد؟",
         options: [{ label: "🌧️", value: "باران" }, { label: "❄️", value: "بَرف" }, { label: "🌬️", value: "باد" }], answer: "بَرف", pic: true }
+    ]
+  },
+  {
+    id: "read-sapling-19", subject: "read", level: "sapling", emoji: "🎲", title: "بازی کلمه‌ها ۲",
+    steps: [
+      { type: "sort", prompt: "هر کلمه را بخوان و در سبد حرف اولش بگذار.",
+        baskets: [{ label: "ج" }, { label: "چ" }],
+        items: [{ label: "جوجه", basket: "ج" }, { label: "چَتر", basket: "چ" }, { label: "جوراب", basket: "ج" }, { label: "چَشم", basket: "چ" }] },
+      { type: "build", pic: "🥄", word: "قاشُق", parts: ["قا", "شُق"], extra: ["فا"], say: "قاشق" },
+      { type: "build", pic: "❄️", word: "بَرف", parts: ["بَ", "ر", "ف"], extra: ["ق"], say: "برف" },
+      { type: "pairs", hidden: true, prompt: "کارت‌ها را برگردان و هر کلمه را با تصویرش جفت کن.",
+        pairs: [["فیل", "🐘"], ["خانه", "🏡"], ["گُل", "🌸"], ["توپ", "⚽"]] },
+      { type: "build", pic: "🐓", word: "خُروس", parts: ["خُ", "روس"], extra: ["چَ"], say: "خروس" },
+      { type: "order", prompt: "کلمه‌ها را به ترتیب بچین تا جمله درست شود.", items: ["سارا", "زیر", "چَتر", "است."] }
     ]
   },
   {

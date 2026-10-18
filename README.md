@@ -30,7 +30,10 @@ js/common.js        on-device storage, backup/merge, speech, Persian digits
 js/sync.js          pairing and sync with the home hub (inactive on normal mirrors)
 js/content.js       curriculum DATA shared by all subjects: levels, subjects, placement check
 js/lessons/*.js     the lessons, one file per subject (read.js, math.js, feel.js)  ← teachers edit these
-js/engine.js        lesson step types
+js/engine.js        lesson player and the basic step types
+js/games.js         game step types (pairs, build, order, sort, feed, pattern)
+js/anim.js          animated steps: how a letter is written, picture stories (story)
+js/strokes.js       stroke order of every letter, drawn as SVG paths
 js/app.js           routing and screens
 sw.js               offline cache
 tools/check-reading.js  checks reading lessons use only letters taught so far (node)
@@ -100,9 +103,9 @@ Lessons are plain data in `js/lessons/<subject>.js`, one file per subject, each 
 
 | Step type  | Fields | Scored |
 |------------|--------|--------|
-| `intro`    | `letter`, `text`, `say`, `forms` [[form, label]], `example` {pic, word} | no |
+| `intro`    | `letter`, `text`, `say`, `forms` [[form, label]], `example` {pic, word}, optional `write` (the letter to animate when `letter` is not a plain letter, e.g. `"او"` → `"و"`). Letters in `js/strokes.js` are shown being written, stroke by stroke | no |
 | `choose`   | `prompt`, `options` (strings or {label, value}), `answer`, optional `show`, `say`, `pic`, `ltr` (`show` is a math expression, drawn left to right) | yes |
-| `trace`    | `letter`, `prompt` | no |
+| `trace`    | `letter`, `prompt` (the child writes over the handwriting model from `js/strokes.js`, which is first shown being written) | no |
 | `blend`    | `parts`, `word`, `pic`, `say` | no |
 | `passage`  | `text` (a short decodable passage), `question`, `options`, `answer`, optional `pic`; the passage itself is never read aloud | yes |
 | `count`    | `thing` (emoji), `n`, `options` | yes |
@@ -118,7 +121,35 @@ Lessons are plain data in `js/lessons/<subject>.js`, one file per subject, each 
 | `breathe`  | `cycles` | no |
 | `feelings` | (no fields; the answer is never stored) | no |
 
+**Games** (`js/games.js`). The game is the skill itself, never a reward added on top. No timers, points or losing:
+a wrong move bounces back with a gentle word, and after two misses on the same thing the right answer is shown.
+Everything works by tapping (mouse, touch, or Tab and Enter on a keyboard), and dragging works too. A game is right
+on the first try when there were no misses. Things on cards and tiles ("faces") can be a string (letter, word or
+emoji), a number (shown in Persian digits), or `{label, pic, dots, say}`: a word or number, a picture, a number of
+dots to count, and the words said aloud when it is tapped (used for pictures).
+
+| Step type | Fields | Scored |
+|-----------|--------|--------|
+| `pairs`   | `pairs` [[a, b], …] (letter ↔ picture, number ↔ dots, word ↔ picture), optional `prompt`, `hidden: true` for a memory game with the cards face down (a miss only counts when the partner was already seen; one such miss is allowed) | yes |
+| `build`   | `word` (shown joined at the end), `parts` (letters or syllables in reading order), optional `extra` (tiles that don't belong), `pic`, `say`, `prompt` | yes |
+| `order`   | `items` in the right order (faces), optional `prompt`, `ltr` (left to right, for numbers), `numbered` (۱، ۲، ۳ under the places, for story steps) | yes |
+| `sort`    | `prompt`, `baskets` [{label, pic, value}] (value defaults to the label), `items` [{label, pic, dots, say, basket}] where `basket` is a basket's value | yes |
+| `feed`    | `n` (how many), or `a` and `b` (the sign shows a + b), optional `animal`, `food` (emoji), `prompt`, `max` (food on the table, default n + 4). The child moves food onto the plate and presses «بفرما!»; after two tries the food on the plate is numbered | yes |
+| `pattern` | `seq` (the whole pattern), `blanks` (places to fill, from 0; default the last), `options`, optional `prompt`, `ltr` | yes |
+
+**Animations** (`js/anim.js`). SVG and CSS only, no video. With "reduce motion" on, strokes and scenes appear one by one without movement.
+
+| Step type | Fields | Scored |
+|-----------|--------|--------|
+| `story`   | A short animated picture story or explanation with play, pause and replay. `cast` {id: emoji or short text such as `"۳ + ۲ = ۵"`}, `scenes` [{`caption`, `say`, `audio`, `at`}] where `at` is {id: [x, y] or [x, y, {size, flip, act}] or `null` to hide}; x and y are percentages of the stage from the top left, an actor stays where it is until a scene moves it, and `act` is `bounce`, `spin`, `grow` or `shake`. Captions are read aloud. Optional `prompt`, `bg` (CSS background), `tall`, and `question`, `options`, `answer`, `pic` to ask about the story at the end | only with `question` |
+
 Any step can take `audio: "audio/file.mp3"` to play a recording instead of the device voice.
+
+**Adding a step type or a subject.** A new file can add step types with `B.engine.steps.mytype = function (s, box, done) { … }`
+(call `done(scored, firstTry)` at the end; `B.engine` also shares `choice`, `speakBtn`, `nextBtn`, `doneButton`, `pick`, `nums`).
+A new subject gets its own `js/lessons/<id>.js` that does `B.SUBJECTS.push({ id, name, emoji, leveled })` and
+`B.LESSONS.push(…)`. Load new files in `index.html` (step files after `js/anim.js`, lesson files after the other lesson
+files) and list them in `FILES` in `sw.js`. New phrases go in `js/strings.js`, new styles at the end of `css/style.css`.
 
 A lesson counts as mastered when ≥ 80% of scored steps are right on the first try. Mastered lessons come back
 for review after 1, 3, 7, 14 and 30 days.
