@@ -52,6 +52,11 @@ B.PLACEMENT = {
   mathTop: "forest"
 };
 
+// A child's garden in a subject. Subjects added later (science, English, …) start at the child's
+// Persian garden until a parent changes it.
+B.levelOf = function (p, subjectId) {
+  return (p.levels && p.levels[subjectId]) || (p.levels && p.levels.read) || "sprout";
+};
 B.levelById = function (id) { return B.LEVELS.find(function (l) { return l.id === id; }); };
 B.subjectById = function (id) { return B.SUBJECTS.find(function (s) { return s.id === id; }); };
 B.lessonById = function (id) { return B.LESSONS.find(function (l) { return l.id === id; }); };

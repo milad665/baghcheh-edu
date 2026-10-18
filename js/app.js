@@ -135,7 +135,7 @@
       grid.appendChild(el("a", { class: "tile", href: "#/subject/" + sub.id }, [
         el("span", { class: "big", text: sub.emoji }),
         el("span", { class: "name", text: sub.name }),
-        sub.leveled ? el("span", { class: "sub" }, [badge(p.levels[sub.id])]) : null
+        sub.leveled ? el("span", { class: "sub" }, [badge(B.levelOf(p, sub.id))]) : null
       ]));
     });
     app.appendChild(grid);
@@ -160,7 +160,7 @@
     var p = B.currentProfile();
     var sub = B.subjectById(id);
     if (!p || !sub) return go("#/");
-    var level = sub.leveled ? p.levels[id] : null;
+    var level = sub.leveled ? B.levelOf(p, id) : null;
     app.appendChild(el("div", { class: "row" }, [
       el("a", { class: "btn quiet", href: "#/home", text: B.t("back") }),
       el("h1", { style: "margin:0", text: sub.emoji + " " + sub.name }),
@@ -229,13 +229,13 @@
       var select = el("select", { "aria-label": B.t("levelOf", { subject: sub.name }), style: "font:inherit;padding:8px;border-radius:10px" });
       B.LEVELS.forEach(function (l) {
         var o = el("option", { value: l.id, text: l.emoji + " " + l.name });
-        if (p.levels[sub.id] === l.id) o.selected = true;
+        if (B.levelOf(p, sub.id) === l.id) o.selected = true;
         select.appendChild(o);
       });
       select.addEventListener("change", function () { p.levels[sub.id] = select.value; B.touch(p); B.save(); });
       app.appendChild(el("div", { class: "card", style: "margin:14px 0" }, [
         el("h2", { style: "margin-top:0", text: sub.emoji + " " + sub.name }),
-        el("div", { class: "row" }, [select, el("a", { class: "btn secondary", href: "#/place/" + sub.id, text: B.t("placement") })])
+        el("div", { class: "row" }, [select, B.PLACEMENT[sub.id] ? el("a", { class: "btn secondary", href: "#/place/" + sub.id, text: B.t("placement") }) : null])
       ]));
     });
     app.appendChild(el("div", { class: "card", style: "margin:14px 0" }, [

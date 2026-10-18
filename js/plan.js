@@ -46,8 +46,8 @@
   // ---------- Plan ----------
   function lowestLevel(p) {
     var order = B.LEVELS.map(function (l) { return l.id; });
-    return B.SUBJECTS.filter(function (s) { return s.leveled && p.levels[s.id]; })
-      .map(function (s) { return p.levels[s.id]; })
+    return B.SUBJECTS.filter(function (s) { return s.leveled; })
+      .map(function (s) { return B.levelOf(p, s.id); })
       .sort(function (a, b) { return order.indexOf(a) - order.indexOf(b); })[0] || "sprout";
   }
 
@@ -96,7 +96,7 @@
         // 2. New lessons, subjects taking turns.
         var subjects = B.SUBJECTS.filter(function (s) { return s.leveled; });
         var queues = subjects.map(function (s) {
-          return B.lessonsFor(s.id, p.levels[s.id]).filter(function (l) {
+          return B.lessonsFor(s.id, B.levelOf(p, s.id)).filter(function (l) {
             return l.level !== null && !(p.lessons[l.id] && p.lessons[l.id].mastered) && !used[l.id];
           });
         });
@@ -303,7 +303,7 @@
 
   function renderProgress(app, p) {
     var rows = B.SUBJECTS.filter(function (s) { return s.leveled; }).map(function (s) {
-      var level = B.levelById(p.levels[s.id]);
+      var level = B.levelById(B.levelOf(p, s.id));
       var lessons = B.lessonsFor(s.id, level.id).filter(function (l) { return l.level !== null; });
       var learned = lessons.filter(function (l) { return p.lessons[l.id] && p.lessons[l.id].mastered; }).length;
       var text = !lessons.length ? B.t("progressNone")
