@@ -1,6 +1,8 @@
-/* باغچه — زبان انگلیسی (English) lessons, for children who know no English yet.
-   Every child starts at the Seed garden (defaultLevel), whatever their Persian garden.
-   The order follows good early foreign-language practice: first listening and speaking, with meaning shown by
+/* باغچه — خواندن و نوشتن انگلیسی (English reading and writing), for children who know no English yet.
+   Baghcheh teaches English as a second language: the other subjects' lessons can also be played in English
+   (js/english-mode.js), and this course teaches reading and writing English. Every child starts at the Seed
+   garden (defaultLevel), whatever their Persian garden.
+   The order follows good early-years practice for a second language: first listening and speaking, with meaning shown by
    pictures and actions instead of translation, and lots of repetition (Seed); then the letters and their sounds,
    a few at a time, and short words made from them (Sprout); then short sentences, questions and everyday
    phrases (Sapling). Instructions for the child are in Persian and spoken; English is spoken with the device's
@@ -10,7 +12,7 @@
 var B = window.B || {};
 window.B = B;
 
-B.SUBJECTS.push({ id: "english", name: "زبان انگلیسی", emoji: "🔤", leveled: true, defaultLevel: "seed" });
+B.SUBJECTS.push({ id: "english", name: "خواندن و نوشتن انگلیسی", emoji: "🔤", leveled: true, defaultLevel: "seed" });
 
 (function () {
   var RED = "#e0413a", GREEN = "#3fa34d", YELLOW = "#f5c518", BLUE = "#2f6fd6";
@@ -118,7 +120,7 @@ B.SUBJECTS.push({ id: "english", name: "زبان انگلیسی", emoji: "🔤",
     {
       id: "english-seed-5", subject: "english", level: "seed", emoji: "👨‍👩‍👧", title: "خانواده",
       steps: [
-        { type: "story", prompt: "گوش کن و تو هم بگو",
+        { type: "story", prompt: "گوش کن و تو هم بگو", bg: "room",
           cast: { mother: "👩", father: "👨", sister: "👧", brother: "👦", grandma: "👵", grandpa: "👴" },
           scenes: [
             { caption: "This is my mother.", at: { mother: [16, 60, { size: 1.6, act: "bounce" }] } },
@@ -158,6 +160,51 @@ B.SUBJECTS.push({ id: "english", name: "زبان انگلیسی", emoji: "🔤",
       ]
     },
 
+    {
+      id: "english-seed-7", subject: "english", level: "seed", emoji: "🍞", title: "خوراکی‌ها",
+      steps: [
+        { type: "story", prompt: "گوش کن و تو هم بگو", bg: "kitchen",
+          cast: { sara: "👧", mom: "👩", bread: "🍞", milk: "🥛", cheese: "🧀" },
+          scenes: [
+            { caption: "Good morning! Breakfast time!", at: { mom: [80, 60, { size: 1.6, flip: true, act: "bounce" }], sara: [20, 62, { size: 1.4 }] } },
+            { caption: "Bread, please.", at: { sara: [20, 62, { size: 1.4, act: "bounce" }], bread: [50, 64, { size: 1.4, act: "grow" }] } },
+            { caption: "Cheese, please.", at: { sara: [20, 62, { size: 1.4, act: "bounce" }], cheese: [62, 64, { size: 1.3, act: "grow" }] } },
+            { caption: "Milk, please.", at: { sara: [20, 62, { size: 1.4, act: "bounce" }], milk: [38, 64, { size: 1.3, act: "grow" }] } },
+            { caption: "Here you are.", at: { mom: [80, 60, { size: 1.6, flip: true, act: "bounce" }] } },
+            { caption: "Thank you!", at: { sara: [20, 62, { size: 1.4, act: "spin" }] } }
+          ] },
+        { type: "words", words: [{ pic: "🍞", en: "bread" }, { pic: "🧀", en: "cheese" }, { pic: "🥚", en: "egg" }, { pic: "🥛", en: "milk" }, { pic: "💧", en: "water" }, { pic: "🍎", en: "apple" }] },
+        { type: "listen", say: "bread", options: [{ pic: "🥛", en: "milk" }, { pic: "🍞", en: "bread" }, { pic: "🍎", en: "apple" }], answer: "🍞" },
+        { type: "listen", say: "egg", quiet: true, options: [{ pic: "🥚", en: "egg" }, { pic: "🧀", en: "cheese" }, { pic: "💧", en: "water" }], answer: "🥚" },
+        { type: "listen", say: "Water, please.", quiet: true, options: [{ pic: "🍞", en: "bread" }, { pic: "🥚", en: "egg" }, { pic: "💧", en: "water" }], answer: "💧" },
+        { type: "listen", say: "Milk, please.", quiet: true, options: [{ pic: "🥛", en: "milk" }, { pic: "🍎", en: "apple" }, { pic: "🧀", en: "cheese" }], answer: "🥛" },
+        { type: "pairs", hidden: true, prompt: "کارت‌ها را برگردان، گوش کن و جفت‌ها را پیدا کن",
+          pairs: [[{ pic: "🍞", say: "bread" }, { pic: "🍞", say: "bread" }], [{ pic: "🧀", say: "cheese" }, { pic: "🧀", say: "cheese" }],
+            [{ pic: "🥚", say: "egg" }, { pic: "🥚", say: "egg" }], [{ pic: "🥛", say: "milk" }, { pic: "🥛", say: "milk" }]] },
+        { type: "tip", text: "سر سفره صبحانه بازی «لطفاً» را بازی کنید: کودک چیزی را که می‌خواهد به انگلیسی بخواهد، مثل Bread, please، و شما بدهید و بگویید Here you are. او هم بگوید Thank you. کلمه‌ای که برای خواستن چیزی واقعی به کار برود، زود یاد کودک می‌ماند." }
+      ]
+    },
+    {
+      id: "english-seed-8", subject: "english", level: "seed", emoji: "🎲", title: "بازی کلمه‌ها",
+      steps: [
+        { type: "sort", prompt: "روی هر تصویر بزن و گوش کن. حیوان‌ها را در یک سبد و خوراکی‌ها را در سبد دیگر بگذار.",
+          baskets: [{ pic: "🐾", value: "animal" }, { pic: "🍽️", value: "food" }],
+          items: [{ pic: "🐱", say: "cat", basket: "animal" }, { pic: "🍞", say: "bread", basket: "food" }, { pic: "🐟", say: "fish", basket: "animal" },
+            { pic: "🥚", say: "egg", basket: "food" }, { pic: "🦆", say: "duck", basket: "animal" }, { pic: "🍎", say: "apple", basket: "food" }] },
+        { type: "pairs", hidden: true, prompt: "کارت‌ها را برگردان، گوش کن و جفت‌ها را پیدا کن",
+          pairs: [[{ pic: "🐶", say: "dog" }, { pic: "🐶", say: "dog" }], [{ pic: "👃", say: "nose" }, { pic: "👃", say: "nose" }],
+            [{ pic: "👩", say: "mother" }, { pic: "👩", say: "mother" }], [{ pic: "🥛", say: "milk" }, { pic: "🥛", say: "milk" }]] },
+        { type: "sort", prompt: "روی هر تصویر بزن و گوش کن. بدن را در یک سبد و خانواده را در سبد دیگر بگذار.",
+          baskets: [{ pic: "🖐️", value: "body" }, { pic: "🏠", value: "family" }],
+          items: [{ pic: "👃", say: "nose", basket: "body" }, { pic: "👵", say: "grandma", basket: "family" }, { pic: "👂", say: "ears", basket: "body" },
+            { pic: "👦", say: "brother", basket: "family" }, { pic: "👀", say: "eyes", basket: "body" }, { pic: "👨", say: "father", basket: "family" }] },
+        { type: "pairs", prompt: "بشمار و هر دسته را با دسته‌ای جفت کن که به همان تعداد است",
+          pairs: [[{ dots: 2, say: "two" }, "🐱🐱"], [{ dots: 3, say: "three" }, "🍎🍎🍎"], [{ dots: 1, say: "one" }, "🐶"], [{ dots: 4, say: "four" }, "🥚🥚🥚🥚"]] },
+        { type: "pairs", hidden: true, prompt: "کارت‌ها را برگردان. هر حیوان را با صدایش جفت کن.",
+          pairs: [[{ pic: "🐮", say: "cow" }, { pic: "🐮", say: "Moo!" }], [{ pic: "🐱", say: "cat" }, { pic: "🐱", say: "Meow!" }],
+            [{ pic: "🐶", say: "dog" }, { pic: "🐶", say: "Woof, woof!" }], [{ pic: "🦆", say: "duck" }, { pic: "🦆", say: "Quack, quack!" }]] }
+      ]
+    },
     // ---------------- English: Sprout (letters and their sounds, a few at a time; short words) ----------------
     {
       id: "english-sprout-1", subject: "english", level: "sprout", emoji: "🐍", title: "حرف‌های s a t p",
@@ -251,6 +298,118 @@ B.SUBJECTS.push({ id: "english", name: "زبان انگلیسی", emoji: "🔤",
         { type: "pairs", prompt: "هر کلمه را بخوان و با تصویرش جفت کن",
           pairs: [["hat", { pic: "👒", say: "hat" }], ["bed", { pic: "🛏️", say: "bed" }], ["bus", { pic: "🚌", say: "bus" }], ["leg", { pic: "🦵", say: "leg" }]] },
         { type: "tip", text: "بازی «من می‌بینم» را بازی کنید: بگویید «من چیزی می‌بینم که با صدای ب شروع می‌شود» و کودک دنبالش بگردد و اسم انگلیسی‌اش را بگوید، مثل ball یا bed. اگر کلمه انگلیسی را نمی‌دانید، فقط صدای اول را پیدا کنید؛ همین هم تمرین است." }
+      ]
+    },
+    {
+      id: "english-sprout-6", subject: "english", level: "sprout", emoji: "🦓", title: "حرف‌های j v w x y z q",
+      steps: [
+        { type: "letter", letter: "j", like: "ج", words: [{ pic: "🧃", en: "juice" }, { pic: "🧥", en: "jacket" }, { pic: "🤹", en: "juggle" }] },
+        { type: "letter", letter: "v", like: "و", words: [{ pic: "🚐", en: "van" }, { pic: "🎻", en: "violin" }, { pic: "🌋", en: "volcano" }] },
+        { type: "letter", letter: "w", words: [{ pic: "🍉", en: "watermelon" }, { pic: "🕸️", en: "web" }, { pic: "🌬️", en: "wind" }] },
+        { type: "letter", letter: "x", end: true, like: "کس", words: [{ pic: "📦", en: "box" }, { pic: "🦊", en: "fox" }, { pic: "6️⃣", en: "six" }] },
+        { type: "letter", letter: "y", like: "ی", words: [{ pic: "🪀", en: "yo-yo" }, { pic: "🧶", en: "yarn" }, { pic: "💛", en: "yellow" }] },
+        { type: "letter", letter: "z", like: "ز", words: [{ pic: "🦓", en: "zebra" }, { pic: "0️⃣", en: "zero" }, { pic: "🤐", en: "zip" }] },
+        { type: "letter", letter: "q", like: "کو", words: [{ pic: "👸", en: "queen" }, { pic: "❓", en: "question" }, { pic: "🤫", en: "quiet" }] },
+        { type: "listen", show: "z", prompt: SOUND_PROMPT, options: [{ pic: "🚐", en: "van" }, { pic: "🦓", en: "zebra" }, { pic: "🧃", en: "juice" }], answer: "🦓" },
+        { type: "pairs", prompt: "هر حرف را با تصویری جفت کن که با صدای آن شروع می‌شود",
+          pairs: [["j", { pic: "🧥", say: "jacket" }], ["v", { pic: "🎻", say: "violin" }], ["w", { pic: "🕸️", say: "web" }], ["y", { pic: "🧶", say: "yarn" }]] },
+        { type: "build", prompt: "گوش کن و این کلمه را با حرف‌ها بساز", word: "fox", parts: ["f", "o", "x"], extra: ["z"], pic: "🦊" },
+        { type: "tip", text: "حالا کودک صدای همه حرف‌های انگلیسی را دیده است. x بیشتر در آخر کلمه می‌آید (box، fox، six) و صدایش «کس» است. q تقریباً همیشه با u می‌آید و با هم «کو» خوانده می‌شوند، مثل queen. w در فارسی نیست: لب‌ها را گرد کنید و «و» بگویید. مهم نیست همه را یک‌باره یاد بگیرد؛ این درس بعداً دوباره می‌آید." }
+      ]
+    },
+    {
+      id: "english-sprout-7", subject: "english", level: "sprout", emoji: "🔠", title: "حرف بزرگ، حرف کوچک",
+      steps: [
+        { type: "pairs", prompt: "هر حرف بزرگ را با حرف کوچکش جفت کن. این‌ها شبیه هم‌اند.",
+          pairs: [["S", "s"], ["C", "c"], ["O", "o"], ["W", "w"]] },
+        { type: "pairs", prompt: "هر حرف بزرگ را با حرف کوچکش جفت کن. این‌ها شکلشان فرق دارد.",
+          pairs: [["A", "a"], ["B", "b"], ["D", "d"], ["G", "g"]] },
+        { type: "listen", show: "E", prompt: "این حرف بزرگ است. حرف کوچکش کدام است؟",
+          options: [{ label: "a" }, { label: "e" }, { label: "c" }], answer: "e" },
+        { type: "listen", show: "R", quiet: true, prompt: "این حرف بزرگ است. حرف کوچکش کدام است؟",
+          options: [{ label: "n" }, { label: "p" }, { label: "r" }], answer: "r" },
+        { type: "sort", prompt: "حرف‌های بزرگ را در سبد فیل و حرف‌های کوچک را در سبد موش بگذار",
+          baskets: [{ pic: "🐘", label: "A B C", value: "big" }, { pic: "🐭", label: "a b c", value: "small" }],
+          items: [{ label: "M", basket: "big" }, { label: "m", basket: "small" }, { label: "H", basket: "big" }, { label: "h", basket: "small" },
+            { label: "T", basket: "big" }, { label: "t", basket: "small" }] },
+        { type: "sort", prompt: "حرف b بزرگ و کوچک را در یک سبد بگذار و حرف d بزرگ و کوچک را در سبد دیگر",
+          baskets: [{ label: "B b", value: "b" }, { label: "D d", value: "d" }],
+          items: [{ label: "B", basket: "b" }, { label: "d", basket: "d" }, { label: "b", basket: "b" }, { label: "D", basket: "d" },
+            { label: "b", basket: "b" }, { label: "d", basket: "d" }] },
+        { type: "listen", show: "👧", say: "Sara", prompt: "اسم‌ها با حرف بزرگ شروع می‌شوند. کدام درست نوشته شده است؟",
+          options: [{ label: "sara", en: "Sara" }, { label: "Sara", en: "Sara" }], answer: "Sara" },
+        { type: "listen", show: "👦", say: "Reza", quiet: true, prompt: "اسم‌ها با حرف بزرگ شروع می‌شوند. کدام درست نوشته شده است؟",
+          options: [{ label: "Reza", en: "Reza" }, { label: "reza", en: "Reza" }], answer: "Reza" },
+        { type: "tip", text: "هر حرف انگلیسی دو شکل دارد: بزرگ و کوچک. بیشتر کلمه‌ها با حرف کوچک نوشته می‌شوند؛ حرف بزرگ اول اسم‌ها و اول جمله می‌آید. اسم کودک را با حروف انگلیسی بنویسید تا ببیند اولش حرف بزرگ است. b و d را بچه‌ها زیاد با هم اشتباه می‌کنند؛ این طبیعی است و با تمرین درست می‌شود." }
+      ]
+    },
+    {
+      id: "english-sprout-8", subject: "english", level: "sprout", emoji: "⭐", title: "کلمه‌های پرکاربرد",
+      steps: [
+        { type: "story", prompt: "گوش کن و تو هم بگو",
+          cast: { girl: "👧", dog: "🐶", cat: "🐱", box: "📦" },
+          scenes: [
+            { caption: "I see a dog.", at: { girl: [16, 62, { size: 1.5 }], dog: [60, 60, { size: 1.4, act: "bounce" }] } },
+            { caption: "The dog is big.", at: { dog: [60, 56, { size: 2.2, act: "grow" }] } },
+            { caption: "I see my cat.", at: { dog: null, cat: [60, 60, { size: 1.5, act: "bounce" }] } },
+            { caption: "My cat is in a box.", at: { box: [60, 66, { size: 1.8 }], cat: [60, 50, { size: 1.3, act: "bounce" }] } }
+          ] },
+        { type: "listen", say: "the", prompt: "گوش کن و این کلمه را پیدا کن",
+          options: [{ label: "see" }, { label: "the" }, { label: "my" }], answer: "the" },
+        { type: "listen", say: "my", quiet: true, prompt: "گوش کن و این کلمه را پیدا کن",
+          options: [{ label: "my" }, { label: "is" }, { label: "I" }], answer: "my" },
+        { type: "listen", say: "see", quiet: true, prompt: "گوش کن و این کلمه را پیدا کن",
+          options: [{ label: "a" }, { label: "the" }, { label: "see" }], answer: "see" },
+        { type: "build", prompt: "گوش کن و این کلمه را با حرف‌ها بساز", word: "the", parts: ["t", "h", "e"], extra: ["s"] },
+        { type: "build", prompt: "گوش کن و این کلمه را با حرف‌ها بساز", word: "see", parts: ["s", "e", "e"], extra: ["a"], pic: "👀" },
+        { type: "pairs", prompt: "هر نوشته را بخوان و با تصویرش جفت کن",
+          pairs: [["the sun", "🌞"], ["my bed", "🛏️"], ["I see a fox.", "🦊"], ["The bus is red.", "🚌"]] },
+        { type: "order", prompt: "گوش کن و کلمه‌های جمله را به ترتیب بچین", ltr: true, say: "I see my cat.", items: ["I", "see", "my", "cat."] },
+        { type: "tip", text: "بعضی کلمه‌ها مثل I، a، the، is، see و my در هر جمله‌ای می‌آیند و بهتر است کودک آن‌ها را با یک نگاه بشناسد، نه حرف به حرف. هر کدام را روی یک کارت بنویسید و هر روز چند بار با هم بخوانید. در کتاب یا روی بسته‌ها هم دنبال the بگردید." }
+      ]
+    },
+    {
+      id: "english-sprout-9", subject: "english", level: "sprout", emoji: "🐑", title: "sh، ch، th",
+      steps: [
+        { type: "letter", letter: "sh", like: "ش", words: [{ pic: "🐑", en: "sheep" }, { pic: "👟", en: "shoe" }, { pic: "🚢", en: "ship" }] },
+        { type: "letter", letter: "ch", like: "چ", words: [{ pic: "🐥", en: "chick" }, { pic: "🧀", en: "cheese" }, { pic: "🪑", en: "chair" }] },
+        { type: "letter", letter: "th", words: [{ pic: "👍", en: "thumb" }, { pic: "🤔", en: "think" }, { pic: "⚡", en: "thunder" }] },
+        { type: "listen", show: "sh", prompt: SOUND_PROMPT, options: [{ pic: "🐥", en: "chick" }, { pic: "🚢", en: "ship" }, { pic: "👍", en: "thumb" }], answer: "🚢" },
+        { type: "sort", prompt: SORT_PROMPT,
+          baskets: [{ label: "sh" }, { label: "ch" }],
+          items: [{ pic: "🐑", say: "sheep", basket: "sh" }, { pic: "🧀", say: "cheese", basket: "ch" }, { pic: "👟", say: "shoe", basket: "sh" },
+            { pic: "🪑", say: "chair", basket: "ch" }, { pic: "🚢", say: "ship", basket: "sh" }, { pic: "🐥", say: "chick", basket: "ch" }] },
+        { type: "build", prompt: "گوش کن و این کلمه را بساز. دو حرف sh با هم یک صدا هستند.", word: "fish", parts: ["f", "i", "sh"], extra: ["ch"], pic: "🐟" },
+        { type: "build", prompt: "گوش کن و این کلمه را بساز. دو حرف th با هم یک صدا هستند.", word: "bath", parts: ["b", "a", "th"], extra: ["sh"], pic: "🛁" },
+        { type: "listen", show: "shop", prompt: READ_PROMPT, options: ["🐑", "🏪", "🧀"], answer: "🏪" },
+        { type: "tip", text: "گاهی دو حرف با هم یک صدا می‌سازند: sh مثل «ش»، ch مثل «چ». صدای th در فارسی نیست: نوک زبان را آرام بین دندان‌ها بگذارید و فوت کنید. اگر کودک آن را «س» یا «ت» گفت، اشکالی ندارد؛ فقط درستش را یک بار با هم بگویید و بخندید." }
+      ]
+    },
+    {
+      id: "english-sprout-10", subject: "english", level: "sprout", emoji: "✏️", title: "نوشتن حرف‌ها",
+      steps: [
+        { type: "trace", letter: "c", say: "cat", prompt: "c را بنویس: از بالا، سمت راست، شروع کن و به چپ دور بزن." },
+        { type: "trace", letter: "a", say: "apple", prompt: "a را بنویس: اول همان c، بعد یک خط از بالا به پایین کنارش." },
+        { type: "trace", letter: "d", say: "dog", prompt: "d را بنویس: اول همان c، بعد یک خط بلند از بالا تا روی خط." },
+        { type: "trace", letter: "l", say: "lion", prompt: "l را بنویس: یک خط بلند، از بالا به پایین." },
+        { type: "trace", letter: "t", say: "tent", prompt: "t را بنویس: اول خط از بالا به پایین، بعد یک خط کوتاه از چپ به راست روی آن." },
+        { type: "trace", letter: "n", say: "nose", prompt: "n را بنویس: اول خط پایین، بعد از همان خط بالا برو و یک پل بساز." },
+        { type: "trace", letter: "s", say: "sun", prompt: "s را بنویس: از بالا، سمت راست، شروع کن و مثل مار پیچ‌وتاب بخور و پایین بیا." },
+        { type: "tip", text: "حرف‌های انگلیسی از چپ به راست و بیشترشان از بالا نوشته می‌شوند. در دفتر چهارخط یا روی کاغذ خط‌دار، هر روز چند حرف را با هم بنویسید: c و a و d که با یک دایره شروع می‌شوند، خط‌های بلند مثل l و t، و پل‌ها مثل n و h. هر حرف را که می‌نویسد، صدایش را هم بگوید." }
+      ]
+    },
+    {
+      id: "english-sprout-11", subject: "english", level: "sprout", emoji: "📝", title: "نوشتن کلمه‌ها",
+      steps: [
+        { type: "build", prompt: "گوش کن و این کلمه را با حرف‌ها بساز", word: "cat", parts: ["c", "a", "t"], extra: ["d"], pic: "🐱" },
+        { type: "trace", letter: "c", say: "cat", prompt: "حالا cat را حرف به حرف بنویس. اول c را بنویس." },
+        { type: "trace", letter: "a", prompt: "بعد a را بنویس." },
+        { type: "trace", letter: "t", say: "cat", prompt: "آخر از همه t را بنویس. تو cat را نوشتی!" },
+        { type: "build", prompt: "گوش کن و این کلمه را با حرف‌ها بساز", word: "sun", parts: ["s", "u", "n"], extra: ["m"], pic: "🌞" },
+        { type: "trace", letter: "s", say: "sun", prompt: "حالا sun را حرف به حرف بنویس. اول s را بنویس." },
+        { type: "trace", letter: "u", prompt: "بعد u را بنویس." },
+        { type: "trace", letter: "n", say: "sun", prompt: "آخر از همه n را بنویس. تو sun را نوشتی!" },
+        { type: "tip", text: "کلمه‌ای را بلند بگویید، مثل bed، و کودک اول صداهایش را جدا بگوید (ب… اِ… د) و بعد روی کاغذ حرف به حرف بنویسد، از چپ به راست. بین حرف‌ها فاصله زیاد نگذارد. اگر حرفی را برعکس نوشت، مثل b و d، شکل درستش را کنارش بنویسید و با هم مقایسه کنید." }
       ]
     },
 

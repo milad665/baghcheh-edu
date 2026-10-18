@@ -4,7 +4,7 @@
      Fields: pic (emoji), text, optional list (short lines, e.g. the moves of a movement break), say.
    - forparents: the parent note that ends each health lesson: how to practise at home and, for body safety and
      emergencies, how to talk about it calmly. Fields: tips (lines), optional text (one line said to the child
-     first), pic. Not scored.
+     first), pic, guide (the section of guide.html to point to, default health) and guideLabel. Not scored.
    Step types are added to B.engine.steps (js/engine.js). */
 var B = window.B || {};
 window.B = B;
@@ -32,7 +32,7 @@ window.B = B;
     box.appendChild(el("div", { class: "parent-tip hl-note" }, [
       el("strong", { text: B.t("hlParentsTitle") }),
       el("ul", null, s.tips.map(function (t) { return el("li", { text: t }); })),
-      el("p", { class: "hint" }, [B.t("hlGuideBefore"), el("a", { href: "guide.html#health", text: B.t("hlGuideLink") })])
+      el("p", { class: "hint" }, [B.t("hlGuideBefore"), el("a", { href: "guide.html#" + (s.guide || "health"), text: s.guideLabel || B.t("hlGuideLink") })])
     ]));
     box.appendChild(el("div", { class: "row", style: "justify-content:center;margin-top:14px" }, [E.nextBtn(B.t("finish"), function () { done(false); })]));
   };

@@ -1,0 +1,59 @@
+# Publishes the website to Cloudflare Pages (garden-edu.com) on every push to main.
+# The site needs no build: this only checks the content and uploads the files a browser needs,
+# the same set the apps embed (see TOP/DIRS in desktop/src-tauri/build.rs).
+#
+# Required secrets (Settings → Secrets and variables → Actions):
+#   CLOUDFLARE_API_TOKEN   a token with the "Cloudflare Pages: Edit" permission
+#   CLOUDFLARE_ACCOUNT_ID  shown on the right of the Cloudflare dashboard's Workers & Pages page
+name: Site
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "android/**"
+      - "desktop/**"
+      - "brand/**"
+      - "**/*.md"
+
+permissions:
+  contents: read
+
+# A newer push replaces a deploy that is still running.
+concurrency:
+  group: site
+  cancel-in-progress: true
+
+env:
+  PROJECT: baghcheh
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check content
+        run: |
+          node tools/check-plan.js
+          node tools/check-reading.js
+      - name: Collect site files
+        run: |
+          mkdir _site
+          cp index.html guide.html method.html policies.html open.html browse.html \
+             manifest.webmanifest icon.svg sw.js _site/
+          cp -R js css fonts audio _site/
+          find _site -name "*.md" -delete
+          echo "$(find _site -type f | wc -l) files, $(du -sh _site | cut -f1)"
+      - name: Deploy to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          # Creates the project on the first run; later runs just report that it exists.
+          npx --yes wrangler@4 pages project create "$PROJECT" --production-branch main || true
+          npx --yes wrangler@4 pages deploy _site --project-name "$PROJECT" --branch main \
+            --commit-hash "$GITHUB_SHA" --commit-message "$(git log -1 --format=%s)"

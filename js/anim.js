@@ -24,13 +24,16 @@ window.B = B;
 
   /* How a letter is written, drawn on an SVG: a light model of the whole letter, then a pen that draws each
      stroke in order. Returns null when the letter has no strokes in js/strokes.js.
-     opts.ghost: stroke width of the light model (wider on the trace step, to write inside it); opts.fade: see below. */
+     opts.ghost: stroke width of the light model (wider on the trace step, to write inside it); opts.fade: see below;
+     opts.strokes: strokes to use instead of the letter's (a path from B.PATHS: no baseline), with opts.label to name them. */
   B.writeLetter = function (ch, opts) {
     opts = opts || {};
-    var strokes = B.STROKES && B.STROKES[ch];
+    var strokes = opts.strokes || (B.STROKES && B.STROKES[ch]);
     if (!strokes) return null;
-    var svg = svgEl("svg", { viewBox: "0 0 200 200", class: "write-svg", role: "img", "aria-label": B.t("writeAria", { letter: ch }) });
-    svg.appendChild(svgEl("line", { x1: 20, y1: 130, x2: 180, y2: 130, class: "write-base" }));
+    var svg = svgEl("svg", { viewBox: "0 0 200 200", class: "write-svg", role: "img", "aria-label": opts.label || B.t("writeAria", { letter: ch }) });
+    if (!opts.strokes) svg.appendChild(svgEl("line", { x1: 20, y1: 130, x2: 180, y2: 130, class: "write-base" }));
+    // Latin letters get the two other lines of an English exercise book: the midline and the top line.
+    if (!opts.strokes && /^[A-Za-z]$/.test(ch)) [50, 90].forEach(function (y) { svg.appendChild(svgEl("line", { x1: 20, y1: y, x2: 180, y2: y, class: "write-base guide" })); });
     var ghost = svgEl("g", { class: "write-ghost", "stroke-width": opts.ghost || 9 });
     var ink = svgEl("g", { class: "write-ink" });
     var paths = strokes.map(function (st) {
@@ -99,14 +102,31 @@ window.B = B;
   };
 
   /* ---------- story: a short animated picture story or explanation ----------
-     cast: { id: "👧", … } (an emoji or a short text such as "۳ + ۲"). scenes: [{ caption, say, audio, at }], where
+     cast: { id: "👧", … } (an emoji, drawn from js/art when it has a drawing, or a short text such as "۳ + ۲"). scenes: [{ caption, say, audio, at }], where
      at: { id: [x, y] or [x, y, { size, flip, act }] or null to hide }. x and y are percentages of the stage
      (x from the left). An actor keeps its place until a scene moves it; act is "bounce", "spin", "grow" or "shake".
-     Optional question, options, answer, pic: a question about the story at the end (then the step is scored). */
+     A scene's own bg changes the backdrop from that scene on. Optional bg: a backdrop (B.SCENES: meadow, garden, night, room, bedroom, kitchen, school, sea, street, snow, sky) or a
+     CSS background. Optional question, options, answer, pic: a question about the story at the end (then the step is scored). */
   E.steps.story = function (s, box, done) {
     if (s.prompt) box.appendChild(el("p", { class: "prompt", text: s.prompt }));
     var stage = el("div", { class: "stage" + (s.tall ? " tall" : ""), role: "img", "aria-label": s.scenes.map(function (sc) { return sc.caption; }).join(" ") });
-    if (s.bg) stage.style.background = s.bg;
+    // bg: a drawn backdrop from js/art/scenes.js ("room", "night", …; the meadow when there is none), or any CSS background.
+    // A scene may change it (sc.bg): it stays until another scene changes it again.
+    var backdrop = null, shownBg = null;
+    function setBg(name) {
+      if (name === shownBg) return;
+      shownBg = name;
+      var next = B.sceneNode && B.sceneNode(name);
+      if (backdrop) backdrop.remove();
+      backdrop = next;
+      if (next) stage.insertBefore(next, stage.firstChild);
+      stage.style.background = next ? "" : name;
+    }
+    function bgAt(n) {
+      for (var i = n; i >= 0; i--) if (s.scenes[i].bg) return s.scenes[i].bg;
+      return s.bg || "meadow";
+    }
+    setBg(bgAt(0));
     var actors = {};
     Object.keys(s.cast).forEach(function (id) {
       // dir auto: «۳ + ۲ = ۵» is written left to right, «۷ فرد» right to left.
@@ -128,6 +148,10 @@ window.B = B;
       if (!a) return;
       if (v === null) { a.style.opacity = 0; return; }
       var o = v[2] || {};
+      // An actor that is already on the stage and goes somewhere else walks there (a little hop as it goes).
+      var moved = a.style.opacity === "1" && (a.style.left !== v[0] + "%" || a.style.top !== v[1] + "%");
+      a.classList.remove("walk");
+      if (moved && !stage.classList.contains("snap")) { void a.offsetWidth; a.classList.add("walk"); }
       a.style.opacity = 1;
       a.style.left = v[0] + "%";
       a.style.top = v[1] + "%";
@@ -145,6 +169,7 @@ window.B = B;
         Object.keys(actors).forEach(function (id) { actors[id].style.opacity = 0; });
       }
       var sc = s.scenes[n];
+      setBg(bgAt(n));
       Object.keys(sc.at || {}).forEach(function (id) { place(id, sc.at[id]); });
       if (n === 0) { void stage.offsetWidth; stage.classList.remove("snap"); }
       caption.textContent = sc.caption || "";
@@ -184,6 +209,12 @@ window.B = B;
       seenAll = true;
       if (!s.question) { next.disabled = false; return; }
       ask.appendChild(el("p", { class: "prompt", text: s.question }));
+      // Children who cannot read yet hear the question too, once the last caption has been said.
+      var qb = E.speakBtn(s.question);
+      if (qb) {
+        ask.appendChild(qb);
+        setTimeout(function () { if (ask.isConnected && !timer) B.speak(s.question); }, sceneTime(s.scenes[s.scenes.length - 1]));
+      }
       E.choice(ask, { options: s.options, answer: s.answer, pic: s.pic }, function (scored, first) { stop(); done(scored, first); });
       if (ask.scrollIntoView) ask.scrollIntoView({ block: "nearest", behavior: B.reducedMotion() ? "auto" : "smooth" });
     }

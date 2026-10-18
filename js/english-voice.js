@@ -51,23 +51,37 @@ window.B = B;
     speechSynthesis.speak(u);
   }
 
-  /* A short instruction in Persian, then the English to listen to («گوش کن…», then "cat"): the English waits until
-     the Persian has been said. Without a Persian voice the English is said straight away. */
-  B.speakFaThenEn = function (fa, en, file) {
+  /* Several things said one after another, each in its own voice: an English instruction, the same in Persian
+     for support, then the English to listen to. items: [{ text, lang: "en" | "fa", file }]; then() runs after the
+     last one. Items with no voice on this device are skipped. When other speech cuts in (the child tapped
+     something, or went on), the rest is not said late. */
+  B.speakSeq = function (items, then) {
     var faVoice = "speechSynthesis" in window && speechSynthesis.getVoices().find(function (v) { return /^fa/i.test(v.lang); });
-    if (!faVoice || !fa) return B.speakEn(en, file);
-    speechSynthesis.cancel();
-    var u = new SpeechSynthesisUtterance(fa), said = false;
-    u.voice = faVoice;
-    u.lang = faVoice.lang;
-    u.rate = 0.85;
-    function then() { if (!said) { said = true; B.speakEn(en, file); } }
-    u.onend = then;
-    // Cut off by other speech (the child tapped something, or went on): the English is not said late.
-    u.onerror = function (e) { if (e.error === "interrupted" || e.error === "canceled") said = true; else then(); };
-    speechSynthesis.speak(u);
-    // Some browsers never report the end of an utterance: then the English comes after a fair wait.
-    setTimeout(function () { if (!speechSynthesis.speaking) then(); }, 2500 + fa.length * 120);
+    var list = items.filter(function (it) { return it.text && (it.lang === "fa" ? faVoice : enVoice || it.file); });
+    var i = 0, stopped = false;
+    if ("speechSynthesis" in window) speechSynthesis.cancel();
+    function next() {
+      if (stopped) return;
+      if (i >= list.length) { stopped = true; if (then) then(); return; }
+      var it = list[i++], moved = false;
+      function go() { if (!moved) { moved = true; next(); } }
+      if (it.file) {
+        var a = new Audio(it.file);
+        a.onended = go;
+        a.play().catch(go);
+        return;
+      }
+      var u = new SpeechSynthesisUtterance(it.text), v = it.lang === "fa" ? faVoice : enVoice;
+      u.voice = v;
+      u.lang = v.lang;
+      u.rate = it.lang === "fa" ? 0.85 : 0.8;
+      u.onend = go;
+      u.onerror = function (e) { if (e.error === "interrupted" || e.error === "canceled") stopped = true; else go(); };
+      speechSynthesis.speak(u);
+      // Some browsers never report the end of an utterance: then go on after a fair wait.
+      setTimeout(function () { if (!speechSynthesis.speaking) go(); }, 2500 + it.text.length * 120);
+    }
+    next();
   };
 
   // English text goes to the English voice; everything else is spoken as before.

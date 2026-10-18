@@ -301,12 +301,17 @@ window.B = B;
   }
 
   /* build: make a word from letters or syllables. word (shown joined at the end), parts (in reading order),
-     optional extra (tiles that don't belong), pic, say. */
+     optional extra (tiles that don't belong), pic, say. hidden: true is dictation: the word is only heard (said
+     at the start and on the listen button) and the picture waits for the end; with no voice, the parent can
+     open the word and say it. */
   E.steps.build = function (s, box, done) {
-    box.appendChild(el("p", { class: "prompt", text: s.prompt || B.t("buildPrompt") }));
-    if (s.pic) box.appendChild(el("p", { class: "build-pic", "aria-hidden": "true", text: s.pic }));
+    box.appendChild(el("p", { class: "prompt", text: s.prompt || B.t(s.hidden ? "buildHiddenPrompt" : "buildPrompt") }));
+    var pic = s.pic ? el("p", { class: "build-pic", "aria-hidden": "true", text: s.pic }) : null;
+    if (pic && !s.hidden) box.appendChild(pic);
     var sb = E.speakBtn(s.say || s.word, s.audio);
     if (sb) box.appendChild(sb);
+    if (s.hidden && sb) setTimeout(function () { B.speak(s.say || s.word, s.audio); }, 300);
+    if (s.hidden && !sb) box.appendChild(el("details", { class: "build-novoice" }, [el("summary", { text: B.t("buildNoVoice") }), el("b", { text: s.say || s.word })]));
     var tiles = s.parts.concat(s.extra || []).map(function (p) { return { v: p, key: p }; });
     var word = el("p", { class: "blend-word", text: s.word });
     sequence(box, {
@@ -318,6 +323,7 @@ window.B = B;
       onComplete: function (row) {
         row.classList.add("joined");
         row.parentNode.insertBefore(word, row.nextSibling);
+        if (pic && s.hidden) row.parentNode.insertBefore(pic, word.nextSibling);
         void word.offsetWidth;
         word.classList.add("on");
       }

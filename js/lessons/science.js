@@ -161,6 +161,71 @@ B.LESSONS.push(
         ask: "پرنده دانه را با چه برمی‌دارد؟" }
     ]
   },
+  {
+    id: "science-seed-5", subject: "science", level: "seed", emoji: "🌦️", title: "امروز هوا چطور است؟",
+    steps: [
+      { type: "story", prompt: "هوا هر روز یک‌جور است",
+        cast: { sun: "☀️", girl: "👧", hat: "👒", rain: "🌧️", boy: "👦", umbrella: "☂️", snow: "❄️", coat: "🧥", scarf: "🧣", gloves: "🧤" },
+        scenes: [
+          { caption: "امروز هوا آفتابی و گرم است. سارا کلاه سرش می‌گذارد.", at: { sun: [14, 18, { act: "grow" }], girl: [55, 62, { size: 1.3 }], hat: [55, 34, { act: "bounce" }] } },
+          { caption: "امروز باران می‌بارد. رضا چتر برمی‌دارد.", at: { sun: null, girl: null, hat: null, rain: [24, 18, { size: 1.2, act: "shake" }], boy: [58, 64, { size: 1.3 }], umbrella: [58, 36, { size: 1.2, act: "bounce" }] } },
+          { caption: "امروز برف می‌بارد و هوا سرد است. کاپشن، شال‌گردن و دستکش می‌پوشیم.",
+            at: { rain: null, boy: null, umbrella: null, snow: [24, 18, { act: "spin" }], coat: [32, 64, { size: 1.2 }], scarf: [55, 64, { size: 1.2 }], gloves: [78, 66, { size: 1.2 }] } }
+        ],
+        question: "باران می‌بارد. چه برداریم؟", pic: true,
+        options: [{ label: "🕶️", value: "عینک آفتابی" }, { label: "☂️", value: "چتر" }, { label: "⚽", value: "توپ" }], answer: "چتر" },
+      { type: "sort", prompt: "برای هوای گرم یا هوای سرد؟", say: "کدام را در هوای گرم می‌پوشیم و کدام را در هوای سرد؟",
+        baskets: [{ label: "هوای گرم", pic: "☀️", value: "hot" }, { label: "هوای سرد", pic: "❄️", value: "cold" }],
+        items: [
+          { pic: "👒", say: "کلاه آفتابی", basket: "hot" },
+          { pic: "🕶️", say: "عینک آفتابی", basket: "hot" },
+          { pic: "👕", say: "پیراهن نازک", basket: "hot" },
+          { pic: "🧣", say: "شال‌گردن", basket: "cold" },
+          { pic: "🧤", say: "دستکش", basket: "cold" },
+          { pic: "🧥", say: "کاپشن", basket: "cold" }
+        ] },
+      { type: "home", pic: "☀️ ☁️ 🌧️", text: "هر روز صبح هوا را ببین و بگو امروز چه بپوشیم.",
+        need: ["لباس‌های خود کودک"],
+        steps: [
+          "هر روز صبح با کودک از پنجره یا در حیاط به آسمان نگاه کنید.",
+          "بپرسید: «آفتابی است یا ابری؟ باد می‌آید؟ باران می‌بارد؟»",
+          "کودک دستش را بیرون ببرد و بگوید هوا گرم است یا سرد.",
+          "با هم لباس امروز را انتخاب کنید و بپرسید: «چرا این را می‌پوشیم؟»",
+          "بازی کنید: شما بگویید «برف می‌بارد!» یا «آفتاب داغ است!» و کودک از میان لباس‌ها، لباس مناسب را پیدا کند."
+        ],
+        ask: "اگر باد سرد بیاید، چه می‌پوشی؟" }
+    ]
+  },
+  {
+    id: "science-seed-6", subject: "science", level: "seed", emoji: "🎨", title: "رنگ‌ها را قاطی کن",
+    steps: [
+      { type: "story", prompt: "ببین رنگ‌ها چه می‌شوند",
+        cast: { r: "🔴", y: "🟡", o: "🟠", b: "🔵", g: "🟢" },
+        scenes: [
+          { caption: "این رنگ قرمز است و این رنگ زرد.", at: { r: [30, 50, { size: 1.4 }], y: [70, 50, { size: 1.4 }] } },
+          { caption: "قرمز و زرد را با هم قاطی می‌کنیم…", at: { r: [46, 50, { size: 1.4, act: "shake" }], y: [54, 50, { size: 1.4, act: "shake" }] } },
+          { caption: "نارنجی شد!", at: { r: null, y: null, o: [50, 50, { size: 1.8, act: "grow" }] } },
+          { caption: "حالا آبی و زرد…", at: { o: null, b: [30, 50, { size: 1.4 }], y: [70, 50, { size: 1.4 }] } },
+          { caption: "با هم قاطی می‌کنیم…", at: { b: [46, 50, { size: 1.4, act: "shake" }], y: [54, 50, { size: 1.4, act: "shake" }] } },
+          { caption: "سبز شد!", at: { b: null, y: null, g: [50, 50, { size: 1.8, act: "grow" }] } }
+        ] },
+      { type: "choose", ltr: true, show: "🔴 + 🟡", prompt: "قرمز و زرد چه رنگی می‌شوند؟", say: "قرمز و زرد را قاطی کنیم، چه رنگی می‌شوند؟", pic: true,
+        options: [{ label: "🟢", value: "سبز" }, { label: "🟠", value: "نارنجی" }, { label: "🟣", value: "بنفش" }], answer: "نارنجی" },
+      { type: "choose", ltr: true, show: "🔵 + 🟡", prompt: "آبی و زرد چه رنگی می‌شوند؟", say: "آبی و زرد را قاطی کنیم، چه رنگی می‌شوند؟", pic: true,
+        options: [{ label: "🟠", value: "نارنجی" }, { label: "🟣", value: "بنفش" }, { label: "🟢", value: "سبز" }], answer: "سبز" },
+      { type: "choose", ltr: true, show: "🔴 + 🔵", prompt: "حدس بزن: قرمز و آبی چه رنگی می‌شوند؟", say: "این یکی را ندیدی. حدس بزن: قرمز و آبی را قاطی کنیم، چه رنگی می‌شوند؟", pic: true,
+        options: [{ label: "🟣", value: "بنفش" }, { label: "🟢", value: "سبز" }, { label: "🟡", value: "زرد" }], answer: "بنفش" },
+      { type: "home", pic: "🎨 🖌️", text: "خودت رنگ‌ها را قاطی کن و ببین چه می‌شود!",
+        need: ["آبرنگ یا گواش قرمز، زرد و آبی، یا چند قطره رنگ خوراکی در لیوان‌های آب", "قلم‌مو و کاغذ", "روزنامه یا سفره کهنه برای روی میز"],
+        steps: [
+          "روزنامه را روی میز پهن کنید و به کودک لباس کهنه بپوشانید.",
+          "پیش از هر بار قاطی کردن، کودک حدس بزند: «زرد و آبی چه رنگی می‌شود؟»",
+          "دو رنگ را روی کاغذ یا در یک لیوان خالی با هم قاطی کنید و ببینید چه شد.",
+          "همه جفت‌ها را امتحان کنید و رنگ‌های تازه را کنار هم روی کاغذ بکشید."
+        ],
+        ask: "اگر هر سه رنگ را با هم قاطی کنیم، چه می‌شود؟" }
+    ]
+  },
 
   // ---------------- Science: Sprout (guess, try, see) ----------------
   {
@@ -340,6 +405,57 @@ B.LESSONS.push(
           "از پدربزرگ یا مادربزرگ بپرسید زمستان در شهر یا روستای کودکی‌شان چطور بود."
         ],
         ask: "این هفته بیشتر روزها هوا چطور بود؟" }
+    ]
+  },
+  {
+    id: "science-sprout-6", subject: "science", level: "sprout", emoji: "🧺", title: "از چه ساخته شده؟",
+    steps: [
+      { type: "story", prompt: "هر چیز از یک جنس ساخته شده است",
+        cast: { chair: "🪑", wood: "چوب", tree: "🌳", spoon: "🥄", metal: "فلز", bottle: "🧴", plastic: "پلاستیک", cup: "🥛", glass: "شیشه", shirt: "👕", cloth: "پارچه" },
+        scenes: [
+          { caption: "این صندلی از چوب است. چوب را از درخت به دست می‌آوریم.", at: { chair: [60, 60, { size: 1.4 }], wood: [60, 30, { size: 0.6 }], tree: [24, 50, { size: 1.6 }] } },
+          { caption: "این قاشق از فلز است. فلز سخت و براق است.", at: { chair: null, wood: null, tree: null, spoon: [50, 60, { size: 1.4, act: "spin" }], metal: [50, 30, { size: 0.6 }] } },
+          { caption: "این بطری از پلاستیک است. پلاستیک سبک است.", at: { spoon: null, metal: null, bottle: [50, 60, { size: 1.4, act: "bounce" }], plastic: [50, 30, { size: 0.6 }] } },
+          { caption: "این لیوان از شیشه است. از پشت شیشه می‌شود آن طرف را دید.", at: { bottle: null, plastic: null, cup: [50, 60, { size: 1.4 }], glass: [50, 30, { size: 0.6 }] } },
+          { caption: "این پیراهن از پارچه است. پارچه نرم است.", at: { cup: null, glass: null, shirt: [50, 60, { size: 1.4, act: "shake" }], cloth: [50, 30, { size: 0.6 }] } }
+        ],
+        question: "پنجره از چه ساخته شده است؟",
+        options: ["پارچه", "شیشه", "چوب"], answer: "شیشه" },
+      { type: "sort", prompt: "چوب، فلز یا پارچه؟", say: "هر چیز را در سبد جنس خودش بگذار: چوب، فلز یا پارچه.",
+        baskets: [{ label: "چوب", value: "wood" }, { label: "فلز", value: "metal" }, { label: "پارچه", value: "cloth" }],
+        items: [
+          { pic: "🪑", label: "صندلی", basket: "wood" },
+          { pic: "🥢", label: "چوب غذا", basket: "wood" },
+          { pic: "🔑", label: "کلید", basket: "metal" },
+          { pic: "🥄", label: "قاشق", basket: "metal" },
+          { pic: "🧦", label: "جوراب", basket: "cloth" },
+          { pic: "🧣", label: "شال‌گردن", basket: "cloth" }
+        ] },
+      { type: "sort", prompt: "پلاستیک یا شیشه؟", say: "کدام از پلاستیک است و کدام از شیشه؟",
+        baskets: [{ label: "پلاستیک", value: "plastic" }, { label: "شیشه", value: "glass" }],
+        items: [
+          { pic: "🧴", label: "بطری شامپو", basket: "plastic" },
+          { pic: "🥤", label: "لیوان یک‌بار مصرف", basket: "plastic" },
+          { pic: "🥛", label: "لیوان شیشه‌ای", basket: "glass" },
+          { pic: "👓", label: "شیشه عینک", basket: "glass" }
+        ] },
+      { type: "test", kind: "float", prompt: "چوب، فلز یا پلاستیک: کدام روی آب می‌ماند؟ اول حدس بزن!",
+        items: [
+          { pic: "✏️", say: "مداد چوبی", yes: true },
+          { pic: "🥄", say: "قاشق فلزی", yes: false },
+          { pic: "🧴", say: "بطری پلاستیکی خالی", yes: true },
+          { pic: "🔑", say: "کلید فلزی", yes: false },
+          { pic: "🥢", say: "چوب غذا", yes: true }
+        ] },
+      { type: "home", pic: "🧺 🔍", text: "در خانه بگرد: چه چیزهایی از چوب، فلز، پلاستیک، شیشه یا پارچه است؟",
+        need: ["یک سبد", "چیزهای خانه از جنس‌های مختلف"],
+        steps: [
+          "با کودک در خانه بگردید و از هر جنس یک چیز پیدا کنید. چیزهای شیشه‌ای را خودتان بردارید و به کودک ندهید.",
+          "چیزها را روی زمین بچینید و با هم دسته کنید: چوب، فلز، پلاستیک، شیشه، پارچه.",
+          "کودک به هر چیز دست بزند و بگوید: «سرد است یا گرم؟ سخت است یا نرم؟ سبک است یا سنگین؟»",
+          "آرام با انگشت به هر چیز بزنید: صدای چوب، فلز و پلاستیک چه فرقی دارد؟"
+        ],
+        ask: "در آشپزخانه ما چه چیزهایی از فلز است؟" }
     ]
   },
 

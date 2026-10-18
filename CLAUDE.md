@@ -14,4 +14,4 @@ the plan says, change the plan first when the content should change, update it i
 
 - Persian text follows `STYLE.md`; UI strings live in `js/strings.js`.
 - Reading lessons: `node tools/check-reading.js` (only letters taught so far).
-- New files go in `index.html` and in `FILES` in `sw.js` (see "Release checklist" in `README.md`).
+- New files go in `index.html` (content and step files also in `browse.html`, the content browser) and in `FILES` in `sw.js` (see "Release checklist" in `README.md`).

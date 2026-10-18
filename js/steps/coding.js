@@ -109,7 +109,7 @@ window.B = B;
     for (var y = 0; y < rows; y++) {
       for (var x = 0; x < cols; x++) {
         var c = el("span", { class: "code-cell" });
-        if (walls[x + "," + y]) { c.classList.add("wall"); c.textContent = s.wall || "🪨"; }
+        if (walls[x + "," + y]) { c.classList.add("wall"); B.setArt(c, s.wall || "🪨"); }
         cells.push(c);
         grid.appendChild(c);
       }

@@ -126,11 +126,16 @@ window.B = B;
 
   steps.trace = function (s, box, done) {
     box.appendChild(el("p", { class: "prompt", text: s.prompt }));
+    // B.engine.speakBtn, which js/steps/english.js extends: an English word needs the English voice, not the Persian one.
+    var sb = s.say ? B.engine.speakBtn(s.say, s.audio) : null;
+    if (sb) { box.appendChild(sb); B.speak(s.say, s.audio); }
     var size = window.innerWidth <= 480 ? 260 : window.innerWidth >= 768 ? 400 : 300;
     var canvas = el("canvas", { width: size * 2, height: size * 2, style: "width:" + size + "px;height:" + size + "px" });
-    // The handwriting model from js/strokes.js when there is one (the same one the intro animates), else the printed letter.
-    var model = B.writeLetter && B.writeLetter(s.letter, { ghost: 24, fade: true });
-    box.appendChild(el("div", { class: "trace-wrap" }, [model ? model.svg : el("div", { class: "ghost", text: s.letter }), canvas]));
+    // The handwriting model from js/strokes.js when there is one (the same one the intro animates), else the printed
+    // letter. `path` is a pre-writing path from B.PATHS, `strokes` any other shape drawn the same way.
+    var strokes = s.strokes || (s.path && B.PATHS && B.PATHS[s.path]);
+    var model = B.writeLetter && B.writeLetter(s.letter, { ghost: 24, fade: true, strokes: strokes, label: strokes && s.prompt });
+    box.appendChild(el("div", { class: "trace-wrap" }, [model ? model.svg : el("div", { class: "ghost", text: s.letter || "" }), canvas]));
     var ctx = canvas.getContext("2d");
     ctx.scale(2, 2);
     ctx.lineWidth = 14;
@@ -139,7 +144,10 @@ window.B = B;
     ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#e8a33d";
     var drawing = false, ink = 0, last = null;
     function pos(e) { var r = canvas.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
-    canvas.addEventListener("pointerdown", function (e) { drawing = true; last = pos(e); canvas.setPointerCapture(e.pointerId); });
+    canvas.addEventListener("pointerdown", function (e) {
+      drawing = true; last = pos(e);
+      try { canvas.setPointerCapture(e.pointerId); } catch (err) { /* the pointer is already gone */ }
+    });
     canvas.addEventListener("pointermove", function (e) {
       if (!drawing) return;
       var p = pos(e);
@@ -149,6 +157,7 @@ window.B = B;
       if (ink > 150) next.disabled = false;
     });
     canvas.addEventListener("pointerup", function () { drawing = false; });
+    canvas.addEventListener("pointercancel", function () { drawing = false; });
     var clear = el("button", { class: "btn quiet", type: "button", text: B.t("clear") });
     clear.addEventListener("click", function () { ctx.clearRect(0, 0, size, size); ink = 0; next.disabled = true; });
     var next = nextBtn(B.t("traceDone"), function () { done(false); });
@@ -563,7 +572,8 @@ window.B = B;
       add("line", { x1: x(n), y1: 84, x2: x(n), y2: 96, stroke: "currentColor", "stroke-width": n % 5 ? 1 : 2.5 });
       add("text", { x: x(n), y: 118, "text-anchor": "middle", "font-size": 14, fill: "currentColor" }, B.fa(n));
     }
-    var hopper = add("text", { x: x(s.a), y: 76, "text-anchor": "middle", "font-size": 28 }, s.thing || "🐸");
+    var hopper = svg.appendChild(B.svgArt(s.thing || "🐸", 32));
+    hopper.setAttribute("transform", "translate(" + x(s.a) + " 64)");
     box.appendChild(svg);
     var ask = el("div");
     var go = el("button", { class: "btn secondary", type: "button", text: B.t("hop", { thing: s.thing || "🐸" }) });
@@ -577,7 +587,7 @@ window.B = B;
         pos += dir;
         hops++;
         add("path", { d: "M" + x(from) + " 84 Q " + (x(from) + x(pos)) / 2 + " 40 " + x(pos) + " 84", fill: "none", stroke: "#e8a33d", "stroke-width": 2.5 });
-        hopper.setAttribute("x", x(pos));
+        hopper.setAttribute("transform", "translate(" + x(pos) + " 64)");
         B.speak(B.NUMBER_WORDS[hops]);
         if (hops === Math.abs(s.b)) {
           clearInterval(timer);
@@ -601,6 +611,7 @@ window.B = B;
 
   steps.breathe = function (s, box, done) {
     box.appendChild(el("p", { class: "prompt", text: B.t("breatheTitle") }));
+    setTimeout(function () { if (box.isConnected) B.speak(B.t("breatheTitle")); }, 300);
     var circle = el("div", { class: "breath-circle", text: "🌷" });
     var say = el("p", { class: "prompt", "aria-live": "polite", text: B.t("ready") });
     box.appendChild(circle);
@@ -613,11 +624,11 @@ window.B = B;
       start.disabled = true;
       for (var i = 0; i < s.cycles; i++) {
         (function (i) {
-          timers.push(setTimeout(function () { circle.textContent = "🌷"; circle.classList.add("in"); say.textContent = B.t("breatheIn"); }, i * 9000));
-          timers.push(setTimeout(function () { circle.textContent = "🕯️"; circle.classList.remove("in"); say.textContent = B.t("breatheOut"); }, i * 9000 + 4000));
+          timers.push(setTimeout(function () { circle.textContent = "🌷"; circle.classList.add("in"); say.textContent = B.t("breatheIn"); if (box.isConnected) B.speak(say.textContent); }, i * 9000));
+          timers.push(setTimeout(function () { circle.textContent = "🕯️"; circle.classList.remove("in"); say.textContent = B.t("breatheOut"); if (box.isConnected) B.speak(say.textContent); }, i * 9000 + 4000));
         })(i);
       }
-      timers.push(setTimeout(function () { circle.textContent = "😌"; say.textContent = B.t("breatheEnd"); }, s.cycles * 9000));
+      timers.push(setTimeout(function () { circle.textContent = "😌"; say.textContent = B.t("breatheEnd"); if (box.isConnected) B.speak(say.textContent); }, s.cycles * 9000));
     });
     box.appendChild(el("div", { class: "row", style: "justify-content:center" }, [start, next]));
   };
@@ -631,8 +642,10 @@ window.B = B;
     faces.forEach(function (f) {
       wrap.appendChild(el("button", { class: "opt pic", type: "button", "aria-label": f[1], onclick: function () {
         reply.textContent = B.t("feelReply");
+        B.speak(f[1] + ". " + reply.textContent);
       } }, [f[0]]));
     });
+    setTimeout(function () { if (box.isConnected) B.speak(B.t("feelAsk")); }, 300);
     box.appendChild(wrap);
     box.appendChild(reply);
     box.appendChild(el("div", { class: "row", style: "justify-content:center" }, [nextBtn(B.t("finish"), function () { done(false); })]));
@@ -642,9 +655,9 @@ window.B = B;
      B.engine.steps.mytype = function (s, box, done) { … } and calls done(scored, firstTry) when finished. */
   B.engine = { steps: steps, choice: choice, speakBtn: speakBtn, nextBtn: nextBtn, doneButton: doneButton, pick: pick, nums: nums };
 
-  /* Runs a lesson. onFinish(result) gets {scored, firstTry}. */
-  B.playLesson = function (lesson, root, onFinish, onExit) {
-    var i = 0, scored = 0, firstTry = 0;
+  /* Runs a lesson. onFinish(result) gets {scored, firstTry}. start: the step to begin at (the content browser). */
+  B.playLesson = function (lesson, root, onFinish, onExit, start) {
+    var i = start || 0, scored = 0, firstTry = 0;
     var bar = el("span", { style: "width:0" });
     var stage = el("div");
     root.innerHTML = "";

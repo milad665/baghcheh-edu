@@ -15,7 +15,7 @@ B.LESSONS.push(
   {
     id: "health-seed-1", subject: "health", level: "seed", emoji: "🧼", title: "دست‌هایم را می‌شویم",
     steps: [
-      { type: "story", prompt: "ببین دست‌ها را چطور می‌شوییم",
+      { type: "story", prompt: "ببین دست‌ها را چطور می‌شوییم", bg: "room",
         cast: { tap: "🚰", hands: "👐", drop: "💧", soap: "🧼", bubbles: "🫧", clean: "✨" },
         scenes: [
           { caption: "شیر آب را باز می‌کنیم و دست‌ها را خیس می‌کنیم.",
@@ -45,7 +45,7 @@ B.LESSONS.push(
   {
     id: "health-seed-2", subject: "health", level: "seed", emoji: "🪥", title: "مسواک می‌زنم",
     steps: [
-      { type: "story", prompt: "ببین چطور مسواک می‌زنیم",
+      { type: "story", prompt: "ببین چطور مسواک می‌زنیم", bg: "room",
         cast: { sun: "☀️", moon: "🌙", kid: "🧒", brush: "🪥", tooth: "🦷", smile: "😁" },
         scenes: [
           { caption: "صبح، بعد از صبحانه، مسواک می‌زنیم.", at: { sun: [80, 20, { act: "grow" }], kid: [40, 60, { size: 1.6 }], brush: [58, 54, { act: "shake" }] } },
@@ -105,7 +105,7 @@ B.LESSONS.push(
   {
     id: "health-seed-4", subject: "health", level: "seed", emoji: "🍎", title: "آب و خوراکی",
     steps: [
-      { type: "story", prompt: "به سفره صبحانه نگاه کن",
+      { type: "story", prompt: "به سفره صبحانه نگاه کن", bg: "kitchen",
         cast: { bread: "🍞", cheese: "🧀", nut: "🌰", cucumber: "🥒", tomato: "🍅", egg: "🥚", kid: "🧒", water: "💧" },
         scenes: [
           { caption: "سفره صبحانه رنگارنگ است: نان و پنیر و گردو، خیار و گوجه، تخم‌مرغ.",
@@ -140,7 +140,7 @@ B.LESSONS.push(
   {
     id: "health-sprout-1", subject: "health", level: "sprout", emoji: "🤧", title: "عطسه و سرفه",
     steps: [
-      { type: "story", prompt: "ببین چه کار می‌کنیم",
+      { type: "story", prompt: "ببین چه کار می‌کنیم", bg: "room",
         cast: { kid: "🧒", sneeze: "🤧", tissue: "🧻", elbow: "💪", bin: "🗑️", soap: "🧼", ok: "😊" },
         scenes: [
           { caption: "آیدا دارد عطسه‌اش می‌گیرد.", at: { kid: [44, 56, { size: 1.6 }] } },
@@ -173,7 +173,7 @@ B.LESSONS.push(
   {
     id: "health-sprout-2", subject: "health", level: "sprout", emoji: "🫖", title: "در خانه مراقبم",
     steps: [
-      { type: "story", prompt: "به قصه نگاه کن",
+      { type: "story", prompt: "به قصه نگاه کن", bg: "kitchen",
         cast: { gran: "👵", pot: "🫖", tea: "🍵", kid: "🧒", knife: "🔪", pill: "💊", hand: "✋" },
         scenes: [
           { caption: "مادربزرگ چای می‌ریزد. قوری و استکان چای داغ است.", at: { gran: [74, 56, { size: 1.6 }], pot: [52, 60, { act: "shake" }], tea: [40, 66] } },
@@ -206,7 +206,7 @@ B.LESSONS.push(
   {
     id: "health-sprout-3", subject: "health", level: "sprout", emoji: "🚦", title: "در خیابان",
     steps: [
-      { type: "story", prompt: "به قصه نگاه کن",
+      { type: "story", prompt: "به قصه نگاه کن", bg: "street",
         cast: { mom: "👩", kid: "👧", light: "🚦", car: "🚗", bike: "🛵", eyes: "👀", seat: "🚙" },
         scenes: [
           { caption: "نازنین و مادرش می‌خواهند از خیابان رد شوند. نازنین دست مادرش را می‌گیرد.",
@@ -240,7 +240,7 @@ B.LESSONS.push(
   {
     id: "health-sprout-4", subject: "health", level: "sprout", emoji: "🧭", title: "اگر گم شدم",
     steps: [
-      { type: "story", prompt: "به قصه نگاه کن",
+      { type: "story", prompt: "به قصه نگاه کن", bg: "street",
         cast: { dad: "👨", kid: "👧", kite: "🪁", shop: "🏪", seller: "👩", phone: "☎️", hug: "🤗" },
         scenes: [
           { caption: "شیرین و پدرش به بازار رفته‌اند.", at: { dad: [70, 56, { size: 1.6 }], kid: [56, 62, { size: 1.3 }] } },
@@ -336,7 +336,7 @@ B.LESSONS.push(
   {
     id: "health-sapling-3", subject: "health", level: "sapling", emoji: "🤝", title: "لمس خوب، راز خوب",
     steps: [
-      { type: "story", prompt: "به قصه نگاه کن",
+      { type: "story", prompt: "به قصه نگاه کن", bg: "room",
         cast: { kid: "🧒", pants: "🩲", hand: "✋", gift: "🎁", cake: "🎂", worry: "😟", talk: "🗣️", mom: "👩", heart: "💛" },
         scenes: [
           { caption: "یادت هست؟ جاهایی که لباس زیر می‌پوشاند، جاهای خصوصی بدن توست.", at: { kid: [40, 58, { size: 1.6 }], pants: [64, 40, { act: "grow" }] } },
@@ -387,7 +387,7 @@ B.LESSONS.push(
   {
     id: "health-all-1", subject: "health", level: null, emoji: "💛", title: "بدن من مال خودم است",
     steps: [
-      { type: "story", prompt: "به قصه نگاه کن",
+      { type: "story", prompt: "به قصه نگاه کن", bg: "room",
         cast: { kid: "🧒", heart: "💛", gran: "👵", hand: "✋", pants: "🩲", bath: "🛁", doc: "🩺", mom: "👩" },
         scenes: [
           { caption: "این بدن توست. بدن تو مال خودت است.", at: { kid: [50, 58, { size: 1.6 }], heart: [50, 24, { act: "grow" }] } },
@@ -421,7 +421,7 @@ B.LESSONS.push(
   {
     id: "health-all-2", subject: "health", level: null, emoji: "🧎", title: "تمرین زلزله",
     steps: [
-      { type: "story", prompt: "با هم تمرین می‌کنیم",
+      { type: "story", prompt: "با هم تمرین می‌کنیم", bg: "room",
         cast: { kid: "🧒", table: "┬──┬", win: "🪟", lamp: "💡", one: "۱. بنشین", two: "۲. پناه بگیر", three: "۳. محکم نگه دار", star: "⭐" },
         scenes: [
           { caption: "گاهی زمین تکان می‌خورد. به این، زلزله می‌گویند. امروز تمرین می‌کنیم تا بدانیم چه کار کنیم.",
@@ -456,7 +456,7 @@ B.LESSONS.push(
   {
     id: "health-all-3", subject: "health", level: null, emoji: "🚑", title: "شماره‌های کمک",
     steps: [
-      { type: "story", prompt: "ببین چه کسانی کمک می‌کنند",
+      { type: "story", prompt: "ببین چه کسانی کمک می‌کنند", bg: "street",
         cast: { phone: "☎️", amb: "🚑", fire: "🚒", police: "🚓", n115: "۱۱۵", n125: "۱۲۵", n110: "۱۱۰", kid: "🧒" },
         scenes: [
           { caption: "وقتی کسی ناگهان حالش خیلی بد می‌شود یا اتفاقی می‌افتد، بزرگ‌ترها برای کمک زنگ می‌زنند.",

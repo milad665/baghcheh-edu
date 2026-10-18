@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>Drawing check</title>
+<!-- For checking js/art/*.js by eye: every drawing beside its emoji, at full size and at the size of a small card,
+     every story backdrop, and the emoji used in lessons that have no drawing yet. Open with the dev server at
+     /tools/art-preview.html. Not part of the site. -->
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  body { margin: 16px; }
+  .grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  figure { margin: 0; border: 1px solid var(--line); border-radius: 10px; width: 132px; text-align: center; padding: 6px; background: var(--surface); }
+  .big { font-size: 80px; line-height: 1; }
+  .small { font-size: 28px; }
+  figcaption { font-size: 22px; }
+  .scenes figure { width: 340px; }
+  .scenes .stage { max-width: 320px; }
+  .missing { font-size: 30px; letter-spacing: 6px; }
+</style>
+</head>
+<body>
+<h2>Drawings</h2>
+<div class="grid" id="art"></div>
+<h2>Story backdrops</h2>
+<div class="grid scenes" id="scenes"></div>
+<h2>Emoji in lessons with no drawing</h2>
+<p class="missing" id="missing"></p>
+<script src="../js/common.js"></script>
+<script src="../js/strings.js"></script>
+<script src="../js/content.js"></script>
+<script src="../js/art.js"></script>
+<script src="../js/art/people.js"></script>
+<script src="../js/art/feelings.js"></script>
+<script src="../js/art/animals.js"></script>
+<script src="../js/art/food.js"></script>
+<script src="../js/art/nature.js"></script>
+<script src="../js/art/home.js"></script>
+<script src="../js/art/things.js"></script>
+<script src="../js/art/scenes.js"></script>
+<script src="../js/lessons/read.js"></script>
+<script src="../js/lessons/math.js"></script>
+<script src="../js/lessons/feel.js"></script>
+<script src="../js/lessons/english.js"></script>
+<script src="../js/lessons/science.js"></script>
+<script src="../js/lessons/health.js"></script>
+<script src="../js/lessons/thinking.js"></script>
+<script src="../js/lessons/world.js"></script>
+<script>
+  var el = B.el;
+  Object.keys(B.ART).forEach(function (k) {
+    document.getElementById("art").appendChild(el("figure", { class: "stage-like" }, [
+      el("div", { class: "big celebrate", text: k }), el("div", { class: "small", text: k + " " + k }), el("figcaption", null, [document.createTextNode(k)])
+    ]));
+  });
+  Object.keys(B.SCENES).forEach(function (name) {
+    var stage = el("div", { class: "stage" }, [B.sceneNode(name)]);
+    document.getElementById("scenes").appendChild(el("figure", null, [stage, el("figcaption", { text: name })]));
+  });
+  var seen = {}, re = /\p{Extended_Pictographic}(?:️|\p{Emoji_Modifier}|‍\p{Extended_Pictographic}️?)*/gu;
+  (JSON.stringify(B.LESSONS).match(re) || []).forEach(function (m) { if (!B.hasArt(m)) seen[m] = (seen[m] || 0) + 1; });
+  document.getElementById("missing").textContent = Object.keys(seen).sort(function (a, b) { return seen[b] - seen[a]; }).join(" ");
+</script>
+</body>
+</html>

@@ -20,7 +20,7 @@ var LESSONS = ctx.window.B.LESSONS;
 
 // What each lesson teaches, in order. «Y» = «ی» as a consonant.
 var TEACHES = {
-  "read-sprout-1": "آاب", "read-sprout-2": "دم", "read-sprout-3": "سَ", "read-sprout-4": "",
+  "read-sprout-1": "آاب", "read-sprout-2": "دم", "read-sprout-3": "سَ", "read-sprout-4": "", "read-sprout-5": "", "read-sprout-6": "",
   "read-sapling-1": "وت", "read-sapling-2": "ری", "read-sapling-3": "نز", "read-sapling-4": "شِ", "read-sapling-5": "کُ", "read-sapling-18": "",
   "read-sapling-6": "",
   "read-sapling-7": "ه", "read-sapling-8": "پل", "read-sapling-9": "جگ", "read-sapling-10": "چخ", "read-sapling-11": "فق", "read-sapling-19": "",

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>Stroke check</title>
+<!-- For checking js/strokes.js by eye: every letter with its strokes numbered, a dot where each stroke starts and
+     arrows along it. Open with the dev server at /tools/strokes-preview.html. Not part of the site. -->
+<style>
+  body { font-family: sans-serif; background: #fff; margin: 16px; }
+  .grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  figure { margin: 0; border: 1px solid #ddd; width: 200px; text-align: center; }
+  figcaption { font-size: 28px; }
+  svg { width: 200px; height: 200px; display: block; }
+</style>
+</head>
+<body>
+<div class="grid" id="grid"></div>
+<script>
+  // Load js/strokes.js fresh every time (no cached copy), then draw.
+  var tag = document.createElement("script");
+  tag.src = "../js/strokes.js?" + Date.now();
+  tag.onload = draw;
+  document.head.appendChild(tag);
+  function draw() {
+  var NS = "http://www.w3.org/2000/svg", COLORS = ["#c0392b", "#2471a3", "#1e8449", "#8e44ad", "#d35400"];
+  function add(svg, tag, a) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); svg.appendChild(e); return e; }
+  // Letters, digits and Latin letters (with the printed character behind, faint), then the pre-writing paths.
+  var all = Object.keys(B.STROKES).map(function (ch) { return [ch, B.STROKES[ch], true]; })
+    .concat(Object.keys(B.PATHS || {}).map(function (name) { return [name, B.PATHS[name], false]; }));
+  all.forEach(function (item) {
+    var ch = item[0], fig = document.createElement("figure"), svg = document.createElementNS(NS, "svg");
+    svg.setAttribute("viewBox", "0 0 200 200");
+    if (item[2]) {
+      add(svg, "line", { x1: 10, y1: 130, x2: 190, y2: 130, stroke: "#9cc", "stroke-width": 1 });
+      add(svg, "text", { x: 100, y: 130, "font-size": 110, fill: "#eee", "text-anchor": "middle" }).textContent = ch;
+    }
+    item[1].forEach(function (st, i) {
+      var c = COLORS[i % COLORS.length];
+      if (typeof st !== "string") {
+        add(svg, "circle", { cx: st[0], cy: st[1], r: 4, fill: c });
+        add(svg, "text", { x: st[0] + 6, y: st[1] + 4, "font-size": 10, fill: c }).textContent = i + 1;
+        return;
+      }
+      var p = add(svg, "path", { d: st, fill: "none", stroke: c, "stroke-width": 3, "stroke-linecap": "round" });
+      var len = p.getTotalLength(), s = p.getPointAtLength(0);
+      add(svg, "circle", { cx: s.x, cy: s.y, r: 5, fill: c });
+      add(svg, "text", { x: s.x + 7, y: s.y - 5, "font-size": 12, fill: c, "font-weight": "bold" }).textContent = i + 1;
+      for (var d = 22; d < len; d += 26) {
+        var a = p.getPointAtLength(d - 4), b = p.getPointAtLength(d), ang = Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI;
+        add(svg, "path", { d: "M-5 -4 L1 0 L-5 4", fill: "none", stroke: c, "stroke-width": 1.6, transform: "translate(" + b.x + " " + b.y + ") rotate(" + ang + ")" });
+      }
+    });
+    var cap = document.createElement("figcaption"); cap.textContent = ch;
+    fig.appendChild(svg); fig.appendChild(cap);
+    document.getElementById("grid").appendChild(fig);
+  });
+  }
+</script>
+</body>
+</html>

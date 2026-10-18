@@ -146,27 +146,35 @@ window.B = B;
     var names = s.options.map(function (o) { return typeof o === "object" ? o.en : null; }).filter(Boolean).join(". ");
     setTimeout(function () {
       if (!box.isConnected) return;
-      if (s.say || s.audio) B.speakFaThenEn(s.quiet ? "" : prompt, s.say, s.audio);
-      else if (names) B.speakFaThenEn(prompt, names);
+      if (s.say || s.audio) B.speakSeq([{ text: s.quiet ? "" : prompt, lang: "fa" }, { text: s.say, lang: "en", file: s.audio }]);
+      else if (names) B.speakSeq([{ text: prompt, lang: "fa" }, { text: names, lang: "en" }]);
       else B.speak(prompt);
     }, 400);
   };
 
   /* letter: a letter and its sound (systematic phonics). letter ("s"), words [{ pic, en, audio }] that start with
      its sound, optional like (a Persian letter with nearly the same sound, e.g. "س"), say (what is spoken; the
-     words by default, so the child hears the shared first sound) and audio (a recording of the sound itself). */
+     words by default, so the child hears the shared first sound), audio (a recording of the sound itself) and
+     end: true (the words end with the letter instead, for x: box, fox, six). The letter may be two letters with
+     one sound ("sh"). */
   E.steps.letter = function (s, box, done) {
-    box.appendChild(el("p", { class: "prompt", text: B.t("enLetterPrompt") }));
+    var prompt = B.t(s.end ? "enLetterEndPrompt" : "enLetterPrompt");
+    box.appendChild(el("p", { class: "prompt", text: prompt }));
     box.appendChild(enText(el("p", { class: "letter-big en-big" }), s.letter.toUpperCase() + " " + s.letter));
     if (s.like) box.appendChild(el("p", { class: "hint", text: B.t("enLetterLike", { fa: s.like }) }));
     var say = s.say || s.words.map(function (w) { return w.en; }).join(". ");
     var row = el("div", { class: "en-words", dir: "ltr" });
     s.words.forEach(function (w) {
-      var first = w.en.slice(0, s.letter.length), rest = w.en.slice(s.letter.length);
+      var cut = s.end ? w.en.length - s.letter.length : s.letter.length;
       var label = enText(el("span", { class: "en-label" }));
       label.textContent = "";
-      label.appendChild(el("b", { class: "en-first", text: first }));
-      label.appendChild(document.createTextNode(rest));
+      if (s.end) {
+        label.appendChild(document.createTextNode(w.en.slice(0, cut)));
+        label.appendChild(el("b", { class: "en-first", text: w.en.slice(cut) }));
+      } else {
+        label.appendChild(el("b", { class: "en-first", text: w.en.slice(0, cut) }));
+        label.appendChild(document.createTextNode(w.en.slice(cut)));
+      }
       row.appendChild(el("button", { class: "en-word", type: "button", "aria-label": w.en, onclick: function () { B.speakEn(w.en, w.audio); } }, [
         el("span", { class: "en-pic", "aria-hidden": "true", text: w.pic }), label
       ]));
@@ -174,7 +182,7 @@ window.B = B;
     box.appendChild(row);
     var again = el("button", { class: "speak-btn", type: "button", "aria-label": B.t("enListenAgain"), onclick: function () { B.speakEn(say, s.audio); } }, [B.t("enListenAgain")]);
     box.appendChild(el("div", { class: "row", style: "justify-content:center" }, [again, E.nextBtn(null, function () { done(false); })]));
-    setTimeout(function () { if (box.isConnected) B.speakFaThenEn(B.t("enLetterPrompt"), say, s.audio); }, 400);
+    setTimeout(function () { if (box.isConnected) B.speakSeq([{ text: prompt, lang: "fa" }, { text: say, lang: "en", file: s.audio }]); }, 400);
   };
 
   /* tip: how to practise this lesson at home, for parents (who may know no English themselves). text. Not scored. */

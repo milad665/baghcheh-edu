@@ -2,7 +2,7 @@
 // itself needs no build step. Only the files a browser needs are taken, never desktop/ or android/.
 use std::{env, fs, path::Path};
 
-const TOP: &[&str] = &["index.html", "guide.html", "method.html", "policies.html", "open.html",
+const TOP: &[&str] = &["index.html", "guide.html", "method.html", "policies.html", "open.html", "browse.html",
     "manifest.webmanifest", "icon.svg", "sw.js"];
 // downloads/ holds the Android APK when CI has built it, so tablets can get it straight from the hub.
 const DIRS: &[&str] = &["js", "css", "fonts", "audio", "downloads"];

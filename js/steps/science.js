@@ -55,7 +55,7 @@ window.B = B;
       // The next thing appears at the top at once, without flying back up.
       thing.style.transition = "none";
       thing.className = "sci-thing";
-      thing.textContent = it.pic;
+      B.setArt(thing, it.pic);
       void thing.offsetWidth;
       thing.style.transition = "";
       ask.textContent = T("ask");
@@ -107,11 +107,10 @@ window.B = B;
     svg.appendChild(svgEl("path", { d: "M 290 " + GROUND + " A 130 112 0 0 0 30 " + GROUND, class: "sci-arc" }));
     var shade = svgEl("ellipse", { class: "sci-shade", cy: GROUND + 6, ry: 7 });
     svg.appendChild(shade);
-    var tree = svgEl("text", { x: X, y: GROUND + 4, class: "sci-tree", "text-anchor": "middle" });
-    tree.textContent = s.thing || "🌳";
+    var tree = B.svgArt(s.thing || "🌳", 58, "sci-tree");
+    tree.setAttribute("transform", "translate(" + X + " " + (GROUND - 23) + ")");
     svg.appendChild(tree);
-    var sun = svgEl("text", { class: "sci-sun", "text-anchor": "middle", "dominant-baseline": "central" });
-    sun.textContent = "☀️";
+    var sun = B.svgArt("☀️", 36, "sci-sun");
     svg.appendChild(sun);
     [["sciMorning", 292, "end"], ["sciNoon", 160, "middle"], ["sciEvening", 28, "start"]].forEach(function (l) {
       var t = svgEl("text", { x: l[1], y: 162, class: "sci-sky-label", "text-anchor": l[2] });
@@ -124,8 +123,7 @@ window.B = B;
     function draw() {
       var a = Math.PI * t;
       var sx = X + 130 * Math.cos(a), sy = GROUND - 112 * Math.sin(a);
-      sun.setAttribute("x", sx);
-      sun.setAttribute("y", sy);
+      sun.setAttribute("transform", "translate(" + sx + " " + sy + ")");
       var elev = Math.max(0.12, 1.25 * Math.sin(a));
       len = Math.min(150, H / Math.tan(elev));
       side = Math.cos(a) > 0 ? "left" : "right"; // the shadow falls away from the sun
@@ -204,16 +202,17 @@ window.B = B;
 
   /* ---------- home: an experiment to do at home, for the parent ----------
      pic (emoji), text (one short line for the child, read aloud), need [things], steps [what to do],
-     optional ask (a question to ask the child at the end). Only safe, everyday things. */
+     optional ask (a question to ask the child at the end), title and note (instead of the experiment's heading and
+     safety line, for home activities in other subjects). Only safe, everyday things. */
   E.steps.home = function (s, box, done) {
     box.appendChild(el("p", { class: "scene", "aria-hidden": "true", text: s.pic }));
     box.appendChild(el("p", { class: "prompt", text: s.text }));
     var sb = E.speakBtn(s.say || s.text, s.audio);
     if (sb) box.appendChild(sb);
     var tip = el("div", { class: "parent-tip sci-home" }, [
-      el("strong", { text: B.t("sciHomeTitle") }),
-      el("p", { class: "hint", text: B.t("sciHomeNote") }),
-      el("p", null, [el("strong", { text: B.t("sciHomeNeed") }), " " + s.need.join("، ")]),
+      el("strong", { text: s.title || B.t("sciHomeTitle") }),
+      el("p", { class: "hint", text: s.note || B.t("sciHomeNote") }),
+      el("p", null, [el("strong", { text: B.t("sciHomeNeed") }), " " + s.need.join(B.t("sciHomeSep"))]),
       el("strong", { text: B.t("sciHomeDo") }),
       el("ol", null, s.steps.map(function (x) { return el("li", { text: x }); }))
     ]);

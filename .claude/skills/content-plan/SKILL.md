@@ -30,7 +30,9 @@ the match.
 - Lesson ids are permanent (progress is stored by id). Use the id from the plan; never rename or renumber a
   built lesson. A new lesson gets the next free number in its subject and garden.
 - Push lessons into `B.LESSONS` in the same order as the rows in the plan: that order is what children see.
-- Set a row to 🔨 when its lesson first exists in `js/lessons/`, and to ✅ when it is finished and released.
+- Set a row to 🔨 when its lesson first exists in `js/lessons/`, and to ✅ in the same commit that adds the lesson
+  (✅ means committed: `tools/check-plan.js` reads git and fails if a committed lesson is still 🔨, or an uncommitted
+  one is ✅). Keep each row's title and "Content types" true to the lesson: the check compares both.
 - A new step type gets a line in the plan's "Content types" table (and in `README.md`); remove the 🆕 from the
   rows it unlocks.
 
@@ -39,7 +41,8 @@ the match.
 1. Update `CURRICULUM.md` in the same change: status, title, "Covers" and "Content types" of every lesson you
    touched, new rows for new lessons, removed rows for dropped plans, the subjects table for a new subject.
 2. Run `node tools/check-plan.js` and fix every ✗ it prints. For reading lessons also run
-   `node tools/check-reading.js`.
+   `node tools/check-reading.js`. When you commit, stage CURRICULUM.md with the lessons, set their rows to ✅,
+   and run the check again on the staged files before committing.
 3. In your summary to the user, say which plan rows changed.
 
 ## Changing only the plan

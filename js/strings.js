@@ -229,6 +229,35 @@ B.T = {
   feelAsk: "الان چه حسی داری؟",
   feelings: [["😊", "خوشحال"], ["😢", "ناراحت"], ["😠", "عصبانی"], ["😨", "ترسیده"], ["😴", "خسته"], ["😐", "نمی‌دانم"]],
   feelReply: "ممنون که گفتی. هر حسی که داری طبیعی است و می‌گذرد. اگر دوست داشتی، با بزرگ‌تری که دوستش داری درباره‌اش حرف بزن.",
+  // ---------- احساس‌های من (js/steps/feel.js) ----------
+  boxTitle: "نفس مربعی: با نقطه دور مربع برو و نفس بکش.",
+  boxIn: "آرام نفس بکش",
+  boxHold: "نگه دار",
+  boxOut: "آرام بیرون بده",
+  bodyAsk: "کجای بدنت حسش می‌کنی؟ هر جا را که حس می‌کنی بزن.",
+  bodyAria: "بدن",
+  bodyParts: { head: "سر", throat: "گلو", chest: "سینه و قلب", tummy: "شکم", hands: "دست‌ها", legs: "پاها" },
+  bodyReply: "{part}. ممنون که گفتی.",
+  bodyUnsure: "نمی‌دانم",
+  bodyUnsureReply: "اشکالی ندارد. گاهی پیدا کردنش سخت است. هر جا که حس کنی درست است.",
+  groundTitle: "بیا با چشم و گوش و دست‌هایمان به همین‌جا برگردیم. آرام، بدون عجله.",
+  groundStages: [
+    ["👀", 5, "پنج چیز را که می‌بینی نام ببر."],
+    ["👂", 4, "گوش کن. چهار صدا را که می‌شنوی نام ببر."],
+    ["✋", 3, "به سه چیز دست بزن. نرم است یا سفت؟ گرم است یا سرد؟"],
+    ["👃", 2, "دو بو را پیدا کن، یا دو بویی را که دوست داری به یاد بیاور."],
+    ["🌷", 1, "یک نفس آرام بکش."]
+  ],
+  groundTap: "هر چیزی را که گفتی، یک دایره را بزن.",
+  groundEnd: "آفرین! حالا حواست همین‌جاست، پیش ما.",
+  meterAsk: "این حس چقدر بزرگ است؟",
+  meterLevels: ["یک ذره", "کم", "متوسط", "زیاد", "خیلی زیاد"],
+  meterReply: "ممنون که گفتی. هر اندازه‌ای که باشد، طبیعی است.",
+  relaxTitle: "بیا بدنمان را آرام کنیم: اول سفت می‌کنیم، بعد ول می‌کنیم.",
+  relaxGo: "آماده‌ام",
+  relaxAgain: "یک بار دیگر",
+  relaxNext: "بعدی",
+  relaxEnd: "آفرین. حالا همه بدنت شل و آرام است.",
   finish: "تمام ←"
 };
 
@@ -306,6 +335,8 @@ Object.assign(B.T, {
   pairsRemember: "جفتش را قبلاً دیده بودی. یادت هست کجا بود؟",
   cardHidden: "کارت {n}",
   buildPrompt: "کلمه‌اش را بساز",
+  buildHiddenPrompt: "خوب گوش کن و کلمه‌ای را که می‌شنوی بساز",
+  buildNoVoice: "برای والدین: این کلمه را بلند و آرام بگویید (به کودک نشانش ندهید)",
   orderPrompt: "به ترتیب بچین",
   sortNow: "حالا جایش را انتخاب کن.",
   sortPickFirst: "اول یکی را انتخاب کن.",
@@ -334,6 +365,7 @@ Object.assign(B.T, {
   enListenPrompt: "گوش کن و تصویرش را پیدا کن.",
   enListenAgain: "🔊 دوباره گوش کن",
   enLetterPrompt: "به صدای اول هر کلمه گوش کن.",
+  enLetterEndPrompt: "به صدای آخر هر کلمه گوش کن.",
   enLetterLike: "صدایش شبیه «{fa}» است.",
   enNoVoice: "این دستگاه صدای انگلیسی ندارد. اگر می‌توانید، این را برای کودک بخوانید:",
   enTipTitle: "برای والدین: تمرین در خانه"
@@ -367,6 +399,7 @@ Object.assign(B.T, {
   sciHomeTitle: "🏠 آزمایش در خانه (برای والدین)",
   sciHomeNote: "وسیله‌هایش در هر خانه‌ای پیدا می‌شود. در تمام مدت کنار کودک بمانید.",
   sciHomeNeed: "وسیله‌ها:",
+  sciHomeSep: "، ",
   sciHomeDo: "چه کنیم:",
   sciHomeAsk: "از کودک بپرسید:"
 });
@@ -419,4 +452,96 @@ Object.assign(B.T, {
   codeReached: "رسید!",
   unpluggedFor: "این بخش را به پدر یا مادرت نشان بده.",
   unpluggedTitle: "بازی بدون صفحه، برای خانه"
+});
+
+// ---------- درس به انگلیسی (js/english-mode.js) ----------
+Object.assign(B.T, {
+  enModeOn: "🔤 English",
+  enModeOnHint: "همین درس را به انگلیسی ببین",
+  enModeOff: "🔤 فارسی",
+  enModeOffHint: "برگشت به فارسی"
+});
+
+// ---------- فارسی، دانه: دست بزن و بشمار (js/steps/reading.js) ----------
+Object.assign(B.T, {
+  clapPrompt: "اسمش را بگو. با هر تکه یک بار دست بزن.",
+  clapAria: "دست بزن",
+  clapReset: "از اول",
+  clapDone: "تمام شد",
+  clapFirst: "اول روی 👏 بزن.",
+  clapRight: "آفرین! {n} تکه دارد.",
+  clapTogether: "بیا با هم دست بزنیم و بشمریم.",
+  clapYourTurn: "حالا تو دست بزن.",
+  clapParts: "این کلمه {n} تکه دارد."
+});
+
+// ---------- مرور محتوا (browse.html، برای معلم‌ها، والدین و بازبین‌ها) ----------
+Object.assign(B.T, {
+  browseTitle: "مرور محتوا",
+  browseLead: "همه درس‌های باغچه، در همه موضوع‌ها و همه باغچه‌ها، گام به گام. هر درس را می‌توانید اجرا کنید؛ چیزی ذخیره نمی‌شود و پیشرفت هیچ کودکی تغییر نمی‌کند.",
+  browseSearch: "جستجو در درس‌ها",
+  browseSearchPlaceholder: "مثلاً: سیب، code، math-seed-3",
+  browseAllSubjects: "همه موضوع‌ها",
+  browseAllGardens: "همه باغچه‌ها",
+  browseAllTypes: "همه نوع گام‌ها",
+  browseEveryGarden: "همه باغچه‌ها",
+  browsePlanned: "نشان دادن درس‌های برنامه‌ریزی‌شده",
+  browseCount: "{n} درس، {s} گام",
+  browseNone: "درسی با این جستجو پیدا نشد.",
+  browseOverview: "نمای کلی",
+  browseOverviewHint: "هر خانه تعداد درس‌های ساخته‌شده است و عدد کوچک‌تر، درس‌های برنامه‌ریزی‌شده. روی هر خانه بزنید تا درس‌هایش را ببینید.",
+  browseBuilt: "ساخته شده",
+  browseBuilding: "در حال ساخت",
+  browsePlannedOne: "برنامه‌ریزی‌شده (هنوز ساخته نشده)",
+  browseNoPlan: "برنامه محتوا (CURRICULUM.md) روی این نسخه نیست، برای همین فقط درس‌های ساخته‌شده دیده می‌شوند.",
+  browsePlay: "▶ اجرای درس",
+  browsePlayFrom: "▶ اجرا از این گام",
+  browseStep: "گام {n}",
+  browseSteps: "{n} گام",
+  browseShowEnglish: "متن انگلیسی",
+  browseShowPersian: "متن فارسی",
+  browseCovers: "چه چیزی یاد می‌دهد",
+  browseTypes: "نوع محتوا",
+  browseRaw: "داده خام",
+  browseCopyLink: "پیوند این درس",
+  browseCopied: "پیوند کپی شد.",
+  browseBack: "برگشت به فهرست",
+  browseFinished: "درس تمام شد: {first} از {scored} گام نمره‌دار با اولین تلاش درست بود.",
+  browseFinishedNoScore: "درس تمام شد.",
+  browseNotBuilt: "این درس هنوز ساخته نشده و فقط در برنامه محتوا آمده است.",
+  browseOther: "بیرون از درس‌ها",
+  browsePlacement: "تعیین سطح",
+  browseActivities: "فعالیت‌های بیرون از صفحه",
+  browseActivitiesHint: "در برنامه روزانه والدین، هر روز یکی از این‌ها پیشنهاد می‌شود.",
+  browsePlacementHint: "والدین هر بخش را به کودک نشان می‌دهند و می‌گویند توانست یا «هنوز نه». اولین «هنوز نه» باغچه شروع را تعیین می‌کند.",
+  browseIfNot: "اگر هنوز نه: {garden}",
+  browseOpenApp: "رفتن به کلاس",
+  browseLink: "مرور همه محتوا",
+  browseFields: {
+    prompt: "راهنما", text: "متن", say: "خوانده می‌شود", question: "پرسش", options: "گزینه‌ها", answer: "پاسخ",
+    show: "نشان داده می‌شود", pic: "تصویر", word: "کلمه", parts: "تکه‌ها", letter: "حرف", items: "چیزها",
+    pairs: "جفت‌ها", scenes: "صحنه‌ها", caption: "زیرنویس", cast: "بازیگرها", baskets: "سبدها", seq: "الگو",
+    blanks: "جاهای خالی", forms: "شکل‌ها", example: "مثال", extra: "تکه‌های اضافه", need: "وسایل لازم",
+    steps: "کارها", tips: "نکته‌ها", words: "کلمه‌ها", scene: "صحنه", ask: "پرسش", label: "نام", basket: "سبد",
+    title: "عنوان", n: "تعداد", thing: "چیز", audio: "فایل صدا", tasks: "کارها", like: "شبیه صدای",
+    hidden: "کارت‌های پشت و رو", numbered: "شماره‌دار", bars: "میله‌ها", bills: "اسکناس‌ها", wallet: "کیف پول",
+    kind: "نوع آزمایش", blocks: "بلوک‌ها", face: "رو به", goal: "هدف", goalPic: "تصویر هدف", start: "شروع",
+    size: "اندازه صفحه", walls: "دیوارها", given: "برنامه‌ای که باید درست شود", repeat: "بلوک تکرار",
+    max: "بیشترین تعداد بلوک", hero: "شخصیت"
+  }
+});
+
+// ---------- ایران و جهان: نقشه (js/steps/world.js) ----------
+Object.assign(B.T, {
+  mapAria: "نقشه",
+  mapExplore: "روی هر جای نقشه بزن تا اسمش را بشنوی.",
+  mapDragHint: "روی جای درست بزن، یا این را رویش بکش.",
+  mapNotThis: "این {name} است.",
+  mapShow: "ببین، اینجاست. رویش بزن.",
+  mapShowNext: "ببین، حالا به اینجا برو.",
+  mapRouteNext: "حالا کجا برویم؟",
+  mapArrived: "رسیدیم!"
+});
+Object.assign(B.T.browseFields, {
+  map: "نقشه", find: "پیدا کن", route: "مسیر", walker: "رهگذر", labels: "نام جاها", note: "یادداشت"
 });

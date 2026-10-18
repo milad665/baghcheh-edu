@@ -50,6 +50,216 @@ B.LESSONS.push(
     ]
   },
 
+  // Seed lessons 4–10 are all heard: everything the child needs is said aloud, and pictures carry the words.
+  // `say` on a picture is the word it stands for; a tap says it.
+  {
+    id: "read-seed-4", subject: "read", level: "seed", emoji: "🐭", title: "کلمه‌های هم‌قافیه",
+    steps: [
+      { type: "story", prompt: "گوش بده: آخر این کلمه‌ها چه صدایی دارد؟",
+        cast: { mouse: "🐭", ear: "👂", lion: "🦁", cheese: "🧀" },
+        scenes: [
+          { caption: "این موش است.", at: { mouse: [70, 50, { size: 1.6 }] } },
+          { caption: "این گوش است.", at: { ear: [30, 50, { size: 1.6, act: "grow" }] } },
+          { caption: "موش، گوش! آخرشان یک‌جور صدا می‌دهد.", at: { mouse: [62, 50, { size: 1.6, act: "bounce" }], ear: [38, 50, { size: 1.6, act: "bounce" }] } },
+          { caption: "به این‌ها می‌گوییم کلمه‌های هم‌قافیه.", at: { mouse: [70, 30, { size: 1.1 }], ear: [30, 30, { size: 1.1 }] } },
+          { caption: "شیر، پنیر! این‌ها هم هم‌قافیه‌اند.", at: { lion: [70, 72, { size: 1.4, act: "bounce" }], cheese: [30, 72, { size: 1.4, act: "bounce" }] } }
+        ] },
+      { type: "choose", show: "🐭", prompt: "کدام با «موش» هم‌قافیه است؟", say: "موش. کدام با موش هم‌قافیه است؟ سیب؟ گوش؟ ماه؟", pic: true,
+        options: [{ label: "🍎", value: "سیب" }, { label: "👂", value: "گوش" }, { label: "🌙", value: "ماه" }], answer: "گوش" },
+      { type: "choose", show: "🌙", prompt: "کدام با «ماه» هم‌قافیه است؟", say: "ماه. کدام با ماه هم‌قافیه است؟ ماهی؟ نان؟ کلاه؟", pic: true,
+        options: [{ label: "🐟", value: "ماهی" }, { label: "🍞", value: "نان" }, { label: "🧢", value: "کلاه" }], answer: "کلاه" },
+      { type: "choose", show: "🐍", prompt: "کدام با «مار» هم‌قافیه است؟", say: "مار. کدام با مار هم‌قافیه است؟ خیار؟ گربه؟ توپ؟", pic: true,
+        options: [{ label: "🥒", value: "خیار" }, { label: "🐈", value: "گربه" }, { label: "⚽", value: "توپ" }], answer: "خیار" },
+      { type: "choose", show: "🌳", prompt: "کدام با «درخت» هم‌قافیه است؟", say: "درخت. کدام با درخت هم‌قافیه است؟ گل؟ تخت؟ دست؟", pic: true,
+        options: [{ label: "🌸", value: "گل" }, { label: "✋", value: "دست" }, { label: "🛏️", value: "تخت" }], answer: "تخت" },
+      { type: "choose", show: "🦁", prompt: "کدام با «شیر» هم‌قافیه است؟", say: "شیر. کدام با شیر هم‌قافیه است؟ پنیر؟ موز؟ خرس؟", pic: true,
+        options: [{ label: "🍌", value: "موز" }, { label: "🧀", value: "پنیر" }, { label: "🐻", value: "خرس" }], answer: "پنیر" },
+      { type: "pairs", prompt: "روی هر تصویر بزن و اسمش را بشنو. دو تصویر هم‌قافیه را با هم جفت کن.",
+        pairs: [[{ pic: "🐭", say: "موش" }, { pic: "👂", say: "گوش" }], [{ pic: "🌸", say: "گل" }, { pic: "🌉", say: "پل" }],
+          [{ pic: "🍞", say: "نان" }, { pic: "🦷", say: "دندان" }], [{ pic: "🐍", say: "مار" }, { pic: "🥒", say: "خیار" }]] }
+    ]
+  },
+  {
+    id: "read-seed-5", subject: "read", level: "seed", emoji: "👏", title: "دست بزن، بشمار",
+    steps: [
+      { type: "story", prompt: "ببین کیان چطور کلمه‌ها را تکه‌تکه می‌گوید",
+        cast: { boy: "👦", dad: "👨", ball: "⚽", fly: "🦋", c1: "👏", c2: "👏", c3: "👏" },
+        scenes: [
+          { caption: "کیان کلمه‌ها را تکه‌تکه می‌گوید و با هر تکه دست می‌زند.", at: { boy: [78, 50, { size: 1.6 }] } },
+          { caption: "بابا", say: "بابا. با ... با", at: { dad: [46, 24, { size: 1.3 }], c1: [36, 70, { act: "bounce" }], c2: [56, 70, { act: "bounce" }] } },
+          { caption: "دو تکه، دو بار دست.", at: { c1: [36, 70, { act: "grow" }], c2: [56, 70, { act: "grow" }] } },
+          { caption: "توپ", say: "توپ. توپ", at: { dad: null, c2: null, ball: [46, 24, { size: 1.3 }], c1: [46, 70, { act: "bounce" }] } },
+          { caption: "یک تکه، یک بار دست.", at: { c1: [46, 70, { act: "grow" }] } },
+          { caption: "پروانه", say: "پروانه. پَر ... وا ... نه", at: { ball: null, fly: [46, 24, { size: 1.3 }], c1: [26, 70, { act: "bounce" }], c2: [46, 70, { act: "bounce" }], c3: [66, 70, { act: "bounce" }] } },
+          { caption: "سه تکه، سه بار دست. حالا تو امتحان کن!", at: { boy: [78, 50, { size: 1.6, act: "bounce" }] } }
+        ] },
+      { type: "clap", pic: "👨", word: "بابا", parts: ["با", "با"] },
+      { type: "clap", pic: "⚽", word: "توپ", parts: ["توپ"] },
+      { type: "clap", pic: "🦋", word: "پروانه", parts: ["پَر", "وا", "نه"] },
+      { type: "choose", show: "🚗", prompt: "«ماشین» چند تکه دارد؟", say: "ماشین. چند بار دست می‌زنی؟ یک بار؟ دو بار؟ سه بار؟",
+        options: [{ label: "👏", value: "1" }, { label: "👏👏", value: "2" }, { label: "👏👏👏", value: "3" }], answer: "2" },
+      { type: "choose", show: "🍎", prompt: "«سیب» چند تکه دارد؟", say: "سیب. چند بار دست می‌زنی؟ یک بار؟ دو بار؟ سه بار؟",
+        options: [{ label: "👏", value: "1" }, { label: "👏👏", value: "2" }, { label: "👏👏👏", value: "3" }], answer: "1" },
+      { type: "clap", pic: "🦒", word: "زرافه", parts: ["زَ", "را", "فه"] },
+      { type: "choose", show: "🐈", prompt: "«گربه» چند تکه دارد؟", say: "گربه. چند بار دست می‌زنی؟ یک بار؟ دو بار؟ سه بار؟",
+        options: [{ label: "👏", value: "1" }, { label: "👏👏", value: "2" }, { label: "👏👏👏", value: "3" }], answer: "2" }
+    ]
+  },
+  {
+    id: "read-seed-6", subject: "read", level: "seed", emoji: "🐟", title: "با چه صدایی شروع می‌شود؟",
+    steps: [
+      { type: "story", prompt: "گوش بده: اول هر کلمه چه صدایی دارد؟",
+        cast: { fish: "🐟", mouse: "🐭", apple: "🍎" },
+        scenes: [
+          { caption: "ماهی با صدای «مـ» شروع می‌شود.", say: "ماهی. مـ ... ماهی. ماهی با صدای مـ شروع می‌شود.", at: { fish: [70, 45, { size: 1.6, act: "bounce" }], mouse: null, apple: null } },
+          { caption: "موش هم با صدای «مـ» شروع می‌شود.", say: "موش. مـ ... موش. موش هم با صدای مـ شروع می‌شود.", at: { mouse: [45, 45, { size: 1.6, act: "bounce" }] } },
+          { caption: "سیب با صدای «سـ» شروع می‌شود.", say: "سیب. سـ ... سیب. سیب با صدای سـ شروع می‌شود.", at: { apple: [20, 45, { size: 1.6, act: "bounce" }] } },
+          { caption: "ماهی و موش اولشان مثل هم است. سیب نه!", at: { fish: [70, 45, { size: 1.6, act: "grow" }], mouse: [50, 45, { size: 1.6, act: "grow" }], apple: [20, 45, { size: 1.2 }] } }
+        ] },
+      { type: "choose", show: "🐟", prompt: "کدام هم مثل «ماهی» شروع می‌شود؟", say: "ماهی. کدام هم مثل ماهی شروع می‌شود؟ موش؟ سیب؟ توپ؟", pic: true,
+        options: [{ label: "🐭", value: "موش" }, { label: "🍎", value: "سیب" }, { label: "⚽", value: "توپ" }], answer: "موش" },
+      { type: "choose", show: "🍎", prompt: "کدام هم مثل «سیب» شروع می‌شود؟", say: "سیب. کدام هم مثل سیب شروع می‌شود؟ نان؟ گربه؟ سبد؟", pic: true,
+        options: [{ label: "🍞", value: "نان" }, { label: "🐈", value: "گربه" }, { label: "🧺", value: "سبد" }], answer: "سبد" },
+      { type: "choose", show: "👨", prompt: "کدام هم مثل «بابا» شروع می‌شود؟", say: "بابا. کدام هم مثل بابا شروع می‌شود؟ ماهی؟ باران؟ سیر؟", pic: true,
+        options: [{ label: "🐟", value: "ماهی" }, { label: "🌧️", value: "باران" }, { label: "🧄", value: "سیر" }], answer: "باران" },
+      { type: "sort", prompt: "روی هر تصویر بزن و اسمش را بشنو. مثل «ماهی» شروع می‌شود یا مثل «سیب»؟",
+        say: "روی هر تصویر بزن و اسمش را بشنو. مثل ماهی شروع می‌شود یا مثل سیب؟",
+        baskets: [{ pic: "🐟", value: "م" }, { pic: "🍎", value: "س" }],
+        items: [{ pic: "🐭", say: "موش", basket: "م" }, { pic: "🧄", say: "سیر", basket: "س" }, { pic: "🍌", say: "موز", basket: "م" },
+          { pic: "⭐", say: "ستاره", basket: "س" }, { pic: "🚗", say: "ماشین", basket: "م" }, { pic: "🧺", say: "سبد", basket: "س" }] },
+      { type: "sort", prompt: "مثل «بابا» شروع می‌شود یا مثل «توپ»؟",
+        say: "روی هر تصویر بزن و اسمش را بشنو. مثل بابا شروع می‌شود یا مثل توپ؟",
+        baskets: [{ pic: "👨", value: "ب" }, { pic: "⚽", value: "ت" }],
+        items: [{ pic: "🌬️", say: "باد", basket: "ب" }, { pic: "🛏️", say: "تخت", basket: "ت" }, { pic: "🍆", say: "بادمجان", basket: "ب" },
+          { pic: "🥚", say: "تخم‌مرغ", basket: "ت" }, { pic: "🐑", say: "بره", basket: "ب" }, { pic: "🍓", say: "توت‌فرنگی", basket: "ت" }] },
+      { type: "pairs", prompt: "دو تصویری را جفت کن که اولشان مثل هم است.",
+        say: "روی هر تصویر بزن و اسمش را بشنو. دو تصویری را جفت کن که اولشان مثل هم است.",
+        pairs: [[{ pic: "🐟", say: "ماهی" }, { pic: "🐭", say: "موش" }], [{ pic: "🍎", say: "سیب" }, { pic: "⭐", say: "ستاره" }],
+          [{ pic: "👨", say: "بابا" }, { pic: "🌧️", say: "باران" }], [{ pic: "⚽", say: "توپ" }, { pic: "🛏️", say: "تخت" }]] }
+    ]
+  },
+  {
+    id: "read-seed-7", subject: "read", level: "seed", emoji: "👂", title: "قصه گوش کن",
+    steps: [
+      { type: "story", prompt: "به قصه گوش کن", bg: "street",
+        cast: { boy: "👦", gran: "👵", bread: "🫓", cheese: "🧀", tea: "🫖" },
+        scenes: [
+          { caption: "صبح است. نیما و مادربزرگ به نانوایی می‌روند.", at: { boy: [70, 62, { size: 1.2 }], gran: [84, 58, { size: 1.4 }] } },
+          { caption: "نانوا نان سنگک گرم می‌پزد.", at: { boy: [52, 62, { size: 1.2 }], gran: [66, 58, { size: 1.4 }], bread: [24, 56, { size: 1.4, act: "grow" }] } },
+          { caption: "نیما نان گرم را بغل می‌کند. چه بوی خوبی!", at: { bread: [44, 56, { size: 1.2, act: "bounce" }], boy: [50, 62, { size: 1.2, act: "bounce" }] } },
+          { caption: "در خانه، همه سر سفره صبحانه نان و پنیر و چای می‌خورند.", bg: "room", at: { bread: [36, 76], cheese: [50, 78], tea: [64, 76], boy: [24, 56, { size: 1.2 }], gran: [76, 60, { size: 1.4 }] } }
+        ],
+        question: "نیما و مادربزرگ کجا رفتند؟", pic: true,
+        options: [{ label: "🏫", value: "مدرسه" }, { label: "🫓", value: "نانوایی" }, { label: "🌳", value: "پارک" }], answer: "نانوایی" },
+      { type: "order", prompt: "اول چه شد؟ بعد؟ آخر؟ به ترتیب بچین.", numbered: true,
+        say: "اول چه شد؟ بعد چه شد؟ آخر چه شد؟ روی هر تصویر بزن و به ترتیب بچین.",
+        items: [{ pic: "👵👦", say: "نیما و مادربزرگ به نانوایی رفتند" }, { pic: "🫓", say: "نانوا نان پخت" }, { pic: "🧀", say: "سر سفره صبحانه خوردند" }] },
+      { type: "story", prompt: "به قصه گوش کن",
+        cast: { rain: "🌧️", girl: "👧", umbrella: "☂️", rainbow: "🌈", sun: "☀️" },
+        scenes: [
+          { caption: "در رشت باران می‌بارد.", at: { rain: [50, 18, { size: 1.6 }], girl: [70, 70, { size: 1.3 }] } },
+          { caption: "ترانه چترش را باز می‌کند و به حیاط می‌رود.", at: { umbrella: [44, 54, { size: 1.4, act: "grow" }], girl: [48, 72, { size: 1.3 }] } },
+          { caption: "باران بند می‌آید. رنگین‌کمان در آسمان پیدا می‌شود.", at: { rain: null, umbrella: null, sun: [84, 16], rainbow: [36, 24, { size: 2, act: "grow" }] } },
+          { caption: "ترانه رنگین‌کمان را نگاه می‌کند و می‌خندد.", at: { girl: [52, 70, { size: 1.3, act: "bounce" }] } }
+        ],
+        question: "ترانه آخر قصه چه حسی داشت؟", pic: true,
+        options: [{ label: "😢", value: "ناراحت" }, { label: "😄", value: "خوشحال" }, { label: "😠", value: "عصبانی" }], answer: "خوشحال" },
+      { type: "order", prompt: "اول چه شد؟ بعد؟ آخر؟ به ترتیب بچین.", numbered: true,
+        say: "اول چه شد؟ بعد چه شد؟ آخر چه شد؟ روی هر تصویر بزن و به ترتیب بچین.",
+        items: [{ pic: "🌧️", say: "باران آمد" }, { pic: "☂️", say: "ترانه چترش را باز کرد" }, { pic: "🌈", say: "رنگین‌کمان پیدا شد" }] },
+      { type: "story", prompt: "به قصه گوش کن", bg: "garden",
+        cast: { boy: "👦", kite: "🪁", tree: "🌳", grandpa: "👴" },
+        scenes: [
+          { caption: "آرش در باغ بادبادک هوا می‌کند.", at: { tree: [24, 50, { size: 2.4 }], boy: [72, 72, { size: 1.2 }], kite: [62, 22, { act: "bounce" }] } },
+          { caption: "باد تند می‌آید. بادبادک روی درخت گیر می‌کند.", at: { kite: [26, 30, { act: "shake" }] } },
+          { caption: "آرش ناراحت است. بادبادکش را می‌خواهد.", at: { boy: [60, 72, { size: 1.2 }] } },
+          { caption: "پدربزرگ با یک چوب بلند بادبادک را پایین می‌آورد.", at: { grandpa: [42, 66, { size: 1.4 }], kite: [44, 46, { act: "spin" }] } },
+          { caption: "آرش خوشحال می‌شود و از پدربزرگ تشکر می‌کند.", at: { kite: [60, 54], boy: [62, 72, { size: 1.2, act: "bounce" }] } }
+        ],
+        question: "وقتی بادبادک روی درخت گیر کرد، آرش چه حسی داشت؟", pic: true,
+        options: [{ label: "😄", value: "خوشحال" }, { label: "😢", value: "ناراحت" }, { label: "😴", value: "خواب‌آلود" }], answer: "ناراحت" },
+      { type: "order", prompt: "اول چه شد؟ بعد؟ آخر؟ به ترتیب بچین.", numbered: true,
+        say: "اول چه شد؟ بعد چه شد؟ آخر چه شد؟ روی هر تصویر بزن و به ترتیب بچین.",
+        items: [{ pic: "🪁", say: "آرش بادبادک هوا کرد" }, { pic: "🌳", say: "بادبادک روی درخت گیر کرد" }, { pic: "👴", say: "پدربزرگ بادبادک را پایین آورد" }] },
+      { type: "talk", scene: "👦 👵 🫓 🧀 🫖", caption: "قصه نانوایی را تو برای ما تعریف کن. اول چه شد؟" }
+    ]
+  },
+  {
+    id: "read-seed-8", subject: "read", level: "seed", emoji: "📖", title: "کتاب از کجا شروع می‌شود؟",
+    steps: [
+      { type: "story", prompt: "ببین کتاب فارسی را چطور می‌خوانیم", tall: true,
+        cast: { book: "📖", line1: "بابا آب داد.", line2: "سارا توپ دارد.", finger: "👆" },
+        scenes: [
+          { caption: "این یک کتاب قصه است. در کتاب، هم تصویر هست و هم نوشته.", at: { book: [50, 40, { size: 2.6, act: "grow" }], line1: null, line2: null, finger: null } },
+          { caption: "نوشته‌ها را از سمت راست شروع می‌کنیم.", at: { book: null, line1: [50, 30], finger: [74, 46, { act: "bounce" }] } },
+          { caption: "انگشت از راست به چپ می‌رود.", at: { finger: [28, 46] } },
+          { caption: "خط اول تمام شد. حالا می‌رویم خط پایین.", at: { line2: [50, 62], finger: [74, 78, { act: "bounce" }] } },
+          { caption: "باز هم از راست به چپ.", at: { finger: [28, 78] } },
+          { caption: "بین کلمه‌ها کمی جای خالی هست. این‌طوری کلمه‌ها را از هم جدا می‌کنیم.", at: { finger: null, line1: [50, 30, { act: "grow" }], line2: [50, 62, { act: "grow" }] } }
+        ] },
+      { type: "choose", prompt: "کدام نوشته است؟", say: "یکی نقاشی است و یکی نوشته. کدام نوشته است؟",
+        options: [{ label: "🐈", value: "نقاشی" }, { label: "گربه", value: "نوشته" }], answer: "نوشته" },
+      { type: "choose", prompt: "کدام نوشته است؟", say: "کدام نوشته است؟",
+        options: [{ label: "🍎", value: "سیب" }, { label: "🌳", value: "درخت" }, { label: "ماهی", value: "نوشته" }], answer: "نوشته" },
+      { type: "choose", prompt: "ستاره جایی است که خواندن شروع می‌شود. کدام درست است؟",
+        say: "ستاره جایی است که خواندن شروع می‌شود. در فارسی از کدام طرف شروع می‌کنیم؟ کدام درست است؟", stack: true,
+        options: [{ label: "بابا آب داد ⭐", value: "left" }, { label: "⭐ بابا آب داد", value: "right" }], answer: "right" },
+      { type: "choose", show: "سارا توپ دارد", prompt: "چند کلمه می‌بینی؟", say: "سارا توپ دارد. بین کلمه‌ها جای خالی هست. چند کلمه می‌بینی؟",
+        options: ["۲", "۳", "۴"], answer: "۳" },
+      { type: "choose", show: "باران آمد", prompt: "چند کلمه می‌بینی؟", say: "باران آمد. چند کلمه می‌بینی؟",
+        options: ["۱", "۲", "۳"], answer: "۲" },
+      { type: "choose", show: "مریم گل دارد", prompt: "اولین کلمه کدام است؟", say: "مریم گل دارد. اولین کلمه را پیدا کن. یادت باشد از راست شروع می‌کنیم.",
+        options: ["دارد", "گل", "مریم"], answer: "مریم" },
+      { type: "talk", scene: "📖 👧 👨", caption: "با هم یک کتاب قصه بخوانید. کتاب از کجا شروع می‌شود؟ انگشتت را زیر نوشته‌ها از راست به چپ ببر." }
+    ]
+  },
+  {
+    id: "read-seed-9", subject: "read", level: "seed", emoji: "🖍️", title: "خط‌های رنگی",
+    steps: [
+      { type: "trace", path: "down", prompt: "باران از بالا می‌بارد. از بالا به پایین خط بکش.",
+        say: "باران از بالا می‌بارد. اول ببین، بعد با انگشتت از بالا به پایین خط بکش." },
+      { type: "trace", path: "across", prompt: "از راست به چپ خط بکش، مثل وقتی فارسی می‌نویسیم.",
+        say: "حالا از راست به چپ خط بکش. فارسی را هم از راست به چپ می‌نویسیم." },
+      { type: "trace", path: "slant", prompt: "باد می‌آید و باران کج می‌بارد. کج خط بکش.",
+        say: "باد می‌آید و باران کج می‌بارد. از بالا شروع کن و کج پایین بیا." },
+      { type: "trace", path: "bowl", prompt: "یک کاسه بکش.", say: "یک کاسه بکش. از راست شروع کن، پایین برو و دوباره بالا بیا." },
+      { type: "trace", path: "hills", prompt: "از روی تپه‌ها بپر.", say: "خرگوش از روی تپه‌ها می‌پرد. از راست شروع کن و از روی تپه‌ها بپر." },
+      { type: "trace", path: "wave", prompt: "موج‌های دریا را بکش.", say: "موج‌های دریا بالا و پایین می‌روند. از راست شروع کن." },
+      { type: "trace", path: "zigzag", prompt: "کوه‌ها را بکش.", say: "کوه‌ها را بکش: بالا، پایین، بالا، پایین. از راست شروع کن." },
+      { type: "trace", path: "circle", prompt: "یک دایره بکش، مثل خورشید.", say: "یک دایره بکش، گرد مثل خورشید. از بالا شروع کن و دور بزن تا به همان‌جا برسی." },
+      { type: "doit", pic: "🖍️", text: "حالا روی کاغذ با مداد رنگی خط بکش.",
+        list: ["باران: از بالا به پایین", "راه: از راست به چپ", "موج و کوه", "یک خورشید گرد"] }
+    ]
+  },
+  {
+    id: "read-seed-10", subject: "read", level: "seed", emoji: "🎶", title: "بازی صداها",
+    steps: [
+      { type: "pairs", hidden: true, prompt: "کارت‌ها را برگردان و اسمشان را بشنو. دو تصویر هم‌قافیه را پیدا کن.",
+        say: "کارت‌ها را برگردان و اسمشان را بشنو. دو تصویر هم‌قافیه را پیدا کن.",
+        pairs: [[{ pic: "🐭", say: "موش" }, { pic: "👂", say: "گوش" }], [{ pic: "🌳", say: "درخت" }, { pic: "🛏️", say: "تخت" }],
+          [{ pic: "🌙", say: "ماه" }, { pic: "🧢", say: "کلاه" }]] },
+      { type: "sort", prompt: "هم‌قافیه با «موش» است یا با «پنیر»؟",
+        say: "روی هر تصویر بزن و اسمش را بشنو. هم‌قافیه با موش است یا با پنیر؟",
+        baskets: [{ pic: "🐭", value: "موش" }, { pic: "🧀", value: "پنیر" }],
+        items: [{ pic: "👂", say: "گوش", basket: "موش" }, { pic: "🦁", say: "شیر", basket: "پنیر" }, { pic: "🐰", say: "خرگوش", basket: "موش" },
+          { pic: "🧄", say: "سیر", basket: "پنیر" }] },
+      { type: "sort", prompt: "یک بار دست می‌زنی یا دو بار؟",
+        say: "روی هر تصویر بزن و اسمش را بشنو. با هر تکه دست بزن. یک بار دست می‌زنی یا دو بار؟",
+        baskets: [{ label: "👏", value: "1" }, { label: "👏👏", value: "2" }],
+        items: [{ pic: "⚽", say: "توپ", basket: "1" }, { pic: "🐟", say: "ماهی", basket: "2" }, { pic: "🍎", say: "سیب", basket: "1" },
+          { pic: "🐈", say: "گربه", basket: "2" }, { pic: "🐭", say: "موش", basket: "1" }, { pic: "🚗", say: "ماشین", basket: "2" }] },
+      { type: "sort", prompt: "مثل «پنگوئن» شروع می‌شود یا مثل «در»؟",
+        say: "روی هر تصویر بزن و اسمش را بشنو. مثل پنگوئن شروع می‌شود یا مثل در؟",
+        baskets: [{ pic: "🐧", value: "پ" }, { pic: "🚪", value: "د" }],
+        items: [{ pic: "🦋", say: "پروانه", basket: "پ" }, { pic: "🦷", say: "دندان", basket: "د" }, { pic: "🧀", say: "پنیر", basket: "پ" },
+          { pic: "✋", say: "دست", basket: "د" }, { pic: "🪶", say: "پر", basket: "پ" }, { pic: "🌊", say: "دریا", basket: "د" }] },
+      { type: "pairs", hidden: true, prompt: "کارت‌ها را برگردان. دو تصویری را پیدا کن که اولشان مثل هم است.",
+        say: "کارت‌ها را برگردان و اسمشان را بشنو. دو تصویری را پیدا کن که اولشان مثل هم است.",
+        pairs: [[{ pic: "🍎", say: "سیب" }, { pic: "⭐", say: "ستاره" }], [{ pic: "👨", say: "بابا" }, { pic: "🌧️", say: "باران" }],
+          [{ pic: "🐟", say: "ماهی" }, { pic: "🍌", say: "موز" }]] }
+    ]
+  },
+
   // ---------------- Reading: Sprout (first letters, syllables and words) ----------------
   {
     id: "read-sprout-1", subject: "read", level: "sprout", emoji: "💧", title: "«آ» و «ب»",
@@ -121,6 +331,35 @@ B.LESSONS.push(
           { pic: "🌧️", say: "باران", basket: "ب" }, { pic: "🧄", say: "سیر", basket: "س" }, { pic: "👨", say: "بابا", basket: "ب" }] },
       { type: "build", pic: "🧺", word: "سَبَد", parts: ["سَ", "بَد"], extra: ["با"], say: "سبد" },
       { type: "build", pic: "🌰", word: "بادام", parts: ["با", "دام"], extra: ["سَ"], say: "بادام" }
+    ]
+  },
+  {
+    id: "read-sprout-5", subject: "read", level: "sprout", emoji: "📖", title: "اولین جمله‌ها",
+    steps: [
+      { type: "blend", parts: ["آ", "مَد"], word: "آمَد", pic: "🚶", say: "آ ... مَد ... آمد" },
+      { type: "blend", parts: ["دا", "د"], word: "داد", pic: "🤲", say: "دا ... د ... داد" },
+      { type: "blend", parts: ["بابا", "آمَد"], word: "بابا آمَد.", pic: "👨", say: "بابا ... آمد ... بابا آمد" },
+      { type: "passage", text: "اَسب آمَد.", question: "چه کسی آمد؟",
+        options: [{ label: "👨", value: "بابا" }, { label: "🐴", value: "اَسب" }], answer: "اَسب", pic: true },
+      { type: "blend", parts: ["بابا", "آب", "داد"], word: "بابا آب داد.", pic: "💧", say: "بابا ... آب ... داد ... بابا آب داد" },
+      { type: "passage", text: "بابا بادام داد.", question: "بابا چه داد؟",
+        options: [{ label: "💧", value: "آب" }, { label: "🌰", value: "بادام" }, { label: "🧺", value: "سَبَد" }], answer: "بادام", pic: true },
+      { type: "passage", text: "سام آمَد. بابا سَبَد داد.", question: "بابا به سام چه داد؟",
+        options: [{ label: "🧺", value: "سَبَد" }, { label: "🐴", value: "اَسب" }, { label: "💧", value: "آب" }], answer: "سَبَد", pic: true },
+      { type: "passage", text: "اَسب آمَد. سام آب داد.", question: "سام به اسب چه داد؟",
+        options: [{ label: "🌰", value: "بادام" }, { label: "💧", value: "آب" }], answer: "آب", pic: true }
+    ]
+  },
+  {
+    id: "read-sprout-6", subject: "read", level: "sprout", emoji: "✏️", title: "کلمه‌ها را بساز",
+    steps: [
+      { type: "build", hidden: true, pic: "💧", word: "آب", parts: ["آ", "ب"], extra: ["د"], say: "آب" },
+      { type: "build", hidden: true, pic: "🌬️", word: "باد", parts: ["ب", "ا", "د"], extra: ["م"], say: "باد" },
+      { type: "build", hidden: true, pic: "🏠", word: "بام", parts: ["ب", "ا", "م"], extra: ["د"], say: "بام" },
+      { type: "build", hidden: true, pic: "👨", word: "بابا", parts: ["ب", "ا", "ب", "ا"], extra: ["م"], say: "بابا" },
+      { type: "build", hidden: true, pic: "🐴", word: "اَسب", parts: ["اَ", "س", "ب"], extra: ["آ"], say: "اسب" },
+      { type: "build", hidden: true, pic: "🧺", word: "سَبَد", parts: ["سَ", "بَ", "د"], extra: ["ا"], say: "سبد" },
+      { type: "build", hidden: true, pic: "🌰", word: "بادام", parts: ["ب", "ا", "د", "ا", "م"], extra: ["س"], say: "بادام" }
     ]
   },
 
