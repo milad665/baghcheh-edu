@@ -126,13 +126,13 @@ Pre-reading: oral language, listening, phonological awareness, telling shapes ap
 | ✅ | `read-seed-1` | کدام شبیه است؟ | Visual discrimination: shapes, then letter shapes | lesson (`choose`) |
 | ✅ | `read-seed-2` | با هم ببینیم و بگوییم | Dialogic talk about picture scenes with a grown-up | story (`talk`) |
 | ✅ | `read-seed-3` | بازی ببین و پیدا کن | Matching, sequencing, patterns | animation, game (`pairs`, `order`, `pattern`) |
-| 🔨 | `read-seed-4` | کلمه‌های هم‌قافیه | Rhyme: hear which words sound alike at the end (picture + spoken word) | animation, lesson (`choose` with `say`), game (`pairs`) |
-| 🔨 | `read-seed-5` | دست بزن، بشمار | Syllables: clap and count the parts of a word (one to three parts) | animation, lesson (`clap`, `choose`) |
-| 🔨 | `read-seed-6` | با چه صدایی شروع می‌شود؟ | First sound of a word (oral, pictures only): م، س، ب، ت | animation, lesson (`choose` with `say`), game (`sort` by first sound, `pairs`) |
-| 🔨 | `read-seed-7` | قصه گوش کن | Listening comprehension: three heard stories, what happened first/next/last, how a character felt, retelling | animation (`story` + `question`), game (`order` with `numbered`), story (`talk`) |
-| 🔨 | `read-seed-8` | کتاب از کجا شروع می‌شود؟ | Print concepts: writing vs pictures, right to left, top to bottom, words and spaces, the first word | animation, lesson (`choose`), story (`talk` with a real book) |
-| 🔨 | `read-seed-9` | خط‌های رنگی | Pre-writing: lines top to bottom and right to left, slants, a bowl, hills, waves, zigzags, a circle; each shown being drawn first, then traced; drawing them on paper | lesson (`trace` with `path`), home (`doit`) |
-| 🔨 | `read-seed-10` | بازی صداها | Unit game: rhyme, syllables, first sound (پ، د) | game (`pairs` with `hidden`, `sort`) |
+| ✅ | `read-seed-4` | کلمه‌های هم‌قافیه | Rhyme: hear which words sound alike at the end (picture + spoken word) | animation, lesson (`choose` with `say`), game (`pairs`) |
+| ✅ | `read-seed-5` | دست بزن، بشمار | Syllables: clap and count the parts of a word (one to three parts) | animation, lesson (`clap`, `choose`) |
+| ✅ | `read-seed-6` | با چه صدایی شروع می‌شود؟ | First sound of a word (oral, pictures only): م، س، ب، ت | animation, lesson (`choose` with `say`), game (`sort` by first sound, `pairs`) |
+| ✅ | `read-seed-7` | قصه گوش کن | Listening comprehension: three heard stories, what happened first/next/last, how a character felt, retelling | animation (`story` + `question`), game (`order` with `numbered`), story (`talk`) |
+| ✅ | `read-seed-8` | کتاب از کجا شروع می‌شود؟ | Print concepts: writing vs pictures, right to left, top to bottom, words and spaces, the first word | animation, lesson (`choose`), story (`talk` with a real book) |
+| ✅ | `read-seed-9` | خط‌های رنگی | Pre-writing: lines top to bottom and right to left, slants, a bowl, hills, waves, zigzags, a circle; each shown being drawn first, then traced; drawing them on paper | lesson (`trace` with `path`), home (`doit`) |
+| ✅ | `read-seed-10` | بازی صداها | Unit game: rhyme, syllables, first sound (پ، د) | game (`pairs` with `hidden`, `sort`) |
 
 ### 🌱 جوانه — `sprout`
 
@@ -144,8 +144,8 @@ First letters and short vowels; reading the first syllables and words.
 | ✅ | `read-sprout-2` | «د» و «م» | د م | lesson |
 | ✅ | `read-sprout-3` | «س» و «ـَ» | س and the short vowel ـَ | lesson |
 | ✅ | `read-sprout-4` | بازی حرف‌ها و صداها | Unit game: letters ↔ sounds, building words | game (`pairs`, `build`, `sort`) |
-| 🔨 | `read-sprout-5` | اولین جمله‌ها | First decodable phrases with آ ب د م س ـَ (بابا آمَد. بابا آب داد.) | story (`passage`), lesson (`blend`) |
-| 🔨 | `read-sprout-6` | کلمه‌ها را بساز | Spelling with known letters: hear a word, build it letter by letter (dictation: no word or picture shown until the end) | game (`build` with `hidden` and `extra`) |
+| ✅ | `read-sprout-5` | اولین جمله‌ها | First decodable phrases with آ ب د م س ـَ (بابا آمَد. بابا آب داد.) | story (`passage`), lesson (`blend`) |
+| ✅ | `read-sprout-6` | کلمه‌ها را بساز | Spelling with known letters: hear a word, build it letter by letter (dictation: no word or picture shown until the end) | game (`build` with `hidden` and `extra`) |
 
 ### 🌿 نهال — `sapling`
 
@@ -233,13 +233,13 @@ Goal: number sense through objects and pictures (Seed, Sprout), place value and 
 | ✅ | `math-seed-1` | شمردن تا پنج | Counting objects to 5 | lesson (`count`) |
 | ✅ | `math-seed-2` | شمردن تا ده | Counting objects to 10 | lesson (`count`) |
 | ✅ | `math-seed-3` | بازی غذا دادن | One-to-one, counting out a number, patterns | animation, game (`feed`, `pairs`, `pattern`, `order`) |
-| 🔨 | `math-seed-4` | بزرگ و کوچک | Size: bigger/smaller (bazaar, animals), longer/shorter, taller (children and a tree in the yard) | animation, lesson (`measure`, `choose`) |
-| 🔨 | `math-seed-5` | دسته کن | Sorting by colour (two, then three baskets), by shape (round / four-cornered, colours mixed), by size | game (`sort`) |
-| 🔨 | `math-seed-6` | کجاست؟ | Position words: بالا، پایین، جلو، پشت، کنار، داخل (picture stories with questions, then up/down with the body) | animation, lesson (`choose`) |
-| 🔨 | `math-seed-7` | شکل‌های دور و بر ما | Circle, square, triangle: naming them, then finding them in everyday things; a shape hunt at home | lesson (`shape`), home (`doit`) |
-| 🔨 | `math-seed-8` | الگو بساز | Repeating patterns AB, AAB, ABC (colours, salad, clapping, a carpet), filling one to three places | game (`pattern`) |
-| 🔨 | `math-seed-9` | عددها را بشناسیم | Numerals ۱–۵ ↔ quantities: each numeral shown with things, matched to dots and pictures, giving a numeral's worth, putting ۱–۵ in order | animation, game (`pairs` numeral ↔ dots, `feed`, `order`), lesson (`choose`) |
-| 🔨 | `math-seed-10` | بازی شمردن | Unit game: count out to 5, memory game numeral ↔ dots and pictures, order by quantity, count back from ۵ | game (`feed`, `pairs` with `hidden`, `order`) |
+| ✅ | `math-seed-4` | بزرگ و کوچک | Size: bigger/smaller (bazaar, animals), longer/shorter, taller (children and a tree in the yard) | animation, lesson (`measure`, `choose`) |
+| ✅ | `math-seed-5` | دسته کن | Sorting by colour (two, then three baskets), by shape (round / four-cornered, colours mixed), by size | game (`sort`) |
+| ✅ | `math-seed-6` | کجاست؟ | Position words: بالا، پایین، جلو، پشت، کنار، داخل (picture stories with questions, then up/down with the body) | animation, lesson (`choose`) |
+| ✅ | `math-seed-7` | شکل‌های دور و بر ما | Circle, square, triangle: naming them, then finding them in everyday things; a shape hunt at home | lesson (`shape`), home (`doit`) |
+| ✅ | `math-seed-8` | الگو بساز | Repeating patterns AB, AAB, ABC (colours, salad, clapping, a carpet), filling one to three places | game (`pattern`) |
+| ✅ | `math-seed-9` | عددها را بشناسیم | Numerals ۱–۵ ↔ quantities: each numeral shown with things, matched to dots and pictures, giving a numeral's worth, putting ۱–۵ in order | animation, game (`pairs` numeral ↔ dots, `feed`, `order`), lesson (`choose`) |
+| ✅ | `math-seed-10` | بازی شمردن | Unit game: count out to 5, memory game numeral ↔ dots and pictures, order by quantity, count back from ۵ | game (`feed`, `pairs` with `hidden`, `order`) |
 
 ### 🌱 جوانه — `sprout`
 
@@ -253,11 +253,11 @@ Goal: number sense through objects and pictures (Seed, Sprout), place value and 
 | ✅ | `math-sprout-6` | کم کردن تا ده | Subtraction to 10 | lesson (`tenframe` with `minus`, `choose`) |
 | ✅ | `math-sprout-7` | شکل‌ها | Naming and recognising 2D shapes, turned and stretched | lesson (`shape`) |
 | ✅ | `math-sprout-8` | بازی جمع | Unit game: addition | animation, game (`feed`, `pairs`, `order`, `pattern`) |
-| 🔨 | `math-sprout-9` | نوشتن عددها | Writing digits ۱–۹ and ۰, each shown being written first (۷ and ۸ side by side as opposites); Persian only, no English version | lesson (`trace` of digits) |
-| 🔨 | `math-sprout-10` | قبل و بعد | Number order to 20: before, after, between (house numbers in an alley, one hop on the number line, then numbers alone; putting ۱۱–۲۰ in order) | animation, lesson (`numline`, `choose`), game (`order` with `ltr`) |
-| 🔨 | `math-sprout-11` | قصه جمع و تفریق | Word problems to 10 told as stories: three animated stories to count (adding and taking away), then stories heard with the number sentence, then a story alone | animation (`story` + `question`), lesson (`choose`) |
-| 🔨 | `math-sprout-12` | صبح، ظهر، شب | Time order: parts of the day (a child's day from breakfast to bed), days of the week from شنبه to جمعه, the day before and after | animation, game (`order`), lesson (`choose`) |
-| 🔨 | `math-sprout-13` | بازی عددها تا بیست | Unit game: numbers to 20: counting out 12, teen numbers as two hands (ten) and dots, counting on, back from 20 and in twos | game (`pairs`, `pattern`, `feed`) |
+| ✅ | `math-sprout-9` | نوشتن عددها | Writing digits ۱–۹ and ۰, each shown being written first (۷ and ۸ side by side as opposites); Persian only, no English version | lesson (`trace` of digits) |
+| ✅ | `math-sprout-10` | قبل و بعد | Number order to 20: before, after, between (house numbers in an alley, one hop on the number line, then numbers alone; putting ۱۱–۲۰ in order) | animation, lesson (`numline`, `choose`), game (`order` with `ltr`) |
+| ✅ | `math-sprout-11` | قصه جمع و تفریق | Word problems to 10 told as stories: three animated stories to count (adding and taking away), then stories heard with the number sentence, then a story alone | animation (`story` + `question`), lesson (`choose`) |
+| ✅ | `math-sprout-12` | صبح، ظهر، شب | Time order: parts of the day (a child's day from breakfast to bed), days of the week from شنبه to جمعه, the day before and after | animation, game (`order`), lesson (`choose`) |
+| ✅ | `math-sprout-13` | بازی عددها تا بیست | Unit game: numbers to 20: counting out 12, teen numbers as two hands (ten) and dots, counting on, back from 20 and in twos | game (`pairs`, `pattern`, `feed`) |
 
 ### 🌿 نهال — `sapling`
 
@@ -342,16 +342,16 @@ the parent notes) before launch.
 | St | Lesson | Title | Covers | Content types |
 |---|---|---|---|---|
 | ✅ | `feel-1` | نفس گل و شمع | Slow breathing (smell the flower, blow the candle); how do I feel now | calm (`breathe`, `feelings`) |
-| 🔨 | `feel-2` | اسم احساس‌ها | Naming feelings from faces and situations: خوشحال، غمگین، عصبانی، نگران، ترسیده، آرام; when do I feel them; how do I feel now | animation, game (`pairs` face ↔ word, `practice`), story (`talk`), calm (`feelings`) |
-| 🔨 | `feel-3` | احساس در بدن من | Where a feeling is felt in the body (happy, worried, angry), then slow breathing | animation, calm (`body`, `breathe`) |
-| 🔨 | `feel-4` | نفس مربعی | A second breathing pattern (in 4, hold 4, out 4, hold 4); how do I feel now | animation, calm (`breathe` `pattern`, `feelings`) |
-| 🔨 | `feel-5` | پنج چیز که می‌بینم | Grounding: 5 things I see, 4 I hear, 3 I touch, 2 I smell, 1 slow breath | animation, calm (`ground`, `feelings`) |
-| 🔨 | `feel-6` | وقتی نگرانم | Worry: a squirrel worried before the first day of school, telling a grown-up, breathing together; a parent note on when to get professional help (`guide.html#feelings`) | animation, story (`talk`), calm (`breathe`), parent tip (`forparents`) |
-| 🔨 | `feel-7` | دماسنج خشم | Anger: how big is my anger, what I can do instead (stop, breathe, say it) | animation, calm (`meter`, `breathe`), game (`sort`, `practice`) |
-| 🔨 | `feel-8` | دوستی و مهربانی | Being a friend, sharing, saying sorry; kind words (سلام، ممنون، بفرما، ببخشید) | animation, game (`pairs`, `practice`), story (`talk`) |
-| 🔨 | `feel-9` | وقتی دعوا می‌شود | Solving a conflict in steps: stop, breathe, say how I feel, find a way (taking turns) | animation, game (`order`, `practice`), story (`talk`) |
-| 🔨 | `feel-10` | خواب آرام | Bedtime routine and relaxing the body part by part | game (`order`, `practice`), calm (`relax`, `breathe`) |
-| 🔨 | `feel-11` | سه چیز خوب امروز | Gratitude and good moments: three good things today | animation, story (`talk`), home (`doit`) |
+| ✅ | `feel-2` | اسم احساس‌ها | Naming feelings from faces and situations: خوشحال، غمگین، عصبانی، نگران، ترسیده، آرام; when do I feel them; how do I feel now | animation, game (`pairs` face ↔ word, `practice`), story (`talk`), calm (`feelings`) |
+| ✅ | `feel-3` | احساس در بدن من | Where a feeling is felt in the body (happy, worried, angry), then slow breathing | animation, calm (`body`, `breathe`) |
+| ✅ | `feel-4` | نفس مربعی | A second breathing pattern (in 4, hold 4, out 4, hold 4); how do I feel now | animation, calm (`breathe` `pattern`, `feelings`) |
+| ✅ | `feel-5` | پنج چیز که می‌بینم | Grounding: 5 things I see, 4 I hear, 3 I touch, 2 I smell, 1 slow breath | animation, calm (`ground`, `feelings`) |
+| ✅ | `feel-6` | وقتی نگرانم | Worry: a squirrel worried before the first day of school, telling a grown-up, breathing together; a parent note on when to get professional help (`guide.html#feelings`) | animation, story (`talk`), calm (`breathe`), parent tip (`forparents`) |
+| ✅ | `feel-7` | دماسنج خشم | Anger: how big is my anger, what I can do instead (stop, breathe, say it) | animation, calm (`meter`, `breathe`), game (`sort`, `practice`) |
+| ✅ | `feel-8` | دوستی و مهربانی | Being a friend, sharing, saying sorry; kind words (سلام، ممنون، بفرما، ببخشید) | animation, game (`pairs`, `practice`), story (`talk`) |
+| ✅ | `feel-9` | وقتی دعوا می‌شود | Solving a conflict in steps: stop, breathe, say how I feel, find a way (taking turns) | animation, game (`order`, `practice`), story (`talk`) |
+| ✅ | `feel-10` | خواب آرام | Bedtime routine and relaxing the body part by part | game (`order`, `practice`), calm (`relax`, `breathe`) |
+| ✅ | `feel-11` | سه چیز خوب امروز | Gratitude and good moments: three good things today | animation, story (`talk`), home (`doit`) |
 
 ---
 
@@ -374,8 +374,8 @@ Looking closely at the world around us.
 | ✅ | `science-seed-2` | پنج حس | The five senses | animation, game (`pairs`), lesson (`choose`), home |
 | ✅ | `science-seed-3` | دانه چطور سبز می‌شود؟ | How a seed grows; what a plant needs (water, light) | animation, game (`order`), lesson (`choose`), home |
 | ✅ | `science-seed-4` | خانه و غذای حیوان‌ها | Animals, their homes and food | game (`pairs`, `sort`), animation, home |
-| 🔨 | `science-seed-5` | امروز هوا چطور است؟ | Weather and what we wear | animation, game (`sort`), home |
-| 🔨 | `science-seed-6` | رنگ‌ها را قاطی کن | Mixing colours: red, yellow, blue make orange, green, purple (guess, then mix) | animation, lesson (`choose`), home |
+| ✅ | `science-seed-5` | امروز هوا چطور است؟ | Weather and what we wear | animation, game (`sort`), home |
+| ✅ | `science-seed-6` | رنگ‌ها را قاطی کن | Mixing colours: red, yellow, blue make orange, green, purple (guess, then mix) | animation, lesson (`choose`), home |
 
 ### 🌱 جوانه — `sprout`
 
@@ -388,7 +388,7 @@ Guess, try, see.
 | ✅ | `science-sprout-3` | روی آب یا زیر آب؟ | Floating and sinking | inquiry (`test` float), game (`sort`), home |
 | ✅ | `science-sprout-4` | روز و شب | Day and night | animation, game (`order`, `sort`), home |
 | ✅ | `science-sprout-5` | چهار فصل | Seasons and how nature changes | animation, game (`order`, `pattern`), home |
-| 🔨 | `science-sprout-6` | از چه ساخته شده؟ | Materials: wood, metal, plastic, glass, cloth; which float | animation, game (`sort`), inquiry (`test`), home |
+| ✅ | `science-sprout-6` | از چه ساخته شده؟ | Materials: wood, metal, plastic, glass, cloth; which float | animation, game (`sort`), inquiry (`test`), home |
 
 ### 🌿 نهال — `sapling`
 
@@ -457,8 +457,8 @@ Listen, point, say.
 | ✅ | `english-seed-4` | حیوان‌ها | Animals | animation, lesson, game (`pairs`), parent tip |
 | ✅ | `english-seed-5` | خانواده | Family words | animation, lesson, parent tip |
 | ✅ | `english-seed-6` | بدن من | Body parts | animation, lesson, parent tip |
-| 🔨 | `english-seed-7` | خوراکی‌ها | Food and drink words; asking with «please» at breakfast | animation, lesson (`words`, `listen`), game (`pairs` with `hidden`), parent tip |
-| 🔨 | `english-seed-8` | بازی کلمه‌ها | Unit game: words from the Seed garden (animals, food, body, family, numbers, animal sounds) | game (`pairs`, `sort`) |
+| ✅ | `english-seed-7` | خوراکی‌ها | Food and drink words; asking with «please» at breakfast | animation, lesson (`words`, `listen`), game (`pairs` with `hidden`), parent tip |
+| ✅ | `english-seed-8` | بازی کلمه‌ها | Unit game: words from the Seed garden (animals, food, body, family, numbers, animal sounds) | game (`pairs`, `sort`) |
 
 ### 🌱 جوانه — `sprout`
 
@@ -471,12 +471,12 @@ Letters and their sounds, a few at a time; short words from them.
 | ✅ | `english-sprout-3` | حرف‌های g o c k | g o c k | lesson, game, parent tip |
 | ✅ | `english-sprout-4` | حرف‌های e u r | e u r | lesson, game (`build`, `pairs`), parent tip |
 | ✅ | `english-sprout-5` | حرف‌های h b f l | h b f l | lesson, game, parent tip |
-| 🔨 | `english-sprout-6` | حرف‌های j v w x y z q | The remaining letters (x heard at the end: box, fox; q with u: queen); fox | lesson (`letter`, `listen`), game (`pairs`, `build`), parent tip |
-| 🔨 | `english-sprout-7` | حرف بزرگ، حرف کوچک | Uppercase ↔ lowercase, b and d, names start with a capital (Sara, Reza) | game (`pairs`, `sort`), lesson (`listen`), parent tip |
-| 🔨 | `english-sprout-8` | کلمه‌های پرکاربرد | First sight words: I, a, the, is, see, my; reading «I see my cat.» | animation, game (`pairs`, `build`, `order`), lesson (`listen`), parent tip |
-| 🔨 | `english-sprout-9` | sh، ch، th | Two letters, one sound; fish, bath, shop | lesson (`letter`, `listen`), game (`sort`, `build`), parent tip |
-| 🔨 | `english-sprout-10` | نوشتن حرف‌ها | Writing small letters on the line, from the right starting point, by family: round (c a d), tall sticks (l t), humps (n), s; the rest on paper (parent tip) | lesson (`trace` of Latin letters), parent tip |
-| 🔨 | `english-sprout-11` | نوشتن کلمه‌ها | Hear a short word, build it, then write it letter by letter (cat, sun; bed on paper) | game (`build`), lesson (`trace` of Latin letters), parent tip |
+| ✅ | `english-sprout-6` | حرف‌های j v w x y z q | The remaining letters (x heard at the end: box, fox; q with u: queen); fox | lesson (`letter`, `listen`), game (`pairs`, `build`), parent tip |
+| ✅ | `english-sprout-7` | حرف بزرگ، حرف کوچک | Uppercase ↔ lowercase, b and d, names start with a capital (Sara, Reza) | game (`pairs`, `sort`), lesson (`listen`), parent tip |
+| ✅ | `english-sprout-8` | کلمه‌های پرکاربرد | First sight words: I, a, the, is, see, my; reading «I see my cat.» | animation, game (`pairs`, `build`, `order`), lesson (`listen`), parent tip |
+| ✅ | `english-sprout-9` | sh، ch، th | Two letters, one sound; fish, bath, shop | lesson (`letter`, `listen`), game (`sort`, `build`), parent tip |
+| ✅ | `english-sprout-10` | نوشتن حرف‌ها | Writing small letters on the line, from the right starting point, by family: round (c a d), tall sticks (l t), humps (n), s; the rest on paper (parent tip) | lesson (`trace` of Latin letters), parent tip |
+| ✅ | `english-sprout-11` | نوشتن کلمه‌ها | Hear a short word, build it, then write it letter by letter (cat, sun; bed on paper) | game (`build`), lesson (`trace` of Latin letters), parent tip |
 
 ### 🌿 نهال — `sapling`
 
@@ -705,14 +705,14 @@ Me, my family, my home, my neighbourhood; the first picture maps; Nowruz; childr
 
 | St | Lesson | Title | Covers | Content types |
 |---|---|---|---|---|
-| 🔨 | `world-seed-1` | من و خانواده‌ام | My family: who is who, what we do together; every family is different (families in Shiraz, Gonbad, Rasht, Ahvaz) | animation, story (`talk`), game (`pairs`), home |
-| 🔨 | `world-seed-2` | خانه ما از بالا | Looking from above: a room seen from above, finding things on a picture map of a room and of a whole home; a ball from above is a circle | animation, `map` (picture map), lesson (`choose`), home (draw a map of your room) |
-| 🔨 | `world-seed-3` | محله ما | Places in the neighbourhood (نانوایی، مدرسه، پارک، درمانگاه) and the people who work there; crossing the street with a grown-up | animation, `map` (neighbourhood, tap to hear), game (`pairs`, `sort`), lesson (`choose`), home (walk and name places) |
-| 🔨 | `world-seed-4` | راه خانه تا نانوایی | Following a route on a picture map; near and far | animation, `map` (route, near / far), game (`order`), home (walk and draw the route) |
-| 🔨 | `world-seed-5` | نوروز | Nowruz: spring, cleaning the house, سبزه, هفت‌سین, visiting family, عیدی | animation, game (`pairs` with `hidden`, `sort`), lesson (`choose`), story (`talk`), home |
-| 🔨 | `world-seed-6` | بازی‌های بچه‌های ایران | Traditional games (لی‌لی، هفت‌سنگ، یه‌قل‌دوقل، قایم‌موشک) played by children in Tehran, Tabriz, Khorramabad and Chabahar | animation, lesson (`count`), home (`doit`) |
-| 🔨 | `world-seed-7` | بچه‌های دنیا | Children around the world (Iran, Japan, Kenya, Brazil): food, school, games, weather, hello; same first, then different | animation, game (`sort` same / different, `pairs`), story (`talk`) |
-| 🔨 | `world-seed-8` | بازی خانه و محله | Unit game: workers and places, rooms of a home, a day with the family, Nowruz in order | game (`pairs` with `hidden`, `sort`, `order`) |
+| ✅ | `world-seed-1` | من و خانواده‌ام | My family: who is who, what we do together; every family is different (families in Shiraz, Gonbad, Rasht, Ahvaz) | animation, story (`talk`), game (`pairs`), home |
+| ✅ | `world-seed-2` | خانه ما از بالا | Looking from above: a room seen from above, finding things on a picture map of a room and of a whole home; a ball from above is a circle | animation, `map` (picture map), lesson (`choose`), home (draw a map of your room) |
+| ✅ | `world-seed-3` | محله ما | Places in the neighbourhood (نانوایی، مدرسه، پارک، درمانگاه) and the people who work there; crossing the street with a grown-up | animation, `map` (neighbourhood, tap to hear), game (`pairs`, `sort`), lesson (`choose`), home (walk and name places) |
+| ✅ | `world-seed-4` | راه خانه تا نانوایی | Following a route on a picture map; near and far | animation, `map` (route, near / far), game (`order`), home (walk and draw the route) |
+| ✅ | `world-seed-5` | نوروز | Nowruz: spring, cleaning the house, سبزه, هفت‌سین, visiting family, عیدی | animation, game (`pairs` with `hidden`, `sort`), lesson (`choose`), story (`talk`), home |
+| ✅ | `world-seed-6` | بازی‌های بچه‌های ایران | Traditional games (لی‌لی، هفت‌سنگ، یه‌قل‌دوقل، قایم‌موشک) played by children in Tehran, Tabriz, Khorramabad and Chabahar | animation, lesson (`count`), home (`doit`) |
+| ✅ | `world-seed-7` | بچه‌های دنیا | Children around the world (Iran, Japan, Kenya, Brazil): food, school, games, weather, hello; same first, then different | animation, game (`sort` same / different, `pairs`), story (`talk`) |
+| ✅ | `world-seed-8` | بازی خانه و محله | Unit game: workers and places, rooms of a home, a day with the family, Nowruz in order | game (`pairs` with `hidden`, `sort`, `order`) |
 
 ### 🌱 جوانه — `sprout`
 
