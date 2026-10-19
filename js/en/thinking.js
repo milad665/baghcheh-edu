@@ -107,12 +107,19 @@ B.EN = B.EN || {};
       { text: "Now you are the robot and you only understand three commands: “One step forward”, “Turn right” and “Turn left”. Your child has to guide you from this room to the kitchen. Follow every command exactly. If a wall or a sofa is in front of you, stop and say “Beep! The way is blocked.”" }
     ] },
     "think-sapling-3": { title: "Repeat", steps: [
+      // In English the coding game's program reads left to right, so the scene's board does too: the blocks, the
+      // ring that shows the running block and the repeat block are laid out mirrored (tracks matched by position).
       { prompt: "See how the robot reaches the flag",
-        cast: { plan: "🔁 4 times: 👣" },
+        parts: { f1: { at: [32, 18] }, f2: { at: [52, 18] }, f3: { at: [72, 18] }, f4: { at: [92, 18] },
+          loop: { art: "block-repeat-ltr", at: [60, 18] }, body: { at: [60, 18] }, now: { at: [32, 18] } },
         scenes: [{ caption: "The robot wants to reach the flag." },
-          { caption: "Forward, forward, forward, forward. Four blocks, all the same!" },
-          { caption: "Instead, we can say: “Repeat 4 times: forward.”" },
-          { caption: "This is the “repeat” block. The program got shorter!" }],
+          { caption: "Forward, forward, forward, forward. Four blocks, all the same!",
+            do: [{}, {}, {}, {}, {}, {}, { to: { x: 52 } }, {}, { to: { x: 72 } }, {}, { to: { x: 92 } }] },
+          { caption: "Instead, we can say: “Repeat 4 times: forward.”",
+            do: [{}, {}, {}, {}, { to: { x: 60 } }, { to: { x: 60 } }, { to: { x: 60 } }, { to: { x: 60 } }] },
+          { caption: "The robot repeats the same “forward” 4 times: 1, 2, 3, 4!", do: [{ to: { x: 60 } }] },
+          { caption: "This is the “repeat” block. The program got shorter!",
+            do: [{}, {}, { to: { x: 32 } }, { to: { x: 52 } }, { to: { x: 72 } }, { to: { x: 92 } }] }],
         question: "With “repeat”, did the program get shorter or longer?", options: ["Shorter", "Longer"], answer: "Shorter" },
       { prompt: "You only have two blocks! Use “repeat”, put “forward” inside it, and set the number so it is right." },
       { prompt: "This program has a bug. Fix the number of repeats." },
@@ -127,7 +134,7 @@ B.EN = B.EN || {};
           { caption: "We compare the first two: 5 is bigger than 2, so we swap them." },
           { caption: "Now 5 and 8: they are in the right order. We don't swap them." },
           { caption: "8 and 3: 8 is bigger, so we swap them." },
-          { caption: "Another go from the start: we swap 5 and 3 too." },
+          { caption: "Another go from the start: 2 and 5 are fine. We swap 5 and 3." },
           { caption: "They are all in order: 2, 3, 5, 8." }
         ],
         question: "In this way, how many numbers do we compare each time?" },

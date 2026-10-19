@@ -47,13 +47,47 @@ B.LESSONS.push(
   {
     id: "think-seed-3", subject: "think", level: "seed", emoji: "🌻", title: "قدم به قدم",
     steps: [
-      { type: "story", prompt: "ببین گل چطور بزرگ می‌شود",
-        cast: { seed: "🌰", water: "💧", sprout: "🌱", flower: "🌻", sun: "☀️" },
+      /* One step after another: plant, water, sprout, flower. The number in the corner counts the steps.
+         Drawings: js/art/rig-think.js. */
+      { type: "scene", prompt: "ببین گل چطور بزرگ می‌شود", bg: "#d6eef8",
+        parts: {
+          sun: { art: "sun", at: [140, 16] }, bed: { art: "garden-bed" }, wet: { art: "wet-soil", at: [80, 66], o: 0 },
+          stem: { art: "stem", at: [80, 63], sy: 0 }, leaves: { art: "leaves", at: [80, 52], s: 0 },
+          flower: { art: "flower-head", at: [80, 23], s: 0, r: -120 },
+          seed: { art: "seed", at: [80, -14], s: 1.5 }, heap: { art: "soil-heap", at: [80, 67], s: 0 },
+          hand: { art: "pinch-hand", at: [80, -14], s: 1.4 }, can: { art: "watering-can", at: [200, 30], s: 1.5 },
+          step: { art: "counter", at: [16, 14], o: 0 }
+        },
         scenes: [
-          { caption: "اول دانه را در خاک می‌کاریم.", at: { seed: [50, 74], sun: [84, 18] } },
-          { caption: "بعد به آن آب می‌دهیم.", at: { water: [50, 40, { act: "bounce" }] } },
-          { caption: "کم‌کم جوانه می‌زند.", at: { water: null, seed: null, sprout: [50, 70, { act: "grow" }] } },
-          { caption: "آخر سر گل می‌دهد.", at: { sprout: null, flower: [50, 62, { size: 1.5, act: "grow" }] } }
+          { caption: "اول دانه را در خاک می‌کاریم.", key: 1800, do: [
+            { id: "step", to: { o: 1 }, dur: 300 }, { count: "step", from: 1, to: 1, dur: 1 },
+            { id: "hand", to: { y: 52 }, at: 300, dur: 1000 }, { id: "seed", to: { y: 52 }, at: 300, dur: 1000 },
+            { id: "seed", to: { y: 66 }, at: 1500, dur: 500, ease: "in" },
+            { id: "hand", to: { y: -14 }, at: 1900, dur: 900 },
+            { id: "heap", to: { s: 1 }, at: 2700, dur: 700, ease: "out" }
+          ] },
+          { caption: "بعد به آن آب می‌دهیم.", key: 2700, do: [
+            { count: "step", from: 2, to: 2, dur: 1 },
+            { id: "can", path: "M200 30Q150 16 108 40", dur: 1000 },
+            { id: "can", to: { r: -35 }, at: 1000, dur: 500 },
+            { emit: "drop", where: [83, 48], spread: [4, 2], rise: 15, n: 24, at: 1500, dur: 2000, life: 700 },
+            { id: "wet", to: { o: 1 }, at: 1800, dur: 1600 },
+            { id: "can", to: { r: 0 }, at: 3700, dur: 400 },
+            { id: "can", path: "M108 40Q150 16 200 30", at: 4100, dur: 900 }
+          ] },
+          { caption: "کم‌کم جوانه می‌زند.", hold: 3800, do: [
+            { count: "step", from: 3, to: 3, dur: 1 },
+            { id: "stem", to: { sy: 0.3 }, at: 300, dur: 2600, ease: "out" },
+            { id: "leaves", to: { s: 1 }, at: 1200, dur: 1800, ease: "out" },
+            { id: "leaves", to: { r: 6 }, at: 3000, dur: 800, yoyo: true, times: 2 }
+          ] },
+          { caption: "آخر سر گل می‌دهد.", do: [
+            { count: "step", from: 4, to: 4, dur: 1 },
+            { id: "stem", to: { sy: 1 }, dur: 2200, ease: "out" },
+            { id: "flower", to: { s: 1, r: 0 }, at: 1900, dur: 1200, ease: "back" },
+            { id: "sun.rays", to: { r: 45 }, at: 1900, dur: 1600 },
+            { emit: "spark", where: [80, 23], spread: [26, 20], n: 8, at: 2800, dur: 900 }
+          ] }
         ] },
       { type: "order", prompt: "به ترتیب بچین: اول چه بود؟", say: "به ترتیب بچین. اول چه بود؟", numbered: true,
         items: [{ pic: "🌰", label: "دانه", say: "دانه" }, { pic: "💧", label: "آب", say: "آب" },
@@ -198,13 +232,56 @@ B.LESSONS.push(
   {
     id: "think-sapling-3", subject: "think", level: "sapling", emoji: "🔁", title: "تکرار",
     steps: [
-      { type: "story", prompt: "ببین ربات چطور به پرچم می‌رسد",
-        cast: { bot: "🤖", flag: "🚩", plan: "🔁 ۴ بار: 👣" },
+      /* The same «جلو» four times, then one repeat block that does it four times, with a counter. The program
+         board looks like the coding game's (first block on the right). Drawings: js/art/rig-think.js. */
+      { type: "scene", prompt: "ببین ربات چطور به پرچم می‌رسد", bg: "#e4f2e0",
+        parts: {
+          board: { art: "code-board" }, row: { art: "cell-row" },
+          flag: { art: "🚩", at: [125, 71], s: 0.8 }, bot: { art: "🤖", at: [40, 71], s: 0.85 },
+          f1: { art: "block-fwd", at: [128, 18], s: 0 }, f2: { art: "block-fwd", at: [108, 18], s: 0 },
+          f3: { art: "block-fwd", at: [88, 18], s: 0 }, f4: { art: "block-fwd", at: [68, 18], s: 0 },
+          loop: { art: "block-repeat", at: [100, 18], s: 0 }, body: { art: "block-fwd", at: [100, 18], s: 0 },
+          now: { art: "block-now", at: [128, 18], o: 0 }, times: { art: "counter", at: [142, 62], o: 0 }
+        },
         scenes: [
-          { caption: "ربات می‌خواهد به پرچم برسد.", at: { bot: [14, 66], flag: [86, 66] } },
-          { caption: "جلو، جلو، جلو، جلو. چهار قطعه، همه مثل هم!", at: { bot: [72, 66] } },
-          { caption: "به جای آن، می‌شود گفت: «۴ بار تکرار کن: جلو.»", at: { bot: [14, 66], plan: [50, 26, { act: "grow" }] } },
-          { caption: "این همان قطعه «تکرار» است. برنامه کوتاه‌تر شد!", at: { bot: [72, 66, { act: "bounce" }] } }
+          { caption: "ربات می‌خواهد به پرچم برسد.", do: [
+            { id: "bot", to: { y: "-3" }, at: 400, dur: 700, yoyo: true, times: 2 }
+          ] },
+          { caption: "جلو، جلو، جلو، جلو. چهار قطعه، همه مثل هم!", do: [
+            { id: "f1", to: { s: 1 }, dur: 350, ease: "back" }, { id: "f2", to: { s: 1 }, at: 600, dur: 350, ease: "back" },
+            { id: "f3", to: { s: 1 }, at: 1200, dur: 350, ease: "back" }, { id: "f4", to: { s: 1 }, at: 1800, dur: 350, ease: "back" },
+            { id: "now", to: { o: 1 }, at: 2600, dur: 200 },
+            { id: "bot", path: "M40 71Q50 63 60 71", at: 2800, dur: 600 },
+            { id: "now", to: { x: 108 }, at: 3500, dur: 300 }, { id: "bot", path: "M60 71Q70 63 80 71", at: 3800, dur: 600 },
+            { id: "now", to: { x: 88 }, at: 4500, dur: 300 }, { id: "bot", path: "M80 71Q90 63 100 71", at: 4800, dur: 600 },
+            { id: "now", to: { x: 68 }, at: 5500, dur: 300 }, { id: "bot", path: "M100 71Q110 63 120 71", at: 5800, dur: 600 }
+          ] },
+          { caption: "به جای آن، می‌شود گفت: «۴ بار تکرار کن: جلو.»", do: [
+            { id: "now", to: { o: 0 }, dur: 300 },
+            { id: "bot", to: { o: 0 }, dur: 400 }, { id: "bot", to: { x: 40 }, at: 450, dur: 1 }, { id: "bot", to: { o: 1 }, at: 500, dur: 400 },
+            { id: "f1", to: { x: 100 }, at: 1000, dur: 700 }, { id: "f2", to: { x: 100 }, at: 1000, dur: 700 },
+            { id: "f3", to: { x: 100 }, at: 1000, dur: 700 }, { id: "f4", to: { x: 100 }, at: 1000, dur: 700 },
+            { id: "f1", to: { o: 0 }, at: 1500, dur: 400 }, { id: "f2", to: { o: 0 }, at: 1500, dur: 400 },
+            { id: "f3", to: { o: 0 }, at: 1500, dur: 400 }, { id: "f4", to: { o: 0 }, at: 1500, dur: 400 },
+            { id: "body", to: { s: 1 }, at: 1700, dur: 400 }, { id: "loop", to: { s: 1 }, at: 1700, dur: 600, ease: "back" }
+          ] },
+          { caption: "ربات همان «جلو» را ۴ بار تکرار می‌کند: ۱، ۲، ۳، ۴!", do: [
+            { id: "now", to: { x: 100 }, dur: 1 }, { id: "now", to: { o: 1 }, dur: 300 }, { id: "times", to: { o: 1 }, dur: 300 },
+            { count: "times", from: 1, to: 4, at: 400, dur: 3600 },
+            { id: "bot", path: "M40 71Q50 63 60 71", at: 400, dur: 600 }, { id: "now", to: { s: 1.15 }, at: 400, dur: 400, yoyo: true, times: 2 },
+            { id: "bot", path: "M60 71Q70 63 80 71", at: 1300, dur: 600 }, { id: "now", to: { s: 1.15 }, at: 1300, dur: 400, yoyo: true, times: 2 },
+            { id: "bot", path: "M80 71Q90 63 100 71", at: 2200, dur: 600 }, { id: "now", to: { s: 1.15 }, at: 2200, dur: 400, yoyo: true, times: 2 },
+            { id: "bot", path: "M100 71Q110 63 120 71", at: 3100, dur: 600 }, { id: "now", to: { s: 1.15 }, at: 3100, dur: 400, yoyo: true, times: 2 },
+            { emit: "spark", where: [122, 58], spread: [16, 10], n: 6, at: 3700, dur: 600 }
+          ] },
+          { caption: "این همان قطعه «تکرار» است. برنامه کوتاه‌تر شد!", do: [
+            { id: "now", to: { o: 0 }, dur: 300 }, { id: "times", to: { o: 0 }, dur: 300 },
+            { id: "f1", to: { x: 128, y: 42, s: 0.8 }, dur: 1 }, { id: "f2", to: { x: 108, y: 42, s: 0.8 }, dur: 1 },
+            { id: "f3", to: { x: 88, y: 42, s: 0.8 }, dur: 1 }, { id: "f4", to: { x: 68, y: 42, s: 0.8 }, dur: 1 },
+            { id: "f1", to: { o: 0.5 }, at: 400, dur: 500 }, { id: "f2", to: { o: 0.5 }, at: 400, dur: 500 },
+            { id: "f3", to: { o: 0.5 }, at: 400, dur: 500 }, { id: "f4", to: { o: 0.5 }, at: 400, dur: 500 },
+            { id: "loop", to: { s: 1.12 }, at: 1400, dur: 700, yoyo: true, times: 2 }, { id: "body", to: { s: 1.12 }, at: 1400, dur: 700, yoyo: true, times: 2 }
+          ] }
         ],
         question: "با «تکرار»، برنامه کوتاه‌تر شد یا بلندتر؟", options: ["کوتاه‌تر", "بلندتر"], answer: "کوتاه‌تر" },
       { type: "code", blocks: "turn", repeat: true, max: 2, face: "right", goalPic: "🚩",
@@ -223,15 +300,52 @@ B.LESSONS.push(
     id: "think-sapling-4", subject: "think", level: "sapling", emoji: "📏", title: "مرتب کردن",
     steps: [
       { type: "order", prompt: "از کوچک به بزرگ بچین", ltr: true, items: [2, 5, 7, 9, 12] },
-      { type: "story", prompt: "ببین چطور می‌شود عددها را دوتادوتا مرتب کرد",
-        cast: { a: "۵", b: "۲", c: "۸", d: "۳" },
+      /* Sorting by swapping neighbours: the frame shows the two being compared, and the cards really swap places.
+         Drawings: js/art/rig-think.js. */
+      { type: "scene", prompt: "ببین چطور می‌شود عددها را دوتادوتا مرتب کرد", bg: "#f4ecdf",
+        parts: {
+          a: { art: "card-5", at: [41, 40], o: 0 }, b: { art: "card-2", at: [67, 40], o: 0 },
+          c: { art: "card-8", at: [93, 40], o: 0 }, d: { art: "card-3", at: [119, 40], o: 0 },
+          frame: { art: "pair-frame", at: [54, 50], o: 0 },
+          swap: { art: "swap-arrows", at: [54, 15], o: 0 }, tick: { art: "tick", at: [80, 26], o: 0 }
+        },
         scenes: [
-          { caption: "می‌خواهیم این عددها را از کوچک به بزرگ بچینیم.", at: { a: [20, 50], b: [40, 50], c: [60, 50], d: [80, 50] } },
-          { caption: "دو تای اول را با هم مقایسه می‌کنیم: ۵ از ۲ بزرگ‌تر است، پس جایشان را عوض می‌کنیم.", at: { a: [40, 50], b: [20, 50] } },
-          { caption: "حالا ۵ و ۸: ترتیبشان درست است. عوضشان نمی‌کنیم.", at: { a: [40, 50, { act: "bounce" }], c: [60, 50, { act: "bounce" }] } },
-          { caption: "۸ و ۳: ۸ بزرگ‌تر است، پس جایشان را عوض می‌کنیم.", at: { c: [80, 50], d: [60, 50] } },
-          { caption: "یک دور دیگر از اول: ۵ و ۳ را هم عوض می‌کنیم.", at: { a: [60, 50], d: [40, 50] } },
-          { caption: "همه مرتب شدند: ۲، ۳، ۵، ۸.", at: { a: [60, 50, { act: "bounce" }], b: [20, 50, { act: "bounce" }], c: [80, 50, { act: "bounce" }], d: [40, 50, { act: "bounce" }] } }
+          { caption: "می‌خواهیم این عددها را از کوچک به بزرگ بچینیم.", do: [
+            { id: "a", to: { y: 50, o: 1 }, dur: 500 }, { id: "b", to: { y: 50, o: 1 }, at: 250, dur: 500 },
+            { id: "c", to: { y: 50, o: 1 }, at: 500, dur: 500 }, { id: "d", to: { y: 50, o: 1 }, at: 750, dur: 500 }
+          ] },
+          { caption: "دو تای اول را با هم مقایسه می‌کنیم: ۵ از ۲ بزرگ‌تر است، پس جایشان را عوض می‌کنیم.", key: 5400, do: [
+            { id: "frame", to: { o: 1 }, dur: 400 },
+            { id: "swap", to: { o: 1 }, at: 4400, dur: 300 },
+            { id: "a", path: "M41 50Q54 22 67 50", at: 5000, dur: 1100 }, { id: "b", path: "M67 50Q54 78 41 50", at: 5000, dur: 1100 },
+            { id: "swap", to: { o: 0 }, at: 6300, dur: 300 }
+          ] },
+          { caption: "حالا ۵ و ۸: ترتیبشان درست است. عوضشان نمی‌کنیم.", do: [
+            { id: "frame", to: { x: 80 }, dur: 600 },
+            { id: "tick", to: { o: 1 }, at: 1800, dur: 400 }
+          ] },
+          { caption: "۸ و ۳: ۸ بزرگ‌تر است، پس جایشان را عوض می‌کنیم.", key: 3400, do: [
+            { id: "tick", to: { o: 0 }, dur: 300 },
+            { id: "frame", to: { x: 106 }, dur: 600 },
+            { id: "swap", to: { x: 106 }, dur: 1 }, { id: "swap", to: { o: 1 }, at: 2400, dur: 300 },
+            { id: "c", path: "M93 50Q106 22 119 50", at: 3000, dur: 1100 }, { id: "d", path: "M119 50Q106 78 93 50", at: 3000, dur: 1100 },
+            { id: "swap", to: { o: 0 }, at: 4300, dur: 300 }
+          ] },
+          { caption: "یک دور دیگر از اول: ۲ و ۵ درست‌اند. ۵ و ۳ را عوض می‌کنیم.", key: 4400, do: [
+            { id: "frame", to: { x: 54 }, dur: 700 },
+            { id: "tick", to: { x: 54 }, dur: 1 }, { id: "tick", to: { o: 1 }, at: 1100, dur: 300 }, { id: "tick", to: { o: 0 }, at: 2500, dur: 300 },
+            { id: "frame", to: { x: 80 }, at: 2700, dur: 600 },
+            { id: "swap", to: { x: 80 }, dur: 1 }, { id: "swap", to: { o: 1 }, at: 3500, dur: 300 },
+            { id: "a", path: "M67 50Q80 22 93 50", at: 4000, dur: 1100 }, { id: "d", path: "M93 50Q80 78 67 50", at: 4000, dur: 1100 },
+            { id: "swap", to: { o: 0 }, at: 5300, dur: 300 }
+          ] },
+          { caption: "همه مرتب شدند: ۲، ۳، ۵، ۸.", do: [
+            { id: "frame", to: { o: 0 }, dur: 400 },
+            { id: "b.ok", to: { o: 1 }, at: 300, dur: 300 }, { id: "b", to: { y: "-4" }, at: 300, dur: 500, yoyo: true, times: 2 },
+            { id: "d.ok", to: { o: 1 }, at: 900, dur: 300 }, { id: "d", to: { y: "-4" }, at: 900, dur: 500, yoyo: true, times: 2 },
+            { id: "a.ok", to: { o: 1 }, at: 1500, dur: 300 }, { id: "a", to: { y: "-4" }, at: 1500, dur: 500, yoyo: true, times: 2 },
+            { id: "c.ok", to: { o: 1 }, at: 2100, dur: 300 }, { id: "c", to: { y: "-4" }, at: 2100, dur: 500, yoyo: true, times: 2 }
+          ] }
         ],
         question: "در این روش، هر بار چند عدد را با هم مقایسه می‌کنیم؟", options: [{ label: "۲", value: 2 }, { label: "۳", value: 3 }, { label: "۴", value: 4 }], answer: 2 },
       { type: "order", prompt: "روزهای هفته را به ترتیب بچین. هفته با شنبه شروع می‌شود.", say: "روزهای هفته را به ترتیب بچین. هفته با شنبه شروع می‌شود.", numbered: true,
