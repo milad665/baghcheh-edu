@@ -7,7 +7,7 @@
    a few at a time, and short words made from them (Sprout); then short sentences, questions and everyday
    phrases (Sapling). Instructions for the child are in Persian and spoken; English is spoken with the device's
    English voice (js/english-voice.js). Step types: README.md, js/engine.js, js/games.js, js/anim.js and
-   js/steps/english.js (words, listen, letter, tip). Each lesson ends with a tip for parents, who may not know
+   js/steps/english.js (words, listen, letter, tip), and js/steps/paper.js for writing on paper. Each lesson ends with a tip for parents, who may not know
    English themselves. */
 var B = window.B || {};
 window.B = B;
@@ -20,25 +20,117 @@ B.SUBJECTS.push({ id: "english", name: "خواندن و نوشتن انگلیس�
   var READ_PROMPT = "این کلمه را بخوان. تصویرش کدام است؟";
   var SORT_PROMPT = "هر تصویر را در سبد حرف اولش بگذار";
 
+  /* Moves for the animations (step type `scene`, drawings in js/art/rig-english.js). Each returns a list of tracks;
+     side "L" or "R" is the arm on the left or right of the picture, and a pose is a name in POSE or [shoulder, elbow]
+     turns for the right arm (the left arm turns the other way). */
+  var POSE = { down: [0, 0], wave: [-125, -45], stretch: [-150, -10], big: [-100, 0], ask: [-40, -60], point: [-84, -4],
+    pointUp: [-115, -4], stop: [-70, -70], hold: [-136, -10], shade: [-151, -69], chest: [13, 106],
+    nose: [90, 111], eye: [-137, -111], ear: [-93, -112], mouth: [82, 118], clap: [-11, 110], clapOpen: [-11, 50] };
+  function pose(id, side, name, at, dur) {
+    var p = POSE[name] || name, k = side === "L" ? -1 : 1;
+    return [{ id: id + ".arm" + side, to: { r: k * p[0] }, at: at, dur: dur }, { id: id + ".fore" + side, to: { r: k * p[1] }, at: at, dur: dur }];
+  }
+  // The hand goes up, waves, and comes down again (up: it stays up, so the beat's end picture still waves).
+  function wave(id, side, at, dur, up) {
+    var k = side === "L" ? -1 : 1;
+    return pose(id, side, "wave", at, 400).concat([{ id: id + ".fore" + side, to: { r: k * -12 }, at: at + 400, dur: dur - 400, yoyo: true, times: 2 * Math.max(1, Math.round(dur / 700)) }],
+      up ? [] : pose(id, side, "down", at + dur + 50, 400));
+  }
+  // The mouth opens and closes while the person speaks.
+  function talk(id, at, dur) {
+    return [{ id: id + ".mouth", to: { o: 1 }, at: at, dur: 60 }, { id: id + ".mouth", to: { sy: 0.3 }, at: at + 60, dur: dur - 120, yoyo: true, times: 2 * Math.max(1, Math.round(dur / 500)) },
+      { id: id + ".mouth", to: { o: 0 }, at: at + dur - 60, dur: 60 }];
+  }
+  // Smiling or frowning, and shaking the head for no.
+  function face(id, happy, at) {
+    return [{ id: id + ".smile", to: { o: happy ? 1 : 0 }, at: at, dur: 200 }, { id: id + ".frown", to: { o: happy ? 0 : 1 }, at: at, dur: 200 }];
+  }
+  function shake(id, at) {
+    return [{ id: id + ".head", to: { r: -10 }, at: at, dur: 150 }, { id: id + ".head", to: { r: 10 }, at: at + 150, dur: 1200, yoyo: true, times: 4 },
+      { id: id + ".head", to: { r: 0 }, at: at + 1350, dur: 150 }];
+  }
+  // A person walks to x, the feet going up and down in turn; a dog trots to x.
+  function walk(id, x, at, dur) {
+    var n = 2 * Math.max(1, Math.round(dur / 700));
+    return [{ id: id, to: { x: x }, at: at, dur: dur, ease: "linear" }, { id: id + ".legL", to: { sy: 0.75 }, at: at, dur: dur, yoyo: true, times: n },
+      { id: id + ".legR", to: { sy: 0.75 }, at: at + dur / n, dur: dur, yoyo: true, times: n }];
+  }
+  function trot(id, x, at, dur) {
+    var n = 2 * Math.max(1, Math.round(dur / 500));
+    return [{ id: id, to: { x: x }, at: at, dur: dur, ease: "linear" }].concat(["legFn", "legBf", "legFf", "legBn"].map(function (l, i) {
+      return { id: id + "." + l, to: { r: i < 2 ? 24 : -24 }, at: at, dur: dur, yoyo: true, times: n };
+    }));
+  }
+  // A bird flies along a path, flapping.
+  function fly(id, path, at, dur) {
+    return [{ id: id, path: path, at: at, dur: dur, ease: "out" }, { id: id + ".wing", to: { r: 50 }, at: at, dur: dur, yoyo: true, times: 2 * Math.round(dur / 250) }];
+  }
+  // Something appears with a little bounce (s: its size).
+  function pop(id, at, s) {
+    return [{ id: id, to: { s: 0.4 * (s || 1) }, at: at, dur: 1 }, { id: id, to: { o: 1, s: s || 1 }, at: at + 20, dur: 400, ease: "back" }];
+  }
+  // A bird lands on the fence and one more finger goes up.
+  function landAndCount(b, x, y, finger) {
+    return fly(b, "M176 6Q" + (176 + x) / 2 + " 0 " + x + " " + y, 0, 1000).concat([
+      { id: "hand." + finger, to: { sy: 0.2 }, dur: 1 }, { id: "hand." + finger, to: { o: 1, sy: 1 }, at: 900, dur: 450, ease: "back" }]);
+  }
+  // The brush paints a band of a colour (after the last colour and its things go), and three things of it come.
+  function paintIn(colour, things, old) {
+    return old.map(function (id) { return { id: id, to: { o: 0 }, dur: 300 }; }).concat([
+      { id: "brush", to: { x: 24, y: 20 }, at: 300, dur: 1 }, { id: "brush", to: { o: 1 }, at: 320, dur: 150 },
+      { id: colour, to: { o: 1 }, at: 400, dur: 1 }, { id: colour, draw: true, at: 400, dur: 1400 },
+      { id: "brush", path: B.EN_PAINT_PATH, at: 400, dur: 1400 }, { id: "brush", to: { o: 0 }, at: 1850, dur: 200 }
+    ], things.map(function (id, i) { return { id: id, to: { o: 1, s: 1.7 }, at: 400 + i * 600, dur: 450, ease: "back" }; }));
+  }
+
   var lessons = [
     // ---------------- English: Seed (listen, point and say; no reading yet) ----------------
     {
       id: "english-seed-1", subject: "english", level: "seed", emoji: "👋", title: "سلام و خداحافظ",
       steps: [
-        { type: "story", prompt: "گوش کن و تو هم با آن‌ها بگو",
-          cast: { sara: "👧", reza: "👦", w1: "👋", w2: "👋" },
+        /* Hello and goodbye come with the greeting itself: each child waves while saying it, and waves and walks away
+           for goodbye. */
+        { type: "scene", prompt: "گوش کن و تو هم با آن‌ها بگو", bg: "#cfeaf7",
+          parts: { park: { art: "en-park" }, sara: { art: "en-sara", at: [40, 84], s: 1.3 }, reza: { art: "en-reza", at: [120, 84], s: 1.3 } },
           scenes: [
-            { caption: "Hello!", at: { sara: [28, 62, { size: 1.4, act: "bounce" }], w1: [14, 40] } },
-            { caption: "Hello!", at: { reza: [72, 62, { size: 1.4, act: "bounce" }], w2: [86, 40, { flip: true }] } },
-            { caption: "Goodbye!", at: { sara: [20, 62, { size: 1.4 }], w1: [8, 40, { act: "shake" }] } },
-            { caption: "Goodbye!", at: { reza: [80, 62, { size: 1.4 }], w2: [92, 40, { flip: true, act: "shake" }] } }
+            { caption: "Hello!", key: 1300, do: [].concat(wave("sara", "R", 0, 2200, true), talk("sara", 100, 900)) },
+            { caption: "Hello!", key: 1300, do: [].concat(pose("sara", "R", "down", 0, 400), wave("reza", "L", 0, 2200, true), talk("reza", 100, 900)) },
+            { caption: "Goodbye!", key: 2000, do: [].concat(pose("reza", "L", "down", 0, 400), wave("sara", "R", 0, 2400, true), talk("sara", 100, 1000), walk("sara", -16, 900, 2800)) },
+            { caption: "Goodbye!", key: 2000, do: [].concat(wave("reza", "L", 0, 2400, true), talk("reza", 100, 1000), walk("reza", 176, 900, 2800)) }
           ] },
         { type: "words", words: [{ pic: "🙂👋", en: "Hello!" }, { pic: "🚶👋", en: "Goodbye!" }] },
-        { type: "story", prompt: "گوش کن و تو هم بگو",
-          cast: { sun: "☀️", moon: "🌙", up: "🧒", bed: "😴" },
+        /* Morning and night through a bedroom window: the sun comes up, Reza wakes, gets up and says good morning;
+           the sun goes down, the moon comes up, he yawns, says good night and goes to sleep. The beats with no words
+           show the change of time. */
+        { type: "scene", prompt: "گوش کن و تو هم بگو", bg: "#f6e3c6",
+          parts: {
+            skyN: { art: "en-sky-night" }, skyD: { art: "en-sky-day", o: 0 }, sun: { art: "☀", at: [120, 62], s: 0.9 }, moon: { art: "🌙", at: [121, 34], s: 0.8 },
+            room: { art: "en-bedroom" }, bed: { art: "en-bed-low", at: [50, 86], s: 1.3 },
+            kid: { art: "en-reza", at: [58, 64], r: -90, s: 1.1 }, blanket: { art: "en-blanket", at: [50, 86], s: 1.3 }
+          },
           scenes: [
-            { caption: "Good morning!", at: { sun: [75, 25, { size: 1.6, act: "grow" }], up: [35, 65, { size: 1.5, act: "bounce" }] } },
-            { caption: "Good night!", at: { sun: null, up: null, moon: [75, 25, { size: 1.6, act: "grow" }], bed: [35, 65, { size: 1.5 }] } }
+            { caption: "", key: 3000, hold: 4800, do: [
+              { id: "kid.shut", to: { o: 1 }, dur: 1 }, { id: "kid.eyes", to: { o: 0 }, dur: 1 },
+              { id: "moon", to: { y: 62 }, at: 200, dur: 1400 },
+              { id: "skyN", to: { o: 0 }, at: 600, dur: 1600 }, { id: "skyD", to: { o: 1 }, at: 600, dur: 1600 },
+              { id: "sun", to: { y: 34 }, at: 1000, dur: 1600, ease: "out" },
+              { id: "kid.shut", to: { o: 0 }, at: 2800, dur: 150 }, { id: "kid.eyes", to: { o: 1 }, at: 2800, dur: 150 },
+              { id: "blanket", to: { x: "+10", o: 0 }, at: 3200, dur: 500 },
+              { id: "kid", to: { x: 104, y: 86, r: 0 }, at: 3500, dur: 1000 }
+            ] },
+            { caption: "Good morning!", key: 1500, do: [].concat(pose("kid", "L", "stretch", 0, 500), pose("kid", "L", "down", 1000, 400),
+              pose("kid", "R", "stretch", 0, 500), wave("kid", "R", 600, 1800, true), talk("kid", 100, 1000)) },
+            { caption: "", key: 3400, hold: 4600, do: [].concat(pose("kid", "R", "down", 0, 500), [
+              { id: "sun", to: { y: 62 }, dur: 1600, ease: "in" },
+              { id: "skyD", to: { o: 0 }, at: 700, dur: 1600 }, { id: "skyN", to: { o: 1 }, at: 700, dur: 1600 },
+              { id: "moon", to: { y: 34 }, at: 1600, dur: 1600, ease: "out" },
+              { id: "kid.mouth", to: { o: 1, sy: 1.5 }, at: 3000, dur: 300 }, { id: "kid.mouth", to: { o: 0, sy: 1 }, at: 3900, dur: 300 }
+            ], pose("kid", "L", "mouth", 2900, 400), pose("kid", "L", "down", 4000, 400)) },
+            { caption: "Good night!", key: 900, hold: 5200, do: [].concat(wave("kid", "R", 0, 1600), talk("kid", 100, 900), [
+              { id: "kid", to: { x: 58, y: 64, r: -90 }, at: 2000, dur: 1000 },
+              { id: "blanket", to: { x: "-10", o: 1 }, at: 3000, dur: 500 },
+              { id: "kid.shut", to: { o: 1 }, at: 3600, dur: 200 }, { id: "kid.eyes", to: { o: 0 }, at: 3600, dur: 200 }
+            ]) }
           ] },
         { type: "words", words: [{ pic: "☀️", en: "Good morning!" }, { pic: "🌙", en: "Good night!" }, { pic: "🎁", en: "Thank you!" }] },
         { type: "listen", say: "Good morning!", options: [{ pic: "☀️", en: "Good morning!" }, { pic: "🌙", en: "Good night!" }], answer: "☀️" },
@@ -51,13 +143,22 @@ B.SUBJECTS.push({ id: "english", name: "خواندن و نوشتن انگلیس�
     {
       id: "english-seed-2", subject: "english", level: "seed", emoji: "🎨", title: "رنگ‌ها",
       steps: [
-        { type: "story", prompt: "گوش کن و تو هم بگو",
-          cast: { apple: "🍎", leaf: "🍃", lemon: "🍋", drop: "💧" },
+        /* Each colour is painted, then three things of that colour come one by one: the colour, not one thing,
+           is what the word names. */
+        { type: "scene", prompt: "گوش کن و تو هم بگو", bg: "#fffaf0",
+          parts: {
+            red: { art: "en-paint-red", o: 0 }, green: { art: "en-paint-green", o: 0 }, yellow: { art: "en-paint-yellow", o: 0 }, blue: { art: "en-paint-blue", o: 0 },
+            r1: { art: "🍎", at: [44, 84], s: 0.6, o: 0 }, r2: { art: "🍓", at: [80, 84], s: 0.6, o: 0 }, r3: { art: "🍅", at: [116, 84], s: 0.6, o: 0 },
+            g1: { art: "🍏", at: [44, 84], s: 0.6, o: 0 }, g2: { art: "🥒", at: [80, 84], s: 0.6, o: 0 }, g3: { art: "🐸", at: [116, 84], s: 0.6, o: 0 },
+            y1: { art: "🍋", at: [44, 84], s: 0.6, o: 0 }, y2: { art: "🍌", at: [80, 84], s: 0.6, o: 0 }, y3: { art: "🐥", at: [116, 84], s: 0.6, o: 0 },
+            b1: { art: "🫐", at: [44, 84], s: 0.6, o: 0 }, b2: { art: "💧", at: [80, 84], s: 0.6, o: 0 }, b3: { art: "🐳", at: [116, 84], s: 0.6, o: 0 },
+            brush: { art: "en-brush", at: [24, 20], o: 0 }
+          },
           scenes: [
-            { caption: "Red, red, red!", at: { apple: [50, 50, { size: 2.2, act: "grow" }] } },
-            { caption: "Green, green, green!", at: { apple: null, leaf: [50, 50, { size: 2.2, act: "grow" }] } },
-            { caption: "Yellow, yellow, yellow!", at: { leaf: null, lemon: [50, 50, { size: 2.2, act: "grow" }] } },
-            { caption: "Blue, blue, blue!", at: { lemon: null, drop: [50, 50, { size: 2.2, act: "grow" }] } }
+            { caption: "Red, red, red!", do: paintIn("red", ["r1", "r2", "r3"], []) },
+            { caption: "Green, green, green!", do: paintIn("green", ["g1", "g2", "g3"], ["red", "r1", "r2", "r3"]) },
+            { caption: "Yellow, yellow, yellow!", do: paintIn("yellow", ["y1", "y2", "y3"], ["green", "g1", "g2", "g3"]) },
+            { caption: "Blue, blue, blue!", do: paintIn("blue", ["b1", "b2", "b3"], ["yellow", "y1", "y2", "y3"]) }
           ] },
         { type: "words", words: [{ color: RED, en: "red" }, { color: GREEN, en: "green" }, { color: YELLOW, en: "yellow" }, { color: BLUE, en: "blue" }] },
         { type: "listen", say: "red", prompt: "گوش کن و رنگش را پیدا کن.", options: [{ color: BLUE, value: "blue", en: "blue" }, { color: RED, value: "red", en: "red" }, { color: YELLOW, value: "yellow", en: "yellow" }], answer: "red" },
@@ -74,15 +175,28 @@ B.SUBJECTS.push({ id: "english", name: "خواندن و نوشتن انگلیس�
     {
       id: "english-seed-3", subject: "english", level: "seed", emoji: "🖐️", title: "عددها تا ده",
       steps: [
-        { type: "story", prompt: "گوش کن و با انگشت‌هایت بشمار",
-          cast: { b1: "🐦", b2: "🐦", b3: "🐦", b4: "🐦", b5: "🐦", tree: "🌳" },
+        /* Birds land on the fence one by one, and for each one a finger of the hand goes up: the child counts on
+           their own fingers too. */
+        { type: "scene", prompt: "گوش کن و با انگشت‌هایت بشمار", bg: "#cfeaf7",
+          parts: {
+            farm: { art: "en-farm" },
+            b1: { art: "en-bird", at: [176, 6], s: 1.6 }, b2: { art: "en-bird2", at: [176, 6], s: 1.6 }, b3: { art: "en-bird", at: [176, 6], s: 1.6 },
+            b4: { art: "en-bird2", at: [176, 6], s: 1.6 }, b5: { art: "en-bird", at: [176, 6], s: 1.6 },
+            hand: { art: "en-count-hand", at: [134, 86], s: 2.2 }
+          },
           scenes: [
-            { caption: "One!", at: { tree: [50, 55, { size: 3.4 }], b1: [18, 30, { act: "bounce" }] } },
-            { caption: "Two!", at: { b2: [34, 22, { act: "bounce" }] } },
-            { caption: "Three!", at: { b3: [50, 16, { act: "bounce" }] } },
-            { caption: "Four!", at: { b4: [66, 22, { act: "bounce" }] } },
-            { caption: "Five!", at: { b5: [82, 30, { act: "bounce" }] } },
-            { caption: "One, two, three, four, five!", at: { b1: [18, 30, { act: "spin" }], b5: [82, 30, { act: "spin" }] } }
+            { caption: "One!", do: landAndCount("b1", 16, 48, "f1") },
+            { caption: "Two!", do: landAndCount("b2", 36, 48, "f2") },
+            { caption: "Three!", do: landAndCount("b3", 56, 48, "f3") },
+            { caption: "Four!", do: landAndCount("b4", 76, 48, "f4") },
+            { caption: "Five!", do: landAndCount("b5", 96, 48, "f5").concat([{ id: "hand.fold", to: { o: 0 }, at: 700, dur: 200 }]) },
+            { caption: "One, two, three, four, five!", key: 2350, do: [1, 2, 3, 4, 5].map(function (n) {
+              return { id: "b" + n, to: { y: "-4" }, at: (n - 1) * 550, dur: 360, yoyo: true, times: 2 };
+            }).concat([1, 2, 3, 4, 5].map(function (n) {
+              return { id: "hand.f" + n, to: { s: 1.15 }, at: (n - 1) * 550, dur: 360, yoyo: true, times: 2 };
+            })),
+              wait: { tap: ["b1", "b2", "b3", "b4", "b5"], inOrder: true, hint: "حالا تو بشمار: از چپ، روی پرنده‌ها یکی‌یکی بزن و بلند به انگلیسی بشمار.",
+                each: [{ id: "$", to: { y: "-4" }, dur: 400, yoyo: true, times: 2 }] } }
           ] },
         { type: "words", words: [{ dots: 1, en: "one" }, { dots: 2, en: "two" }, { dots: 3, en: "three" }, { dots: 4, en: "four" }, { dots: 5, en: "five" }] },
         { type: "words", words: [{ dots: 6, en: "six" }, { dots: 7, en: "seven" }, { dots: 8, en: "eight" }, { dots: 9, en: "nine" }, { dots: 10, en: "ten" }] },
@@ -98,13 +212,43 @@ B.SUBJECTS.push({ id: "english", name: "خواندن و نوشتن انگلیس�
     {
       id: "english-seed-4", subject: "english", level: "seed", emoji: "🐾", title: "حیوان‌ها",
       steps: [
-        { type: "story", prompt: "گوش کن و صدای حیوان‌ها را تو هم دربیاور",
-          cast: { cat: "🐱", dog: "🐶", duck: "🦆", cow: "🐮" },
+        /* Each animal comes and really makes its sound: its mouth opens, once for each sound in the words. */
+        { type: "scene", prompt: "گوش کن و صدای حیوان‌ها را تو هم دربیاور", bg: "#cfeaf7",
+          parts: {
+            farm: { art: "en-farm" },
+            cat: { art: "en-cat", at: [-20, 84], s: 2.6 }, sndC: { art: "en-sound", at: [103, 57], s: 1.4, o: 0 },
+            dog: { art: "en-dog", at: [-40, 86], s: 1.6 }, sndD: { art: "en-sound", at: [116, 55], s: 1.4, o: 0 },
+            duck: { art: "en-duck", at: [-30, 86], s: 2.3 }, sndK: { art: "en-sound", at: [111, 52], s: 1.4, o: 0 },
+            cow: { art: "en-cow", at: [-40, 86], s: 1.45 }, sndW: { art: "en-sound", at: [106, 62], s: 1.6, o: 0 }
+          },
           scenes: [
-            { caption: "Cat! Meow!", at: { cat: [50, 55, { size: 2.2, act: "bounce" }] } },
-            { caption: "Dog! Woof, woof!", at: { cat: null, dog: [50, 55, { size: 2.2, act: "bounce" }] } },
-            { caption: "Duck! Quack, quack!", at: { dog: null, duck: [50, 55, { size: 2.2, act: "bounce" }] } },
-            { caption: "Cow! Moo!", at: { duck: null, cow: [50, 55, { size: 2.2, act: "bounce" }] } }
+            { caption: "Cat! Meow!", key: 1500, do: [
+              { id: "cat", path: "M-20 84Q30 56 80 84", dur: 800, ease: "out" },
+              { id: "cat.head", to: { r: -10 }, at: 1000, dur: 250 }, { id: "cat.jaw", to: { r: 35 }, at: 1050, dur: 250 },
+              { id: "sndC", to: { o: 1 }, at: 1100, dur: 150 }, { id: "sndC", to: { o: 0 }, at: 1900, dur: 200 },
+              { id: "cat.jaw", to: { r: 0 }, at: 1900, dur: 250 }, { id: "cat.head", to: { r: 0 }, at: 2000, dur: 250 }
+            ] },
+            { caption: "Dog! Woof, woof!", key: 2000, do: [].concat([{ id: "cat", path: "M80 84Q140 50 220 84", dur: 800, ease: "in" }],
+              trot("dog", 80, 300, 1300), [
+                { id: "dog.jaw", to: { r: 30 }, at: 1750, dur: 1000, yoyo: true, times: 4 },
+                { id: "sndD", to: { o: 1 }, at: 1750, dur: 1000, yoyo: true, times: 4 },
+                { id: "dog.tail", to: { r: -25 }, at: 1750, dur: 1600, yoyo: true, times: 8 }
+              ]) },
+            { caption: "Duck! Quack, quack!", key: 2000, do: [].concat(trot("dog", 230, 0, 1300), [
+              { id: "duck", to: { x: 80 }, at: 300, dur: 1300, ease: "linear" },
+              { id: "duck", to: { r: 8 }, at: 300, dur: 1300, yoyo: true, times: 6 },
+              { id: "duck.bill", to: { r: 32 }, at: 1750, dur: 1000, yoyo: true, times: 4 },
+              { id: "sndK", to: { o: 1 }, at: 1750, dur: 1000, yoyo: true, times: 4 },
+              { id: "duck.wing", to: { r: -25 }, at: 1750, dur: 1000, yoyo: true, times: 4 }
+            ]) },
+            { caption: "Cow! Moo!", key: 2700, hold: 4200, do: [
+              { id: "duck", to: { x: 210 }, dur: 1300, ease: "linear" }, { id: "duck", to: { r: 8 }, dur: 1200, yoyo: true, times: 6 },
+              { id: "cow", to: { x: 76 }, at: 300, dur: 1600, ease: "out" }, { id: "cow", to: { r: 2 }, at: 300, dur: 1600, yoyo: true, times: 4 },
+              { id: "cow.head", to: { r: -12 }, at: 2000, dur: 400 }, { id: "cow.jaw", to: { r: 28 }, at: 2100, dur: 400 },
+              { id: "sndW", to: { o: 1 }, at: 2150, dur: 200 }, { id: "sndW", to: { s: 1.9 }, at: 2350, dur: 900, yoyo: true, times: 2 },
+              { id: "sndW", to: { o: 0 }, at: 3300, dur: 200 }, { id: "cow.jaw", to: { r: 0 }, at: 3300, dur: 300 }, { id: "cow.head", to: { r: 0 }, at: 3400, dur: 400 },
+              { id: "cow.tail", to: { r: 15 }, at: 2000, dur: 1600, yoyo: true, times: 4 }
+            ] }
           ] },
         { type: "words", words: [{ pic: "🐱", en: "cat" }, { pic: "🐶", en: "dog" }, { pic: "🐦", en: "bird" }, { pic: "🐟", en: "fish" }, { pic: "🐮", en: "cow" }, { pic: "🦆", en: "duck" }] },
         { type: "listen", say: "dog", options: [{ pic: "🐱", en: "cat" }, { pic: "🐶", en: "dog" }, { pic: "🐟", en: "fish" }], answer: "🐶" },
@@ -120,16 +264,21 @@ B.SUBJECTS.push({ id: "english", name: "خواندن و نوشتن انگلیس�
     {
       id: "english-seed-5", subject: "english", level: "seed", emoji: "👨‍👩‍👧", title: "خانواده",
       steps: [
-        { type: "story", prompt: "گوش کن و تو هم بگو", bg: "room",
-          cast: { mother: "👩", father: "👨", sister: "👧", brother: "👦", grandma: "👵", grandpa: "👴" },
-          scenes: [
-            { caption: "This is my mother.", at: { mother: [16, 60, { size: 1.6, act: "bounce" }] } },
-            { caption: "This is my father.", at: { father: [32, 60, { size: 1.6, act: "bounce" }] } },
-            { caption: "This is my sister.", at: { sister: [48, 66, { size: 1.3, act: "bounce" }] } },
-            { caption: "This is my brother.", at: { brother: [62, 66, { size: 1.3, act: "bounce" }] } },
-            { caption: "This is my grandma.", at: { grandma: [76, 60, { size: 1.5, act: "bounce" }] } },
-            { caption: "This is my grandpa.", at: { grandpa: [90, 60, { size: 1.5, act: "bounce" }] } }
-          ] },
+        /* Sara points at each one of her family as they come and wave: "this is" is the pointing. */
+        { type: "scene", prompt: "گوش کن و تو هم بگو", bg: "#f6e3c6",
+          parts: {
+            floor: { art: "room-floor" }, wall: { art: "room-wall", at: [0, 56] },
+            mother: { art: "en-mother", at: [44, 86], o: 0 }, father: { art: "en-father", at: [66, 86], o: 0 },
+            sister: { art: "en-sister", at: [87, 86], o: 0 }, brother: { art: "en-brother", at: [105, 86], o: 0 },
+            grandma: { art: "en-grandma", at: [125, 86], o: 0 }, grandpa: { art: "en-grandpa", at: [145, 86], o: 0 },
+            sara: { art: "en-sara", at: [18, 86], s: 1.1 }
+          },
+          scenes: ["mother", "father", "sister", "brother", "grandma", "grandpa"].map(function (who, i) {
+            return { caption: "This is my " + who + ".", key: 1500, do: [].concat(i ? pose("sara", "R", "down", 0, 300) : [],
+              pose("sara", "R", "point", 350, 450), talk("sara", 0, 1500), [
+                { id: who, to: { o: 1 }, dur: 400 }, { id: who, to: { y: "-4" }, dur: 500, yoyo: true, times: 2 }
+              ], wave(who, "L", 700, 1800)) };
+          }) },
         { type: "words", words: [{ pic: "👩", en: "mother" }, { pic: "👨", en: "father" }, { pic: "👧", en: "sister" }, { pic: "👦", en: "brother" }, { pic: "👵", en: "grandma" }, { pic: "👴", en: "grandpa" }] },
         { type: "listen", say: "father", options: [{ pic: "👩", en: "mother" }, { pic: "👨", en: "father" }, { pic: "👴", en: "grandpa" }], answer: "👨" },
         { type: "listen", say: "sister", quiet: true, options: [{ pic: "👦", en: "brother" }, { pic: "👵", en: "grandma" }, { pic: "👧", en: "sister" }], answer: "👧" },
@@ -141,15 +290,29 @@ B.SUBJECTS.push({ id: "english", name: "خواندن و نوشتن انگلیس�
     {
       id: "english-seed-6", subject: "english", level: "seed", emoji: "👃", title: "بدن من",
       steps: [
-        { type: "story", prompt: "گوش کن و تو هم همین کار را بکن", tall: true,
-          cast: { nose: "👃", eyes: "👀", ears: "👂", mouth: "👄", hand: "✋", foot: "🦶" },
+        /* Arman does each action, so the child sees what the words mean and does it too (there is time to do it). */
+        { type: "scene", prompt: "گوش کن و تو هم همین کار را بکن", bg: "#fdf6e9",
+          parts: { kid: { art: "en-arman", at: [80, 88], s: 2 } },
           scenes: [
-            { caption: "Touch your nose!", at: { nose: [50, 50, { size: 2.6, act: "bounce" }] } },
-            { caption: "Touch your eyes!", at: { nose: null, eyes: [50, 50, { size: 2.6, act: "bounce" }] } },
-            { caption: "Touch your ears!", at: { eyes: null, ears: [50, 50, { size: 2.6, act: "bounce" }] } },
-            { caption: "Touch your mouth!", at: { ears: null, mouth: [50, 50, { size: 2.6, act: "bounce" }] } },
-            { caption: "Clap your hands!", at: { mouth: null, hand: [50, 50, { size: 2.6, act: "shake" }] } },
-            { caption: "Stamp your feet!", at: { hand: null, foot: [50, 50, { size: 2.6, act: "shake" }] } }
+            { caption: "Touch your nose!", key: 2000, hold: 5000, do: [].concat(pose("kid", "R", "nose", 300, 700),
+              [{ id: "kid.foreR", to: { r: "+12" }, at: 1300, dur: 800, yoyo: true, times: 4 }]) },
+            { caption: "Touch your eyes!", key: 2000, hold: 5000, do: [].concat(pose("kid", "R", "down", 0, 400),
+              pose("kid", "R", "eye", 500, 700), pose("kid", "L", "eye", 500, 700)) },
+            { caption: "Touch your ears!", key: 2000, hold: 5000, do: [].concat(pose("kid", "R", "down", 0, 400), pose("kid", "L", "down", 0, 400),
+              pose("kid", "R", "ear", 500, 700), pose("kid", "L", "ear", 500, 700)) },
+            { caption: "Touch your mouth!", key: 2000, hold: 5000, do: [].concat(pose("kid", "R", "down", 0, 400), pose("kid", "L", "down", 0, 400),
+              pose("kid", "R", "mouth", 500, 700)) },
+            { caption: "Clap your hands!", key: 1000, hold: 5000, do: [].concat(pose("kid", "R", "clapOpen", 0, 500), pose("kid", "L", "clapOpen", 0, 500), [
+              { id: "kid.foreR", to: { r: 110 }, at: 600, dur: 2400, yoyo: true, times: 6 },
+              { id: "kid.foreL", to: { r: -110 }, at: 600, dur: 2400, yoyo: true, times: 6 },
+              { emit: "spark", where: [80, 57], spread: [10, 6], n: 9, at: 900, dur: 2000, life: 700 }
+            ]) },
+            { caption: "Stamp your feet!", key: 750, hold: 5000, do: [].concat(pose("kid", "R", "down", 0, 400), pose("kid", "L", "down", 0, 400),
+              [0, 1, 2, 3].map(function (n) {
+                return { id: n % 2 ? "kid.legR" : "kid.legL", to: { sy: 0.55 }, at: 400 + n * 700, dur: 700, yoyo: true, times: 2 };
+              }), [0, 1, 2, 3].map(function (n) {
+                return { emit: "spark", where: [n % 2 ? 86 : 74, 87], spread: [6, 2], rise: -3, n: 4, at: 1100 + n * 700, dur: 100, life: 600 };
+              })) }
           ] },
         { type: "words", words: [{ pic: "👃", en: "nose" }, { pic: "👀", en: "eyes" }, { pic: "👂", en: "ears" }, { pic: "👄", en: "mouth" }, { pic: "✋", en: "hand" }, { pic: "🦶", en: "foot" }] },
         { type: "listen", say: "nose", options: [{ pic: "👂", en: "ears" }, { pic: "👃", en: "nose" }, { pic: "✋", en: "hand" }], answer: "👃" },
@@ -163,15 +326,26 @@ B.SUBJECTS.push({ id: "english", name: "خواندن و نوشتن انگلیس�
     {
       id: "english-seed-7", subject: "english", level: "seed", emoji: "🍞", title: "خوراکی‌ها",
       steps: [
-        { type: "story", prompt: "گوش کن و تو هم بگو", bg: "kitchen",
-          cast: { sara: "👧", mom: "👩", bread: "🍞", milk: "🥛", cheese: "🧀" },
+        /* Breakfast: Sara asks for something with «please», her mother passes it with «Here you are», and Sara says
+           «Thank you». Asking, giving and thanking are each shown. */
+        { type: "scene", prompt: "گوش کن و تو هم بگو", bg: "#fdf0d5",
+          parts: {
+            kitchen: { art: "en-kitchen" }, mom: { art: "en-mother", at: [124, 80], s: 1.1 }, sara: { art: "en-sara", at: [38, 76], s: 1.1 },
+            table: { art: "en-table", at: [80, 90], s: 1.4 }, plate: { art: "en-plate", at: [46, 61], s: 0.8 },
+            bread: { art: "🍞", at: [98, 61], s: 0.7 }, cheese: { art: "🧀", at: [110, 61], s: 0.6 }, milk: { art: "🥛", at: [121, 61], s: 0.6 }
+          },
           scenes: [
-            { caption: "Good morning! Breakfast time!", at: { mom: [80, 60, { size: 1.6, flip: true, act: "bounce" }], sara: [20, 62, { size: 1.4 }] } },
-            { caption: "Bread, please.", at: { sara: [20, 62, { size: 1.4, act: "bounce" }], bread: [50, 64, { size: 1.4, act: "grow" }] } },
-            { caption: "Cheese, please.", at: { sara: [20, 62, { size: 1.4, act: "bounce" }], cheese: [62, 64, { size: 1.3, act: "grow" }] } },
-            { caption: "Milk, please.", at: { sara: [20, 62, { size: 1.4, act: "bounce" }], milk: [38, 64, { size: 1.3, act: "grow" }] } },
-            { caption: "Here you are.", at: { mom: [80, 60, { size: 1.6, flip: true, act: "bounce" }] } },
-            { caption: "Thank you!", at: { sara: [20, 62, { size: 1.4, act: "spin" }] } }
+            { caption: "Good morning! Breakfast time!", key: 900, do: [].concat(wave("mom", "R", 0, 1900, true), talk("mom", 0, 2200)) },
+            { caption: "Bread, please.", key: 1000, do: [].concat(pose("mom", "R", "down", 0, 400), pose("sara", "R", "point", 0, 500), talk("sara", 0, 1200), pose("sara", "R", "down", 1700, 400)) },
+            { caption: "Here you are.", key: 900, do: [].concat(pose("mom", "L", "point", 0, 500), talk("mom", 0, 1100),
+              [{ id: "bread", path: "M98 61Q72 38 46 61", at: 300, dur: 1200 }], pose("mom", "L", "down", 1700, 400)) },
+            { caption: "Thank you!", key: 1000, do: [].concat(pose("sara", "R", "chest", 0, 500), talk("sara", 0, 1000),
+              [{ id: "sara.head", to: { y: 1.2 }, at: 500, dur: 600, yoyo: true, times: 2 }], pose("sara", "R", "down", 1700, 400)) },
+            { caption: "Milk, please.", key: 1000, do: [].concat(pose("sara", "R", "point", 0, 500), talk("sara", 0, 1200), pose("sara", "R", "down", 1700, 400)) },
+            { caption: "Here you are.", key: 900, do: [].concat(pose("mom", "L", "point", 0, 500), talk("mom", 0, 1100),
+              [{ id: "milk", path: "M121 61Q90 34 60 61", at: 300, dur: 1200 }], pose("mom", "L", "down", 1700, 400)) },
+            { caption: "Thank you!", key: 1000, do: [].concat(pose("sara", "R", "chest", 0, 500), talk("sara", 0, 1000),
+              [{ id: "sara.head", to: { y: 1.2 }, at: 500, dur: 600, yoyo: true, times: 2 }], pose("sara", "R", "down", 1700, 400)) }
           ] },
         { type: "words", words: [{ pic: "🍞", en: "bread" }, { pic: "🧀", en: "cheese" }, { pic: "🥚", en: "egg" }, { pic: "🥛", en: "milk" }, { pic: "💧", en: "water" }, { pic: "🍎", en: "apple" }] },
         { type: "listen", say: "bread", options: [{ pic: "🥛", en: "milk" }, { pic: "🍞", en: "bread" }, { pic: "🍎", en: "apple" }], answer: "🍞" },
@@ -346,13 +520,26 @@ B.SUBJECTS.push({ id: "english", name: "خواندن و نوشتن انگلیس�
     {
       id: "english-sprout-8", subject: "english", level: "sprout", emoji: "⭐", title: "کلمه‌های پرکاربرد",
       steps: [
-        { type: "story", prompt: "گوش کن و تو هم بگو",
-          cast: { girl: "👧", dog: "🐶", cat: "🐱", box: "📦" },
+        /* Sara sees a big dog, then her small cat, which jumps into a box: big, see, my and in are all shown. */
+        { type: "scene", prompt: "گوش کن و تو هم بگو", bg: "#cfeaf7",
+          parts: {
+            park: { art: "en-park" }, boxB: { art: "en-box-back", at: [130, 86], s: 1.2, o: 0 },
+            cat: { art: "en-cat", at: [186, 86], s: 1.4, flip: true }, boxF: { art: "en-box-front", at: [130, 86], s: 1.2, o: 0 },
+            dog: { art: "en-dog", at: [200, 86], s: 1.7, flip: true }, sara: { art: "en-sara", at: [26, 86], s: 1.15 }
+          },
           scenes: [
-            { caption: "I see a dog.", at: { girl: [16, 62, { size: 1.5 }], dog: [60, 60, { size: 1.4, act: "bounce" }] } },
-            { caption: "The dog is big.", at: { dog: [60, 56, { size: 2.2, act: "grow" }] } },
-            { caption: "I see my cat.", at: { dog: null, cat: [60, 60, { size: 1.5, act: "bounce" }] } },
-            { caption: "My cat is in a box.", at: { box: [60, 66, { size: 1.8 }], cat: [60, 50, { size: 1.3, act: "bounce" }] } }
+            { caption: "I see a dog.", do: [].concat(trot("dog", 104, 0, 1600), pose("sara", "R", "point", 900, 500),
+              [{ id: "sara.eyes", to: { x: 0.7 }, at: 900, dur: 300 }], talk("sara", 0, 1200)) },
+            { caption: "The dog is big.", key: 1500, do: [].concat(pose("sara", "R", "big", 0, 600), pose("sara", "L", "big", 0, 600),
+              [{ id: "sara.eyes", to: { y: -0.5 }, dur: 300 }, { id: "dog.head", to: { r: -10 }, at: 300, dur: 400 },
+                { id: "dog.tail", to: { r: 25 }, at: 300, dur: 2000, yoyo: true, times: 8 }], talk("sara", 0, 1300)) },
+            { caption: "I see my cat.", do: [].concat(pose("sara", "R", "down", 0, 400), pose("sara", "L", "down", 0, 400), [
+              { id: "sara.eyes", to: { y: 0 }, dur: 300 }, { id: "dog.head", to: { r: 0 }, dur: 300 }, { id: "dog", to: { flip: 1 }, at: 100, dur: 300 }
+            ], trot("dog", 215, 400, 1300), [
+              { id: "boxB", to: { o: 1 }, at: 300, dur: 500 }, { id: "boxF", to: { o: 1 }, at: 300, dur: 500 },
+              { id: "cat", path: "M186 86Q140 56 96 86", at: 1300, dur: 900, ease: "out" }
+            ], pose("sara", "R", "point", 1900, 500), talk("sara", 0, 1200)) },
+            { caption: "My cat is in a box.", do: [].concat([{ id: "cat", path: "M96 86Q112 42 130 79", at: 200, dur: 900 }], talk("sara", 0, 1500)) }
           ] },
         { type: "listen", say: "the", prompt: "گوش کن و این کلمه را پیدا کن",
           options: [{ label: "see" }, { label: "the" }, { label: "my" }], answer: "the" },
@@ -417,13 +604,27 @@ B.SUBJECTS.push({ id: "english", name: "خواندن و نوشتن انگلیس�
     {
       id: "english-sapling-1", subject: "english", level: "sapling", emoji: "👀", title: "I can see",
       steps: [
-        { type: "story", prompt: "گوش کن و تو هم بگو",
-          cast: { cat: "🐱", dog: "🐶", apple: "🍎", b1: "🐦", b2: "🐦", girl: "👧" },
+        /* Sara shades her eyes and points at what she can see: a cat on the wall, a dog, a red apple in the tree,
+           two birds landing on its branch. */
+        { type: "scene", prompt: "گوش کن و تو هم بگو", bg: "#cfeaf7",
+          parts: {
+            garden: { art: "en-garden" }, tree: { art: "en-tree", at: [134, 88], s: 1.15 }, apple: { art: "🍎", at: [141, 39], s: 0.55 },
+            cat: { art: "en-cat", at: [-12, 88], s: 1.2 }, dog: { art: "en-dog", at: [200, 88], s: 1.1, flip: true },
+            b1: { art: "en-bird", at: [176, 6], s: 1.2 }, b2: { art: "en-bird2", at: [180, 14], s: 1.2 },
+            sara: { art: "en-sara", at: [70, 88], s: 1.15 }
+          },
           scenes: [
-            { caption: "I can see a cat.", at: { girl: [14, 64, { size: 1.5 }], cat: [55, 60, { size: 1.6, act: "bounce" }] } },
-            { caption: "I can see a dog.", at: { cat: null, dog: [55, 60, { size: 1.6, act: "bounce" }] } },
-            { caption: "I can see a red apple.", at: { dog: null, apple: [55, 60, { size: 1.6, act: "grow" }] } },
-            { caption: "I can see two birds.", at: { apple: null, b1: [48, 30, { size: 1.3, act: "bounce" }], b2: [70, 34, { size: 1.3, act: "bounce" }] } }
+            { caption: "I can see a cat.", do: [].concat([{ id: "cat", path: "M-12 88Q4 38 28 56", dur: 900 }],
+              pose("sara", "R", "shade", 300, 500), pose("sara", "L", "pointUp", 900, 500), [{ id: "sara.eyes", to: { x: -0.7 }, at: 300, dur: 300 }], talk("sara", 0, 1400)) },
+            { caption: "I can see a dog.", do: [].concat([{ id: "cat", path: "M28 56Q22 42 14 66", dur: 600 }, { id: "cat", to: { o: 0 }, at: 300, dur: 300 }],
+              pose("sara", "L", "down", 0, 400), pose("sara", "R", "down", 0, 400), trot("dog", 124, 300, 1300),
+              pose("sara", "L", "shade", 500, 500), pose("sara", "R", "point", 1100, 500), [{ id: "sara.eyes", to: { x: 0.7 }, at: 400, dur: 300 }], talk("sara", 0, 1400)) },
+            { caption: "I can see a red apple.", do: [].concat([{ id: "dog", to: { flip: 1 }, dur: 300 }], trot("dog", 215, 300, 1300),
+              pose("sara", "R", "pointUp", 300, 500), [{ id: "sara.eyes", to: { y: -0.6 }, at: 300, dur: 300 },
+                { id: "apple", to: { s: 0.75 }, at: 900, dur: 900, yoyo: true, times: 2 },
+                { emit: "spark", where: [141, 33], spread: [10, 10], n: 8, at: 900, dur: 900, life: 900 }], talk("sara", 0, 1600)) },
+            { caption: "I can see two birds.", do: [].concat(fly("b1", "M176 6Q140 14 104 46.4", 0, 1300), fly("b2", "M180 14Q150 30 117 48.4", 300, 1300),
+              [{ id: "sara.eyes", to: { x: 0.5, y: -0.6 }, dur: 300 }], talk("sara", 0, 1600)) }
           ] },
         { type: "listen", say: "I can see a dog.", prompt: "گوش کن. چه چیزی را می‌بیند؟", options: ["🐱", "🐶", "🐟"], answer: "🐶" },
         { type: "listen", say: "I can see two cats.", quiet: true, prompt: "گوش کن. چه چیزی را می‌بیند؟", options: ["🐱", "🐱🐱", "🐱🐱🐱"], answer: "🐱🐱" },
@@ -439,13 +640,26 @@ B.SUBJECTS.push({ id: "english", name: "خواندن و نوشتن انگلیس�
     {
       id: "english-sapling-2", subject: "english", level: "sapling", emoji: "❓", title: "سؤال و جواب",
       steps: [
-        { type: "story", prompt: "گوش کن و تو هم بگو",
-          cast: { sara: "👧", arman: "👦", duck: "🦆", ball: "🎈" },
+        /* Sara asks, Arman answers: the question comes with a pointing hand and a question mark, the answer with
+           the duck quacking and a bubble of red. */
+        { type: "scene", prompt: "گوش کن و تو هم بگو", bg: "#cfeaf7",
+          parts: {
+            farm: { art: "en-farm" }, duck: { art: "en-duck", at: [80, 86], s: 1.8 }, balloon: { art: "🎈", at: [80, 124], s: 1.4 },
+            sara: { art: "en-sara", at: [24, 86], s: 1.15 }, arman: { art: "en-arman", at: [136, 86], s: 1.15 },
+            ask: { art: "en-ask", at: [34, 50], s: 1.1, o: 0 }, say: { art: "en-say", at: [126, 50], s: 1.1, o: 0 }, red: { art: "en-red", at: [117, 37], s: 1.1, o: 0 }
+          },
           scenes: [
-            { caption: "What is this?", at: { sara: [16, 62, { size: 1.5, act: "bounce" }], arman: [84, 62, { size: 1.5, flip: true }], duck: [50, 55, { size: 1.6 }] } },
-            { caption: "It is a duck.", at: { arman: [84, 62, { size: 1.5, flip: true, act: "bounce" }], duck: [50, 55, { size: 1.6, act: "bounce" }] } },
-            { caption: "What colour is it?", at: { duck: null, ball: [50, 50, { size: 1.8 }], sara: [16, 62, { size: 1.5, act: "bounce" }] } },
-            { caption: "It is red.", at: { arman: [84, 62, { size: 1.5, flip: true, act: "bounce" }], ball: [50, 50, { size: 1.8, act: "grow" }] } }
+            { caption: "What is this?", do: [].concat(pose("sara", "R", "point", 0, 500), talk("sara", 0, 1200), pop("ask", 500)) },
+            { caption: "It is a duck.", key: 1100, do: [].concat([{ id: "ask", to: { o: 0 }, dur: 300 }], pose("arman", "L", "point", 0, 500), talk("arman", 0, 1200),
+              pose("sara", "R", "down", 0, 400), [
+                { id: "duck.bill", to: { r: 32 }, at: 700, dur: 900, yoyo: true, times: 4 }, { id: "duck.head", to: { r: -8 }, at: 700, dur: 900, yoyo: true, times: 2 }
+              ]) },
+            { caption: "What colour is it?", do: [].concat(pose("arman", "L", "down", 0, 400), [
+              { id: "duck", to: { x: -30 }, dur: 1600, ease: "linear" }, { id: "duck", to: { flip: -1 }, dur: 200 }, { id: "duck", to: { r: 8 }, at: 200, dur: 1400, yoyo: true, times: 6 },
+              { id: "balloon", to: { y: 66 }, at: 600, dur: 1400, ease: "out" }, { id: "balloon", to: { r: 6 }, at: 600, dur: 1600, yoyo: true, times: 4 }
+            ], pose("sara", "R", "point", 1400, 500), talk("sara", 0, 1400), pop("ask", 1500)) },
+            { caption: "It is red.", do: [].concat([{ id: "ask", to: { o: 0 }, dur: 300 }], pose("sara", "R", "down", 0, 400), pose("arman", "L", "point", 0, 500), talk("arman", 0, 1100),
+              pop("say", 400), pop("red", 500), [{ id: "balloon", to: { y: "-3" }, at: 600, dur: 1200, yoyo: true, times: 2 }]) }
           ] },
         { type: "listen", show: "🐶", say: "Is it a dog?", prompt: "گوش کن و جواب بده",
           options: [{ pic: "✅", label: "Yes", value: "yes", en: "Yes" }, { pic: "❌", label: "No", value: "no", en: "No" }], answer: "yes" },
@@ -464,13 +678,23 @@ B.SUBJECTS.push({ id: "english", name: "خواندن و نوشتن انگلیس�
     {
       id: "english-sapling-3", subject: "english", level: "sapling", emoji: "🙂", title: "جمله‌های هر روز",
       steps: [
-        { type: "story", prompt: "گوش کن و تو هم بگو",
-          cast: { sara: "👧", reza: "👦" },
+        /* Sara and Reza meet: hello with a wave, my name with a hand on the chest, a question with an open hand and
+           a question mark, fine with a happy jump. */
+        { type: "scene", prompt: "گوش کن و تو هم بگو", bg: "#cfeaf7",
+          parts: {
+            park: { art: "en-park" }, sara: { art: "en-sara", at: [46, 86], s: 1.25 }, reza: { art: "en-reza", at: [114, 86], s: 1.25 },
+            askS: { art: "en-ask", at: [56, 46], o: 0 }, askR: { art: "en-ask", at: [104, 46], o: 0, flip: true }
+          },
           scenes: [
-            { caption: "Hello! What is your name?", at: { sara: [22, 60, { size: 1.6, act: "bounce" }], reza: [78, 60, { size: 1.6, flip: true }] } },
-            { caption: "My name is Reza. What is your name?", at: { reza: [78, 60, { size: 1.6, flip: true, act: "bounce" }] } },
-            { caption: "My name is Sara. How are you?", at: { sara: [22, 60, { size: 1.6, act: "bounce" }] } },
-            { caption: "I am fine, thank you.", at: { reza: [78, 60, { size: 1.6, flip: true, act: "bounce" }] } }
+            { caption: "Hello! What is your name?", key: 2600, hold: 3600, do: [].concat(wave("sara", "R", 0, 1300), talk("sara", 0, 2600),
+              pose("sara", "R", "ask", 1800, 500), pop("askS", 2000)) },
+            { caption: "My name is Reza. What is your name?", key: 1200, hold: 4600, do: [].concat([{ id: "askS", to: { o: 0 }, dur: 300 }], pose("sara", "R", "down", 0, 400),
+              pose("reza", "L", "chest", 0, 500), talk("reza", 0, 3400), pose("reza", "L", "ask", 2000, 500), pop("askR", 2200)) },
+            { caption: "My name is Sara. How are you?", key: 1200, hold: 4400, do: [].concat([{ id: "askR", to: { o: 0 }, dur: 300 }], pose("reza", "L", "down", 0, 400),
+              pose("sara", "R", "chest", 0, 500), talk("sara", 0, 3000), pose("sara", "R", "ask", 1900, 500), pop("askS", 2100)) },
+            { caption: "I am fine, thank you.", key: 1700, hold: 3600, do: [].concat([{ id: "askS", to: { o: 0 }, dur: 300 }], pose("sara", "R", "down", 0, 400),
+              [{ id: "reza", to: { y: "-4" }, dur: 600, yoyo: true, times: 2 }], talk("reza", 0, 2200),
+              pose("reza", "L", "chest", 900, 500), [{ id: "reza.head", to: { y: 1.2 }, at: 1400, dur: 700, yoyo: true, times: 2 }]) }
           ] },
         { type: "words", show: true, prompt: "روی هر تصویر بزن، گوش کن و بلند بگو",
           words: [{ pic: "😊", en: "I am happy." }, { pic: "😢", en: "I am sad." }, { pic: "😴", en: "I am sleepy." }, { pic: "🍽️", en: "I am hungry." }] },
@@ -483,6 +707,182 @@ B.SUBJECTS.push({ id: "english", name: "خواندن و نوشتن انگلیس�
         { type: "order", prompt: "گوش کن و کلمه‌های جمله را به ترتیب بچین", ltr: true, say: "My name is Sara.", items: ["My", "name", "is", "Sara."] },
         { type: "order", prompt: "گوش کن و کلمه‌های جمله را به ترتیب بچین", ltr: true, say: "How are you?", items: ["How", "are", "you?"] },
         { type: "tip", text: "هر روز چند جمله کوتاه را با هم تمرین کنید: سر صبحانه بپرسید How are you? و کودک بگوید I am fine, thank you یا I am hungry. از کودک بپرسید What is your name? تا اسمش را با جمله کامل بگوید: My name is … . درست گفتن مهم‌تر از تند گفتن است." }
+      ]
+    },
+    {
+      id: "english-sapling-4", subject: "english", level: "sapling", emoji: "😋", title: "دوست دارم",
+      steps: [
+        /* Sara eats an apple and smiles; she pushes an onion away, frowning and shaking her head. Reza drinks milk and
+           smiles; a bee buzzes round him and he frowns and steps back. */
+        { type: "scene", prompt: "گوش کن و تو هم بگو", bg: "#fdf0d5",
+          parts: {
+            kitchen: { art: "en-kitchen" }, sara: { art: "en-sara", at: [38, 86], s: 1.2 }, reza: { art: "en-reza", at: [122, 86], s: 1.2 },
+            table: { art: "en-table", at: [80, 88], s: 0.75 },
+            apple: { art: "🍎", at: [55, 72.3], s: 0.5 }, onion: { art: "🧅", at: [80, 72.3], s: 0.5 }, milk: { art: "🥛", at: [105, 72.3], s: 0.5 },
+            heartS: { art: "en-heart", at: [38, 36], s: 1.3, o: 0 }, heartR: { art: "en-heart", at: [122, 36], s: 1.3, o: 0 },
+            bee: { art: "🐝", at: [182, 18], s: 0.6 }
+          },
+          scenes: [
+            { caption: "I like apples.", do: [].concat(pose("sara", "R", [-34, -42], 0, 500), pose("sara", "R", "mouth", 700, 600),
+              [{ id: "apple", path: "M55 72.3Q50 58 40 61.5", at: 700, dur: 600 }, { id: "apple", to: { s: 0.42 }, at: 1500, dur: 200 }],
+              talk("sara", 0, 1100), pop("heartS", 1800)) },
+            { caption: "I don't like onions.", key: 1700, do: [].concat([{ id: "apple", to: { o: 0 }, dur: 300 }, { id: "heartS", to: { o: 0 }, dur: 300 }],
+              pose("sara", "R", "down", 0, 400), [{ id: "onion", path: "M80 72.3Q72 56 60 62", at: 400, dur: 800 }], face("sara", false, 900),
+              shake("sara", 1000), pose("sara", "R", "stop", 1100, 400), talk("sara", 0, 1500),
+              [{ id: "onion", path: "M60 62Q72 56 80 72.3", at: 1900, dur: 700 }]) },
+            { caption: "I like milk.", do: [].concat(face("sara", true, 0), pose("sara", "R", "down", 0, 400),
+              pose("reza", "L", [-34, -42], 300, 500), pose("reza", "L", "mouth", 1000, 600),
+              [{ id: "milk", path: "M105 72.3Q112 58 120 63", at: 1000, dur: 600 }, { id: "milk", to: { r: 25 }, at: 1600, dur: 400 }],
+              talk("reza", 0, 1000), pop("heartR", 2100)) },
+            { caption: "I don't like bees.", key: 1700, hold: 4200, do: [].concat([{ id: "heartR", to: { o: 0 }, dur: 300 }, { id: "milk", to: { r: 0 }, dur: 300 },
+              { id: "milk", path: "M120 63Q112 58 105 72.3", at: 200, dur: 600 }], pose("reza", "L", "down", 300, 400),
+              [{ id: "bee", path: "M182 18C150 6 150 40 134 44S112 30 124 38", at: 600, dur: 1600 }],
+              face("reza", false, 1100), shake("reza", 1200), pose("reza", "L", "stop", 1200, 400), pose("reza", "R", "stop", 1200, 400),
+              [{ id: "reza", to: { x: 130 }, at: 1500, dur: 500 }, { id: "bee", path: "M124 38Q150 12 190 4", at: 2400, dur: 900 }], talk("reza", 0, 1500)) }
+          ] },
+        { type: "words", show: true, prompt: "روی هر تصویر بزن، گوش کن و با صورتت نشان بده و بلند بگو",
+          words: [{ pic: "😋", en: "I like it." }, { pic: "😖", en: "I don't like it." }] },
+        { type: "listen", say: "I like bananas.", prompt: "گوش کن. کدام تصویر درست است؟", options: ["😋🍌", "😖🍌"], answer: "😋🍌" },
+        { type: "listen", say: "I don't like rain.", quiet: true, prompt: "گوش کن. کدام تصویر درست است؟", options: ["😋🌧️", "😖🌧️"], answer: "😖🌧️" },
+        { type: "listen", say: "I like cats.", prompt: "گوش کن. چه چیزی را دوست دارد؟", options: ["🐶", "🐟", "🐱"], answer: "🐱" },
+        { type: "sort", prompt: "هر جمله را بخوان و در سبد درستش بگذار",
+          baskets: [{ pic: "😋", label: "I like", value: "like" }, { pic: "😖", label: "I don't like", value: "not" }],
+          items: [{ label: "I like milk.", say: "I like milk.", basket: "like" }, { label: "I don't like rain.", say: "I don't like rain.", basket: "not" },
+            { label: "I like the sun.", say: "I like the sun.", basket: "like" }, { label: "I don't like bees.", say: "I don't like bees.", basket: "not" },
+            { label: "I like dogs.", say: "I like dogs.", basket: "like" }, { label: "I don't like onions.", say: "I don't like onions.", basket: "not" }] },
+        { type: "order", prompt: "گوش کن و کلمه‌های جمله را به ترتیب بچین", ltr: true, say: "I like red apples.", items: ["I", "like", "red", "apples."] },
+        { type: "order", prompt: "گوش کن و کلمه‌های جمله را به ترتیب بچین", ltr: true, say: "I don't like onions.", items: ["I", "don't", "like", "onions."] },
+        { type: "tip", text: "بازی «دوست دارم» را سر سفره یا در بازار بازی کنید: به چیزی اشاره کنید و با شست بالا بگویید I like apples، یا با شست پایین بگویید I don't like onions. بعد کودک درباره خودش بگوید. معنی را با صورت و دست نشان بدهید، نه با ترجمه. هر جواب کودک درست است، چون درباره سلیقه خودش است." }
+      ]
+    },
+    {
+      id: "english-sapling-5", subject: "english", level: "sapling", emoji: "🐱", title: "یکی، چندتا",
+      steps: [
+        { type: "words", show: true, prompt: "روی هر تصویر بزن، گوش کن و بلند بگو. وقتی بیشتر از یکی است، آخرش صدای s می‌آید.",
+          words: [{ pic: "🐱", en: "one cat" }, { pic: "🐱🐱", en: "two cats" }, { pic: "🐶", en: "one dog" }, { pic: "🐶🐶🐶", en: "three dogs" }] },
+        { type: "listen", say: "two cats", prompt: "گوش کن. کدام است؟", options: ["🐱", "🐱🐱"], answer: "🐱🐱" },
+        { type: "listen", say: "one ball", quiet: true, prompt: "گوش کن. کدام است؟", options: ["⚽⚽⚽", "⚽"], answer: "⚽" },
+        { type: "listen", say: "three birds", quiet: true, prompt: "گوش کن. کدام است؟", options: ["🐦", "🐦🐦", "🐦🐦🐦"], answer: "🐦🐦🐦" },
+        { type: "listen", show: "🍎🍎🍎", prompt: "بخوان. کدام درست نوشته شده است؟",
+          options: [{ label: "three apple" }, { label: "three apples", en: "three apples" }], answer: "three apples" },
+        { type: "listen", show: "🦆", quiet: true, prompt: "بخوان. کدام درست نوشته شده است؟",
+          options: [{ label: "one duck", en: "one duck" }, { label: "one ducks" }], answer: "one duck" },
+        { type: "sort", prompt: "هر کلمه را بخوان. یکی است یا چندتا؟",
+          baskets: [{ pic: "🐱", label: "one", value: "one" }, { pic: "🐱🐱🐱", label: "many", value: "many" }],
+          items: [{ label: "cats", say: "cats", basket: "many" }, { label: "dog", say: "dog", basket: "one" }, { label: "hats", say: "hats", basket: "many" },
+            { label: "bed", say: "bed", basket: "one" }, { label: "pens", say: "pens", basket: "many" }, { label: "sun", say: "sun", basket: "one" }] },
+        { type: "pairs", prompt: "هر نوشته را بخوان و با تصویرش جفت کن",
+          pairs: [["a bird", "🐦"], ["two birds", "🐦🐦"], ["a hat", "🎩"], ["three hats", "🎩🎩🎩"]] },
+        { type: "tip", text: "چیزهای خانه را با هم بشمارید و به انگلیسی بگویید: one spoon، two spoons، three spoons. کودک s آخر را بلند و واضح بگوید. چند کلمه انگلیسی این قاعده را ندارند، مثل fish و sheep که یکی و چندتایشان یکی است؛ فعلاً لازم نیست کودک آن‌ها را بداند." }
+      ]
+    },
+    {
+      id: "english-sapling-6", subject: "english", level: "sapling", emoji: "📦", title: "کجاست؟",
+      steps: [
+        /* The cat jumps into the box, onto it, down next to it, and goes under the bed. */
+        { type: "scene", prompt: "گوش کن و تو هم بگو", bg: "#f6e3c6",
+          parts: {
+            floor: { art: "room-floor" }, wall: { art: "room-wall", at: [0, 56] },
+            boxB: { art: "en-box-back", at: [38, 84], s: 1.3 }, cat: { art: "en-cat", at: [6, 84] }, boxF: { art: "en-box-front", at: [38, 84], s: 1.3 },
+            bed: { art: "en-bed", at: [122, 84], s: 1.3 }
+          },
+          scenes: [
+            { caption: "The cat is in the box.", do: [{ id: "cat", path: "M6 84Q20 42 38 72", at: 300, dur: 1000 }] },
+            { caption: "The cat is on the box.", do: [{ id: "cat", path: "M38 72Q38 38 38 63.2", at: 300, dur: 800 }, { id: "cat", to: { sy: 0.85 }, at: 1100, dur: 300, yoyo: true, times: 2 }] },
+            { caption: "The cat is next to the box.", do: [{ id: "cat", path: "M38 63.2Q52 42 66 84", at: 300, dur: 800 }, { id: "cat", to: { sy: 0.85 }, at: 1100, dur: 300, yoyo: true, times: 2 }] },
+            { caption: "The cat is under the bed.", do: [{ id: "cat", path: "M66 84Q79 76 92 84Q105 76 118 84", at: 300, dur: 1400 }, { id: "cat", to: { sy: 0.9 }, at: 1700, dur: 300 }] }
+          ] },
+        { type: "words", show: true, prompt: "روی هر تصویر بزن، گوش کن و بلند بگو",
+          words: [{ pic: "🐱", ref: "📦", where: "in", en: "in the box" }, { pic: "🐱", ref: "📦", where: "on", en: "on the box" },
+            { pic: "🐱", ref: "📦", where: "next to", en: "next to the box" }, { pic: "🐱", ref: "🛏️", where: "under", en: "under the bed" }] },
+        { type: "listen", say: "The ball is under the bed.", prompt: "گوش کن. توپ کجاست؟",
+          options: [{ pic: "⚽", ref: "🛏️", where: "on" }, { pic: "⚽", ref: "🛏️", where: "under" }, { pic: "⚽", ref: "🛏️", where: "next to" }], answer: "under" },
+        { type: "listen", say: "The duck is in the box.", prompt: "گوش کن. اردک کجاست؟",
+          options: [{ pic: "🦆", ref: "📦", where: "next to" }, { pic: "🦆", ref: "📦", where: "on" }, { pic: "🦆", ref: "📦", where: "in" }], answer: "in" },
+        { type: "listen", say: "The dog is next to the box.", prompt: "گوش کن. سگ کجاست؟",
+          options: [{ pic: "🐶", ref: "📦", where: "in" }, { pic: "🐶", ref: "📦", where: "next to" }, { pic: "🐶", ref: "📦", where: "on" }], answer: "next to" },
+        { type: "listen", say: "The bird is on the bed.", prompt: "گوش کن. پرنده کجاست؟",
+          options: [{ pic: "🐦", ref: "🛏️", where: "on" }, { pic: "🐦", ref: "🛏️", where: "under" }], answer: "on" },
+        { type: "listen", show: { pic: "🐱", ref: "📦", where: "on" }, prompt: "گربه کجاست؟ جمله‌ها را بخوان و درستش را انتخاب کن",
+          options: [{ label: "The cat is in the box.", en: "The cat is in the box." }, { label: "The cat is on the box.", en: "The cat is on the box." },
+            { label: "The cat is next to the box.", en: "The cat is next to the box." }], answer: "The cat is on the box." },
+        { type: "listen", show: { pic: "⚽", ref: "🛏️", where: "under" }, quiet: true, prompt: "توپ کجاست؟ جمله‌ها را بخوان و درستش را انتخاب کن",
+          options: [{ label: "The ball is on the bed.", en: "The ball is on the bed." }, { label: "The ball is under the bed.", en: "The ball is under the bed." }], answer: "The ball is under the bed." },
+        { type: "tip", text: "بازی «کجاست؟» را با یک عروسک و یک جعبه یا کاسه بازی کنید: عروسک را جایی بگذارید و بپرسید Where is the cat? کودک جواب بدهد: in the box، on the box، under the box یا next to the box. بعد جایتان را عوض کنید: کودک بگوید و شما عروسک را بگذارید. اگر اشتباه گذاشتید، کودک درستش کند." }
+      ]
+    },
+    {
+      id: "english-sapling-7", subject: "english", level: "sapling", emoji: "📖", title: "قصه کوتاه",
+      steps: [
+        /* Sara's big dog finds her red ball under the bed and brings it back. */
+        { type: "scene", prompt: "به قصه گوش کن", bg: "#f6e3c6",
+          parts: {
+            floor: { art: "room-floor" }, wall: { art: "room-wall", at: [0, 56] }, bed: { art: "en-bed", at: [128, 84], s: 1.2 },
+            dog: { art: "en-dog", at: [78, 86], s: 1.4, flip: true }, ballD: { art: "en-ball", under: "dog", at: [21.5, -14.6], s: 0.85, o: 0 },
+            sara: { art: "en-sara", at: [44, 86], s: 1.15 },
+            ball: { art: "en-ball", at: [31.6, 54.4], s: 1.2, o: 0 }, look: { art: "en-look", at: [107.9, 52.5], r: 63, sx: 1.55, o: 0 }
+          },
+          scenes: [
+            { caption: "Sara has a dog.", key: 1400, do: [].concat(pose("sara", "R", [-115, -30], 0, 600),
+              [{ id: "sara.foreR", to: { r: "+10" }, at: 700, dur: 1800, yoyo: true, times: 6 }, { id: "dog.tail", to: { r: -25 }, at: 400, dur: 2000, yoyo: true, times: 8 }]) },
+            { caption: "The dog is big.", key: 1300, do: [].concat(pose("sara", "R", "big", 0, 600), pose("sara", "L", "big", 0, 600),
+              [{ id: "sara.eyes", to: { x: 0.6, y: -0.5 }, dur: 300 }, { id: "dog.head", to: { r: -12 }, at: 300, dur: 500 }]) },
+            { caption: "Sara has a red ball.", key: 2200, do: [].concat(pose("sara", "R", "down", 0, 400), pose("sara", "L", "hold", 0, 500), [
+              { id: "sara.eyes", to: { x: -0.5, y: 0 }, dur: 300 }, { id: "dog.head", to: { r: 0 }, dur: 400 },
+              { id: "ball", to: { o: 1 }, at: 400, dur: 200 }, { id: "ball", path: "M31.6 54.4L31.6 88L31.6 54.4", at: 900, dur: 900 }
+            ]) },
+            { caption: "The ball is under the bed.", do: [].concat(pose("sara", "L", "down", 300, 400), [
+              { id: "sara.eyes", to: { x: 0.7 }, at: 600, dur: 300 },
+              { id: "ball", path: "M31.6 54.4Q24 70 34 88L122 84", dur: 1600 }, { id: "ball", to: { r: 900 }, at: 500, dur: 1100, ease: "out" }
+            ]) },
+            { caption: "The dog can see the ball!", do: [
+              { id: "dog", to: { flip: 1 }, dur: 300 }, { id: "dog.head", to: { r: 25 }, at: 500, dur: 500 }, { id: "look", to: { o: 1 }, at: 1100, dur: 400 },
+              { id: "dog.tail", to: { r: -25 }, at: 1100, dur: 1600, yoyo: true, times: 8 }
+            ] },
+            { caption: "Good dog! Thank you!", key: 4600, hold: 6000, do: [].concat([{ id: "look", to: { o: 0 }, dur: 300 }, { id: "dog.head", to: { r: 0 }, dur: 300 }],
+              trot("dog", 84, 300, 600), [
+                { id: "dog.head", to: { r: 45 }, at: 1000, dur: 400 }, { id: "ball", path: "M122 84L108 72", at: 1400, dur: 400 },
+                { id: "ball", to: { o: 0 }, at: 1700, dur: 100 }, { id: "ballD", to: { o: 1 }, at: 1700, dur: 100 },
+                { id: "dog.head", to: { r: 0 }, at: 1800, dur: 400 }, { id: "dog", to: { flip: -1 }, at: 2300, dur: 300 }
+              ], trot("dog", 78, 2600, 600), [
+                { id: "ballD", to: { o: 0 }, at: 3300, dur: 100 }, { id: "ball", to: { x: 47.9, y: 65.6, r: 0 }, at: 3200, dur: 1 }, { id: "ball", to: { o: 1 }, at: 3300, dur: 100 },
+                { id: "ball", path: "M47.9 65.6Q34 50 31.6 54.4", at: 3400, dur: 500 }
+              ], pose("sara", "L", "hold", 3200, 400), pose("sara", "R", [-115, -30], 3900, 500),
+              [{ id: "sara.foreR", to: { r: "+10" }, at: 4400, dur: 1400, yoyo: true, times: 4 }, { id: "dog.tail", to: { r: -25 }, at: 3900, dur: 2000, yoyo: true, times: 8 }],
+              talk("sara", 3900, 1700)) }
+          ] },
+        { type: "passage", prompt: "حالا خودت قصه را بخوان",
+          text: "Sara has a dog. The dog is big. Sara has a red ball. The ball is under the bed. The dog can see the ball.",
+          question: "سارا چه حیوانی دارد؟", options: ["🐱", "🐶", "🐟"], answer: "🐶" },
+        { type: "passage", prompt: "قصه را دوباره بخوان",
+          text: "Sara has a dog. The dog is big. Sara has a red ball. The ball is under the bed. The dog can see the ball.",
+          question: "توپ سارا چه رنگی است؟", options: ["🔵", "🔴", "🟢"], answer: "🔴" },
+        { type: "passage", prompt: "قصه را دوباره بخوان",
+          text: "Sara has a dog. The dog is big. Sara has a red ball. The ball is under the bed. The dog can see the ball.",
+          question: "توپ کجاست؟", options: ["on the bed", "in the box", "under the bed"], answer: "under the bed" },
+        { type: "passage", prompt: "این قصه تازه است. آن را بخوان",
+          text: "Reza has a cat. The cat is black. It is on the bed. The cat likes milk.",
+          question: "گربه کجاست؟", options: ["under the bed", "on the bed", "next to the bed"], answer: "on the bed" },
+        { type: "passage", prompt: "قصه را دوباره بخوان",
+          text: "Reza has a cat. The cat is black. It is on the bed. The cat likes milk.",
+          question: "گربه چه چیزی دوست دارد؟", options: ["🍎", "🐟", "🥛"], answer: "🥛" },
+        { type: "tip", text: "قصه را با هم بخوانید: یک جمله شما، یک جمله کودک. بعد کتاب را ببندید و بپرسید قصه درباره چه بود؛ کودک می‌تواند به فارسی تعریف کند. اگر کلمه‌ای را بلد نبود، صداهایش را با هم بگویید (d… o… g). کودک می‌تواند قصه سارا را برای اسباب‌بازی‌هایش هم بخواند." }
+      ]
+    },
+    {
+      id: "english-sapling-8", subject: "english", level: "sapling", emoji: "✍️", title: "نوشتن جمله",
+      steps: [
+        { type: "listen", show: "✏️", say: "I can see a cat.", prompt: "جمله با حرف بزرگ شروع می‌شود و آخرش نقطه می‌آید. کدام درست نوشته شده است؟",
+          options: [{ label: "i can see a cat" }, { label: "I can see a cat.", en: "I can see a cat." }], answer: "I can see a cat." },
+        { type: "listen", show: "✏️", say: "My name is Sara.", prompt: "بین کلمه‌ها فاصله می‌آید. کدام درست نوشته شده است؟",
+          options: [{ label: "Mynameis Sara." }, { label: "My name is Sara.", en: "My name is Sara." }, { label: "my name is Sara" }], answer: "My name is Sara." },
+        { type: "order", prompt: "گوش کن و کلمه‌های جمله را به ترتیب بچین. ببین: اولش حرف بزرگ است و آخرش نقطه.", ltr: true, say: "I like apples.", items: ["I", "like", "apples."] },
+        { type: "order", prompt: "گوش کن و کلمه‌های جمله را به ترتیب بچین", ltr: true, say: "The cat is on the bed.", items: ["The", "cat", "is", "on", "the", "bed."] },
+        { type: "paper", text: "این جمله را در دفترت بنویس. از چپ شروع کن.", example: "I can see a cat.",
+          check: ["با حرف بزرگ شروع کرده؟", "بین کلمه‌ها فاصله گذاشته؟", "آخر جمله نقطه گذاشته؟", "از چپ به راست نوشته؟"] },
+        { type: "paper", text: "حالا یک جمله درباره چیزی که دوست داری بنویس، مثل این نمونه.", example: "I like apples.",
+          check: ["با حرف بزرگ شروع کرده؟", "بین کلمه‌ها فاصله گذاشته؟", "آخر جمله نقطه گذاشته؟", "جمله را برایتان بلند خوانده؟"] },
+        { type: "tip", text: "هر روز یک جمله کوتاه انگلیسی با هم بنویسید، مثل I like milk یا I can see a bird. سه چیز را با هم نگاه کنید: حرف بزرگ اول جمله، فاصله بین کلمه‌ها (به اندازه یک انگشت) و نقطه آخر. اول از چیزی که درست نوشته تعریف کنید، بعد فقط یک چیز را با هم درست کنید." }
       ]
     }
   ];

@@ -489,11 +489,11 @@ Short sentences, questions, everyday phrases.
 | ✅ | `english-sapling-1` | I can see | Reading and building "I can see a …" | animation, lesson (`listen`), game (`order`, `pairs`), parent tip |
 | ✅ | `english-sapling-2` | سؤال و جواب | What is this? It is a … | animation, lesson (`listen`), game (`order`), parent tip |
 | ✅ | `english-sapling-3` | جمله‌های هر روز | Everyday phrases | animation, lesson (`words`, `listen`), game (`order`), parent tip |
-| 🔨 | `english-sapling-4` | دوست دارم | I like … / I don't like …: hear, show with a face, read and sort sentences, build them | animation, lesson (`words`, `listen`), game (`sort`, `order`), parent tip |
-| 🔨 | `english-sapling-5` | یکی، چندتا | Plural -s: one cat, two cats; hear it, read it, sort one / many | lesson (`words`, `listen`), game (`sort`, `pairs`), parent tip |
-| 🔨 | `english-sapling-6` | کجاست؟ | in, on, under, next to, shown with pictures of where things are; hear it, then read the sentence | animation, lesson (`words`, `listen`), parent tip |
-| 🔨 | `english-sapling-7` | قصه کوتاه | A short story heard first, then read with questions (Sara's dog and ball); a second one read alone (Reza's cat) | animation, story (`passage`), parent tip |
-| 🔨 | `english-sapling-8` | نوشتن جمله | Writing a short sentence: capital letter, spaces between words, full stop; copy one, then write their own on paper | lesson (`listen`), game (`order`), `paper`, parent tip |
+| ✅ | `english-sapling-4` | دوست دارم | I like … / I don't like …: hear, show with a face, read and sort sentences, build them | animation, lesson (`words`, `listen`), game (`sort`, `order`), parent tip |
+| ✅ | `english-sapling-5` | یکی، چندتا | Plural -s: one cat, two cats; hear it, read it, sort one / many | lesson (`words`, `listen`), game (`sort`, `pairs`), parent tip |
+| ✅ | `english-sapling-6` | کجاست؟ | in, on, under, next to, shown with pictures of where things are; hear it, then read the sentence | animation, lesson (`words`, `listen`), parent tip |
+| ✅ | `english-sapling-7` | قصه کوتاه | A short story heard first, then read with questions (Sara's dog and ball); a second one read alone (Reza's cat) | animation, story (`passage`), parent tip |
+| ✅ | `english-sapling-8` | نوشتن جمله | Writing a short sentence: capital letter, spaces between words, full stop; copy one, then write their own on paper | lesson (`listen`), game (`order`), `paper`, parent tip |
 
 ### 🌳 درخت — `tree`
 
