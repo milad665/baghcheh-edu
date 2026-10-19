@@ -17,7 +17,7 @@ B.LEVELS = [
 B.SUBJECTS = [
   { id: "read", name: "فارسی", emoji: "📖", leveled: true },
   { id: "math", name: "ریاضی", emoji: "🔢", leveled: true },
-  { id: "feel", name: "احساس‌های من", emoji: "💛", leveled: false }
+  { id: "feel", name: "احساس‌های من", emoji: "💛", leveled: true }
 ];
 
 B.NUMBER_WORDS = ["صفر", "یک", "دو", "سه", "چهار", "پنج", "شش", "هفت", "هشت", "نه", "ده",

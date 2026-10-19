@@ -1,4 +1,5 @@
-/* باغچه — احساس‌های من (me and my feelings): for every child, not leveled.
+/* باغچه — احساس‌های من (me and my feelings): leveled by garden (from the child's Persian garden, like health),
+   plus lessons for every child whatever the garden (level: null), such as the weekly calm lesson.
    Lessons are plain data; step types are listed in README.md and drawn by js/engine.js. */
 var B = window.B || {};
 window.B = B;
@@ -43,7 +44,7 @@ function arms(id, l, r, at, dur) {
 function all() { return [].concat.apply([], arguments); }
 
 B.LESSONS.push(
-  // ---------------- Me and my feelings (for every child, not leveled) ----------------
+  // ---------------- Me and my feelings: for every child, whatever the garden (level: null) ----------------
   {
     id: "feel-1", subject: "feel", level: null, emoji: "🌷", title: "نفس گل و شمع",
     steps: [
