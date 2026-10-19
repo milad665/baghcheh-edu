@@ -6,7 +6,7 @@
    meets the rest of the letter and turn clockwise; «ه» starts at its top and turns the other way; the madd of «آ»
    goes right to left; the slanted stroke of «ک» comes first, then its body.
    Each stroke is a path ("M… Q… L… A…", one piece: no second M) or a dot [x, y]. Used by the intro and trace steps
-   (js/anim.js). Below the letters: the Persian digits, the Latin letters for English, and the pre-writing paths. */
+   (js/anim.js). Below the letters: hamza, joined letters and whole words, the Persian digits, the Latin letters for English, and the pre-writing paths. */
 var B = window.B || {};
 window.B = B;
 
@@ -137,6 +137,29 @@ window.B = B;
     Z: ["M78 50 L122 50 L78 130 L122 130"]
   };
   Object.keys(LATIN).forEach(function (ch) { B.STROKES[ch] = LATIN[ch]; });
+
+  /* Hamza: «ء» on its own (a small head and a tail, above the baseline), «ئ» (on the body of «ی») and «ئـ» (on a tooth). */
+  var HAMZA_SMALL = "M134 78 Q124 70 118 78 Q116 86 128 88 Q120 92 112 96";
+  B.STROKES["ء"] = ["M128 80 Q102 58 86 78 Q78 98 110 104 Q92 114 70 124"];
+  B.STROKES["ئ"] = [B.STROKES["ی"][0], "M120 70 Q110 62 104 70 Q102 78 114 80 Q106 84 98 88"];
+  B.STROKES["ئـ"] = ["M130 104 Q131 130 116 130 L70 130", HAMZA_SMALL];
+
+  /* Joined letters (the trace step with a `letter` of more than one letter): the forms of «ب» at the start, middle
+     and end of a word, and whole words. A joined piece is written in one go, right to left, without lifting the pen;
+     a joined «ـا» goes up from the baseline. Dots come after their piece. Same grid and baseline as the letters. */
+  var JOINED = {
+    "بـ": ["M130 104 Q131 130 116 130 L70 130", [118, 150]],
+    "ـبـ": ["M160 130 L112 130 Q104 128 104 104 Q106 130 92 130 L44 130", [104, 150]],
+    "ـب": ["M164 130 L82 130 Q52 130 50 106", [108, 150]],
+    "بابا": ["M172 104 Q173 130 158 130 L134 130 L136 52", [158, 150], "M104 104 Q105 130 90 130 L66 130 L68 52", [90, 150]],
+    "نان": ["M172 104 Q173 130 158 130 L134 130 L136 52", [160, 88], "M112 100 Q116 156 76 156 Q36 156 40 100", [76, 112]],
+    "لب": ["M150 46 Q146 100 148 124 Q148 130 136 130 L72 130 Q50 130 48 106", [100, 150]],
+    "سیب": ["M180 104 Q181 126 170 125 Q162 124 162 110 Q163 125 153 125 Q144 124 144 110 Q145 130 132 130 Q122 130 120 108 Q121 130 108 130 L66 130 Q42 130 40 106",
+      [113, 148], [127, 148], [76, 150]],
+    "دست": ["M160 82 Q180 104 182 126 Q172 133 144 130",
+      "M132 104 Q133 126 122 125 Q114 124 114 110 Q115 125 105 125 Q96 124 96 110 Q97 130 84 130 L48 130 Q24 130 22 106", [58, 112], [74, 112]]
+  };
+  Object.keys(JOINED).forEach(function (w) { B.STROKES[w] = JOINED[w]; });
 
   /* Pre-writing paths (the trace step's `path`): lines and shapes before letters. Straight lines go top to bottom,
      and everything that runs sideways starts on the right and goes left, the way Persian is written. */

@@ -24,7 +24,7 @@ window.B = B;
   }
 
   /* One thing on a card or tile: a string (a letter, word or emoji), a number (shown in Persian digits), or
-     { label, pic, dots, say }: a picture, a word under it, or dots to count. */
+     { label, pic, dots, say, audio }: a picture, a word under it, or dots to count (audio: a recording of it, in pairs). */
   function key(v) { return typeof v === "object" && v !== null ? String(v.value != null ? v.value : v.label != null ? v.label : v.pic) : String(v); }
   function isPic(t) { return /^[^؀-ۿA-Za-z0-9۰-۹]+$/.test(t); }
   function face(v) {
@@ -144,6 +144,7 @@ window.B = B;
       b.setAttribute("aria-label", s.hidden ? B.t("cardHidden", { n: B.fa(cards.length + 1) }) : aria(v));
       b._aria = aria(v);
       b._say = v && v.say;
+      b._audio = v && v.audio; // a recording of the card's word, played instead of the device voice
       cards.push(b);
       return b;
     }
@@ -163,7 +164,7 @@ window.B = B;
       fb = feedback(box);
       var choose = function (c) {
         if (c.disabled) return;
-        if (c._say) B.speak(c._say);
+        if (c._say || c._audio) B.speak(c._say, c._audio);
         if (!picked || picked.dataset.side === c.dataset.side) {
           if (picked) { picked.classList.remove("picked"); picked.setAttribute("aria-pressed", "false"); }
           picked = picked === c ? null : c;
@@ -220,7 +221,7 @@ window.B = B;
         if (c.disabled || open.indexOf(c) !== -1) return;
         if (open.length === 2) closeOpen();
         turn(c, true);
-        if (c._say) B.speak(c._say);
+        if (c._say || c._audio) B.speak(c._say, c._audio);
         c.classList.remove("show");
         open.push(c);
         if (open.length < 2) { seen[idx] = true; return; }
@@ -551,4 +552,10 @@ window.B = B;
     });
     mark();
   };
+
+  // Shared with other step files (js/steps/numbers.js): dragging, card faces, bounce and the game feedback line.
+  E.draggable = draggable;
+  E.face = face;
+  E.bounce = bounce;
+  E.feedback = feedback;
 })();

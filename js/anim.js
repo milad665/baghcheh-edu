@@ -218,6 +218,13 @@ window.B = B;
       E.choice(ask, { options: s.options, answer: s.answer, pic: s.pic }, function (scored, first) { stop(); done(scored, first); });
       if (ask.scrollIntoView) ask.scrollIntoView({ block: "nearest", behavior: B.reducedMotion() ? "auto" : "smooth" });
     }
-    setTimeout(function () { if (stage.isConnected && at < 0) playFrom(0); }, 400);
+    // The storyboard (tools/storyboard.html) asks for a still picture of each scene, with nothing moving.
+    box.sceneStill = function (n) {
+      stop();
+      stage.classList.add("snap");
+      for (var i = 0; i <= n; i++) showScene(i);
+      Array.prototype.forEach.call(stage.querySelectorAll(".actor-in"), function (a) { a.className = "actor-in"; });
+    };
+    if (!box.noAutoplay) setTimeout(function () { if (stage.isConnected && at < 0) playFrom(0); }, 400);
   };
 })();

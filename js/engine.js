@@ -134,7 +134,9 @@ window.B = B;
     // The handwriting model from js/strokes.js when there is one (the same one the intro animates), else the printed
     // letter. `path` is a pre-writing path from B.PATHS, `strokes` any other shape drawn the same way.
     var strokes = s.strokes || (s.path && B.PATHS && B.PATHS[s.path]);
-    var model = B.writeLetter && B.writeLetter(s.letter, { ghost: 24, fade: true, strokes: strokes, label: strokes && s.prompt });
+    // A whole joined word (more than one letter) gets a thinner model, so its teeth stay apart.
+    var wide = s.letter && !strokes && s.letter.replace(/[ـًٌٍَُِّْ]/g, "").length > 1;
+    var model = B.writeLetter && B.writeLetter(s.letter, { ghost: wide ? 15 : 24, fade: true, strokes: strokes, label: strokes && s.prompt });
     box.appendChild(el("div", { class: "trace-wrap" }, [model ? model.svg : el("div", { class: "ghost", text: s.letter || "" }), canvas]));
     var ctx = canvas.getContext("2d");
     ctx.scale(2, 2);
@@ -278,87 +280,131 @@ window.B = B;
     }, done);
   };
 
-  // ---------- Tens and ones: bundles of ten sticks and loose sticks ----------
+  // ---------- Place value: loose sticks, bundles of ten, packs of a hundred, boxes of a thousand ----------
 
-  function bundle(cls) {
-    var b = el("span", { class: "bundle " + (cls || "") });
-    for (var i = 0; i < 10; i++) b.appendChild(el("i"));
+  // Place 0 is ones (a stick), 1 tens (a bundle of ten sticks), 2 hundreds (a pack of ten bundles, a flat),
+  // 3 thousands (a box of ten packs, a cube).
+  var PIECE = ["stick", "bundle", "flat", "cube"];
+  var BUNDLED = ["bundled", "bundledHundred", "bundledThousand"];
+  var OPENED = [null, "unbundled", "unbundledHundred", "unbundledThousand"];
+  var ADD = ["addOne", "addTen", "addHundred", "addThousand"];
+
+  function piece(place, cls) {
+    var b = el("span", { class: PIECE[place] + " " + (cls || "") });
+    if (place) for (var i = 0; i < 10; i++) b.appendChild(el("i"));
+    b.dataset.place = place;
     return b;
   }
 
-  /* groups: [{ tens, ones, cls }], drawn left to right like a written number: tens on the left, ones on the right.
-     cls is "" (first number), "add" (the number being added) or "gone" (taken away). */
-  function placeValue(groups) {
-    var tens = el("div", { class: "pv-tens" }), ones = el("div", { class: "pv-ones" });
-    var t = 0, o = 0;
-    groups.forEach(function (g) {
-      for (var i = 0; i < g.tens; i++) tens.appendChild(bundle(g.cls));
-      for (var j = 0; j < g.ones; j++) ones.appendChild(el("span", { class: "stick " + (g.cls || "") }));
-      t += g.tens; o += g.ones;
-    });
-    return el("div", { class: "pv", dir: "ltr", role: "img", "aria-label": B.t("tensOnes", { t: B.fa(t), o: B.fa(o) }) }, [tens, ones]);
+  /* The highest place drawn: bundles of ten (1) up to 100, packs of a hundred (2) above 100, boxes of a thousand
+     (3) above 1,000. hundreds: true / thousands: true draw them for smaller numbers too, hundreds: false never. */
+  function topPlace(s, max) {
+    if (s.hundreds === false) return 1;
+    var p = max > 1000 ? 3 : max > 100 ? 2 : 1;
+    if (s.hundreds) p = Math.max(p, 2);
+    if (s.thousands) p = 3;
+    return p;
+  }
+  // n as counts per place, [ones, tens, …]; the top place keeps the rest (100 with top 1 is ten bundles).
+  function split(n, top) {
+    var c = [];
+    for (var i = 0; i < top; i++) { c.push(n % 10); n = Math.floor(n / 10); }
+    c.push(n);
+    return c;
+  }
+  function pvLabel(c) {
+    var v = { o: B.fa(c[0]), t: B.fa(c[1]), h: B.fa(c[2] || 0), k: B.fa(c[3] || 0) };
+    return B.t(c.length > 3 ? "thousandsAll" : c.length > 2 ? "hundredsTensOnes" : "tensOnes", v);
   }
 
-  /* Read a number from bundles (n), add (b > 0) or take away (b < 0). When taking away needs more loose
-     sticks than there are, one bundle is opened into ten sticks, and the child is told so.
-     With build: true the child makes n by adding bundles and sticks; ten sticks are tied into a bundle. */
+  /* groups: [{ c: [ones, tens, …], cls }], drawn left to right like a written number: the highest place on the
+     left, ones on the right. cls is "" (first number), "add" (the number being added) or "gone" (taken away). */
+  var PV_CLASS = ["pv-ones", "pv-tens", "pv-hundreds", "pv-thousands"];
+  function placeValue(groups) {
+    var top = groups[0].c.length - 1, cols = [], total = [];
+    for (var p = 0; p <= top; p++) { cols.push(el("div", { class: PV_CLASS[p] })); total.push(0); }
+    groups.forEach(function (g) {
+      g.c.forEach(function (k, p) {
+        for (var i = 0; i < k; i++) cols[p].appendChild(piece(p, g.cls));
+        total[p] += k;
+      });
+    });
+    return el("div", { class: "pv" + (top > 1 ? " big" : ""), dir: "ltr", role: "img", "aria-label": pvLabel(total) }, cols.reverse());
+  }
+
+  /* Read a number (n), add (b > 0) or take away (b < 0). When taking away needs more of a place than there is,
+     one piece of the next place is opened (a bundle into ten sticks, a pack into ten bundles…), and the child is
+     told so. With build: true the child makes n; ten of a place are tied into one of the next. */
   steps.tens = function (s, box, done) {
-    if (s.build) return buildTens(s, box, done);
-    var b = s.b || 0, groups, opened = false;
-    var t = Math.floor(s.n / 10), o = s.n % 10;
-    if (b > 0) groups = [{ tens: t, ones: o }, { tens: Math.floor(b / 10), ones: b % 10, cls: "add" }];
+    var b = s.b || 0, top = topPlace(s, Math.max(s.n, s.n + b));
+    if (s.build) return buildTens(s, box, done, top);
+    var a = split(s.n, top), groups, opened = [];
+    if (b > 0) groups = [{ c: a }, { c: split(b, top), cls: "add" }];
     else if (b < 0) {
-      var bt = Math.floor(-b / 10), bo = -b % 10;
-      if (o < bo) { t--; o += 10; opened = true; }
-      groups = [{ tens: t - bt, ones: o - bo }, { tens: bt, ones: bo, cls: "gone" }];
-    } else groups = [{ tens: t, ones: o }];
+      var d = split(-b, top);
+      for (var i = 0; i < top; i++) {
+        if (a[i] >= d[i]) continue;
+        var j = i + 1;
+        while (!a[j]) j++;
+        a[j]--;
+        if (opened.indexOf(j) === -1) opened.push(j);
+        for (var k = j - 1; k > i; k--) { a[k] += 9; if (opened.indexOf(k) === -1) opened.push(k); }
+        a[i] += 10;
+      }
+      groups = [{ c: a.map(function (v, p) { return v - d[p]; }) }, { c: d, cls: "gone" }];
+    } else groups = [{ c: a }];
     if (b) box.appendChild(mathLine(expr(s.n, b)));
     else box.appendChild(el("p", { class: "prompt", text: s.prompt || B.t("tensAsk") }));
     box.appendChild(placeValue(groups));
-    if (opened) box.appendChild(el("p", { class: "hint", text: B.t("unbundled") }));
+    opened.sort().reverse().forEach(function (p) { box.appendChild(el("p", { class: "hint", text: B.t(OPENED[p]) })); });
     choice(box, { options: nums(s.options), answer: s.n + b }, done);
   };
 
-  function buildTens(s, box, done) {
-    box.appendChild(el("p", { class: "prompt", text: B.t("tensBuild") }));
+  function buildTens(s, box, done, top) {
+    box.appendChild(el("p", { class: "prompt", text: s.prompt || B.t(top > 1 ? "hundredsBuild" : "tensBuild") }));
     box.appendChild(el("p", { class: "math-big", text: B.fa(s.n) }));
-    var t = 0, o = 0, clear;
+    var c = split(0, top), clear;
     var area = el("div", { class: "pv-build" });
     var out = el("p", { class: "hint", "aria-live": "polite" });
     var note = el("p", { class: "hint", "aria-live": "polite" });
     function draw() {
       area.innerHTML = "";
-      area.appendChild(placeValue([{ tens: t, ones: o }]));
-      out.textContent = B.t("tensOnes", { t: B.fa(t), o: B.fa(o) });
+      area.appendChild(placeValue([{ c: c }]));
+      out.textContent = pvLabel(c);
       if (clear) clear();
     }
-    // Tap a bundle or a stick to take it away again.
+    // Tap a piece to take it away again.
     area.addEventListener("click", function (e) {
-      if (e.target.closest(".bundle")) t--;
-      else if (e.target.closest(".stick")) o--;
-      else return;
+      var p = e.target.closest("[data-place]");
+      if (!p) return;
+      c[+p.dataset.place]--;
       note.textContent = "";
       draw();
     });
-    var addTen = el("button", { class: "btn secondary", type: "button", text: B.t("addTen"), onclick: function () {
-      if (t < 10) t++;
+    // Ten of a place are tied into one of the next; the top place stops at ten.
+    function add(p) {
       note.textContent = "";
+      if (p === top) { if (c[p] < 10) c[p]++; }
+      else {
+        c[p]++;
+        while (p < top && c[p] === 10) { c[p] = 0; c[p + 1]++; note.textContent = B.t(BUNDLED[p]); p++; }
+      }
       draw();
-    } });
-    var addOne = el("button", { class: "btn secondary", type: "button", text: B.t("addOne"), onclick: function () {
-      o++;
-      note.textContent = "";
-      if (o === 10) { o = 0; t++; note.textContent = B.t("bundled"); }
-      draw();
-    } });
-    box.appendChild(el("div", { class: "row", style: "justify-content:center" }, [addTen, addOne]));
+    }
+    var buttons = [];
+    for (var p = top; p >= 0; p--) {
+      (function (p) {
+        buttons.push(el("button", { class: "btn secondary", type: "button", text: B.t(ADD[p]), onclick: function () { add(p); } }));
+      })(p);
+    }
+    box.appendChild(el("div", { class: "row", style: "justify-content:center;flex-wrap:wrap" }, buttons));
     box.appendChild(area);
     box.appendChild(out);
     box.appendChild(note);
-    box.appendChild(el("p", { class: "hint", text: B.t("removeHint") }));
+    box.appendChild(el("p", { class: "hint", text: B.t(top > 1 ? "removeHintAny" : "removeHint") }));
     draw();
     clear = doneButton(box, B.t("makeDone"), function () {
-      var v = t * 10 + o;
+      var v = c.reduce(function (sum, k, p) { return sum + k * Math.pow(10, p); }, 0);
       return v === s.n ? "" : v < s.n ? B.t("tensMore") : B.t("tensLess");
     }, done);
   }
@@ -370,7 +416,7 @@ window.B = B;
   steps.compare = function (s, box, done) {
     function card(n) {
       var pic = null;
-      if (s.pic === "tens") pic = placeValue([{ tens: Math.floor(n / 10), ones: n % 10 }]);
+      if (s.pic === "tens") pic = placeValue([{ c: split(n, topPlace(s, Math.max(s.a, s.b))) }]);
       else if (s.thing) pic = el("span", { class: "mini", "aria-hidden": "true", text: new Array(n + 1).join(s.thing) });
       return el("span", { class: "card" }, [el("span", { class: "card-n", text: B.fa(n) }), pic]);
     }

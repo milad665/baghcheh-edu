@@ -55,8 +55,16 @@ window.B = B;
   }
 
   /* A picture: an emoji (pic), a colour swatch (color, any CSS colour) or dots to count (dots), with an optional
-     English word or sentence under it (label). An option may also be a sentence alone (label and no picture). */
+     English word or sentence under it (label). An option may also be a sentence alone (label and no picture).
+     With where ("in", "on", "under" or "next to") and ref (an emoji, e.g. 📦), pic is drawn in, on, under or
+     next to ref: a picture of where something is. */
+  function where(o) {
+    return el("span", { class: "en-where " + o.where.replace(/ /g, "-"), role: "img", "aria-label": o.en || o.label || o.where }, [
+      el("span", { class: "en-ref", text: o.ref }), el("span", { class: "en-thing", text: o.pic })
+    ]);
+  }
   function pic(o) {
+    if (o.where) return where(o);
     if (o.color) return el("span", { class: "en-swatch", "aria-hidden": "true", style: "background:" + o.color });
     if (o.dots) {
       var d = el("span", { class: "dots", "aria-hidden": "true" });
@@ -71,7 +79,7 @@ window.B = B;
     return el("span", { class: "en-opt" + (o.pic || o.color || o.dots ? "" : " text") }, [pic(o), label]);
   }
   function valueOf(o) {
-    return typeof o !== "object" ? o : o.value != null ? o.value : o.pic || o.color || o.dots || o.label;
+    return typeof o !== "object" ? o : o.value != null ? o.value : o.where || o.pic || o.color || o.dots || o.label;
   }
 
   /* words: meet new words. words [{ pic | color | dots, en, audio }]. The child taps each picture to hear it, and says it aloud.
@@ -116,12 +124,13 @@ window.B = B;
   /* listen: hear a word or sentence (say, or a recording in audio), then tap its picture.
      options: pictures (emoji strings) or { pic | color | dots, label, en, value }; answer: the right option's
      value (by default its pic, color, dots or label).
-     Optional prompt, quiet (the Persian question is not read aloud, when it is the same as the step before), show (a big letter or picture shown above the question, e.g. "s" for "which one starts with s?"),
+     Optional prompt, quiet (the Persian question is not read aloud, when it is the same as the step before), show (a big letter or picture shown above the question, e.g. "s" for "which one starts with s?", or a picture of where something is: { pic, ref, where }),
      and en on the options: the word said when an option is tapped. Scored. */
   E.steps.listen = function (s, box, done) {
     var prompt = s.prompt || B.t("enListenPrompt");
     box.appendChild(el("p", { class: "prompt", text: prompt }));
-    if (s.show) {
+    if (s.show && typeof s.show === "object") box.appendChild(el("p", { class: "en-show" }, [pic(s.show)]));
+    else if (s.show) {
       var big = el("p", { class: "letter-big en-big", text: s.show });
       box.appendChild(B.isEn(s.show) ? enText(big) : big);
     }

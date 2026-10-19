@@ -191,6 +191,16 @@ B.T = {
   tensMore: "باز هم بگذار.",
   tensLess: "زیاد شد. چند تا را بردار.",
   unbundled: "چوب‌های تکی کافی نبود، پس یک دسته ده‌تایی را باز کردیم.",
+  removeHintAny: "برای برداشتن، روی هر کدام بزن.",
+  hundredsBuild: "این عدد را با بسته‌های صدتایی، دسته‌های ده‌تایی و چوب‌ها بساز",
+  addHundred: "+ یک بسته صدتایی",
+  addThousand: "+ یک جعبه هزارتایی",
+  hundredsTensOnes: "{h} بسته صدتایی، {t} دسته ده‌تایی و {o} چوب",
+  thousandsAll: "{k} جعبه هزارتایی، {h} بسته صدتایی، {t} دسته ده‌تایی و {o} چوب",
+  bundledHundred: "ده دسته ده‌تایی شد یک بسته صدتایی!",
+  bundledThousand: "ده بسته صدتایی شد یک جعبه هزارتایی!",
+  unbundledHundred: "دسته‌های ده‌تایی کافی نبود، پس یک بسته صدتایی را باز کردیم.",
+  unbundledThousand: "بسته‌های صدتایی کافی نبود، پس یک جعبه هزارتایی را باز کردیم.",
 
   // ---------- ریاضی: مقایسه ----------
   compareMore: "کدام بیشتر است؟",
@@ -355,7 +365,11 @@ Object.assign(B.T, {
   writeAria: "نوشتن «{letter}»",
   play: "▶ پخش",
   pause: "⏸ مکث",
-  replay: "↻ از اول"
+  replay: "↻ از اول",
+  // The scene step (js/scene.js) when the child does it too: «ادامه» skips.
+  sceneRub: "حالا نوبت توست!",
+  sceneGoOn: "ادامه",
+  sceneTap: "روی هر کدام بزن!"
 });
 
 // ---------- زبان انگلیسی (js/steps/english.js) ----------
@@ -369,6 +383,16 @@ Object.assign(B.T, {
   enLetterLike: "صدایش شبیه «{fa}» است.",
   enNoVoice: "این دستگاه صدای انگلیسی ندارد. اگر می‌توانید، این را برای کودک بخوانید:",
   enTipTitle: "برای والدین: تمرین در خانه"
+});
+
+// ---------- نوشتن روی کاغذ (js/steps/paper.js) ----------
+Object.assign(B.T, {
+  paperExample: "نمونه:",
+  paperWrite: "روی کاغذ یا در دفترت بنویس. بعد نوشته‌ات را به پدر یا مادرت نشان بده.",
+  paperParentTitle: "برای والدین: نوشته را با هم نگاه کنید",
+  paperParentNote: "هر چیزی را که کودک درست انجام داده تیک بزنید و از همان تعریف کنید. لازم نیست همه درست باشد. نمره‌ای در کار نیست و تیک‌ها جایی ذخیره نمی‌شوند.",
+  paperDone: "نوشتم!",
+  paperLater: "بعداً می‌نویسم"
 });
 
 // ---------- علوم: آزمایش‌ها، خورشید و سایه، آزمایش در خانه (js/steps/science.js) ----------
@@ -540,8 +564,125 @@ Object.assign(B.T, {
   mapShow: "ببین، اینجاست. رویش بزن.",
   mapShowNext: "ببین، حالا به اینجا برو.",
   mapRouteNext: "حالا کجا برویم؟",
-  mapArrived: "رسیدیم!"
+  mapArrived: "رسیدیم!",
+  mapLegend: "راهنمای نقشه",
+  mapMine: "استان تو، {name}! مرکز استان {name}، شهر {city} است.",
+  mapMineNoCity: "استان تو، {name}!",
+  mapMineSkip: "نمی‌دانم",
+  mapMineLater: "اشکالی ندارد. بعداً با پدر و مادرت روی نقشه پیدایش کن.",
+  // compass (js/steps/world.js)
+  compass_n: "شمال", compass_s: "جنوب", compass_e: "شرق", compass_w: "غرب",
+  compassHidden: "این طرف را هنوز پیدا نکرده‌ای",
+  compassKeys: "روی هر طرف بزن تا به آن طرف بچرخی. با صفحه‌کلید: کلیدهای جهت‌نما.",
+  compassGood: "حالا رو به {dir} هستی!",
+  compassNotThis: "این طرف {dir} است.",
+  compassShow: "ببین، این طرف است. به این طرف بچرخ."
 });
 Object.assign(B.T.browseFields, {
-  map: "نقشه", find: "پیدا کن", route: "مسیر", walker: "رهگذر", labels: "نام جاها", note: "یادداشت"
+  map: "نقشه", find: "پیدا کن", route: "مسیر", walker: "رهگذر", labels: "نام جاها", note: "یادداشت",
+  layers: "لایه‌های نقشه", cities: "شهرها", enough: "چند جا کافی است", mine: "استان خودت",
+  legend: "راهنمای نقشه", sun: "خورشید", hide: "نام جهت‌ها پنهان"
+});
+
+// ---------- فارسی، نهال: بلند خواندن (js/steps/reading.js) ----------
+Object.assign(B.T, {
+  readAloudPrompt: "این را بلند بخوان. عجله نکن.",
+  readAloudParent: "برای والدین: وقتی کودک بلند می‌خواند، روی کلمه‌هایی که برایش سخت بود بزنید. وقت نگیرید و وسط خواندن اشتباه را نگویید.",
+  readAloudParentAgain: "برای والدین: حالا که دوباره می‌خواند، روی کلمه‌های رنگی که این بار خوب خواند بزنید.",
+  readAloudParentNone: "برای والدین: کودک می‌تواند یک بار دیگر هم بخواند؛ هر بار روان‌تر می‌شود.",
+  readAloudPractice: "این کلمه‌ها را با هم آرام بخوانید. برای شنیدن هر کلمه رویش بزن.",
+  readAloudHear: "بشنو: {word}",
+  readAloudDone: "خواندن تمام شد",
+  readAloudDoneAgain: "دوباره خواندم",
+  readAloudAgain: "حالا یک بار دیگر بخوان.",
+  readAloudAllGood: "با دقت خواندی!",
+  readAloudBetter: "خوب تمرین کردی! این بار {n} کلمه سخت را خوب خواندی.",
+  readAloudKeepGoing: "خوب تمرین کردی! فردا دوباره بخوان؛ کم‌کم آسان می‌شود."
+});
+
+// ---------- ریاضی، نهال: کسر و نمودار (js/steps/numbers.js) ----------
+Object.assign(B.T, {
+  fracPiece: "تکه {n}",
+  fracOption: "شکل {n}",
+  fracColour: "{take} تکه از {parts} تکه را رنگ کن.",
+  fracMore: "باز هم رنگ کن.",
+  fracLess: "زیاد شد. روی یک تکه بزن تا رنگش برود.",
+  fracShowColour: "این‌طور {take} تکه رنگ می‌شود.",
+  fracName: "چه مقدار رنگ شده است؟",
+  fracEqual: "کدام به تکه‌های مساوی بریده شده است؟",
+  fracUnequal: "تکه‌های کدام مساوی نیست؟",
+  fracCut: "این را به {parts} تکه مساوی ببر. روی خط‌چین‌ها بزن.",
+  fracLine: "جای بریدن {n}",
+  fracCutDone: "بریدم",
+  fracCutFew: "تکه‌ها باید {parts} تا باشد.",
+  fracCutUnequal: "تکه‌ها هم‌اندازه نیستند.",
+  fracShowCut: "خط‌های درست را ببین.",
+  fracShare: "{n} تا را مساوی بین {parts} نفر تقسیم کن.",
+  fracShareHint: "روی یکی بزن، بعد روی بشقاب. یا آن را تا بشقاب بکش.",
+  fracPlate: "بشقاب {n}",
+  fracPick: "بردار",
+  fracBack: "برگردان",
+  fracShareDone: "تقسیم کردم",
+  fracShareAll: "هنوز چیزی روی سفره مانده است.",
+  fracShareEqual: "سهم‌ها مساوی نیست. بشمار.",
+  fracShareShow: "به هر نفر {n} تا می‌رسد.",
+  fracEach: "به هر نفر {n} تا رسید!",
+  chartAria: "نمودار",
+  chartColumn: "{label}: {n}",
+  chartMake: "هر کدام را در ستون خودش بگذار.",
+  chartPick: "اول یکی را از پایین بردار.",
+  chartAddOne: "یکی به {label} اضافه کن",
+  chartTakeOne: "یکی از {label} بردار",
+  chartCheck: "بعضی ستون‌ها هنوز درست نیست.",
+  chartShow: "خانه‌های درست را ببین."
+});
+
+// ---------- ریاضی: ساعت و ترازو (js/steps/measure.js) ----------
+Object.assign(B.T, {
+  clockAria: "ساعت",
+  clockOclock: "ساعت {h}",
+  clockHalf: "ساعت {h} و نیم",
+  clockQuarter: "ساعت {h} و ربع",
+  clockToQuarter: "یک ربع به {h}",
+  clockMinutes: "ساعت {h} و {m} دقیقه",
+  clockReadPrompt: "ساعت چند است؟",
+  clockSetPrompt: "عقربه‌ها را روی {time} بگذار.",
+  clockExplore: "عقربه‌ها را بچرخان و ببین ساعت چند می‌شود.",
+  clockHour: "عقربه کوتاه",
+  clockMinute: "عقربه بلند",
+  clockHourAria: "عقربه کوتاه، ساعت را نشان می‌دهد",
+  clockMinuteAria: "عقربه بلند، دقیقه را نشان می‌دهد",
+  clockHourOn: "عقربه کوتاه را جلو ببر",
+  clockHourBack: "عقربه کوتاه را عقب ببر",
+  clockMinuteOn: "عقربه بلند را جلو ببر",
+  clockMinuteBack: "عقربه بلند را عقب ببر",
+  clockDone: "درست شد",
+  clockFixOclock: "عقربه بلند را نگاه کن. سر ساعت، عقربه بلند روی ۱۲ است.",
+  clockFixHalf: "عقربه بلند را نگاه کن. در ساعت و نیم، عقربه بلند روی ۶ است.",
+  clockFixMinute: "عقربه بلند را نگاه کن. دقیقه‌ها را نشان می‌دهد.",
+  clockFixHour: "عقربه کوتاه را نگاه کن. ساعت را نشان می‌دهد.",
+  clockShow: "ببین، {time} این‌طوری است.",
+  clockAgain: "↻ دوباره ببین",
+  balUnit: "کیلو",
+  balHeavier: "کدام طرف سنگین‌تر است؟ روی آن کفه بزن.",
+  balLighter: "کدام طرف سبک‌تر است؟ روی آن کفه بزن.",
+  balBalance: "چیزهایی روی ترازو بگذار تا دو کفه برابر شوند.",
+  balExplore: "چیزها را روی ترازو بگذار و ببین چه می‌شود.",
+  balTray: "این‌ها را می‌توانی روی ترازو بگذاری:",
+  balHint: "روی هر چیز بزن تا روی ترازو برود، یا آن را بکش. برای برداشتن، دوباره رویش بزن.",
+  balHintBoth: "روی یک چیز بزن و بعد روی یک کفه، یا آن را روی کفه بکش.",
+  balPickPan: "حالا روی یکی از کفه‌ها بزن.",
+  balLeft: "کفه چپ",
+  balRight: "کفه راست",
+  balLevel: "ترازو صاف است.",
+  balLeftDown: "کفه چپ پایین رفت.",
+  balRightDown: "کفه راست پایین رفت.",
+  balDone: "ترازو صاف شد!",
+  balOver: "زیادی شد! حالا آن طرف سنگین‌تر است. یکی را بردار.",
+  balShow: "ببین، این‌طوری ترازو صاف می‌شود.",
+  balShowSide: "ببین، جواب این کفه است. رویش بزن."
+});
+Object.assign(B.T.browseFields, {
+  time: "ساعت", snap: "گام عقربه بلند", left: "کفه چپ", right: "کفه راست", tray: "چیزهای بیرون ترازو",
+  open: "کفه باز", unit: "واحد", mass: "وزن"
 });
