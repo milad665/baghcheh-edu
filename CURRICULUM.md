@@ -172,15 +172,15 @@ The rest of the alphabet, long and short vowels, letter forms, first sentences a
 | ✅ | `read-sapling-15` | «ط» و «ح» | ط ح | lesson, story |
 | ✅ | `read-sapling-16` | «ع» و «غ» | ع غ | lesson, story |
 | ✅ | `read-sapling-17` | «ـّ» و «ـً» | tashdid, tanvin | lesson, story |
-| 🔨 | `read-sapling-20` | «ء» و «ئـ» | hamza forms: ء alone, ئـ on a tooth, ئ (جزء، تئاتر، مسئله) | lesson, story |
-| 🔨 | `read-sapling-21` | بازی کلمه‌ها ۳ | Unit game: the last letters (ژ ص ح ط ع غ ذ، tashdid, tanvin, hamza) | game (`pairs`, `build`, `sort`) |
-| 🔨 | `read-sapling-22` | شکل‌های یک حرف | Letter forms: alone, start, middle, end (ب بـ ـبـ ـب; ن ع ه ی ج); where «ب» sits in a word | game (`pairs`, `sort`) |
-| 🔨 | `read-sapling-23` | حرف‌های هم‌صدا | Same sound, different letters: ت/ط، س/ص/ث، ز/ذ/ض/ظ، ه/ح، ق/غ، ا/ع | animation, game (`sort` by letter in known words) |
-| 🔨 | `read-sapling-24` | املا | Dictation: hear a word, build it letter by letter, with a same-sound letter among the tiles | game (`build` with `hidden`) |
-| 🔨 | `read-sapling-25` | جمله بساز | Order words into a sentence; full stop and question mark | game (`order` of words), lesson (`choose`) |
-| 🔨 | `read-sapling-26` | کلمه‌ها را به هم بنویس | Writing joined letters: the forms of «ب», then whole words (بابا، نان، لب، سیب، دست), each joined piece in one go, dots last | lesson (`intro`, `trace` with joined forms and whole words from `js/strokes.js`) |
-| 🔨 | `read-sapling-27` | قصه‌های کوتاه | Three short decodable stories (Rasht, Bushehr, Sanandaj), each shown as an animation first, then read, with questions | animation, story (`passage`) |
-| 🔨 | `read-sapling-28` | بلند بخوان | Fluency: five short passages read aloud; the parent marks the hard words, they practise them, the child re-reads (accuracy only, never a timer) | story (`readaloud`: parent-marked, not scored) |
+| ✅ | `read-sapling-20` | «ء» و «ئـ» | hamza forms: ء alone, ئـ on a tooth, ئ (جزء، تئاتر، مسئله) | lesson, story |
+| ✅ | `read-sapling-21` | بازی کلمه‌ها ۳ | Unit game: the last letters (ژ ص ح ط ع غ ذ، tashdid, tanvin, hamza) | game (`pairs`, `build`, `sort`) |
+| ✅ | `read-sapling-22` | شکل‌های یک حرف | Letter forms: alone, start, middle, end (ب بـ ـبـ ـب; ن ع ه ی ج); where «ب» sits in a word | game (`pairs`, `sort`) |
+| ✅ | `read-sapling-23` | حرف‌های هم‌صدا | Same sound, different letters: ت/ط، س/ص/ث، ز/ذ/ض/ظ، ه/ح، ق/غ، ا/ع | animation, game (`sort` by letter in known words) |
+| ✅ | `read-sapling-24` | املا | Dictation: hear a word, build it letter by letter, with a same-sound letter among the tiles | game (`build` with `hidden`) |
+| ✅ | `read-sapling-25` | جمله بساز | Order words into a sentence; full stop and question mark | game (`order` of words), lesson (`choose`) |
+| ✅ | `read-sapling-26` | کلمه‌ها را به هم بنویس | Writing joined letters: the forms of «ب», then whole words (بابا، نان، لب، سیب، دست), each joined piece in one go, dots last | lesson (`intro`, `trace` with joined forms and whole words from `js/strokes.js`) |
+| ✅ | `read-sapling-27` | قصه‌های کوتاه | Three short decodable stories (Rasht, Bushehr, Sanandaj), each shown as an animation first, then read, with questions | animation, story (`passage`) |
+| ✅ | `read-sapling-28` | بلند بخوان | Fluency: five short passages read aloud; the parent marks the hard words, they practise them, the child re-reads (accuracy only, never a timer) | story (`readaloud`: parent-marked, not scored) |
 
 ### 🌳 درخت — `tree`
 

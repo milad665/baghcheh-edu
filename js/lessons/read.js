@@ -29,13 +29,39 @@ B.LESSONS.push(
   {
     id: "read-seed-3", subject: "read", level: "seed", emoji: "🎴", title: "بازی ببین و پیدا کن",
     steps: [
-      { type: "story", prompt: "به قصه نگاه کن و گوش بده",
-        cast: { tree: "🌳", sun: "☀️", girl: "👧", ball: "⚽", cat: "🐈" },
+      /* A picture story to watch and listen to: Sara throws her ball, the cat comes out from behind the bush, the
+         ball rolls to it and it plays. Drawings: js/art/rig-read.js. */
+      { type: "scene", prompt: "به قصه نگاه کن و گوش بده",
+        parts: {
+          bg: { art: "read-bg-meadow" }, tree: { art: "read-tree-big", at: [40, 84] },
+          cat: { art: "🐈", at: [40, 86], s: 1.1, flip: true }, bush: { art: "read-bush", at: [40, 88], s: 1.3 },
+          girl: { art: "read-kid", look: { hair: "auto", kind: "girl", top: "#e46b8a", hairColor: "#6b3f26" }, at: [124, 86], s: 1.5, flip: true },
+          ball: { art: "read-ball-c", at: [108, 64], s: 1.4 }
+        },
         scenes: [
-          { caption: "سارا در حیاط توپ‌بازی می‌کند.", at: { tree: [14, 52, { size: 1.8 }], sun: [88, 16], girl: [72, 62, { size: 1.2 }], ball: [56, 74, { size: 0.7 }] } },
-          { caption: "گربه از پشت درخت بیرون می‌آید.", at: { cat: [24, 72, { flip: true }] } },
-          { caption: "توپ قِل می‌خورد و می‌رود پیش گربه.", at: { ball: [42, 76, { size: 0.7, act: "spin" }] } },
-          { caption: "گربه با توپ بازی می‌کند. سارا می‌خندد.", at: { cat: [33, 70, { flip: true, act: "bounce" }], girl: [64, 62, { size: 1.2, act: "bounce" }] } }
+          { caption: "سارا در حیاط توپ‌بازی می‌کند.", key: 900, do: [
+            { id: "girl.armF", to: { r: -90 }, dur: 1 }, { id: "girl.armB", to: { r: -80 }, dur: 1 },
+            { id: "ball", to: { y: 30 }, at: 300, dur: 2400, ease: "soft", yoyo: true, times: 4 },
+            { id: "girl.armF", to: { r: -150 }, at: 300, dur: 2400, ease: "soft", yoyo: true, times: 4 },
+            { id: "girl.armB", to: { r: -140 }, at: 300, dur: 2400, ease: "soft", yoyo: true, times: 4 }
+          ] },
+          { caption: "گربه از پشت درخت بیرون می‌آید.", do: [
+            { id: "cat", to: { y: 79 }, dur: 700, ease: "out" },
+            { id: "cat", path: "M40 79Q52 72 62 88", at: 1000, dur: 1000 }
+          ] },
+          { caption: "توپ قِل می‌خورد و می‌رود پیش گربه.", do: [
+            { id: "girl.armF", to: { r: -40 }, dur: 400 }, { id: "girl.armB", to: { r: -30 }, dur: 400 },
+            { id: "ball", path: "M108 64Q104 66 100 80.4", dur: 500, ease: "in" },
+            { id: "ball", to: { x: 80, r: -200 }, at: 500, dur: 2200, ease: "out" },
+            { id: "girl.armF", to: { r: 0 }, at: 900, dur: 500 }, { id: "girl.armB", to: { r: 0 }, at: 900, dur: 500 }
+          ] },
+          { caption: "گربه با توپ بازی می‌کند. سارا می‌خندد.", key: 1700, do: [
+            { id: "cat", to: { x: "+4", r: 8 }, dur: 3200, yoyo: true, times: 6 },
+            { id: "ball", to: { x: "+6", r: "+90" }, at: 120, dur: 3200, yoyo: true, times: 6 },
+            { id: "girl.eyes", to: { o: 0 }, at: 900, dur: 200 }, { id: "girl.smile", to: { o: 0 }, at: 900, dur: 200 },
+            { id: "girl.laugh", to: { o: 1 }, at: 900, dur: 200 },
+            { id: "girl", to: { y: "-2" }, at: 1000, dur: 2200, yoyo: true, times: 6 }
+          ] }
         ],
         question: "گربه با چه بازی کرد؟", pic: true,
         options: [{ label: "🧶", value: "کاموا" }, { label: "⚽", value: "توپ" }, { label: "🪁", value: "بادبادک" }], answer: "توپ" },
@@ -55,14 +81,52 @@ B.LESSONS.push(
   {
     id: "read-seed-4", subject: "read", level: "seed", emoji: "🐭", title: "کلمه‌های هم‌قافیه",
     steps: [
-      { type: "story", prompt: "گوش بده: آخر این کلمه‌ها چه صدایی دارد؟",
-        cast: { mouse: "🐭", ear: "👂", lion: "🦁", cheese: "🧀" },
+      /* Rhyme: each word is said as two coloured sound bars (the first sound on the right, as Persian is read).
+         Words that rhyme end in the same colour, and the two endings light up together. */
+      { type: "scene", prompt: "گوش بده: آخر این کلمه‌ها چه صدایی دارد؟", bg: "#fdf3df",
+        parts: {
+          mouse: { art: "🐭", at: [180, 52], s: 2 }, ear: { art: "👂", at: [42, 52], s: 0.2, o: 0 },
+          barM: { art: "read-bar-mouse", at: [102, 57], o: 0 }, barE: { art: "read-bar-ear", at: [42, 57], o: 0 },
+          link: { art: "read-link-rhyme", o: 0 }, frame: { art: "read-pair-frame", o: 0 },
+          lion: { art: "🦁", at: [100, 72], s: 0.2, o: 0 }, cheese: { art: "🧀", at: [60, 72], s: 0.2, o: 0 },
+          barL: { art: "read-bar-lion", at: [100, 75], s: 0.8, o: 0 }, barC: { art: "read-bar-cheese", at: [60, 75], s: 0.8, o: 0 },
+          link2: { art: "read-link-rhyme2", o: 0 }, frame2: { art: "read-pair-frame2", o: 0 }
+        },
         scenes: [
-          { caption: "این موش است.", at: { mouse: [70, 50, { size: 1.6 }] } },
-          { caption: "این گوش است.", at: { ear: [30, 50, { size: 1.6, act: "grow" }] } },
-          { caption: "موش، گوش! آخرشان یک‌جور صدا می‌دهد.", at: { mouse: [62, 50, { size: 1.6, act: "bounce" }], ear: [38, 50, { size: 1.6, act: "bounce" }] } },
-          { caption: "به این‌ها می‌گوییم کلمه‌های هم‌قافیه.", at: { mouse: [70, 30, { size: 1.1 }], ear: [30, 30, { size: 1.1 }] } },
-          { caption: "شیر، پنیر! این‌ها هم هم‌قافیه‌اند.", at: { lion: [70, 72, { size: 1.4, act: "bounce" }], cheese: [30, 72, { size: 1.4, act: "bounce" }] } }
+          { caption: "این موش است.", do: [
+            { id: "mouse", path: "M180 52Q160 44 146 52Q132 44 118 52Q110 46 102 52", dur: 1600, ease: "out" }
+          ] },
+          { caption: "این گوش است.", do: [
+            { id: "ear", to: { s: 2, o: 1 }, dur: 900, ease: "back" }
+          ] },
+          { caption: "موش، گوش! آخرشان یک‌جور صدا می‌دهد.", key: 3400, hold: 6000, do: [
+            { id: "barM", to: { o: 1 }, dur: 300 }, { id: "barE", to: { o: 1 }, dur: 300 },
+            { id: "barM.start", to: { s: 1.3 }, at: 100, dur: 400, yoyo: true, times: 2 },
+            { id: "barM.end", to: { s: 1.3 }, at: 450, dur: 400, yoyo: true, times: 2 },
+            { id: "barE.start", to: { s: 1.3 }, at: 800, dur: 400, yoyo: true, times: 2 },
+            { id: "barE.end", to: { s: 1.3 }, at: 1150, dur: 400, yoyo: true, times: 2 },
+            { id: "barM.end", to: { s: 1.35 }, at: 2600, dur: 2400, yoyo: true, times: 6 },
+            { id: "barE.end", to: { s: 1.35 }, at: 2600, dur: 2400, yoyo: true, times: 6 },
+            { id: "link", to: { o: 1 }, at: 2600, dur: 100 }, { id: "link", draw: true, at: 2600, dur: 1200 }
+          ] },
+          { caption: "به این‌ها می‌گوییم کلمه‌های هم‌قافیه.", do: [
+            { id: "link", to: { o: 0 }, dur: 300 },
+            { id: "mouse", to: { x: 100, y: 30, s: 1.2 }, at: 300, dur: 1000 }, { id: "ear", to: { x: 60, y: 30, s: 1.2 }, at: 300, dur: 1000 },
+            { id: "barM", to: { x: 100, y: 33, s: 0.8 }, at: 300, dur: 1000 }, { id: "barE", to: { x: 60, y: 33, s: 0.8 }, at: 300, dur: 1000 },
+            { id: "frame", to: { o: 1 }, at: 1400, dur: 100 }, { id: "frame", draw: true, at: 1400, dur: 1400 }
+          ] },
+          { caption: "شیر، پنیر! این‌ها هم هم‌قافیه‌اند.", key: 3600, hold: 6000, do: [
+            { id: "lion", to: { s: 1.2, o: 1 }, dur: 700, ease: "back" }, { id: "cheese", to: { s: 1.2, o: 1 }, at: 500, dur: 700, ease: "back" },
+            { id: "barL", to: { o: 1 }, at: 200, dur: 300 }, { id: "barC", to: { o: 1 }, at: 700, dur: 300 },
+            { id: "barL.start", to: { s: 1.3 }, at: 300, dur: 400, yoyo: true, times: 2 },
+            { id: "barL.end", to: { s: 1.3 }, at: 650, dur: 400, yoyo: true, times: 2 },
+            { id: "barC.start", to: { s: 1.3 }, at: 1000, dur: 400, yoyo: true, times: 2 },
+            { id: "barC.end", to: { s: 1.3 }, at: 1350, dur: 400, yoyo: true, times: 2 },
+            { id: "barL.end", to: { s: 1.35 }, at: 2400, dur: 2400, yoyo: true, times: 6 },
+            { id: "barC.end", to: { s: 1.35 }, at: 2400, dur: 2400, yoyo: true, times: 6 },
+            { id: "link2", to: { o: 1 }, at: 2400, dur: 100 }, { id: "link2", draw: true, at: 2400, dur: 1000 },
+            { id: "frame2", to: { o: 1 }, at: 3600, dur: 100 }, { id: "frame2", draw: true, at: 3600, dur: 1400 }
+          ] }
         ] },
       { type: "choose", show: "🐭", prompt: "کدام با «موش» هم‌قافیه است؟", say: "موش. کدام با موش هم‌قافیه است؟ سیب؟ گوش؟ ماه؟", pic: true,
         options: [{ label: "🍎", value: "سیب" }, { label: "👂", value: "گوش" }, { label: "🌙", value: "ماه" }], answer: "گوش" },
@@ -82,16 +146,81 @@ B.LESSONS.push(
   {
     id: "read-seed-5", subject: "read", level: "seed", emoji: "👏", title: "دست بزن، بشمار",
     steps: [
-      { type: "story", prompt: "ببین کیان چطور کلمه‌ها را تکه‌تکه می‌گوید",
-        cast: { boy: "👦", dad: "👨", ball: "⚽", fly: "🦋", c1: "👏", c2: "👏", c3: "👏" },
+      /* Kian says each word in pieces and claps once for every piece: a close-up of his hands, a clap mark for
+         every clap, so the number of claps can be counted. The child claps next (step clap). */
+      { type: "scene", prompt: "ببین کیان چطور کلمه‌ها را تکه‌تکه می‌گوید", bg: "#fdf3df",
+        parts: {
+          boy: { art: "👦", at: [140, 88], s: 1.3, flip: true },
+          dad: { art: "👨", at: [70, 30], s: 0.6, o: 0 }, ball: { art: "⚽", at: [70, 30], s: 0.6, o: 0 }, fly: { art: "🦋", at: [70, 30], s: 0.6, o: 0 },
+          c1: { art: "👏", at: [58, 53], s: 0.3, o: 0 }, c2: { art: "👏", at: [82, 53], s: 0.3, o: 0 }, c3: { art: "👏", at: [92, 53], s: 0.3, o: 0 },
+          handL: { art: "hand", at: [57, 90], s: 1.3, r: -12, flip: true }, handR: { art: "hand", at: [83, 90], s: 1.3, r: 12 }
+        },
         scenes: [
-          { caption: "کیان کلمه‌ها را تکه‌تکه می‌گوید و با هر تکه دست می‌زند.", at: { boy: [78, 50, { size: 1.6 }] } },
-          { caption: "بابا", say: "بابا. با ... با", at: { dad: [46, 24, { size: 1.3 }], c1: [36, 70, { act: "bounce" }], c2: [56, 70, { act: "bounce" }] } },
-          { caption: "دو تکه، دو بار دست.", at: { c1: [36, 70, { act: "grow" }], c2: [56, 70, { act: "grow" }] } },
-          { caption: "توپ", say: "توپ. توپ", at: { dad: null, c2: null, ball: [46, 24, { size: 1.3 }], c1: [46, 70, { act: "bounce" }] } },
-          { caption: "یک تکه، یک بار دست.", at: { c1: [46, 70, { act: "grow" }] } },
-          { caption: "پروانه", say: "پروانه. پَر ... وا ... نه", at: { ball: null, fly: [46, 24, { size: 1.3 }], c1: [26, 70, { act: "bounce" }], c2: [46, 70, { act: "bounce" }], c3: [66, 70, { act: "bounce" }] } },
-          { caption: "سه تکه، سه بار دست. حالا تو امتحان کن!", at: { boy: [78, 50, { size: 1.6, act: "bounce" }] } }
+          { caption: "کیان کلمه‌ها را تکه‌تکه می‌گوید و با هر تکه دست می‌زند.", key: 2770, do: [
+            { id: "handL", to: { x: "+9", r: "+14" }, at: 2600, dur: 360, yoyo: true, times: 2 }, { id: "handR", to: { x: "-9", r: "-14" }, at: 2600, dur: 360, yoyo: true, times: 2 },
+            { emit: "spark", where: [70, 62], spread: [12, 6], n: 5, at: 2770, dur: 100, life: 700 },
+            { id: "handL", to: { x: "+9", r: "+14" }, at: 3400, dur: 360, yoyo: true, times: 2 }, { id: "handR", to: { x: "-9", r: "-14" }, at: 3400, dur: 360, yoyo: true, times: 2 },
+            { emit: "spark", where: [70, 62], spread: [12, 6], n: 5, at: 3570, dur: 100, life: 700 }
+          ] },
+          { caption: "بابا", say: "بابا. با ... با", key: 2500, hold: 3600, do: [
+            { id: "dad", to: { o: 1, s: 1.1 }, dur: 500, ease: "back" },
+            { id: "handL", to: { x: "+9", r: "+14" }, at: 1200, dur: 360, yoyo: true, times: 2 }, { id: "handR", to: { x: "-9", r: "-14" }, at: 1200, dur: 360, yoyo: true, times: 2 },
+            { emit: "spark", where: [70, 62], spread: [12, 6], n: 5, at: 1370, dur: 100, life: 700 },
+            { id: "c1", to: { o: 1, s: 1.05 }, at: 1380, dur: 250, ease: "back" },
+            { id: "handL", to: { x: "+9", r: "+14" }, at: 2100, dur: 360, yoyo: true, times: 2 }, { id: "handR", to: { x: "-9", r: "-14" }, at: 2100, dur: 360, yoyo: true, times: 2 },
+            { emit: "spark", where: [70, 62], spread: [12, 6], n: 5, at: 2270, dur: 100, life: 700 },
+            { id: "c2", to: { o: 1, s: 1.05 }, at: 2280, dur: 250, ease: "back" }
+          ] },
+          { caption: "دو تکه، دو بار دست.", key: 1080, do: [
+            { id: "handL", to: { x: "+9", r: "+14" }, at: 300, dur: 360, yoyo: true, times: 2 }, { id: "handR", to: { x: "-9", r: "-14" }, at: 300, dur: 360, yoyo: true, times: 2 },
+            { emit: "spark", where: [70, 62], spread: [12, 6], n: 5, at: 470, dur: 100, life: 700 },
+            { id: "c1", to: { s: 1.4 }, at: 480, dur: 360, yoyo: true, times: 2 },
+            { id: "handL", to: { x: "+9", r: "+14" }, at: 900, dur: 360, yoyo: true, times: 2 }, { id: "handR", to: { x: "-9", r: "-14" }, at: 900, dur: 360, yoyo: true, times: 2 },
+            { emit: "spark", where: [70, 62], spread: [12, 6], n: 5, at: 1070, dur: 100, life: 700 },
+            { id: "c2", to: { s: 1.4 }, at: 1080, dur: 360, yoyo: true, times: 2 }
+          ] },
+          { caption: "توپ", say: "توپ. توپ", key: 1600, hold: 3000, do: [
+            { id: "dad", to: { o: 0, s: 0.6 }, dur: 500, ease: "in" },
+            { id: "c1", to: { o: 0, s: 0.3 }, dur: 300 }, { id: "c2", to: { o: 0, s: 0.3 }, dur: 300 },
+            { id: "c1", to: { x: 70 }, at: 320, dur: 1 },
+            { id: "ball", to: { o: 1, s: 1.4 }, at: 300, dur: 500, ease: "back" },
+            { id: "handL", to: { x: "+9", r: "+14" }, at: 1200, dur: 360, yoyo: true, times: 2 }, { id: "handR", to: { x: "-9", r: "-14" }, at: 1200, dur: 360, yoyo: true, times: 2 },
+            { emit: "spark", where: [70, 62], spread: [12, 6], n: 5, at: 1370, dur: 100, life: 700 },
+            { id: "c1", to: { o: 1, s: 1.05 }, at: 1380, dur: 250, ease: "back" }
+          ] },
+          { caption: "یک تکه، یک بار دست.", key: 480, do: [
+            { id: "handL", to: { x: "+9", r: "+14" }, at: 300, dur: 360, yoyo: true, times: 2 }, { id: "handR", to: { x: "-9", r: "-14" }, at: 300, dur: 360, yoyo: true, times: 2 },
+            { emit: "spark", where: [70, 62], spread: [12, 6], n: 5, at: 470, dur: 100, life: 700 },
+            { id: "c1", to: { s: 1.4 }, at: 480, dur: 360, yoyo: true, times: 2 }
+          ] },
+          { caption: "پروانه", say: "پروانه. پَر ... وا ... نه", key: 3300, hold: 4200, do: [
+            { id: "ball", to: { o: 0, s: 0.6 }, dur: 500, ease: "in" },
+            { id: "c1", to: { o: 0, s: 0.3 }, dur: 300 },
+            { id: "c1", to: { x: 48 }, at: 320, dur: 1 },
+            { id: "c2", to: { x: 70 }, at: 320, dur: 1 },
+            { id: "fly", to: { o: 1, s: 1.4 }, at: 300, dur: 500, ease: "back" },
+            { id: "handL", to: { x: "+9", r: "+14" }, at: 1300, dur: 360, yoyo: true, times: 2 }, { id: "handR", to: { x: "-9", r: "-14" }, at: 1300, dur: 360, yoyo: true, times: 2 },
+            { emit: "spark", where: [70, 62], spread: [12, 6], n: 5, at: 1470, dur: 100, life: 700 },
+            { id: "c1", to: { o: 1, s: 1.05 }, at: 1480, dur: 250, ease: "back" },
+            { id: "handL", to: { x: "+9", r: "+14" }, at: 2100, dur: 360, yoyo: true, times: 2 }, { id: "handR", to: { x: "-9", r: "-14" }, at: 2100, dur: 360, yoyo: true, times: 2 },
+            { emit: "spark", where: [70, 62], spread: [12, 6], n: 5, at: 2270, dur: 100, life: 700 },
+            { id: "c2", to: { o: 1, s: 1.05 }, at: 2280, dur: 250, ease: "back" },
+            { id: "handL", to: { x: "+9", r: "+14" }, at: 2900, dur: 360, yoyo: true, times: 2 }, { id: "handR", to: { x: "-9", r: "-14" }, at: 2900, dur: 360, yoyo: true, times: 2 },
+            { emit: "spark", where: [70, 62], spread: [12, 6], n: 5, at: 3070, dur: 100, life: 700 },
+            { id: "c3", to: { o: 1, s: 1.05 }, at: 3080, dur: 250, ease: "back" }
+          ] },
+          { caption: "سه تکه، سه بار دست. حالا تو امتحان کن!", key: 1680, do: [
+            { id: "handL", to: { x: "+9", r: "+14" }, at: 300, dur: 360, yoyo: true, times: 2 }, { id: "handR", to: { x: "-9", r: "-14" }, at: 300, dur: 360, yoyo: true, times: 2 },
+            { emit: "spark", where: [70, 62], spread: [12, 6], n: 5, at: 470, dur: 100, life: 700 },
+            { id: "c1", to: { s: 1.4 }, at: 480, dur: 360, yoyo: true, times: 2 },
+            { id: "handL", to: { x: "+9", r: "+14" }, at: 900, dur: 360, yoyo: true, times: 2 }, { id: "handR", to: { x: "-9", r: "-14" }, at: 900, dur: 360, yoyo: true, times: 2 },
+            { emit: "spark", where: [70, 62], spread: [12, 6], n: 5, at: 1070, dur: 100, life: 700 },
+            { id: "c2", to: { s: 1.4 }, at: 1080, dur: 360, yoyo: true, times: 2 },
+            { id: "handL", to: { x: "+9", r: "+14" }, at: 1500, dur: 360, yoyo: true, times: 2 }, { id: "handR", to: { x: "-9", r: "-14" }, at: 1500, dur: 360, yoyo: true, times: 2 },
+            { emit: "spark", where: [70, 62], spread: [12, 6], n: 5, at: 1670, dur: 100, life: 700 },
+            { id: "c3", to: { s: 1.4 }, at: 1680, dur: 360, yoyo: true, times: 2 },
+            { id: "boy", to: { y: "-4" }, at: 2600, dur: 1200, yoyo: true, times: 4 }
+          ] }
         ] },
       { type: "clap", pic: "👨", word: "بابا", parts: ["با", "با"] },
       { type: "clap", pic: "⚽", word: "توپ", parts: ["توپ"] },
@@ -108,13 +237,37 @@ B.LESSONS.push(
   {
     id: "read-seed-6", subject: "read", level: "seed", emoji: "🐟", title: "با چه صدایی شروع می‌شود؟",
     steps: [
-      { type: "story", prompt: "گوش بده: اول هر کلمه چه صدایی دارد؟",
-        cast: { fish: "🐟", mouse: "🐭", apple: "🍎" },
+      /* First sounds: each word is said as two sound bars (the first sound on the right, as Persian is read). Words
+         that begin alike start with the same colour, and the first sound lights up as it is said. */
+      { type: "scene", prompt: "گوش بده: اول هر کلمه چه صدایی دارد؟", bg: "#fdf3df",
+        parts: {
+          fish: { art: "🐟", at: [124, 58], s: 0.4, o: 0 }, mouse: { art: "🐭", at: [84, 58], s: 0.4, o: 0 }, apple: { art: "🍎", at: [40, 58], s: 0.4, o: 0 },
+          barF: { art: "read-bar-m", at: [124, 63], o: 0 }, barMo: { art: "read-bar-m", at: [84, 63], o: 0 }, barA: { art: "read-bar-s", at: [40, 63], o: 0 },
+          link: { art: "read-link-start", o: 0 }
+        },
         scenes: [
-          { caption: "ماهی با صدای «مـ» شروع می‌شود.", say: "ماهی. مـ ... ماهی. ماهی با صدای مـ شروع می‌شود.", at: { fish: [70, 45, { size: 1.6, act: "bounce" }], mouse: null, apple: null } },
-          { caption: "موش هم با صدای «مـ» شروع می‌شود.", say: "موش. مـ ... موش. موش هم با صدای مـ شروع می‌شود.", at: { mouse: [45, 45, { size: 1.6, act: "bounce" }] } },
-          { caption: "سیب با صدای «سـ» شروع می‌شود.", say: "سیب. سـ ... سیب. سیب با صدای سـ شروع می‌شود.", at: { apple: [20, 45, { size: 1.6, act: "bounce" }] } },
-          { caption: "ماهی و موش اولشان مثل هم است. سیب نه!", at: { fish: [70, 45, { size: 1.6, act: "grow" }], mouse: [50, 45, { size: 1.6, act: "grow" }], apple: [20, 45, { size: 1.2 }] } }
+          { caption: "ماهی با صدای «مـ» شروع می‌شود.", say: "ماهی. مـ ... ماهی. ماهی با صدای مـ شروع می‌شود.", key: 1700, do: [
+            { id: "fish", to: { s: 1.8, o: 1 }, dur: 700, ease: "back" }, { id: "barF", to: { o: 1 }, at: 400, dur: 300 },
+            { id: "barF.start", to: { s: 1.35 }, at: 1100, dur: 1200, yoyo: true, times: 2 },
+            { id: "barF.end", to: { s: 1.2 }, at: 2500, dur: 500, yoyo: true, times: 2 },
+            { id: "fish", to: { r: 8 }, at: 800, dur: 3200, yoyo: true, times: 4 }
+          ] },
+          { caption: "موش هم با صدای «مـ» شروع می‌شود.", say: "موش. مـ ... موش. موش هم با صدای مـ شروع می‌شود.", key: 1700, do: [
+            { id: "mouse", to: { s: 1.8, o: 1 }, dur: 700, ease: "back" }, { id: "barMo", to: { o: 1 }, at: 400, dur: 300 },
+            { id: "barMo.start", to: { s: 1.35 }, at: 1100, dur: 1200, yoyo: true, times: 2 },
+            { id: "barMo.end", to: { s: 1.2 }, at: 2500, dur: 500, yoyo: true, times: 2 }
+          ] },
+          { caption: "سیب با صدای «سـ» شروع می‌شود.", say: "سیب. سـ ... سیب. سیب با صدای سـ شروع می‌شود.", key: 1700, do: [
+            { id: "apple", to: { s: 1.8, o: 1 }, dur: 700, ease: "back" }, { id: "barA", to: { o: 1 }, at: 400, dur: 300 },
+            { id: "barA.start", to: { s: 1.35 }, at: 1100, dur: 1200, yoyo: true, times: 2 },
+            { id: "barA.end", to: { s: 1.2 }, at: 2500, dur: 500, yoyo: true, times: 2 }
+          ] },
+          { caption: "ماهی و موش اولشان مثل هم است. سیب نه!", key: 3400, hold: 5000, do: [
+            { id: "barF.start", to: { s: 1.35 }, dur: 2400, yoyo: true, times: 6 }, { id: "barMo.start", to: { s: 1.35 }, dur: 2400, yoyo: true, times: 6 },
+            { id: "fish", to: { y: "-3" }, dur: 2400, yoyo: true, times: 6 }, { id: "mouse", to: { y: "-3" }, dur: 2400, yoyo: true, times: 6 },
+            { id: "link", to: { o: 1 }, dur: 100 }, { id: "link", draw: true, dur: 1200 },
+            { id: "apple", to: { o: 0.4, s: 1.4 }, at: 2600, dur: 700 }, { id: "barA", to: { o: 0.4 }, at: 2600, dur: 700 }
+          ] }
         ] },
       { type: "choose", show: "🐟", prompt: "کدام هم مثل «ماهی» شروع می‌شود؟", say: "ماهی. کدام هم مثل ماهی شروع می‌شود؟ موش؟ سیب؟ توپ؟", pic: true,
         options: [{ label: "🐭", value: "موش" }, { label: "🍎", value: "سیب" }, { label: "⚽", value: "توپ" }], answer: "موش" },
@@ -141,40 +294,145 @@ B.LESSONS.push(
   {
     id: "read-seed-7", subject: "read", level: "seed", emoji: "👂", title: "قصه گوش کن",
     steps: [
-      { type: "story", prompt: "به قصه گوش کن", bg: "street",
-        cast: { boy: "👦", gran: "👵", bread: "🫓", cheese: "🧀", tea: "🫖" },
+      /* Listening stories: each one shows its events in order, so «اول چه شد؟» can be answered from what was seen.
+         Drawings: js/art/rig-read.js. */
+      { type: "scene", prompt: "به قصه گوش کن",
+        parts: {
+          bg: { art: "read-bg-street" }, bakery: { art: "read-bakery", at: [38, 60] },
+          baker: { art: "🧑‍🍳", at: [85.7, 89], flip: true }, peel: { art: "read-peel", at: [75.8, 70], s: 0.72, r: 39.4 },
+          steam1: { art: "read-steam", at: [48, 45], o: 0 },
+          boy: { art: "read-kid", look: { hair: "short", top: "#4f8fd6" }, at: [190, 88], s: 1.05, flip: true },
+          gran: { art: "👵", look: { key: "nima-gran" }, at: [212, 88], flip: true },
+          bread: { art: "🫓", at: [48, 50], s: 0.45, o: 0 }, steam2: { art: "read-steam", at: [115, 68], o: 0 },
+          room: { art: "read-bg-room", o: 0 }, sofreh: { art: "read-sofreh", at: [80, 81], o: 0 },
+          bread2: { art: "🫓", at: [62, 83], s: 0.7, o: 0 }, cheese: { art: "🧀", at: [78, 84], s: 0.55, o: 0 }, pot: { art: "🫖", at: [94, 83], s: 0.6, o: 0 },
+          boy2: { art: "read-kid", look: { hair: "short", top: "#4f8fd6" }, at: [40, 92.4], s: 1.05, o: 0 },
+          gran2: { art: "👵", look: { key: "nima-gran", cane: false }, at: [124, 95], flip: true, o: 0 },
+          glass: { art: "read-tea-glass", at: [114, 84], s: 1.1, o: 0 }, bite: { art: "read-bite", at: [47, 81], o: 0 }
+        },
         scenes: [
-          { caption: "صبح است. نیما و مادربزرگ به نانوایی می‌روند.", at: { boy: [70, 62, { size: 1.2 }], gran: [84, 58, { size: 1.4 }] } },
-          { caption: "نانوا نان سنگک گرم می‌پزد.", at: { boy: [52, 62, { size: 1.2 }], gran: [66, 58, { size: 1.4 }], bread: [24, 56, { size: 1.4, act: "grow" }] } },
-          { caption: "نیما نان گرم را بغل می‌کند. چه بوی خوبی!", at: { bread: [44, 56, { size: 1.2, act: "bounce" }], boy: [50, 62, { size: 1.2, act: "bounce" }] } },
-          { caption: "در خانه، همه سر سفره صبحانه نان و پنیر و چای می‌خورند.", bg: "room", at: { bread: [36, 76], cheese: [50, 78], tea: [64, 76], boy: [24, 56, { size: 1.2 }], gran: [76, 60, { size: 1.4 }] } }
+          { caption: "صبح است. نیما و مادربزرگ به نانوایی می‌روند.", do: [
+            { id: "baker.armF", to: { r: -90 }, dur: 1 }, { id: "baker.armB", to: { r: -80 }, dur: 1 },
+            { id: "boy", walk: [122, 88], dur: 2800 }, { id: "gran", walk: [144, 88], at: 200, dur: 2800 }
+          ] },
+          { caption: "نانوا نان سنگک گرم می‌پزد.", hold: 5200, do: [
+            { id: "baker", to: { x: "-8" }, at: 300, dur: 800 }, { id: "peel", to: { x: "-8" }, at: 300, dur: 800 },
+            { id: "bakery.fire", to: { s: 1.3 }, at: 1100, dur: 1600, yoyo: true, times: 4 },
+            { id: "peel.dough", to: { o: 0 }, at: 1800, dur: 600 }, { id: "peel.bread", to: { o: 1 }, at: 1800, dur: 600 },
+            { id: "baker", to: { x: "+8" }, at: 2900, dur: 800 }, { id: "peel", to: { x: "+8" }, at: 2900, dur: 800 },
+            { id: "steam1", to: { o: 1 }, at: 3700, dur: 300 }, { id: "steam1", to: { y: "-4" }, at: 3700, dur: 1200 }
+          ] },
+          { caption: "نیما نان گرم را بغل می‌کند. چه بوی خوبی!", key: 3000, do: [
+            { id: "steam1", to: { o: 0 }, dur: 300 },
+            { id: "peel.bread", to: { o: 0 }, at: 300, dur: 1 }, { id: "bread", to: { o: 1 }, at: 300, dur: 1 },
+            { id: "bread", path: "M48 50Q86 40 115 79", at: 300, dur: 1300 }, { id: "bread", to: { s: 0.6 }, at: 300, dur: 1300 },
+            { id: "boy.armF", to: { r: -60 }, at: 1100, dur: 500 }, { id: "boy.armB", to: { r: -50 }, at: 1100, dur: 500 },
+            { id: "boy", to: { y: "-2" }, at: 1700, dur: 1600, yoyo: true, times: 4 }, { id: "bread", to: { y: "-2" }, at: 1700, dur: 1600, yoyo: true, times: 4 },
+            { id: "steam2", to: { o: 1 }, at: 1700, dur: 300 }, { id: "steam2", to: { y: "-5" }, at: 1700, dur: 1800 },
+            { id: "boy.eyes", to: { o: 0 }, at: 1700, dur: 200 }, { id: "boy.smile", to: { o: 0 }, at: 1700, dur: 200 }, { id: "boy.laugh", to: { o: 1 }, at: 1700, dur: 200 }
+          ] },
+          { caption: "در خانه، همه سر سفره صبحانه نان و پنیر و چای می‌خورند.", key: 2700, hold: 6500, do: [
+            { id: "room", to: { o: 1 }, dur: 800 },
+            { id: "boy2.legF", to: { r: -90 }, dur: 1 }, { id: "boy2.legB", to: { r: -90 }, dur: 1 },
+            { id: "gran2.legF", to: { r: -90 }, dur: 1 }, { id: "gran2.legB", to: { r: -90 }, dur: 1 },
+            { id: "sofreh", to: { o: 1 }, at: 600, dur: 500 }, { id: "bread2", to: { o: 1 }, at: 700, dur: 500 }, { id: "cheese", to: { o: 1 }, at: 700, dur: 500 },
+            { id: "pot", to: { o: 1 }, at: 700, dur: 500 }, { id: "glass", to: { o: 1 }, at: 700, dur: 500 },
+            { id: "boy2", to: { o: 1 }, at: 700, dur: 500 }, { id: "gran2", to: { o: 1 }, at: 700, dur: 500 },
+            { id: "boy2.armF", to: { r: -60 }, at: 1400, dur: 500 }, { id: "bite", to: { o: 1 }, at: 1900, dur: 200 },
+            { id: "boy2.armF", to: { r: -140 }, at: 2000, dur: 700 }, { id: "bite", path: "M47 81Q44 76 45 71", at: 2000, dur: 700 },
+            { id: "bite", to: { o: 0 }, at: 3000, dur: 300 }, { id: "boy2.armF", to: { r: 0 }, at: 3300, dur: 600 },
+            { id: "gran2.armF", to: { r: -60 }, at: 1400, dur: 500 },
+            { id: "gran2.armF", to: { r: -140 }, at: 2000, dur: 700 }, { id: "glass", path: "M114 84Q114 76 117.6 72.5", at: 2000, dur: 700 },
+            { id: "gran2.armF", to: { r: -60 }, at: 3600, dur: 700 }, { id: "glass", path: "M117.6 72.5Q114 76 114 84", at: 3600, dur: 700 },
+            { id: "gran2.armF", to: { r: 0 }, at: 4400, dur: 500 }
+          ] }
         ],
         question: "نیما و مادربزرگ کجا رفتند؟", pic: true,
         options: [{ label: "🏫", value: "مدرسه" }, { label: "🫓", value: "نانوایی" }, { label: "🌳", value: "پارک" }], answer: "نانوایی" },
       { type: "order", prompt: "اول چه شد؟ بعد؟ آخر؟ به ترتیب بچین.", numbered: true,
         say: "اول چه شد؟ بعد چه شد؟ آخر چه شد؟ روی هر تصویر بزن و به ترتیب بچین.",
         items: [{ pic: "👵👦", say: "نیما و مادربزرگ به نانوایی رفتند" }, { pic: "🫓", say: "نانوا نان پخت" }, { pic: "🧀", say: "سر سفره صبحانه خوردند" }] },
-      { type: "story", prompt: "به قصه گوش کن",
-        cast: { rain: "🌧️", girl: "👧", umbrella: "☂️", rainbow: "🌈", sun: "☀️" },
+      { type: "scene", prompt: "به قصه گوش کن",
+        parts: {
+          bg: { art: "read-bg-garden" }, rainbow: { art: "read-rainbow", o: 0 }, house: { art: "read-house" },
+          girl: { art: "read-kid", look: { hair: "auto", kind: "girl", top: "#f59e0b", hairColor: "#3d2c22" }, at: [143, 66], s: 1.1, flip: true },
+          umb: { art: "read-umbrella-red", under: "girl", at: [7.5, -15.9], s: 0.55, r: -20 },
+          grey: { art: "read-grey" }, cloud: { art: "read-raincloud" }
+        },
         scenes: [
-          { caption: "در رشت باران می‌بارد.", at: { rain: [50, 18, { size: 1.6 }], girl: [70, 70, { size: 1.3 }] } },
-          { caption: "ترانه چترش را باز می‌کند و به حیاط می‌رود.", at: { umbrella: [44, 54, { size: 1.4, act: "grow" }], girl: [48, 72, { size: 1.3 }] } },
-          { caption: "باران بند می‌آید. رنگین‌کمان در آسمان پیدا می‌شود.", at: { rain: null, umbrella: null, sun: [84, 16], rainbow: [36, 24, { size: 2, act: "grow" }] } },
-          { caption: "ترانه رنگین‌کمان را نگاه می‌کند و می‌خندد.", at: { girl: [52, 70, { size: 1.3, act: "bounce" }] } }
+          { caption: "در رشت باران می‌بارد.", key: 2500, do: [
+            { id: "girl.armF", to: { r: -100 }, dur: 1 }, { id: "umb.open", to: { o: 0 }, dur: 1 }, { id: "umb.shut", to: { o: 1 }, dur: 1 },
+            { emit: "drop", where: [80, 22], spread: [160, 14], rise: 62, n: 70, dur: 4200, life: 1000 },
+            { id: "cloud", to: { x: "+3" }, dur: 4200, yoyo: true, times: 2 }
+          ] },
+          { caption: "ترانه چترش را باز می‌کند و به حیاط می‌رود.", key: 4000, hold: 5200, do: [
+            { emit: "drop", where: [80, 22], spread: [160, 14], rise: 62, n: 80, dur: 4800, life: 1000 },
+            { id: "umb.open", to: { sx: 0.15, o: 1 }, at: 300, dur: 1 }, { id: "umb.open", to: { sx: 1 }, at: 320, dur: 900, ease: "back" },
+            { id: "umb.shut", to: { o: 0 }, at: 300, dur: 300 },
+            { id: "girl", to: { x: 92, y: 88, s: 1.5 }, at: 1500, dur: 2400, ease: "linear" },
+            { id: "girl.legF", to: { r: 24 }, at: 1500, dur: 2400, yoyo: true, times: 10 }, { id: "girl.legB", to: { r: -24 }, at: 1500, dur: 2400, yoyo: true, times: 10 }
+          ] },
+          { caption: "باران بند می‌آید. رنگین‌کمان در آسمان پیدا می‌شود.", hold: 5000, do: [
+            { id: "grey", to: { o: 0 }, dur: 1600 }, { id: "cloud", to: { x: -170 }, dur: 2400, ease: "in" },
+            { id: "rainbow", to: { o: 1 }, at: 1600, dur: 100 }, { id: "rainbow", draw: true, at: 1600, dur: 2200 }
+          ] },
+          { caption: "ترانه رنگین‌کمان را نگاه می‌کند و می‌خندد.", key: 2200, do: [
+            { id: "girl", to: { r: -8 }, dur: 700 },
+            { id: "girl.eyes", to: { o: 0 }, at: 900, dur: 200 }, { id: "girl.smile", to: { o: 0 }, at: 900, dur: 200 }, { id: "girl.laugh", to: { o: 1 }, at: 900, dur: 200 },
+            { id: "girl", to: { y: "-2" }, at: 1100, dur: 2000, yoyo: true, times: 6 }
+          ] }
         ],
         question: "ترانه آخر قصه چه حسی داشت؟", pic: true,
         options: [{ label: "😢", value: "ناراحت" }, { label: "😄", value: "خوشحال" }, { label: "😠", value: "عصبانی" }], answer: "خوشحال" },
       { type: "order", prompt: "اول چه شد؟ بعد؟ آخر؟ به ترتیب بچین.", numbered: true,
         say: "اول چه شد؟ بعد چه شد؟ آخر چه شد؟ روی هر تصویر بزن و به ترتیب بچین.",
         items: [{ pic: "🌧️", say: "باران آمد" }, { pic: "☂️", say: "ترانه چترش را باز کرد" }, { pic: "🌈", say: "رنگین‌کمان پیدا شد" }] },
-      { type: "story", prompt: "به قصه گوش کن", bg: "garden",
-        cast: { boy: "👦", kite: "🪁", tree: "🌳", grandpa: "👴" },
+      { type: "scene", prompt: "به قصه گوش کن",
+        parts: {
+          bg: { art: "read-bg-garden" }, tree: { art: "read-tree-big", at: [40, 84] },
+          stuck: { art: "read-kite-stuck", at: [52, 40], s: 0.85, o: 0 },
+          wind1: { art: "read-wind", at: [150, 30], o: 0 }, wind2: { art: "read-wind", at: [160, 52], o: 0 },
+          grandpa: { art: "👴", look: { cane: false }, at: [196, 88], s: 1.25, flip: true },
+          pole: { art: "read-pole", under: "grandpa", at: [0, -7], s: 0.45 },
+          kite: { art: "read-kite-line", at: [111.9, 62.5], s: 0.3, r: 40 },
+          boy: { art: "read-kid", look: { hair: "short", top: "#5a9a45" }, at: [118, 88], s: 1.25, flip: true },
+          heart: { art: "read-heart", at: [96, 46], s: 0.2, o: 0 }
+        },
         scenes: [
-          { caption: "آرش در باغ بادبادک هوا می‌کند.", at: { tree: [24, 50, { size: 2.4 }], boy: [72, 72, { size: 1.2 }], kite: [62, 22, { act: "bounce" }] } },
-          { caption: "باد تند می‌آید. بادبادک روی درخت گیر می‌کند.", at: { kite: [26, 30, { act: "shake" }] } },
-          { caption: "آرش ناراحت است. بادبادکش را می‌خواهد.", at: { boy: [60, 72, { size: 1.2 }] } },
-          { caption: "پدربزرگ با یک چوب بلند بادبادک را پایین می‌آورد.", at: { grandpa: [42, 66, { size: 1.4 }], kite: [44, 46, { act: "spin" }] } },
-          { caption: "آرش خوشحال می‌شود و از پدربزرگ تشکر می‌کند.", at: { kite: [60, 54], boy: [62, 72, { size: 1.2, act: "bounce" }] } }
+          { caption: "آرش در باغ بادبادک هوا می‌کند.", key: 3000, do: [
+            { id: "boy.armF", to: { r: -140 }, dur: 1 },
+            { id: "kite", to: { s: 0.75, r: 0 }, dur: 2200, ease: "out" },
+            { id: "kite", to: { r: 5 }, at: 2200, dur: 2400, yoyo: true, times: 4 }
+          ] },
+          { caption: "باد تند می‌آید. بادبادک روی درخت گیر می‌کند.", key: 1500, do: [
+            { id: "wind1", to: { o: 1 }, dur: 300 }, { id: "wind1", to: { x: 10 }, dur: 1800, ease: "linear" }, { id: "wind1", to: { o: 0 }, at: 1500, dur: 300 },
+            { id: "wind2", to: { o: 1 }, at: 400, dur: 300 }, { id: "wind2", to: { x: 20 }, at: 400, dur: 1800, ease: "linear" }, { id: "wind2", to: { o: 0 }, at: 1900, dur: 300 },
+            { id: "tree", to: { r: -3 }, at: 300, dur: 2000, yoyo: true, times: 4 },
+            { id: "kite", to: { r: -47.5, s: 0.89 }, at: 600, dur: 1400, ease: "in" },
+            { id: "kite", to: { o: 0 }, at: 2000, dur: 200 }, { id: "stuck", to: { o: 1 }, at: 2000, dur: 200 },
+            { id: "boy.armF", to: { r: 0 }, at: 2300, dur: 600 },
+            { id: "stuck", to: { r: 8 }, at: 2200, dur: 1200, yoyo: true, times: 4 }
+          ] },
+          { caption: "آرش ناراحت است. بادبادکش را می‌خواهد.", key: 2600, do: [
+            { id: "boy.smile", to: { o: 0 }, dur: 300 }, { id: "boy.sad", to: { o: 1 }, dur: 300 },
+            { id: "boy", walk: [108, 88], at: 600, dur: 1200 },
+            { id: "boy.armF", to: { r: -160 }, at: 2000, dur: 300 },
+            { id: "boy", to: { y: "-6" }, at: 2200, dur: 1600, yoyo: true, times: 4, ease: "out" },
+            { id: "boy.armF", to: { r: 0 }, at: 3900, dur: 400 }
+          ] },
+          { caption: "پدربزرگ با یک چوب بلند بادبادک را پایین می‌آورد.", key: 3500, hold: 6000, do: [
+            { id: "grandpa", walk: [92, 88], dur: 2400 },
+            { id: "grandpa.armF", to: { r: -150 }, at: 2600, dur: 800 }, { id: "pole", to: { x: 3.8, y: -21.2, r: 66.7 }, at: 2600, dur: 800 },
+            { id: "stuck", path: "M52 40Q76 52 98 84", at: 3500, dur: 1200, ease: "in" }, { id: "stuck", to: { r: 120 }, at: 3500, dur: 1200 },
+            { id: "grandpa.armF", to: { r: 0 }, at: 4800, dur: 700 }, { id: "pole", to: { x: 0, y: -7, r: 0 }, at: 4800, dur: 700 }
+          ] },
+          { caption: "آرش خوشحال می‌شود. پدربزرگ را بغل می‌کند و می‌گوید: «مرسی!»", do: [
+            { id: "boy.sad", to: { o: 0 }, dur: 200 }, { id: "boy.eyes", to: { o: 0 }, dur: 200 }, { id: "boy.laugh", to: { o: 1 }, dur: 200 },
+            { id: "boy.armF", to: { r: -60 }, at: 200, dur: 500 }, { id: "stuck", to: { x: 100, y: 74, r: 0 }, at: 200, dur: 700 },
+            { id: "boy", to: { x: 100 }, at: 1100, dur: 900 }, { id: "stuck", to: { x: 92 }, at: 1100, dur: 900 },
+            { id: "grandpa", to: { flip: 1 }, at: 900, dur: 300 }, { id: "boy.armB", to: { r: -70 }, at: 1700, dur: 400 },
+            { id: "heart", to: { o: 1, s: 1 }, at: 2100, dur: 600, ease: "back" }
+          ] }
         ],
         question: "وقتی بادبادک روی درخت گیر کرد، آرش چه حسی داشت؟", pic: true,
         options: [{ label: "😄", value: "خوشحال" }, { label: "😢", value: "ناراحت" }, { label: "😴", value: "خواب‌آلود" }], answer: "ناراحت" },
@@ -187,15 +445,47 @@ B.LESSONS.push(
   {
     id: "read-seed-8", subject: "read", level: "seed", emoji: "📖", title: "کتاب از کجا شروع می‌شود؟",
     steps: [
-      { type: "story", prompt: "ببین کتاب فارسی را چطور می‌خوانیم", tall: true,
-        cast: { book: "📖", line1: "بابا آب داد.", line2: "سارا توپ دارد.", finger: "👆" },
+      /* How a Persian book is read: a finger runs under the words from right to left, line by line, each word lighting
+         up as it passes; then the spaces between the words are marked. Drawings: js/art/rig-read.js. */
+      { type: "scene", prompt: "ببین کتاب فارسی را چطور می‌خوانیم", bg: "#f6efe2",
+        parts: {
+          book: { art: "read-book", at: [0, 8], o: 0 }, ringPic: { art: "read-ring-pic", o: 0 }, ringText: { art: "read-ring-text", o: 0 },
+          finger: { art: "read-finger", at: [135.5, 35.5], o: 0 }
+        },
         scenes: [
-          { caption: "این یک کتاب قصه است. در کتاب، هم تصویر هست و هم نوشته.", at: { book: [50, 40, { size: 2.6, act: "grow" }], line1: null, line2: null, finger: null } },
-          { caption: "نوشته‌ها را از سمت راست شروع می‌کنیم.", at: { book: null, line1: [50, 30], finger: [74, 46, { act: "bounce" }] } },
-          { caption: "انگشت از راست به چپ می‌رود.", at: { finger: [28, 46] } },
-          { caption: "خط اول تمام شد. حالا می‌رویم خط پایین.", at: { line2: [50, 62], finger: [74, 78, { act: "bounce" }] } },
-          { caption: "باز هم از راست به چپ.", at: { finger: [28, 78] } },
-          { caption: "بین کلمه‌ها کمی جای خالی هست. این‌طوری کلمه‌ها را از هم جدا می‌کنیم.", at: { finger: null, line1: [50, 30, { act: "grow" }], line2: [50, 62, { act: "grow" }] } }
+          { caption: "این یک کتاب قصه است. در کتاب، هم تصویر هست و هم نوشته.", hold: 6500, do: [
+            { id: "book", to: { y: 0, o: 1 }, dur: 900, ease: "out" },
+            { id: "ringPic", to: { o: 1 }, at: 2800, dur: 100 }, { id: "ringPic", draw: true, at: 2800, dur: 1200 },
+            { id: "ringText", to: { o: 1 }, at: 4600, dur: 100 }, { id: "ringText", draw: true, at: 4600, dur: 1200 }
+          ] },
+          { caption: "نوشته‌ها را از سمت راست شروع می‌کنیم.", do: [
+            { id: "ringPic", to: { o: 0 }, dur: 400 }, { id: "ringText", to: { o: 0 }, dur: 400 },
+            { cam: { x: 114, y: 41, zoom: 2 }, at: 300, dur: 1300 },
+            { id: "finger", to: { o: 1 }, at: 1700, dur: 300 },
+            { id: "finger", to: { y: "+2" }, at: 2000, dur: 1200, yoyo: true, times: 4 }
+          ] },
+          { caption: "انگشت از راست به چپ می‌رود.", do: [
+            { id: "finger", to: { x: 97 }, dur: 2400, ease: "linear" },
+            { id: "book.h1", to: { o: 1 }, at: 150, dur: 250 }, { id: "book.h2", to: { o: 1 }, at: 1250, dur: 250 }, { id: "book.h3", to: { o: 1 }, at: 2250, dur: 250 }
+          ] },
+          { caption: "خط اول تمام شد. حالا می‌رویم خط پایین.", do: [
+            { id: "book.h1", to: { o: 0 }, dur: 400 }, { id: "book.h2", to: { o: 0 }, dur: 400 }, { id: "book.h3", to: { o: 0 }, dur: 400 },
+            { id: "finger", path: "M97 35.5Q124 42 139 53.5", at: 500, dur: 1400 },
+            { id: "finger", to: { y: "+2" }, at: 2100, dur: 1200, yoyo: true, times: 4 }
+          ] },
+          { caption: "باز هم از راست به چپ.", do: [
+            { id: "finger", to: { x: 89 }, dur: 2600, ease: "linear" },
+            { id: "book.h4", to: { o: 1 }, at: 260, dur: 250 }, { id: "book.h5", to: { o: 1 }, at: 1300, dur: 250 }, { id: "book.h6", to: { o: 1 }, at: 2340, dur: 250 }
+          ] },
+          { caption: "بین کلمه‌ها کمی جای خالی هست. این‌طوری کلمه‌ها را از هم جدا می‌کنیم.", hold: 6000, do: [
+            { id: "finger", to: { o: 0 }, dur: 400 },
+            { id: "book.h4", to: { o: 0 }, dur: 400 }, { id: "book.h5", to: { o: 0 }, dur: 400 }, { id: "book.h6", to: { o: 0 }, dur: 400 },
+            { id: "book.g1", to: { o: 1 }, at: 1200, dur: 300 }, { id: "book.g2", to: { o: 1 }, at: 1700, dur: 300 },
+            { id: "book.g3", to: { o: 1 }, at: 2200, dur: 300 }, { id: "book.g4", to: { o: 1 }, at: 2700, dur: 300 },
+            { id: "book.w1", to: { s: 1.2 }, at: 3400, dur: 500, yoyo: true, times: 2 }, { id: "book.w2", to: { s: 1.2 }, at: 3700, dur: 500, yoyo: true, times: 2 },
+            { id: "book.w3", to: { s: 1.2 }, at: 4000, dur: 500, yoyo: true, times: 2 }, { id: "book.w4", to: { s: 1.2 }, at: 4300, dur: 500, yoyo: true, times: 2 },
+            { id: "book.w5", to: { s: 1.2 }, at: 4600, dur: 500, yoyo: true, times: 2 }, { id: "book.w6", to: { s: 1.2 }, at: 4900, dur: 500, yoyo: true, times: 2 }
+          ] }
         ] },
       { type: "choose", prompt: "کدام نوشته است؟", say: "یکی نقاشی است و یکی نوشته. کدام نوشته است؟",
         options: [{ label: "🐈", value: "نقاشی" }, { label: "گربه", value: "نوشته" }], answer: "نوشته" },
@@ -746,6 +1036,320 @@ B.LESSONS.push(
       { type: "choose", show: "🧒", prompt: "کدام کلمه «بَچّه» است؟", say: "کدام کلمه بچه است؟", options: ["بَچّه", "اَرّه", "لُطفاً"], answer: "بَچّه" },
       { type: "passage", text: "بَچّه‌ها در حَیاط بازی می‌کُنَند. مادَربُزُرگ می‌گوید: «لُطفاً آرام بازی کُنید.»", question: "بچه‌ها کجا بازی می‌کنند؟",
         options: ["کِلاس", "حَیاط", "باغ"], answer: "حَیاط" }
+    ]
+  },
+  {
+    id: "read-sapling-20", subject: "read", level: "sapling", emoji: "🎭", title: "«ء» و «ئـ»",
+    steps: [
+      { type: "intro", letter: "ء", text: "این «هَمزه» است. «ء» صدایی مثل «اَ» دارد، کوتاه و بُریده؛ مثل آخر «جُزء».", say: "همزه. مثل جزء",
+        forms: [["ء", "تنها"], ["ئـ", "روی دندانه"], ["ئ", "روی «ی»"]], example: { pic: "🧩", word: "جُزء" } },
+      { type: "intro", letter: "ئـ", text: "همزه روی دندانه هم می‌نشیند: «ئـ». مثل «تِئاتر» و «مَسئَله».", say: "مثل تئاتر",
+        forms: [["ئـ", "اول یا وسط"], ["ـئـ", "وسط"]], example: { pic: "🎭", word: "تِئاتر" } },
+      { type: "choose", prompt: "کدام «همزه» است؟", say: "کدام همزه است؟", options: ["ع", "ء", "ه"], answer: "ء" },
+      { type: "trace", letter: "ء", prompt: "با انگشتت «ء» بنویس" },
+      { type: "blend", parts: ["تِ", "ئا", "تر"], word: "تِئاتر", pic: "🎭", say: "تِ ... ئا ... تر ... تئاتر" },
+      { type: "blend", parts: ["مَس", "ئَ", "له"], word: "مَسئَله", pic: "🧮", say: "مَس ... ئَ ... له ... مسئله" },
+      { type: "choose", show: "تِئاتر", prompt: "بخوان. تصویرش کدام است؟",
+        options: [{ label: "🧮", value: "مَسئَله" }, { label: "🎭", value: "تِئاتر" }, { label: "🧩", value: "جُزء" }], answer: "تِئاتر", pic: true },
+      { type: "passage", text: "آیدا و کاوه در تَبریز به تِئاتر رَفتَند. روی صَحنه، روباه یک مَسئَله داشت: پَنیرَش را گُم کَرده بود!", question: "آیدا و کاوه کجا رفتند؟",
+        options: ["باغ", "تِئاتر", "مَدرِسه"], answer: "تِئاتر" }
+    ]
+  },
+  {
+    id: "read-sapling-21", subject: "read", level: "sapling", emoji: "🃏", title: "بازی کلمه‌ها ۳",
+    steps: [
+      { type: "pairs", hidden: true, prompt: "کارت‌ها را برگردان و هر کلمه را با تصویرش جفت کن.",
+        pairs: [["ژاکَت", "🧥"], ["صابون", "🧼"], ["طوطی", "🦜"], ["عَسَل", "🍯"]] },
+      { type: "build", pic: "🐌", word: "حَلَزون", parts: ["حَ", "لَ", "زون"], extra: ["هَ"], say: "حلزون" },
+      { type: "sort", prompt: "هر کلمه را بخوان و در سبد حرف اولش بگذار.",
+        baskets: [{ label: "ع" }, { label: "غ" }],
+        items: [{ label: "عَسَل", basket: "ع" }, { label: "غاز", basket: "غ" }, { label: "عینَک", basket: "ع" },
+          { label: "غَذا", basket: "غ" }, { label: "عَروسَک", basket: "ع" }, { label: "غُنچه", basket: "غ" }] },
+      { type: "build", pic: "🍽️", word: "غَذا", parts: ["غَ", "ذا"], extra: ["زا"], say: "غذا" },
+      { type: "pairs", prompt: "هر کلمه را بخوان و با تصویرش جفت کن.",
+        pairs: [["بَچّه", "🧒"], ["اَرّه", "🪚"], ["مُرَبّا", "🍓"], ["لُطفاً", "🙏"]] },
+      { type: "build", pic: "🧩", word: "جُزء", parts: ["جُ", "ز", "ء"], extra: ["ع"], say: "جزء" },
+      { type: "build", pic: "🦜", word: "طوطی", parts: ["طو", "طی"], extra: ["تو"], say: "طوطی" }
+    ]
+  },
+  {
+    id: "read-sapling-22", subject: "read", level: "sapling", emoji: "🔤", title: "شکل‌های یک حرف",
+    steps: [
+      { type: "pairs", prompt: "هر حرف تنها را با شکل اولش جفت کن.",
+        pairs: [["ب", "بـ"], ["س", "سـ"], ["ک", "کـ"], ["ع", "عـ"]] },
+      { type: "sort", prompt: "این شکل‌ها اول کلمه می‌آیند، میان کلمه یا آخر کلمه؟",
+        baskets: [{ label: "اول", value: "start" }, { label: "میان", value: "mid" }, { label: "آخر", value: "end" }],
+        items: [{ label: "بـ", basket: "start" }, { label: "ـبـ", basket: "mid" }, { label: "ـب", basket: "end" },
+          { label: "نـ", basket: "start" }, { label: "ـنـ", basket: "mid" }, { label: "ـن", basket: "end" }] },
+      { type: "pairs", prompt: "هر حرف تنها را با شکل وسطش جفت کن.",
+        pairs: [["ع", "ـعـ"], ["ه", "ـهـ"], ["ی", "ـیـ"], ["ج", "ـجـ"]] },
+      { type: "sort", prompt: "هر کلمه را بخوان. «ب» اول کلمه است، میان یا آخر؟",
+        baskets: [{ label: "اول", value: "start" }, { label: "میان", value: "mid" }, { label: "آخر", value: "end" }],
+        items: [{ label: "بَرف", basket: "start" }, { label: "کَبوتَر", basket: "mid" }, { label: "سیب", basket: "end" },
+          { label: "باغ", basket: "start" }, { label: "سَبزی", basket: "mid" }, { label: "کِتاب", basket: "end" }] },
+      { type: "sort", prompt: "این شکل‌های «ع» و «ه» کجای کلمه می‌آیند؟",
+        baskets: [{ label: "اول", value: "start" }, { label: "میان", value: "mid" }, { label: "آخر", value: "end" }],
+        items: [{ label: "عـ", basket: "start" }, { label: "ـعـ", basket: "mid" }, { label: "ـع", basket: "end" },
+          { label: "هـ", basket: "start" }, { label: "ـهـ", basket: "mid" }, { label: "ـه", basket: "end" }] },
+      { type: "pairs", hidden: true, prompt: "کارت‌ها را برگردان و هر کلمه را با تصویرش جفت کن. «ع» را در هر کلمه پیدا کن.",
+        pairs: [["عَسَل", "🍯"], ["شَمع", "🕯️"], ["ساعَت", "⏰"], ["عینَک", "👓"]] }
+    ]
+  },
+  {
+    id: "read-sapling-23", subject: "read", level: "sapling", emoji: "👯", title: "حرف‌های هم‌صدا",
+    steps: [
+      /* Letters with one sound: one voice, lines to every letter that makes it, all bouncing together; then the
+         words they are in, and words a reader has learnt by heart. Drawings: js/art/rig-read.js. */
+      { type: "scene", prompt: "ببین و گوش کن.", bg: "#f6efe2",
+        parts: {
+          speaker: { art: "🗣️", at: [80, 30], s: 1.1, o: 0 }, ring: { art: "read-sound", at: [80, 18], o: 0 },
+          tA: { art: "read-card", look: { text: "ت" }, at: [105, 64], s: 0.3, o: 0 },
+          la1: { art: "read-line-to", look: { to: [105, 53] }, o: 0 },
+          tB: { art: "read-card", look: { text: "ط" }, at: [55, 64], s: 0.3, o: 0 },
+          la2: { art: "read-line-to", look: { to: [55, 53] }, o: 0 },
+          s1: { art: "read-card", look: { text: "س" }, at: [120, 64], s: 0.3, o: 0 },
+          lb1: { art: "read-line-to", look: { to: [120, 53] }, o: 0 },
+          s2: { art: "read-card", look: { text: "ص" }, at: [80, 64], s: 0.3, o: 0 },
+          lb2: { art: "read-line-to", look: { to: [80, 53] }, o: 0 },
+          s3: { art: "read-card", look: { text: "ث" }, at: [40, 64], s: 0.3, o: 0 },
+          lb3: { art: "read-line-to", look: { to: [40, 53] }, o: 0 },
+          z1: { art: "read-card", look: { text: "ز" }, at: [128, 64], s: 0.3, o: 0 },
+          lc1: { art: "read-line-to", look: { to: [128, 53] }, o: 0 },
+          z2: { art: "read-card", look: { text: "ذ" }, at: [96, 64], s: 0.3, o: 0 },
+          lc2: { art: "read-line-to", look: { to: [96, 53] }, o: 0 },
+          z3: { art: "read-card", look: { text: "ض" }, at: [64, 64], s: 0.3, o: 0 },
+          lc3: { art: "read-line-to", look: { to: [64, 53] }, o: 0 },
+          z4: { art: "read-card", look: { text: "ظ" }, at: [32, 64], s: 0.3, o: 0 },
+          lc4: { art: "read-line-to", look: { to: [32, 53] }, o: 0 },
+          ball: { art: "⚽", at: [105, 60], s: 1.1, o: 0 }, parrot: { art: "🦜", at: [55, 60], s: 1.1, o: 0 },
+          wT: { art: "read-wordcard", look: { text: "توپ", w: 30, hl: 5.8 }, at: [105, 72], o: 0 }, wTa: { art: "read-wordcard", look: { text: "طوطی", w: 40, hl: 11.3 }, at: [55, 72], o: 0 },
+          girl: { art: "read-kid", look: { hair: "auto", kind: "girl", top: "#8a6cc4" }, at: [52, 88], s: 1.4, o: 0 }, book: { art: "📖", at: [63, 76], s: 0.55, o: 0 },
+          cloud: { art: "read-thought", o: 0 },
+          k1: { art: "read-wordcard", look: { text: "صابون", w: 36, hl: 9.3 }, at: [63, 70], s: 0.3, o: 0 }, k2: { art: "read-wordcard", look: { text: "طوطی", w: 40, hl: 11.3 }, at: [63, 70], s: 0.3, o: 0 }, k3: { art: "read-wordcard", look: { text: "ظَرف", w: 32, hl: 6.9 }, at: [63, 70], s: 0.3, o: 0 }
+        },
+        scenes: [
+          { caption: "این دو حرف یک صدا دارند: «ت» و «ط».", key: 3300, hold: 5000, do: [
+            { id: "speaker", to: { o: 1 }, dur: 400 },
+            { id: "tA", to: { s: 1, o: 1 }, at: 300, dur: 500, ease: "back" },
+            { id: "tB", to: { s: 1, o: 1 }, at: 700, dur: 500, ease: "back" },
+            { id: "ring", to: { s: 1, o: 1 }, at: 1600, dur: 1 },
+            { id: "ring", to: { s: 3, o: 0 }, at: 1620, dur: 900, ease: "out" },
+            { id: "la1", to: { o: 1 }, at: 1700, dur: 100 }, { id: "la1", draw: true, at: 1700, dur: 800 },
+            { id: "la2", to: { o: 1 }, at: 1700, dur: 100 }, { id: "la2", draw: true, at: 1700, dur: 800 },
+            { id: "tA", to: { s: 1.2 }, at: 2600, dur: 1400, yoyo: true, times: 4 },
+            { id: "tB", to: { s: 1.2 }, at: 2600, dur: 1400, yoyo: true, times: 4 }
+          ] },
+          { caption: "«ت» در «توپ» است و «ط» در «طوطی».", hold: 5200, do: [
+            { id: "speaker", to: { o: 0 }, dur: 400 }, { id: "la1", to: { o: 0 }, dur: 400 }, { id: "la2", to: { o: 0 }, dur: 400 },
+            { id: "tA", to: { y: 24, s: 0.9 }, at: 300, dur: 700 }, { id: "tB", to: { y: 24, s: 0.9 }, at: 300, dur: 700 },
+            { id: "ball", to: { o: 1 }, at: 1000, dur: 400 }, { id: "parrot", to: { o: 1 }, at: 1000, dur: 400 },
+            { id: "wT", to: { o: 1 }, at: 1300, dur: 400 }, { id: "wTa", to: { o: 1 }, at: 1300, dur: 400 },
+            { id: "wT.hl", to: { o: 1 }, at: 2400, dur: 300 }, { id: "tA", to: { s: 1.1 }, at: 2400, dur: 800, yoyo: true, times: 2 },
+            { id: "wTa.hl", to: { o: 1 }, at: 3600, dur: 300 }, { id: "tB", to: { s: 1.1 }, at: 3600, dur: 800, yoyo: true, times: 2 }
+          ] },
+          { caption: "«س»، «ص» و «ث» هم یک صدا دارند.", key: 3600, hold: 5400, do: [
+            { id: "tA", to: { o: 0 }, dur: 400 }, { id: "tB", to: { o: 0 }, dur: 400 }, { id: "ball", to: { o: 0 }, dur: 400 }, { id: "parrot", to: { o: 0 }, dur: 400 }, { id: "wT", to: { o: 0 }, dur: 400 }, { id: "wTa", to: { o: 0 }, dur: 400 },
+            { id: "speaker", to: { o: 1 }, at: 300, dur: 400 },
+            { id: "s1", to: { s: 1, o: 1 }, at: 600, dur: 500, ease: "back" },
+            { id: "s2", to: { s: 1, o: 1 }, at: 900, dur: 500, ease: "back" },
+            { id: "s3", to: { s: 1, o: 1 }, at: 1200, dur: 500, ease: "back" },
+            { id: "ring", to: { s: 1, o: 1 }, at: 1900, dur: 1 },
+            { id: "ring", to: { s: 3, o: 0 }, at: 1920, dur: 900, ease: "out" },
+            { id: "lb1", to: { o: 1 }, at: 2000, dur: 100 }, { id: "lb1", draw: true, at: 2000, dur: 800 },
+            { id: "lb2", to: { o: 1 }, at: 2000, dur: 100 }, { id: "lb2", draw: true, at: 2000, dur: 800 },
+            { id: "lb3", to: { o: 1 }, at: 2000, dur: 100 }, { id: "lb3", draw: true, at: 2000, dur: 800 },
+            { id: "s1", to: { s: 1.2 }, at: 2900, dur: 1400, yoyo: true, times: 4 },
+            { id: "s2", to: { s: 1.2 }, at: 2900, dur: 1400, yoyo: true, times: 4 },
+            { id: "s3", to: { s: 1.2 }, at: 2900, dur: 1400, yoyo: true, times: 4 }
+          ] },
+          { caption: "«ز»، «ذ»، «ض» و «ظ» چهار حرف هستند با یک صدا.", key: 3900, hold: 5800, do: [
+            { id: "s1", to: { o: 0 }, dur: 400 }, { id: "s2", to: { o: 0 }, dur: 400 }, { id: "s3", to: { o: 0 }, dur: 400 }, { id: "lb1", to: { o: 0 }, dur: 400 }, { id: "lb2", to: { o: 0 }, dur: 400 }, { id: "lb3", to: { o: 0 }, dur: 400 },
+            { id: "z1", to: { s: 1, o: 1 }, at: 500, dur: 500, ease: "back" },
+            { id: "z2", to: { s: 1, o: 1 }, at: 800, dur: 500, ease: "back" },
+            { id: "z3", to: { s: 1, o: 1 }, at: 1100, dur: 500, ease: "back" },
+            { id: "z4", to: { s: 1, o: 1 }, at: 1400, dur: 500, ease: "back" },
+            { id: "ring", to: { s: 1, o: 1 }, at: 2200, dur: 1 },
+            { id: "ring", to: { s: 3, o: 0 }, at: 2220, dur: 900, ease: "out" },
+            { id: "lc1", to: { o: 1 }, at: 2300, dur: 100 }, { id: "lc1", draw: true, at: 2300, dur: 800 },
+            { id: "lc2", to: { o: 1 }, at: 2300, dur: 100 }, { id: "lc2", draw: true, at: 2300, dur: 800 },
+            { id: "lc3", to: { o: 1 }, at: 2300, dur: 100 }, { id: "lc3", draw: true, at: 2300, dur: 800 },
+            { id: "lc4", to: { o: 1 }, at: 2300, dur: 100 }, { id: "lc4", draw: true, at: 2300, dur: 800 },
+            { id: "z1", to: { s: 1.2 }, at: 3200, dur: 1400, yoyo: true, times: 4 },
+            { id: "z2", to: { s: 1.2 }, at: 3200, dur: 1400, yoyo: true, times: 4 },
+            { id: "z3", to: { s: 1.2 }, at: 3200, dur: 1400, yoyo: true, times: 4 },
+            { id: "z4", to: { s: 1.2 }, at: 3200, dur: 1400, yoyo: true, times: 4 }
+          ] },
+          { caption: "از کجا بدانیم کدام را بنویسیم؟ باید کلمه را بشناسیم. هر چه بیشتر بخوانیم، شکل کلمه‌ها بهتر یادمان می‌ماند.", hold: 8000, do: [
+            { id: "z1", to: { o: 0 }, dur: 400 }, { id: "z2", to: { o: 0 }, dur: 400 }, { id: "z3", to: { o: 0 }, dur: 400 }, { id: "z4", to: { o: 0 }, dur: 400 }, { id: "lc1", to: { o: 0 }, dur: 400 }, { id: "lc2", to: { o: 0 }, dur: 400 }, { id: "lc3", to: { o: 0 }, dur: 400 }, { id: "lc4", to: { o: 0 }, dur: 400 }, { id: "speaker", to: { o: 0 }, dur: 400 },
+            { id: "girl.armF", to: { r: -70 }, dur: 1 }, { id: "girl.armB", to: { r: -60 }, dur: 1 },
+            { id: "girl", to: { o: 1 }, at: 300, dur: 500 }, { id: "book", to: { o: 1 }, at: 300, dur: 500 },
+            { id: "cloud", to: { o: 1 }, at: 1200, dur: 500 },
+            { id: "k1", to: { o: 1 }, at: 1800, dur: 200 }, { id: "k1", path: "M63 70Q80 40 104 25", at: 1800, dur: 1100 }, { id: "k1", to: { s: 0.75 }, at: 1800, dur: 1100 },
+            { id: "k2", to: { o: 1 }, at: 3200, dur: 200 }, { id: "k2", path: "M63 70Q76 44 96 36", at: 3200, dur: 1100 }, { id: "k2", to: { s: 0.75 }, at: 3200, dur: 1100 },
+            { id: "k3", to: { o: 1 }, at: 4600, dur: 200 }, { id: "k3", path: "M63 70Q90 56 115 44", at: 4600, dur: 1100 }, { id: "k3", to: { s: 0.75 }, at: 4600, dur: 1100 },
+            { id: "k1.hl", to: { o: 1 }, at: 6000, dur: 300 }, { id: "k2.hl", to: { o: 1 }, at: 6300, dur: 300 }, { id: "k3.hl", to: { o: 1 }, at: 6600, dur: 300 }
+          ] }
+        ] },
+      { type: "sort", prompt: "هر کلمه را بخوان و در سبد حرفش بگذار.",
+        baskets: [{ label: "ت" }, { label: "ط" }],
+        items: [{ label: "توپ", basket: "ت" }, { label: "طوطی", basket: "ط" }, { label: "تَخته", basket: "ت" }, { label: "طَناب", basket: "ط" }] },
+      { type: "sort", prompt: "هر کلمه را بخوان و در سبد حرفش بگذار.",
+        baskets: [{ label: "س" }, { label: "ص" }, { label: "ث" }],
+        items: [{ label: "سیب", basket: "س" }, { label: "صابون", basket: "ص" }, { label: "مُثَلَّث", basket: "ث" },
+          { label: "سَبَد", basket: "س" }, { label: "صُبح", basket: "ص" }, { label: "ثانیه", basket: "ث" }] },
+      { type: "sort", prompt: "هر کلمه را بخوان و در سبد حرفش بگذار.",
+        baskets: [{ label: "ز" }, { label: "ذ" }, { label: "ض" }, { label: "ظ" }],
+        items: [{ label: "زَنبور", basket: "ز" }, { label: "ذُرَّت", basket: "ذ" }, { label: "حوض", basket: "ض" }, { label: "ظَرف", basket: "ظ" },
+          { label: "زَمین", basket: "ز" }, { label: "کاغَذ", basket: "ذ" }] },
+      { type: "sort", prompt: "هر کلمه را بخوان و در سبد حرفش بگذار.",
+        baskets: [{ label: "ه" }, { label: "ح" }],
+        items: [{ label: "ماه", basket: "ه" }, { label: "حَلَزون", basket: "ح" }, { label: "کوه", basket: "ه" }, { label: "صُبح", basket: "ح" }] },
+      { type: "sort", prompt: "هر کلمه را بخوان و در سبد حرفش بگذار.",
+        baskets: [{ label: "ق" }, { label: "غ" }],
+        items: [{ label: "قاشُق", basket: "ق" }, { label: "غاز", basket: "غ" }, { label: "قایِق", basket: "ق" }, { label: "باغ", basket: "غ" }] },
+      { type: "sort", prompt: "هر کلمه را بخوان و در سبد حرف اولش بگذار.",
+        baskets: [{ label: "ا" }, { label: "ع" }],
+        items: [{ label: "اَسب", basket: "ا" }, { label: "عَسَل", basket: "ع" }, { label: "اَبر", basket: "ا" }, { label: "عینَک", basket: "ع" }] }
+    ]
+  },
+  {
+    id: "read-sapling-24", subject: "read", level: "sapling", emoji: "📝", title: "املا",
+    steps: [
+      { type: "build", hidden: true, pic: "🍯", word: "عَسَل", parts: ["عَ", "سَ", "ل"], extra: ["اَ", "صَ"], say: "عسل" },
+      { type: "build", hidden: true, pic: "🦜", word: "طوطی", parts: ["ط", "و", "ط", "ی"], extra: ["ت"], say: "طوطی" },
+      { type: "build", hidden: true, pic: "🧼", word: "صابون", parts: ["ص", "ا", "ب", "و", "ن"], extra: ["س"], say: "صابون" },
+      { type: "build", hidden: true, pic: "🍽️", word: "غَذا", parts: ["غَ", "ذ", "ا"], extra: ["ز", "قَ"], say: "غذا" },
+      { type: "build", hidden: true, pic: "🐌", word: "حَلَزون", parts: ["حَ", "لَ", "ز", "و", "ن"], extra: ["هَ"], say: "حلزون" },
+      { type: "build", hidden: true, pic: "🌅", word: "صُبح", parts: ["صُ", "ب", "ح"], extra: ["سُ", "ه"], say: "صبح" },
+      { type: "build", hidden: true, pic: "🐸", word: "قورباغه", parts: ["ق", "و", "ر", "ب", "ا", "غ", "ه"], extra: ["ح"], say: "قورباغه" }
+    ]
+  },
+  {
+    id: "read-sapling-25", subject: "read", level: "sapling", emoji: "💬", title: "جمله بساز",
+    steps: [
+      { type: "order", prompt: "کلمه‌ها را به ترتیب بچین تا جمله درست شود.", items: ["نَرگِس", "در", "یَزد", "زِندگی", "می‌کُنَد."] },
+      { type: "order", prompt: "کلمه‌ها را به ترتیب بچین تا جمله درست شود.", items: ["هومَن", "کِنار", "دَریا", "بازی", "می‌کُنَد."] },
+      { type: "choose", show: "اِمروز آفتابی است", prompt: "این جمله خبر می‌دهد. آخرش چه نشانه‌ای می‌گذاریم؟",
+        say: "این جمله خبر می‌دهد. آخرش چه نشانه‌ای می‌گذاریم؟", options: [".", "؟"], answer: "." },
+      { type: "choose", show: "تو کُجا زِندگی می‌کُنی", prompt: "این جمله می‌پرسد. آخرش چه نشانه‌ای می‌گذاریم؟",
+        say: "این جمله می‌پرسد. آخرش چه نشانه‌ای می‌گذاریم؟", options: [".", "؟"], answer: "؟" },
+      { type: "order", prompt: "کلمه‌ها را به ترتیب بچین تا پرسش درست شود.", items: ["آیا", "تو", "اَنار", "دوست", "داری؟"] },
+      { type: "order", prompt: "کلمه‌ها را به ترتیب بچین تا جمله درست شود.", items: ["بَهار", "و", "آرَش", "با", "هَم", "نَقّاشی", "می‌کِشَند."] },
+      { type: "choose", prompt: "کدام جمله درست است؟", say: "کدام جمله درست است؟",
+        options: ["سیب مَن دوست دارَم.", "مَن سیب دوست دارَم.", "دارَم سیب مَن دوست."], answer: "مَن سیب دوست دارَم." }
+    ]
+  },
+  {
+    id: "read-sapling-26", subject: "read", level: "sapling", emoji: "✍️", title: "کلمه‌ها را به هم بنویس",
+    steps: [
+      { type: "intro", letter: "بـ", text: "حرف‌ها در کلمه به هم می‌چسبند و شکلشان کمی کوتاه می‌شود. این «ب» اول کلمه است.", say: "حرف‌ها به هم می‌چسبند. مثل بابا",
+        forms: [["ب", "تنها"], ["بـ", "اول"], ["ـبـ", "وسط"], ["ـب", "آخر"]], example: { pic: "👨", word: "بابا" } },
+      { type: "trace", letter: "ـبـ", prompt: "با انگشتت «ب» وسط کلمه را بنویس" },
+      { type: "trace", letter: "بابا", say: "بابا", prompt: "با انگشتت «بابا» را بنویس. هر تکه را یک‌جا بنویس، بعد نقطه‌اش را بگذار." },
+      { type: "trace", letter: "نان", say: "نان", prompt: "با انگشتت «نان» را بنویس" },
+      { type: "trace", letter: "لب", say: "لب", prompt: "با انگشتت «لب» را بنویس" },
+      { type: "trace", letter: "سیب", say: "سیب", prompt: "با انگشتت «سیب» را بنویس. همه کلمه یک تکه است؛ نقطه‌ها را آخر بگذار." },
+      { type: "trace", letter: "دست", say: "دست", prompt: "با انگشتت «دست» را بنویس. «د» به حرف بعدی نمی‌چسبد." }
+    ]
+  },
+  {
+    id: "read-sapling-27", subject: "read", level: "sapling", emoji: "📚", title: "قصه‌های کوتاه",
+    steps: [
+      /* Before each short text, a picture story that sets the scene (the text itself is read next, in a passage). */
+      { type: "scene", prompt: "ببین. بعد قصه را بخوان.",
+        parts: {
+          bg: { art: "read-bg-garden" }, tea: { art: "read-tea-rows" },
+          girl: { art: "read-kid", look: { hair: "auto", kind: "girl", top: "#e46b8a", hairColor: "#3d2c22" }, at: [64, 86], s: 1.3 },
+          umb: { art: "read-umbrella-green", under: "girl", at: [7.5, -15.9], s: 0.55, r: -20 },
+          boy: { art: "read-kid", look: { hair: "short", top: "#f59e0b" }, at: [190, 86], s: 1.2, flip: true },
+          grey: { art: "read-grey" }, cloud: { art: "read-raincloud" }
+        },
+        scenes: [
+          { caption: "یک روز بارانی در رَشت.", key: 2500, do: [
+            { id: "girl.armF", to: { r: -100 }, dur: 1 }, { id: "umb.open", to: { o: 0 }, dur: 1 }, { id: "umb.shut", to: { o: 1 }, dur: 1 },
+            { emit: "drop", where: [80, 22], spread: [160, 14], rise: 62, n: 60, dur: 3800, life: 1000 }
+          ] },
+          { caption: "گلی چتر دارد.", key: 2200, do: [
+            { emit: "drop", where: [80, 22], spread: [160, 14], rise: 62, n: 50, dur: 3200, life: 1000 },
+            { id: "umb.open", to: { sx: 0.15, o: 1 }, at: 300, dur: 1 }, { id: "umb.open", to: { sx: 1 }, at: 320, dur: 900, ease: "back" },
+            { id: "umb.shut", to: { o: 0 }, at: 300, dur: 300 }
+          ] },
+          { caption: "برادرش هم می‌آید.", key: 3200, do: [
+            { emit: "drop", where: [80, 22], spread: [160, 14], rise: 62, n: 60, dur: 3800, life: 1000 },
+            { id: "boy", walk: [84, 86], dur: 2800 }
+          ] }
+        ] },
+      { type: "passage", text: "گُلی در رَشت زِندگی می‌کُنَد. دیروز باران آمَد. گُلی چَتر سَبز و چَکمه قِرمِز داشت. او با بَرادَرَش، سینا، به باغ چای رَفت.",
+        question: "چکمه گلی چه رنگی بود؟", options: ["سَبز", "قِرمِز", "آبی"], answer: "قِرمِز" },
+      { type: "passage", text: "گُلی در رَشت زِندگی می‌کُنَد. دیروز باران آمَد. گُلی چَتر سَبز و چَکمه قِرمِز داشت. او با بَرادَرَش، سینا، به باغ چای رَفت.",
+        question: "گلی با چه کسی به باغ چای رفت؟", options: ["مادَر", "سینا", "بابا"], answer: "سینا" },
+      { type: "scene", prompt: "ببین. بعد قصه را بخوان.",
+        parts: {
+          sky: { art: "read-dawn-sky" }, sun: { art: "read-sun", at: [124, 54] }, sea: { art: "read-sea" },
+          boat: { art: "read-boat-back", at: [-30, 66] },
+          grandpa: { art: "👴", look: { cane: false }, under: "boat", at: [-9, -6], s: 0.8 },
+          boy: { art: "read-kid", look: { hair: "short", top: "#e5483f" }, under: "boat", at: [9, -6], s: 0.75 },
+          hull: { art: "read-boat-hull", under: "boat" },
+          f1: { art: "🐟", at: [176, 72], s: 0.45 }, f2: { art: "🐟", at: [184, 80], s: 0.45 }, f3: { art: "🐟", at: [192, 70], s: 0.45 },
+          f4: { art: "🐟", at: [200, 84], s: 0.45 }, f5: { art: "🐟", at: [210, 76], s: 0.45 }, f6: { art: "🐟", at: [220, 82], s: 0.45 }
+        },
+        scenes: [
+          { caption: "صبح زود در بوشهر.", key: 1500, do: [
+            { id: "sun", to: { y: 22 }, dur: 3600, ease: "out" }, { id: "sky.day", to: { o: 1 }, at: 1400, dur: 3000 }
+          ] },
+          { caption: "آرش و پدربزرگ سوار قایق هستند.", do: [
+            { id: "boat", to: { x: 64 }, dur: 2800, ease: "out" },
+            { id: "boat", to: { r: 3 }, dur: 3000, yoyo: true, times: 6 }
+          ] },
+          { caption: "ماهی‌ها می‌آیند!", key: 2900, hold: 4200, do: [
+            { id: "boat", to: { r: 3 }, dur: 4000, yoyo: true, times: 8 },
+            { id: "f1", to: { x: 92 }, dur: 2400, ease: "out" }, { id: "f2", to: { x: 104 }, at: 200, dur: 2400, ease: "out" },
+            { id: "f3", to: { x: 112 }, at: 400, dur: 2000, ease: "out" }, { id: "f4", to: { x: 120 }, at: 500, dur: 2400, ease: "out" },
+            { id: "f5", to: { x: 130 }, at: 700, dur: 2400, ease: "out" }, { id: "f6", to: { x: 142 }, at: 900, dur: 2400, ease: "out" },
+            { id: "f3", path: "M112 70Q104 44 96 66", at: 2400, dur: 1000 }, { id: "f3", to: { r: -40 }, at: 2400, dur: 1000, yoyo: true, times: 2 },
+            { id: "boy.armF", to: { r: -120 }, at: 1600, dur: 500 }
+          ] }
+        ] },
+      { type: "passage", text: "آرَش و پِدَربُزُرگ در بوشِهر بودَند. صُبح زود با قایِق به دَریا رَفتَند. پِدَربُزُرگ تور اَنداخت. آرَش سه ماهی شِمُرد.",
+        question: "آرش چند ماهی شمرد؟", options: ["دو", "سه", "چَهار"], answer: "سه" },
+      { type: "scene", prompt: "ببین. بعد قصه را بخوان.", bg: "#dfe8f0",
+        parts: {
+          ground: { art: "read-ground" }, cloud: { art: "read-raincloud" }, house: { art: "read-house-snow" }, cover: { art: "read-snowcover", at: [0, 91], sy: 0.05 },
+          bahar: { art: "read-kid", look: { hair: "auto", kind: "girl", top: "#5b9bd5", hairColor: "#6b3f26" }, at: [32, 62], s: 0.8, o: 0 },
+          zhila: { art: "read-kid", look: { hair: "auto", kind: "girl", top: "#5a9a45", hairColor: "#3d2c22", skin: "#c98f63" }, at: [186, 86], s: 1.2, flip: true },
+          scarf: { art: "read-scarf", under: "zhila" }, ring: { art: "read-ring-small", at: [99.6, 66.6], o: 0 }
+        },
+        scenes: [
+          { caption: "در سنندج برف آمد.", key: 2600, do: [
+            { id: "house.snow", to: { o: 0 }, dur: 1 },
+            { emit: "bubble", where: [80, 4], spread: [160, 8], rise: 70, n: 80, dur: 4200, life: 1600 },
+            { id: "cover", to: { sy: 1 }, at: 400, dur: 3600 }, { id: "house.snow", to: { o: 1 }, at: 400, dur: 3200 }
+          ] },
+          { caption: "بهار و ژیلا بیرون آمدند.", do: [
+            { id: "bahar", to: { o: 1 }, dur: 300 }, { id: "bahar", to: { x: 58, y: 86, s: 1.2 }, at: 300, dur: 2200, ease: "linear" },
+            { id: "bahar.legF", to: { r: 24 }, at: 300, dur: 2200, yoyo: true, times: 8 }, { id: "bahar.legB", to: { r: -24 }, at: 300, dur: 2200, yoyo: true, times: 8 },
+            { id: "zhila", walk: [100, 86], dur: 2600 }
+          ] },
+          { caption: "ژیلا یک چیز گرم دارد.", key: 2200, do: [
+            { id: "zhila.armF", to: { r: -130 }, dur: 600 },
+            { id: "scarf.ends", to: { r: 25 }, at: 600, dur: 2400, yoyo: true, times: 6 },
+            { id: "ring", to: { o: 1 }, at: 900, dur: 100 }, { id: "ring", draw: true, at: 900, dur: 900 },
+            { id: "ring", to: { s: 1.15 }, at: 1900, dur: 1600, yoyo: true, times: 4 }
+          ] }
+        ] },
+      { type: "passage", text: "در سَنَندَج بَرف آمَد. بَهار و دوستَش، ژیلا، یک آدَم‌بَرفی ساختَند. ژیلا شال‌گَردَنَش را به آدَم‌بَرفی داد. حالا آدَم‌بَرفی سَرما نِمی‌خورَد!",
+        question: "ژیلا چه چیزی به آدم‌برفی داد؟",
+        options: [{ label: "🎩", value: "کُلاه" }, { label: "🧣", value: "شال‌گَردَن" }, { label: "🥕", value: "هَویج" }], answer: "شال‌گَردَن", pic: true }
+    ]
+  },
+  {
+    id: "read-sapling-28", subject: "read", level: "sapling", emoji: "🗣️", title: "بلند بخوان",
+    steps: [
+      { type: "readaloud", pic: "⚽", text: "سارا و نیما در حَیاط هَستَند. سارا توپ دارد. توپ را به نیما می‌دَهَد. نیما توپ را می‌گیرَد." },
+      { type: "readaloud", pic: "💧", text: "ماهان در زاهِدان زِندگی می‌کُنَد. اِمروز گَرم است. ماهان آب خُنَک می‌نوشَد و زیر سایه دِرَخت می‌نِشینَد." },
+      { type: "readaloud", pic: "🍎", text: "تینا با مادَرَش به بازار رَفت. آن‌ها سیب و اَنار و نان سَنگَک خَریدَند. نان سَنگَک گَرم بود." },
+      { type: "readaloud", pic: "🌸", text: "سامان در شیراز یک باغچه کوچَک دارد. او هَر روز به گُل‌ها آب می‌دَهَد. حالا گُل‌ها باز شُده‌اَند." },
+      { type: "readaloud", pic: "📖", text: "زَهرا یک کِتاب قِصّه دارد. او قِصّه خَرگوش را بَرای پِدَرَش بُلَند می‌گوید. پِدَر می‌خَندَد و می‌گوید: «آفَرین، با دِقَّت گُفتی!»" }
     ]
   }
 );
