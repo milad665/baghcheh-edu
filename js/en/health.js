@@ -14,12 +14,15 @@ B.EN = B.EN || {};
     "health-seed-1": { title: "I wash my hands", steps: [
       { prompt: "See how we wash our hands",
         scenes: [
-          { caption: "We turn on the tap and wet our hands." },
-          { caption: "We rub soap on our hands." },
-          { caption: "We rub the palms together. We rub the backs of our hands too." },
-          { caption: "We wash between our fingers and under our nails too. We count slowly to twenty." },
-          { caption: "We rinse the soap off with water." },
-          { caption: "We dry them with a clean towel. Our hands are clean!" }
+          { caption: "We turn on the tap and wet our hands under the water." },
+          { caption: "We turn the tap off so no water is wasted, and we put soap on our hands." },
+          { caption: "We rub our palms together until they make foam.",
+            wait: { hint: "Now it's your turn: move your finger or the mouse left and right over the hands!" } },
+          { caption: "We rub the backs of our hands too." },
+          { caption: "We wash between our fingers too. We count slowly to twenty." },
+          { caption: "We turn the tap on and hold our hands under the water, so the foam and the germs go away." },
+          { caption: "We turn the tap off and dry our hands with a clean towel." },
+          { caption: "Our hands are clean!" }
         ] },
       { prompt: "Put the hand-washing steps in order",
         items: [{ label: "Wet" }, { label: "Soap" }, { label: "Rub" }, { label: "Rinse" }] },
@@ -36,11 +39,15 @@ B.EN = B.EN || {};
     "health-seed-2": { title: "I brush my teeth", steps: [
       { prompt: "See how we brush our teeth",
         scenes: [
-          { caption: "In the morning, after breakfast, we brush our teeth." },
+          { caption: "In the morning, we brush our teeth." },
           { caption: "At night, before bed, we brush our teeth too." },
           { caption: "A little toothpaste, the size of a pea, is enough." },
-          { caption: "We brush all our teeth gently in circles: the front, the back and the top." },
-          { caption: "We spit out the toothpaste. Our teeth are clean!" }
+          { caption: "We brush the front of our teeth gently, in small circles.",
+            wait: { hint: "Now it's your turn: brush the bottom teeth! Move your finger or the mouse left and right over the teeth." } },
+          { caption: "Now we see the bottom teeth from above. We brush the backs of the teeth in small circles too." },
+          { caption: "We brush the tops of the teeth too, back and forth." },
+          { caption: "We spit out the toothpaste." },
+          { caption: "Our teeth are clean!" }
         ] },
       { prompt: "How many times a day do we brush our teeth?",
         options: [{ label: "Once" }, { label: "Twice" }, { label: "Five times" }] },
@@ -63,7 +70,8 @@ B.EN = B.EN || {};
           { caption: "This is an ear. We hear with our ears." },
           { caption: "This is a nose. We smell with our nose." },
           { caption: "This is a mouth. We eat and talk with our mouth." },
-          { caption: "We hold things with our hands. We walk and run with our feet." }
+          { caption: "We hold things with our hands." },
+          { caption: "We walk and run with our legs and feet." }
         ] },
       { prompt: "What do we hear with?", say: "What do we hear with?",
         options: [{ value: "eye" }, { value: "ear" }, { value: "foot" }], answer: "ear" },
@@ -84,7 +92,8 @@ B.EN = B.EN || {};
       { prompt: "Look at the breakfast table",
         scenes: [
           { caption: "The breakfast table is full of colours: bread, cheese and walnuts, cucumber and tomato, an egg." },
-          { caption: "Colourful food gives our bodies energy to play and grow." },
+          { caption: "Colourful food gives our bodies energy to play." },
+          { caption: "Food helps us grow." },
           { caption: "When we are thirsty, the best drink is water." }
         ] },
       { prompt: "Which do we eat every day, and which only sometimes, and just a little?",
@@ -110,7 +119,8 @@ B.EN = B.EN || {};
           { caption: "Aida holds a tissue over the mouth and nose, and sneezes." },
           { caption: "Aida throws the tissue in the bin." },
           { caption: "If there is no tissue, Aida sneezes or coughs into the elbow." },
-          { caption: "Then Aida washes the hands with soap and water. Now the germs will not reach other people." }
+          { caption: "Then Aida washes the hands with soap and water." },
+          { caption: "Now the germs will not reach other people." }
         ] },
       { prompt: "If we have no tissue, where do we sneeze?",
         options: ["💪 Into our elbow", "✋ Into our hand", "🌬️ Into the air"], answer: "💪 Into our elbow" },
@@ -133,7 +143,8 @@ B.EN = B.EN || {};
           { caption: "Grandma pours tea. The teapot and the tea glass are hot." },
           { caption: "Kian sits a little way off and waits for the tea to cool." },
           { caption: "Knives and scissors are sharp. We do not play with them." },
-          { caption: "Medicine is not food, even if it looks like candy. Only grown-ups give us medicine." },
+          { caption: "Medicine is not food, even if it looks like candy." },
+          { caption: "Grown-ups put medicine up high, out of our reach." },
           { caption: "If we see something hot, sharp or medicine, we do not touch it. We tell a grown-up." }
         ] },
       { prompt: "Which can we play with? Which do we not touch?",
@@ -158,7 +169,7 @@ B.EN = B.EN || {};
           { caption: "They stop at the side of the street. They look left and right, and they listen." },
           { caption: "Cars and motorbikes go past. They wait." },
           { caption: "The street is empty and the walking light is green. They cross at the zebra crossing." },
-          { caption: "In a car, we put on a seat belt and sit in the back." }
+          { caption: "In a car, we sit in the back and put on a seat belt." }
         ] },
       { prompt: "Put crossing the street in order",
         items: [{ label: "Stop" }, { label: "Look and listen" }, { label: "Cross, holding hands" }] },
@@ -207,7 +218,7 @@ B.EN = B.EN || {};
         scenes: [
           { caption: "Our bodies need to play and move every day: running, jumping, playing ball." },
           { caption: "After playing, our bodies need a little rest too." },
-          { caption: "At night, good sleep helps our bodies grow and helps us remember what we learned today." },
+          { caption: "At night, we sleep well. While we sleep, our body rests and remembers what we learned today." },
           { caption: "We go to sleep at the same time every night, and wake up fresh in the morning." }
         ] },
       { prompt: "Which is moving and which is resting? Our bodies need both.",
@@ -232,7 +243,9 @@ B.EN = B.EN || {};
           { caption: "When we are angry, our face gets hot and our hands turn into fists." },
           { caption: "When we are sad, our throat feels heavy and we may cry." },
           { caption: "When we are happy, our body feels light." },
-          { caption: "Every feeling we have is normal. When a feeling is very big, we breathe slowly and tell someone we love." }
+          { caption: "Every feeling we have is normal." },
+          { caption: "When a feeling is very big, we breathe slowly." },
+          { caption: "And we tell someone we love." }
         ] },
       { prompt: "Like in the story, match each feeling with the sign in the body",
         pairs: [[{ say: "scared" }, { say: "my heart beats fast" }], [{ say: "angry" }, { say: "my hands turn into fists" }],
@@ -288,6 +301,37 @@ B.EN = B.EN || {};
           "If your child tells you something: stay calm, believe them, thank them, tell them it is not their fault, and do not promise to tell no one. The “Body safety” part of the parents' guide says where to get help."
         ] }
     ] },
+    "health-sapling-4": { title: "Fire and heat", steps: [
+      { prompt: "Look at the story",
+        cast: { n125: "125", one: "1. Stop", two: "2. Drop", three: "3. Roll" },
+        scenes: [
+          { caption: "Mum is cooking dinner. The stove, the pot, the samovar and the teapot are hot." },
+          { caption: "Taraneh stands a big step away from the stove and the samovar, and does not touch them." },
+          { caption: "Matches and lighters are for grown-ups, not for playing. If we find one, we do not touch it and we tell a grown-up." },
+          { caption: "If we see smoke or smell smoke, we bend down and stay low. The air down low is cleaner." },
+          { caption: "We go out of the house quickly. We do not hide, and we do not go back for a toy." },
+          { caption: "Outside, we tell the grown-ups. They phone the fire brigade: 125." },
+          { caption: "If our clothes catch fire, we do not run. Let's practise. One: we stop right where we are." },
+          { caption: "Two: we lie down on the ground and cover our face with our hands." },
+          { caption: "Three: we roll and roll until the fire is out." },
+          { caption: "Then we get up and tell the grown-ups." }
+        ] },
+      { prompt: "If you see smoke, what do you do? Put it in order",
+        items: [{ label: "Stay low" }, { label: "Go out" }, { label: "Tell", say: "Tell a grown-up" }, { label: "125", say: "Phone one two five" }] },
+      { prompt: "If your clothes catch fire, what do you do? Put it in order",
+        items: [{ label: "Stop" }, { label: "Drop" }, { label: "Roll" }] },
+      { text: "Now practise with your grown-up on a rug or a mattress:",
+        list: ["Stop", "Drop and cover your face with your hands", "Roll, roll, roll"] },
+      { text: "Walk around your home with your grown-up: which doors lead outside? Outside the home, where do we meet each other?" },
+      { tips: [
+        "In the kitchen, make a one-metre “safe zone” for your child, away from the stove, the samovar and the heater. Keep the samovar and teapot away from the edge of the table or sofreh, and keep the cord out of your child's reach.",
+        "Keep matches and lighters up high, out of your child's reach. Never leave a candle, a lit stove or a heater unattended. Keep curtains, clothes and bedding at least one metre from the heater, and do not dry clothes on it.",
+        "Fit a smoke alarm and test it every month. Gas heaters and water heaters need a sound flue; a carbon monoxide alarm also saves lives.",
+        "Draw a family escape plan: two ways out of every room and a meeting place outside the home. Practise it together twice a year. Once you are out, stay out, and phone 125 from there.",
+        "“Stop, drop and roll” is only for when clothes catch fire. Afterwards, hold the burn under cool (not icy) water for 20 minutes and see a doctor.",
+        "Practise this lesson like a calm game, in the daytime, without scary stories. If your child has seen a fire before or gets worried, do not insist; hug them and tell them the grown-ups look after the home."
+      ] }
+    ] },
 
     // ---------------- For every garden ----------------
     "health-all-1": { title: "My body is mine", steps: [
@@ -297,7 +341,8 @@ B.EN = B.EN || {};
           { caption: "If you do not want a hug or a kiss, you can say kindly: “No, thank you.” You can shake hands or give a high five instead." },
           { caption: "The parts of your body that underwear covers are your private parts." },
           { caption: "Nobody should touch your private parts or ask to see them." },
-          { caption: "Only when it is needed: Mum or Dad helping you in the bath, or a doctor when Mum or Dad is with you." },
+          { caption: "Only when it is needed, Mum or Dad helps you in the bath." },
+          { caption: "Or a doctor, when Mum or Dad is with you." },
           { caption: "If something makes you feel bad or confused, tell a grown-up you trust. They will help you." }
         ] },
       { prompt: "Where are the private parts of the body?",

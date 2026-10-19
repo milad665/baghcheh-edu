@@ -551,7 +551,7 @@ child-protection specialist before launch.** Feelings themselves belong to `feel
 | ✅ | `health-sapling-1` | خواب، بازی و نرمش | Sleep, play and exercise | animation, game (`sort`, `order`), lesson (`choose`), home (`doit`), parent tip |
 | ✅ | `health-sapling-2` | احساس‌ها در بدن | Where feelings show in the body; calming down | animation, game (`pairs`), lesson (`choose`), calm (`breathe`), home (`doit`), parent tip |
 | ✅ | `health-sapling-3` | لمس خوب، راز خوب | Safe and unsafe touch, good and bad secrets, keep telling until someone helps, five trusted grown-ups | animation, game (`sort`), lesson (`choose`), home (`doit`), parent tip |
-| 🔨 | `health-sapling-4` | آتش و گرما | Fire safety at home: hot things in the kitchen and the samovar, matches and lighters are for grown-ups, smoke (get low, go out, tell a grown-up, ۱۲۵), «بایست، بخواب، غلت بزن» | animation, game (`order`), home (`doit`), parent tip |
+| ✅ | `health-sapling-4` | آتش و گرما | Fire safety at home: hot things in the kitchen and the samovar, matches and lighters are for grown-ups, smoke (get low, go out, tell a grown-up, ۱۲۵), «بایست، بخواب، غلت بزن» | animation, game (`order`), home (`doit`), parent tip |
 
 ### 🌳 درخت — `tree`
 
