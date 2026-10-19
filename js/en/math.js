@@ -9,6 +9,8 @@ B.EN = B.EN || {};
   var ANSWER = { prompt: "What is the answer?" };
   var BREAD = { name: "sangak bread" };
   var SMALL_TO_BIG = { prompt: "Put the numbers in order, from smallest to biggest" };
+  var FRUIT_ROWS = [{ label: "apples" }, { label: "grapes" }, { label: "oranges" }];
+  var FARM_ROWS = [{ label: "hens" }, { label: "sheep" }, { label: "cows" }];
 
   Object.assign(B.EN, {
     // ---------------- Seed ----------------
@@ -17,7 +19,7 @@ B.EN = B.EN || {};
     "math-seed-3": { title: "The feeding game", steps: [
       { prompt: "Watch the story and count",
         scenes: [{ caption: "The hen is eating grain in the yard." }, { caption: "A chick came." },
-          { caption: "Another chick came." }, { caption: "Another chick came." }],
+          { caption: "Another chick came." }, { caption: "Another chick came.", wait: { hint: "Now you count the chicks: tap each chick." } }],
         question: "How many chicks came to the hen?" },
       { prompt: "The rabbit is hungry. Give it three carrots." },
       { prompt: "Count, and match each group with a group of the same number" },
@@ -63,8 +65,8 @@ B.EN = B.EN || {};
     ] },
     "math-seed-6": { title: "Where is it?", steps: [
       { prompt: "Watch and listen",
-        scenes: [{ caption: "This is the tree in the yard." }, { caption: "The sparrow is at the top of the tree." },
-          { caption: "The cat is at the bottom of the tree." }, { caption: "The ball is next to the tree." }] },
+        scenes: [{ caption: "This is the tree in the yard." }, { caption: "The sparrow came and sat at the top of the tree." },
+          { caption: "The cat came and sat at the bottom of the tree." }, { caption: "The ball rolled and stopped next to the tree." }] },
       { prompt: "Watch and listen",
         scenes: [{ caption: "Sara and Kamran are playing hide-and-seek." }, { caption: "Kamran hid behind the tree." },
           { caption: "Sara came in front of the tree." }, { caption: "Found you!" }],
@@ -103,9 +105,9 @@ B.EN = B.EN || {};
     ] },
     "math-seed-9": { title: "Getting to know numbers", steps: [
       { prompt: "Watch and listen",
-        scenes: [{ caption: "This is the number one. One apple." }, { caption: "This is the number two. Two pears." },
-          { caption: "This is the number three. Three oranges." }, { caption: "This is the number four. Four strawberries." },
-          { caption: "This is the number five. Five eggs." }] },
+        scenes: [{ caption: "One apple. This is the number one." }, { caption: "Two pears. This is the number two." },
+          { caption: "Three oranges. This is the number three." }, { caption: "Four strawberries. This is the number four." },
+          { caption: "Five eggs. This is the number five." }] },
       { prompt: "Match each number with its dots", say: "Tap a number to hear its name. Match each number with its dots.",
         pairs: [[{ say: "one" }, null], [{ say: "two" }, null], [{ say: "three" }, null]] },
       { prompt: "Look at this number. Which group has this many?", say: "Look at this number. Which group has this many?" },
@@ -161,7 +163,8 @@ B.EN = B.EN || {};
     "math-sprout-8": { title: "The adding game", steps: [
       { prompt: "Watch what happens to the apples",
         scenes: [{ caption: "Here are three red apples." }, { caption: "There are two green apples." },
-          { caption: "We put the apples together." }, { caption: "Now there are five apples. Three plus two makes five." }] },
+          { caption: "We put the apples together.", wait: { hint: "Now count all the apples: tap each apple." } },
+          { caption: "Now there are five apples. Three plus two makes five." }] },
       { prompt: "Work out this sum and give the rabbit that many carrots." },
       { prompt: "Work out this sum and give the squirrel that many." },
       { prompt: "Match each number with its dots" },
@@ -214,7 +217,8 @@ B.EN = B.EN || {};
       { prompt: "When do we brush our teeth and go to sleep?", say: "When do we brush our teeth and go to sleep?",
         options: [{ value: "noon" }, { value: "night" }, { value: "morning" }], answer: "night" },
       { prompt: "The days of the week",
-        cast: { d1: "Saturday", d2: "Sunday", d3: "Monday", d4: "Tuesday", d5: "Wednesday", d6: "Thursday", d7: "Friday" },
+        parts: { d1: { art: "day:Saturday" }, d2: { art: "day:Sunday" }, d3: { art: "day:Monday" }, d4: { art: "day:Tuesday" },
+          d5: { art: "day:Wednesday" }, d6: { art: "day:Thursday" }, d7: { art: "day:Friday" } },
         scenes: [{ caption: "A week has seven days. In Iran, the week starts on Saturday." },
           { caption: "Then come Sunday, Monday and Tuesday." }, { caption: "Then Wednesday and Thursday." },
           { caption: "The last day of the week is Friday. Schools are closed on Friday." }] },
@@ -251,8 +255,8 @@ B.EN = B.EN || {};
     ] },
     "math-sapling-6": { title: "Comparing numbers" },
     "math-sapling-12": { title: "Even and odd, number patterns", steps: [
-      { prompt: "See what even and odd mean", cast: { even: "6 even", odd: "7 odd" },
-        scenes: [{ caption: "We have six shoes." }, { caption: "We put the shoes in pairs." },
+      { prompt: "See what even and odd mean", parts: { even: { art: "tag:6 even" }, odd: { art: "tag:7 odd" } },
+        scenes: [{ caption: "We have six shoes.", wait: { hint: "Count them: tap each shoe." } }, { caption: "We put the shoes in pairs." },
           { caption: "Every shoe has a partner and none is left alone. So six is even." },
           { caption: "Now one more shoe comes." },
           { caption: "This one has no partner and is left alone. So seven is odd." }] },
@@ -285,6 +289,144 @@ B.EN = B.EN || {};
       { prompt: "You gave 50 thousand toman. How much change do you get?", items: [{ name: "watermelon" }] },
       { prompt: "Pay for the grapes.", items: [{ name: "grapes" }] },
       { prompt: "How much is it altogether?", items: [{ name: "tomatoes" }, { name: "potatoes" }] }
+    ] },
+    "math-sapling-13": { title: "Doubles and number families", steps: [
+      { prompt: "Grandma put three eggs in each bowl. How many eggs are in the two bowls altogether?",
+        say: "Grandma put three eggs in each bowl. How many eggs are in the two bowls altogether?" },
+      { prompt: "When we add a number to itself, we call it a double. What is 4 and 4?",
+        say: "When we add a number to itself, we call it a double. What is four and four?" },
+      { prompt: "Match each double with its answer",
+        pairs: [[{ say: "two plus two" }], [{ say: "three plus three" }], [{ say: "five plus five" }], [{ say: "six plus six" }]] },
+      { prompt: "6 and 6 make 12. 7 is one more than 6. So what is 6 and 7?",
+        say: "Six and six make twelve. Seven is one more than six. So what is six and seven?" },
+      { prompt: "First work out 8 and 8, then add one. What is the answer?",
+        say: "First work out eight and eight, then add one. What is the answer?" },
+      { prompt: "Put the doubles in one basket and the near doubles in the other.",
+        baskets: [{ label: "double" }, { label: "near double" }],
+        items: [{ say: "five plus five" }, { say: "five plus six" }, { say: "seven plus seven" }, { say: "seven plus eight" },
+          { say: "nine plus nine" }, { say: "three plus four" }] },
+      { prompt: "3, 4 and 7 are a family: 3 and 4 make 7. So what is 7 take away 4?",
+        say: "Three, four and seven are a family: three and four make seven. So what is seven take away four?" },
+      { prompt: "We know that 4 and 5 make 9. So what is 9 take away 5?",
+        say: "We know that four and five make nine. So what is nine take away five?" },
+      { prompt: "Put each sum in the basket of its family.",
+        baskets: [{ label: "family 3, 5, 8" }, { label: "family 2, 7, 9" }],
+        items: [{ say: "three plus five" }, { say: "eight take away five" }, { say: "two plus seven" }, { say: "eight take away three" },
+          { say: "nine take away seven" }, { say: "nine take away two" }] }
+    ] },
+    "math-sapling-14": { title: "Story problems", steps: [
+      { prompt: "Listen to the story",
+        scenes: [{ caption: "Mina had 24 cards." }, { caption: "Grandma brought 13 cards." },
+          { caption: "Grandma gave the cards to Mina." }],
+        question: "To find all the cards, do we add or take away?", options: ["add", "take away"], answer: "add" },
+      { prompt: "How many cards does Mina have altogether?", say: "How many cards does Mina have altogether?" },
+      { prompt: "Listen to the story",
+        scenes: [{ caption: "The neighbourhood baker has 45 sangak breads." },
+          { caption: "Two customers came." }, { caption: "The baker gave the customers 20 breads." },
+          { caption: "The customers took the breads away. The rest of the bread stayed with the baker." }],
+        question: "How many breads does the baker have left?" },
+      { prompt: "There are 18 girls and 15 boys in the class. To find all the children in the class, do we add or take away?",
+        say: "There are eighteen girls and fifteen boys in the class. To find all the children in the class, do we add or take away?",
+        options: ["add", "take away"], answer: "add" },
+      { prompt: "How many children are in the class altogether?", say: "How many children are in the class altogether?" },
+      { prompt: "Arman had 50 thousand toman and bought a storybook for 35 thousand toman. To find the money he has left, do we add or take away?",
+        say: "Arman had fifty thousand toman and bought a storybook for thirty-five thousand toman. To find the money he has left, do we add or take away?",
+        options: ["add", "take away"], answer: "take away" },
+      { prompt: "How many thousand toman does Arman have left?", say: "How many thousand toman does Arman have left?" },
+      { prompt: "In Gelareh's grandfather's orchard there are 32 apple trees and 26 pear trees. How many more apple trees are there than pear trees?",
+        say: "In Gelareh's grandfather's orchard there are thirty-two apple trees and twenty-six pear trees. How many more apple trees are there than pear trees?" }
+    ] },
+    "math-sapling-15": { title: "The clock", steps: [
+      { prompt: "A clock has two hands. The short hand shows the hour and the long hand shows the minutes. The long hand is on 12 and the short hand is on 3. So it is 3 o'clock.",
+        say: "A clock has two hands. The short hand shows the hour and the long hand shows the minutes. The long hand is on twelve and the short hand is on three. So it is three o'clock." },
+      { prompt: "Watch: the long hand goes half way round, to 6. The short hand moves on a little too and stops between 3 and 4. Now it is half past 3.",
+        say: "Watch: the long hand goes half way round, to six. The short hand moves on a little too and stops between three and four. Now it is half past three." },
+      { prompt: "Now turn the hands yourself and see what time it is.", say: "Now turn the hands yourself and see what time it is." },
+      { prompt: "Arash gets up at this time every morning. What time is it?" },
+      {},
+      { prompt: "Zahra goes to her painting class at 4 o'clock. Put the hands on 4 o'clock." },
+      { prompt: "Lunch is ready. What time is it?" },
+      { prompt: "Kaveh goes to school at half past 7. Put the hands on half past 7." },
+      { prompt: "Niloufar goes to bed at 9 o'clock. Put the hands on 9 o'clock." }
+    ] },
+    "math-sapling-16": { title: "Heavy and light", steps: [
+      { prompt: "At the fruit shop, we put a watermelon and an apple on the balance. Which side is heavier? Tap that pan.",
+        left: [{ say: "watermelon" }], right: [{ say: "apple" }] },
+      { prompt: "The balloon is bigger than the key. But which one is lighter? Tap that pan.",
+        left: [{ say: "balloon" }], right: [{ say: "key" }] },
+      { prompt: "Put things on the two pans of the balance. Which one is the heaviest?",
+        tray: [{ say: "watermelon" }, { say: "apple" }, { say: "melon" }, { say: "carrot" }, { say: "books" }] },
+      { prompt: "Raha and her mother bought a melon. Put the one-kilogram weights on the right pan until the balance is level.",
+        left: [{ say: "melon" }], question: "How many kilograms is the melon?" },
+      { prompt: "Omid wants to weigh the watermelon. Put weights on until the balance is level.",
+        left: [{ say: "watermelon" }], question: "How many kilograms is the watermelon?" },
+      { prompt: "The shopkeeper's hand is holding the balance still. Add up the weights on each side. Which side is heavier?" },
+      { prompt: "How much is the right pan missing? Put weights on until the balance is level." }
+    ] },
+    "math-sapling-17": { title: "Three-digit numbers", steps: [
+      { prompt: "Ten bundles of ten. How many sticks altogether?" },
+      { prompt: "Put ten bundles of ten and see what happens." },
+      {}, {}, {},
+      { prompt: "How many packs of a hundred are in this number?" },
+      {}, {},
+      { prompt: "Which number comes after 999?" }
+    ] },
+    "math-sapling-18": { title: "Equal groups", steps: [
+      { prompt: "Listen to the story and count",
+        scenes: [{ caption: "Mum has three plates and six biscuits." }, { caption: "She put two biscuits on each plate." },
+          { caption: "We have three groups of two: two, and two, and two." }],
+        question: "How many biscuits are there altogether?" },
+      { prompt: "The squirrel wants two groups of three acorns. Give them to it." },
+      { prompt: "The rabbit wants two groups of five carrots. Give them to it." },
+      { prompt: "We have four plates. There are three dates on each plate. How many dates are there altogether?",
+        say: "We have four plates. There are three dates on each plate. How many dates are there altogether?" },
+      { prompt: "Which one is three groups of five?" },
+      { prompt: "How many are three groups of five altogether?" },
+      { prompt: "Grandma gave four walnuts to each of her three grandchildren. How many walnuts did she give altogether?",
+        say: "Grandma gave four walnuts to each of her three grandchildren. How many walnuts did she give altogether?" },
+      { prompt: "Yasaman and Kaveh have seven marbles each. How many marbles do they have altogether?",
+        say: "Yasaman and Kaveh have seven marbles each. How many marbles do they have altogether?" }
+    ] },
+    "math-sapling-19": { title: "Halves and quarters", steps: [
+      { prompt: "See what a half and a quarter are",
+        parts: { t1: { art: "tag:half" }, t2: { art: "tag:half" }, t3: { art: "tag:a quarter" } },
+        scenes: [{ caption: "Mum has eight biscuits. Sara and Reza both want some." },
+          { caption: "Mum shared the biscuits between Sara and Reza." },
+          { caption: "They both have the same amount. We call each share half of the biscuits." },
+          { caption: "Dad and Grandma came too. We put the biscuits back in the middle." },
+          { caption: "Mum shared the biscuits equally between four people. Each person got two." },
+          { caption: "We call each share a quarter of the biscuits." }],
+        question: "We shared eight biscuits equally between four people. What do we call each share?",
+        options: ["a half", "a quarter", "all the biscuits"], answer: "a quarter" },
+      { prompt: "Which bread is cut exactly in half?" },
+      { prompt: "Cut the sangak bread into two equal parts. Tap the dotted lines." },
+      { prompt: "The cake is cut into four equal parts. Colour a quarter of it." },
+      { prompt: "How much of the cake is coloured?", options: ["a half", "a quarter", "all the cake"], answer: "a half" },
+      { prompt: "Cut this cake into four equal parts. Tap the dotted lines." },
+      { prompt: "Share the eight sweets equally between Arash and Nazanin.", result: "Half of 8 is 4." },
+      { prompt: "Share the eight biscuits equally between four friends.", result: "A quarter of 8 is 2." }
+    ] },
+    "math-sapling-20": { title: "Picture graphs", steps: [
+      { title: "The fruit the children in the class like", rows: FRUIT_ROWS, question: "How many children like grapes?" },
+      { title: "The fruit the children in the class like", rows: FRUIT_ROWS, question: "Which fruit do the fewest children like?",
+        options: FRUIT_ROWS },
+      { title: "The fruit the children in the class like", rows: FRUIT_ROWS, question: "How many more children like grapes than oranges?" },
+      { title: "The animals on Grandpa's farm", prompt: "Count the animals on the farm: put each one in its own column.",
+        rows: FARM_ROWS, question: "Which animal is there most of?", options: FARM_ROWS },
+      { title: "This week's weather", prompt: "Two more days were sunny and one more day was cloudy. Add them to the graph.",
+        rows: [{ label: "sunny" }, { label: "cloudy" }, { label: "rainy" }], question: "How many days were sunny this week?" },
+      { title: "How do the children come to school?", rows: [{ label: "walk" }, { label: "school bus" }, { label: "car" }, { label: "bike" }],
+        question: "How many children walk or come by bike altogether?" }
+    ] },
+    "math-sapling-21": { title: "The market game", steps: [
+      { prompt: "Match each price with the money that makes it." },
+      { prompt: "Yasaman bought pistachios and honey. How much was it altogether?", items: [{ name: "pistachios" }, { name: "honey" }] },
+      { prompt: "Araz has 30 thousand toman. What can he buy?", baskets: [{ label: "He can buy it" }, { label: "Not enough money" }] },
+      { prompt: "Pay for the pears.", items: [{ name: "pears" }] },
+      { prompt: "You gave 50 thousand toman. How much change do you get?", items: [{ name: "watermelon" }] },
+      { prompt: "Match each take-away with its answer." },
+      { prompt: "Mahsa bought tomatoes, cucumbers and onions. How much was it altogether?",
+        items: [{ name: "tomatoes" }, { name: "cucumbers" }, { name: "onions" }] }
     ] }
   });
 })();
