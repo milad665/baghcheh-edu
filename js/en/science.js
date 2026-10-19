@@ -19,7 +19,7 @@ B.EN = B.EN || {};
           { caption: "This is a ball. A ball does not eat and does not grow." },
           { caption: "This plant drinks water and grows." },
           { caption: "The plant has a flower!" },
-          { caption: "The cat and the flower are alive. The ball is not alive." }
+          { caption: "The cat and the flower are alive. The ball is not alive.", wait: { hint: "Now you find them: tap the living things!" } }
         ],
         question: "Which one is alive?",
         options: [{ value: "doll" }, { value: "fish" }, { value: "shoe" }], answer: "fish" },
@@ -46,7 +46,7 @@ B.EN = B.EN || {};
           { caption: "We hear with our ears: a sparrow sings!" },
           { caption: "We smell with our nose: a red rose!" },
           { caption: "We taste with our tongue: sweet watermelon!" },
-          { caption: "We touch with our hand: the sheep's soft wool!" },
+          { caption: "We touch with our hand: the sheep's soft wool!", wait: { hint: "You stroke the sheep's wool too: move left and right over the sheep!" } },
           { caption: "Our eyes, ears, nose, tongue and skin help us know the world." }
         ] },
       { prompt: "Find the pairs",
@@ -275,7 +275,7 @@ B.EN = B.EN || {};
           { caption: "This spoon is made of metal. Metal is hard and shiny." },
           { caption: "This bottle is made of plastic. Plastic is light." },
           { caption: "This cup is made of glass. You can see through glass." },
-          { caption: "This shirt is made of cloth. Cloth is soft." }
+          { caption: "This shirt is made of cloth. Cloth is soft.", wait: { hint: "You press the cloth too: move left and right over the shirt!" } }
         ],
         question: "What is a window made of?",
         options: ["cloth", "glass", "wood"], answer: "glass" },
@@ -340,7 +340,7 @@ B.EN = B.EN || {};
           { caption: "The paper clip is on the paper. The magnet is under the paper." },
           { caption: "We move the magnet under the paper…" },
           { caption: "and the paper clip follows it!" },
-          { caption: "A magnet pulls iron things even through paper." }
+          { caption: "A magnet pulls iron things even through paper.", wait: { hint: "Now you move the magnet under the paper: move left and right!" } }
         ],
         question: "What does a magnet pull?",
         options: ["all heavy things", "iron things", "all shiny things"], answer: "iron things" },
@@ -440,6 +440,157 @@ B.EN = B.EN || {};
           "Mark the place where the car stopped with a button, and measure the distance in hand spans."
         ],
         ask: "On which floor did it go the farthest? Why do you think so?" }
+    ] },
+    "science-sapling-6": { title: "Life cycles", steps: [
+      { prompt: "Where do sunflower seeds come from?",
+        scenes: [
+          { caption: "This is a sunflower seed, like the ones you crack and eat." },
+          { caption: "We plant the seed in the soil and water it. The seed sprouts." },
+          { caption: "With sunlight and water, the sprout grows and gets leaves." },
+          { caption: "In summer the big sunflower opens. A bee visits the flower." },
+          { caption: "The middle of the flower fills with new seeds: hundreds of seeds!" },
+          { caption: "The seeds fall to the ground and the life cycle starts again." }
+        ],
+        question: "How many new seeds does one sunflower make?",
+        options: ["none", "only one", "lots and lots"], answer: "lots and lots" },
+      { prompt: "Put the sunflower's life cycle in order",
+        items: [{ label: "seed" }, { label: "sprout" }, { label: "plant" }, { label: "flower" }] },
+      { prompt: "Frogs in the rice fields",
+        scenes: [
+          { caption: "In the rice fields of Gilan, a frog lays eggs in the water. The eggs look like little jelly bubbles." },
+          { caption: "A tadpole comes out of each egg. It has a tail, no legs, and swims in the water like a fish." },
+          { caption: "Little by little its legs grow and its tail gets shorter." },
+          { caption: "Now it is a little frog. It comes out of the water and hops on land too." },
+          { caption: "The frog grows up, and it lays eggs in the water too." }
+        ],
+        question: "Where does a tadpole with a tail live?",
+        options: ["in the water", "in a tree", "under the ground"], answer: "in the water" },
+      { prompt: "Put the frog's life cycle in order",
+        items: [{ label: "eggs" }, { label: "tadpole with a tail" }, { label: "tadpole with legs" }, { label: "frog" }] },
+      { prompt: "What did a butterfly look like at first?",
+        scenes: [
+          { caption: "A butterfly lays very tiny eggs on a leaf." },
+          { caption: "A little caterpillar comes out of an egg. It eats leaf after leaf and grows big." },
+          { caption: "Then it makes a cocoon around itself and stays still. Inside, the caterpillar slowly changes." },
+          { caption: "One day the cocoon opens and a butterfly comes out!" },
+          { caption: "The silkworm does the same. In Gilan, people make silk thread from silkworm cocoons." }
+        ],
+        question: "What does the caterpillar become inside the cocoon?",
+        options: ["a butterfly", "a leaf", "a frog"], answer: "a butterfly" },
+      { prompt: "Put the butterfly's life cycle in order",
+        items: [{ label: "egg" }, { label: "caterpillar" }, { label: "cocoon" }, { label: "butterfly" }] },
+      { prompt: "Put the hen's life cycle in order",
+        items: [{ label: "egg" }, { label: "chick hatching" }, { label: "chick" }, { label: "hen" }] },
+      { text: "Plant a bean in a jar and watch it grow!",
+        need: ["a clear jam jar or glass", "paper towels or cotton", "a few beans", "water", "paper and a pencil"],
+        steps: [
+          "Wet the paper towel and press it against the inside of the jar.",
+          "Put the beans between the paper towel and the glass, so you can see them from outside.",
+          "Put the jar by the window and add a little water every day to keep the paper towel wet.",
+          "Every few days your child draws the bean: first the root, then the stem, then the leaves.",
+          "Look at family photos together too: babies, children, grown-ups, grandmas and grandpas. We have a life cycle too."
+        ],
+        ask: "What came first, the root or the leaves? If we plant the bean in soil and it grows big, what will it make in the end?" }
+    ] },
+    "science-sapling-7": { title: "Who eats what?", steps: [
+      { prompt: "Who eats what in the Zagros mountains?",
+        scenes: [
+          { caption: "The sun shines on the Zagros mountains." },
+          { caption: "Grass makes its own food from sunlight, water and air." },
+          { caption: "The wild goat eats the grass." },
+          { caption: "The Persian leopard hunts the wild goat." },
+          { caption: "Grass, wild goat, leopard: we call this a food chain. Each one is food for the next." }
+        ],
+        question: "Where does grass get its food?",
+        options: ["it eats other grass", "it makes its own food with sunlight", "the wild goat feeds it"], answer: "it makes its own food with sunlight" },
+      { prompt: "Make the farm's food chain: first the food, then who eats it",
+        items: [{ label: "wheat" }, { label: "mouse" }, { label: "snake" }, { label: "eagle" }] },
+      { prompt: "Match each animal with its food",
+        pairs: [
+          [{ say: "Persian squirrel" }, { label: "acorns" }],
+          [{ say: "honeybee" }, { label: "flower nectar" }],
+          [{ say: "camel" }, { label: "camelthorn" }],
+          [{ say: "owl" }, { label: "mouse" }]
+        ] },
+      { prompt: "The owl is the farmer's friend",
+        scenes: [
+          { caption: "In the wheat field, mice eat the wheat grains." },
+          { caption: "At night the owl hunts mice. So there are never too many mice." },
+          { caption: "If the owls leave the field, there will be lots and lots of mice…" },
+          { caption: "…and little wheat will be left for the farmer." },
+          { caption: "Every animal has its own place in the food chain. When they are all there, nature stays healthy." }
+        ],
+        question: "What happens if the owls leave the field?",
+        options: ["there are lots and lots of mice", "there is more wheat", "nothing happens"], answer: "there are lots and lots of mice" },
+      { prompt: "Make the Persian Gulf's food chain: first the food, then who eats it",
+        items: [{ label: "seaweed" }, { label: "shrimp" }, { label: "fish" }, { label: "dolphin" }] },
+      { text: "Where did today's food come from?",
+        need: ["a few small pieces of paper", "crayons", "string or glue"],
+        steps: [
+          "After lunch, your child says what you ate: for example bread, yogurt, rice or herbs.",
+          "For each food, ask: “Where did this come from?” Bread comes from wheat; yogurt comes from cow's milk, and the cow eats grass.",
+          "Draw each link on a piece of paper and join the papers in a row with string or glue. The first link is always the sun.",
+          "In the yard or the park, quietly watch birds and insects: What does a sparrow eat? What are the ants carrying? Do not touch them."
+        ],
+        ask: "Where is the sun in our food chain? What would happen if there were no sun?" }
+    ] },
+    "science-sapling-8": { title: "Where does sound come from?", steps: [
+      { prompt: "Where does sound come from?",
+        scenes: [
+          { caption: "Sara is playing the tonbak drum. Listen!" },
+          { caption: "When her hand hits the drum skin, the skin shakes very fast." },
+          { caption: "This shaking makes sound." },
+          { caption: "Sara plays gently: the skin shakes a little and the sound is soft." },
+          { caption: "She plays hard: the skin shakes a lot and the sound is loud!" }
+        ],
+        question: "When the drum makes a sound, what does its skin do?",
+        options: ["it shakes", "it gets warm", "it changes colour"], answer: "it shakes" },
+      { prompt: "Put your hand on your throat",
+        scenes: [
+          { caption: "Arash gently puts his hand on his throat." },
+          { caption: "Now he says “Aaaah”. His throat shakes under his hand!" },
+          { caption: "He stops. The shaking stops too." },
+          { caption: "You try it too: put your hand on your throat and sing." }
+        ],
+        question: "When we talk, which part of our body shakes?",
+        options: ["the throat", "the knees", "the hair"], answer: "the throat" },
+      { prompt: "How does sound get to our ears?",
+        scenes: [
+          { caption: "The school bell rings. The bell shakes." },
+          { caption: "The shaking bell makes the air next to it shake." },
+          { caption: "The air passes the shaking along, from hand to hand…" },
+          { caption: "…until it reaches our ears. Now we hear the sound!" },
+          { caption: "The farther away we are, the softer the sound is when it gets to us." }
+        ],
+        question: "How does the sound of the bell get to our ears?",
+        options: ["through the air", "through light", "through electric wires"], answer: "through the air" },
+      { prompt: "Can sound go through water and wood?",
+        scenes: [
+          { caption: "Dolphins in the Persian Gulf call each other with sounds under the water." },
+          { caption: "Sound travels in water too. The other dolphin hears it and answers." },
+          { caption: "Sound goes through wood too. Put your ear on a table and ask someone to knock gently on the other side." },
+          { caption: "You can hear the knock-knock really well!" }
+        ],
+        question: "Does sound travel under water?",
+        options: ["Yes, sound travels in water too", "No, there is no sound under water"], answer: "Yes, sound travels in water too" },
+      { prompt: "High sounds and low sounds",
+        scenes: [
+          { caption: "This is a setar. When its strings shake, they make sound." },
+          { caption: "The thin string shakes very fast and makes a high sound." },
+          { caption: "The thick string shakes more slowly and makes a low sound." },
+          { caption: "A sparrow's tweet is a high sound. A cow's moo is a low sound." }
+        ],
+        question: "What sound does the thin string make?",
+        options: ["a high sound", "a low sound", "no sound"], answer: "a high sound" },
+      { text: "See sound vibrations with your own eyes!",
+        need: ["a bowl", "kitchen plastic wrap", "a few grains of rice or a little salt", "a pot and a wooden spoon", "a rubber band and an open plastic box"],
+        steps: [
+          "Cover the bowl tightly and smoothly with plastic wrap, and put a few grains of rice on the wrap.",
+          "Hold the pot near the bowl and hit it hard with the wooden spoon. The rice jumps on the wrap!",
+          "Hit it once gently and once hard. Before each go, your child guesses how much the rice will jump.",
+          "Put the rubber band around the plastic box, pull it with a finger and let go. The band shakes and makes a sound. Then put it around the box more tightly: its sound gets higher."
+        ],
+        ask: "Why did the rice jump? What was different when you hit harder?" }
     ] }
   });
 })();

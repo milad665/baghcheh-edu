@@ -401,9 +401,9 @@ Why does it happen?
 | ✅ | `science-sapling-3` | نور و سایه | Light and shadow across the day | inquiry (`shadow`), lesson (`choose`), game (`sort`), home |
 | ✅ | `science-sapling-4` | طبیعت ایران | Iran's habitats and the animals that live there | animation, game (`pairs`), lesson (`choose`), home |
 | ✅ | `science-sapling-5` | هل دادن و کشیدن | Forces: push and pull | animation, game (`sort`), lesson (`choose`), home |
-| 🔨 | `science-sapling-6` | چرخه زندگی | Life cycles: plant, frog, butterfly, hen | animation, game (`order`), home |
-| 🔨 | `science-sapling-7` | چه کسی چه می‌خورد؟ | Food chains | game (`order`, `pairs`), animation, home |
-| 🔨 | `science-sapling-8` | صدا از کجا می‌آید؟ | Sound and vibration | animation, home |
+| ✅ | `science-sapling-6` | چرخه زندگی | Life cycles: plant, frog, butterfly, hen | animation, game (`order`), home |
+| ✅ | `science-sapling-7` | چه کسی چه می‌خورد؟ | Food chains | game (`order`, `pairs`), animation, home |
+| ✅ | `science-sapling-8` | صدا از کجا می‌آید؟ | Sound and vibration | animation, home |
 
 ### 🌳 درخت — `tree`
 
