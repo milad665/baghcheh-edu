@@ -81,10 +81,10 @@ and checked by a fluent speaker; no translated Iranian names or places (sangak b
 | فارسی | — | Never: Persian reading and writing are taught in Persian only |
 | ریاضی | `js/en/math.js` | 🔨 every built lesson, except `math-sprout-9` (writing Persian digits) |
 | احساس‌های من | `js/en/feel.js` | 🔨 every built lesson (11) |
-| علوم | `js/en/science.js` | 🔨 every built lesson (14) |
-| سلامت و ایمنی | `js/en/health.js` | 🔨 every built lesson (14) |
+| علوم | `js/en/science.js` | 🔨 every built lesson (17) |
+| سلامت و ایمنی | `js/en/health.js` | 🔨 every built lesson (15) |
 | فکر و برنامه‌نویسی | `js/en/thinking.js` | 🔨 every built lesson (14) |
-| ایران و جهان | `js/en/world.js` | ⬜ every lesson, once built (Iranian place names stay as they are) |
+| ایران و جهان | `js/en/world.js` | 🔨 every built lesson (16; Iranian place names stay as they are) |
 | خواندن و نوشتن انگلیسی | — | The course itself (instructions in Persian, the English it teaches) |
 
 ## Content types
@@ -93,18 +93,18 @@ Every lesson row below lists its content types. These are the names to use, with
 
 | Content type | What it is | Step types |
 |---|---|---|
-| **lesson** | Interactive teaching: show, explain, try with instant feedback | `intro`, `choose`, `trace`, `blend`, `clap`, `count`, `tenframe`, `make`, `numline`, `tens`, `compare`, `shape`, `measure`, `money`; English: `words`, `listen`, `letter`; maps: `map` (tap places on a picture map, follow a route; Iran and world outlines later) |
+| **lesson** | Interactive teaching: show, explain, try with instant feedback | `intro`, `choose`, `trace`, `blend`, `clap`, `count`, `tenframe`, `make`, `numline`, `tens` (with packs of a hundred and boxes of a thousand), `compare`, `shape`, `measure`, `money`, `fraction` (cut, colour, name and share equal parts), `chart` (read, make and add to picture graphs and bar charts), `clock` (read a clock, set its hands), `balance` (two-pan balance: which side is heavier, making it balance; unknowns as labelled things); English: `words`, `listen`, `letter`; maps: `map` (tap places on a picture map, a symbol map with a legend or the map of Iran; follow a route; find my province; world outlines later), `compass` (turn to north, south, east, west) |
 | **game** | Learning game; the move *is* the skill (`practice: true` on `pairs`, `order` or `sort`: never scored) | `pairs`, `build`, `order`, `sort`, `feed`, `pattern` |
-| **animation** | Animated picture explanation or story, play/pause/replay | `story` |
-| **story** | Text the child reads (decodable) or a story heard and talked about | `passage`, `story` (with `question`), `talk` |
+| **animation** | Animated picture explanation or story, play/pause/replay (`scene` shows real actions: moving parts, paths, views, the child doing it; `story` only moves whole pictures) | `scene`, `story` |
+| **story** | Text the child reads (decodable) or a story heard and talked about | `passage`, `story` (with `question`), `talk`, `readaloud` (the child reads aloud, the parent marks the hard words, then a re-read; not scored) |
 | **inquiry** | Guess, try, see (science) | `test`, `shadow` |
 | **coding** | Block programs on a grid; a miss is something to debug | `code` |
 | **calm** | Breathing, naming feelings, grounding and relaxing; never scored, answers never stored | `breathe` (optional `pattern`: box breathing), `feelings`, `body`, `ground`, `meter`, `relax` |
-| **home** | A task away from the screen, shown inside a lesson: an experiment, a body activity, a thinking game | `home`, `doit`, `unplugged` |
+| **home** | A task away from the screen, shown inside a lesson: an experiment, a body activity, a thinking game, writing on paper (`paper`: a task with an example, the parent ticks a short checklist; not scored, the ticks are not kept) | `home`, `doit`, `unplugged`, `paper` |
 | **parent tip** | A note for the parent at the end of a lesson: how to practise, how to talk about it | `tip`, `forparents` |
 | **activity** | Daily off-screen suggestion in the parent's plan (not a lesson) | `B.ACTIVITIES` in `js/activities.js` |
 
-Subject-specific step types live in `js/steps/` (`reading.js`, `science.js`, `english.js`, `health.js`, `coding.js`, `feel.js`, `world.js`). A new step type
+Subject-specific step types live in `js/steps/` (`paper.js` for every subject, `reading.js`, `science.js`, `english.js`, `health.js`, `coding.js`, `feel.js`, `world.js`, `numbers.js`, `measure.js`). A new step type
 must be added to this table, or `tools/check-plan.js` fails.
 
 ---
@@ -129,7 +129,7 @@ Pre-reading: oral language, listening, phonological awareness, telling shapes ap
 | ✅ | `read-seed-4` | کلمه‌های هم‌قافیه | Rhyme: hear which words sound alike at the end (picture + spoken word) | animation, lesson (`choose` with `say`), game (`pairs`) |
 | ✅ | `read-seed-5` | دست بزن، بشمار | Syllables: clap and count the parts of a word (one to three parts) | animation, lesson (`clap`, `choose`) |
 | ✅ | `read-seed-6` | با چه صدایی شروع می‌شود؟ | First sound of a word (oral, pictures only): م، س، ب، ت | animation, lesson (`choose` with `say`), game (`sort` by first sound, `pairs`) |
-| ✅ | `read-seed-7` | قصه گوش کن | Listening comprehension: three heard stories, what happened first/next/last, how a character felt, retelling | animation (`story` + `question`), game (`order` with `numbered`), story (`talk`) |
+| ✅ | `read-seed-7` | قصه گوش کن | Listening comprehension: three heard stories, what happened first/next/last, how a character felt, retelling | animation (`scene` + `question`), game (`order` with `numbered`), story (`talk`) |
 | ✅ | `read-seed-8` | کتاب از کجا شروع می‌شود؟ | Print concepts: writing vs pictures, right to left, top to bottom, words and spaces, the first word | animation, lesson (`choose`), story (`talk` with a real book) |
 | ✅ | `read-seed-9` | خط‌های رنگی | Pre-writing: lines top to bottom and right to left, slants, a bowl, hills, waves, zigzags, a circle; each shown being drawn first, then traced; drawing them on paper | lesson (`trace` with `path`), home (`doit`) |
 | ✅ | `read-seed-10` | بازی صداها | Unit game: rhyme, syllables, first sound (پ، د) | game (`pairs` with `hidden`, `sort`) |
@@ -172,15 +172,15 @@ The rest of the alphabet, long and short vowels, letter forms, first sentences a
 | ✅ | `read-sapling-15` | «ط» و «ح» | ط ح | lesson, story |
 | ✅ | `read-sapling-16` | «ع» و «غ» | ع غ | lesson, story |
 | ✅ | `read-sapling-17` | «ـّ» و «ـً» | tashdid, tanvin | lesson, story |
-| ⬜ | `read-sapling-20` | «ء» و «ئـ» | hamza forms (مسئله، جزء) | lesson, story |
-| ⬜ | `read-sapling-21` | بازی کلمه‌ها ۳ | Unit game: the last letters | game (`pairs`, `build`, `sort`) |
-| ⬜ | `read-sapling-22` | شکل‌های یک حرف | Letter forms: alone, start, middle, end (ب بـ ـبـ ـب) | game (`pairs`, `sort`) |
-| ⬜ | `read-sapling-23` | حرف‌های هم‌صدا | Same sound, different letters: ت/ط، س/ص/ث، ز/ذ/ض/ظ، ه/ح، ق/غ، ا/ع | animation, game (`sort` by letter in known words) |
-| ⬜ | `read-sapling-24` | املا | Dictation: hear a word, build it, including same-sound letters | game (`build` with `hidden`) |
-| ⬜ | `read-sapling-25` | جمله بساز | Order words into a sentence; full stop and question mark | game (`order` of words), lesson (`choose`) |
-| ⬜ | `read-sapling-26` | کلمه‌ها را به هم بنویس | Writing joined letters in whole words | lesson (`trace` with `strokes`; 🆕 handwriting models for joined forms) |
-| ⬜ | `read-sapling-27` | قصه‌های کوتاه | Short illustrated decodable stories, questions about them | animation, story (`passage`) |
-| ⬜ | `read-sapling-28` | بلند بخوان | Fluency: re-read a short passage aloud; the parent marks the hard words (accuracy only, never a timer) | 🆕 `readaloud` (parent-marked, not scored) |
+| 🔨 | `read-sapling-20` | «ء» و «ئـ» | hamza forms: ء alone, ئـ on a tooth, ئ (جزء، تئاتر، مسئله) | lesson, story |
+| 🔨 | `read-sapling-21` | بازی کلمه‌ها ۳ | Unit game: the last letters (ژ ص ح ط ع غ ذ، tashdid, tanvin, hamza) | game (`pairs`, `build`, `sort`) |
+| 🔨 | `read-sapling-22` | شکل‌های یک حرف | Letter forms: alone, start, middle, end (ب بـ ـبـ ـب; ن ع ه ی ج); where «ب» sits in a word | game (`pairs`, `sort`) |
+| 🔨 | `read-sapling-23` | حرف‌های هم‌صدا | Same sound, different letters: ت/ط، س/ص/ث، ز/ذ/ض/ظ، ه/ح، ق/غ، ا/ع | animation, game (`sort` by letter in known words) |
+| 🔨 | `read-sapling-24` | املا | Dictation: hear a word, build it letter by letter, with a same-sound letter among the tiles | game (`build` with `hidden`) |
+| 🔨 | `read-sapling-25` | جمله بساز | Order words into a sentence; full stop and question mark | game (`order` of words), lesson (`choose`) |
+| 🔨 | `read-sapling-26` | کلمه‌ها را به هم بنویس | Writing joined letters: the forms of «ب», then whole words (بابا، نان، لب، سیب، دست), each joined piece in one go, dots last | lesson (`intro`, `trace` with joined forms and whole words from `js/strokes.js`) |
+| 🔨 | `read-sapling-27` | قصه‌های کوتاه | Three short decodable stories (Rasht, Bushehr, Sanandaj), each shown as an animation first, then read, with questions | animation, story (`passage`) |
+| 🔨 | `read-sapling-28` | بلند بخوان | Fluency: five short passages read aloud; the parent marks the hard words, they practise them, the child re-reads (accuracy only, never a timer) | story (`readaloud`: parent-marked, not scored) |
 
 ### 🌳 درخت — `tree`
 
@@ -275,21 +275,21 @@ Goal: number sense through objects and pictures (Seed, Sprout), place value and 
 | ✅ | `math-sapling-9` | اندازه‌گیری | Comparing and measuring length with units | lesson (`measure`) |
 | ✅ | `math-sapling-10` | خرید از نانوایی | Money: adding prices, paying | lesson (`money`) |
 | ✅ | `math-sapling-11` | خرید از بازار | Money: totals, paying the exact amount | lesson (`money` with `wallet`) |
-| ⬜ | `math-sapling-13` | دوتایی‌ها و خانواده عددها | Doubles, near doubles, fact families (۳ + ۴، ۷ − ۳…) | game (`pairs`, `sort`), lesson (`choose`) |
-| ⬜ | `math-sapling-14` | مسئله‌های قصه‌ای | Two-digit word problems: which operation? | animation (`story` + `question`), lesson (`choose`) |
-| ⬜ | `math-sapling-15` | ساعت | Telling time: o'clock and half past | animation · 🆕 `clock` (read and set the hands) |
-| ⬜ | `math-sapling-16` | سنگین و سبک | Mass: heavier/lighter, balancing | 🆕 `balance` (two pans) |
-| ⬜ | `math-sapling-17` | عددهای سه‌رقمی | Hundreds, tens and ones to 1,000 | lesson · 🆕 `tens` with hundreds |
-| ⬜ | `math-sapling-18` | دسته‌های مساوی | Equal groups, repeated addition: the start of multiplication | animation, game (`feed`), lesson (`choose`) |
-| ⬜ | `math-sapling-19` | نصف و یک‌چهارم | Halves and quarters of a shape and of a number (sharing bread) | animation · 🆕 `fraction` (cut and colour parts) |
-| ⬜ | `math-sapling-20` | نمودار تصویری | Reading and making a picture graph | 🆕 `chart` (read a graph, add to one) |
-| ⬜ | `math-sapling-21` | بازی بازار | Unit game: money, adding and subtracting | game (`sort`, `pairs`), lesson (`money`) |
+| 🔨 | `math-sapling-13` | دوتایی‌ها و خانواده عددها | Doubles (eggs in two bowls, matching doubles to answers), near doubles from a double (۶ + ۷ = ۶ + ۶ + ۱), fact families (۳، ۴، ۷: from a sum to its differences; sorting sums and differences into their families) | game (`pairs`, `sort`), lesson (`choose`) |
+| 🔨 | `math-sapling-14` | مسئله‌های قصه‌ای | Two-digit word problems: which operation, then the answer (cards from grandma, bread at the bakery, children in a class, buying a book), then a «how many more» problem alone | animation (`story` + `question`), lesson (`choose`) |
+| 🔨 | `math-sapling-15` | ساعت | Telling time: o'clock and half past (the two hands, watching the long hand turn from ۳ to ۳ و نیم while the short hand moves on, turning them freely, then reading the clock and setting the hands at times of a child's day) | lesson (`clock`) |
+| 🔨 | `math-sapling-16` | سنگین و سبک | Mass on a two-pan balance: heavier and lighter (bigger is not always heavier), trying things out, weighing fruit with kilogram weights, adding up weights on a held balance, making it balance | lesson (`balance`) |
+| 🔨 | `math-sapling-17` | عددهای سه‌رقمی | Hundreds, tens and ones to 1,000: ten bundles tie into a pack of a hundred, reading and building three-digit numbers (a zero in the tens), opening a hundred to take away, comparing, after ۹۹۹ | lesson (`tens` with hundreds, `compare`, `choose`) |
+| 🔨 | `math-sapling-18` | دسته‌های مساوی | Equal groups, repeated addition: the start of multiplication (plates of sweets for guests, feeding in groups, ۳ + ۳ + ۳ + ۳, word problems) | animation, game (`feed`), lesson (`choose`) |
+| 🔨 | `math-sapling-19` | نصف و یک‌چهارم | Halves and quarters of a shape and of a number: sharing 8 biscuits between 2, then 4 (story), equal and unequal halves of a sangak, cutting bread and a cake, colouring and naming a part, sharing 8 sweets between 2 and 4 | animation, lesson (`fraction`) |
+| 🔨 | `math-sapling-20` | نمودار تصویری | Reading and making a picture graph: favourite fruit (how many, fewest, how many more), animals on a farm put into a graph, adding to a weather graph, how children come to school | lesson (`chart`) |
+| 🔨 | `math-sapling-21` | بازی بازار | Unit game: money, adding and subtracting (prices ↔ bills, what 30 thousand toman buys, paying, change, three things together) | game (`sort`, `pairs`), lesson (`money`) |
 
 ### 🌳 درخت — `tree`
 
 | St | Lesson | Title | Covers | Content types |
 |---|---|---|---|---|
-| ⬜ | `math-tree-1` | عددهای بزرگ | Place value to 1,000,000, reading big numbers, rounding | lesson (`choose`, `compare`) · 🆕 `tens` with thousands |
+| ⬜ | `math-tree-1` | عددهای بزرگ | Place value to 1,000,000, reading big numbers, rounding | lesson (`choose`, `compare`) · `tens` with thousands |
 | ⬜ | `math-tree-2` | جمع و تفریق ستونی | Column addition and subtraction with carrying and borrowing | 🆕 `column` (written method, digit by digit) |
 | ⬜ | `math-tree-3` | ضرب با آرایه | Multiplication as an array; commutativity | animation · 🆕 `array` |
 | ⬜ | `math-tree-4` | جدول ضرب | Times tables 2–10 by patterns, not by rote | game (`pattern`, `pairs` with `hidden`), lesson (`choose`) |
@@ -297,33 +297,33 @@ Goal: number sense through objects and pictures (Seed, Sprout), place value and 
 | ⬜ | `math-tree-6` | تقسیم: سهم مساوی | Division as sharing and grouping; remainders | animation, game · 🆕 `feed` with several plates |
 | ⬜ | `math-tree-7` | تقسیم ستونی | Long division (3-digit ÷ 1-digit, as in the placement check) | 🆕 `column` (division layout) |
 | ⬜ | `math-tree-8` | بازی ضرب و تقسیم | Unit game | game (`pairs`, `sort`, `pattern`) |
-| ⬜ | `math-tree-9` | کسرها | Fractions as parts of a whole and of a set; on the number line | animation, lesson (`numline`) · 🆕 `fraction` |
-| ⬜ | `math-tree-10` | کسرهای مساوی | Equivalent fractions, comparing, adding with the same denominator | 🆕 `fraction`, lesson (`compare`) |
+| ⬜ | `math-tree-9` | کسرها | Fractions as parts of a whole and of a set; on the number line | animation, lesson (`numline`, `fraction`) |
+| ⬜ | `math-tree-10` | کسرهای مساوی | Equivalent fractions, comparing, adding with the same denominator | lesson (`fraction`, `compare`) |
 | ⬜ | `math-tree-11` | عددهای اعشاری | Tenths and hundredths, with lengths (cm, m) | lesson (`measure`, `choose`) |
 | ⬜ | `math-tree-12` | واحدهای اندازه‌گیری | Length, mass, volume units; converting | lesson (`measure`, `choose`), home |
-| ⬜ | `math-tree-13` | زمان و تقویم | Minutes, hours, days, the months of the Persian calendar | 🆕 `clock`, game (`order`) |
+| ⬜ | `math-tree-13` | زمان و تقویم | Minutes, hours, days, the months of the Persian calendar | lesson (`clock` with `snap: 5`), game (`order`) |
 | ⬜ | `math-tree-14` | محیط و مساحت | Perimeter and area on a grid | 🆕 `grid` (count squares, draw shapes) |
 | ⬜ | `math-tree-15` | زاویه و خط | Right angles, parallel and perpendicular lines | lesson (`shape`, `choose`) |
 | ⬜ | `math-tree-16` | تقارن | Lines of symmetry, completing a symmetric picture | 🆕 `mirror` |
 | ⬜ | `math-tree-17` | شکل‌های فضایی | Cube, cuboid, cylinder, sphere, cone; faces and edges | animation, game (`sort`) |
-| ⬜ | `math-tree-18` | جدول و نمودار ستونی | Tables and bar charts | 🆕 `chart` |
+| ⬜ | `math-tree-18` | جدول و نمودار ستونی | Tables and bar charts | lesson (`chart` with `bars`) |
 
 ### 🌲 جنگل — `forest`
 
 | St | Lesson | Title | Covers | Content types |
 |---|---|---|---|---|
-| ⬜ | `math-forest-1` | عمل‌ها با کسر | Adding, subtracting, multiplying fractions | 🆕 `fraction`, lesson (`choose`) |
+| ⬜ | `math-forest-1` | عمل‌ها با کسر | Adding, subtracting, multiplying fractions | lesson (`fraction`, `choose`) |
 | ⬜ | `math-forest-2` | عمل‌ها با اعشار | Decimal operations; money and measures | lesson (`choose`), 🆕 `column` |
 | ⬜ | `math-forest-3` | درصد | Percentages: discounts at the bazaar | animation, lesson (`money`, `choose`) |
 | ⬜ | `math-forest-4` | عددهای منفی | Integers on the number line, temperature | lesson (`numline`, `compare`) |
 | ⬜ | `math-forest-5` | نسبت و تناسب | Ratio and proportion with recipes | animation, lesson (`choose`) |
 | ⬜ | `math-forest-6` | عامل‌ها و عددهای اول | Factors, multiples, primes, divisibility | game (`sort`), 🆕 `array` |
 | ⬜ | `math-forest-7` | توان | Powers and square numbers | 🆕 `array`, lesson (`choose`) |
-| ⬜ | `math-forest-8` | معادله با ترازو | Unknowns and simple equations | 🆕 `balance` with unknowns |
+| ⬜ | `math-forest-8` | معادله با ترازو | Unknowns and simple equations | lesson (`balance` with an unknown: a thing labelled «؟», both pans open, then `question`) |
 | ⬜ | `math-forest-9` | از الگو تا عبارت | Number patterns → expressions | game (`pattern`), lesson (`choose`) |
 | ⬜ | `math-forest-10` | مساحت شکل‌ها | Area of triangle, parallelogram, circle; angle sums | 🆕 `grid`, animation |
 | ⬜ | `math-forest-11` | مختصات | Coordinates on a grid / a map | 🆕 `grid` with axes |
-| ⬜ | `math-forest-12` | میانگین | Mean, median, reading data | 🆕 `chart`, lesson (`choose`) |
+| ⬜ | `math-forest-12` | میانگین | Mean, median, reading data | lesson (`chart`, `choose`) |
 | ⬜ | `math-forest-13` | احتمال | Chance: dice, spinners, experiments | 🆕 `spinner` (repeat an experiment, tally), home |
 
 ---
@@ -401,9 +401,9 @@ Why does it happen?
 | ✅ | `science-sapling-3` | نور و سایه | Light and shadow across the day | inquiry (`shadow`), lesson (`choose`), game (`sort`), home |
 | ✅ | `science-sapling-4` | طبیعت ایران | Iran's habitats and the animals that live there | animation, game (`pairs`), lesson (`choose`), home |
 | ✅ | `science-sapling-5` | هل دادن و کشیدن | Forces: push and pull | animation, game (`sort`), lesson (`choose`), home |
-| ⬜ | `science-sapling-6` | چرخه زندگی | Life cycles: plant, frog, butterfly, hen | animation, game (`order`), home |
-| ⬜ | `science-sapling-7` | چه کسی چه می‌خورد؟ | Food chains | game (`order`, `pairs`), animation |
-| ⬜ | `science-sapling-8` | صدا از کجا می‌آید؟ | Sound and vibration | animation, home |
+| 🔨 | `science-sapling-6` | چرخه زندگی | Life cycles: plant, frog, butterfly, hen | animation, game (`order`), home |
+| 🔨 | `science-sapling-7` | چه کسی چه می‌خورد؟ | Food chains | game (`order`, `pairs`), animation, home |
+| 🔨 | `science-sapling-8` | صدا از کجا می‌آید؟ | Sound and vibration | animation, home |
 
 ### 🌳 درخت — `tree`
 
@@ -413,7 +413,7 @@ After teacher review of the earlier gardens.
 |---|---|---|---|---|
 | ⬜ | `science-tree-1` | مدار ساده | Electric circuits: battery, wire, bulb, switch (on screen only) | 🆕 `circuit` (build a circuit) |
 | ⬜ | `science-tree-2` | اصطکاک و سطح شیب‌دار | Friction, ramps, speed | animation · 🆕 `ramp` (try surfaces) |
-| ⬜ | `science-tree-3` | اهرم و قرقره | Simple machines | animation · 🆕 `balance` |
+| ⬜ | `science-tree-3` | اهرم و قرقره | Simple machines | animation · 🆕 `balance` as a lever (things at a distance from the middle) |
 | ⬜ | `science-tree-4` | ماه و منظومه شمسی | The moon's phases, the planets | animation, game (`order`) |
 | ⬜ | `science-tree-5` | بازتاب نور | Mirrors, reflection, how we see | animation, home |
 | ⬜ | `science-tree-6` | شبکه غذایی | Food webs and ecosystems in Iran | animation, game (`sort`, `pairs`) |
@@ -429,7 +429,7 @@ After teacher review of the earlier gardens.
 | ⬜ | `science-forest-4` | سلول | Cells, the microscope, plant and animal cells | animation, game (`sort`) |
 | ⬜ | `science-forest-5` | دستگاه‌های بدن | Digestion, breathing, circulation | animation, game (`order`) |
 | ⬜ | `science-forest-6` | زمین زیر پای ما | Rocks, soil, how earthquakes happen (calm and factual) | animation, home |
-| ⬜ | `science-forest-7` | دانشمند کوچک | The scientific method: question, guess, test, record, conclude | game (`order`), home, 🆕 `chart` |
+| ⬜ | `science-forest-7` | دانشمند کوچک | The scientific method: question, guess, test, record, conclude | game (`order`), home, `chart` |
 
 ---
 
@@ -437,13 +437,15 @@ After teacher review of the earlier gardens.
 
 The English reading and writing course; speaking and understanding English also grow from playing the other
 subjects' lessons in English ([Lessons in English](#lessons-in-english)). Lessons in `js/lessons/english.js`, English
-step types (`words`, `listen`, `letter`, `tip`) in `js/steps/english.js`, the English voice in `js/english-voice.js`.
+step types (`words`, `listen`, `letter`, `tip`) in `js/steps/english.js`, writing on paper (`paper`) in `js/steps/paper.js`, the English voice in `js/english-voice.js`.
 Every child starts at Seed (`defaultLevel: "seed"`). Seed gets the child ready to read: listening and speaking
 first, meaning shown by pictures and actions (never by translation), lots of repetition. Sprout teaches the letters
 and their sounds a few at a time (systematic phonics) and writing them; Sapling reading and writing short
 sentences; Tree and Forest longer texts and short pieces of writing. Instructions are Persian and spoken; English is
 written left to right and spoken with the device's English voice. Every lesson ends with a `tip` for parents, who
-may not know English. Our own chants and texts only (no copyrighted songs).
+may not know English. Our own chants and texts only (no copyrighted songs). Every animation is a `scene` (drawings in
+`js/art/rig-english.js`) where the picture does what the English says: people wave for hello, point for "this is",
+touch their nose, clap, eat or push away; animals open their mouths for their sounds; a finger goes up for each number.
 
 ### 🌰 دانه — `seed`
 
@@ -487,11 +489,11 @@ Short sentences, questions, everyday phrases.
 | ✅ | `english-sapling-1` | I can see | Reading and building "I can see a …" | animation, lesson (`listen`), game (`order`, `pairs`), parent tip |
 | ✅ | `english-sapling-2` | سؤال و جواب | What is this? It is a … | animation, lesson (`listen`), game (`order`), parent tip |
 | ✅ | `english-sapling-3` | جمله‌های هر روز | Everyday phrases | animation, lesson (`words`, `listen`), game (`order`), parent tip |
-| ⬜ | `english-sapling-4` | دوست دارم | I like … / I don't like … | animation, game (`sort`), lesson (`listen`) |
-| ⬜ | `english-sapling-5` | یکی، چندتا | Plural -s: one cat, two cats | game (`sort`), lesson (`listen`) |
-| ⬜ | `english-sapling-6` | کجاست؟ | in, on, under, next to | animation, lesson (`listen`, `choose`) |
-| ⬜ | `english-sapling-7` | قصه کوتاه | A short story to read with questions | story (`passage`), animation |
-| ⬜ | `english-sapling-8` | نوشتن جمله | Writing a short sentence: capital letter, spaces between words, full stop | game (`order`), 🆕 `paper`, parent tip |
+| 🔨 | `english-sapling-4` | دوست دارم | I like … / I don't like …: hear, show with a face, read and sort sentences, build them | animation, lesson (`words`, `listen`), game (`sort`, `order`), parent tip |
+| 🔨 | `english-sapling-5` | یکی، چندتا | Plural -s: one cat, two cats; hear it, read it, sort one / many | lesson (`words`, `listen`), game (`sort`, `pairs`), parent tip |
+| 🔨 | `english-sapling-6` | کجاست؟ | in, on, under, next to, shown with pictures of where things are; hear it, then read the sentence | animation, lesson (`words`, `listen`), parent tip |
+| 🔨 | `english-sapling-7` | قصه کوتاه | A short story heard first, then read with questions (Sara's dog and ball); a second one read alone (Reza's cat) | animation, story (`passage`), parent tip |
+| 🔨 | `english-sapling-8` | نوشتن جمله | Writing a short sentence: capital letter, spaces between words, full stop; copy one, then write their own on paper | lesson (`listen`), game (`order`), `paper`, parent tip |
 
 ### 🌳 درخت — `tree`
 
@@ -549,7 +551,7 @@ child-protection specialist before launch.** Feelings themselves belong to `feel
 | ✅ | `health-sapling-1` | خواب، بازی و نرمش | Sleep, play and exercise | animation, game (`sort`, `order`), lesson (`choose`), home (`doit`), parent tip |
 | ✅ | `health-sapling-2` | احساس‌ها در بدن | Where feelings show in the body; calming down | animation, game (`pairs`), lesson (`choose`), calm (`breathe`), home (`doit`), parent tip |
 | ✅ | `health-sapling-3` | لمس خوب، راز خوب | Safe and unsafe touch, good and bad secrets, keep telling until someone helps, five trusted grown-ups | animation, game (`sort`), lesson (`choose`), home (`doit`), parent tip |
-| ⬜ | `health-sapling-4` | آتش و گرما | Fire safety at home | animation, game (`order`), home (`doit`), parent tip |
+| 🔨 | `health-sapling-4` | آتش و گرما | Fire safety at home: hot things in the kitchen and the samovar, matches and lighters are for grown-ups, smoke (get low, go out, tell a grown-up, ۱۲۵), «بایست، بخواب، غلت بزن» | animation, game (`order`), home (`doit`), parent tip |
 
 ### 🌳 درخت — `tree`
 
@@ -720,14 +722,14 @@ My city or village, the map of Iran, directions, the festivals of the year, the 
 
 | St | Lesson | Title | Covers | Content types |
 |---|---|---|---|---|
-| ⬜ | `world-sprout-1` | شهر و روستا | Life in a city and in a village: work, homes, getting around | animation, game (`sort`) |
-| ⬜ | `world-sprout-2` | نقشه چیست؟ | Map symbols and the legend; from a picture to a map | animation · 🆕 `map` (symbols) |
-| ⬜ | `world-sprout-3` | شمال، جنوب، شرق، غرب | The four directions; the sun rises in the east; a compass | animation, lesson (`choose`) · 🆕 `compass` |
-| ⬜ | `world-sprout-4` | ایران روی نقشه | The shape of Iran, the Caspian Sea, the Persian Gulf and the Sea of Oman, where my city is | 🆕 `map` (Iran), home (find Iran on a globe or atlas) |
-| ⬜ | `world-sprout-5` | جشن‌های سال | Festivals through the year: Nowruz, سیزده‌به‌در، مهرگان، یلدا، چهارشنبه‌سوری (and fire safety) | animation, game (`order` on the year, `pairs`) |
-| ⬜ | `world-sprout-6` | سلام به زبان‌های ایران | Hello and thank you in the languages of Iran; every language is valuable | animation, game (`pairs`), home (ask how grandparents say it) · recorded audio from native speakers |
-| ⬜ | `world-sprout-7` | سفره‌های ایران | Regional foods and why they grow there (rice in Gilan, dates in Bushehr) | 🆕 `map` (Iran), game (`pairs`), home (cook one dish) |
-| ⬜ | `world-sprout-8` | بازی نقشه | Unit game | game (`pairs`, `sort`), 🆕 `map` |
+| 🔨 | `world-sprout-1` | شهر و روستا | Life in a city (Mashhad) and in a village (Kurdistan): homes, work, getting around; what is the same in both | animation (with `question`), game (`sort` city / village / both, `pairs`), story (`talk`) |
+| 🔨 | `world-sprout-2` | نقشه چیست؟ | From a picture to a map: a village seen from above, then the same village with symbols and a legend (راهنمای نقشه) | animation, `map` (picture map, then symbols with a legend), game (`pairs` thing ↔ symbol), lesson (`choose`), home (draw your street with symbols) |
+| 🔨 | `world-sprout-3` | شمال، جنوب، شرق، غرب | The four directions; the sun rises in the east, is in the south at noon (in Iran) and sets in the west; facing north, east is on the right; a compass shows north | animation, `compass` (with the sun; only north shown), lesson (`choose`), home (label the walls of a room) |
+| 🔨 | `world-sprout-4` | ایران روی نقشه | The shape of Iran, the Caspian Sea, the Persian Gulf and the Sea of Oman, big cities found with directions, the provinces, finding my own province | `map` (Iran: seas, cities, provinces, my province), home (find Iran on a globe or atlas) |
+| 🔨 | `world-sprout-5` | جشن‌های سال | Festivals through the year: Nowruz, سیزده‌به‌در، مهرگان، یلدا، چهارشنبه‌سوری (and fire safety) | animation, game (`order` on the year, `pairs`), lesson (`choose`), story (`talk`) |
+| 🔨 | `world-sprout-6` | سلام به زبان‌های ایران | Hello and thank you in Azerbaijani, Kurdish, Arabic, Turkmen, Balochi and Armenian; every language is valuable. The words are shown, never said by the device voice: **needs recordings by native speakers** (a slot per word) | animation, game (`pairs`), story (`talk`), home (ask how grandparents say it) |
+| 🔨 | `world-sprout-7` | سفره‌های ایران | Regional foods and why they grow there (rice in Gilan, dates in Bushehr, pistachios in Kerman, saffron in Khorasan, fish on the coasts) | animation, `map` (Iran's provinces), game (`pairs`), story (`talk`), home (cook one dish) |
+| 🔨 | `world-sprout-8` | بازی نقشه | Unit game: the seas of Iran, directions, a symbol map, city and village, festivals, where foods grow | game (`pairs` with `hidden`, `sort`), `map`, `compass` |
 
 ### 🌿 نهال — `sapling`
 
@@ -737,14 +739,14 @@ neighbours.
 | St | Lesson | Title | Covers | Content types |
 |---|---|---|---|---|
 | ⬜ | `world-sapling-1` | کوه، دشت، کویر، دریا | Landforms of Iran: Alborz, Zagros, Damavand, Dasht-e Kavir, Lut, the coasts | animation, 🆕 `map` (relief) |
-| ⬜ | `world-sapling-2` | چهار فصل در یک روز | Iran's climates: snow in Ardabil while it is warm in Chabahar; why | animation, game (`sort` cities by climate), 🆕 `map` |
-| ⬜ | `world-sapling-3` | استان‌های ایران | The provinces and their centres; my province | 🆕 `map` (provinces), game (`pairs` with `hidden`) |
+| ⬜ | `world-sapling-2` | چهار فصل در یک روز | Iran's climates: snow in Ardabil while it is warm in Chabahar; why | animation, game (`sort` cities by climate), `map` |
+| ⬜ | `world-sapling-3` | استان‌های ایران | The provinces and their centres; my province | `map` (provinces), game (`pairs` with `hidden`) |
 | ⬜ | `world-sapling-4` | قنات و بادگیر | Living with little water: qanat, windcatcher, ab-anbar, yakhchal (inquiry: why did people build them?) | animation, game (`order`), home |
 | ⬜ | `world-sapling-5` | بازار و کاروانسرا | Trade then and now: the bazaar, caravanserais, today's markets and ports | animation, game (`sort` then / now) |
 | ⬜ | `world-sapling-6` | دست‌های هنرمند | Crafts of Iran by region: carpet, tilework, قلمکار، خاتم، pottery | animation, game (`pairs`), home |
 | ⬜ | `world-sapling-7` | قاره‌ها و اقیانوس‌ها | The seven continents and five oceans; the globe and the flat map | animation, 🆕 `map` (world) |
 | ⬜ | `world-sapling-8` | همسایه‌های ایران | Neighbouring countries by land and sea, their capitals and languages; Nowruz shared with neighbours | 🆕 `map` (region), game (`pairs`) |
-| ⬜ | `world-sapling-9` | ایران‌گردی | Unit game: a virtual trip around Iran's World Heritage sites | animation (tour), game (`pairs`, `order`), 🆕 `map` |
+| ⬜ | `world-sapling-9` | ایران‌گردی | Unit game: a virtual trip around Iran's World Heritage sites | animation (tour), game (`pairs`, `order`), `map` |
 
 ### 🌳 درخت — `tree`
 
@@ -783,9 +785,9 @@ research project.
 | ⬜ | `world-forest-11` | مشروطه: قانون و مجلس | The Constitutional Revolution: people asked for law; what a constitution and a parliament are; the first مجلس (1285) | animation, 🆕 `source`, 🆕 `timeline`, lesson (`choose`) |
 | ⬜ | `world-forest-6` | از کارگاه تا کارخانه | The industrial revolution, the growth of cities, and what it meant for daily life and nature | animation, game (`sort` before / after) |
 | ⬜ | `world-forest-12` | ایران در قرن چهاردهم | Iran from about ۱۳۰۰ to ۱۳۷۰, by years: the railway, new schools and universities, more girls at school, radio, cinema, cities growing | animation, 🆕 `timeline`, game (`sort` before / after) |
-| ⬜ | `world-forest-13` | ایران امروز | Today's Iran: cities and the metro, science and space, artists and athletes, nature and water | animation (tour), 🆕 `map`, game (`pairs`) |
+| ⬜ | `world-forest-13` | ایران امروز | Today's Iran: cities and the metro, science and space, artists and athletes, nature and water | animation (tour), `map`, game (`pairs`) |
 | ⬜ | `world-forest-14` | تاریخ خانواده ما | Oral history: interview a grandparent about school, games and home; compare then and now | home, 🆕 `paper`, game (`sort` then / now), parent tip |
-| ⬜ | `world-forest-7` | مردم و شهرها | Population, where people live and why, moving to cities | 🆕 `map`, 🆕 `chart` |
+| ⬜ | `world-forest-7` | مردم و شهرها | Population, where people live and why, moving to cities | 🆕 `map`, `chart` |
 | ⬜ | `world-forest-8` | زمین ما، خانه همه | Shared challenges: water in Iran, protecting the Asiatic cheetah, caring for the planet | animation, home, 🆕 `paper` |
 | ⬜ | `world-forest-9` | میراث جهانی | World Heritage in Iran and around the world: why we protect it | animation (tour), game (`pairs`), 🆕 `map` |
 | ⬜ | `world-forest-10` | پژوهش من | Research project: a question about a country or a time, sources, a short presentation for the family | game (`order` of the steps), 🆕 `paper`, home |
@@ -799,10 +801,11 @@ research project.
 | ✅ | Placement check for فارسی and ریاضی | `B.PLACEMENT` in `js/content.js` | Other subjects have none: they start at their `defaultLevel` or the child's Persian garden |
 | ✅ | Daily off-screen activities, 6 per garden | `js/activities.js` | Add science, English, health and coding activities once those subjects ship |
 | ✅ | Parent guide, method, policies | `guide.html`, `method.html`, `policies.html` | When Tree/Forest lessons ship, update the line in `guide.html` saying they are coming |
+| 🔨 | Animations that show what they say | `js/scene.js`, `js/art/rig*.js`, `tools/storyboard.html` | Every animation in every subject is now a `scene` step (no `story` left): 92 lessons, 606 frames, checked against their captions in the storyboard. The engine has moving parts, paths, walking people (`walker`, full bodies for every person emoji), camera pans with depth, the child rubbing or tapping, and a slower pace. Left: commit, then teacher review of the pictures |
 | ⬜ | Recorded audio for every lesson | `audio/` | Record Seed and Sprout first (children who cannot read yet need it most) |
 | ⬜ | «ایران و جهان» in the parent guide and the method page | `guide.html`, `method.html` | A method section on inquiry, maps, historical thinking and windows-and-mirrors, with references (C3 Framework, Seixas, Bishop), and the neutrality rules for history |
 | ⬜ | Iran's flag, chosen by the parent | «بخش والدین» (`js/app.js`, `js/strings.js`), stored with the family's settings | The current flag, the lion-and-sun flag, or not chosen (the default). Plain names, side by side, no comment; synced to the home hub like other settings and kept in backups |
-| ⬜ | Map data for «ایران و جهان» | `js/maps/` | Simplified SVG outlines of Iran's provinces and the world's countries from Natural Earth (public domain), and SVG flags (public domain), self-hosted and small; no outside requests. Iran's two flags are drawn but used only through the parent's choice |
+| 🔨 | Map data for «ایران و جهان» | `js/maps/` | Simplified SVG outlines from Natural Earth (public domain), self-hosted and small; no outside requests. **Iran is built** (`js/maps/iran.js`, made by `tools/build-iran-map.js`: provinces, seas, provincial centres, neighbours as plain shapes). Still to do: the world's countries, the region with named neighbours, relief, and SVG flags (public domain); Iran's two flags are drawn but used only through the parent's choice |
 | ⬜ | Reviewers for «ایران و جهان» | `policies.html#accuracy` | A history or geography teacher reviews every lesson; speakers of each language record the «سلام» audio |
 | ⬜ | Off-screen activities for «ایران و جهان» | `js/activities.js` | Oral history with grandparents, drawing the street, a museum or old-house visit, a regional dish |
 
@@ -813,24 +816,22 @@ and remove the 🆕 from the rows that use it.
 
 | Step type / option | What it does | Used by |
 |---|---|---|
-| Joined-letter models | Handwriting models in `js/strokes.js` for the joined forms (start, middle, end) and for whole words; the `trace` step already draws any `strokes` it is given | `read-sapling-26` |
-| `paper` | A writing task on paper with a short checklist for the parent; not scored | `read-tree-11`, `read-tree-12`, `read-forest-2/7/9`, `english-sapling-8`, `english-tree-6`, `english-forest-4`, `world-forest-8/10`, `world-forest-14` |
-| `fraction` | Cut a shape or a set into parts and colour some | `math-sapling-19`, `math-tree-9/10`, `math-forest-1` |
-| `clock` | Read and set clock hands | `math-sapling-15`, `math-tree-13` |
-| `balance` | Two-pan balance (mass, then equations, levers) | `math-sapling-16`, `math-forest-8`, `science-tree-3` |
-| `chart` | Read and add to picture graphs and bar charts | `math-sapling-20`, `math-tree-18`, `math-forest-12`, `science-forest-7`, `world-forest-7` |
+| `paper` | A writing task on paper with a short checklist for the parent; not scored. **Built** (`js/steps/paper.js`) | `read-tree-11`, `read-tree-12`, `read-forest-2/7/9`, `english-sapling-8`, `english-tree-6`, `english-forest-4`, `world-forest-8/10`, `world-forest-14` |
+| `fraction` | Cut a shape or a set into parts and colour some. **Built** (`js/steps/numbers.js`): shapes (circle, square, bar, sangak) cut into any number of parts, sharing a set | `math-sapling-19`, `math-tree-9/10`, `math-forest-1` |
+| `clock` | Read and set clock hands. **Built** (`js/steps/measure.js`): o'clock and half past, and any minutes with `snap` | `math-sapling-15`, `math-tree-13` |
+| `balance` | Two-pan balance (mass, then equations, levers). **Two pans and unknowns are built** (`js/steps/measure.js`); the lever (things placed at a distance from the middle) is still to do: the beam already turns by the weight on each side | `math-sapling-16`, `math-forest-8`, `science-tree-3` |
+| `chart` | Read and add to picture graphs and bar charts. **Built** (`js/steps/numbers.js`), bar charts with `bars: true` | `math-sapling-20`, `math-tree-18`, `math-forest-12`, `science-forest-7`, `world-forest-7` |
 | `array` | Rows × columns, area model | `math-tree-3/5`, `math-forest-6/7` |
 | `column` | Written column methods (+ − × ÷), digit by digit | `math-tree-2/5/7`, `math-forest-2` |
 | `grid` | Squared grid: perimeter, area, coordinates | `math-tree-14`, `math-forest-10/11` |
-| `tens` hundreds/thousands | Flats and cubes in the place-value step | `math-sapling-17`, `math-tree-1` |
+| `tens` hundreds/thousands | Flats and cubes in the place-value step. **Built** (`js/engine.js`) | `math-sapling-17`, `math-tree-1` |
 | `feed` several plates | Sharing into equal groups | `math-tree-6` |
 | `mirror` | Complete a symmetric picture | `math-tree-16` |
 | `spinner` | Repeat a chance experiment, tally results | `math-forest-13` |
-| `map` | Tap, find and label places on an SVG map: picture maps (room, neighbourhood), Iran and its provinces, the region, the world; optional routes. **Picture maps, finding and routes are built** (`js/steps/world.js`); outline maps wait for the map data in `js/maps/` | `world-seed-2/4`, `world-sprout-2/4/7/8`, `world-sapling-1/2/3/7/8/9`, `world-tree-4/8/10/11`, `world-forest-2/4/7/9`, `world-forest-13` |
+| `map` | Tap, find and label places on an SVG map: picture maps (room, neighbourhood), Iran and its provinces, the region, the world; optional routes. **Picture maps, finding, routes, symbol maps with a legend and the map of Iran (provinces, seas, cities, my province; `js/maps/iran.js`) are built** (`js/steps/world.js`); the region, the world, relief and trade routes wait for their map data in `js/maps/` | `world-seed-2/4`, `world-sprout-2/4/7/8`, `world-sapling-1/2/3/7/8/9`, `world-tree-4/8/10/11`, `world-forest-2/4/7/9`, `world-forest-13` |
 | `timeline` | Place events and pictures on a timeline with eras; before and after | `world-tree-1/2/5/7/9`, `world-forest-1/3/5`, `world-forest-11/12` |
 | `source` | Look closely at a picture of an object, building or old text: «چه می‌بینی؟ چه فکر می‌کنی؟ چه سؤالی داری؟», with questions for the parent; not scored | `world-tree-1/2/4/8`, `world-forest-4/5`, `world-forest-11` |
 | Flag faces | Self-hosted SVG flags as a face (`flag: "fr"`) in `pairs`, `sort` and `map`; `flag: "iran"` shows the parent's choice, or an empty flag with «پرچم ایران را از پدر و مادرت بپرس.» | `world-sapling-8`, `world-tree-10` |
-| `compass` | Turn to north, south, east and west; the sun's path | `world-sprout-3` |
-| `readaloud` | Parent marks hard words while the child reads aloud | `read-sapling-28` |
+| `compass` | Turn to north, south, east and west; the sun's path. **Built** (`js/steps/world.js`) | `world-sprout-3/8` |
 | `circuit`, `ramp` | Small science simulations | `science-tree-1`, `science-tree-2` |
 | `code` if, function and counter blocks | Conditions, functions, variables | `think-tree-1/2`, `think-forest-1` |

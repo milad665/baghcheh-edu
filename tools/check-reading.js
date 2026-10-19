@@ -1,7 +1,7 @@
 /* Checks that every word a child decodes in the reading lessons uses only letters taught so far.
    Run from the project folder:  node tools/check-reading.js
    Checked: intro example words, blend parts and words, words shown in "choose" steps, word options,
-   passage text and passage options, and the words and letters on game tiles and cards (build, pairs, sort,
+   passage and readaloud text and passage options, whole words to trace, and the words and letters on game tiles and cards (build, pairs, sort,
    order, pattern). Not checked: instructions and questions (the grown-up reads them),
    and the letter shapes in "find the letter" steps (other letters are there on purpose).
    Consonant «و» (v) and «ی» (y) are spotted by a rough rule and reported as warnings. */
@@ -25,7 +25,8 @@ var TEACHES = {
   "read-sapling-6": "",
   "read-sapling-7": "ه", "read-sapling-8": "پل", "read-sapling-9": "جگ", "read-sapling-10": "چخ", "read-sapling-11": "فق", "read-sapling-19": "",
   "read-sapling-12": "Yژ", "read-sapling-13": "صث", "read-sapling-14": "ذضظ", "read-sapling-15": "طح", "read-sapling-16": "عغ",
-  "read-sapling-17": "ًّ"
+  "read-sapling-17": "ًّ", "read-sapling-20": "ءئ", "read-sapling-21": "", "read-sapling-22": "", "read-sapling-23": "",
+  "read-sapling-24": "", "read-sapling-25": "", "read-sapling-26": "", "read-sapling-27": "", "read-sapling-28": ""
 };
 
 var IGNORE = /[\s‌‍«».،؛:؟!?\-–—…()0-9۰-۹]/;
@@ -69,6 +70,9 @@ function texts(s) {
   if (s.type === "sort") s.items.concat(s.baskets).forEach(function (v) { t.push(shown(v)); });
   if (s.type === "order") s.items.forEach(function (v) { t.push(shown(v)); });
   if (s.type === "pattern") s.seq.concat(s.options).forEach(function (v) { t.push(shown(v)); });
+  if (s.type === "readaloud") t.push(s.text);
+  // A whole word to write (trace of a joined word, js/strokes.js).
+  if (s.type === "trace" && s.letter && s.letter.replace(/ـ/g, "").length > 1) t.push(s.letter);
   if (s.type === "passage") {
     t.push(s.text);
     if (!s.pic) s.options.forEach(function (o) { t.push(typeof o === "object" ? o.label : o); });

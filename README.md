@@ -32,6 +32,7 @@ js/common.js        on-device storage, backup/merge, speech, Persian digits
 js/sync.js          pairing and sync with the home hub (inactive on normal mirrors)
 js/content.js       curriculum DATA shared by all subjects: levels, subjects, placement check
 js/lessons/*.js     the lessons, one file per subject (read.js, math.js, feel.js)  ← teachers edit these
+js/maps/*.js        outline maps for the map step, from Natural Earth (iran.js: provinces, seas, cities)
 js/en/*.js          the same lessons in English (English as a second language), one file per subject
 js/english-mode.js  plays a lesson in English: the «🔤 English» switch in the lesson bar
 js/engine.js        lesson player and the basic step types
@@ -39,12 +40,14 @@ js/games.js         game step types (pairs, build, order, sort, feed, pattern)
 js/anim.js          animated steps: how a letter is written, picture stories (story)
 js/art.js           pictures: shows a hand-drawn SVG in place of an emoji wherever lessons use one
 js/art/*.js         the drawings, by group (people, feelings, animals, food, nature, home, things), and story backdrops (scenes.js)
-js/strokes.js       stroke order of every letter (source: Iran's first-grade writing book), the digits ۰–۹, Latin a–z and A–Z, and pre-writing paths, as SVG paths
+js/strokes.js       stroke order of every letter (source: Iran's first-grade writing book), hamza, joined forms and whole words, the digits ۰–۹, Latin a–z and A–Z, and pre-writing paths, as SVG paths
 js/app.js           routing and screens
 js/browse.js        the content browser (browse.html); shows planned lessons too when CURRICULUM.md is served
 sw.js               offline cache
 tools/check-reading.js  checks reading lessons use only letters taught so far (node)
 tools/check-plan.js     checks the lessons match CURRICULUM.md (node)
+tools/storyboard.html   every animation as still pictures with their captions, to check they match (open from the site)
+tools/build-iran-map.js makes js/maps/iran.js from Natural Earth (node + mapshaper; only when the map data changes)
 tools/strokes-preview.html  every model in js/strokes.js with numbered strokes and arrows, to check by eye
 tools/art-preview.html  every drawing and backdrop, and the emoji in lessons that have no drawing yet
 audio/  fonts/      optional recorded audio / self-hosted Vazirmatn font
@@ -123,15 +126,15 @@ Lessons are plain data in `js/lessons/<subject>.js`, one file per subject, each 
 |------------|--------|--------|
 | `intro`    | `letter`, `text`, `say`, `forms` [[form, label]], `example` {pic, word}, optional `write` (the letter to animate when `letter` is not a plain letter, e.g. `"او"` → `"و"`). Letters in `js/strokes.js` are shown being written, stroke by stroke | no |
 | `choose`   | `prompt`, `options` (strings or {label, value}), `answer`, optional `show`, `say`, `pic`, `ltr` (`show` is a math expression, drawn left to right) | yes |
-| `trace`    | `letter`, `prompt`, optional `say` (spoken, with a listen button). The child writes over the handwriting model from `js/strokes.js`, which is first shown being written. `letter` can be a Persian letter, a Persian digit (`"۵"`) or a Latin letter (`"a"`, `"A"`: drawn left to right, with the midline and top line of an English exercise book). Instead of `letter`: `path`, a pre-writing path from `B.PATHS` (`down`, `across`, `slant`, `bowl`, `hills`, `wave`, `zigzag`, `circle`), or `strokes`, any list of strokes in the same form as `js/strokes.js` (paths and shapes have no baseline) | no |
+| `trace`    | `letter`, `prompt`, optional `say` (spoken, with a listen button). The child writes over the handwriting model from `js/strokes.js`, which is first shown being written. `letter` can be a Persian letter, a Persian digit (`"۵"`) or a Latin letter (`"a"`, `"A"`: drawn left to right, with the midline and top line of an English exercise book), or a joined form or whole word that has a model in `js/strokes.js` (`"ـبـ"`, `"سیب"`: each joined piece written in one go, dots last; drawn with a thinner model). Instead of `letter`: `path`, a pre-writing path from `B.PATHS` (`down`, `across`, `slant`, `bowl`, `hills`, `wave`, `zigzag`, `circle`), or `strokes`, any list of strokes in the same form as `js/strokes.js` (paths and shapes have no baseline) | no |
 | `blend`    | `parts`, `word`, `pic`, `say` | no |
 | `passage`  | `text` (a short decodable passage), `question`, `options`, `answer`, optional `pic`; the passage itself is never read aloud | yes |
 | `count`    | `thing` (emoji), `n`, `options` | yes |
 | `tenframe` | `n` (up to 20: two frames), `options`, optional `prompt`, `missing` (asks how many make ten), `plus` or `minus` (shows `n + plus` in two colours, or crosses out `minus`) | yes |
 | `make`     | `n` (child builds n in one or two ten-frames) | yes |
 | `numline`  | `a`, `b` (negative to subtract), `options`, optional `thing` | yes |
-| `tens`     | `n` and `options` (read a number from bundles of ten and loose sticks), optional `b` (add, or take away when negative; a bundle is opened when needed), or `build: true` (child builds n; ten sticks tie into a bundle) | yes |
-| `compare`  | `a`, `b`, `ask` (`more` \| `less` \| `symbol` for < = >), optional `pic: "tens"` or `thing` (emoji) | yes |
+| `tens`     | `n` and `options` (read a number from bundles of ten and loose sticks; above 100 also packs of a hundred, above 1,000 boxes of a thousand), optional `b` (add, or take away when negative; a bundle, pack or box is opened when needed, and the child is told), or `build: true` (child builds n; ten sticks tie into a bundle, ten bundles into a pack, ten packs into a box), optional `prompt`, `hundreds` (`true`: packs of a hundred for 100 and below too; `false`: bundles only), `thousands: true` | yes |
+| `compare`  | `a`, `b`, `ask` (`more` \| `less` \| `symbol` for < = >), optional `pic: "tens"` (bundles, and packs of a hundred above 100) or `thing` (emoji) | yes |
 | `shape`    | `prompt`, then `show` (a shape id, or a list of ids to name them with no question), `options` (shape ids, numbers or {label, value}), `answer`. Shapes: circle, square, triangle, rectangle, plus `-tilt` / `-tall` variants | yes, unless `show` is a list |
 | `measure`  | `bars` [{thing, len}], `ask` (`longer` \| `shorter`, or `count` with `unit` emoji, `prompt`, `options`) | yes |
 | `money`    | `prompt`, optional `items` [{emoji, name, price}], then `bills` + `options` (+ `answer` if not the sum), or `wallet` (child pays the exact total). Amounts are in thousands of toman | yes |
@@ -160,6 +163,7 @@ dots to count, and the words said aloud when it is tapped (used for pictures).
 | Step type | Fields | Scored |
 |-----------|--------|--------|
 | `story`   | A short animated picture story or explanation with play, pause and replay. `cast` {id: emoji or short text such as `"۳ + ۲ = ۵"`}, `scenes` [{`caption`, `say`, `audio`, `at`}] where `at` is {id: [x, y] or [x, y, {size, flip, act}] or `null` to hide}; x and y are percentages of the stage from the top left, an actor stays where it is until a scene moves it, and `act` is `bounce`, `spin`, `grow` or `shake`. Captions are read aloud. Optional `prompt`, `bg` (a drawn backdrop: `meadow` (the default), `garden`, `night`, `room`, `bedroom`, `kitchen`, `school`, `sea`, `street`, `snow`, `sky`; or any CSS background; a scene's own `bg` changes it from that scene on), `tall`, and `question`, `options`, `answer`, `pic` to ask about the story at the end | only with `question` |
+| `scene`   | An animated explanation where the drawing really does what the words say (`js/scene.js`, drawings in `js/art/rig.js`). `parts` {id: {`art` (a drawing in `B.RIG` or an emoji), `at` [x, y] on a 160 × 90 stage, `s`, `sx`, `sy`, `r`, `o`, `flip`, `under` (inside another part, so it moves with it)}}; `scenes` [{`caption`, `say`, `audio`, `hold`, `key`, `do` [tracks], `wait`}]. Tracks run at once or one after another (`at`, `dur` in ms): move, turn, squash or fade (`to` {x, y, s, sx, sy, r, o}, `"+3"` for a change, `times`, `yoyo`), follow a `path`, `draw` lines like a pencil, `emit` bubbles, drops or sparks, `count` a number, move the `cam` (the world can be wider than the stage: pan along it to travel), or `walk` a person there (legs and arms swing; `walker` in `js/art/rig.js` is a child or grown-up seen from the side, set by `look`). People emoji (👧 👦 👩 👨 👵 👴, cooks, teachers, doctors…) are drawn as full-body walkers in a scene (the emoji pictures are head-and-shoulders portraits for cards), grown-ups bigger; `look` changes them and `flip` turns them to face left. Whether a woman or girl wears a headscarf is chosen by chance, more often without (`hair: "auto"` with `kind`; `B.headscarf` in `js/art/rig.js`, STYLE.md rule 6). A part's `depth` makes scenery slide by more slowly as the camera moves (0 the sky, 0.3 far hills, 1 the street). Every time is stretched by `B.SCENE_PACE` (1.3), each scene rests a moment before the next, and none moves on while its caption is still being said. Pieces inside a drawing (`data-part`) are tracks too: `"tap.handle"`. `wait` lets the child do it: `{rub: true, n, hint, each}` (rub back and forth) or `{tap: [ids], hint, each, counter, inOrder}` (tap each thing once, to count or pick them; `"$"` in `each` is the part just tapped; `counter` shows how many). With "reduce motion" each scene shows its end picture. Use it whenever a caption names an action; `story` only moves whole pictures. Check every scene in `tools/storyboard.html` | only with `question` |
 
 **Pictures** (`js/art.js`, `js/art/*.js`). Lessons name every picture with an emoji (`pic: "🍎"`, `thing: "🐟"`, a
 story's `cast`). When a hand-drawn SVG exists for that emoji, it is shown instead, everywhere: cards, tiles, options,
@@ -212,18 +216,19 @@ written left to right. Steps of English lessons carry `en: true` (set in `js/les
 | Step type | Fields | Scored |
 |-----------|--------|--------|
 | `words`   | `words` [{pic or color or dots, en, audio}]: tap each picture to hear it and say it aloud; optional `show` (write the word, from Sprout on), `prompt` | no |
-| `listen`  | `say` (English to hear, or `audio`), `options` (emoji, or {pic or color or dots, label, en, value}), `answer` (the option's value: its pic, color, dots or label by default), optional `prompt`, `quiet` (don't repeat the Persian question), `show` (a letter, word or picture shown above). Options with `en` say it when tapped; with no `say`, their words are read out | yes |
+| `listen`  | `say` (English to hear, or `audio`), `options` (emoji, or {pic or color or dots, label, en, value}), `answer` (the option's value: its pic, color, dots or label by default), optional `prompt`, `quiet` (don't repeat the Persian question), `show` (a letter, word or picture shown above). Options with `en` say it when tapped; with no `say`, their words are read out. A picture of where something is: `{pic, ref, where}` (`where`: `in`, `on`, `under`, `next to`; e.g. 🐱 on 📦), as an option (its value is `where`), in `words`, or as `show` | yes |
 | `letter`  | `letter` (one letter, or two with one sound: `"sh"`), `words` [{pic, en}] starting with its sound, optional `like` (a Persian letter with a similar sound), `say`, `audio` (a recording of the sound), `end: true` (the words end with it instead, for x: box, fox) | no |
 | `tip`     | `text`: how parents can practise at home, even without knowing English; optional `pic` | no |
 
 Any step can take `audio: "audio/file.mp3"` to play a recording instead of the device voice.
 
-**Reading before letters** (`js/steps/reading.js`, used by فارسی in Seed). Everything is heard: the word is said aloud
-and shown as a picture.
+**Reading** (`js/steps/reading.js`, used by فارسی). `clap` comes before letters (Seed): everything is heard, the word is
+said aloud and shown as a picture. `readaloud` is for children who already read.
 
 | Step type | Fields | Scored |
 |-----------|--------|--------|
 | `clap`    | `word` (said aloud), `parts` (its syllables), optional `pic`, `prompt`, `say`, `audio`. The child taps 👏 once per syllable and presses «تمام شد»; a wrong count is never marked wrong: the word is clapped together, one dot lighting for each part as it is said, and the child tries once more | no |
+| `readaloud` | Fluency, for readers (Sapling): `text` (a short decodable passage), optional `pic`, `prompt`. The child reads aloud while the parent taps the words that were hard; then the hard words are shown on their own (tap one to hear it), the child reads the whole passage again, and the parent taps the hard words that went well this time. Accuracy only: no timer, nothing is stored | no |
 
 **Science** (`js/steps/science.js`). Inquiry steps: the child guesses, tries and sees.
 
@@ -235,11 +240,37 @@ and shown as a picture.
 
 **Iran and the world** (`js/steps/world.js`). Maps seen from above, drawn with inline SVG. Same rules as the games: no
 timers or points, a gentle bounce on a miss, the answer shown after two misses; tap a place, drag the 📍 (or the walker)
-under the map onto it, or Tab and Enter.
+under the map onto it, or Tab and Enter. Outline maps (`js/maps/`) are Natural Earth's de facto borders; neighbouring
+countries are plain shapes with no names, and names are the ones Iranian schools use (`CURRICULUM.md`, "Neutrality and safety").
 
 | Step type | Fields | Scored |
 |-----------|--------|--------|
-| `map`     | `map`: an object or the name of a shared map in `B.MAPS` (picture maps `room`, `home`, `street` are in `js/lessons/world.js`): `{ view: [w, h] (viewBox, default [400, 300]), bg, shapes: [{ rect: [x, y, w, h], r } or { circle: [cx, cy, r] } or { d } (SVG path), with `kind` (floor, wall, rug, wood, road, line, block, park, grass, water, sand, land: CSS class `map-<kind>`)], deco: [{ pic, at, size }], places: [{ id, name, pic, at: [x, y], size, say, d, kind }] }`. A place has an emoji (`pic`) or an outline (`d`, e.g. a province, coloured by `kind`), or both; `at` is where its picture and ring go, and `name` (or `say`) is said when it is tapped. `tasks`: `[{ find: id, prompt, say }]` (tap the place) or `[{ route: [id, …], prompt, say, walker }]` (start at the first place and tap the others in order; the walker emoji walks there). With no `tasks`, the child taps every place to hear its name. Optional `prompt`, `say`, `labels: true` (names written under places, for readers) | yes, unless there are no `tasks` |
+| `map`     | `map`: an object or the name of a shared map in `B.MAPS` (picture maps `room`, `home`, `street` are in `js/lessons/world.js`): `{ view: [w, h] (viewBox, default [400, 300]), bg, shapes: [{ rect: [x, y, w, h], r } or { circle: [cx, cy, r] } or { d } (SVG path), with `kind` (floor, wall, rug, wood, road, line, block, park, grass, water, sand, land: CSS class `map-<kind>`)], deco: [{ pic, at, size }], places: [{ id, name, pic, at: [x, y], size, say, d, kind }] }`. A place has an emoji (`pic`) or an outline (`d`, e.g. a province, coloured by `kind`), or both; `at` is where its picture and ring go, and `name` (or `say`) is said when it is tapped. `tasks`: `[{ find: id, prompt, say }]` (tap the place) or `[{ route: [id, …], prompt, say, walker }]` (start at the first place and tap the others in order; the walker emoji walks there). With no `tasks`, the child taps every place to hear its name. Optional `prompt`, `say`, `labels: true` (names written under places, for readers), `enough: n` (with no `tasks`: «بعدی» after n places). Places and legend items take `en` (the English name). **Symbol maps:** `legend: [{ pic, name, en }]` on the map (e.g. 🟢 = trees), shown under it; tapping an item says it. **The map of Iran** (`map: "iran"`, `js/maps/iran.js`): `layers` `["iran", "seas"]` (the default: all of Iran is one place, plus the three seas) or `["provinces", …]` (each province is a place); `cities: ["tehran", …]` or `"centres"` marks cities to tap. A task `{ mine: true, prompt, say }` asks for the child's own province: any province is right, its centre is named, nothing is stored, and «نمی‌دانم» goes on | yes, unless there are no `tasks` |
+| `compass` | Turn to north, south, east or west: a child seen from above in a yard, north at the top and east on the right (like a map). `tasks: [{ face: "n" \| "e" \| "s" \| "w", prompt, say, sun }]`: tap that side or press an arrow key; `sun` is `rise` (east), `noon` (south) or `set` (west) and draws the sun on its side. Optional `prompt`, `say`, `hide: true` (only north is written, as on a compass). A wrong side says its name; the right one is shown after two misses | yes |
+
+**Writing on paper** (`js/steps/paper.js`, any subject). For writing longer than a letter or a word, done away from
+the screen: the child hears the task, sees an example, writes on paper or in an exercise book and shows it to a parent,
+who ticks a short checklist. Not scored; the ticks are not kept (only that the lesson was done, as for every lesson).
+
+| Step type | Fields | Scored |
+|-----------|--------|--------|
+| `paper`   | `text` (the task, read aloud), `check` [questions for the parent, e.g. «با حرف بزرگ شروع کرده؟»], optional `example` (the model, e.g. `"I like apples."`), `lang` (`"en"` or `"fa"`: the language written, and so its direction; by default English when `example` has only Latin letters), `pic`, `say`, `audio`, `note` (instead of the general line for the parent). «نوشتم!» and «بعداً می‌نویسم» both go on | no |
+
+**Fractions and graphs** (`js/steps/numbers.js`, used by ریاضی, and by علوم and «ایران و جهان» for graphs). Same rules as
+the games: no timers or points, a gentle bounce on a miss, the answer shown after two misses; tap, drag, or Tab and Enter.
+
+| Step type  | Fields | Scored |
+|------------|--------|--------|
+| `fraction` | `shape` (`circle`, `square`, `rect` (a bar), `bread` (a sangak); default circle), `parts` (equal parts, default 2), then one of: `take` (the child colours that many parts and presses «تمام شد»); `ask: "name"` with `take` parts coloured, `options` (strings, or `{frac: [1, 4]}` written as a fraction) and `answer`; `ask: "equal"` (or `"unequal"`) with `shapes` [{`shape`, `cuts`} or {`shape`, `parts`}]: tap the one cut into equal parts (`cuts` are places from 0 to 1: across a long shape from the left, or turns of a circle from the top, so `[0, 0.5]` halves a circle); `cut: true`: the child cuts into `parts` equal parts by tapping dotted lines (`grid`: how many places to cut, default 2 × parts); `set` (a number of things, `thing` emoji) shared equally between `parts` children (`who`: their emoji), with optional `result` said at the end («نصف ۸ می‌شود ۴.»). Optional `prompt`, `say`, `pic` | yes |
+| `chart`    | `rows` [{`label`, `pic`, `n`, `has`}]: one column per row, `n` pictures high. Optional `title`, `prompt`, `say`, `max` (the height), `bars: true` (a bar chart with a number scale), then: `question`, `options` (numbers, or {label, value}), `answer` (read the graph); or `make: true` (the pictures are in a pile; the child puts each in its column, a wrong column bounces) or `add: true` (+ and − under each column until each has `n`, starting from `has`; the prompt says what to add), each optionally followed by the `question` | yes |
+
+**Time and mass** (`js/steps/measure.js`, used by ریاضی; the balance later by علوم too). Same rules as the games: no
+timers or points, a gentle bounce on a miss, the answer shown after two misses; tap, drag, or the keyboard.
+
+| Step type | Fields | Scored |
+|-----------|--------|--------|
+| `clock`   | A clock face with a short and a long hand, geared like a real clock (at half past three the short hand is between ۳ and ۴). Times are written `"h:mm"` (`"3:00"`, `"9:30"`) and said as «ساعت ۳ و نیم». `ask: "read"` (the default with `options`): `time` and `options` (times), choose what it shows; `ask: "set"` (the default with `time`): the child sets the hands to `time`, from `start` (default `"12:00"`), and presses «درست شد» (a miss names the hand to look at; after two the hands turn to the time); `ask: "explore"` (the default with no `time`): turn the hands and hear the time; `ask: "show"`: the clock shows `start`, then both hands turn on to `time` while the child watches, with a replay button (to explain, not scored). Hands are moved by dragging them, the round-arrow buttons, or the arrow keys on a hand. Optional `prompt`, `say`, `pic` (what happens at that time), `snap` (minutes the long hand moves by, default 15; 5 to read minutes) | yes, unless `explore` or `show` |
+| `balance` | A two-pan balance that tips towards the heavier side. Things are numbers (a weight of that mass, labelled with `unit`, default کیلو; `""` for none) or {`pic`, `mass`, `label`, `say`} (`label` is written on the thing: `"؟"` for an unknown). `left`, `right` (on the pans at the start), `tray` (things the child can put on), `open` (`left`, `right` or `both`, default both: where the child may put things). `ask`: `heavier` or `lighter` (tap that pan; `held: true` keeps it level until the answer, so the weights are added up, not seen), `balance` (the default with a `tray`: put things on until it is level; putting something on the lighter pan that tips it past level is a miss; taking things off never is, and after two the things move by themselves into a way that balances) or `explore` (not scored). Optional `prompt`, `say`, and `question`, `options`, `answer`, `pic`, asked once it balances | yes, unless `explore` |
 
 **Adding a step type or a subject.** A new file can add step types with `B.engine.steps.mytype = function (s, box, done) { … }`
 (call `done(scored, firstTry)` at the end; `B.engine` also shares `choice`, `speakBtn`, `nextBtn`, `doneButton`, `pick`, `nums`).

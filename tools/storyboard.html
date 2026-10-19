@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>باغچه — استوری‌برد انیمیشن‌ها</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body { padding: 16px; }
+    .sb-lesson { margin: 28px 0 8px; }
+    .sb-step { margin: 8px 0 20px; }
+    .sb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+    .sb-frame { border: 1px solid var(--line); border-radius: 10px; padding: 6px; background: var(--card, #fff); }
+    .sb-frame .stage { max-width: none; }
+    .sb-frame .caption { font-size: 0.95rem; min-height: 0; }
+    .sb-frame .scene-dots, .sb-frame .row, .sb-frame .prompt, .sb-frame .scene-hint { display: none; }
+    .sb-n { font-weight: 800; color: var(--accent); }
+    .sb-old { color: #b45309; font-weight: 700; }
+    .sb-tools { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  </style>
+</head>
+<body>
+<!-- Every animation, one still picture per beat with its caption, to check at a glance that each picture shows what
+     its words say. Open it from a web server (as the site), e.g. /tools/storyboard.html, or add #health-seed-1 for
+     one lesson, ?type=scene or ?type=story for one kind, ?subject=world for one subject. Nothing moves or speaks. -->
+<h1>استوری‌برد انیمیشن‌ها</h1>
+<p class="sb-tools">برای هر انیمیشن، یک تصویر ثابت از پایان هر صحنه با متن همان صحنه. هر چیزی که متن می‌گوید باید در تصویر دیده شود.
+  <a href="?type=scene">فقط scene</a> · <a href="?type=story">فقط story (قدیمی)</a> · <a href="?">همه</a></p>
+<div id="sb"></div>
+<!-- The storyboard is a tool, not part of the offline site: no service worker for it. -->
+<script>if (navigator.serviceWorker) navigator.serviceWorker.register = function () { return Promise.resolve(); };</script>
+<script>
+// The same scripts as the content browser (browse.html), in the same order, so new drawing and step files show up
+// here without editing this page.
+fetch("../browse.html").then(function (r) { return r.text(); }).then(function (html) {
+  var srcs = [], m, re = /<script src="([^"]+)"><\/script>/g;
+  while ((m = re.exec(html))) if (!/browse\.js$/.test(m[1])) srcs.push("../" + m[1]);
+  (function next(i) {
+    if (i >= srcs.length) return draw();
+    var sc = document.createElement("script");
+    sc.src = srcs[i];
+    sc.onload = sc.onerror = function () { next(i + 1); };
+    document.body.appendChild(sc);
+  })(0);
+});
+function draw() {
+  B.speak = function () {};
+  if (B.speakEn) B.speakEn = function () {};
+  var q = new URLSearchParams(location.search), only = location.hash.slice(1);
+  var type = q.get("type"), subject = q.get("subject");
+  var root = document.getElementById("sb"), count = 0;
+  B.LESSONS.forEach(function (l) {
+    if (only && l.id !== only) return;
+    if (subject && l.subject !== subject) return;
+    var steps = l.steps.map(function (s, i) { return { s: s, i: i }; }).filter(function (x) {
+      return (x.s.type === "scene" || x.s.type === "story") && (!type || x.s.type === type);
+    });
+    if (!steps.length) return;
+    root.appendChild(B.el("h2", { class: "sb-lesson", id: l.id }, [l.emoji + " " + l.title + " ", B.el("small", { text: l.id })]));
+    steps.forEach(function (x) {
+      var sec = B.el("section", { class: "sb-step" }, [B.el("p", null, [
+        "گام " + B.fa(x.i + 1) + " (" + x.s.type + ")" + (x.s.prompt ? ": " + x.s.prompt : "") + " ",
+        x.s.type === "story" ? B.el("span", { class: "sb-old", text: "· انیمیشن قدیمی: فقط جابه‌جایی تصویرها" }) : ""])]);
+      var grid = B.el("div", { class: "sb-grid" });
+      // On the page before drawing: lines can only be measured once they are shown.
+      sec.appendChild(grid);
+      root.appendChild(sec);
+      x.s.scenes.forEach(function (sc, n) {
+        var box = B.el("div", { class: "sb-frame" });
+        box.noAutoplay = true;
+        grid.appendChild(box);
+        try {
+          B.engine.steps[x.s.type](x.s, box, function () {});
+          if (sc.key != null && box.sceneAt) box.sceneAt(n, sc.key); else box.sceneStill(n);
+          var cap = box.querySelector(".caption");
+          if (cap) cap.insertBefore(B.el("span", { class: "sb-n", text: B.fa(n + 1) + ". " }), cap.firstChild);
+          if (sc.key != null) box.appendChild(B.el("p", { class: "hint", text: "تصویر: لحظه " + B.fa((sc.key / 1000).toFixed(1)) + " ثانیه" }));
+          if (sc.wait) box.appendChild(B.el("p", { class: "sb-old", text: "کودک خودش انجام می‌دهد: " + (sc.wait.hint || "") }));
+        } catch (e) { box.appendChild(B.el("p", { class: "sb-old", text: "خطا: " + e.message })); }
+        count++;
+      });
+    });
+  });
+  if (!count) root.appendChild(B.el("p", { text: "انیمیشنی پیدا نشد." }));
+}
+</script>
+</body>
+</html>

@@ -35,6 +35,24 @@ the match.
   one is ✅). Keep each row's title and "Content types" true to the lesson: the check compares both.
 - A new step type gets a line in the plan's "Content types" table (and in `README.md`); remove the 🆕 from the
   rows it unlocks.
+- **Animations must show what they say.** A caption may only describe what is on the stage in that scene: every
+  object it names is visible, and every action it names is actually shown moving (not a generic bounce, shake or
+  grow standing in for washing, climbing or looking from above). If the `story` step cannot show something, cut
+  it from the caption or use a different step; never let the words promise a picture that isn't there.
+  "Plays to the end with no console errors" is not a check: open `tools/storyboard.html#<lesson id>` (from the
+  site's server), look at every scene's picture next to its caption, and fix any mismatch before you report the
+  lesson as done.
+- **Use `scene` for anything that moves** (`js/scene.js`, drawings in `js/art/rig.js`): washing, climbing, pouring,
+  growing, a change of view. It has moving parts, paths, particles, a camera and the child doing it (`wait`).
+  `story` only moves whole pictures from place to place: use it only where that is all the caption says. Add the
+  drawings a scene needs to `js/art/rig.js` (one view per drawing: from the side, from above), in the house style.
+  For a journey, build the world wider than the stage, pan the camera with the walkers (`cam` + `walk`), and put
+  scenery at depths (sky 0, hills 0.3, street 1) so places really pass by. Don't hurry: one idea per scene, and
+  let the engine's pace and rests work (don't shorten times to compensate). People are always whole: in a
+  scene, person emoji become full-body walkers (set `look`, and `flip` so people talking face each other).
+  Never decide yourself whether a woman or girl wears a headscarf: give her `hair: "auto"` and a `kind` (girl,
+  woman, grandma) and let `B.headscarf` choose (by chance, more often without; see STYLE.md rule 6). A drawing
+  file that builds its own people calls `B.headscarf(key, kind)` for every woman or girl.
 
 ## Before finishing (every time content changed)
 
