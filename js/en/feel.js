@@ -43,7 +43,7 @@ Object.assign(B.EN, {
         { caption: "When we are happy, we might want to jump and run." },
         { caption: "When we are worried, our tummy might feel funny." },
         { caption: "When we are angry, our face might get hot and our hands might make fists." },
-        { caption: "When we are sad, our throat might feel tight and our body heavy." },
+        { caption: "When we are sad, we might cry, and our body might feel heavy." },
         { caption: "Everyone feels feelings in their own places. All of it is right." }
       ] },
     { prompt: "When you are happy, where in your body do you feel it?" },
@@ -71,7 +71,7 @@ Object.assign(B.EN, {
     { prompt: "Our senses bring us back to right here",
       scenes: [
         { caption: "Sometimes our head gets full of thoughts, like a busy cloud." },
-        { caption: "Then we can look around us." },
+        { caption: "Then we can look around us.", wait: { hint: "Now it's your turn: tap each thing you can see." } },
         { caption: "We can listen." },
         { caption: "We can touch things and smell them." },
         { caption: "And take one slow breath. Now we are right here." }
@@ -147,7 +147,7 @@ Object.assign(B.EN, {
         { caption: "Aydin says, \"Hello! Let's play together.\"" },
         { caption: "After playing, Aydin cuts his apple in half: \"Here you are, half is for you.\" Shirin says, \"Thank you!\"" },
         { caption: "Without looking, Aydin stepped on Shirin's chalk drawing. The drawing got smudged." },
-        { caption: "Aydin said, \"Sorry, I wasn't looking. Let's draw it again together.\"" },
+        { caption: "Aydin said, \"Sorry, I wasn't looking. Let's draw it again together.\"", wait: { hint: "Now it's your turn: move your finger or the mouse left and right over the drawing to help them draw it again!" } },
         { caption: "A good friend plays together, shares, and says sorry after a mistake." }
       ] },
     { prompt: "Match each moment with its kind words. Tap each card to hear it.",
