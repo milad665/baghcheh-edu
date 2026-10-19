@@ -5,7 +5,7 @@ Free, offline-first learning site for Persian-speaking children. Plain static fi
 
 ## Content plan
 
-`CURRICULUM.md` is the single source of truth for what Baghcheh teaches. Before any work on lessons, subjects,
+`CURRICULUM.md` and the subject plans in `curriculum/` are the single source of truth for what Baghcheh teaches. Before any work on lessons, subjects,
 step types, games or animations, use the `content-plan` skill (`.claude/skills/content-plan/SKILL.md`): build what
 the plan says, change the plan first when the content should change, update it in the same change, and run
 `node tools/check-plan.js` before finishing.

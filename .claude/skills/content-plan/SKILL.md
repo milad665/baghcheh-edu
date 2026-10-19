@@ -1,21 +1,24 @@
 ---
 name: content-plan
-description: Keeps Baghcheh's content in line with the central content plan, CURRICULUM.md. Use it before any work on what Baghcheh teaches - adding, writing, editing, reordering, retitling or removing a lesson in js/lessons/, adding a subject or a garden's lessons, adding a step type, game or animation, planning or reviewing the curriculum, or answering "what should we build next?" or "what does Baghcheh cover?". Also use it whenever a change of plan comes up in conversation, so CURRICULUM.md is updated in the same change and never diverges from the lessons.
+description: Keeps Baghcheh's content in line with the central content plan, CURRICULUM.md and the subject plans in curriculum/. Use it before any work on what Baghcheh teaches - adding, writing, editing, reordering, retitling or removing a lesson in js/lessons/, adding a subject or a garden's lessons, adding a step type, game or animation, planning or reviewing the curriculum, or answering "what should we build next?" or "what does Baghcheh cover?". Also use it whenever a change of plan comes up in conversation, so CURRICULUM.md is updated in the same change and never diverges from the lessons.
 ---
 
 # Building content from the plan
 
-`CURRICULUM.md` (project root) is the single source of truth for what Baghcheh teaches: every subject, garden
-and lesson, what each covers, and which content types it uses (lesson, game, animation, story, inquiry, coding,
-calm, home, parent tip). The lessons in `js/lessons/` must always match it. `node tools/check-plan.js` enforces
-the match.
+The plan is the single source of truth for what Baghcheh teaches. `CURRICULUM.md` (project root) holds what every
+subject shares: depth (Baghcheh is a full curriculum that parents can use at «پایه», «کامل» or «همراه مدرسه»), time
+and sizing, the scope-and-sequence format, how lessons are built, content types and step types. Each subject's scope
+and sequence is in `curriculum/<subject>.md`: frameworks, strands, and per garden its objectives (what the child can
+do, `core` or `full`, the matching Iranian school grade), its lessons (each naming the objectives it teaches) and
+the practice generators it needs. The lessons in `js/lessons/` must always match it; `node tools/check-plan.js`
+enforces the match.
 
 ## Before building
 
-1. Read `CURRICULUM.md`: at least "Changing the plan", "How lessons are built", "Content types", and the section
-   of the subject you are working on.
+1. Read `CURRICULUM.md` (at least "A full curriculum…", "Scope and sequence", "Changing the plan", "How lessons are
+   built", "Content types") and the subject's file in `curriculum/`.
 2. Find the rows for the lessons you are about to build. Build what the row says: its id, its garden, its place in
-   the order, what it covers, and the content types it lists (e.g. "animation, game (`sort`), home" means a `story`
+   the order, what it covers, the objectives it teaches (each step should serve one of them), and the content types it lists (e.g. "animation, game (`sort`), home" means a `story`
    step, a `sort` step and a `home` step). If a row lists a 🆕 step type that does not exist yet, build that
    step type first (see "New step types" in the plan) or ask the user.
 3. If the user asks for something the plan does not have, or wants it differently (another topic, order, garden,
@@ -56,16 +59,18 @@ the match.
 
 ## Before finishing (every time content changed)
 
-1. Update `CURRICULUM.md` in the same change: status, title, "Covers" and "Content types" of every lesson you
-   touched, new rows for new lessons, removed rows for dropped plans, the subjects table for a new subject.
+1. Update the plan in the same change (the subject's `curriculum/<subject>.md`, and `CURRICULUM.md` for shared
+   things): status, title, "Covers", "Content types", "Objectives" and "Depth" of every lesson you touched, new rows
+   for new lessons, removed rows for dropped plans, objectives that changed, the subjects table for a new subject.
+   Every objective must stay taught by at least one lesson.
 2. Run `node tools/check-plan.js` and fix every ✗ it prints. For reading lessons also run
-   `node tools/check-reading.js`. When you commit, stage CURRICULUM.md with the lessons, set their rows to ✅,
+   `node tools/check-reading.js`. When you commit, stage the plan files with the lessons, set their rows to ✅,
    and run the check again on the staged files before committing.
 3. In your summary to the user, say which plan rows changed.
 
 ## Changing only the plan
 
-When the user changes the plan itself (new topics, a different order, a subject's scope), edit `CURRICULUM.md`
-and run `node tools/check-plan.js`; it must still pass, since a planned row can never point at a lesson that
+When the user changes the plan itself (new topics, a different order, a subject's scope), edit `CURRICULUM.md` or
+the subject's file in `curriculum/` and run `node tools/check-plan.js`; it must still pass, since a planned row can never point at a lesson that
 already exists. If the change affects lessons that are already built, list them for the user: they need a
 follow-up change (built lessons are never deleted, only kept or revised).

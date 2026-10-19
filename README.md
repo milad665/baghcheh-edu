@@ -20,7 +20,8 @@ The full commitments are in `policies.html`.
 ## Structure
 
 ```
-CURRICULUM.md       the content plan: every subject, garden and lesson, what it covers, which content types
+CURRICULUM.md       the content plan: depth, sizing, the scope-and-sequence format, content and step types
+curriculum/*.md     each subject's scope and sequence: objectives per garden, lessons, practice generators
 index.html          children's app (profiles, gardens, lessons, placement check)
 browse.html         content browser, separate from the app: every subject, garden, lesson and step, playable, nothing saved
 guide.html          parent guide (including the level ↔ age table)
@@ -116,8 +117,8 @@ APK on mirrors as `downloads/baghcheh.apk`; CI also embeds it in the hub so tabl
 
 ## Adding a lesson
 
-Start from `CURRICULUM.md`: it lists every planned lesson with its id, garden, order, what it covers and the content
-types it uses. Change the plan in the same commit as the lesson, then run `node tools/check-plan.js`.
+Start from `CURRICULUM.md` and the subject's file in `curriculum/`: they list every objective and every planned lesson
+with its id, garden, order, what it covers, the objectives it teaches and the content types it uses. Change the plan in the same commit as the lesson, then run `node tools/check-plan.js`.
 
 Lessons are plain data in `js/lessons/<subject>.js`, one file per subject, each pushing into `B.LESSONS`. Each has `id`, `subject` (`read` | `math` | `feel`),
 `level` (`seed` | `sprout` | `sapling` | `tree` | `forest`, or `null` for every level), `emoji`, `title` and `steps`.

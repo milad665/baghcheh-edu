@@ -31,32 +31,84 @@ loaded.forEach(function (f) { vm.runInNewContext(fs.readFileSync(path.join(js, "
 var B = ctx.window.B;
 var lessons = B.LESSONS;
 
-// ---- The plan: "## … `subject`", "### … `level`" (or `any`), rows "| ✅ | `id` | …". ----
-var planFile = path.join(root, "CURRICULUM.md");
-var lines = fs.readFileSync(planFile, "utf8").split("\n");
-var plan = {}, planOrder = [], subject = null, level = null, inTypes = false, typeText = "", categories = {};
+// ---- The plan: CURRICULUM.md (shared) and one file per subject in curriculum/ (linked from its subjects table).
+// In each: "## … `subject`", "### … `level`" (or `any`), "#### Objectives | Lessons | Practice", lesson rows
+// "| ✅ | `id` | title | covers | types | objectives | depth |" and objective rows "| `read.sap.3` | … |". ----
+var sources = [{ file: "CURRICULUM.md", text: fs.readFileSync(path.join(root, "CURRICULUM.md"), "utf8") }];
+var linked = [], lm, lre = /\]\((curriculum\/[\w-]+\.md)\)/g;
+while ((lm = lre.exec(sources[0].text))) if (linked.indexOf(lm[1]) === -1) linked.push(lm[1]);
+var cdir = path.join(root, "curriculum");
+(fs.existsSync(cdir) ? fs.readdirSync(cdir) : []).filter(function (f) { return /\.md$/.test(f); }).sort().forEach(function (f) {
+  if (linked.indexOf("curriculum/" + f) === -1) { warnings.push("curriculum/" + f + " is not linked from the subjects table in CURRICULUM.md"); linked.push("curriculum/" + f); }
+});
+linked.forEach(function (f) {
+  if (!fs.existsSync(path.join(root, f))) { errors.push("CURRICULUM.md links " + f + ", which does not exist"); return; }
+  sources.push({ file: f, text: fs.readFileSync(path.join(root, f), "utf8") });
+});
+
+var plan = {}, planOrder = [], inTypes = false, typeText = "", categories = {};
+var objectives = {}, subjectsWithObjectives = {};
 var STATUS = { "✅": "built", "🔨": "building", "⬜": "planned" };
-lines.forEach(function (line, i) {
-  var h = /^(#{2,3}) (.*)$/.exec(line);
-  if (h) {
-    var tick = /`([^`]+)`\s*$/.exec(h[2]);
-    if (h[1] === "##") { subject = tick ? tick[1] : null; level = null; inTypes = /^Content types/.test(h[2]); }
-    else level = tick ? (tick[1] === "any" ? null : tick[1]) : undefined;
-    return;
-  }
-  if (inTypes) {
-    typeText += line + "\n";
-    // "| **game** | … | `pairs`, `build`, … |": which step types make each content type.
-    var cat = /^\|\s*\*\*([^*]+)\*\*\s*\|/.exec(line);
-    if (cat) categories[cat[1]] = (line.split("|").slice(-2)[0].match(/`(\w+)`/g) || []).map(function (t) { return t.slice(1, -1); });
-  }
-  var row = /^\|\s*(✅|🔨|⬜)\s*\|\s*`([^`]+)`\s*\|/.exec(line);
-  if (!row || !subject) return;
-  var id = row[2];
-  if (plan[id]) { errors.push("CURRICULUM.md:" + (i + 1) + " " + id + " is listed twice"); return; }
-  var cells = line.split("|").map(function (c) { return c.trim(); });
-  plan[id] = { status: STATUS[row[1]], subject: subject, level: level, line: i + 1, title: cells[3], types: cells[5] || "" };
-  planOrder.push(id);
+var DEPTHS = { core: true, full: true };
+var CODE = /^([a-z]+)\.(seed|spr|sap|tree|for|any)\.\d+$/;
+sources.forEach(function (src) {
+  var subject = null, level = null, part = null;
+  src.text.split("\n").forEach(function (line, i) {
+    var where = src.file + ":" + (i + 1);
+    var h = /^(#{2,4}) (.*)$/.exec(line);
+    if (h) {
+      var tick = /`([^`]+)`\s*$/.exec(h[2]);
+      if (h[1] === "##") { subject = tick ? tick[1] : null; level = null; part = null; inTypes = /^Content types/.test(h[2]); }
+      else if (h[1] === "###") { level = tick ? (tick[1] === "any" ? null : tick[1]) : undefined; part = null; }
+      else part = h[2].trim().toLowerCase();
+      return;
+    }
+    if (inTypes) {
+      typeText += line + "\n";
+      // "| **game** | … | `pairs`, `build`, … |": which step types make each content type.
+      var cat = /^\|\s*\*\*([^*]+)\*\*\s*\|/.exec(line);
+      if (cat) categories[cat[1]] = (line.split("|").slice(-2)[0].match(/`(\w+)`/g) || []).map(function (t) { return t.slice(1, -1); });
+    }
+    if (!subject || part === "practice") return;
+    var cells = line.split("|").map(function (c) { return c.trim(); });
+    // An objective: "| `read.sap.3` | can do | strand | depth | school | checked by |"
+    var ob = /^\|\s*`([^`]+)`\s*\|/.exec(line);
+    if (ob && part === "objectives") {
+      var code = ob[1];
+      if (!CODE.test(code) || code.split(".")[0] !== subject) errors.push(where + " objective code `" + code + "` should look like `" + subject + ".<seed|spr|sap|tree|for|any>.<n>`");
+      if (objectives[code]) errors.push(where + " objective `" + code + "` is listed twice");
+      if (!DEPTHS[cells[4]]) errors.push(where + " objective `" + code + "` has depth «" + cells[4] + "»: use core or full");
+      objectives[code] = { where: where, subject: subject, taught: false };
+      subjectsWithObjectives[subject] = true;
+      return;
+    }
+    var row = /^\|\s*(✅|🔨|⬜)\s*\|\s*`([^`]+)`\s*\|/.exec(line);
+    if (!row) return;
+    var id = row[2];
+    if (plan[id]) { errors.push(where + " " + id + " is listed twice"); return; }
+    plan[id] = { status: STATUS[row[1]], subject: subject, level: level, line: i + 1, where: where, title: cells[3], types: cells[5] || "",
+      objectives: (cells[6] || "").match(/[a-z]+\.(?:seed|spr|sap|tree|for|any)\.\d+/g) || [], depth: cells[7] || "" };
+    planOrder.push(id);
+  });
+});
+
+// Objectives: in a subject that has them, every lesson names real objectives and a depth, and every objective is taught.
+planOrder.forEach(function (id) {
+  var p = plan[id];
+  if (!subjectsWithObjectives[p.subject]) return;
+  if (!p.objectives.length) errors.push(p.where + " " + id + " names no objectives (the Objectives column)");
+  p.objectives.forEach(function (c) {
+    if (!objectives[c]) errors.push(p.where + " " + id + " names objective `" + c + "`, which is not in any Objectives table");
+    else objectives[c].taught = true;
+  });
+  if (!DEPTHS[p.depth]) errors.push(p.where + " " + id + " has depth «" + p.depth + "»: use core or full");
+});
+Object.keys(objectives).forEach(function (c) {
+  if (!objectives[c].taught) errors.push(objectives[c].where + " objective `" + c + "` is not taught by any lesson");
+});
+sources.slice(1).forEach(function (src) {
+  var m = /^## .*subject `([^`]+)`/m.exec(src.text);
+  if (m && !subjectsWithObjectives[m[1]]) warnings.push(src.file + " has no objectives yet (see \"Scope and sequence\" in CURRICULUM.md)");
 });
 
 // ---- Lessons that are committed: the git index (staged counts), read the same way as the working tree. ----
@@ -81,8 +133,8 @@ function stepCovered(t, types) {
 }
 lessons.forEach(function (l) {
   var p = plan[l.id];
-  if (!p) { errors.push(l.id + " (" + l.title + ") is not in CURRICULUM.md: add it to its subject and garden"); return; }
-  var at = "CURRICULUM.md:" + p.line + " " + l.id;
+  if (!p) { errors.push(l.id + " (" + l.title + ") is not in the plan: add it to curriculum/" + l.subject + ".md, under its garden"); return; }
+  var at = p.where + " " + l.id;
   if (p.status === "planned") errors.push(at + " exists but is marked ⬜: mark it " + (committed && committed[l.id] ? "✅ (it is committed)" : "🔨"));
   else if (committed && committed[l.id] && p.status !== "built") errors.push(at + " is committed but marked 🔨: mark it ✅");
   else if (committed && !committed[l.id] && p.status === "built") errors.push(at + " is marked ✅ but not committed yet: mark it 🔨 (or stage it with the plan)");
@@ -91,13 +143,13 @@ lessons.forEach(function (l) {
   l.steps.forEach(function (s) { if (used.indexOf(s.type) === -1) used.push(s.type); });
   var missing = used.filter(function (t) { return !stepCovered(t, p.types); });
   if (missing.length) errors.push(at + " uses " + missing.map(function (t) { return "`" + t + "`"; }).join(", ") + " but its \"Content types\" do not mention it");
-  if (p.subject !== l.subject) errors.push("CURRICULUM.md:" + p.line + " " + l.id + " is listed under `" + p.subject + "` but its subject is `" + l.subject + "`");
-  if (p.level !== l.level) errors.push("CURRICULUM.md:" + p.line + " " + l.id + " is listed under `" + (p.level === null ? "any" : p.level) + "` but its level is `" + (l.level === null ? "any" : l.level) + "`");
+  if (p.subject !== l.subject) errors.push(p.where + " " + l.id + " is listed under `" + p.subject + "` but its subject is `" + l.subject + "`");
+  if (p.level !== l.level) errors.push(p.where + " " + l.id + " is listed under `" + (p.level === null ? "any" : p.level) + "` but its level is `" + (l.level === null ? "any" : l.level) + "`");
 });
 var ids = {};
 lessons.forEach(function (l) { ids[l.id] = true; });
 planOrder.forEach(function (id) {
-  if (plan[id].status === "built" && !ids[id]) errors.push("CURRICULUM.md:" + plan[id].line + " " + id + " is marked ✅ but no such lesson exists");
+  if (plan[id].status === "built" && !ids[id]) errors.push(plan[id].where + " " + id + " is marked ✅ but no such lesson exists");
 });
 
 // Order within each subject and garden: the plan lists built lessons in the order children see them.
@@ -116,7 +168,7 @@ Object.keys(groups).forEach(function (k) {
 // ---- Subjects ----
 var planSubjects = {};
 planOrder.forEach(function (id) { planSubjects[plan[id].subject] = true; });
-lines.forEach(function (line) { var h = /^## .*`([^`]+)`\s*$/.exec(line); if (h) planSubjects[h[1]] = true; });
+sources.forEach(function (src) { src.text.split("\n").forEach(function (line) { var h = /^## .*`([^`]+)`\s*$/.exec(line); if (h) planSubjects[h[1]] = true; }); });
 (B.SUBJECTS || []).forEach(function (s) {
   if (!planSubjects[s.id]) errors.push("subject `" + s.id + "` (" + s.name + ") has no section in CURRICULUM.md");
 });
@@ -153,5 +205,6 @@ function n(st) { return planOrder.filter(function (id) { return plan[id].status 
 warnings.forEach(function (w) { console.log("! " + w); });
 errors.forEach(function (e) { console.log("✗ " + e); });
 console.log(errors.length ? "\n" + errors.length + " problem(s). Update CURRICULUM.md (or the lessons) so they agree."
-  : "Plan and lessons agree: " + n("built") + " built, " + n("building") + " being built, " + n("planned") + " planned.");
+  : "Plan and lessons agree: " + n("built") + " built, " + n("building") + " being built, " + n("planned") + " planned; " +
+    Object.keys(objectives).length + " objectives.");
 process.exit(errors.length ? 1 : 0);

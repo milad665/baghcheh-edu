@@ -17,24 +17,29 @@
   var STATUS = { "✅": "built", "🔨": "building", "⬜": "planned" };
   var ANY = "any"; // lessons for every garden (level null)
 
-  // ---------- The plan (CURRICULUM.md) ----------
+  // ---------- The plan (CURRICULUM.md and the subject files in curriculum/, read as one text) ----------
   function readPlan(text) {
-    var p = { rows: {}, order: [], subjects: [] }, subject = null, level = null;
+    var p = { rows: {}, order: [], subjects: [] }, subject = null, level = null, part = null;
     text.split("\n").forEach(function (line) {
+      // "#### Objectives | Lessons | Practice": practice rows are not lessons.
+      var h4 = /^#### (.*)$/.exec(line);
+      if (h4) { part = h4[1].trim().toLowerCase(); return; }
       var h = /^(#{2,3}) (.*)$/.exec(line);
       if (h) {
         var tick = /`([^`]+)`\s*$/.exec(h[2]);
         if (h[1] === "##") {
           subject = tick && /subject `/.test(h[2]) ? tick[1] : null;
           level = null;
+          part = null;
           if (subject) p.subjects.push({ id: subject, name: h[2].split(" — ")[0].trim() });
-        } else level = tick ? tick[1] : undefined;
+        } else { level = tick ? tick[1] : undefined; part = null; }
         return;
       }
       var row = /^\|\s*(✅|🔨|⬜)\s*\|\s*`([^`]+)`\s*\|/.exec(line);
-      if (!row || !subject || level === undefined || p.rows[row[2]]) return;
+      if (!row || !subject || level === undefined || part === "practice" || p.rows[row[2]]) return;
       var cells = line.split("|").map(function (c) { return c.trim(); });
-      p.rows[row[2]] = { status: STATUS[row[1]], subject: subject, level: level || ANY, title: cells[3], covers: cells[4] || "", types: cells[5] || "" };
+      p.rows[row[2]] = { status: STATUS[row[1]], subject: subject, level: level || ANY, title: cells[3], covers: cells[4] || "", types: cells[5] || "",
+        objectives: cells[6] || "", depth: cells[7] || "" };
       p.order.push(row[2]);
     });
     return p.order.length ? p : null;
@@ -446,7 +451,13 @@
   window.addEventListener("hashchange", route);
   // The plan is optional: a mirror or app without CURRICULUM.md (or a page opened from a file) shows built lessons only.
   if (location.protocol === "file:" || !window.fetch) start();
-  else fetch("CURRICULUM.md").then(function (r) { return r.ok ? r.text() : null; })
-    .then(function (t) { plan = t ? readPlan(t) : null; }, function () {})
-    .then(start);
+  else {
+    var get = function (f) { return fetch(f).then(function (r) { return r.ok ? r.text() : ""; }, function () { return ""; }); };
+    // CURRICULUM.md links each subject's plan file (curriculum/<subject>.md) from its subjects table.
+    get("CURRICULUM.md").then(function (main) {
+      var files = [], m, re = /\]\((curriculum\/[\w-]+\.md)\)/g;
+      while ((m = re.exec(main))) if (files.indexOf(m[1]) === -1) files.push(m[1]);
+      return Promise.all(files.map(get)).then(function (parts) { return [main].concat(parts).join("\n"); });
+    }).then(function (t) { plan = t ? readPlan(t) : null; }, function () {}).then(start);
+  }
 })();
