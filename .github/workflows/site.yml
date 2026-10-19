@@ -11,11 +11,16 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths-ignore:
-      - "android/**"
-      - "desktop/**"
-      - "brand/**"
-      - "**/*.md"
+    # Later patterns win: everything except the apps, the brand files and Markdown, but the content plan
+    # (read by the content browser) does deploy.
+    paths:
+      - "**"
+      - "!android/**"
+      - "!desktop/**"
+      - "!brand/**"
+      - "!**/*.md"
+      - "CURRICULUM.md"
+      - "curriculum/**"
 
 permissions:
   contents: read
@@ -47,6 +52,8 @@ jobs:
              manifest.webmanifest icon.svg sw.js _site/
           cp -R js css fonts audio _site/
           find _site -name "*.md" -delete
+          # The content plan, read by the content browser (browse.html) to show planned lessons.
+          cp CURRICULUM.md _site/ && cp -R curriculum _site/
           echo "$(find _site -type f | wc -l) files, $(du -sh _site | cut -f1)"
       - name: Deploy to Cloudflare Pages
         env:
