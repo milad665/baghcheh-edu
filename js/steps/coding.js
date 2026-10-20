@@ -12,7 +12,19 @@
    face (the way the character looks at the start, for "turn": up | down | left | right; default right),
    repeat (true: add the repeat block), max (most blocks the program may use), given (a program to start from,
    e.g. ["right", { repeat: 3, body: ["up"] }]), hero, goalPic, wall (emoji), prompt, say.
-   x counts from the left, y from the top, both from 0. */
+   x counts from the left, y from the top, both from 0.
+   More blocks for the Tree garden (each only when the step asks for it):
+     until: "goal" | "wall" | "count" — a "repeat until" box (until at the goal, until the way ahead is blocked, until
+       the counter reaches target); in given: { until: "goal", body: [...] }.
+     if: "wall" | "open" | "apple" — an "if … else" box with two strips; in given: { if: "wall", body, else }.
+     nest: true — boxes may go inside boxes (a repeat inside a repeat).
+     fn: true — a new block «⭐» that the child builds in its own strip and uses in the program (fnGiven: its blocks).
+     pick: true — «بردار» picks up the apple on the square (apples: [[x, y], …] on the board).
+     counter: true — «شمارنده = ۰» and «شمارنده + ۱» blocks and the counter shown; target: n — the run must pick n
+       apples and the counter must say n (with no goal, the program just has to end).
+     step: true — a «قدم بعدی» button that runs one block at a time, with the character's state shown.
+     boards: [{ start, goal, walls, face, apples }, …] — one program has to solve every board, one after another.
+     limit: most blocks a run may do (default 80), so a repeat that never ends is caught. */
 var B = window.B || {};
 window.B = B;
 
@@ -28,7 +40,11 @@ window.B = B;
     right: { glyph: "→", name: "codeRight" },
     fwd: { glyph: "👣", name: "codeForward", word: "codeForwardShort" },
     ccw: { glyph: "↺", name: "codeTurnLeft", word: "codeLeft" },
-    cw: { glyph: "↻", name: "codeTurnRight", word: "codeRight" }
+    cw: { glyph: "↻", name: "codeTurnRight", word: "codeRight" },
+    pick: { glyph: "🧺", name: "codePick", word: "codePickShort" },
+    inc: { glyph: "➕", name: "codeInc", word: "codeIncShort" },
+    set: { glyph: "0️⃣", name: "codeSet", word: "codeSetShort" },
+    call: { glyph: "⭐", name: "codeCall", word: "codeCallShort" }
   };
   var KEYS = {
     arrows: { ArrowUp: "up", ArrowDown: "down", ArrowLeft: "left", ArrowRight: "right" },
@@ -81,135 +97,202 @@ window.B = B;
     node.addEventListener("click", function (e) { if (dragged) { dragged = false; e.stopImmediatePropagation(); } }, true);
   }
 
+  // A given program, written as data, into the editor's blocks.
   function fromGiven(list) {
     return (list || []).map(function (b) {
-      return typeof b === "string" ? { op: b } : { op: "repeat", n: b.repeat || 2, body: fromGiven(b.body) };
+      if (typeof b === "string") return { op: b };
+      if (b.repeat) return { op: "repeat", n: b.repeat, body: fromGiven(b.body) };
+      if (b.until) return { op: "until", cond: b.until, body: fromGiven(b.body) };
+      if (b["if"]) return { op: "if", cond: b["if"], body: fromGiven(b.body), other: fromGiven(b["else"]) };
+      return { op: String(b.op || "") };
     });
   }
+  var BOXES = { repeat: 1, until: 1, "if": 1 };
 
   E.steps.code = function (s, box, done) {
     var cols = (s.size || [5, 5])[0], rows = (s.size || [5, 5])[1];
-    var start = s.start || [0, 0];
     var turn = s.blocks === "turn";
-    var walls = {};
-    (s.walls || []).forEach(function (w) { walls[w[0] + "," + w[1]] = true; });
+    var target = s.target || 0;
     var reduced = B.reducedMotion ? B.reducedMotion() : false;
+    // One program, one or more boards (s.boards: each {start, goal, walls, face, apples}); it must solve them all.
+    var BOARDS = (s.boards || [s]).map(function (b) {
+      var w = {}, a = {};
+      (b.walls || []).forEach(function (p) { w[p[0] + "," + p[1]] = true; });
+      (b.apples || []).forEach(function (p) { a[p[0] + "," + p[1]] = true; });
+      return { start: b.start || [0, 0], goal: b.goal || null, face: b.face || s.face || "right", walls: w, apples: a, appleList: b.apples || [] };
+    });
 
-    var root = el("div", { class: "code-game" });
+    var root = el("div", { class: "code-game" + (BOARDS.length > 1 ? " multi" : "") });
     box.appendChild(root);
     root.appendChild(el("p", { class: "prompt", text: s.prompt || B.t("codePrompt") }));
     var sb = E.speakBtn(s.say || s.prompt, s.audio);
     if (sb) root.appendChild(sb);
 
-    // ---------- The grid ----------
-    var grid = el("div", { class: "code-grid", dir: "ltr", role: "img", "aria-label": B.t("codeGridAria") });
-    grid.style.setProperty("--cols", cols);
-    grid.style.setProperty("--rows", rows);
-    var cells = [];
-    for (var y = 0; y < rows; y++) {
-      for (var x = 0; x < cols; x++) {
-        var c = el("span", { class: "code-cell" });
-        if (walls[x + "," + y]) { c.classList.add("wall"); B.setArt(c, s.wall || "🪨"); }
-        cells.push(c);
-        grid.appendChild(c);
+    // ---------- The boards ----------
+    // Boards follow the page's direction (board 1 first); inside a board, x always counts from the left.
+    var gridsRow = el("div", { class: "code-boards" });
+    root.appendChild(gridsRow);
+    BOARDS.forEach(function (bd, k) {
+      var grid = el("div", { class: "code-grid", dir: "ltr", role: "img", "aria-label": BOARDS.length > 1 ? B.t("codeBoard", { n: B.fa(k + 1) }) : B.t("codeGridAria") });
+      grid.style.setProperty("--cols", cols);
+      grid.style.setProperty("--rows", rows);
+      bd.cells = [];
+      for (var y = 0; y < rows; y++) {
+        for (var x = 0; x < cols; x++) {
+          var c = el("span", { class: "code-cell" });
+          if (bd.walls[x + "," + y]) { c.classList.add("wall"); B.setArt(c, s.wall || "🪨"); }
+          bd.cells.push(c);
+          grid.appendChild(c);
+        }
       }
-    }
-    function cell(x, y) { return cells[y * cols + x]; }
-    var goalNode = el("span", { class: "code-goal", "aria-hidden": "true", text: s.goalPic || "🍓" });
-    cell(s.goal[0], s.goal[1]).appendChild(goalNode);
-    var hero = el("span", { class: "code-hero", "aria-hidden": "true" }, [el("span", { class: "code-hero-pic", text: s.hero || (turn ? "🤖" : "🐢") })]);
-    var nose = turn ? el("span", { class: "code-nose", text: "▲" }) : null;
-    if (nose) hero.appendChild(nose);
-    hero.style.width = 100 / cols + "%";
-    hero.style.height = 100 / rows + "%";
-    grid.appendChild(hero);
-    root.appendChild(grid);
+      bd.cell = function (x, y) { return bd.cells[y * cols + x]; };
+      if (bd.goal) { bd.goalNode = el("span", { class: "code-goal", "aria-hidden": "true", text: s.goalPic || "🍓" }); bd.cell(bd.goal[0], bd.goal[1]).appendChild(bd.goalNode); }
+      bd.hero = el("span", { class: "code-hero", "aria-hidden": "true" }, [el("span", { class: "code-hero-pic", text: s.hero || (turn ? "🤖" : "🐢") })]);
+      bd.nose = turn ? el("span", { class: "code-nose", text: "▲" }) : null;
+      if (bd.nose) bd.hero.appendChild(bd.nose);
+      bd.hero.style.width = 100 / cols + "%";
+      bd.hero.style.height = 100 / rows + "%";
+      grid.appendChild(bd.hero);
+      bd.grid = grid;
+      gridsRow.appendChild(BOARDS.length > 1 ? el("figure", { class: "code-board-fig" }, [grid, el("figcaption", { text: B.t("codeBoard", { n: B.fa(k + 1) }) })]) : grid);
+    });
+    var stateLine = (s.step || s.counter || target) ? el("p", { class: "code-state", "aria-live": "polite" }) : null;
+    if (stateLine) root.appendChild(stateLine);
 
     // Emoji animals look to the left on most devices; in arrow mode the character turns to face where it goes.
-    var pic = hero.firstChild;
-    function look(op) { if (!turn && (op === "left" || op === "right")) pic.classList.toggle("flip", op === "right"); }
-    var state, angle;
-    function place() {
-      hero.style.left = state.x * 100 / cols + "%";
-      hero.style.top = state.y * 100 / rows + "%";
-      if (nose) nose.style.transform = "translate(-50%, -50%) rotate(" + angle + "deg) translateY(-0.95em)";
+    function look(bd, op) { if (!turn && (op === "left" || op === "right")) bd.hero.firstChild.classList.toggle("flip", op === "right"); }
+    function place(bd) {
+      bd.hero.style.left = bd.st.x * 100 / cols + "%";
+      bd.hero.style.top = bd.st.y * 100 / rows + "%";
+      if (bd.nose) bd.nose.style.transform = "translate(-50%, -50%) rotate(" + bd.angle + "deg) translateY(-0.95em)";
     }
-    function home() {
-      state = { x: start[0], y: start[1], h: s.face || "right" };
-      angle = CLOCK.indexOf(state.h) * 90;
-      cells.forEach(function (c) { c.classList.remove("trail", "hit"); });
-      hero.classList.remove("bump", "happy");
-      goalNode.classList.remove("got");
-      look(s.goal[0] > start[0] ? "right" : "left");
-      place();
+    function home(bd) {
+      bd.st = { x: bd.start[0], y: bd.start[1], h: bd.face, count: 0, picked: 0, apples: Object.assign({}, bd.apples) };
+      bd.angle = CLOCK.indexOf(bd.st.h) * 90;
+      bd.cells.forEach(function (c) { c.classList.remove("trail", "hit"); });
+      bd.appleList.forEach(function (p) { var c = bd.cell(p[0], p[1]); B.setArt(c, "🍎"); c.classList.add("apple"); });
+      bd.hero.classList.remove("bump", "happy");
+      bd.grid.classList.remove("done", "missed");
+      if (bd.goalNode) bd.goalNode.classList.remove("got");
+      look(bd, bd.goal && bd.goal[0] > bd.start[0] ? "right" : "left");
+      place(bd);
     }
-    home();
+    function homeAll() { BOARDS.forEach(home); showState(BOARDS[0]); }
+    function showState(bd) {
+      if (!stateLine || !bd) return;
+      var parts = [];
+      if (turn) parts.push(B.t("codeFacing", { dir: B.t({ up: "codeUp", right: "codeRight", down: "codeDown", left: "codeLeft" }[bd.st.h]) }));
+      if (s.counter || target) parts.push(B.t("codeCounter", { n: B.fa(bd.st.count) }));
+      if (target) parts.push(B.t("codePicked", { n: B.fa(bd.st.picked), of: B.fa(target) }));
+      stateLine.textContent = parts.join(" · ");
+    }
 
-    function apply(st, op) {
-      if (op === "cw" || op === "ccw") {
-        return { x: st.x, y: st.y, h: CLOCK[(CLOCK.indexOf(st.h) + (op === "cw" ? 1 : 3)) % 4] };
-      }
+    function ahead(st) {
+      var d = MOVE[st.h], nx = st.x + d[0], ny = st.y + d[1];
+      return { x: nx, y: ny, out: nx < 0 || ny < 0 || nx >= cols || ny >= rows };
+    }
+    function blockedAhead(bd) { var a = ahead(bd.st); return a.out || !!bd.walls[a.x + "," + a.y]; }
+    function apply(bd, st, op) {
+      if (op === "cw" || op === "ccw") return { x: st.x, y: st.y, h: CLOCK[(CLOCK.indexOf(st.h) + (op === "cw" ? 1 : 3)) % 4] };
       var d = MOVE[op === "fwd" ? st.h : op];
       var nx = st.x + d[0], ny = st.y + d[1];
       if (nx < 0 || ny < 0 || nx >= cols || ny >= rows) return { bump: "edge", h: st.h };
-      if (walls[nx + "," + ny]) return { bump: "wall", x: nx, y: ny, h: st.h };
+      if (bd.walls[nx + "," + ny]) return { bump: "wall", x: nx, y: ny, h: st.h };
       return { x: nx, y: ny, h: st.h };
     }
-    function atGoal(st) { return st.x === s.goal[0] && st.y === s.goal[1]; }
+    function atGoal(bd, st) { return !!bd.goal && st.x === bd.goal[0] && st.y === bd.goal[1]; }
+    function test(bd, cond) {
+      if (cond === "goal") return atGoal(bd, bd.st);
+      if (cond === "wall") return blockedAhead(bd);
+      if (cond === "open") return !blockedAhead(bd);
+      if (cond === "apple") return !!bd.st.apples[bd.st.x + "," + bd.st.y];
+      if (cond === "count") return bd.st.count >= target;
+      return false;
+    }
 
-    // Fewest moves from a state to the goal (breadth-first; the grids are tiny). Used to find the first block
-    // that took the character off every shortest way.
-    var distCache = {};
+    // Fewest moves from a state to the goal (breadth-first; the boards are tiny): used to find the first block that
+    // took the character off every shortest way.
     var ops = turn ? ["fwd", "cw", "ccw"] : ["up", "down", "left", "right"];
     function sk(st) { return st.x + "," + st.y + (turn ? "," + st.h : ""); }
-    function dist(from) {
+    function dist(bd, from) {
+      if (!bd.goal) return 0;
+      bd.dc = bd.dc || {};
       var k0 = sk(from);
-      if (distCache[k0] != null) return distCache[k0];
+      if (bd.dc[k0] != null) return bd.dc[k0];
       var seen = {}, q = [[from, 0]];
       seen[k0] = true;
       while (q.length) {
         var cur = q.shift();
-        if (atGoal(cur[0])) return (distCache[k0] = cur[1]);
+        if (atGoal(bd, cur[0])) return (bd.dc[k0] = cur[1]);
         ops.forEach(function (op) {
-          var n = apply(cur[0], op);
+          var n = apply(bd, cur[0], op);
           if (n.bump || seen[sk(n)]) return;
           seen[sk(n)] = true;
           q.push([n, cur[1] + 1]);
         });
       }
-      return (distCache[k0] = Infinity);
+      return (bd.dc[k0] = Infinity);
     }
 
-    // ---------- The program ----------
+    // ---------- The program (and the new block, when the step has one) ----------
     var program = fromGiven(s.given);
-    var target = { list: program, at: null }; // where the next block goes (at: null = at the end)
-    var strip = el("div", { class: "code-strip main", role: "group", "aria-label": B.t("codeProgramAria") });
-    strip.dataset.cdrop = "";
-    strip._list = program;
-    var counter = s.max ? el("p", { class: "hint code-count" }) : null;
+    var fnBody = s.fn ? fromGiven(s.fnGiven) : null;
+    var tgt = { list: program, at: null }; // where the next block goes (at: null = at the end)
+    var nest = !!s.nest;
+    function stripNode(list, cls, aria) {
+      var n = el("div", { class: "code-strip " + cls, role: "group", "aria-label": aria });
+      n.dataset.cdrop = "";
+      n._list = list;
+      return n;
+    }
+    var fnStrip = null;
+    if (fnBody) {
+      fnStrip = stripNode(fnBody, "main fn", B.t("codeFnBodyAria"));
+      root.appendChild(el("div", { class: "code-program code-fn" }, [el("span", { class: "code-flag code-fn-name", "aria-hidden": "true", text: "⭐" }),
+        el("span", { class: "code-fn-label", text: B.t("codeFnDef") }), fnStrip]));
+    }
+    var strip = stripNode(program, "main", B.t("codeProgramAria"));
+    var counterP = s.max ? el("p", { class: "hint code-count" }) : null;
     root.appendChild(el("div", { class: "code-program" }, [el("span", { class: "code-flag", "aria-hidden": "true", text: "🚩" }), strip]));
-    if (counter) root.appendChild(counter);
+    if (counterP) root.appendChild(counterP);
 
-    function count(list) { return list.reduce(function (n, b) { return n + 1 + (b.body ? count(b.body) : 0); }, 0); }
+    function count(list) {
+      return list.reduce(function (n, b) { return n + 1 + (b.body ? count(b.body) : 0) + (b.other ? count(b.other) : 0); }, 0);
+    }
+    function used() { return count(program) + (fnBody ? count(fnBody) : 0); }
     function opName(op) { return B.t(OPS[op].name); }
+    function headText(b) {
+      if (b.op === "repeat") return B.t("codeTimes", { n: B.fa(b.n) });
+      if (b.op === "until") return B.t(b.cond === "goal" ? "codeUntilGoal" : b.cond === "wall" ? "codeUntilWall" : "codeUntilCount", { n: B.fa(target) });
+      return B.t(b.cond === "apple" ? "codeIfApple" : b.cond === "open" ? "codeIfOpen" : "codeIfWall");
+    }
 
     function blockNode(b, list, i) {
-      if (b.op === "repeat") {
-        var body = el("div", { class: "code-strip inner", role: "group", "aria-label": B.t("codeLoopBodyAria") });
-        body.dataset.cdrop = "";
-        body._list = b.body;
-        var times = el("button", { class: "code-times", type: "button", "aria-label": B.t("codeLoopAria", { n: B.fa(b.n) }) },
-          [el("span", { "aria-hidden": "true", text: "🔁 " }), B.t("codeTimes", { n: B.fa(b.n) })]);
-        times.addEventListener("click", function () {
-          if (running) return;
-          b.n = b.n >= (s.maxRepeat || 5) ? 2 : b.n + 1;
-          edited = true;
-          changed();
-          focusLater(".code-times", b);
-        });
+      if (BOXES[b.op]) {
+        var body = stripNode(b.body, "inner", B.t("codeLoopBodyAria"));
+        var head;
+        if (b.op === "repeat") {
+          head = el("button", { class: "code-times", type: "button", "aria-label": B.t("codeLoopAria", { n: B.fa(b.n) }) },
+            [el("span", { "aria-hidden": "true", text: "🔁 " }), headText(b)]);
+          head.addEventListener("click", function () {
+            if (running) return;
+            b.n = b.n >= (s.maxRepeat || 5) ? 2 : b.n + 1;
+            edited = true;
+            changed();
+            focusLater(".code-times", b);
+          });
+        } else {
+          head = el("span", { class: "code-cond" }, [el("span", { "aria-hidden": "true", text: b.op === "until" ? "🔁 " : "❓ " }), headText(b)]);
+        }
         var rm = el("button", { class: "code-loop-rm", type: "button", "aria-label": B.t("codeLoopRemove"), text: "✕" });
         rm.addEventListener("click", function () { if (!running) remove(list, i); });
-        var loop = el("div", { class: "code-loop" }, [el("div", { class: "code-loop-head" }, [times, rm]), body]);
+        var kids = [el("div", { class: "code-loop-head" }, [head, rm]), body];
+        if (b.op === "if") {
+          var other = stripNode(b.other, "inner", B.t("codeElseAria"));
+          kids.push(el("span", { class: "code-else", text: B.t("codeElse") }), other);
+          fill(other, b.other);
+        }
+        var loop = el("div", { class: "code-loop op-" + b.op }, kids);
         loop._b = b;
         b.node = loop;
         fill(body, b.body);
@@ -225,14 +308,13 @@ window.B = B;
       return n;
     }
     function slotNode(list) {
-      var on = target.list === list;
-      var sl = el("button", { class: "code-slot" + (on ? " on" : ""), type: "button",
-        "aria-label": B.t(on ? "codeSlotAria" : "codeSlotPick") });
+      var on = tgt.list === list;
+      var sl = el("button", { class: "code-slot" + (on ? " on" : ""), type: "button", "aria-label": B.t(on ? "codeSlotAria" : "codeSlotPick") });
       sl.dataset.cdrop = "";
       sl._list = list;
       sl.addEventListener("click", function () {
         if (running || on) return;
-        target = { list: list, at: null };
+        tgt = { list: list, at: null };
         changed();
         focusLater(".code-slot.on");
       });
@@ -240,7 +322,7 @@ window.B = B;
     }
     function fill(container, list) {
       container.innerHTML = "";
-      var at = target.list === list && target.at != null ? target.at : list.length;
+      var at = tgt.list === list && tgt.at != null ? tgt.at : list.length;
       list.forEach(function (b, i) {
         if (i === at) container.appendChild(slotNode(list));
         container.appendChild(blockNode(b, list, i));
@@ -251,38 +333,46 @@ window.B = B;
       var n = b ? b.node && b.node.querySelector(sel) : root.querySelector(sel);
       if (n) n.focus();
     }
+    // A box (repeat, until, if) goes only into the program itself, unless the step allows boxes inside boxes.
+    function boxAllowed() { return nest || tgt.list === program || tgt.list === fnBody; }
     function changed() {
-      if (dirty) { home(); dirty = false; }
+      if (dirty) { homeAll(); dirty = false; }
       root.querySelectorAll(".bug, .now").forEach(function (n) { n.classList.remove("bug", "now"); });
       fill(strip, program);
-      if (counter) counter.textContent = B.t("codeUsed", { used: B.fa(count(program)), max: B.fa(s.max) });
-      if (paletteRepeat) paletteRepeat.disabled = target.list !== program;
+      if (fnStrip) fill(fnStrip, fnBody);
+      if (counterP) counterP.textContent = B.t("codeUsed", { used: B.fa(used()), max: B.fa(s.max) });
+      boxButtons.forEach(function (b) { b.disabled = !boxAllowed(); });
       fb.className = "feedback";
       fb.textContent = "";
+      stepping = null;
     }
 
     function add(op, list, at) {
       if (running) return;
-      if (list) target = { list: list, at: at != null ? at : (target.list === list ? target.at : null) };
-      if (op === "repeat" && target.list !== program) return;
-      if (s.max && count(program) + 1 > s.max) {
+      if (list) tgt = { list: list, at: at != null ? at : (tgt.list === list ? tgt.at : null) };
+      if (BOXES[op] && !boxAllowed()) return;
+      if (op === "call" && tgt.list === fnBody) return; // the new block can't call itself
+      if (s.max && used() + 1 > s.max) {
         fb.className = "feedback try";
-        fb.textContent = B.t(s.repeat ? "codeFullRepeat" : "codeFull");
+        fb.textContent = B.t(s.repeat || s.fn ? "codeFullRepeat" : "codeFull");
         return;
       }
-      var b = op === "repeat" ? { op: "repeat", n: 2, body: [] } : { op: op };
-      var l = target.list, pos = target.at != null ? target.at : l.length;
+      var b = op === "repeat" ? { op: "repeat", n: 2, body: [] }
+        : op === "until" ? { op: "until", cond: s.until || "goal", body: [] }
+        : op === "if" ? { op: "if", cond: s["if"] || "wall", body: [], other: [] }
+        : { op: op };
+      var l = tgt.list, pos = tgt.at != null ? tgt.at : l.length;
       l.splice(pos, 0, b);
       edited = true;
-      // A filled gap goes back to adding at the end; a new repeat block takes the next blocks inside it.
-      target = op === "repeat" ? { list: b.body, at: null } : { list: l, at: null };
+      // A filled gap goes back to adding at the end; a new box takes the next blocks inside it.
+      tgt = BOXES[op] ? { list: b.body, at: null } : { list: l, at: null };
       changed();
-      if (op !== "repeat") B.speak(opName(op));
+      if (!BOXES[op]) B.speak(opName(op));
     }
     function remove(list, i) {
       list.splice(i, 1);
       edited = true;
-      target = { list: list, at: i < list.length ? i : null };
+      tgt = { list: list, at: i < list.length ? i : null };
       changed();
       var sl = root.querySelector(".code-slot.on");
       if (sl) sl.focus();
@@ -290,13 +380,21 @@ window.B = B;
 
     // ---------- Palette ----------
     var palette = el("div", { class: "code-palette", dir: "ltr", role: "group", "aria-label": B.t("codePaletteAria") });
-    var paletteRepeat = null;
-    (turn ? ["ccw", "fwd", "cw"] : ["left", "up", "down", "right"]).concat(s.repeat ? ["repeat"] : []).forEach(function (op) {
+    var boxButtons = [];
+    var list0 = (turn ? ["ccw", "fwd", "cw"] : ["left", "up", "down", "right"]);
+    if (s.pick) list0.push("pick");
+    if (s.counter) list0.push("set", "inc");
+    if (s.fn) list0.push("call");
+    if (s.repeat) list0.push("repeat");
+    if (s.until) list0.push("until");
+    if (s["if"]) list0.push("if");
+    list0.forEach(function (op) {
       var b;
-      if (op === "repeat") {
-        b = el("button", { class: "code-block op-repeat", type: "button", "aria-label": B.t("codeRepeatAdd") },
-          [el("span", { class: "g", "aria-hidden": "true", text: "🔁" }), el("small", { text: B.t("codeRepeat") })]);
-        paletteRepeat = b;
+      if (BOXES[op]) {
+        var label = op === "repeat" ? B.t("codeRepeat") : headText({ op: op, cond: op === "until" ? s.until : s["if"] });
+        b = el("button", { class: "code-block op-" + op + (op === "repeat" ? "" : " wide"), type: "button", "aria-label": B.t("codeBoxAdd", { name: label }) },
+          [el("span", { class: "g", "aria-hidden": "true", text: op === "if" ? "❓" : "🔁" }), el("small", { text: label })]);
+        boxButtons.push(b);
       } else {
         b = el("button", { class: "code-block op-" + op, type: "button", "aria-label": B.t("codeAddAria", { name: opName(op) }) },
           [el("span", { class: "g", "aria-hidden": "true", text: OPS[op].glyph })]);
@@ -310,7 +408,6 @@ window.B = B;
         var blk = t.closest(".code-block, .code-loop");
         var at = null;
         if (blk && blk.parentNode === holder) at = holder._list.indexOf(blk._b);
-        if (op === "repeat" && holder._list !== program) return;
         add(op, holder._list, at != null && at >= 0 ? at : null);
       });
       palette.appendChild(b);
@@ -321,105 +418,208 @@ window.B = B;
 
     var fb = el("p", { class: "feedback", "aria-live": "polite" });
     root.appendChild(fb);
-    var runBtn = E.nextBtn(B.t("codeRun"), run);
-    root.appendChild(el("div", { class: "row", style: "justify-content:center" }, [runBtn]));
+    var runBtn = E.nextBtn(B.t("codeRun"), function () { run(false); });
+    var stepBtn = s.step ? el("button", { class: "btn secondary", type: "button", text: B.t("codeStep"), onclick: function () { run(true); } }) : null;
+    root.appendChild(el("div", { class: "row", style: "justify-content:center" }, [stepBtn, runBtn]));
 
     root.addEventListener("keydown", function (e) {
       if (e.altKey || e.ctrlKey || e.metaKey) return;
       var op = KEYS[turn ? "turn" : "arrows"][e.key];
-      if (op) { e.preventDefault(); add(op); return; }
+      if (op && e.target.tagName !== "INPUT") { e.preventDefault(); add(op); return; }
       if ((e.key === "Backspace" || e.key === "Delete") && !running) {
-        var l = target.list, i = (target.at != null ? target.at : l.length) - 1;
+        var l = tgt.list, i = (tgt.at != null ? tgt.at : l.length) - 1;
         if (i >= 0) { e.preventDefault(); remove(l, i); }
       }
     });
 
     // ---------- Running the program ----------
+    // The program runs block by block: boxes decide as they go (until, if look at the board at that moment).
     // With a given (buggy) program, runs before the child changes anything are just looking: they don't count as tries.
-    var running = false, dirty = false, tries = 0, misses = 0, edited = !s.given;
-    function flatten(list, out, loop) {
-      list.forEach(function (b) {
+    var LIMIT = s.limit || 80;
+    function* exec(bd, list, stack, depth) {
+      for (var i = 0; i < list.length; i++) {
+        var b = list[i];
         if (b.op === "repeat") {
-          for (var k = 0; k < b.n; k++) flatten(b.body, out, b);
-        } else out.push({ op: b.op, b: b, loop: loop });
-      });
-      return out;
+          for (var k = 0; k < b.n; k++) yield* exec(bd, b.body, stack.concat([b]), depth);
+        } else if (b.op === "until") {
+          var guard = 0;
+          while (!test(bd, b.cond)) {
+            if (++guard > LIMIT) { yield { never: true, b: b }; return; }
+            if (!b.body.length) { yield { never: true, b: b }; return; }
+            yield* exec(bd, b.body, stack.concat([b]), depth);
+          }
+        } else if (b.op === "if") {
+          yield { look: true, b: b, stack: stack };
+          yield* exec(bd, test(bd, b.cond) ? b.body : b.other, stack.concat([b]), depth);
+        } else if (b.op === "call") {
+          yield { look: true, b: b, stack: stack };
+          if (depth < 4) yield* exec(bd, fnBody, stack.concat([b]), depth + 1);
+        } else yield { op: b.op, b: b, stack: stack };
+      }
     }
+    var running = false, dirty = false, tries = 0, misses = 0, edited = !s.given, stepping = null;
     function lock(on) {
       running = on;
       root.classList.toggle("running", on);
       runBtn.disabled = on;
+      if (stepBtn) stepBtn.disabled = on;
       root.querySelectorAll(".code-palette button, .code-strip button, .code-times, .code-loop-rm").forEach(function (b) { b.disabled = on; });
-      if (!on && paletteRepeat) paletteRepeat.disabled = target.list !== program;
+      if (!on) boxButtons.forEach(function (b) { b.disabled = !boxAllowed(); });
     }
-    function run() {
-      if (running) return;
-      if (!count(program)) { fb.className = "feedback"; fb.textContent = B.t("codeEmpty"); return; }
+    function mark(a) {
+      root.querySelectorAll(".now").forEach(function (n) { n.classList.remove("now"); });
+      if (!a) return;
+      if (a.b && a.b.node) a.b.node.classList.add("now");
+      (a.stack || []).forEach(function (c) { if (c.node) c.node.classList.add("now"); });
+    }
+    // One run (or one manual walk through it, a block at a time): every board in turn.
+    function start(manual) {
+      if (!used() || !count(program)) { fb.className = "feedback"; fb.textContent = B.t("codeEmpty"); return null; }
       if (edited) tries++;
-      home();
+      homeAll();
       dirty = true;
       root.querySelectorAll(".bug, .now").forEach(function (n) { n.classList.remove("bug", "now"); });
       fb.className = "feedback";
       fb.textContent = "";
-      lock(true);
-      var acts = flatten(program, []), i = 0, firstBad = null;
-      cell(state.x, state.y).classList.add("trail");
-      var wait = reduced ? 650 : 520;
-      function mark(a) {
-        root.querySelectorAll(".now").forEach(function (n) { n.classList.remove("now"); });
-        if (a) { a.b.node.classList.add("now"); if (a.loop) a.loop.node.classList.add("now"); }
-      }
-      function tick() {
-        if (!root.isConnected) return;
-        if (i >= acts.length) { mark(null); return miss(firstBad, "codeShort"); }
-        var a = acts[i++];
-        mark(a);
-        var before = dist(state), next = apply(state, a.op);
-        if (next.bump) {
-          if (next.bump === "wall") cell(next.x, next.y).classList.add("hit");
-          hero.classList.remove("bump");
-          void hero.offsetWidth;
-          hero.classList.add("bump");
-          return setTimeout(function () { miss(a.b, next.bump === "wall" ? "codeBumpWall" : "codeBumpEdge"); }, wait);
-        }
-        if (!firstBad && dist(next) !== before - 1) firstBad = a.b;
-        if (a.op === "cw") angle += 90;
-        if (a.op === "ccw") angle -= 90;
-        state = next;
-        look(a.op);
-        place();
-        cell(state.x, state.y).classList.add("trail");
-        if (atGoal(state)) return setTimeout(win, wait);
-        setTimeout(tick, wait);
-      }
-      setTimeout(tick, reduced ? 300 : 200);
+      var r = { k: 0, manual: manual };
+      begin(r);
+      return r;
     }
-    function miss(bad, msg) {
+    function begin(r) {
+      var bd = BOARDS[r.k];
+      r.bd = bd;
+      r.it = exec(bd, program, [], 0);
+      r.firstBad = null;
+      r.steps = 0;
+      home(bd);
+      bd.cell(bd.st.x, bd.st.y).classList.add("trail");
+      BOARDS.forEach(function (o) { o.grid.classList.toggle("active", BOARDS.length > 1 && o === bd); });
+      showState(bd);
+    }
+    // Does one block; returns the time to wait before the next, or a result ("win", "miss" / "next").
+    function tick(r) {
+      var bd = r.bd, nx = r.it.next();
+      if (nx.done) { mark(null); return end(r); }
+      var a = nx.value;
+      mark(a);
+      if (a.never) return fail(r, a.b, "codeNeverStops");
+      if (a.look) return { wait: 0.6 };
+      if (++r.steps > LIMIT) return fail(r, a.b, "codeNeverStops");
+      var st = bd.st;
+      if (a.op === "pick") {
+        var key = st.x + "," + st.y;
+        if (st.apples[key]) {
+          delete st.apples[key];
+          st.picked++;
+          var c = bd.cell(st.x, st.y);
+          c.classList.remove("apple");
+          B.setArt(c, "");
+        } else { bd.hero.classList.remove("bump"); void bd.hero.offsetWidth; bd.hero.classList.add("bump"); }
+        showState(bd);
+        return { wait: 1 };
+      }
+      if (a.op === "inc" || a.op === "set") {
+        st.count = a.op === "inc" ? st.count + 1 : 0;
+        showState(bd);
+        if (stateLine) { stateLine.classList.remove("pop"); void stateLine.offsetWidth; stateLine.classList.add("pop"); }
+        return { wait: 0.8 };
+      }
+      var before = dist(bd, st), next = apply(bd, st, a.op);
+      if (next.bump) {
+        if (next.bump === "wall") bd.cell(next.x, next.y).classList.add("hit");
+        bd.hero.classList.remove("bump");
+        void bd.hero.offsetWidth;
+        bd.hero.classList.add("bump");
+        return fail(r, a.b, next.bump === "wall" ? "codeBumpWall" : "codeBumpEdge");
+      }
+      if (!r.firstBad && bd.goal && dist(bd, next) !== before - 1) r.firstBad = a.b;
+      if (a.op === "cw") bd.angle += 90;
+      if (a.op === "ccw") bd.angle -= 90;
+      next.count = st.count; next.picked = st.picked; next.apples = st.apples;
+      bd.st = next;
+      look(bd, a.op);
+      place(bd);
+      showState(bd);
+      bd.cell(next.x, next.y).classList.add("trail");
+      // Without a target to count, reaching the goal ends the run on this board.
+      if (!target && atGoal(bd, next)) return end(r);
+      return { wait: 1 };
+    }
+    function end(r) {
+      var bd = r.bd, st = bd.st;
+      if (target) {
+        if (st.picked !== target) return fail(r, null, "codeNeedTarget");
+        if (st.count !== st.picked) return fail(r, null, "codeCountWrong");
+        if (bd.goal && !atGoal(bd, st)) return fail(r, r.firstBad, "codeShort");
+      } else if (!atGoal(bd, st)) return fail(r, r.firstBad, "codeShort");
+      bd.hero.classList.add("happy");
+      bd.grid.classList.add("done");
+      if (bd.goalNode) bd.goalNode.classList.add("got");
+      if (r.k + 1 < BOARDS.length) { r.k++; begin(r); return { wait: 1.6 }; }
+      return { win: true };
+    }
+    function fail(r, bad, msg) {
+      r.bad = bad; r.msg = msg;
+      r.bd.grid.classList.add("missed");
+      return { miss: true };
+    }
+    function finish(r, res) {
+      if (res.win) return win();
+      miss(r);
+    }
+    function run(manual) {
+      if (manual && stepping) {
+        // The next block of a walk already started.
+        var res = tick(stepping);
+        if (res.win || res.miss) { var r0 = stepping; stepping = null; finish(r0, res); }
+        return;
+      }
+      if (running) return;
+      stepping = null;
+      var r = start(manual);
+      if (!r) return;
+      if (manual) {
+        stepping = r;
+        fb.className = "feedback";
+        fb.textContent = B.t("codeStepHint");
+        return;
+      }
+      lock(true);
+      var wait = reduced ? 650 : 520;
+      (function loop() {
+        if (!root.isConnected) return;
+        var res = tick(r);
+        if (res.win || res.miss) return setTimeout(function () { finish(r, res); }, wait);
+        setTimeout(loop, wait * res.wait);
+      })();
+    }
+    function miss(r) {
       if (!root.isConnected) return;
       misses++;
       lock(false);
       root.querySelectorAll(".now").forEach(function (n) { n.classList.remove("now"); });
       fb.className = "feedback try";
-      fb.textContent = B.t(msg);
+      var msg = B.t(r.msg, { n: B.fa(target), picked: B.fa(r.bd.st.picked), count: B.fa(r.bd.st.count) });
+      fb.textContent = (BOARDS.length > 1 ? B.t("codeOnBoard", { n: B.fa(r.k + 1) }) + " " : "") + msg;
       // After two runs that miss, colour the first block that went wrong (or the place where blocks are missing).
-      if (misses >= 2) {
-        if (bad && bad.node) { bad.node.classList.add("bug"); fb.textContent += " " + B.t("codeBugHint"); }
-        else { var sl = strip.querySelector(".code-slot"); if (sl) sl.classList.add("bug"); fb.textContent += " " + B.t("codeNeedMore"); }
-      }
+      if (misses >= 2 && r.msg !== "codeNeverStops") {
+        if (r.bad && r.bad.node) { r.bad.node.classList.add("bug"); fb.textContent += " " + B.t("codeBugHint"); }
+        else if (!target) { var sl = strip.querySelector(".code-slot"); if (sl) sl.classList.add("bug"); fb.textContent += " " + B.t("codeNeedMore"); }
+      } else if (r.msg === "codeNeverStops" && r.bad && r.bad.node) r.bad.node.classList.add("bug");
       B.speak(fb.textContent);
       runBtn.focus();
     }
     function win() {
       if (!root.isConnected) return;
       root.querySelectorAll(".now").forEach(function (n) { n.classList.remove("now"); });
-      hero.classList.add("happy");
-      goalNode.classList.add("got");
+      lock(true);
       fb.className = "feedback good";
-      fb.textContent = B.t("codeReached") + " " + E.pick(B.T.praise);
+      fb.textContent = B.t(BOARDS.length > 1 ? "codeAllBoards" : target && !BOARDS[0].goal ? "codeCounted" : "codeReached") + " " + E.pick(B.T.praise);
       B.speak(fb.textContent);
       setTimeout(function () { done(true, tries <= 1); }, 1500);
     }
 
+    homeAll();
     changed();
   };
 

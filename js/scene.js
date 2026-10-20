@@ -48,7 +48,11 @@
        or Tab and Enter), to count them or to pick them one by one. Every tap plays `each`, where "$" stands for the
        part just tapped ({ id: "$", to: { y: "-4" }, yoyo: true, times: 2 }); counter: a part with a number
        (data-count) that shows how many have been tapped. inOrder: they must be tapped in the order given (a wrong
-       one just wobbles). After the last one the scene goes on. */
+       one just wobbles). After the last one the scene goes on.
+     { choose: [lines], answer, hint, each: [tracks] }: the child picks what to say (a role play, used by the
+       `dialogue` step in js/steps/english.js): the lines are shown as buttons under the stage; the right one is
+       then shown as the caption and said aloud while `each` plays (the child's character talking), and the child
+       says it too. Misses are counted in box.sceneFirst (false once a line was missed). */
 var B = window.B || {};
 window.B = B;
 
@@ -419,6 +423,7 @@ window.B = B;
         var sc = s.scenes[n];
         if (sc.wait && sc.wait.rub) { startRub(sc.wait, n); return; }
         if (sc.wait && sc.wait.tap) { startTap(sc.wait, n); return; }
+        if (sc.wait && sc.wait.choose) { startChoose(sc.wait, n); return; }
         afterBeat(n);
       };
     }
@@ -545,6 +550,39 @@ window.B = B;
       } };
     }
 
+    // ---- wait: choose what to say ----
+    function startChoose(w, n) {
+      var box2 = el("div", { class: "scene-choose" }), over = false;
+      hint.hidden = false;
+      hint.textContent = w.hint || B.t("sceneChoose");
+      B.speak(hint.textContent);
+      hint.parentNode.insertBefore(box2, hint.nextSibling);
+      var options = w.choose.map(function (t) { return { label: t, value: t }; });
+      E.choice(box2, { options: options, answer: w.answer, stack: true, ltr: true, onRight: function () {
+        caption.textContent = w.answer;
+        (w.each || []).forEach(function (tr) { run(tr, B.reducedMotion(), true); });
+      } }, function (scored, first) {
+        if (!first) box.sceneFirst = false;
+        if (!waiting) return;
+        B.speak(w.answer);
+        hint.textContent = B.t("sceneSayToo");
+        setTimeout(function () { if (!over) B.speak(B.t("sceneSayToo")); }, speakTime({ caption: w.answer }));
+        setTimeout(finish, speakTime({ caption: w.answer }) + 2600);
+      });
+      function finish() {
+        if (!waiting || over) return;
+        over = true;
+        endRub();
+        afterBeat(n);
+      }
+      waiting = { stop: function () {
+        over = true;
+        if (box2.parentNode) box2.parentNode.removeChild(box2);
+        hint.hidden = true;
+        hint.textContent = "";
+      } };
+    }
+
     var playBtn = el("button", { class: "btn secondary", type: "button", text: B.t("play"), onclick: function () {
       if (waiting) return;
       if (playing) pause();
@@ -575,7 +613,7 @@ window.B = B;
       stopClock(); reset();
       for (var i = 0; i <= n; i++) (s.scenes[i].do || []).forEach(function (tr) { run(tr, true); });
       at = n;
-      caption.textContent = s.scenes[n].caption || "";
+      caption.textContent = s.scenes[n].caption || (s.scenes[n].wait && s.scenes[n].wait.answer) || "";
       Array.prototype.forEach.call(dots.children, function (d, i) { d.className = i === n ? "on" : i < n ? "seen" : ""; });
     };
     box.scenePlay = goTo;

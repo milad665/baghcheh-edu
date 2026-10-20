@@ -2,7 +2,10 @@
    (and travels with backups and home sync; see B.merge in js/common.js).
 
    p.plan = { days: [0..6] (0 = Saturday, the first day of the Iranian week), time: "17:00", minutes: 20, updatedAt }
-   p.log  = { "2026-10-18": { l: [lesson ids finished that day], a: [activity ids done that day] } } */
+   p.log  = { "2026-10-18": { l: [lesson ids finished that day], a: [activity ids done that day],
+                              p: [practice done that day: "set:<lesson id>", "quiz:<lesson id>", "review-<subject>"] } }
+   The plan fills a day's minutes with lessons (10 minutes), their practice sets, quizzes and reviews (5 minutes each),
+   following each garden's path (js/practice.js, "Practice in the course" in CURRICULUM.md). */
 (function () {
   var el = B.el;
   var DAY = 24 * 60 * 60 * 1000;
@@ -32,8 +35,10 @@
   // ---------- Log ----------
   function entry(p, k, create) {
     p.log = p.log || {};
-    if (!p.log[k] && create) p.log[k] = { l: [], a: [] };
-    return p.log[k] || { l: [], a: [] };
+    if (!p.log[k] && create) p.log[k] = { l: [], a: [], p: [] };
+    var e = p.log[k] || { l: [], a: [] };
+    if (!e.p) e.p = [];
+    return e;
   }
 
   B.logLesson = function (p, lessonId) {
@@ -41,7 +46,34 @@
     if (e.l.indexOf(lessonId) < 0) e.l.push(lessonId);
   };
 
-  function learnedOn(p, k) { var e = entry(p, k); return e.l.length > 0 || e.a.length > 0; }
+  B.logPractice = function (p, id) {
+    var e = entry(p, key(new Date()), true);
+    if (e.p.indexOf(id) < 0) e.p.push(id);
+  };
+
+  function learnedOn(p, k) { var e = entry(p, k); return e.l.length > 0 || e.a.length > 0 || e.p.length > 0; }
+
+  // ---------- Agenda items: a lesson, a practice set, a quiz or a review, each with what the screens need ----------
+  var MINUTES = { lesson: 10, set: 5, quiz: 5, review: 5 };
+  function lessonItem(l, extra) {
+    return Object.assign({ kind: "lesson", id: l.id, lesson: l, emoji: l.emoji, title: l.title, subject: l.subject, href: "#/lesson/" + l.id }, extra);
+  }
+  function pathItem(it) {
+    if (it.kind === "lesson") return lessonItem(it.lesson, {});
+    if (it.kind === "set") return { kind: "set", id: it.id, emoji: "🔁", title: B.t("pathSetTitle", { lesson: it.lesson.title }), subject: it.lesson.subject, href: B.pathHref(it) };
+    return { kind: "quiz", id: it.id, emoji: "⭐", title: B.t("pathQuizTitle"), subject: it.after.subject, href: B.pathHref(it) };
+  }
+  function reviewItem(subject) {
+    return { kind: "review", id: "review-" + subject, emoji: "🔄", title: B.t("pathReviewTitle"), subject: subject, href: "#/review/" + subject };
+  }
+  // A practice id from the log as an item ("set:<lesson>", "quiz:<lesson>", "review-<subject>").
+  function loggedItem(id) {
+    var m = /^(set|quiz):(.+)$/.exec(id), l = m && B.lessonById(m[2]);
+    if (m && l) return m[1] === "set" ? pathItem({ kind: "set", id: id, lesson: l }) : pathItem({ kind: "quiz", id: id, after: l });
+    var r = /^review-(.+)$/.exec(id);
+    return r && B.subjectById(r[1]) ? reviewItem(r[1]) : null;
+  }
+  B.agendaMinutes = function (it) { return MINUTES[it.kind] || 10; };
 
   // ---------- Plan ----------
   function lowestLevel(p) {
@@ -59,10 +91,10 @@
 
   function planned(p, d) { return !!(p.plan && p.plan.days.indexOf(weekIndex(d)) >= 0); }
 
-  function slots(p) { return Math.max(1, Math.round(((p.plan && p.plan.minutes) || 20) / 8)); }
 
   function activityFor(p, d) {
-    var list = B.ACTIVITIES && B.ACTIVITIES[lowestLevel(p)];
+    // The garden's activities and those for every garden (B.ACTIVITIES.any).
+    var list = B.ACTIVITIES && (B.ACTIVITIES[lowestLevel(p)] || []).concat(B.ACTIVITIES.any || []);
     if (!list || !list.length) return null;
     var n = Math.floor(midnight(d).getTime() / DAY);
     return list[((n % list.length) + list.length) % list.length];
@@ -80,41 +112,61 @@
     for (var i = 0; i < 7; i++) {
       var d = addDays(start, i), k = key(d), isPlanned = planned(p, d);
       var done = entry(p, k).l.filter(function (id) { return B.lessonById(id); });
-      var items = done.map(function (id) { return { lesson: B.lessonById(id), done: true, review: false }; });
+      var items = done.map(function (id) { return lessonItem(B.lessonById(id), { done: true, review: false }); });
+      entry(p, k).p.forEach(function (id) {
+        var it = loggedItem(id);
+        if (it) { it.done = true; it.review = it.kind === "review"; items.push(it); }
+        if (d >= today) used[id] = true;
+      });
       // Lessons finished today aren't suggested again today; ones from earlier days can still come back as reviews.
       if (d >= today) done.forEach(function (id) { used[id] = true; });
       if (done.some(function (id) { return B.lessonById(id).subject === "feel"; })) feelGiven = true;
 
       if (d >= today && isPlanned) {
-        var size = slots(p), endOfDay = addDays(d, 1).getTime();
-        // 1. Reviews that will be due by that day.
-        var reviews = Object.keys(p.lessons).filter(function (id) {
-          var r = p.lessons[id];
-          return r.mastered && r.due < endOfDay && !used[id] && B.lessonById(id);
-        }).slice(0, Math.ceil(size / 2));
-        reviews.forEach(function (id) { used[id] = true; items.push({ lesson: B.lessonById(id), done: false, review: true }); });
-        // 2. New lessons, subjects taking turns.
+        // What was already done that day counts towards its minutes.
+        var budget = (p.plan && p.plan.minutes) || 20, endOfDay = addDays(d, 1).getTime();
+        var spent = items.reduce(function (m, it) { return m + B.agendaMinutes(it); }, 0);
+        var take = function (it) {
+          used[it.id] = true;
+          items.push(it);
+          spent += B.agendaMinutes(it);
+          if (it.subject === "feel" && it.kind === "lesson") feelGiven = true;
+        };
         var subjects = B.SUBJECTS.filter(function (s) { return s.leveled; });
+        // 1. Reviews due by that day, up to half the time: one mixed review per subject (its due practice sets), and
+        //    whole-lesson reviews for lessons that have no practice set yet.
+        subjects.forEach(function (s) {
+          if (spent < budget / 2 && !used["review-" + s.id] && B.dueSets && B.dueSets(p, s.id, endOfDay).length) take(Object.assign(reviewItem(s.id), { done: false, review: true }));
+        });
+        Object.keys(p.lessons).filter(function (id) {
+          var r = p.lessons[id], l = B.lessonById(id);
+          return l && r.mastered && r.due < endOfDay && !used[id] && !(B.lessonGens && B.lessonGens(id).length);
+        }).forEach(function (id) { if (spent < budget / 2) take(lessonItem(B.lessonById(id), { done: false, review: true })); });
+        // 2. What comes next in each garden's path (a lesson with its practice set, a quiz), subjects taking turns.
         var queues = subjects.map(function (s) {
-          return B.lessonsFor(s.id, B.levelOf(p, s.id)).filter(function (l) {
+          var level = B.levelOf(p, s.id);
+          if (B.gardenPath && B.inPath(level)) return B.gardenPath(p, s.id, level).filter(function (it) { return !it.done && !used[it.id]; }).map(pathItem);
+          return B.lessonsFor(s.id, level).filter(function (l) {
             return l.level !== null && !(p.lessons[l.id] && p.lessons[l.id].mastered) && !used[l.id];
-          });
+          }).map(function (l) { return lessonItem(l, {}); });
         });
         var j = 0, stuck = 0;
-        while (items.length < size && stuck < subjects.length) {
+        while ((spent < budget || !items.length) && stuck < subjects.length) {
           var q = queues[(turn + j) % subjects.length];
           var next = q.shift();
           j++;
           if (!next) { stuck++; continue; }
           stuck = 0;
-          used[next.id] = true;
-          items.push({ lesson: next, done: false, review: false });
+          take(Object.assign(next, { done: false, review: false }));
+          // A lesson's practice set comes right after it, the same day.
+          if (next.kind === "lesson" && q[0] && q[0].id === "set:" + next.id) take(Object.assign(q.shift(), { done: false, review: false }));
         }
         turn++;
         // 3. Once a week, the calm-down lesson.
         if (!feelGiven) {
           var feel = B.lessonsFor("feel", null)[0];
-          if (feel) { items.push({ lesson: feel, done: false, review: false }); feelGiven = true; }
+          if (feel && !used[feel.id]) { items.push(lessonItem(feel, { done: false, review: false })); used[feel.id] = true; }
+          feelGiven = true;
         }
       }
       var act = (isPlanned || done.length) ? activityFor(p, d) : null;
@@ -259,8 +311,8 @@
       d.items.forEach(function (it) {
         body.appendChild(el("li", { class: it.done ? "is-done" : "" }, [
           el("span", { class: "check", "aria-hidden": "true", text: it.done ? "✓" : "" }),
-          el("span", { text: it.lesson.emoji + " " + it.lesson.title }),
-          el("span", { class: "hint", text: " · " + (it.review ? B.t("reviewTag") : B.subjectById(it.lesson.subject).name) })
+          el("span", { text: it.emoji + " " + it.title }),
+          el("span", { class: "hint", text: " · " + (it.review ? B.t("reviewTag") + " · " : "") + B.subjectById(it.subject).name + " · " + B.t("minutesOpt", { n: B.fa(B.agendaMinutes(it)) }) })
         ]));
       });
       if (d.activity) {
@@ -336,11 +388,11 @@
     for (var d = first; solar(d).month === m; d = addDays(d, 1)) {
       (function (d) {
         var k = key(d), e = entry(p, k);
-        var cls = "cal-day" + (planned(p, d) && k >= today ? " planned" : "") + (k === today ? " is-today" : "") + (e.l.length ? " learned" : "");
+        var cls = "cal-day" + (planned(p, d) && k >= today ? " planned" : "") + (k === today ? " is-today" : "") + (e.l.length || e.p.length ? " learned" : "");
         var cell = el("button", { type: "button", class: cls, "aria-label": fullFmt.format(d) }, [
           el("span", { class: "n", text: B.fa(solar(d).day) }),
           el("span", { class: "dots", "aria-hidden": "true" }, [
-            e.l.length ? el("i", { class: "dot learn" }) : null,
+            e.l.length || e.p.length ? el("i", { class: "dot learn" }) : null,
             e.a.length ? el("i", { class: "dot act" }) : null
           ])
         ]);
@@ -373,9 +425,10 @@
     var e = entry(p, key(d));
     box.innerHTML = "";
     box.appendChild(el("h3", { text: fullFmt.format(d) }));
-    if (!e.l.length && !e.a.length) { box.appendChild(el("p", { class: "hint", text: B.t("dayEmpty") })); return; }
+    if (!e.l.length && !e.a.length && !e.p.length) { box.appendChild(el("p", { class: "hint", text: B.t("dayEmpty") })); return; }
     var ul = el("ul");
     e.l.forEach(function (id) { var l = B.lessonById(id); if (l) ul.appendChild(el("li", { text: "✓ " + l.emoji + " " + l.title })); });
+    e.p.forEach(function (id) { var it = loggedItem(id); if (it) ul.appendChild(el("li", { text: "✓ " + it.emoji + " " + it.title })); });
     var acts = [].concat.apply([], Object.keys(B.ACTIVITIES || {}).map(function (k) { return B.ACTIVITIES[k]; }));
     e.a.forEach(function (id) { var a = acts.find(function (x) { return x.id === id; }); if (a) ul.appendChild(el("li", { text: "🏡 " + a.text })); });
     box.appendChild(ul);

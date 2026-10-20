@@ -447,7 +447,22 @@ window.B = B;
     triangle: '<polygon points="50,12 90,84 10,84"/>',
     "triangle-tilt": '<polygon points="14,22 90,40 34,90"/>',
     rectangle: '<rect x="6" y="28" width="88" height="44"/>',
-    "rectangle-tall": '<rect x="30" y="6" width="40" height="88"/>'
+    "rectangle-tall": '<rect x="30" y="6" width="40" height="88"/>',
+    "rectangle-thin": '<rect x="4" y="40" width="92" height="20"/>',
+    "square-small": '<rect x="34" y="34" width="32" height="32"/>',
+    "triangle-thin": '<polygon points="20,8 34,92 6,92"/>',
+    "triangle-small": '<polygon points="50,52 70,86 30,86"/>',
+    "triangle-down": '<polygon points="10,16 90,16 50,88"/>',
+    // look like triangles but are not: open, or with a curved side
+    opentri: '<polyline points="38,22 50,12 90,84 10,84 28,46" fill="none" stroke-width="6"/>',
+    curvetri: '<path d="M50 12 Q90 50 90 84 L10 84 Q10 50 50 12z"/>',
+    pentagon: '<polygon points="50,8 92,38 76,88 24,88 8,38"/>',
+    hexagon: '<polygon points="28,12 72,12 94,50 72,88 28,88 6,50"/>',
+    octagon: '<polygon points="34,6 66,6 94,34 94,66 66,94 34,94 6,66 6,34"/>',
+    rhombus: '<polygon points="50,6 86,50 50,94 14,50"/>',
+    trapezoid: '<polygon points="30,24 70,24 94,80 6,80"/>',
+    parallelogram: '<polygon points="30,24 94,24 70,78 6,78"/>',
+    kite: '<polygon points="50,6 80,38 50,94 20,38"/>'
   };
   function shapeSvg(id, cls) {
     var wrap = el("span", { class: "shape " + (cls || ""), "aria-hidden": "true" });
@@ -699,11 +714,12 @@ window.B = B;
 
   /* Shared with the files that add more step types (js/games.js, js/anim.js, …): each does
      B.engine.steps.mytype = function (s, box, done) { … } and calls done(scored, firstTry) when finished. */
-  B.engine = { steps: steps, choice: choice, speakBtn: speakBtn, nextBtn: nextBtn, doneButton: doneButton, pick: pick, nums: nums };
+  B.engine = { steps: steps, choice: choice, speakBtn: speakBtn, nextBtn: nextBtn, doneButton: doneButton, pick: pick, nums: nums, shapeSvg: shapeSvg };
 
-  /* Runs a lesson. onFinish(result) gets {scored, firstTry}. start: the step to begin at (the content browser). */
+  /* Runs a lesson. onFinish(result) gets {scored, firstTry, steps}, where steps[i] is {scored, firstTry} for each
+     step played (practice uses it to bring missed items back, js/practice.js). start: the step to begin at (the content browser). */
   B.playLesson = function (lesson, root, onFinish, onExit, start) {
-    var i = start || 0, scored = 0, firstTry = 0;
+    var i = start || 0, scored = 0, firstTry = 0, results = [];
     var bar = el("span", { style: "width:0" });
     var stage = el("div");
     root.innerHTML = "";
@@ -719,10 +735,11 @@ window.B = B;
     function show() {
       bar.style.width = (i / lesson.steps.length) * 100 + "%";
       stage.innerHTML = "";
-      if (i >= lesson.steps.length) { onFinish({ scored: scored, firstTry: firstTry }); return; }
+      if (i >= lesson.steps.length) { onFinish({ scored: scored, firstTry: firstTry, steps: results }); return; }
       var s = lesson.steps[i];
       steps[s.type](s, stage, function (isScored, wasFirst) {
         if (isScored) { scored++; if (wasFirst) firstTry++; }
+        results[i] = { scored: !!isScored, firstTry: !!(isScored && wasFirst) };
         i++;
         show();
         window.scrollTo(0, 0);

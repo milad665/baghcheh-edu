@@ -33,6 +33,9 @@ enforces the match.
 - Lesson ids are permanent (progress is stored by id). Use the id from the plan; never rename or renumber a
   built lesson. A new lesson gets the next free number in its subject and garden.
 - Push lessons into `B.LESSONS` in the same order as the rows in the plan: that order is what children see.
+- **Practice generators** (the `#### Practice` rows) are built the same way: the row's Id is permanent, the generator
+  goes in `js/practice/<subject>.js` and follows `README.md`, "Practice generators" (only what has been taught,
+  5–9 items, an English overlay); the row is 🔨, then ✅ in the commit that adds it.
 - Set a row to 🔨 when its lesson first exists in `js/lessons/`, and to ✅ in the same commit that adds the lesson
   (✅ means committed: `tools/check-plan.js` reads git and fails if a committed lesson is still 🔨, or an uncommitted
   one is ✅). Keep each row's title and "Content types" true to the lesson: the check compares both.

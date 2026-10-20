@@ -1,16 +1,27 @@
 /* باغچه — activities away from the screen, suggested in each day's plan (one a day, by garden).
-   Content: CC BY-SA 4.0. Follow STYLE.md when editing. */
+   Content: CC BY-SA 4.0. Follow STYLE.md when editing.
+   `any`: activities for every garden (added to each garden's list). An activity that builds a practice row of the
+   plan names it: { id, text, practice: "feel-seed-p2" } (the row is then built by its activities, not a generator;
+   tools/check-plan.js checks it, browse.html shows them on the row's page). Activity ids are permanent too. */
 var B = window.B || {};
 window.B = B;
 
 B.ACTIVITIES = {
+  any: [
+    { id: "any-feel-1", practice: "feel-any-p4", text: "پانتومیم حس‌ها: یک نفر یک حس را با صورت و بدنش نشان دهد و بقیه حدس بزنند (خوشحال، غمگین، عصبانی، نگران، ترسیده، آرام). نوبتی بازی کنید." },
+    { id: "any-feel-2", practice: "feel-any-p4", text: "سه چیز خوب امروز: سر سفره شام، هر کس سه چیز خوب امروزش را بگوید. اول خودتان بگویید." },
+    { id: "any-feel-3", practice: "feel-any-p4", text: "شیشهٔ مهربانی: هر بار که کسی در خانه کار مهربانی کرد، یک دکمه یا نخود در یک شیشه بیندازید و آن کار را بلند بگویید. آخر هفته با هم بشمارید." },
+    { id: "any-feel-4", practice: "feel-any-p4", text: "دست کمک‌کارها: دست کودک را روی کاغذ بکشید و روی هر انگشت، یکی از بزرگ‌ترهایی را که به او اعتماد دارد بکشید یا بنویسید. کاغذ را جایی بزنید که هر روز ببیند." },
+    { id: "any-feel-5", practice: "feel-any-p4", text: "روال آرام پیش از خواب: هر شب به یک ترتیب ثابت: شام، مسواک، لباس خواب، قصه، سه نفس آرام و خواب. ترتیب را با هم روی کاغذ بکشید." }
+  ],
   seed: [
     { id: "seed-1", text: "حبوبات یا دکمه‌ها را با هم بشمارید: «پنج تا لوبیا به من بده.»" },
     { id: "seed-2", text: "لباس‌ها را بر اساس رنگ، یا قاشق‌ها را بر اساس اندازه دسته‌بندی کنید." },
     { id: "seed-3", text: "یک قصه برایش بخوانید یا تعریف کنید و بپرسید: «بعدش چی شد؟»" },
     { id: "seed-4", text: "با هم یک شعر کودکانه بخوانید و با آن دست بزنید." },
     { id: "seed-5", text: "در خانه دنبال چیزهای گرد، چهارگوش و سه‌گوش بگردید." },
-    { id: "seed-6", text: "درباره امروزش حرف بزنید: «امروز چه چیزی خوشحالت کرد؟»" }
+    { id: "seed-6", text: "درباره امروزش حرف بزنید: «امروز چه چیزی خوشحالت کرد؟»" },
+    { id: "seed-feel-1", practice: "feel-seed-p2", text: "بازی لاک‌پشت: هر وقت کسی در خانه عصبانی یا ناراحت شد، یکی بگوید «لاک‌پشت!» و همه با هم بایستید، دست‌ها را دور خودتان بگیرید، سرتان را پایین بیاورید و سه نفس آرام بکشید. بعد بیرون بیایید و بگویید چه حسی دارید. اول بزرگ‌ترها!" }
   ],
   sprout: [
     { id: "sprout-1", text: "حرف‌هایی را که یاد گرفته روی بسته‌های خوراکی و تابلوها پیدا کنید." },

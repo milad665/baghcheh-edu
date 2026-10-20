@@ -4,7 +4,9 @@
    passage and readaloud text and passage options, whole words to trace, and the words and letters on game tiles and cards (build, pairs, sort,
    order, pattern). Not checked: instructions and questions (the grown-up reads them),
    and the letter shapes in "find the letter" steps (other letters are there on purpose).
-   Consonant «و» (v) and «ی» (y) are spotted by a rough rule and reported as warnings. */
+   Consonant «و» (v) and «ی» (y) are spotted by a rough rule and reported as warnings.
+   Practice: every reading generator (js/practice/read.js) is run at every point of the lesson sequence where it is
+   open, with many seeds, and its items are checked the same way against the letters taught up to that point. */
 var fs = require("fs");
 var path = require("path");
 var vm = require("vm");
@@ -18,16 +20,11 @@ fs.readdirSync(path.join(js, "lessons")).filter(function (f) { return /\.js$/.te
 });
 var LESSONS = ctx.window.B.LESSONS;
 
-// What each lesson teaches, in order. «Y» = «ی» as a consonant.
-var TEACHES = {
-  "read-sprout-1": "آاب", "read-sprout-2": "دم", "read-sprout-3": "سَ", "read-sprout-4": "", "read-sprout-5": "", "read-sprout-6": "",
-  "read-sapling-1": "وت", "read-sapling-2": "ری", "read-sapling-3": "نز", "read-sapling-4": "شِ", "read-sapling-5": "کُ", "read-sapling-18": "",
-  "read-sapling-6": "",
-  "read-sapling-7": "ه", "read-sapling-8": "پل", "read-sapling-9": "جگ", "read-sapling-10": "چخ", "read-sapling-11": "فق", "read-sapling-19": "",
-  "read-sapling-12": "Yژ", "read-sapling-13": "صث", "read-sapling-14": "ذضظ", "read-sapling-15": "طح", "read-sapling-16": "عغ",
-  "read-sapling-17": "ًّ", "read-sapling-20": "ءئ", "read-sapling-21": "", "read-sapling-22": "", "read-sapling-23": "",
-  "read-sapling-24": "", "read-sapling-25": "", "read-sapling-26": "", "read-sapling-27": "", "read-sapling-28": ""
-};
+// What each lesson teaches, in order («V» = «و», «Y» = «ی» as consonants): B.READ_TEACHES in js/practice/read.js,
+// shared with the practice generators. The framework (js/practice.js) comes first, then the reading generators.
+["practice.js", "practice/read.js"].forEach(function (f) { vm.runInNewContext(fs.readFileSync(path.join(js, f), "utf8"), ctx); });
+var B = ctx.window.B;
+var TEACHES = B.READ_TEACHES;
 
 var IGNORE = /[\s‌‍«».،؛:؟!?\-–—…()0-9۰-۹]/;
 var MARKS = "َُِّْ";
@@ -71,6 +68,8 @@ function texts(s) {
   if (s.type === "order") s.items.forEach(function (v) { t.push(shown(v)); });
   if (s.type === "pattern") s.seq.concat(s.options).forEach(function (v) { t.push(shown(v)); });
   if (s.type === "readaloud") t.push(s.text);
+  if (s.type === "mark") t.push(s.text);
+  if (s.type === "boxes" && s.letters) t = t.concat([s.word], s.parts, s.extra || []);
   // A whole word to write (trace of a joined word, js/strokes.js).
   if (s.type === "trace" && s.letter && s.letter.replace(/ـ/g, "").length > 1) t.push(s.letter);
   if (s.type === "passage") {
@@ -102,6 +101,32 @@ LESSONS.filter(function (l) { return l.subject === "read"; }).forEach(function (
     });
   });
 });
+// ---- Practice: items made by the reading generators, at every point of the lessons ----
+var readLessons = LESSONS.filter(function (l) { return l.subject === "read"; });
+var genItems = 0;
+B.PRACTICE.filter(function (g) { return g.subject === "read"; }).forEach(function (g) {
+  readLessons.forEach(function (l, i) {
+    var base = B.practiceContext(null, "read", { upTo: l.id, level: g.level });
+    if (B.practiceMissing(g, base).length) return;
+    for (var seed = 1; seed <= 25; seed++) {
+      var again = seed % 5 ? [] : ["بادام", "اَسب", "سام آمَد."]; // keys brought back must be checked too
+      g.make(B.rng(seed * 101 + i), 9, B.practiceGenContext(g, base, again)).forEach(function (s, k) {
+        genItems++;
+        texts(s).forEach(function (t) {
+          words(t).forEach(function (w) {
+            var bad = [];
+            for (var c = 0; c < w.length; c++) if (!IGNORE.test(w[c]) && w[c] !== "ـ" && base.letters.indexOf(w[c]) === -1 && bad.indexOf(w[c]) === -1) bad.push(w[c]);
+            if (bad.length && report("✗ practice " + g.id + " after " + l.id + ": «" + w + "» uses " + bad.join(" "))) errors++;
+            consonantHints(w).forEach(function (h) {
+              if (base.letters.indexOf(h) === -1 && report("! practice " + g.id + " after " + l.id + ": «" + w + "» may use " + (h === "Y" ? "«ی» as a consonant" : "«و» as a consonant") + " (not taught yet)")) warnings++;
+            });
+          });
+        });
+      });
+    }
+  });
+});
+if (genItems) console.log("Practice: " + genItems + " generated items checked.");
 console.log(errors ? errors + " word(s) use letters not taught yet." : "All decoded words use taught letters.");
 if (warnings) console.log(warnings + " warning(s) to check by hand.");
 process.exit(errors ? 1 : 0);

@@ -13,6 +13,8 @@ B.MAPS = B.MAPS || {};
 B.MAPS.iran = {
   view: [400,336],
   bg: "sea",
+  // kilometres in one unit of the viewBox, in the middle of Iran (for the scale bar)
+  kmPerUnit: 5.85,
   // where the whole of Iran is named when it is one place ("layers: ['iran']")
   iranAt: [167,150],
   abroad: [

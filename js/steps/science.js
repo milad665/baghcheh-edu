@@ -1,5 +1,6 @@
 /* باغچه — step types for science (علوم): inquiry steps where the child guesses, tries and sees.
-   - test: guess what will happen to each thing (floats or sinks, does the magnet pull it), then watch it happen.
+   - test: guess what will happen to each thing (floats or sinks, does the magnet pull it, rolls or slides down a
+     slope), then watch it happen.
      Guesses are never marked wrong: guessing, then checking, is the skill. Not scored.
    - shadow: move the sun across the sky and watch a tree's shadow change; small tasks, then an optional question.
    - home: a safe experiment to do at home with everyday things, written for the parent. Not scored.
@@ -18,16 +19,25 @@ window.B = B;
   }
 
   /* ---------- test: guess, then see ----------
-     kind: "float" (a basin of water) or "magnet". items: [{ pic, say, yes }] where yes means it floats / the
-     magnet pulls it. Optional prompt; ask (the question for each thing), yesLabel/noLabel (the two guesses),
+     kind: "float" (a basin of water), "magnet", "roll" (a slope), "waterproof" (water is poured on it),
+     "dissolve" (it is put in a glass of water), "absorbs" (it is put on a puddle) or "soaksin" (a heap of sand,
+     soil or clay that water is poured on). items: [{ pic, say, yes }] where yes means it floats / the magnet pulls
+     it / it rolls down the slope turning over and over (no: it slides down flat) / it keeps the water out (no: the
+     water drips through) / it dissolves and disappears (no: it stays at the bottom) / it soaks up the puddle / the
+     water soaks into it (no: the water stays on top). Optional prompt; ask (the question for each thing), yesLabel/noLabel (the two guesses),
      yesSaw/noSaw (what happened). Defaults for each kind are in js/strings.js. */
   E.steps.test = function (s, box, done) {
-    var kind = s.kind === "magnet" ? "magnet" : "float";
+    var KINDS = { magnet: 1, roll: 1, waterproof: 1, dissolve: 1, absorbs: 1, soaksin: 1 };
+    var kind = KINDS[s.kind] ? s.kind : "float";
     var T = function (k) { return s[k] || B.t("sci_" + kind + "_" + k); };
     if (s.prompt) box.appendChild(el("p", { class: "prompt", text: s.prompt }));
     var stage = el("div", { class: "sci-test " + kind, "aria-hidden": "true" });
     if (kind === "float") stage.appendChild(el("div", { class: "sci-water" }));
-    else stage.appendChild(el("span", { class: "sci-magnet", text: "🧲" }));
+    else if (kind === "roll") stage.appendChild(el("div", { class: "sci-ramp" }));
+    else if (kind === "magnet") stage.appendChild(el("span", { class: "sci-magnet", text: "🧲" }));
+    else if (kind === "dissolve") stage.appendChild(el("div", { class: "sci-glassw" }));
+    else stage.appendChild(el("div", { class: "sci-pool" }));
+    if (kind === "waterproof" || kind === "soaksin") stage.appendChild(el("span", { class: "sci-drop" }));
     var thing = el("span", { class: "sci-thing" });
     stage.appendChild(thing);
     box.appendChild(stage);
@@ -73,6 +83,7 @@ window.B = B;
       fb.textContent = B.t("sciWatch");
       void thing.offsetWidth;
       thing.classList.add(it.yes ? "yes" : "no");
+      stage.classList.add(it.yes ? "yes" : "no");
       setTimeout(function () {
         if (!thing.isConnected) return;
         var saw = it.yes ? T("yesSaw") : T("noSaw");

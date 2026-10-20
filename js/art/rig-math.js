@@ -23,7 +23,7 @@ B.RIG = B.RIG || {};
   // Persian words are written right to left; numbers and sums left to right.
   function textEl(t, size, y) {
     var dir = PERSIAN_LETTER.test(t) ? "rtl" : "ltr";
-    return '<text y="' + y + '" text-anchor="middle" font-size="' + size + '" font-weight="800" fill="' + INK + '" stroke="none" direction="' + dir + '" unicode-bidi="embed">' + esc(t) + "</text>";
+    return '<text y="' + y + '" text-anchor="middle" font-size="' + size + '" font-weight="800" fill="' + INK + '" stroke="none" direction="' + dir + '" unicode-bidi="' + (dir === "ltr" ? "bidi-override" : "embed") + '">' + esc(t) + "</text>";
   }
   function width(t, size) { return t.length * size * 0.56 + size * 0.9; }
   // A big number or sign (origin: the middle of its baseline area's bottom).
@@ -44,11 +44,12 @@ B.RIG = B.RIG || {};
     // single numbers and signs, for sums built piece by piece
     "۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹", "+", "−", "=", "؟",
     "۱۳", "۲۰", "۲۴", "۲۵", "۴۵",
-    "۳ + ۲ = ۵"
+    "۳ + ۲ = ۵", "۳ + ۴ = ۷", "۴ + ۳ = ۷", "۷ − ۴ = ۳", "۷ − ۳ = ۴", "۸ + ۳ = ۱۱", "۶ + ۶ = ۱۲", "۲۰", "۳۰", "۴۰", "۵۰", "۱۰۰"
   ].forEach(function (t) { both("n:" + t, big); });
   [
     "۶", "۷", "۸", "۱", "۲", "۳", "۴", "۵", "۱۳", "۲۰", "۲۴", "۴۵", "؟",
-    "۶ زوج", "۷ فرد", "6 even", "7 odd", "نصف", "half", "یک‌چهارم", "a quarter"
+    "۶ زوج", "۷ فرد", "6 even", "7 odd", "نصف", "half", "یک‌چهارم", "a quarter",
+    "۳۸", "۵۸", "۶۳", "+۲۰", "+۵", "۴۷", "۵۰", "۵۲", "+۳", "+۲", "۱۲", "۱۵", "۱۸", "۳", "۲۷", "۳۵", "۸", "۱۰۰", "۶۵", "۹۰", "۲۴", "رضا", "نرگس", "Reza", "Narges", "۶ متر", "۳ متر", "6 m", "3 m", "۱۸ متر", "18 m", "۱۲۰", "۱۳۸", "۹", "۹۶"
   ].forEach(function (t) { both("tag:" + t, function (x) { return tag(x); }); });
   // The days of the week, all on cards of the same width.
   ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه",
@@ -164,5 +165,162 @@ B.RIG = B.RIG || {};
     "sofreh": g('<ellipse rx="35" ry="5" fill="#f9f3e6"/><ellipse rx="31" ry="3.6" fill="none" stroke="#e5483f" stroke-width=".6" stroke-dasharray="1.4 1.2"/>'),
     // A little "z" for sleeping (origin: its middle).
     "zz": '<text y="2" text-anchor="middle" font-size="6" font-weight="800" fill="#5b6fb5" stroke="#fff" stroke-width=".8" paint-order="stroke" direction="ltr">z</text>'
+  });
+
+  // ---- Seed (math-seed-11 to math-seed-50) ----
+  // A clear vessel with water inside: the water is drawn full and squashed to look.level from the bottom.
+  function vessel(k, outline, inside) {
+    var level = k.level == null ? 0 : k.level;
+    return g('<path d="' + outline + '" fill="#eaf6fb" fill-opacity=".8"/>' +
+      '<path data-part="water" data-pivot="0 0" style="transform:scale(1,' + level + ')" d="' + inside + '" fill="#7cc4e8" stroke="none"/>' +
+      '<path d="' + outline + '" fill="none"/>');
+  }
+  Object.assign(B.RIG, {
+    // A glass of tea, an estekan, with no saucer (origin: its bottom middle; 7 wide, 11 tall).
+    "estekan": g('<path d="M-3.4-11h6.8l-.9 10.2c-.1.5-.4.8-1 .8h-3c-.6 0-.9-.3-1-.8z" fill="#fff" fill-opacity=".75"/>' +
+      '<path d="M-3.2-9h6.4l-.7 8.2c-.1.4-.3.6-.8.6h-3.4c-.5 0-.7-.2-.8-.6z" fill="#c2410c" fill-opacity=".85" stroke="none"/>'),
+    // A saucer, from the front (origin: its bottom middle; 13 wide).
+    "saucer": g('<path d="M-6.5-1.6c1 1.2 3 1.6 6.5 1.6s5.5-.4 6.5-1.6z" fill="#fff"/><ellipse cy="-1.6" rx="6.5" ry="1" fill="#fff"/>' +
+      '<ellipse cy="-1.6" rx="3.4" ry=".5" fill="none" stroke="#5b9bd5" stroke-width=".4"/>'),
+    // Glasses and a glass bowl of water, from the side (origin: the bottom middle). The water is a piece ("water",
+    // pivot at the bottom) drawn full: look.level (0 empty … 1 full) sets how high it is; a track turns sy to fill
+    // or empty it. "glass" is 10 × 16, "glass-tall" a thin one 6 × 24, "bowl" 30 × 11 (it holds the most).
+    "glass": function (k) { return vessel(k, "M-5-16h10l-1 15.4c0 .4-.3.6-.7.6h-6.6c-.4 0-.7-.2-.7-.6z", "M-4.5-14.4h9l-.9 13.8c0 .3-.2.6-.6.6h-6c-.4 0-.6-.3-.6-.6z"); },
+    "glass-tall": function (k) { return vessel(k, "M-3-24h6l-.5 23.4c0 .4-.3.6-.7.6h-3.6c-.4 0-.7-.2-.7-.6z", "M-2.6-22.4h5.2l-.4 21.8c0 .3-.2.6-.6.6h-3.2c-.4 0-.6-.3-.6-.6z"); },
+    "bowl": function (k) { return vessel(k, "M-15-11h30c0 6.6-4.6 11-10 11h-10c-5.4 0-10-4.4-10-11z", "M-14.2-9.6h28.4c-.4 5.6-4.4 9.6-9.4 9.6h-9.6c-5 0-9-4-9.4-9.6z"); },
+    // A jug of water, pouring to the right when it turns (origin: its bottom middle; spout at about (8, -17)).
+    "jug": g('<path d="M-7-18h12l3-1.6-1 3.2c1 4 1 12-1 16.4h-12c-2.4-5-2.4-12-1-18z" fill="#eaf6fb"/>' +
+      '<path d="M-7.2-11h13.4c.4 3.8.2 8-1.6 11h-11.2c-1.4-3.2-1.6-7.2-.6-11z" fill="#7cc4e8" stroke="none"/>' +
+      '<path d="M-7-14c-4 0-5 7-1 8" fill="none" stroke-width=".9"/>'),
+    // A pencil lying down, from above (origin: the middle of its back end; look.len long, default 30, pointing right;
+    // look.color for its paint).
+    "pencil-h": function (k) {
+      var L = k.len || 30, c = k.color || "#fcd34d";
+      return g('<rect x="0" y="-2" width="3" height="4" rx=".8" fill="#f28baa"/><rect x="3" y="-2" width="' + (L - 9) + '" height="4" fill="' + c + '"/>' +
+        '<path d="M' + (L - 6) + ' -2L' + L + ' 0L' + (L - 6) + ' 2z" fill="#f3c39b"/><path d="M' + (L - 1.6) + ' -.5L' + L + ' 0L' + (L - 1.6) + ' .5z" fill="#3d2c22" stroke="none"/>');
+    },
+    // A rope lying in waves (origin: its left end; 30 wide) and the same rope pulled straight (56 long), and a stick
+    // (look.len long, default 40), all from above.
+    "rope-bent": g('<path d="M0 0c3-8 7-8 8 0s5 8 7 0 5-8 7 0 5 8 8 0" fill="none" stroke="#c98a4b" stroke-width="2.2"/>' +
+      '<path d="M0 0c3-8 7-8 8 0s5 8 7 0 5-8 7 0 5 8 8 0" fill="none" stroke="#e8c48a" stroke-width="1" stroke-dasharray="1.2 1.2"/>'),
+    "rope-straight": g('<path d="M0 0h56" fill="none" stroke="#c98a4b" stroke-width="2.2"/><path d="M0 0h56" fill="none" stroke="#e8c48a" stroke-width="1" stroke-dasharray="1.2 1.2"/>'),
+    "stick": function (k) { var L = k.len || 40; return g('<rect y="-1.8" width="' + L + '" height="3.6" rx="1.6" fill="#a0683f"/><path d="M4 0h' + (L - 10) + '" fill="none" stroke="#7a4b2a" stroke-width=".4"/>'); },
+    // Flat shapes to build pictures with (origin: the middle), the same as the tangram step's pieces.
+    "sh-square": g('<path d="M-10-10h20v20h-20z" fill="#f6b73c"/>'),
+    "sh-tri": g('<path d="M-15 7.5L0-7.5 15 7.5z" fill="#e5483f"/>'),
+    "sh-circle": g('<circle r="10" fill="#5a9a45"/>'),
+    "sh-rect": g('<path d="M-16-7h32v14h-32z" fill="#5b9bd5"/>'),
+    "sh-door": g('<path d="M-3-6h6v12h-6z" fill="#8a5a3b"/>'),
+    // Solids: a box (a cube), a can standing, the end of a can lying down (it rolls: origin the middle) and a ball
+    // with a line on it so its turning shows (origin the middle); a wooden board leaning, high on the left (origin
+    // its low right end on the floor; 70 long, 28 high).
+    "cube": g('<path d="M-8 0v-14h14V0z" fill="#e5a35a"/><path d="M-8-14l4-4h14l-4 4z" fill="#f2c27f"/><path d="M6 0v-14l4-4V-4z" fill="#c9843d"/>'),
+    "can": g('<path d="M-6-16v16a6 2 0 0 0 12 0v-16z" fill="#e5483f"/><rect x="-6" y="-11" width="12" height="5" fill="#fffaf0" stroke="none"/>' +
+      '<ellipse cy="-16" rx="6" ry="2" fill="#d9d9d9"/>'),
+    "can-end": g('<circle r="6" fill="#d9d9d9"/><circle r="4.4" fill="none" stroke-width=".4"/><path d="M-4.4 0h8.8" fill="none" stroke-width=".5"/>'),
+    "ball-3d": g('<circle r="6" fill="#5b9bd5"/><path d="M-6 0c3-2 9-2 12 0" fill="none" stroke="#fff" stroke-width="1.2"/><circle cx="-2" cy="-2.6" r="1.2" fill="#fff" stroke="none" opacity=".6"/>'),
+    "ramp": g('<path d="M0 0h-70v-28z" fill="#c98a4b"/><path d="M-66-26.4L-2-1.6" fill="none" stroke="#a0683f" stroke-width=".5"/>'),
+    // An egg tray: two rows of five holes (origin: its bottom middle; 60 × 22).
+    "egg-tray": g('<rect x="-30" y="-22" width="60" height="22" rx="3" fill="#e9d3b0"/>' + [0, 1, 2, 3, 4].map(function (i) {
+      return '<ellipse cx="' + (-24 + i * 12) + '" cy="-15.6" rx="4.6" ry="2.6" fill="#d4b98f"/><ellipse cx="' + (-24 + i * 12) + '" cy="-5.6" rx="4.6" ry="2.6" fill="#d4b98f"/>';
+    }).join("")),
+    // A wire between two poles, for birds to sit on (origin: its left end; 120 long).
+    "wire": g('<path d="M0 0h120" fill="none" stroke="#3d2c22" stroke-width=".8"/><rect x="-3" y="-4" width="3" height="60" fill="#8a6f52"/><rect x="120" y="-4" width="3" height="60" fill="#8a6f52"/>'),
+    // Two-colour counters, red on one side and yellow on the other (origin: the middle; 8 wide), and the plastic cup
+    // they are shaken in (origin: its bottom middle; 14 × 16).
+    "counter-r": g('<circle r="4" fill="#e5483f"/><circle r="2.6" fill="none" stroke="#fff" stroke-width=".5" opacity=".6"/>'),
+    "counter-b": g('<circle r="4" fill="#3c7fc4"/><circle r="2.6" fill="none" stroke="#fff" stroke-width=".5" opacity=".6"/>'),
+    "counter-y": g('<circle r="4" fill="#fcd34d"/><circle r="2.6" fill="none" stroke="#fff" stroke-width=".5" opacity=".6"/>'),
+    "cup": g('<path d="M-7-16h14l-2 16h-10z" fill="#9fd3f0"/><path d="M-7.6-16h15.2" fill="none" stroke-width="1"/>'),
+    // A bowl turned upside down, to hide things under (origin: the middle of its rim on the table; 36 × 16).
+    "bowl-cover": g('<path d="M-18 0c0-10 8-16 18-16s18 6 18 16z" fill="#5b9bd5"/><path d="M-12-6c4 2 20 2 24 0" fill="none" stroke="#fff" stroke-width=".7" opacity=".7"/>' +
+      '<rect x="-4" y="-18" width="8" height="2.4" rx="1" fill="#5b9bd5"/>'),
+    // A nest of straw (origin: its bottom middle; 30 × 9); eggs set in it look as if they sit inside.
+    "nest": g('<path d="M-15-7c2 6 7 7 15 7s13-1 15-7c-6 2-24 2-30 0z" fill="#b57638"/><path d="M-12-4c6 1 18 1 24 0M-9-1.6c5 .8 13 .8 18 0" fill="none" stroke="#7a4b2a" stroke-width=".4"/>'),
+    // A hand seen from above, spread out for a hand span: thumb tip to little finger tip (origin: the thumb tip,
+    // the span goes 20 to the right).
+    "span-hand": (function () {
+      // fingers as thick rounded strokes: thumb to the left end, little finger to the right end, the rest fanned up
+      var f = "M10-5L.8-.6M10-5L5-13M10-5L10.5-14.5M10-5L15-13M10-5L19.2-.6";
+      return '<g fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="' + f + '" stroke="#3d2c22" stroke-width="3.6"/>' +
+        '<path d="' + f + '" stroke="#f3c39b" stroke-width="2.4"/><ellipse cx="10" cy="-5" rx="5" ry="3.6" fill="#f3c39b" stroke="#3d2c22" stroke-width=".6"/></g>';
+    })(),
+    // A wooden bench seen from the front (origin: the left end of its seat; look.len long, default 60).
+    "bench": function (k) {
+      var L = k.len || 60;
+      return g('<rect y="-3" width="' + L + '" height="4" rx="1" fill="#c98a4b"/><rect x="3" y="1" width="3" height="12" fill="#a0683f"/><rect x="' + (L - 6) + '" y="1" width="3" height="12" fill="#a0683f"/>');
+    },
+    // A toy rocket (origin: its bottom middle; 14 × 34), with a flame piece under it that starts hidden.
+    "rocket": g('<g data-part="flame" style="opacity:0"><path d="M-4 0c0 6 2 9 4 12 2-3 4-6 4-12z" fill="#f59e0b"/><path d="M-2 0c0 4 1 6 2 8 1-2 2-4 2-8z" fill="#fcd34d" stroke="none"/></g>' +
+      '<path d="M-7 0l-4 4V-6l4-4z" fill="#e5483f"/><path d="M7 0l4 4V-6l-4-4z" fill="#e5483f"/>' +
+      '<path d="M-7 0v-22c0-6 3-10 7-12 4 2 7 6 7 12V0z" fill="#fffaf0"/><circle cy="-18" r="3.4" fill="#9fd3f0"/><path d="M-7-4h14" fill="none"/>'),
+    // A whole-and-parts box: the whole on top, two parts under it (origin: its top middle; 60 × 40).
+    "pw-box": g('<rect x="-30" y="0" width="60" height="18" rx="2" fill="#fffaf0"/><rect x="-30" y="22" width="29" height="18" rx="2" fill="#fffaf0"/>' +
+      '<rect x="1" y="22" width="29" height="18" rx="2" fill="#fffaf0"/>'),
+    // Solids: a cuboid (a long box) and a cone, standing (origin: the bottom middle).
+    "cuboid": g('<path d="M-14 0v-12h24V0z" fill="#5b9bd5"/><path d="M-14-12l4-4h24l-4 4z" fill="#8fbbe6"/><path d="M10 0v-12l4-4V-4z" fill="#3f78b0"/>'),
+    "cone": g('<path d="M0-18L-8 0a8 2.4 0 0 0 16 0z" fill="#f6b73c"/><ellipse rx="8" ry="2.4" fill="none" stroke-dasharray="1 1" stroke-width=".4"/>'),
+    // A craft stick standing up (origin: its bottom middle; 2.4 × 18), and ten of them tied with a band (6 wide).
+    "pstick": g('<rect x="-1.2" y="-18" width="2.4" height="18" rx="1.2" fill="#e8c48a"/>'),
+    "bundle10": g([-2.4, -1.2, 0, 1.2, 2.4].map(function (x) { return '<rect x="' + (x - 1.2) + '" y="-18" width="2.4" height="18" rx="1.2" fill="#e8c48a"/>'; }).join("") +
+      '<rect x="-4" y="-10.6" width="8" height="3" rx="1" fill="#e5483f"/>'),
+    // A cross drawn over something to show it is taken away (origin: the middle).
+    "cross": '<path d="M-4-4L4 4M4-4L-4 4" fill="none" stroke="#e5483f" stroke-width="1.4" stroke-linecap="round"/>',
+    // A circle drawn in a row on paper, to stand for one thing in a story (origin: the middle).
+    "o-mark": '<circle r="3" fill="none" stroke="#3c7fc4" stroke-width="1"/>',
+    "paper-sheet": g('<rect x="-60" y="-26" width="120" height="52" rx="2" fill="#fffef6"/><path d="M-56-14h112M-56-2h112M-56 10h112" fill="none" stroke="#9fd3f0" stroke-width=".4"/>'),
+    // Snow lying on the ground, the same shape as "ground" (stage units).
+    "snow-ground": g('<path d="M0 58c30-4 60-5 90-2s50 2 70-1v35H0z" fill="#fbfdff"/>'),
+    // Units for measuring: a small cube (origin: its bottom left; 8 × 8) and a paper clip lying down (origin: its left
+    // end; 4 long).
+    "unit-cube": g('<rect y="-8" width="8" height="8" fill="#f59e0b"/>'),
+    "clip": '<path d="M.4-.9h3a.9.9 0 0 1 0 1.8H.8a.6.6 0 0 1 0-1.2h2.6" fill="none" stroke="#6b7280" stroke-width=".35"/>',
+    // A tree through the seasons (origin: the bottom of its trunk; 40 tall): look.season spring (blossom), summer,
+    // autumn (orange) or winter (bare branches).
+    "tree-season": function (k) {
+      var s = k.season || "summer";
+      var trunk = '<path d="M-3 0l1-20h4l1 20z" fill="#9a6a44"/>';
+      if (s === "winter") return g(trunk + '<path d="M0-18l-8-10M0-20l7-12M-1-14l-9-4M1-15l8-5" fill="none" stroke="#9a6a44" stroke-width="1.6"/>');
+      var fill = { spring: "#a8d695", summer: "#5a9a45", autumn: "#e8893b" }[s];
+      var dots = s === "spring" ? [[-8, -30], [4, -34], [9, -24], [-3, -22], [-10, -20], [2, -28]].map(function (p) { return '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="1.6" fill="#f9c6d6" stroke="none"/>'; }).join("") : "";
+      return g(trunk + '<circle cy="-28" r="14" fill="' + fill + '"/>' + dots);
+    },
+    // An empty number line (origin: its left end; look.len long, default 140), and a hop along it drawn as an arc
+    // (origin: where it starts; look.w wide, look.h high).
+    "eline": function (k) { var L = k.len || 140; return '<path d="M0 0h' + L + '" fill="none" stroke="#3d2c22" stroke-width="1" stroke-linecap="round"/>'; },
+    "hop-arc": function (k) { var w = k.w || 20, h = k.h || 10; return '<path d="M0 0Q' + (w / 2) + ' ' + (-h * 2) + ' ' + w + ' 0" fill="none" stroke="#e8a33d" stroke-width="1.2" stroke-linecap="round"/>'; },
+    "nl-tick": '<path d="M0-3v6" fill="none" stroke="#3d2c22" stroke-width="1"/>',
+    // A bar of the bar model (origin: its left end, middle; look.w long, 10 high, look.color), and the bracket over a
+    // whole bar (origin: its left end; look.w wide).
+    "bar-rect": function (k) { return g('<rect y="-5" width="' + (k.w || 40) + '" height="10" rx="1" fill="' + (k.color || "#9fd3f0") + '"/>'); },
+    "brace": function (k) { var w = k.w || 40; return '<path d="M0 4q0-4 4-4h' + (w / 2 - 6) + 'q2 0 2-3q0 3 2 3h' + (w / 2 - 6) + 'q4 0 4 4" fill="none" stroke="#3d2c22" stroke-width=".8"/>'; },
+    // A big cube drawn in perspective (origin: the bottom left corner of its front face; 30 wide) with pieces to light
+    // up: "front", "top", "side" (the faces we see), "back" (dashed hidden edges), "edges" (all 12 edges drawn
+    // thick, hidden ones dashed) and "corners" (8 dots, the hidden one hollow); the pieces start hidden.
+    "cube-big": g('<path d="M0 0v-30h30V0z" fill="#f6d39b"/><path d="M0-30l12-10h30l-12 10z" fill="#fbe3bb"/><path d="M30 0v-30l12-10v30z" fill="#e5b56f"/>' +
+      '<path d="M0 0l12-10h30M12-10v-30" fill="none" stroke-dasharray="1.6 1.2" stroke-width=".5"/>' +
+      '<path data-part="front" style="opacity:0" d="M0 0v-30h30V0z" fill="#f28b82" fill-opacity=".7"/>' +
+      '<path data-part="top" style="opacity:0" d="M0-30l12-10h30l-12 10z" fill="#f28b82" fill-opacity=".7"/>' +
+      '<path data-part="side" style="opacity:0" d="M30 0v-30l12-10v30z" fill="#f28b82" fill-opacity=".7"/>' +
+      '<g data-part="edges" style="opacity:0" fill="none" stroke="#3c7fc4" stroke-width="1.4"><path d="M0 0v-30h30V0zM0-30l12-10h30l-12 10M30 0l12-10v-30"/><path d="M0 0l12-10h30M12-10v-30" stroke-dasharray="1.6 1.2"/></g>' +
+      '<g data-part="corners" style="opacity:0" fill="#e5483f" stroke="none">' + [[0, 0], [30, 0], [0, -30], [30, -30], [12, -40], [42, -40], [42, -10]].map(function (p) { return '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="1.8"/>'; }).join("") +
+      '<circle cx="12" cy="-10" r="1.6" fill="#fff" stroke="#e5483f" stroke-width=".6"/></g>'),
+    // Match sticks making squares in a row: the first square (4 sticks), then each next square (3 sticks) (origin: the
+    // bottom left of that square; 14 wide).
+    "msq-first": '<path d="M0 0v-14h14V0z" fill="none" stroke="#c98a4b" stroke-width="1.6" stroke-linecap="round"/><circle cx="0" cy="-14" r="1" fill="#e5483f"/>',
+    "msq-next": '<path d="M0-14h14V0H0" fill="none" stroke="#c98a4b" stroke-width="1.6" stroke-linecap="round"/><circle cx="14" cy="-14" r="1" fill="#e5483f"/>',
+    // A third of a sangak seen from above (origin: its middle; 28 × 40), with the bread's dimples.
+    "sangak-third": g('<rect x="-14" y="-20" width="28" height="40" rx="3" fill="#dcaa62"/>' + [[-7, -12], [5, -6], [-4, 2], [7, 10], [-8, 14]].map(function (p) {
+      return '<ellipse cx="' + p[0] + '" cy="' + p[1] + '" rx="2" ry="1.2" fill="#b67a35" stroke="none"/>'; }).join("")),
+    // A flower bed seen from above, a rectangle (origin: its top left corner; look.w × look.h); a red line around a
+    // rectangle (a fence, drawn like a pencil); a cloth bag of marbles (origin: its bottom middle; 24 tall).
+    "bed-top": function (k) {
+      var w = k.w || 60, h = k.h || 30;
+      return '<g stroke-linejoin="round"><rect width="' + w + '" height="' + h + '" fill="#8cc66b" stroke="#3d2c22" stroke-width=".6"/></g>';
+    },
+    "rect-line": function (k) { var w = k.w || 60, h = k.h || 30; return '<path d="M0 0H' + w + 'V' + h + 'H0Z" fill="none" stroke="#e5483f" stroke-width="1.6" stroke-linejoin="round"/>'; },
+    "marble-bag": g('<path d="M-12 0c-3-8-1-16 4-19h16c5 3 7 11 4 19z" fill="#c4a27a"/><path d="M-8-19c2-3 14-3 16 0" fill="none" stroke-width=".8"/>'),
+    // A start line: where things are lined up to compare them (origin: its top; 40 tall).
+    "start-line": '<path d="M0 0v40" fill="none" stroke="#e5483f" stroke-width="1" stroke-dasharray="2 1.6"/>'
   });
 })();

@@ -64,5 +64,6 @@ B.addArt({
   "⬇️": '<g transform="rotate(180 50 50)"><path d="M50 8l40 42H66v40H34V50H10z" fill="#3f9c6d" stroke-width="4"/><path d="M58 58v24" stroke="#fff" stroke-width="5" opacity=".4"/></g>',
   "⬅️": '<g transform="rotate(-90 50 50)"><path d="M50 8l40 42H66v40H34V50H10z" fill="#3f9c6d" stroke-width="4"/><path d="M58 58v24" stroke="#fff" stroke-width="5" opacity=".4"/></g>',
   "➡️": '<g transform="rotate(90 50 50)"><path d="M50 8l40 42H66v40H34V50H10z" fill="#3f9c6d" stroke-width="4"/><path d="M42 58v24" stroke="#fff" stroke-width="5" opacity=".4"/></g>',
-  "🔄": '<circle cx="50" cy="50" r="40" fill="#4a90d9"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"><path d="M28 46a22 22 0 0 1 38-12"/><path d="M72 54a22 22 0 0 1-38 12"/></g><g fill="#fff" stroke="none"><path d="M60 22l14 4-4 14z"/><path d="M40 78l-14-4 4-14z"/></g>'
+  "🔄": '<circle cx="50" cy="50" r="40" fill="#4a90d9"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"><path d="M28 46a22 22 0 0 1 38-12"/><path d="M72 54a22 22 0 0 1-38 12"/></g><g fill="#fff" stroke="none"><path d="M60 22l14 4-4 14z"/><path d="M40 78l-14-4 4-14z"/></g>',
+  "🪜": '<path d="M32 6 22 94M68 6l10 88" fill="none" stroke-width="11"/><path d="M32 6 22 94M68 6l10 88" fill="none" stroke="#c98a4b" stroke-width="6"/><path d="M28 26h46M26 46h50M24 66h54M22 86h58" fill="none" stroke-width="9"/><path d="M28 26h46M26 46h50M24 66h54M22 86h58" fill="none" stroke="#e0a868" stroke-width="4.5"/>'
 });

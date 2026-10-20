@@ -184,6 +184,7 @@ B.RIG = B.RIG || {};
       (o.beard ? '<path d="M' + f(Hc[0] - hr * 0.2) + " " + f(Hc[1] + hr * 0.2) + "c.4 " + f(hr) + " " + f(hr * 0.9) + " " + f(hr * 1.1) + " " + f(hr * 1.15) + " " + f(hr * 0.35) + "c-.4-.3-.9-.2-1.3 0-.5-.3-1.4-.3-2 .1-.8-.3-1.6-.3-2.2-.6z" + '" fill="' + HO.col + '"/>' : "") +
       '<g data-part="eye"><ellipse cx="' + f(eye[0]) + '" cy="' + f(eye[1]) + '" rx=".55" ry=".75" fill="' + INK + '" stroke="none"/></g>' +
       hide("shut", '<path d="M' + f(eye[0] - 0.7) + " " + f(eye[1]) + "q.7 .6 1.4 0" + '" fill="none" stroke-width=".45"/>') +
+      (o.face ? o.face(Hc, hr, eye) : "") +
       '<g data-part="mouth"><path d="M' + f(mouth[0] - 0.9) + " " + f(mouth[1] - 0.2) + "q.7 .7 1.4 .1" + '" fill="none" stroke-width=".45"/></g>' +
       hide("open", '<ellipse cx="' + f(mouth[0] - 0.2) + '" cy="' + f(mouth[1]) + '" rx=".75" ry=".95" fill="#9c3f33" stroke-width=".4"/>', f(mouth[0]) + " " + f(mouth[1])) +
       (o.glasses ? '<circle cx="' + f(eye[0]) + '" cy="' + f(eye[1]) + '" r="1.3" fill="none" stroke-width=".4"/><path d="M' + f(eye[0] - 1.3) + " " + f(eye[1]) + "h" + f(-hr * 0.5) + '" fill="none" stroke-width=".4"/>' : "") +
@@ -356,7 +357,8 @@ B.RIG = B.RIG || {};
     ] });
   R["h-boy-front"] = front({ name: "h-boy-front", hair: "short", shirt: "#f2c14e", pants: "#3f6f8f", shoes: "#e5483f",
     poses: { hands: { armL: [-6.4, -18], armR: [6.4, -18] }, hug: { armL: [2.8, -18], armR: [-2.8, -18.6] },
-      stop: { armR: [7.6, -26.6] }, shh: { armL: [-0.2, -24.4, -1] }, give: { armL: [-6.8, -15.2], armR: [6.8, -15.2] } } });
+      stop: { armR: [7.6, -26.6] }, shh: { armL: [-0.2, -24.4, -1] }, give: { armL: [-6.8, -15.2], armR: [6.8, -15.2] }, brush: { armR: [6.2, -24.4] } },
+    hold: [{ name: "brush", arm: "R", pose: "brush", svg: '<rect x="1" y="-25.2" width="10" height="1.4" rx=".7" fill="#7cc6e8" stroke-width=".4"/><rect x="-1.2" y="-25.5" width="2.6" height="2" rx=".5" fill="#fff" stroke-width=".35"/>' }] });
   var BOY = { name: "h-boy", hair: "short", shirt: "#f2c14e", pants: "#3f6f8f", shoes: "#e5483f",
     poses: {
       eat: { armF: [5.4, -26.2], head: 4 },           // bread to the mouth
@@ -375,7 +377,8 @@ B.RIG = B.RIG || {};
   R["h-boy"] = side(BOY);
   R["h-girl2"] = side({ name: "h-girl2", hair: "auto", kind: "girl", shirt: "#8e7cc3", pants: "#3f6f8f", shoes: "#f59e0b",
     poses: { book: { armF: [8.4, -16.4], armB: [8.6, -16.8] }, ear: { armF: [2.6, -28.6], head: -4 } },
-    hold: [{ name: "book", pose: "book", svg: '<path d="M7.2-20.6l3 .8 3-.8v4.6l-3 .8-3-.8z" fill="#fff" stroke-width=".4"/><path d="M10.2-19.8v4.6" fill="none" stroke-width=".35"/><path d="M7-20.8l.2 5.2 3 .8 3-.8.2-5.2" fill="none" stroke="#e5483f" stroke-width=".5"/>' },
+    hold: [
+      { name: "book", pose: "book", svg: '<path d="M7.2-20.6l3 .8 3-.8v4.6l-3 .8-3-.8z" fill="#fff" stroke-width=".4"/><path d="M10.2-19.8v4.6" fill="none" stroke-width=".35"/><path d="M7-20.8l.2 5.2 3 .8 3-.8.2-5.2" fill="none" stroke="#e5483f" stroke-width=".5"/>' },
       { name: "phone", pose: "ear", svg: '<rect x="3.2" y="-31" width="1.8" height="4.6" rx=".5" fill="#3f4a5a" stroke-width=".35" transform="rotate(14 4 -28.6)"/>' }] });
   R["h-girl-top"] = top({ shirt: "#8e7cc3", pants: "#3f6f8f", shoes: "#f59e0b" });
   var ADULT_EAR = [2.6, -40.4];
@@ -384,8 +387,10 @@ B.RIG = B.RIG || {};
     hold: [{ name: "phone", pose: "ear", svg: '<rect x="2.4" y="-45.4" width="2" height="5.2" rx=".5" fill="#3f4a5a" stroke-width=".35" transform="rotate(14 3.4 -42.8)"/>' },
       { name: "ladle", pose: "stir", svg: '<path d="M11.2-27.4l3.6 9.4" fill="none" stroke="#b8c0c8" stroke-width="1"/>' }] });
   R["h-mom-home"] = side({ name: "h-mom-home", adult: true, hair: "auto", kind: "woman", scarfCol: "#e46b8a", shirt: "#3fb0a8", pants: "#3d4660", shoes: "#6b3f26", long: true,
-    poses: { ear: { armF: ADULT_EAR, head: -4 }, stir: { armF: [11, -27] }, high: { armF: [9, -58] } },
-    hold: [{ name: "phone", pose: "ear", svg: '<rect x="2.4" y="-45.4" width="2" height="5.2" rx=".5" fill="#3f4a5a" stroke-width=".35" transform="rotate(14 3.4 -42.8)"/>' },
+    poses: { ear: { armF: ADULT_EAR, head: -4 }, stir: { armF: [11, -27] }, high: { armF: [9, -58] }, book: { armF: [11.6, -27], armB: [11.8, -27.6], head: 12 }, spoon: { upper: 10, armF: [12, -30] } },
+    hold: [{ name: "spoon", pose: "spoon", svg: '<path d="M12-30.4l4.6-.4" fill="none" stroke="#b8c0c8" stroke-width=".9"/><ellipse cx="17.6" cy="-30.9" rx="1.5" ry=".8" fill="#b8c0c8" stroke-width=".4"/><ellipse cx="17.6" cy="-31.2" rx="1" ry=".4" fill="#e5483f" stroke="none"/>' },
+      { name: "book", pose: "book", svg: '<path d="M10-31.4l3.6 1 3.6-1v5.6l-3.6 1-3.6-1z" fill="#fff" stroke-width=".4"/><path d="M13.6-30.4v5.6" fill="none" stroke-width=".35"/><path d="M9.8-31.6l.2 6.2 3.6 1 3.6-1 .2-6.2" fill="none" stroke="#5b9bd5" stroke-width=".6"/>' },
+      { name: "phone", pose: "ear", svg: '<rect x="2.4" y="-45.4" width="2" height="5.2" rx=".5" fill="#3f4a5a" stroke-width=".35" transform="rotate(14 3.4 -42.8)"/>' },
       { name: "ladle", pose: "stir", svg: '<path d="M11.2-27.4l3.6 9.4" fill="none" stroke="#b8c0c8" stroke-width="1"/><ellipse cx="14.9" cy="-17.9" rx="1.4" ry=".8" fill="#b8c0c8" stroke-width=".4"/>' }] });
   R["h-dad"] = side({ name: "h-dad", adult: true, hair: "short", hairCol: "#3d2c22", beard: true, shirt: "#5aa36a", pants: "#3d4660", shoes: "#6b3f26", long: true,
     poses: { ear: { armF: ADULT_EAR, head: -4 } },
@@ -416,6 +421,19 @@ B.RIG = B.RIG || {};
         pts.push(f(a[0] + (b[0] - a[0]) * t + r * Math.sin(w)) + " " + f(a[1] + (b[1] - a[1]) * t + r - r * Math.cos(w)));
       }
       out.push({ id: id, path: "M" + pts.join("L"), at: at + i * each, dur: each, ease: "linear" });
+    }
+    return out;
+  };
+
+  /* Music notes rising from (x, y): the parts ids (drawings of a note) take turns, one every `every` ms, n in all,
+     each drifting up and to the left and fading. Tracks for a scene. */
+  B.hnotes = function (ids, x, y, at, every, n) {
+    var out = [];
+    for (var i = 0; i < n; i++) {
+      var id = ids[i % ids.length], t = at + i * every, dx = i % 2 ? -10 : -4;
+      out.push({ id: id, to: { o: 1 }, at: t, dur: 150 },
+        { id: id, path: "M" + x + " " + y + "Q" + (x + dx - 4) + " " + (y - 8) + " " + (x + dx) + " " + (y - 18), at: t, dur: every * 1.8 },
+        { id: id, to: { o: 0 }, at: t + every * 1.5, dur: every * 0.3 });
     }
     return out;
   };
@@ -755,4 +773,350 @@ B.RIG = B.RIG || {};
   // A speech bubble with a house in it: "this is where we live" (origin: its tail, bottom left).
   R["h-sayhome"] = g('<path d="M0 0l3-5H2c-2 0-3-1-3-3v-12c0-2 1-3 3-3h22c2 0 3 1 3 3v12c0 2-1 3-3 3H7z" fill="#fff"/>' +
     '<path d="M8-13l5-4 5 4v6H8z" fill="#f0d2a6"/><path d="M7-13l6-5 6 5" fill="#b5523b"/><rect x="11.8" y="-11" width="2.4" height="4" fill="#5a4636"/>');
+  /* ---------------- toilet, bath, nails and nose (health-seed-5) ---------------- */
+  // A bathroom: tiled wall and a tiled floor from y = 62 (stage units).
+  R["h-bathroom"] = roomBg("#dff1f7", "#c6e4ee", "#eef1f2", "#b9c6cc") +
+    '<g fill="none" stroke="#b9dbe7" stroke-width=".5"><path d="M0 14h160M0 26h160M0 38h160M0 50h160M16 4v58M32 4v58M48 4v58M64 4v58M80 4v58M96 4v58M112 4v58M128 4v58M144 4v58"/></g>';
+  // A toilet from the side, its lid shut, the bowl facing right, and the flush plate on the wall above it (origin: the
+  // middle of its foot). Pieces: button (on the plate; it goes in), flush (swirling lines above the lid, hidden).
+  R["h-toilet"] = g('<rect x="-9" y="-36" width="8" height="5.6" rx=".8" fill="#e9eef1"/>' +
+    '<g data-part="button" data-pivot="-5 -33.2"><rect x="-7.6" y="-34.8" width="5.2" height="3.2" rx=".6" fill="#b8c0c8"/></g>' +
+    '<path d="M-10-15h20c1 0 1.6.6 1.6 1.6 0 4-3.6 7-8.6 7.4L2 0h-7l-.4-6.4C-7-7.4-8-10-8-13z" fill="#fff"/>' +
+    '<path d="M-10-17h22c.6 0 1 .4 1 1s-.4 1-1 1h-22z" fill="#e9eef1"/><path d="M-12-15h2" fill="none" stroke-width="1.4"/>' +
+    hide("flush", '<g fill="none" stroke="#5ab0e0" stroke-width=".6"><path d="M0-20c2-2 5-2 6 0M2-23c2-1.6 4-1.6 5 0M-2-18c1-1.4 3-1.6 4-.4"/></g>'));
+  // A shower on the wall (origin: its head); piece water (running, hidden at first).
+  R["h-shower"] = g('<path d="M2-40V-6c0-2-1.6-3-4-3" fill="none" stroke="#b8c0c8" stroke-width="1.4"/><path d="M-6-2h8l-1-3h-6z" fill="#b8c0c8"/>' +
+    hide("water", '<g><path d="M-4.6 0v24M-2 0v26M.6 0v24" fill="none" stroke="#9fd3f0" stroke-width=".9"/>' +
+      '<path class="flow" d="M-4.6 0v24M-2 0v26M.6 0v24" fill="none" stroke="#fff" stroke-width=".5" stroke-dasharray="2 4"/></g>'));
+  // The back of a hand, fingers up, close up (origin: the wrist). Pieces t1–t4: the long white tips of the nails,
+  // which shrink when they are cut (sy); dirt: a little dirt under them.
+  R["h-nailhand"] = (function () {
+    var F = [[-7.2, 7.4], [-3.6, 9], [0, 8.6], [3.6, 6.6]];
+    var fing = F.map(function (n) { return '<rect x="' + n[0] + '" y="' + (-13 - n[1]) + '" width="3.3" height="' + (n[1] + 3) + '" rx="1.65" fill="' + SKIN + '"/>'; }).join("");
+    var nails = F.map(function (n) { return '<rect x="' + (n[0] + .6) + '" y="' + (-12.4 - n[1]) + '" width="2.1" height="2.6" rx=".9" fill="#fbe3e8" stroke-width=".35"/>'; }).join("");
+    var tips = F.map(function (n, i) {
+      var top = -13 - n[1];
+      return piece("t" + (i + 1), [n[0] + 1.65, top + .6], '<path d="M' + f(n[0] + .4) + " " + f(top + .8) + "v-3.2c0-.7.6-1.2 1.25-1.2s1.25.5 1.25 1.2v3.2" + '" fill="#fffaf0" stroke-width=".35"/>' +
+        '<path d="M' + f(n[0] + .7) + " " + f(top - .4) + "h1.9" + '" fill="none" stroke="#7a5a3a" stroke-width=".9"/>');
+    }).join("");
+    return g('<rect x="-8" y="-1" width="16" height="5" rx="1.5" fill="#5b9bd5"/><path d="M-7 0c-.6-4-.8-9-.4-13.6h14.8c.4 4.6.2 9.6-.4 13.6z" fill="' + SKIN + '"/>' +
+      fing + '<rect x="-1.6" y="-7.8" width="3.3" height="8.4" rx="1.65" fill="' + SKIN + '" transform="translate(-7.2 -3) rotate(-38)"/>' + nails + tips +
+      '<path d="M-5-14.4q.6-.6 1.2 0M-1.4-15.6q.6-.6 1.2 0M2.2-15.4q.6-.6 1.2 0M5.6-13.6q.6-.6 1.2 0" fill="none" stroke-width=".3" opacity=".5"/>');
+  })();
+  // Nail clippers (origin: the cutting edge, at the left end).
+  R["h-clipper"] = g('<path d="M0-.8h9.6c.8 0 1.4.4 1.4.8s-.6.8-1.4.8H0z" fill="#b8c0c8"/><g data-part="lever" data-pivot="10 -1"><path d="M1.4-1.4l9.4-1.6" fill="none" stroke="#8a96a1" stroke-width="1.2"/></g><circle cx="1.2" cy="0" r=".5" fill="#5a6b7a"/>');
+  /* ---------------- moving like animals (health-seed-7) ---------------- */
+  // A bear on all fours from the side, facing right (origin: between its feet). Its legs are walker pieces (armF and
+  // armB in front, legF and legB behind), so a walk track swings them.
+  R["h-bear"] = (function () {
+    var leg = function (n, x, back) {
+      return '<g data-part="' + n + '" data-pivot="' + x + ' -9"><rect x="' + (x - 2.2) + '" y="-10" width="4.4" height="10" rx="2" fill="' + (back ? "#7a4f30" : "#8a5a3a") + '"/>' +
+        '<path d="M' + (x - 2.2) + ' -.4h5" fill="none" stroke-width=".5"/></g>';
+    };
+    return g(leg("legB", -9, true) + leg("armB", 7, true) +
+      '<ellipse cx="-1" cy="-13" rx="13" ry="7.4" fill="#8a5a3a"/><circle cx="-13.4" cy="-15" r="1.6" fill="#8a5a3a"/>' +
+      '<circle cx="13" cy="-17" r="5.4" fill="#8a5a3a"/><circle cx="11" cy="-22" r="1.8" fill="#8a5a3a"/><circle cx="11" cy="-22" r=".8" fill="#c99a6a" stroke="none"/>' +
+      '<ellipse cx="17.4" cy="-15.6" rx="2.6" ry="2" fill="#c99a6a"/><circle cx="19.4" cy="-16.2" r=".8" fill="#3d2c22"/><ellipse cx="14.4" cy="-18.6" rx=".55" ry=".75" fill="#3d2c22" stroke="none"/>' +
+      leg("legF", -6) + leg("armF", 10));
+  })();
+  // A stork from the side, facing right, standing on one leg (origin: its foot). Piece leg: the other leg, which
+  // folds up under it (turn it).
+  R["h-stork"] = g('<g data-part="leg" data-pivot="-1 -16"><path d="M-1-16l0 15" fill="none" stroke="#e5483f" stroke-width="1"/></g>' +
+    '<path d="M1-16V0M-1 0h4" fill="none" stroke="#e5483f" stroke-width="1"/>' +
+    '<path d="M-8-22c0-4 4-6 9-5 3 .6 5 2.4 5 4.6 0 3-3 5-7 5-4 0-7-1.6-7-4.6z" fill="#fff"/><path d="M-9-21c2-3 6-3.6 9-2.4-1 2.6-4 4-9 2.4z" fill="#3d2c22"/>' +
+    '<path d="M4-25c1-4 1-8 0-11" fill="none" stroke="#fff" stroke-width="2.4"/><path d="M4-25c1-4 1-8 0-11" fill="none" stroke-width=".5" opacity=".5"/>' +
+    '<circle cx="4.4" cy="-37" r="2.6" fill="#fff"/><circle cx="5.2" cy="-37.6" r=".5" fill="#3d2c22" stroke="none"/><path d="M6.6-37.4l7 1.4-7 .6z" fill="#e5483f"/>');
+  /* ---------------- run and stop, jump, balance (health-seed-8) ---------------- */
+  // A chalk line on the ground seen from the side: a long thin strip (origin: its left end), 60 long.
+  R["h-line"] = '<path d="M0 0h60" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><path d="M0 0h60" fill="none" stroke="#c9a074" stroke-width=".4" stroke-dasharray="3 2"/>';
+  /* ---------------- the soft sock ball (health-seed-9) ---------------- */
+  // A ball made of rolled-up socks (origin: its middle), radius 3.4; its stripes show it turning.
+  R["h-sockball"] = g('<circle r="3.4" fill="#f2c14e"/><path d="M-3.2-1.2c2 .8 4.4.8 6.4 0M-3.2 1.2c2 .8 4.4.8 6.4 0" fill="none" stroke="#e5483f" stroke-width=".7"/>' +
+    '<path d="M-.6-3.3c1.2.6 1.6 1.6 1.4 2.6" fill="none" stroke-width=".4"/>');
+  // A sock lying flat (origin: its middle); the toe points right.
+  R["h-sock"] = g('<path d="M-3-6h4v6.4c0 .8.6 1.2 1.4 1.2h2.6c1.4 0 2 1 2 2s-.6 2-2 2H0c-2 0-3-1-3-3z" fill="#f2c14e"/><path d="M-3-4.2h4M-3-2.4h4" fill="none" stroke="#e5483f" stroke-width=".7"/>');
+  /* ---------------- bedtime (health-seed-12) ---------------- */
+  // The room in the dark: a dark blue veil over the whole stage (stage units); fade it in.
+  R["h-dark"] = '<rect width="160" height="90" fill="#1f2a44" opacity=".6"/>';
+  /* ---------------- hot and sharp (health-seed-14) ---------------- */
+  // An iron standing on its heel, from the side, the point to the right (origin: the middle of its sole).
+  R["h-iron"] = g('<path d="M-7 0h12c1.4 0 2.6-.8 3.4-2L5-6H-5c-1.4 0-2 1-2 2.4z" fill="#5b9bd5"/><rect x="-7" y="-.6" width="15.4" height="1.4" rx=".6" fill="#b8c0c8"/>' +
+    '<path d="M-4-6c0-3 1-4 3-4h4c1.6 0 2 1 1.6 2.4L4-6" fill="none" stroke-width="1.6"/><circle cx="-3" cy="-3" r=".7" fill="#e5483f"/>');
+  // A gas heater (بخاری) from the front (origin: the middle of its feet); piece glow: the flames behind its window flicker.
+  R["h-heater"] = g('<rect x="-11" y="-26" width="22" height="24" rx="2" fill="#c4673a"/><rect x="-8" y="-20" width="16" height="11" rx="1" fill="#3d2c22"/>' +
+    piece("glow", [0, -9], '<path d="M-5-9c0-3 2-3.4 2-6 1.4 1.6 2 3.4 2 6zM-1-9c0-3.4 2-4 2-6.6 1.6 1.8 2.2 3.8 2.2 6.6zM3-9c0-2.6 1.6-3 1.8-5 1.2 1.4 1.6 3 1.6 5z" fill="#f59e0b" stroke="none"/>') +
+    '<path d="M-8-15h16" fill="none" stroke="#b8c0c8" stroke-width=".4"/><rect x="-9" y="-2" width="3" height="2" fill="#5a4636"/><rect x="6" y="-2" width="3" height="2" fill="#5a4636"/>' +
+    '<path d="M-2-26v-10" fill="none" stroke="#9aa8b4" stroke-width="2.4"/><path d="M-2-26v-10" fill="none" stroke-width=".4"/>');
+  // Pieces of a broken glass on the floor, seen a little from above (origin: their middle).
+  R["h-shards"] = g('<g fill="#dff1f7" stroke="#7fb8d8" stroke-width=".4"><path d="M-8 0l3-2.4 1.4 2.6z"/><path d="M-2-1l2.6-1.6 1.2 2.4-3.4.6z"/><path d="M4 .4l2-2.6 2.6 2z"/><path d="M-4.6 1.6l2.4-1 .6 1.6z"/></g>' +
+    '<path d="M-6.4-.6l1-.6M5.2-.8l.8-.6" fill="none" stroke="#fff" stroke-width=".4"/>');
+  /* ---------------- look like sweets, but no! (health-seed-15) ---------------- */
+  // A bottle of cleaning liquid with a spray top, bright like a drink (origin: its bottom).
+  R["h-cleaner"] = g('<path d="M-3.6 0h7.2l.4-9c0-1.4-1-2.4-2.4-2.4h-3.2c-1.4 0-2.4 1-2.4 2.4z" fill="#7cc6e8"/><path d="M-3.4-6h6.8v4h-6.8z" fill="#fff" stroke="none" opacity=".8"/>' +
+    '<rect x="-1.6" y="-14" width="3.2" height="2.6" fill="#f2c14e"/><path d="M1.6-13.4h3l-.6 1.6H1.6z" fill="#f2c14e"/><path d="M-1.6-5h3.2" fill="none" stroke="#5b9bd5" stroke-width=".5"/>');
+  // Small round batteries (button cells), lying on a table (origin: their middle).
+  R["h-cells"] = g('<g fill="#c9d1d8" stroke-width=".35"><ellipse cx="-2.6" cy="0" rx="1.8" ry=".9"/><ellipse cx="1.4" cy=".4" rx="1.8" ry=".9"/><ellipse cx="-.4" cy="-1" rx="1.8" ry=".9"/></g>' +
+    '<path d="M-3.4-.2h1.4M.6.2h1.4M-1.2-1.2h1.4" fill="none" stroke="#fff" stroke-width=".3"/>');
+  // Small shiny magnet balls (origin: their middle).
+  R["h-magnets"] = g('<g stroke-width=".35"><circle cx="-2.4" cy="0" r="1.1" fill="#5a6b7a"/><circle cx="-.2" cy="0" r="1.1" fill="#e5483f"/><circle cx="2" cy="0" r="1.1" fill="#5a6b7a"/><circle cx=".9" cy="-1.8" r="1.1" fill="#e5483f"/></g>' +
+    '<g fill="#fff" stroke="none" opacity=".7"><circle cx="-2.7" cy="-.4" r=".3"/><circle cx="-.5" cy="-.4" r=".3"/><circle cx="1.7" cy="-.4" r=".3"/><circle cx=".6" cy="-2.2" r=".3"/></g>');
+  // A wall cupboard high up, with a lock (origin: its bottom middle); piece door opens round its left edge.
+  R["h-cupboard"] = g('<rect x="-12" y="-16" width="24" height="16" rx="1" fill="#b57638"/><rect x="-10.4" y="-14.4" width="20.8" height="12.8" fill="#8a5a3a" stroke="none"/>' +
+    '<path d="M-10.4-8h20.8" fill="none" stroke="#c98a4b" stroke-width=".6"/>' +
+    piece("door", [-12, -8], '<rect x="-12" y="-16" width="24" height="16" rx="1" fill="#c98a4b"/><circle cx="8" cy="-8" r=".9" fill="#fcd34d"/><rect x="6.6" y="-6.4" width="2.8" height="2.4" rx=".4" fill="#fcd34d" stroke-width=".35"/><path d="M7.2-6.4v-1a.8 .8 0 0 1 1.6 0v1" fill="none" stroke-width=".35"/>'));
+  /* ---------------- water play with a grown-up (health-seed-17) ---------------- */
+  // A حوض: a pool in the courtyard floor, seen a little from above (origin: its middle); piece ripple.
+  R["h-hoz"] = g('<ellipse rx="26" ry="7" fill="#7cc6e8"/><ellipse rx="22.6" ry="5.4" fill="#5ab0e0" stroke="none"/>' +
+    '<path d="M-26 0a26 7 0 0 0 52 0v2.4a26 7 0 0 1-52 0z" fill="#d9c3a5"/>' +
+    piece("ripple", [0, 0], '<g fill="none" stroke="#fff" stroke-width=".5" opacity=".8"><ellipse rx="6" ry="1.6"/><ellipse rx="11" ry="3"/></g>') +
+    '<g fill="#e5483f" stroke-width=".35"><ellipse cx="8" cy="-1" rx="1.6" ry=".8"/><path d="M6.4-1l-1.2-.8v1.6z"/></g>');
+  // A band of shallow water at the edge of the sea, in front of feet (stage units, from y 64 to 72).
+  R["h-shallow"] = '<path d="M0 64c40-2 80-2 160 0v6c-40 2-80 2-160 0z" fill="#5ab0e0" opacity=".55"/>';
+  /* ---------------- near the street, and the car seat (health-seed-19) ---------------- */
+  // A child's car seat on the back seat of "h-car-in" (stage units): a high back with side wings and a cushion.
+  R["h-carseat"] = g('<path d="M47 67V40c0-3 2-5 5-5h6c3 0 4.6 2 4.6 5v27z" fill="#e5483f"/><path d="M49.6 62V42c0-1.6 1-2.6 2.6-2.6h4.6c1.6 0 2.4 1 2.4 2.6v20z" fill="#c43c34" stroke="none"/>' +
+    '<rect x="46" y="64" width="22" height="5" rx="1.6" fill="#e5483f"/>');
+  /* ---------------- my safe grown-ups (health-seed-20) ---------------- */
+  // A green board on a classroom wall with a few chalk shapes (origin: its middle).
+  R["h-board"] = g('<rect x="-24" y="-12" width="48" height="24" rx="1" fill="#a0683f"/><rect x="-22" y="-10" width="44" height="20" fill="#3f6f5a"/>' +
+    '<g fill="none" stroke="#fff" stroke-width=".6" opacity=".85"><circle cx="-12" cy="-2" r="4"/><path d="M-2-6l4 8h-8z"/><rect x="8" y="-6" width="8" height="8"/></g>');
+  /* ---------------- a little screen, lots of play (health-seed-21) ---------------- */
+  // A television on a low cabinet (origin: the middle of the cabinet's bottom). The screen shows a cartoon (piece show:
+  // a sun over a hill, whose sun moves), or something that upsets (piece grey: grey clouds, hidden), or is off (piece off).
+  R["h-tv"] = g('<rect x="-16" y="-10" width="32" height="10" rx="1" fill="#b57638"/><path d="M-4-5h8" fill="none" stroke-width=".6"/>' +
+    '<rect x="-15" y="-31" width="30" height="20" rx="1.4" fill="#3d4660"/><rect x="-13" y="-29" width="26" height="16" fill="#bfe3f5" stroke="none"/>' +
+    '<g data-part="show"><path d="M-13-13c5-5 12-6 26-2v2h-26z" fill="#8bc34a" stroke="none"/>' + piece("sun", [-6, -24], '<circle cx="-6" cy="-24" r="2.6" fill="#fcd34d" stroke="none"/>') + "</g>" +
+    hide("grey", '<rect x="-13" y="-29" width="26" height="16" fill="#8a96a1" stroke="none"/><g fill="#5a6b7a" stroke="none"><circle cx="-5" cy="-22" r="4"/><circle cx="1" cy="-23" r="5"/><circle cx="6" cy="-21" r="3.6"/></g>') +
+    hide("off", '<rect x="-13" y="-29" width="26" height="16" fill="#2b3240" stroke="none"/>') +
+    '<rect x="-3" y="-11" width="6" height="1.4" fill="#3d4660"/>');
+  /* ---------------- strange things: don't touch, step back, tell (health-all-4) ---------------- */
+  // Things that may lie on the ground, each lying flat (origin: their middle). Plain, everyday-looking, never scary.
+  // A used syringe.
+  R["h-syringe"] = g('<rect x="-5" y="-1.2" width="7" height="2.4" rx=".4" fill="#eef8fc"/><path d="M-4-1.2v2.4M-2.6-1.2v.8M-1.2-1.2v.8M.2-1.2v.8" fill="none" stroke-width=".3"/>' +
+    '<path d="M-7-.6h2v1.2h-2zM-8-1.4h1v2.8h-1z" fill="#b8c0c8"/><path d="M2 0h4.4" fill="none" stroke="#9aa8b4" stroke-width=".5"/>');
+  // A battery (a big round one, as in a torch).
+  R["h-battery"] = g('<rect x="-5" y="-1.8" width="9" height="3.6" rx=".6" fill="#3d4660"/><rect x="-1" y="-1.8" width="5" height="3.6" fill="#f2c14e"/><rect x="4" y="-.8" width="1" height="1.6" fill="#b8c0c8"/>');
+  // A firework that did not go off: a small paper tube with a fuse.
+  R["h-cracker"] = g('<rect x="-4" y="-1.6" width="8" height="3.2" rx=".6" fill="#e5483f"/><path d="M-2-1.6v3.2M2-1.6v3.2" fill="none" stroke="#fcd34d" stroke-width=".6"/><path d="M4 0c1 0 1.4-.8 2.4-.4" fill="none" stroke-width=".5"/>');
+  // An unknown, rusty metal thing: a bent piece of pipe.
+  R["h-metal"] = g('<path d="M-6 1.6h6l3-3.6h3" fill="none" stroke="#8a6f52" stroke-width="2.6"/><path d="M-6 1.6h6l3-3.6h3" fill="none" stroke="#b07a4a" stroke-width="1.6"/><circle cx="-2" cy="1.4" r=".4" fill="#6b4f36" stroke="none"/>');
+  // A closed bag left on the ground (origin: its bottom middle).
+  R["h-bag"] = g('<path d="M-6 0c-.6-4 0-7 2-8.6l1-1.4h6l1 1.4c2 1.6 2.6 4.6 2 8.6z" fill="#cfd8dc"/><path d="M-2-10c0-1.6 1-2.4 2-2.4s2 .8 2 2.4" fill="none" stroke-width=".6"/><path d="M-3-5c2 .6 4 .6 6 0" fill="none" stroke="#9aa8b4" stroke-width=".4"/>');
+  // A small "stop here" line in front of something on the ground: a ring to keep away (origin: its middle).
+  R["h-keepout"] = '<ellipse rx="9" ry="3" fill="none" stroke="#fff" stroke-width="2"/><ellipse rx="9" ry="3" fill="none" stroke="#f59e0b" stroke-width="1" stroke-dasharray="1.6 1.2"/>';
+  /* ---------------- our family plan (health-all-5) ---------------- */
+  // A fridge from the front (origin: the middle of its bottom); piece note: a paper on the door with the numbers to
+  // call (lines and a little phone, no text), held by a magnet.
+  R["h-fridge"] = g('<rect x="-11" y="-46" width="22" height="46" rx="2" fill="#eef1f2"/><path d="M-11-30h22" fill="none" stroke-width=".5"/><path d="M8-42v8M8-26v12" fill="none" stroke-width="1"/>' +
+    piece("note", [-2, -22], '<rect x="-8" y="-27" width="12" height="11" fill="#fffaf0" stroke-width=".4"/><circle cx="-2" cy="-27" r=".9" fill="#e5483f"/>' +
+      '<path d="M-6-23.4h4M-6-21h6M-6-18.6h5" fill="none" stroke="#5b6fb5" stroke-width=".55"/><path d="M1.4-24.4c0 1.4 1 2.4 2.2 2.4l.5-.9-.9-.6-.4.5c-.6-.2-1-.7-1.1-1.3l.5-.3-.5-1z" fill="#3d2c22" stroke="none"/>'));
+  // The fridge's lower door standing open, to lay over h-fridge at the same spot (origin: the middle of its foot).
+  R["h-fridge-open"] = g('<rect x="-10" y="-29" width="20" height="28" fill="#dfe9ee" stroke-width=".5"/><path d="M-10-20h20M-10-11h20" fill="none" stroke="#b9c8cf" stroke-width=".8"/>' +
+    '<path d="M11-29.5l6 2v26l-6 1.5z" fill="#eef1f2"/><circle cx="0" cy="-27" r="1.2" fill="#fff4c2" stroke="none"/>');
+  // A tree with a round crown (origin: the bottom of its trunk).
+  R["h-tree"] = g('<rect x="-2.4" y="-24" width="4.8" height="24" fill="#8a5a3a"/><circle cy="-30" r="13" fill="#5a9a45"/><circle cx="-9" cy="-24" r="8" fill="#5a9a45"/><circle cx="9" cy="-24" r="8" fill="#5a9a45"/>' +
+    '<path d="M-4-32q2-2 4 0M3-26q2-2 4 0" fill="none" stroke="#3f7a32" stroke-width=".6"/>');
+  /* ---------------- the doctor, the dentist, a vaccine (health-sprout-6) ---------------- */
+  // An eye chart on the wall: rows of shapes getting smaller (origin: its middle).
+  R["h-eyechart"] = g('<rect x="-10" y="-16" width="20" height="32" rx="1" fill="#fff"/>' +
+    '<g fill="#3d2c22" stroke="none"><circle cx="0" cy="-10" r="3"/><rect x="-6" y="-3.6" width="4" height="4"/><path d="M3-3.6l2.4 4h-4.8z"/>' +
+    '<circle cx="-6" cy="5" r="1.4"/><rect x="-1.4" y="3.6" width="2.8" height="2.8"/><circle cx="5" cy="5" r="1.4"/>' +
+    '<circle cx="-6" cy="11" r=".9"/><circle cx="-2" cy="11" r=".9"/><circle cx="2" cy="11" r=".9"/><circle cx="6" cy="11" r=".9"/></g>');
+  // A small round plaster (origin: its middle).
+  R["h-plaster"] = '<ellipse rx="2.2" ry="1.6" fill="#f2c79b" stroke="#c98f63" stroke-width=".3"/><ellipse rx="1" ry=".7" fill="#e9b88a" stroke="none"/>';
+  // A sticker with a star, given after a visit (origin: its middle).
+  R["h-sticker"] = g('<circle r="4" fill="#fcd34d"/><path d="M0-2.6l.8 1.7 1.8.2-1.3 1.2.4 1.8L0 1.4l-1.7.9.4-1.8-1.3-1.2 1.8-.2z" fill="#fff" stroke-width=".3"/>');
+  /* ---------------- my plate (health-sprout-8) ---------------- */
+  // A big plate seen from above (origin: its middle), radius 26.
+  R["h-plate"] = g('<circle r="26" fill="#fff"/><circle r="20" fill="none" stroke="#c9d3d8" stroke-width=".6"/><path d="M-14-14a20 20 0 0 1 10-5" fill="none" stroke="#fff" stroke-width="1.2"/>');
+  /* ---------------- hopping and the jumping rope (health-sprout-11) ---------------- */
+  // A jumping rope around a child seen from the front (origin: the middle of the loop). Turn it over by scaling sy
+  // from 1 to -1: the loop passes over the head and under the feet. Handles at the ends of its sides (y 0).
+  R["h-rope"] = '<path d="M-9 0C-9-22 9-22 9 0" fill="none" stroke="#e5483f" stroke-width="1"/><path d="M-9 0C-9 22 9 22 9 0" fill="none" stroke="#e5483f" stroke-width="1" opacity=".55"/>';
+  /* ---------------- throw, catch, kick (health-sprout-12) ---------------- */
+  // A shoe seen from above, the toe pointing up (origin: the middle of its sole); the inside of the foot is on its
+  // left. Put it on a close-up card to show a kick with the inside of the foot.
+  R["h-shoe-top"] = g('<path d="M0-16c4 0 6 4 6 9 0 4-1.6 6-1.6 10S6 10 6 14c0 3-2.6 5-6 5s-6-2-6-5c0-4 1.6-7 1.6-11S-6-3-6-7c0-5 2-9 6-9z" fill="#e5483f"/>' +
+    '<path d="M-3-4h6M-3-1h6M-3 2h6" fill="none" stroke="#fff" stroke-width=".7"/><path d="M-6 0c-1 2-1 5 0 7" fill="none" stroke="#fcd34d" stroke-width="1.4"/>');
+  // A ball seen from above (origin: its middle).
+  R["h-ball-top"] = g('<circle r="5" fill="#fff"/><path d="M-5 0h10M0-5c-2 3-2 7 0 10" fill="none" stroke="#e5483f" stroke-width=".8"/>');
+  /* ---------------- screens and play (health-sprout-17) ---------------- */
+  // A tablet seen edge on, held up to look at (origin: its middle); piece glow: its lit screen.
+  R["h-tablet"] = g('<rect x="-4.4" y="-3" width="8.8" height="6" rx=".8" fill="#3f4a5a"/>' + piece("glow", [0, 0], '<rect x="-3.6" y="-2.3" width="7.2" height="4.6" fill="#bfe3f5" stroke="none"/><circle cx="-1" cy="-.4" r="1" fill="#fcd34d" stroke="none"/><path d="M-3.6 2.3l2.4-2 1.6 1.4 1.4-1 1.8 1.6" fill="#8bc34a" stroke="none"/>'));
+  /* ---------------- windows, balconies, heaters, gas (health-sprout-18) ---------------- */
+  // A balcony (stage units): the sky and the buildings across the street, the flat's wall with its door on the left,
+  // the balcony floor from y = 66 and the railing along the front (in front of whoever stands at the back).
+  R["h-balcony"] = g('<rect width="160" height="66" fill="#cfe9f7" stroke="none"/><rect x="70" y="18" width="30" height="48" fill="#e7c27a"/><rect x="108" y="10" width="34" height="56" fill="#c9b6e4"/>' +
+    '<g fill="#bfe3f5">' + [[74, 24], [86, 24], [74, 38], [86, 38], [112, 16], [126, 16], [112, 30], [126, 30]].map(function (w) { return '<rect x="' + w[0] + '" y="' + w[1] + '" width="7" height="7"/>'; }).join("") + "</g>" +
+    '<rect width="44" height="66" fill="#f0d2a6"/><rect x="12" y="20" width="18" height="46" fill="#5a4636"/><rect y="66" width="160" height="24" fill="#d8c3a5" stroke="none"/><path d="M0 66h160" fill="none"/>');
+  R["h-railing"] = g('<rect x="44" y="50" width="116" height="2.4" fill="#5a6b7a"/><g fill="none" stroke="#5a6b7a" stroke-width="1.2">' +
+    [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150].map(function (x) { return '<path d="M' + x + ' 52v18"/>'; }).join("") + '</g><rect x="44" y="70" width="116" height="2" fill="#5a6b7a"/>');
+  // A window open onto the outside, with a guard rail across its lower half (origin: its middle).
+  R["h-window-open"] = g('<rect x="-15" y="-14" width="30" height="28" rx="1.5" fill="#fff"/><rect x="-12.6" y="-11.6" width="25.2" height="23.2" fill="#bfe3f5"/>' +
+    '<path d="M-12.6 6h25.2" fill="none" stroke="#5a6b7a" stroke-width="1"/><path d="M-9 6v5.6M-4.5 6v5.6M0 6v5.6M4.5 6v5.6M9 6v5.6" fill="none" stroke="#5a6b7a" stroke-width=".7"/>' +
+    '<path d="M12.6-11.6l6 3v22l-6-2.6z" fill="#dff1f7"/>');
+  /* ---------------- in the car and on the bike (health-sprout-19) ---------------- */
+  // A bike helmet from the side, facing right (origin: the middle of its rim); put it on a child's head.
+  R["h-helmet"] = g('<path d="M-6 0c0-5 3-8 7-8s7 3 7 7l-2 1z" fill="#5ab0e0"/><path d="M-3-6h3M1-7h3" fill="none" stroke="#fff" stroke-width=".7"/><path d="M5 0l-2 4" fill="none" stroke-width=".5"/>');
+  /* ---------------- the internet with a grown-up (health-sprout-23) ---------------- */
+  // A big tablet filling the stage (stage units): its frame, and its screen from x 26 to 134, y 10 to 72.
+  R["h-bigtablet"] = g('<rect x="20" y="4" width="120" height="74" rx="5" fill="#3f4a5a"/><rect x="26" y="10" width="108" height="62" rx="1.5" fill="#dff1f7"/><circle cx="80" cy="75" r="1.4" fill="#5a6b7a"/>');
+  // A padlock (origin: its middle).
+  R["h-lock"] = g('<path d="M-3-2v-2.4a3 3 0 0 1 6 0V-2" fill="none" stroke-width="1.2"/><rect x="-4.4" y="-2.4" width="8.8" height="7" rx="1.2" fill="#fcd34d"/><circle cx="0" cy="1" r=".9" fill="#3d2c22" stroke="none"/>');
+  // A name card: a person's face and lines (origin: its middle).
+  R["h-namecard"] = g('<rect x="-8" y="-5" width="16" height="10" rx="1" fill="#fff"/><circle cx="-4" cy="0" r="2.4" fill="' + SKIN + '"/><path d="M0-1.6h5M0 1h4" fill="none" stroke="#5b6fb5" stroke-width=".7"/>');
+  /* ---------------- small grazes, nosebleeds, bumps (health-sprout-24) ---------------- */
+  // A knee close up, bent, seen from the side (stage units, for a card): shorts, the leg and a small pink scrape (piece
+  // scrape, which fades when washed).
+  R["h-knee"] = g('<path d="M20 30h46l6 14H26z" fill="#5b6fb5"/><path d="M26 44h46c8 0 14 6 14 14v4c0 6-4 9-10 9H34c-8 0-14-6-14-14z" fill="' + SKIN + '"/>' +
+    '<path d="M76 71l10 18h12l-8-20z" fill="' + SKIN + '"/>' + piece("scrape", [80, 56], '<g fill="#f28b82" stroke="none" opacity=".7"><ellipse cx="80" cy="56" rx="6" ry="3.4"/></g><path d="M76 55h8M77 57.4h6" fill="none" stroke="#e5483f" stroke-width=".4" opacity=".6"/>'));
+  // A big sticking plaster (origin: its middle).
+  R["h-bandaid"] = g('<rect x="-10" y="-3.6" width="20" height="7.2" rx="3.6" fill="#f2c79b"/><rect x="-4" y="-3" width="8" height="6" rx="1" fill="#fff6e8"/>' +
+    '<g fill="#c98f63" stroke="none"><circle cx="-7" cy="-1" r=".4"/><circle cx="-7" cy="1" r=".4"/><circle cx="7" cy="-1" r=".4"/><circle cx="7" cy="1" r=".4"/></g>');
+  // A cool, wet cloth folded (origin: its middle).
+  R["h-coldcloth"] = g('<rect x="-5" y="-2.4" width="10" height="4.8" rx="1.4" fill="#9fd3f0"/><path d="M-4-.6h8M-4 1h8" fill="none" stroke="#fff" stroke-width=".5"/>');
+  /* ---------------- sun and heat (health-sprout-25) ---------------- */
+  // A sun hat from the side (origin: the middle of its brim); put it on a child's head.
+  R["h-sunhat"] = g('<path d="M-9 0c3-1.4 15-1.4 18 0-3 1-15 1-18 0z" fill="#f2c14e"/><path d="M-5-.6c0-4 2-6 5-6s5 2 5 6z" fill="#f2c14e"/><path d="M-5-2h10" fill="none" stroke="#e5483f" stroke-width="1"/>');
+  // The shade under a tree on the grass (origin: its middle).
+  R["h-shade"] = '<ellipse rx="22" ry="4" fill="#3d2c22" opacity=".18"/>';
+  /* ---------------- germs travel (health-sapling-5) ---------------- */
+  // A friendly germ, much bigger than life (origin: its middle).
+  R["h-germ"] = g('<circle r="2.4" fill="#8bc34a"/><path d="M-2.4-1.4l-1-.6M2.4-1.4l1-.6M-1.8 2l-.6 1M1.8 2l.6 1M0-2.4v-1.2" fill="none" stroke-width=".4"/>' +
+    '<g fill="#3d2c22" stroke="none"><circle cx="-.7" cy="-.3" r=".35"/><circle cx=".7" cy="-.3" r=".35"/></g>');
+  // A shield with a tick: "stopped" (origin: its middle).
+  R["h-shield"] = g('<path d="M0-5l4.4 1.6v3c0 3-2 5-4.4 6.4C-2.4 4.6-4.4 2.6-4.4-.4v-3z" fill="#5a9a45"/><path d="M-2 0l1.4 1.6L2.2-1.6" fill="none" stroke="#fff" stroke-width=".9"/>');
+  /* ---------------- clean water, clean food (health-sapling-6) ---------------- */
+  // A dome cover for a dish (origin: the middle of its rim).
+  R["h-cover"] = g('<path d="M-9 0c0-6 4-9 9-9s9 3 9 9z" fill="#dff1f7" opacity=".85"/><circle cx="0" cy="-9.6" r="1" fill="#b8c0c8"/><path d="M-6-3c1-2 3-3.4 5-3.6" fill="none" stroke="#fff" stroke-width=".7"/>');
+  /* ---------------- new teeth (health-sapling-7) ---------------- */
+  // A row of lower teeth in the gum, from the front, close up (stage units, centred on 80, 50). Pieces: milk (the
+  // loose milk tooth in the middle, which falls), grown (the new tooth under it, hidden at first), spot (a small brown
+  // spot on a tooth, hidden), floss (a thread between two teeth, hidden).
+  R["h-teethrow"] = (function () {
+    var t = "", xs = [44, 56, 68, 92, 104, 116];
+    xs.forEach(function (x) { t += '<rect x="' + (x - 5) + '" y="36" width="10" height="16" rx="3.6" fill="#fff"/>'; });
+    return g('<path d="M30 48h100v20c0 6-4 10-10 10H40c-6 0-10-4-10-10z" fill="#f4a7b9"/>' + t +
+      hide("grown", '<rect x="73.6" y="32" width="12.8" height="20" rx="4.4" fill="#fff"/>') +
+      piece("milk", [80, 44], '<rect x="75" y="36" width="10" height="15" rx="3.6" fill="#fff"/>') +
+      hide("spot", '<ellipse cx="104" cy="41" rx="2" ry="1.6" fill="#9a6442" stroke="none"/>') +
+      hide("floss", '<path d="M62 20L62 50" fill="none" stroke="#fff" stroke-width="1.2"/><path d="M62 20L62 50" fill="none" stroke="#5ab0e0" stroke-width=".5"/>'));
+  })();
+  // Two sugar cubes (origin: their bottom middle).
+  R["h-sugar"] = g('<rect x="-7" y="-6" width="6" height="6" rx=".6" fill="#fff"/><rect x="0" y="-6" width="6" height="6" rx=".6" fill="#fff"/><rect x="-3.6" y="-12" width="6" height="6" rx=".6" fill="#fff"/>' +
+    '<g fill="#e8e2da" stroke="none"><circle cx="-4" cy="-3" r=".4"/><circle cx="3" cy="-3.4" r=".4"/><circle cx="-.6" cy="-9" r=".4"/></g>');
+  /* ---------------- when I'm ill (health-sapling-8) ---------------- */
+  // A medicine measuring cup with marks (origin: its bottom); piece dose: the liquid inside (start it at sy 0).
+  R["h-dosecup"] = g('<path d="M-3.4-8h6.8l-.8 8h-5.2z" fill="#f4fbfd"/>' + piece("dose", [0, 0], '<path d="M-2.9-4h5.8l-.4 4h-5z" fill="#f59e0b" stroke="none" opacity=".85"/>') +
+    '<path d="M2-6h1.2M2.2-4h1M2.4-2h.8" fill="none" stroke-width=".35"/>');
+  /* ---------------- drinks and sugar (health-sapling-11) ---------------- */
+  // One sugar cube (origin: its bottom middle), 6 wide.
+  R["h-cube"] = g('<rect x="-3" y="-6" width="6" height="6" rx=".6" fill="#fff"/><path d="M-3-6l1.4-1.2h6L3-6M3-6v6l1.4-1.2v-6" fill="#eef1f2"/><g fill="#e8e2da" stroke="none"><circle cx="-1" cy="-3" r=".4"/><circle cx="1.4" cy="-4" r=".35"/></g>');
+  /* ---------------- the parts of fitness (health-sapling-13) ---------------- */
+  // A pillar of wall seen from the side, to push against (origin: the middle of its foot).
+  R["h-pillar"] = g('<rect x="-4" y="-62" width="8" height="62" fill="#efd3ad"/><path d="M-4-50h8M-4-30h8M-4-10h8" fill="none" stroke="#d9b48a" stroke-width=".5"/>');
+  /* ---------------- rope, target, dodge, dribble (health-sapling-15) ---------------- */
+  // A round target on a stand, red and white rings (origin: the middle of its feet).
+  R["h-target"] = g('<path d="M-6 0l4-18M6 0l-4-18" fill="none" stroke="#8a5a3a" stroke-width="1.2"/><circle cy="-26" r="10" fill="#fff"/><circle cy="-26" r="7" fill="#e5483f"/>' +
+    '<circle cy="-26" r="4" fill="#fff"/><circle cy="-26" r="1.6" fill="#e5483f"/>');
+  /* ---------------- fair play (health-sapling-16) ---------------- */
+  // A small football goal seen from the front, white posts and a net (origin: the middle of its foot).
+  R["h-goal"] = g('<path d="M-12 0v-15h24v15" fill="none" stroke="#3d2c22" stroke-width="2.6"/><path d="M-12 0v-15h24v15" fill="none" stroke="#fff" stroke-width="1.4"/>' +
+    '<path d="M-8-14v14M-4-14v14M0-14v14M4-14v14M8-14v14M-11-10h22M-11-5h22" fill="none" stroke="#c9d2d8" stroke-width=".4"/>');
+  /* ---------------- backpack and chair (health-sapling-17) ---------------- */
+  // The girl of "h-girl" seen from behind (the same headscarf or hair, the same clothes).
+  R["h-girl-back-pink"] = back({ name: "h-girl-back-pink", key: "h-girl", hair: "auto", kind: "girl", shirt: "#f28baa", pants: "#5b6fb5", shoes: "#5a9a45" });
+  // A backpack on a child seen from behind, on both shoulders: put it under the child at [0, 0], scale 1.
+  R["h-pack"] = g('<path d="M-2.6-21.2l-.7-2.4M2.6-21.2l.7-2.4" fill="none" stroke="#2a7a74" stroke-width="1.2"/><rect x="-3.6" y="-21.6" width="7.2" height="9.6" rx="1.6" fill="#3fb0a8"/>' +
+    '<path d="M-3.6-18.4h7.2" fill="none" stroke-width=".4"/><rect x="-2" y="-16.6" width="4" height="3" rx=".6" fill="#35958e" stroke-width=".4"/>');
+  // The same backpack hanging from one shoulder, low and to one side.
+  R["h-pack-one"] = g('<path d="M3.4-23.4l1.4 5.4" fill="none" stroke="#2a7a74" stroke-width="1.2"/><g transform="rotate(16 5 -18)"><rect x="1.2" y="-18.4" width="7.2" height="9.6" rx="1.6" fill="#3fb0a8"/>' +
+    '<path d="M1.2-15.2h7.2" fill="none" stroke-width=".4"/><rect x="2.8" y="-13.4" width="4" height="3" rx=".6" fill="#35958e" stroke-width=".4"/></g>');
+  // A child's chair from the side, its back on the left (origin: the middle of its feet); the seat is 7.6 up.
+  R["h-chair"] = g('<rect x="-5.6" y="-19" width="1.4" height="19" rx=".5" fill="#b57638"/><rect x="-5.6" y="-7.6" width="10.4" height="1.4" rx=".5" fill="#c98a4b"/><rect x="3.4" y="-6.2" width="1.4" height="6.2" fill="#b57638"/>');
+  /* ---------------- the ten-minute routine (health-sapling-18) ---------------- */
+  // The girl of "h-girl" with a piece of wall in front of her, for push-ups against the wall (move steps).
+  R["h-girl-wall"] = '<g><rect x="14.4" y="-42" width="5" height="42" fill="#efd3ad"/><path d="M14.4-30h5M14.4-14h5" fill="none" stroke="#d9b48a" stroke-width=".5"/>' +
+    side(Object.assign({}, GIRL, { name: "h-girl-wall", key: "h-girl" })) + "</g>";
+  /* ---------------- every body is different (health-sapling-19) ---------------- */
+  // Children who look different: a boy with glasses, a girl with freckles, a boy who uses a wheelchair (side view).
+  R["h-boy-glasses"] = side(Object.assign({}, BOY, { name: "h-boy-glasses", shirt: "#7cc6e8", pants: "#5a5f78", shoes: "#3d2c22", hairCol: "#2a1d16",
+    face: function (c, r, e) { return '<circle cx="' + f(e[0]) + '" cy="' + f(e[1]) + '" r="1.5" fill="#fff" fill-opacity=".25" stroke-width=".45"/><path d="M' + f(e[0] - 1.5) + " " + f(e[1]) + "L" + f(c[0] - r * 0.25) + " " + f(e[1] - 0.4) + '" fill="none" stroke-width=".4"/>'; } }));
+  R["h-girl-freckles"] = side({ name: "h-girl-freckles", hair: "auto", kind: "girl", shirt: "#a98bd5", pants: "#3f6f8f", shoes: "#e5483f", hairCol: "#8a4a2a",
+    face: function (c, r) { var x = c[0] + r * 0.42, y = c[1] + r * 0.18; return '<g fill="#b8743f" stroke="none"><circle cx="' + f(x - 0.9) + '" cy="' + f(y) + '" r=".28"/><circle cx="' + f(x) + '" cy="' + f(y - 0.6) + '" r=".28"/><circle cx="' + f(x + 0.4) + '" cy="' + f(y + 0.5) + '" r=".28"/><circle cx="' + f(x - 0.3) + '" cy="' + f(y + 0.9) + '" r=".28"/></g>'; } });
+  R["h-kid-chair"] = side({ name: "h-kid-chair", hair: "short", shirt: "#5a9a45", pants: "#3f6f8f", shoes: "#f2c14e", hairCol: "#3d2c22" });
+  // A wheelchair from the side, facing right (origin: the ground under the seat, in a child's units: put the child
+  // under it at [0, 6], sitting, legs -90/90); piece wheel turns round the big wheel's middle.
+  R["h-wheelchair"] = g('<path d="M-5-18v10.6M-5-18h-2.4M4.6-7.6l2.4 6h2.4" fill="none" stroke="#5a6b7a" stroke-width="1"/><rect x="-5.4" y="-8.4" width="10.4" height="1.6" rx=".5" fill="#3f4a5a"/>' +
+    '<circle cx="7.6" cy="-1.4" r="1.4" fill="#3f4a5a"/>' +
+    piece("wheel", [-1, -7], '<circle cx="-1" cy="-7" r="7" fill="none" stroke="#3f4a5a" stroke-width="1.2"/><circle cx="-1" cy="-7" r="5.6" fill="none" stroke="#b8c0c8" stroke-width=".6"/>' +
+      '<path d="M-1-13v12M-7-7h12M-5.2-11.2l8.4 8.4M3.2-11.2l-8.4 8.4" fill="none" stroke="#b8c0c8" stroke-width=".35"/><circle cx="-1" cy="-7" r=".9" fill="#5a6b7a"/>'));
+  /* ---------------- telling a teacher (health-sapling-20) ---------------- */
+  // A teacher (side view, facing right).
+  R["h-teacher"] = side({ name: "h-teacher", adult: true, hair: "auto", kind: "woman", scarfCol: "#7a4f8f", shirt: "#8a6fb5", pants: "#3d4660", shoes: "#3d2c22", long: true, dress: true });
+  /* ---------------- the way to school (health-sapling-21) ---------------- */
+  // A pavement seen from the side: buildings, the road behind (y 62 to 76, cars stand at 75), the kerb, and the
+  // pavement in front (from 78; people stand at 90 to 96). Stage units.
+  R["h-walkway"] = g('<rect width="160" height="60" fill="#cfe9f7" stroke="none"/>' +
+    '<rect x="6" y="22" width="30" height="38" fill="#e7c27a"/><rect x="40" y="30" width="24" height="30" fill="#f0a35e"/><rect x="70" y="16" width="28" height="44" fill="#c9b6e4"/><rect x="104" y="28" width="22" height="32" fill="#9fc9a8"/><rect x="130" y="20" width="26" height="40" fill="#e7c27a"/>' +
+    '<g fill="#bfe3f5">' + [[11, 28], [24, 28], [11, 42], [24, 42], [45, 36], [54, 36], [75, 22], [87, 22], [75, 36], [87, 36], [109, 34], [117, 34], [135, 26], [146, 26], [135, 40], [146, 40]].map(function (w) {
+      return '<rect x="' + w[0] + '" y="' + w[1] + '" width="6" height="7" stroke-width=".4"/>'; }).join("") + "</g>" +
+    '<rect y="58" width="160" height="4" fill="#d8d2c8"/><rect y="62" width="160" height="14" fill="#6b7178" stroke="none"/><path d="M0 69h160" fill="none" stroke="#f4f4f2" stroke-width=".8" stroke-dasharray="6 5"/>' +
+    '<rect y="76" width="160" height="2.4" fill="#b8b0a4"/><rect y="78.4" width="160" height="21.6" fill="#d8d2c8" stroke="none"/>' +
+    '<g fill="none" stroke="#c4bcb0" stroke-width=".4"><path d="M0 88h160M18 78v22M58 78v22M98 78v22M138 78v22"/></g>');
+  // A footbridge over a wide road that runs away from us (stage units): stairs up on the left from (4, 88) to the
+  // deck at y 46 (x 30 to 130), and down on the right; people walk on the deck at y 46.
+  R["h-footbridge"] = g('<rect width="160" height="70" fill="#cfe9f7" stroke="none"/><rect y="70" width="160" height="30" fill="#d8d2c8" stroke="none"/>' +
+    '<path d="M72 70h16l28 30H44z" fill="#6b7178" stroke="none"/><path d="M80 70v30" fill="none" stroke="#f4f4f2" stroke-width=".8" stroke-dasharray="3 3"/>' +
+    '<rect x="40" y="50" width="3" height="40" fill="#9aa8b4"/><rect x="117" y="50" width="3" height="40" fill="#9aa8b4"/>' +
+    '<path d="M4 88' + [1, 2, 3, 4, 5, 6, 7, 8].map(function () { return "v-5.25h3.25"; }).join("") + 'v4L7 91H4z" fill="#b8c0c8"/>' +
+    '<path d="M130 46' + [1, 2, 3, 4, 5, 6, 7, 8].map(function () { return "h3.25v5.25"; }).join("") + 'v3h-3L130 50z" fill="#b8c0c8"/>' +
+    '<rect x="30" y="46" width="100" height="4" fill="#9aa8b4"/>' +
+    '<g fill="none" stroke="#5a6b7a" stroke-width=".7"><path d="M30 36h100M4 78L30 36M130 36l26 42"/>' + [36, 48, 60, 72, 84, 96, 108, 120].map(function (x) { return '<path d="M' + x + ' 36v10"/>'; }).join("") + "</g>");
+  /* ---------------- water and swimming (health-sapling-22) ---------------- */
+  // A swimming pool cut open (stage units): the deck on the left (x 0 to 30) and right (150 to 160) at y 70, the
+  // pool between them down to the bottom (100). Put "h-pool-water" over the swimmers.
+  R["h-pool"] = g('<rect width="160" height="70" fill="#e8f3f7" stroke="none"/><path d="M0 50h160" fill="none" stroke="#cfe3ea" stroke-width=".6"/>' +
+    '<rect y="70" width="30" height="30" fill="#e8dcc8"/><rect x="150" y="70" width="10" height="30" fill="#e8dcc8"/>' +
+    '<rect x="30" y="70" width="120" height="30" fill="#d6eef8"/><g fill="none" stroke="#b9dcec" stroke-width=".4"><path d="M30 80h120M30 90h120M50 70v30M70 70v30M90 70v30M110 70v30M130 70v30"/></g>' +
+    '<path d="M30 74h120" fill="none" stroke="#e5483f" stroke-width=".8" stroke-dasharray="3 2"/>');
+  R["h-pool-water"] = '<rect x="30" y="73" width="120" height="27" fill="#5ab0e0" opacity=".42" stroke="none"/>' +
+    '<path d="M30 73' + [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function () { return "q2.5-1.4 5 0t5 0"; }).join("") + '" fill="none" stroke="#fff" stroke-width=".8"/>';
+  // A river seen from its bank (stage units): far bank, the water (y 46 to 72, piece flow: ripples that slide
+  // along), and the near bank where people stand (y 90 to 96).
+  R["h-river"] = g('<rect width="160" height="42" fill="#cfe9f7" stroke="none"/><rect y="40" width="160" height="7" fill="#7fb35a" stroke="none"/>' +
+    '<circle cx="24" cy="34" r="8" fill="#5a9a45"/><circle cx="34" cy="36" r="6" fill="#5a9a45"/><circle cx="126" cy="33" r="9" fill="#5a9a45"/>' +
+    '<rect y="46" width="160" height="26" fill="#5b9bd5" stroke="none"/>' +
+    piece("flow", [0, 0], '<g fill="none" stroke="#bfe3f5" stroke-width=".8" stroke-linecap="round">' + [[2, 52], [34, 60], [62, 54], [92, 66], [120, 52], [14, 66], [80, 58], [108, 62], [46, 49]].map(function (w) {
+      return '<path d="M' + w[0] + " " + w[1] + 'h10l-2-1.6M' + (w[0] + 18) + " " + (w[1] + 3) + 'h7"/>'; }).join("") + "</g>") +
+    '<rect y="72" width="160" height="28" fill="#9bc46a" stroke="none"/><path d="M0 72h160" fill="none" stroke="#6f9a4a" stroke-width="1"/>');
+  // A float ring (origin: its middle).
+  R["h-floatring"] = '<circle r="4" fill="none" stroke="#3d2c22" stroke-width="3.4"/><circle r="4" fill="none" stroke="#f59e0b" stroke-width="2.4"/>' +
+    '<circle r="4" fill="none" stroke="#fff" stroke-width="2.4" stroke-dasharray="2.1 4.2"/>';
+  /* ---------------- heat, cold and bad air (health-sapling-23) ---------------- */
+  // The girl of "h-girl" in a warm coat with long sleeves, and a woolly hat to put on a child's head (under the
+  // child at [0.9, -29.6]; origin: the middle of its rim).
+  R["h-girl-coat"] = side(Object.assign({}, GIRL, { name: "h-girl-coat", key: "h-girl", shirt: "#3f6f8f", long: true }));
+  R["h-beanie"] = g('<path d="M-6 .4c0-5.4 2.6-8.4 6-8.4s6 3 6 8.4z" fill="#e5483f"/><rect x="-6.4" y="-1.2" width="12.8" height="2.6" rx="1.1" fill="#f2c14e"/><circle cy="-8.6" r="1.7" fill="#f2c14e"/>');
+  // Grey, dusty air over a window (origin: the window's middle).
+  R["h-haze"] = '<rect x="-15" y="-12" width="30" height="24" rx="1.5" fill="#a8a29a" opacity=".6" stroke="none"/><g fill="#8a8278" stroke="none" opacity=".7"><circle cx="-8" cy="-5" r=".7"/><circle cx="4" cy="-7" r=".6"/><circle cx="9" cy="3" r=".7"/><circle cx="-3" cy="6" r=".6"/><circle cx="-11" cy="5" r=".5"/></g>';
+  /* ---------------- safe online (health-sapling-24) ---------------- */
+  // A chat bubble on a screen, its tail at the origin (lower left); the bubble is 44 wide and 16 high, above.
+  R["h-chat"] = g('<path d="M2 2L6-1H45a3 3 0 0 0 3-3v-10a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v13z" fill="#fff"/>');
+  /* ---------------- the family emergency bag (health-sapling-27) ---------------- */
+  // A bottle of water (origin: its bottom) and a whistle on its side (origin: its middle).
+  R["h-waterbottle"] = g('<rect x="-2.8" y="-11" width="5.6" height="11" rx="1.4" fill="#bfe3f5"/><path d="M-2.8-6h5.6" fill="none" stroke="#5b9bd5" stroke-width=".5"/><rect x="-1.5" y="-13.2" width="3" height="2.4" rx=".4" fill="#5b9bd5"/>');
+  R["h-whistle"] = g('<path d="M-6-2.4h7.4a3.2 3.2 0 1 1-.6 6.4H-2l-.8-2H-6z" fill="#f2c14e"/><circle cx="2" cy=".8" r="1" fill="#3d2c22" stroke="none"/><path d="M-6 0h-2" fill="none" stroke-width=".6"/>');
+  /* ---------------- cuts, burns and stings (health-sapling-28) ---------------- */
+  // A forearm and hand close up, across the stage (stage units). Pieces: cut (a small cut at 70, 58), burn (a pink
+  // patch at 50, 59) and sting (a dot with a little swelling at 90, 57), all hidden at first.
+  R["h-armclose"] = g('<rect x="10" y="51" width="28" height="17" rx="2" fill="#5b9bd5"/><rect x="36" y="53" width="66" height="13" rx="5" fill="' + SKIN + '"/>' +
+    '<ellipse cx="108" cy="59.5" rx="12" ry="8" fill="' + SKIN + '"/><path d="M101 53c2-6 9-7 11-3l-4 3" fill="' + SKIN + '"/>' +
+    '<path d="M112 55.6h6M113 59.4h6.4M112 63.2h5.6" fill="none" stroke-width=".5"/>' +
+    hide("cut", '<path d="M66 58.6l8-1.6" fill="none" stroke="#e5483f" stroke-width=".9" stroke-linecap="round"/>') +
+    hide("burn", '<ellipse cx="50" cy="59.4" rx="6" ry="4" fill="#f28b82" stroke="none" opacity=".75"/>') +
+    hide("sting", '<ellipse cx="90" cy="57.4" rx="3" ry="2.2" fill="#f7b6ae" stroke="none"/><circle cx="90" cy="57.4" r=".6" fill="#e5483f" stroke="none"/>'));
+  // A tap seen from the side, its spout pointing down (origin: the mouth of the spout); piece flow: the water.
+  R["h-tap"] = g('<path d="M-14-12h14a4 4 0 0 1 4 4V0h-6v-5h-12z" fill="#b8c0c8"/><rect x="-8" y="-16" width="4" height="4" fill="#9aa8b4"/>' +
+    hide("flow", '<rect x="-3.4" y=".2" width="5.4" height="16" fill="#7cc6e8" opacity=".8" stroke="none"/>'));
 })();

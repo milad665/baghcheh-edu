@@ -19,7 +19,7 @@
 
   // ---------- The plan (CURRICULUM.md and the subject files in curriculum/, read as one text) ----------
   function readPlan(text) {
-    var p = { rows: {}, order: [], subjects: [] }, subject = null, level = null, part = null;
+    var p = { rows: {}, order: [], subjects: [], practice: {}, practiceOrder: [] }, subject = null, level = null, part = null;
     text.split("\n").forEach(function (line) {
       // "#### Objectives | Lessons | Practice": practice rows are not lessons.
       var h4 = /^#### (.*)$/.exec(line);
@@ -36,8 +36,15 @@
         return;
       }
       var row = /^\|\s*(✅|🔨|⬜)\s*\|\s*`([^`]+)`\s*\|/.exec(line);
-      if (!row || !subject || level === undefined || part === "practice" || p.rows[row[2]]) return;
+      if (!row || !subject || level === undefined) return;
       var cells = line.split("|").map(function (c) { return c.trim(); });
+      // "| St | Id | Practice | What it makes | Objectives |": a practice generator (js/practice.js).
+      if (part === "practice") {
+        if (!p.practice[row[2]]) p.practiceOrder.push(row[2]);
+        p.practice[row[2]] = { status: STATUS[row[1]], subject: subject, level: level || ANY, title: cells[3], makes: cells[4] || "", objectives: cells[5] || "" };
+        return;
+      }
+      if (p.rows[row[2]]) return;
       p.rows[row[2]] = { status: STATUS[row[1]], subject: subject, level: level || ANY, title: cells[3], covers: cells[4] || "", types: cells[5] || "",
         objectives: cells[6] || "", depth: cells[7] || "" };
       p.order.push(row[2]);
@@ -72,6 +79,16 @@
         B.LESSONS.forEach(function (l) {
           if (l.subject === sub.id && levelKey(l) === lv && !seen[l.id]) list.push(entry(l.id, sub.id, lv, l, null));
         });
+        // Then the garden's practice generators: the plan's rows, and any registered generator not in it.
+        if (plan) plan.practiceOrder.forEach(function (id) {
+          var r = plan.practice[id];
+          if (r.subject !== sub.id || r.level !== lv) return;
+          seen[id] = true;
+          list.push(practiceEntry(id, sub.id, lv, B.practiceById(id), r));
+        });
+        B.PRACTICE.forEach(function (g) {
+          if (g.subject === sub.id && (g.level || ANY) === lv && !seen[g.id]) list.push(practiceEntry(g.id, sub.id, lv, g, null));
+        });
       });
     });
     ENTRIES = list;
@@ -87,6 +104,18 @@
     return { id: id, subject: subject, level: level, lesson: lesson || null, row: row,
       title: lesson ? lesson.title : row.title, emoji: lesson ? lesson.emoji : "⬜", text: norm(words.join(" ")) };
   }
+  // Off-screen activities that build a practice row (js/activities.js, `practice: "<row id>"`).
+  function activitiesFor(id) {
+    return [].concat.apply([], Object.keys(B.ACTIVITIES || {}).map(function (k) { return B.ACTIVITIES[k]; }))
+      .filter(function (a) { return a.practice === id; });
+  }
+  function practiceEntry(id, subject, level, gen, row) {
+    var acts = activitiesFor(id);
+    var words = [id, row ? row.title + " " + row.makes : "", gen ? gen.title : ""].concat(acts.map(function (a) { return a.text; }));
+    return { id: id, kind: "practice", subject: subject, level: level, lesson: null, gen: gen || null, row: row, acts: acts,
+      built: !!gen || acts.length > 0,
+      title: gen ? gen.title : row.title, emoji: gen ? gen.emoji : acts.length ? "🏡" : "⬜", text: norm(words.join(" ")) };
+  }
   function collect(v, out) {
     if (v == null) return;
     if (typeof v !== "object") { out.push(String(v)); return; }
@@ -99,10 +128,11 @@
   }
 
   function matches(e) {
-    if (!state.planned && !e.lesson) return false;
+    if (!state.planned && !e.lesson && !e.built) return false;
     if (state.subject && e.subject !== state.subject) return false;
     if (state.level && e.level !== state.level && e.level !== ANY) return false;
     if (state.type && !(e.lesson && e.lesson.steps.some(function (s) { return s.type === state.type; }))) return false;
+    if (state.type && e.kind === "practice") return false;
     if (state.q) return norm(state.q).split(/\s+/).filter(Boolean).every(function (w) { return e.text.indexOf(w) !== -1; });
     return true;
   }
@@ -179,7 +209,8 @@
         list.appendChild(el("h3", { text: levelName(group) }));
       }
       if (e.lesson) steps += e.lesson.steps.length;
-      var a = el("a", { href: "#/lesson/" + e.id, class: e.lesson ? "" : "planned" }, [
+      var practice = e.kind === "practice";
+      var a = el("a", { href: (practice ? "#/practice/" : "#/lesson/") + e.id, class: (e.lesson || e.built ? "" : "planned") + (practice ? " practice" : "") }, [
         el("span", { class: "emoji", text: e.emoji }),
         el("span", { class: "t", text: e.title }),
         el("small", { dir: "ltr", text: e.id })
@@ -188,11 +219,12 @@
       list.appendChild(a);
     });
     var built = shown.filter(function (e) { return e.lesson; }).length;
-    count.textContent = shown.length ? B.t("browseCount", { n: B.fa(built), s: B.fa(steps) }) : B.t("browseNone");
+    var gens = shown.filter(function (e) { return e.built; }).length;
+    count.textContent = shown.length ? B.t("browseCount", { n: B.fa(built), s: B.fa(steps) }) + (gens ? " · " + B.t("browsePracticeList") + " " + B.fa(gens) : "") : B.t("browseNone");
   }
 
   function currentId() {
-    var m = /^#\/lesson\/(.+)$/.exec(location.hash);
+    var m = /^#\/(?:lesson|practice)\/(.+)$/.exec(location.hash);
     return m ? decodeURIComponent(m[1]) : null;
   }
 
@@ -205,7 +237,7 @@
 
     pane.appendChild(el("h2", { text: B.t("browseOverview") }));
     pane.appendChild(el("p", { class: "hint", text: B.t("browseOverviewHint") }));
-    var all = entries(), keys = levelKeys().filter(function (lv) { return all.some(function (e) { return e.level === lv; }); });
+    var all = entries().filter(function (e) { return e.kind !== "practice"; }), keys = levelKeys().filter(function (lv) { return all.some(function (e) { return e.level === lv; }); });
     var head = el("tr", null, [el("th")].concat(keys.map(function (lv) { return el("th", { text: levelName(lv) }); })));
     var body = subjects().map(function (s) {
       return el("tr", null, [el("th", { text: s.emoji + " " + s.name })].concat(keys.map(function (lv) {
@@ -291,6 +323,106 @@
       ]));
     });
     pane.appendChild(stepsBox);
+    pathParts(e);
+  }
+
+  /* In Seed, Sprout and Sapling: the lesson's practice set (every generator listed for it, made from this lesson and
+     the ones before it) and, when one comes after it, the unit quiz (js/practice.js, "Practice in the course"). */
+  function pathParts(e) {
+    var l = e.lesson;
+    if (!B.lessonGens || !(B.inPath(l.level) || (!l.level && e.level === ANY))) return;
+    var gens = B.lessonGens(l.id), back = function () { viewLesson(e.id); };
+    var genLink = function (g) { return el("li", null, [el("a", { href: "#/practice/" + g.id, text: g.emoji + " " + g.title }), " ", el("small", { dir: "ltr", text: g.id })]); };
+    pane.appendChild(el("h2", { text: "🔁 " + B.t("browsePathSet") }));
+    if (!gens.length) pane.appendChild(el("p", { class: "note warn", text: B.t("browsePathNoSet") }));
+    else {
+      pane.appendChild(el("p", { class: gens.length < B.PRACTICE_MIN ? "note warn" : "hint", text: B.t("browsePathSetHint", { min: B.fa(B.PRACTICE_MIN) }) }));
+      pane.appendChild(el("ul", { class: "browse-activities" }, gens.map(genLink)));
+      pane.appendChild(el("button", { class: "btn secondary", type: "button", text: B.t("browsePlaySet"), onclick: function () {
+        play(e, 0, B.setSession(null, l.id), back);
+      } }));
+    }
+    var q = B.quizItem(l.id);
+    if (!q) return;
+    pane.appendChild(el("h2", { text: "⭐ " + B.t("browsePathQuiz") }));
+    pane.appendChild(el("p", { class: "hint", text: B.t("browsePathQuizHint", { list: q.lessons.map(function (id) { return B.lessonById(id).title; }).join("، ") }) }));
+    pane.appendChild(el("ul", { class: "browse-activities" }, q.gens.map(genLink)));
+    pane.appendChild(el("button", { class: "btn secondary", type: "button", text: B.t("browsePlayQuiz"), onclick: function () {
+      play(e, 0, B.quizSession(null, l.id), back);
+    } }));
+  }
+
+  // ---------- One practice generator (js/practice.js): a fresh sample, made for a chosen point in the lessons ----------
+  var sample = { id: null, seed: 0, upTo: "" };
+  function viewPractice(id) {
+    var e = entries().find(function (x) { return x.kind === "practice" && x.id === id; });
+    if (!e) return viewOverview();
+    if (sample.id !== id) sample = { id: id, seed: 0, upTo: "" };
+    if (!sample.seed) sample.seed = Math.floor(Math.random() * 4294967296);
+    pane.innerHTML = "";
+    var sub = subjectOf(e.subject), gen = e.gen;
+    var hasEn = gen && B.practiceHasEnglish(gen), en = hasEn && state.en;
+    var title = en && B.EN[gen.id].title || e.title;
+    pane.appendChild(el("div", { class: "row" }, [el("a", { class: "btn quiet", href: "#/", text: B.t("browseBack") })]));
+    pane.appendChild(el("h1", { class: "browse-h1" }, [e.emoji + " ", el("span", en ? { lang: "en", dir: "ltr", text: title } : { text: title })]));
+    pane.appendChild(el("p", { class: "row browse-meta" }, [
+      code(e.id), el("span", { text: sub.emoji + " " + sub.name }), badge(e.level),
+      el("span", { text: statusMark(e) + " " + statusName(e) }), el("span", { text: !gen && e.acts.length ? "🏡 " + B.t("browseActivities") : "🔁 " + B.t("browsePracticeKind") })
+    ]));
+    var lessonTitle = function (lid) { var l = B.lessonById(lid); return l ? l.title + " (" + lid + ")" : lid; };
+    pane.appendChild(el("dl", { class: "fields plan" }, [
+      e.row ? el("dt", { text: B.t("browseMakes") }) : null, e.row ? el("dd", { dir: "auto", text: e.row.makes.replace(/`/g, "") }) : null,
+      el("dt", { text: B.t("browseObjectives") }), el("dd", { dir: "ltr", text: e.row ? e.row.objectives : gen.objectives.join(", ") }),
+      gen && gen.needs && gen.needs.length ? el("dt", { text: B.t("browseNeeds") }) : null,
+      gen && gen.needs && gen.needs.length ? el("dd", { text: gen.needs.map(lessonTitle).join("، ") }) : null
+    ]));
+    if (e.acts.length) {
+      pane.appendChild(el("h2", { text: "🏡 " + B.t("browseActivities") }));
+      pane.appendChild(el("ul", { class: "browse-activities" }, e.acts.map(function (a) {
+        return el("li", null, [a.text, " ", el("small", { dir: "ltr", text: a.id })]);
+      })));
+    }
+    if (!gen) { if (!e.acts.length) pane.appendChild(el("p", { class: "note", text: B.t("browsePracticeNotBuilt") })); return; }
+    pane.appendChild(el("p", { class: "hint", text: B.t("browsePracticeLead") }));
+
+    // What the child has done: every lesson of the subject up to a chosen one (by default, to the end of this garden).
+    var top = gen.level ? B.LEVELS.findIndex(function (l) { return l.id === gen.level; }) : B.LEVELS.length;
+    var upTo = B.LESSONS.filter(function (l) {
+      return l.subject === gen.subject && (!l.level || B.LEVELS.findIndex(function (x) { return x.id === l.level; }) <= top);
+    });
+    var pickUpTo = el("select", { "aria-label": B.t("browseUpTo") });
+    [["", B.t("browseUpToAll")]].concat(upTo.map(function (l) { return [l.id, l.id + " · " + l.title]; })).forEach(function (o) {
+      var opt = el("option", { value: o[0], text: o[1] });
+      if (o[0] === sample.upTo) opt.selected = true;
+      pickUpTo.appendChild(opt);
+    });
+    pickUpTo.addEventListener("change", function () { sample.upTo = pickUpTo.value; viewPractice(id); });
+    pane.appendChild(el("label", { class: "browse-upto" }, [B.t("browseUpTo") + ": ", pickUpTo]));
+
+    var last = upTo.length ? upTo[upTo.length - 1].id : null;
+    var ctx = B.practiceContext(null, gen.subject, { upTo: sample.upTo || last, level: gen.level });
+    var missing = B.practiceMissing(gen, ctx);
+    if (missing.length) { pane.appendChild(el("p", { class: "note warn", text: B.t("browseLockedHere", { list: missing.map(lessonTitle).join("، ") }) })); return; }
+    var lesson = B.practiceSession(null, gen.subject, gen.level, { only: id, ctx: ctx, seed: sample.seed });
+    if (!lesson) { pane.appendChild(el("p", { class: "note warn", text: B.t("browseNoItems") })); return; }
+    var shown = en ? lesson.english() : lesson;
+    pane.appendChild(el("div", { class: "row" }, [
+      el("button", { class: "btn", type: "button", text: B.t("browseSample"), onclick: function () { play(e, 0, lesson); } }),
+      el("button", { class: "btn secondary", type: "button", text: B.t("browseSampleNew"), onclick: function () { sample.seed = 0; viewPractice(id); } }),
+      hasEn ? el("button", { class: "btn secondary", type: "button", "aria-pressed": en ? "true" : "false",
+        text: B.t(en ? "browseShowPersian" : "browseShowEnglish"), onclick: function () { state.en = !en; viewPractice(id); } }) : null
+    ]));
+    pane.appendChild(el("h2", { text: B.t("browseSampleSteps") }));
+    var stepsBox = el("ol", { class: "browse-steps" });
+    if (en) { stepsBox.setAttribute("lang", "en"); stepsBox.setAttribute("dir", "ltr"); }
+    shown.steps.forEach(function (s, i) {
+      stepsBox.appendChild(el("li", { class: "card browse-step" }, [
+        el("div", { class: "row" }, [el("strong", { text: B.t("browseStep", { n: B.fa(i + 1) }) }), code(s.type)]),
+        fields(s),
+        el("details", null, [el("summary", { text: B.t("browseRaw") }), el("pre", { dir: "ltr", text: JSON.stringify(s, null, 2) })])
+      ]));
+    });
+    pane.appendChild(stepsBox);
   }
 
   // ---------- Showing a step's data ----------
@@ -370,21 +502,24 @@
   }
 
   // ---------- Playing a lesson (nothing is saved) ----------
-  function play(e, start) {
+  function play(e, start, lesson, onBack) {
     stop();
     viewer.lessonLang = state.en ? "en" : null;
     var stage = el("div", { class: "browse-play" });
     pane.innerHTML = "";
     pane.appendChild(stage);
-    function back() { stop(); state.en = viewer.lessonLang === "en"; viewLesson(e.id); }
-    B.playLesson(e.lesson, stage, function (res) {
+    function back() { stop(); state.en = viewer.lessonLang === "en"; if (onBack) onBack(); else if (lesson) viewPractice(e.id); else viewLesson(e.id); }
+    B.playLesson(lesson || e.lesson, stage, function (res) {
       stop();
       stage.innerHTML = "";
+      var done = lesson ? "browsePracticeFinished" : "browseFinished";
       stage.appendChild(el("div", { class: "lesson" }, [
         el("p", { class: "celebrate", text: "🎉" }),
-        el("p", { class: "prompt", text: res.scored ? B.t("browseFinished", { first: B.fa(res.firstTry), scored: B.fa(res.scored) }) : B.t("browseFinishedNoScore") }),
+        el("p", { class: "prompt", text: res.scored ? B.t(done, { first: B.fa(res.firstTry), scored: B.fa(res.scored) }) : B.t("browseFinishedNoScore") }),
         el("div", { class: "row", style: "justify-content:center" }, [
-          el("button", { class: "btn", type: "button", text: B.t("browsePlay"), onclick: function () { play(e, 0); } }),
+          el("button", { class: "btn", type: "button", text: B.t(lesson ? "browseSampleNew" : "browsePlay"), onclick: function () {
+            if (onBack) back(); else if (lesson) { sample.seed = 0; state.en = viewer.lessonLang === "en"; viewPractice(e.id); } else play(e, 0);
+          } }),
           el("button", { class: "btn secondary", type: "button", text: B.t("browseBack"), onclick: back })
         ])
       ]));
@@ -419,10 +554,10 @@
     pane.appendChild(el("div", { class: "row" }, [el("a", { class: "btn quiet", href: "#/", text: B.t("browseBack") })]));
     pane.appendChild(el("h1", { text: "🏡 " + B.t("browseActivities") }));
     pane.appendChild(el("p", { class: "hint", text: B.t("browseActivitiesHint") }));
-    B.LEVELS.forEach(function (l) {
-      var items = (B.ACTIVITIES || {})[l.id];
+    B.LEVELS.map(function (l) { return l.id; }).concat([ANY]).forEach(function (lv) {
+      var items = (B.ACTIVITIES || {})[lv];
       if (!items || !items.length) return;
-      pane.appendChild(el("h2", null, [badge(l.id)]));
+      pane.appendChild(el("h2", null, [badge(lv)]));
       pane.appendChild(el("ul", { class: "browse-activities" }, items.map(function (a) {
         return el("li", null, [a.text, " ", el("small", { dir: "ltr", text: a.id })]);
       })));
@@ -433,7 +568,8 @@
   function route() {
     stop();
     var h = location.hash, id = currentId();
-    if (id) viewLesson(id);
+    if (id && /^#\/practice\//.test(h)) viewPractice(id);
+    else if (id) viewLesson(id);
     else if (h === "#/placement") viewPlacement();
     else if (h === "#/activities") viewActivities();
     else viewOverview();

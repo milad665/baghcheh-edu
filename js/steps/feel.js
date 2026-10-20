@@ -38,7 +38,7 @@ window.B = B;
   ["pairs", "order", "sort"].forEach(function (t) {
     var game = E.steps[t];
     E.steps[t] = function (s, box, done) {
-      if (!s.practice) return game(s, box, done);
+      if (s.practice !== true) return game(s, box, done);
       game(s, box, function () { done(false); });
     };
   });
@@ -250,5 +250,67 @@ window.B = B;
       if (i) B.speak(p.tense);
     }
     show();
+  };
+
+  /* ---------- feelings: more faces, a reply for each feeling, a calm tool offered ----------
+     Fields (all optional; without them the step is the six-face check-in in js/engine.js):
+     faces: "all" (the 13 feelings and «نمی‌دانم») or a list of ids from B.T.feelingFaces (happy, sad, angry, worried,
+     scared, calm, shy, excited, disappointed, jealous, proud, missing, bored, tired, unsure);
+     replies: {id: line said after that face is tapped} (otherwise «ممنون که گفتی…»);
+     offer: {id: a calm step, e.g. {type: "breathe", cycles: 3}}: after that face, «می‌خواهی با هم آرام شویم؟» and,
+     on yes, the step is played here. Nothing the child taps is stored or scored. */
+  var ALL = ["happy", "sad", "angry", "worried", "scared", "calm", "shy", "excited", "disappointed", "jealous", "proud", "missing", "bored", "unsure"];
+  var feelings = E.steps.feelings;
+  E.steps.feelings = function (s, box, done) {
+    if (!s.faces && !s.replies && !s.offer) return feelings(s, box, done);
+    var table = B.T.feelingFaces;
+    var ids = s.faces === "all" ? ALL : s.faces || ["happy", "sad", "angry", "scared", "tired", "unsure"];
+    box.appendChild(el("p", { class: "prompt", text: s.prompt || B.t("feelAsk") }));
+    var reply = el("p", { class: "prompt", "aria-live": "polite" });
+    var more = el("div");
+    var wrap = el("div", { class: "options feel-faces" + (ids.length > 6 ? " many" : "") });
+    var buttons = ids.filter(function (id) { return table[id]; }).map(function (id) {
+      var f = table[id];
+      return el("button", { class: "opt pic", type: "button", "aria-label": f[1], "aria-pressed": "false", onclick: function (e) {
+        buttons.forEach(function (b) { b.setAttribute("aria-pressed", b === e.currentTarget ? "true" : "false"); });
+        reply.textContent = (s.replies && s.replies[id]) || B.t("feelReply");
+        more.innerHTML = "";
+        var calm = s.offer && s.offer[id];
+        var said = f[1] + ". " + reply.textContent;
+        if (calm && E.steps[calm.type]) {
+          more.appendChild(el("p", { class: "prompt", text: B.t("feelOffer") }));
+          more.appendChild(row([
+            el("button", { class: "btn", type: "button", text: B.t("feelOfferYes"), onclick: function () {
+              box.innerHTML = "";
+              E.steps[calm.type](calm, box, function () { done(false); });
+            } })
+          ]));
+          said += " " + B.t("feelOffer");
+        }
+        B.speak(said);
+      } }, [el("span", { class: "face" }, B.art ? B.art(f[0]) : [f[0]]), el("small", { text: f[1] })]);
+    });
+    buttons.forEach(function (b) { wrap.appendChild(b); });
+    sayLater(box, s.prompt || B.t("feelAsk"));
+    box.appendChild(wrap);
+    box.appendChild(reply);
+    box.appendChild(more);
+    box.appendChild(row([E.nextBtn(B.t("finish"), function () { done(false); })]));
+  };
+
+  /* ---------- menu: the child picks one thing to do ----------
+     prompt, items [{pic, label, say, step}]: tapping one plays its step here (a calm tool, a game). Not scored itself;
+     the chosen step is scored only if it would be. Used by the calm corner and «یک دقیقه آرامش». */
+  E.steps.menu = function (s, box, done) {
+    prompt(box, s.prompt || B.t("menuAsk"));
+    var wrap = el("div", { class: "grid menu-grid" });
+    s.items.forEach(function (it) {
+      wrap.appendChild(el("button", { class: "tile", type: "button", onclick: function () {
+        if (it.say) B.speak(it.say);
+        box.innerHTML = "";
+        E.steps[it.step.type](it.step, box, done);
+      } }, [el("span", { class: "big" }, B.art ? B.art(it.pic) : [it.pic]), el("span", { class: "name", text: it.label })]));
+    });
+    box.appendChild(wrap);
   };
 })();

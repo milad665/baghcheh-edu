@@ -1,6 +1,8 @@
 /* باغچه — measuring step types for ریاضی: time and mass.
    - clock: read a clock, set its hands, or turn them freely and hear the time.
-   - balance: a two-pan balance: see which side is heavier, or put things on it until it balances.
+   - balance: a two-pan balance: see which side is heavier, or put things on it until it balances; or a lever.
+   - measure with a tool: read or set a ruler, a measuring jug or a thermometer (the plain measure step is in
+     js/engine.js).
    Same rules as the games (js/games.js): no timers or points, a gentle bounce on a miss, the answer shown after
    two misses; tapping, dragging and the keyboard all work. Step types are added to B.engine.steps (js/engine.js). */
 var B = window.B || {};
@@ -287,8 +289,11 @@ window.B = B;
      the weights are added up instead of seen), "balance" (put things on until it balances; putting something on
      the lighter pan that tips it past level is a miss), or "explore" (not scored). The default is "balance" with a tray, else
      "heavier". Optional prompt, say, unit (default کیلو; "" for none), and question, options, answer, pic: asked
-     once it balances (e.g. «هندوانه چند کیلو است؟»). The beam turns by the weight on each side, so the same step
-     can later take things at a distance from the middle (a lever). */
+     once it balances (e.g. «هندوانه چند کیلو است؟»). The beam turns by the weight on each side.
+     lever: true makes it a seesaw: no pans, but seats along the beam (seats: how many on each side, default 3; seat 1
+     is nearest the middle). Things on the beam give a seat ({ pic, mass, seat } or { mass, seat }), and each side
+     turns the beam by mass × seat, so a light thing far out balances a heavy one near the middle. In a lever the
+     child puts things on a seat (tap the thing, then the seat, or drag it); ask is "balance" or "explore". */
   E.steps.balance = function (s, box, done) {
     var ask = s.ask || (s.tray ? "balance" : "heavier");
     var unit = s.unit != null ? s.unit : B.t("balUnit");
@@ -305,15 +310,26 @@ window.B = B;
     stage.appendChild(beam);
     stage.appendChild(el("span", { class: "bal-knob", "aria-hidden": "true" }));
     var pans = {};
+    var lever = !!s.lever, nSeats = s.seats || 3;
+    if (lever) stage.classList.add("lever");
     ["left", "right"].forEach(function (side) {
-      var items = el("span", { class: "bal-items" });
-      var p = el("div", { class: "bal-pan " + side, "data-drop": side, "aria-label": B.t(side === "left" ? "balLeft" : "balRight") }, [
-        el("span", { class: "bal-strings", "aria-hidden": "true" }), items, el("span", { class: "bal-dish", "aria-hidden": "true" })]);
-      p._items = items;
-      p._side = side;
-      pans[side] = p;
-      stage.appendChild(p);
+      (lever ? Array.from({ length: nSeats }, function (_, i) { return i + 1; }) : [0]).forEach(function (d) {
+        var key = lever ? side + ":" + d : side;
+        var items = el("span", { class: "bal-items" });
+        var p = lever
+          ? el("div", { class: "bal-pan bal-seat " + side, "data-drop": key, "aria-label": B.t(side === "left" ? "balLeft" : "balRight") + " " + B.fa(d) }, [
+            items, el("span", { class: "bal-dish", "aria-hidden": "true" })])
+          : el("div", { class: "bal-pan " + side, "data-drop": key, "aria-label": B.t(side === "left" ? "balLeft" : "balRight") }, [
+            el("span", { class: "bal-strings", "aria-hidden": "true" }), items, el("span", { class: "bal-dish", "aria-hidden": "true" })]);
+        p._items = items;
+        p._side = side;
+        p._dist = lever ? d : 1;
+        p._key = key;
+        pans[key] = p;
+        stage.appendChild(p);
+      });
     });
+    function seatOf(v, side) { return lever ? side + ":" + Math.max(1, Math.min(nSeats, (v && v.seat) || 1)) : side; }
     box.appendChild(stage);
     var tray = el("div", { class: "tray bal-tray", "data-drop": "tray" });
     var state = el("p", { class: "bal-state", "aria-live": "polite" });
@@ -335,13 +351,15 @@ window.B = B;
       all.push(b);
       return b;
     }
-    (s.left || []).forEach(function (v) { pans.left._items.appendChild(thing(v, "left")); });
-    (s.right || []).forEach(function (v) { pans.right._items.appendChild(thing(v, "right")); });
+    (s.left || []).forEach(function (v) { pans[seatOf(v, "left")]._items.appendChild(thing(v, "left")); });
+    (s.right || []).forEach(function (v) { pans[seatOf(v, "right")]._items.appendChild(thing(v, "right")); });
     (s.tray || []).forEach(function (v) { tray.appendChild(thing(v, "tray")); });
 
     function where(b) { var p = b.closest(".bal-pan"); return p ? p._side : "tray"; }
+    function spot(b) { var p = b.closest(".bal-pan"); return p ? p._key : "tray"; }
+    function dist(b) { var p = b.closest(".bal-pan"); return p ? p._dist : 0; }
     function weight(side) {
-      return all.reduce(function (sum, b) { return sum + (where(b) === side ? b._mass : 0); }, 0);
+      return all.reduce(function (sum, b) { return sum + (where(b) === side ? b._mass * dist(b) : 0); }, 0);
     }
     var maxDeg = 14;
     function tilt() {
@@ -349,14 +367,15 @@ window.B = B;
       return d === 0 ? 0 : (d > 0 ? 1 : -1) * Math.min(maxDeg, 5 + 9 * Math.abs(d) / Math.max(l, r));
     }
     // Pans hang from the ends of the beam: stage units are percent of its width; the stage is half as high.
-    var PX = 50, PY = 16, L = 31;
+    var PX = 50, PY = 16, L = lever ? 37 : 31;
     function draw(deg) {
       var a = deg * Math.PI / 180;
       beam.style.transform = "translate(-50%, -50%) rotate(" + deg + "deg)";
-      pans.left.style.left = PX - L * Math.cos(a) + "%";
-      pans.left.style.top = (PY - L * Math.sin(a)) * 2 + "%";
-      pans.right.style.left = PX + L * Math.cos(a) + "%";
-      pans.right.style.top = (PY + L * Math.sin(a)) * 2 + "%";
+      Object.keys(pans).forEach(function (k) {
+        var p = pans[k], f = (p._side === "left" ? -1 : 1) * (lever ? p._dist / nSeats : 1);
+        p.style.left = PX + f * L * Math.cos(a) + "%";
+        p.style.top = (PY + f * L * Math.sin(a)) * 2 + "%";
+      });
       state.textContent = B.t(deg === 0 ? "balLevel" : deg < 0 ? "balLeftDown" : "balRightDown");
     }
 
@@ -400,13 +419,14 @@ window.B = B;
     // ---- Putting things on: tap a thing to move it (to the open pan, or pick a pan when both are open), or drag it. ----
     box.appendChild(el("p", { class: "label", text: B.t("balTray") }));
     box.appendChild(tray);
-    var hint = el("p", { class: "hint", text: B.t(open === "both" ? "balHintBoth" : "balHint") });
+    var hint = el("p", { class: "hint", text: B.t(lever ? "balHintLever" : open === "both" ? "balHintBoth" : "balHint") });
     box.appendChild(hint);
     var picked = null;
     draw(tilt());
     function move(b, to) {
-      if (finished || b._fixed || to === where(b)) return;
-      if (to !== "tray" && open !== "both" && to !== open) { bounce(pans[to]); return; }
+      if (finished || b._fixed || to === spot(b)) return;
+      var toSide = to === "tray" ? "tray" : pans[to]._side;
+      if (to !== "tray" && open !== "both" && toSide !== open) { bounce(pans[to]); return; }
       var before = tilt();
       (to === "tray" ? tray : pans[to]._items).appendChild(b);
       unpick();
@@ -426,7 +446,7 @@ window.B = B;
         setTimeout(function () { if (stage.isConnected) ending(box, s, done, true, misses === 0); }, 900);
         return;
       }
-      var down = to === "left" ? -1 : 1;
+      var down = toSide === "left" ? -1 : 1;
       if (to !== "tray" && before !== 0 && Math.sign(before) !== down && sign === down) {
         misses++;
         bounce(beam);
@@ -437,17 +457,17 @@ window.B = B;
     // After two misses the things move by themselves into a way that balances.
     function showAnswer() {
       var movable = all.filter(function (b) { return !b._fixed; });
-      var sides = open === "both" ? ["tray", "left", "right"] : ["tray", open];
+      var sides = ["tray"].concat(Object.keys(pans).filter(function (k) { return open === "both" || pans[k]._side === open; }));
       var best = null, n = movable.length, total = Math.pow(sides.length, n);
       for (var code = 0; code < total && n <= 9; code++) {
         var l = 0, r = 0, changes = 0, c2 = code, plan = [];
-        all.forEach(function (b) { if (b._fixed) { if (where(b) === "left") l += b._mass; else if (where(b) === "right") r += b._mass; } });
+        all.forEach(function (b) { if (b._fixed) { if (where(b) === "left") l += b._mass * dist(b); else if (where(b) === "right") r += b._mass * dist(b); } });
         for (var i = 0; i < n; i++) {
           var sd = sides[c2 % sides.length];
           c2 = Math.floor(c2 / sides.length);
           plan.push(sd);
-          if (sd === "left") l += movable[i]._mass; else if (sd === "right") r += movable[i]._mass;
-          if (sd !== where(movable[i])) changes++;
+          if (sd !== "tray") { if (pans[sd]._side === "left") l += movable[i]._mass * pans[sd]._dist; else r += movable[i]._mass * pans[sd]._dist; }
+          if (sd !== spot(movable[i])) changes++;
         }
         if (l === r && l > 0 && (!best || changes < best.changes)) best = { plan: plan, changes: changes };
       }
@@ -458,7 +478,7 @@ window.B = B;
       var k = 0;
       (function next() {
         if (!stage.isConnected) return;
-        while (k < n && best.plan[k] === where(movable[k])) k++;
+        while (k < n && best.plan[k] === spot(movable[k])) k++;
         if (k < n) {
           var b = movable[k], to = best.plan[k];
           (to === "tray" ? tray : pans[to]._items).appendChild(b);
@@ -482,7 +502,7 @@ window.B = B;
         if (finished) return;
         var at = where(b);
         if (at !== "tray") { move(b, "tray"); return; }
-        if (open !== "both") { move(b, open); return; }
+        if (open !== "both" && !lever) { move(b, open); return; }
         if (picked === b) { unpick(); return; }
         unpick();
         picked = b;
@@ -491,15 +511,15 @@ window.B = B;
       });
       if (E.draggable) E.draggable(b, function (t) { move(b, t.getAttribute("data-drop")); });
     });
-    ["left", "right"].forEach(function (side) {
+    Object.keys(pans).forEach(function (side) {
       var p = pans[side];
-      if (open !== "both" && open !== side) return;
+      if (open !== "both" && open !== p._side) return;
       p.classList.add("open");
       p.addEventListener("click", function (e) {
         if (!picked || e.target.closest(".bal-thing")) return;
         move(picked, side);
       });
-      if (open !== "both") return;
+      if (open !== "both" && !lever) return;
       p.setAttribute("role", "button");
       p.tabIndex = 0;
       p.addEventListener("keydown", function (e) {
@@ -508,5 +528,119 @@ window.B = B;
     });
     if (sb) setTimeout(function () { B.speak(s.say || prompt, s.audio); }, 300);
     if (ask === "explore") ending(box, s, done, false);
+  };
+
+  /* ---------- measure with a tool: ruler, measuring jug, thermometer ----------
+     tool: "ruler" (a thing laid along a ruler, in centimetres), "jug" (water in a measuring jug, in millilitres) or
+     "thermometer" (the red line in a thermometer, in degrees Celsius); value: what it shows. ask: "read" (the
+     default with options: choose the right number) or "set" (raise or lower the level to value, with the arrows,
+     by dragging, or with the keys, then press «درست شد»; after two misses it moves there by itself). Optional
+     prompt, say, pic (the thing on the ruler), min, max, step (the numbered marks), snap (how far one move goes),
+     unit. Scored. Without tool, measure is the plain step in js/engine.js. */
+  var plainMeasure = E.steps.measure;
+  var TOOLS = {
+    ruler: { min: 0, max: 15, step: 1, snap: 1, unit: "measureCm" },
+    jug: { min: 0, max: 1000, step: 100, snap: 50, unit: "measureMl" },
+    thermometer: { min: -10, max: 50, step: 10, snap: 1, unit: "measureDeg" }
+  };
+  E.steps.measure = function (s, box, done) {
+    if (!s.tool || !TOOLS[s.tool]) return plainMeasure(s, box, done);
+    var d = TOOLS[s.tool], min = s.min != null ? s.min : d.min, max = s.max != null ? s.max : d.max;
+    var step = s.step || d.step, snap = s.snap || d.snap, unit = s.unit || B.t(d.unit);
+    var ask = s.ask || (s.options ? "read" : "set");
+    var prompt = s.prompt || B.t(ask === "read" ? "measureRead" : "measureSet", { n: B.fa(s.value), unit: unit });
+    box.appendChild(el("p", { class: "prompt", text: prompt }));
+    var sb = E.speakBtn(s.say || prompt, s.audio);
+    if (sb) box.appendChild(sb);
+    var vertical = s.tool !== "ruler";
+    var W = vertical ? 120 : 320, H = vertical ? 240 : 110;
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, class: "mtool " + s.tool, role: "img" });
+    // The scale runs from a to b (stage px) for min..max.
+    var a = vertical ? 214 : 20, b = vertical ? 30 : 300;
+    var px = function (v) { return a + (b - a) * (v - min) / (max - min); };
+    var level = ask === "set" ? (s.start != null ? s.start : min) : s.value;
+    var fill;
+    if (s.tool === "jug") {
+      svg.appendChild(svgEl("path", { d: "M26 20h68l-6 202H32z", class: "mtool-glass" }));
+      svg.appendChild(svgEl("path", { d: "M94 40c18 0 18 60 0 70", class: "mtool-handle" }));
+      fill = svgEl("rect", { x: 30, width: 60, class: "mtool-water" });
+    } else if (s.tool === "thermometer") {
+      svg.appendChild(svgEl("rect", { x: 48, y: 20, width: 24, height: 200, rx: 12, class: "mtool-tube" }));
+      svg.appendChild(svgEl("circle", { cx: 60, cy: 222, r: 16, class: "mtool-bulb" }));
+      fill = svgEl("rect", { x: 55, width: 10, class: "mtool-red" });
+    } else {
+      svg.appendChild(svgEl("rect", { x: 10, y: 50, width: 300, height: 44, rx: 4, class: "mtool-ruler" }));
+      fill = svgEl("rect", { y: 22, height: 22, rx: 5, class: "mtool-thing" });
+    }
+    svg.appendChild(fill);
+    for (var v = min; v <= max + 1e-9; v += snap) {
+      var major = Math.abs((v - min) % step) < 1e-9 || Math.abs((v - min) % step - step) < 1e-9;
+      var q = px(v);
+      if (vertical) {
+        var x1 = s.tool === "jug" ? 32 : 74;
+        svg.appendChild(svgEl("line", { x1: x1, y1: q, x2: x1 + (major ? 12 : 6), y2: q, class: "mtool-tick" }));
+        if (major) { var t = svgEl("text", { x: s.tool === "jug" ? 48 : 90, y: q + 4, class: "mtool-num" }); t.textContent = B.fa(v); svg.appendChild(t); }
+      } else {
+        svg.appendChild(svgEl("line", { x1: q, y1: 50, x2: q, y2: 50 + (major ? 16 : 9), class: "mtool-tick" }));
+        if (major && (((max - min) / step <= 11) || Math.round((v - min) / step) % 2 === 0)) { var t2 = svgEl("text", { x: q, y: 86, class: "mtool-num", "text-anchor": "middle" }); t2.textContent = B.fa(v); svg.appendChild(t2); }
+      }
+    }
+    if (s.tool === "ruler" && s.pic) {
+      var pic = svgEl("text", { y: 18, class: "mtool-pic", "text-anchor": "middle" });
+      pic.textContent = s.pic;
+      svg.appendChild(pic);
+    }
+    function draw() {
+      var q = px(level);
+      if (s.tool === "jug") { fill.setAttribute("y", q); fill.setAttribute("height", Math.max(0, 220 - q)); }
+      else if (s.tool === "thermometer") { fill.setAttribute("y", q); fill.setAttribute("height", Math.max(0, 222 - q)); }
+      else { fill.setAttribute("x", a); fill.setAttribute("width", Math.max(0, q - a)); var p = svg.querySelector(".mtool-pic"); if (p) p.setAttribute("x", (a + q) / 2); }
+      svg.setAttribute("aria-label", B.t("measureShows", { n: B.fa(level), unit: unit }));
+    }
+    draw();
+    box.appendChild(el("div", { class: "mtool-wrap", dir: "ltr" }, [svg]));
+    var fb = feedback(box);
+    if (ask === "read") {
+      E.choice(box, { options: E.nums(s.options), answer: s.value }, done);
+      if (sb) setTimeout(function () { B.speak(s.say || prompt, s.audio); }, 300);
+      return;
+    }
+    // ---- set: move the level to value ----
+    var misses = 0, over = false;
+    function set(v) { if (over) return; level = Math.max(min, Math.min(max, Math.round(v / snap) * snap)); draw(); fb.clear(); }
+    var down = el("button", { class: "btn secondary", type: "button", text: vertical ? "▼" : "◀", "aria-label": B.t("measureLess"), onclick: function () { set(level - snap); } });
+    var up = el("button", { class: "btn secondary", type: "button", text: vertical ? "▲" : "▶", "aria-label": B.t("measureMore"), onclick: function () { set(level + snap); } });
+    svg.setAttribute("tabindex", "0");
+    svg.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowUp" || e.key === "ArrowRight") { set(level + snap); e.preventDefault(); }
+      if (e.key === "ArrowDown" || e.key === "ArrowLeft") { set(level - snap); e.preventDefault(); }
+    });
+    var dragging = false;
+    function fromPointer(e) {
+      var r = svg.getBoundingClientRect();
+      var pos = vertical ? (e.clientY - r.top) / r.height * H : (e.clientX - r.left) / r.width * W;
+      set(min + (pos - a) / (b - a) * (max - min));
+    }
+    svg.addEventListener("pointerdown", function (e) { dragging = true; if (svg.setPointerCapture) svg.setPointerCapture(e.pointerId); fromPointer(e); e.preventDefault(); });
+    svg.addEventListener("pointermove", function (e) { if (dragging) fromPointer(e); });
+    svg.addEventListener("pointerup", function () { dragging = false; });
+    var check = E.nextBtn(B.t("measureCheck"), function () {
+      if (over) return;
+      if (Math.abs(level - s.value) < 1e-9) {
+        over = true; fb.good();
+        setTimeout(function () { if (svg.isConnected) done(true, misses === 0); }, 1000);
+        return;
+      }
+      misses++;
+      bounce(svg);
+      fb.tryAgain(B.t(level < s.value ? "measureTooLow" : "measureTooHigh"));
+      if (misses >= 2) {
+        over = true; level = s.value; draw();
+        fb.say(B.t("measureShowIt", { n: B.fa(s.value), unit: unit }));
+        setTimeout(function () { if (svg.isConnected) done(true, false); }, 1800);
+      }
+    });
+    box.appendChild(row([down, up, check]));
+    if (sb) setTimeout(function () { B.speak(s.say || prompt, s.audio); }, 300);
   };
 })();

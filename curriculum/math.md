@@ -169,70 +169,80 @@ patterns, all with things and pictures; first number stories with fingers and ob
 | St | Lesson | Title | Covers | Content types | Objectives | Depth |
 |---|---|---|---|---|---|---|
 | ✅ | `math-seed-1` | شمردن تا پنج | Counting objects to 5 | lesson (`count`) | math.seed.1, math.seed.2 | core |
-| ⬜ | `math-seed-11` | یک نگاه، چندتا؟ | Subitising: 1–3, then 4 and 5 dots, dice faces and fingers shown for a moment; say how many without counting; matching dots ↔ fingers | lesson (`choose`), 🆕 `count` with `flash`, game (`pairs`) | math.seed.3 | core |
-| ⬜ | `math-seed-12` | آخرین عدد می‌گوید چندتا | Cardinality: count, then answer «چندتا؟» with the last number; the same five in a line, a circle and scattered; counting again does not change it | animation, lesson (`count`, `choose`) | math.seed.2 | core |
-| ⬜ | `math-seed-13` | انگشت‌های من | Showing 1–5 on one hand, 6–10 as a full hand and more; how many fingers are up; showing a number on fingers at home | lesson (`choose`), 🆕 `count` with `flash`, home (`doit`) | math.seed.3, math.seed.8 | core |
+| 🔨 | `math-seed-11` | یک نگاه، چندتا؟ | Subitising: 1–3, then 4 and 5 dots, dice faces and fingers shown for a moment; say how many without counting; matching dots ↔ fingers | lesson (`choose`, `count` with `flash`), game (`pairs`) | math.seed.3 | core |
+| 🔨 | `math-seed-12` | آخرین عدد می‌گوید چندتا | Cardinality: count, then answer «چندتا؟» with the last number; the same five in a line, a circle and scattered; counting again does not change it | animation, lesson (`count`, `choose`) | math.seed.2 | core |
+| 🔨 | `math-seed-13` | انگشت‌های من | Showing 1–5 on one hand, 6–10 as a full hand and more; how many fingers are up; showing a number on fingers at home | lesson (`choose`, `count` with `flash`), home (`doit`) | math.seed.3, math.seed.8 | core |
 | ✅ | `math-seed-2` | شمردن تا ده | Counting objects to 10 | lesson (`count`) | math.seed.1, math.seed.2 | core |
 | ✅ | `math-seed-3` | بازی غذا دادن | One-to-one, counting out a number, patterns | animation, game (`feed`, `pairs`, `pattern`, `order`) | math.seed.4, math.seed.13 | core |
-| ⬜ | `math-seed-14` | چیزهای پراکنده را بشمار | Keeping track: counting things that are scattered (moving each one aside), sounds (drum beats) and jumps; counting out up to 10 | lesson (`count`), game (`feed`), home (`doit`) | math.seed.2, math.seed.4 | core |
-| ⬜ | `math-seed-15` | بیشتر، کمتر، به اندازه | Comparing two groups by matching one to one: cups and saucers, children and chairs; more, fewer, the same; a big thing is not "more" | animation, lesson (`compare`, `choose`) | math.seed.5 | core |
+| 🔨 | `math-seed-14` | چیزهای پراکنده را بشمار | Keeping track: counting things that are scattered (moving each one aside), sounds (drum beats) and jumps; counting out up to 10 | lesson (`count`), game (`feed`), home (`doit`) | math.seed.2, math.seed.4 | core |
+| 🔨 | `math-seed-15` | بیشتر، کمتر، به اندازه | Comparing two groups by matching one to one: cups and saucers, children and chairs; more, fewer, the same; a big thing is not "more" | animation, lesson (`compare`, `choose`) | math.seed.5 | core |
 | ✅ | `math-seed-4` | بزرگ و کوچک | Size: bigger/smaller (bazaar, animals), longer/shorter, taller (children and a tree in the yard) | animation, lesson (`measure`, `choose`) | math.seed.10 | core |
-| ⬜ | `math-seed-16` | دراز و کوتاه | Length: comparing side by side from the same start (pencils, ribbons, a bent rope is longer than it looks) | lesson (`measure`, `choose`) | math.seed.10 | core |
-| ⬜ | `math-seed-17` | سنگین و سبک | Heavier and lighter: holding two things, then a two-pan balance (a big pillow and a small stone) | lesson (`balance`, `choose`) | math.seed.10 | core |
-| ⬜ | `math-seed-18` | پر و خالی | Capacity: full, empty, half full; which glass holds more (pouring from one to the other) | animation, lesson (`choose`), home (`doit` with water and cups) | math.seed.10 | full |
-| ⬜ | `math-seed-19` | از کوچک تا بزرگ | Ordering three, then five things by size, length and height (Russian-doll-like bowls, pencils, children in a line) | game (`order`) | math.seed.11 | full |
+| 🔨 | `math-seed-16` | دراز و کوتاه | Length: comparing side by side from the same start (two pencils lined up against a start line; a rope in waves is longer than it looks once pulled straight) | animation, lesson (`measure`, `choose`) | math.seed.10 | core |
+| 🔨 | `math-seed-17` | سنگین و سبک | Heavier and lighter: holding two things, then a two-pan balance (the lower pan is heavier; a big balloon and a small stone); two things in the hands at home | lesson (`balance`, `choose`), home (`doit`) | math.seed.10 | core |
+| 🔨 | `math-seed-18` | پر و خالی | Capacity: full, empty, half full (a jug pours into glasses); which holds more (a thin glass poured into a bowl does not fill it; spoon or bucket) | animation, lesson (`choose`), home (`doit` with water and cups) | math.seed.10 | full |
+| 🔨 | `math-seed-19` | از کوچک تا بزرگ | Ordering three, then five things by size, length and height (Russian-doll-like bowls, pencils, children in a line) | game (`order`) | math.seed.11 | full |
 | ✅ | `math-seed-5` | دسته کن | Sorting by colour (two, then three baskets), by shape (round / four-cornered, colours mixed), by size | game (`sort`) | math.seed.12 | core |
-| ⬜ | `math-seed-20` | کدام جور نیست؟ | Finding the one that does not belong and saying why; sorting the same things in two ways; guessing the sorting rule | lesson (`choose`), game (`sort`) | math.seed.12 | core |
+| 🔨 | `math-seed-20` | کدام جور نیست؟ | Finding the one that does not belong and saying why; sorting the same things in two ways; guessing the sorting rule | lesson (`choose`), game (`sort`) | math.seed.12 | core |
 | ✅ | `math-seed-6` | کجاست؟ | Position words: بالا، پایین، جلو، پشت، کنار، داخل (picture stories with questions, then up/down with the body) | animation, lesson (`choose`) | math.seed.16 | core |
-| ⬜ | `math-seed-21` | بین، روی، زیر | More position words: بین، روی، زیر، بیرون؛ putting things where the voice says in a room picture; a hide-and-seek game at home | lesson (`choose`, `map`), home (`doit`) | math.seed.16 | core |
-| ⬜ | `math-seed-22` | راه را پیدا کن | Following a path on a picture map: forward, turn, as far as the tree; telling a friend the way | lesson (`map` route), home (`doit`) | math.seed.17 | full |
+| 🔨 | `math-seed-21` | بین، روی، زیر | More position words: بین، روی، زیر، داخل، بیرون؛ finding things where the voice says in a room picture; a hide-and-seek game at home | lesson (`choose`, `map`), home (`doit`) | math.seed.16 | core |
+| 🔨 | `math-seed-22` | راه را پیدا کن | Following a way on a picture map of a park: straight on, turn, as far as the tree; telling someone the way at home | lesson (`map` route), home (`doit`) | math.seed.17 | full |
 | ✅ | `math-seed-7` | شکل‌های دور و بر ما | Circle, square, triangle: naming them, then finding them in everyday things; a shape hunt at home | lesson (`shape`), home (`doit`) | math.seed.14 | core |
-| ⬜ | `math-seed-23` | مستطیل، و شکل‌های چرخیده | Rectangle; triangles and squares turned, big and small, long and thin; shapes that are not triangles (open, curved) | lesson (`shape`, `choose`), game (`sort`) | math.seed.14 | core |
-| ⬜ | `math-seed-24` | با شکل‌ها بساز | Making pictures from shapes (a house from a square and a triangle), filling an outline with shapes | animation, 🆕 `tangram` | math.seed.15 | full |
-| ⬜ | `math-seed-25` | توپ، جعبه، قوطی | Solid shapes: what rolls, what slides, what stacks; finding them in the kitchen | animation, game (`sort`), home (`doit`) | math.seed.21 | full |
+| 🔨 | `math-seed-23` | مستطیل، و شکل‌های چرخیده | Rectangle; triangles and squares turned, big and small, long and thin; shapes that are not triangles (open, curved) | lesson (`shape`, `choose`), game (`sort`) | math.seed.14 | core |
+| 🔨 | `math-seed-24` | با شکل‌ها بساز | Making pictures from shapes (a house from a square and a triangle, an ice-cream cone), filling an outline with shapes and turning them to fit (house, tree, boat, fish); shape pictures at home | animation, game (`tangram`), home (`doit`) | math.seed.15 | full |
+| 🔨 | `math-seed-25` | توپ، جعبه، قوطی | Solid shapes: what rolls, what slides, what stacks (a ball, a box and a can on a sloping board); finding them in the kitchen | animation, game (`sort`), lesson (`choose`), home (`doit`) | math.seed.21 | full |
 | ✅ | `math-seed-8` | الگو بساز | Repeating patterns AB, AAB, ABC (colours, salad, clapping, a carpet), filling one to three places | game (`pattern`) | math.seed.13 | core |
-| ⬜ | `math-seed-26` | الگو با صدا و حرکت | Patterns of sounds and moves (clap, stamp; clap, clap, stamp), the same pattern in colours and shapes | game (`pattern`), home (`doit`) | math.seed.13 | core |
-| ⬜ | `math-seed-27` | الگوی خودت را بساز | Finding the mistake in a pattern, making your own pattern, patterns in carpets and tiles | game (`pattern`), lesson (`choose`), home (`doit`) | math.seed.13 | full |
+| 🔨 | `math-seed-26` | الگو با صدا و حرکت | Patterns of sounds and moves (clap, stamp; clap, clap, stamp), the same pattern in colours and shapes | game (`pattern`), home (`doit`) | math.seed.13 | core |
+| 🔨 | `math-seed-27` | الگوی خودت را بساز | Finding the mistake in a pattern, making your own pattern, patterns in carpets and tiles | game (`pattern`), lesson (`choose`), home (`doit`) | math.seed.13 | full |
 | ✅ | `math-seed-9` | عددها را بشناسیم | Numerals ۱–۵ ↔ quantities: each numeral shown with things, matched to dots and pictures, giving a numeral's worth, putting ۱–۵ in order | animation, game (`pairs` numeral ↔ dots, `feed`, `order`), lesson (`choose`) | math.seed.6 | core |
 | ✅ | `math-seed-10` | بازی شمردن | Unit game: count out to 5, memory game numeral ↔ dots and pictures, order by quantity, count back from ۵ | game (`feed`, `pairs` with `hidden`, `order`) | math.seed.4, math.seed.6, math.seed.7 | core |
-| ⬜ | `math-seed-28` | عددهای ۶ تا ۱۰ | Numerals ۶–۱۰ with things, five and some more (two rows on a tray), matching numeral ↔ quantity | animation, lesson (`count`, `choose`), game (`pairs`) | math.seed.6, math.seed.3 | core |
-| ⬜ | `math-seed-29` | صفر یعنی هیچ | Zero: an empty plate, the last bird flies away (5, 4, … 0), the numeral ۰ | animation, lesson (`choose`, `feed`) | math.seed.6, math.seed.1 | core |
-| ⬜ | `math-seed-30` | یکی بیشتر، یکی کمتر | One more and one less on a number track and with things (one more apple, one bird flies off) | lesson (`numline`, `choose`), game (`feed`) | math.seed.7 | core |
-| ⬜ | `math-seed-31` | بازی مارپله | A linear number board game 1–10, then 1–20: roll, move counting each square, say where you land (Siegler and Ramani) | 🆕 `track` | math.seed.1, math.seed.7 | core |
-| ⬜ | `math-seed-32` | عددها به ترتیب | Putting ۱–۱۰ in order, the missing number on a track, before and after (house numbers) | game (`order`), lesson (`numline`) | math.seed.7 | core |
-| ⬜ | `math-seed-33` | پنج تا در دو دست | Parts of 5 (and of 4 and 3): beans in two hands, two-colour counters shaken out (3 red and 2 yellow), all the ways | animation, lesson (`make`, `choose`) | math.seed.8 | core |
-| ⬜ | `math-seed-34` | چندتا پنهان شد؟ | Hidden part: 5 apples, some under a bowl, how many are hidden; then with 6 and 7 | animation, lesson (`choose`), home (`doit`) | math.seed.8, math.seed.9 | core |
-| ⬜ | `math-seed-35` | قصه آمدن | Adding as joining: stories where more come (birds, guests, eggs), acted with fingers and things, to 5 | animation (`scene` + `question`), lesson (`choose`, `feed`) | math.seed.9 | core |
-| ⬜ | `math-seed-36` | قصه رفتن | Taking away: stories where some leave or are eaten, to 5 | animation (`scene` + `question`), lesson (`choose`) | math.seed.9 | core |
-| ⬜ | `math-seed-37` | قصه‌های تا ده | Joining and taking away to 10 with things and fingers; telling a number story about a picture | animation, lesson (`choose`), story (`talk`) | math.seed.9 | full |
-| ⬜ | `math-seed-38` | بازی قصه‌های عددی | Unit game: hidden parts, one more and one less, stories to 5 | game (`feed`, `pairs`, `order`) | math.seed.8, math.seed.9, math.seed.7 | core |
-| ⬜ | `math-seed-39` | اول، دوم، سوم | First to fifth in a line (the bread queue, a race of ants), who is third | animation, lesson (`choose`), game (`order` with `numbered`) | math.seed.19 | full |
-| ⬜ | `math-seed-40` | اول، بعد، آخر | Order of events: planting a seed, making tea, getting dressed; what comes first and last | game (`order`), story (`talk`) | math.seed.18 | full |
-| ⬜ | `math-seed-41` | صبح تا شب | Morning, noon, evening, night: what we do when, the sky at each | animation, lesson (`choose`), game (`order`) | math.seed.18 | full |
-| ⬜ | `math-seed-42` | کدام بیشتر است؟ | First picture graph: sort fruit into columns, see which column is tallest, count each | lesson (`chart` make and read) | math.seed.20, math.seed.12 | full |
-| ⬜ | `math-seed-43` | حدس بزن چندتا | Estimating: a few or many; guess, then count (beads in a jar, birds on a wire) | lesson (`choose`, `count`) | math.seed.22 | full |
-| ⬜ | `math-seed-44` | با دست اندازه بگیر | Measuring with hand spans, steps and spoons; the same thing laid again and again with no gaps | animation, lesson (`measure`), home (`doit`) | math.seed.23 | full |
-| ⬜ | `math-seed-45` | بازی اندازه‌ها | Unit game: bigger, longer, heavier, holds more; putting in order | game (`sort`, `order`, `pairs`) | math.seed.10, math.seed.11 | core |
-| ⬜ | `math-seed-46` | بازی شکل‌ها | Unit game: shape memory, sorting shapes and solids, a shape hunt in a picture | game (`pairs` with `hidden`, `sort`) | math.seed.14, math.seed.21 | core |
-| ⬜ | `math-seed-47` | شمردن تا بیست | Saying the numbers to 20, counting on from a number, counting back from 10 (a rocket) | animation, lesson (`numline`, `count`) | math.seed.1 | core |
-| ⬜ | `math-seed-48` | بازی عددها تا ده | Unit game: numerals ۰–۱۰ ↔ quantities, order, at a glance, one more | game (`pairs` with `hidden`, `order`, `feed`) | math.seed.3, math.seed.6, math.seed.7 | core |
-| ⬜ | `math-seed-49` | بازی جای چیزها | Unit game: position words, a room to tidy as the voice says, a route | game (`sort`), lesson (`map`) | math.seed.16, math.seed.17 | full |
-| ⬜ | `math-seed-50` | جشن عددها | Garden review: count, compare, hidden part, a story, a pattern: everything from دانه in one playful lesson | game (`feed`, `pattern`, `pairs`), lesson (`choose`) | math.seed.2, math.seed.5, math.seed.8, math.seed.9, math.seed.13 | core |
+| 🔨 | `math-seed-28` | عددهای ۶ تا ۱۰ | Numerals ۶–۱۰ with things, five and some more (eggs filling an egg tray, two rows of five), matching numeral ↔ dots and fingers | animation, lesson (`count`, `choose`), game (`pairs`) | math.seed.6, math.seed.3 | core |
+| 🔨 | `math-seed-29` | صفر یعنی هیچ | Zero: the last bird flies off a wire (5, 4, … 0), an empty plate, a cat that is full, the numeral ۰ | animation, lesson (`choose`, `feed`) | math.seed.6, math.seed.1 | core |
+| 🔨 | `math-seed-30` | یکی بیشتر، یکی کمتر | One more and one less on a number track and with things (one more apple, one bird flies off) | lesson (`numline`, `choose`), game (`feed`) | math.seed.7 | core |
+| 🔨 | `math-seed-31` | بازی مارپله | A linear number board game 1–10, then 1–20 (from 10): roll, move counting each square, say where you land (Siegler and Ramani); where will you land?; a paper board at home | game (`track`), lesson (`choose`), home (`doit`) | math.seed.1, math.seed.7 | core |
+| 🔨 | `math-seed-32` | عددها به ترتیب | Putting ۱–۱۰ in order, the missing number in a row, before and after (house numbers), counting on along a number line, counting back from ۱۰ | game (`order`), lesson (`numline`, `choose`) | math.seed.7 | core |
+| 🔨 | `math-seed-33` | پنج تا در دو دست | Parts of 5 (and of 4 and 3): two-colour counters shaken out of a cup (3 red and 2 yellow, then 4 and 1, 1 and 4), beans in two hands, all the ways; «which hand?» at home | animation, lesson (`make`, `choose`), home (`doit`) | math.seed.8 | core |
+| 🔨 | `math-seed-34` | چندتا پنهان شد؟ | Hidden part: 5 apples, a bowl comes down over some, how many are hidden; then with 6 and 7 | animation, lesson (`choose`), home (`doit`) | math.seed.8, math.seed.9 | core |
+| 🔨 | `math-seed-35` | قصه آمدن | Adding as joining: stories where more come (a bird flies in, guests walk in, the hen lays an egg), acted with fingers and things, to 5 | animation (`scene` + `question`), lesson (`choose`, `feed`) | math.seed.9 | core |
+| 🔨 | `math-seed-36` | قصه رفتن | Taking away: stories where some leave or are eaten (a chick runs after a butterfly, cars drive off, apples eaten), to 5 | animation (`scene` + `question`), lesson (`choose`) | math.seed.9 | core |
+| 🔨 | `math-seed-37` | قصه‌های تا ده | Joining and taking away to 10 (birds fly in to a wire, the wind takes balloons) with things and fingers; telling a number story about a picture | animation, lesson (`choose`), story (`talk`) | math.seed.9 | full |
+| 🔨 | `math-seed-38` | بازی قصه‌های عددی | Unit game: hidden parts, one more and one less, stories to 5 | game (`feed`, `pairs`, `order`) | math.seed.8, math.seed.9, math.seed.7 | core |
+| 🔨 | `math-seed-39` | اول، دوم، سوم | First to fifth in a line (people coming one by one to the bread queue, a race, insects coming out), who is third | animation, lesson (`choose`), game (`order` with `numbered`) | math.seed.19 | full |
+| 🔨 | `math-seed-40` | اول، بعد، آخر | Order of events: planting a seed, making tea, getting dressed; what comes first and last | game (`order`), story (`talk`) | math.seed.18 | full |
+| 🔨 | `math-seed-41` | صبح تا شب | Morning, noon, evening, night: the sky and the sun through one day, what we do when | animation, lesson (`choose`), game (`order`) | math.seed.18 | full |
+| 🔨 | `math-seed-42` | کدام بیشتر است؟ | First picture graph: sort fruit into columns, see which column is tallest, count each | lesson (`chart` make and read) | math.seed.20, math.seed.12 | full |
+| 🔨 | `math-seed-43` | حدس بزن چندتا | Estimating: a few or many; guess (about 3, 6 or 10), then count (beads in a jar, birds on a wire, nuts); a guessing game at home | lesson (`choose`, `count`), home (`doit`) | math.seed.22 | full |
+| 🔨 | `math-seed-44` | با دست اندازه بگیر | Measuring with hand spans, steps and spoons; the same thing laid again and again with no gaps (a bench is five spans, but three with gaps); big steps give fewer | animation, lesson (`measure`), home (`doit`) | math.seed.23 | full |
+| 🔨 | `math-seed-45` | بازی اندازه‌ها | Unit game: bigger, longer, heavier, holds more; putting in order | game (`sort`, `order`, `pairs`) | math.seed.10, math.seed.11 | core |
+| 🔨 | `math-seed-46` | بازی شکل‌ها | Unit game: shape memory, sorting shapes and solids, a shape hunt in a picture | game (`pairs` with `hidden`, `sort`) | math.seed.14, math.seed.21 | core |
+| 🔨 | `math-seed-47` | شمردن تا بیست | Saying the numbers to 20, counting on from a number on the number line, counting back from 10 (a rocket takes off at zero) | animation, lesson (`numline`, `count`) | math.seed.1 | core |
+| 🔨 | `math-seed-48` | بازی عددها تا ده | Unit game: numerals ۰–۱۰ ↔ dots and fingers, order, at a glance, one more | game (`pairs` with `hidden`, `order`, `feed`), lesson (`count` with `flash`) | math.seed.3, math.seed.6, math.seed.7 | core |
+| 🔨 | `math-seed-49` | بازی جای چیزها | Unit game: a room to tidy as the voice says (in the box, on the shelf, under the bed), position words in a room picture, routes in the park | game (`sort`), lesson (`map`) | math.seed.16, math.seed.17 | full |
+| 🔨 | `math-seed-50` | جشن عددها | Garden review: count, compare, hidden part, a story, a pattern: everything from دانه in one playful lesson | game (`feed`, `pattern`, `pairs`), lesson (`choose`) | math.seed.2, math.seed.5, math.seed.8, math.seed.9, math.seed.13 | core |
 
 #### Practice
 
-| St | Practice | What it makes | Objectives |
-|---|---|---|---|
-| ⬜ | Count it | Random groups of 1–10 things (fruit, animals, toys) in lines, circles and scattered: count, then «چندتا؟» | math.seed.2, math.seed.4 |
-| ⬜ | Quick look | Dot patterns, dice, fingers and five-frames shown for a moment (1–5, then 6–10 as five and more) | math.seed.3 |
-| ⬜ | Numeral match | Numeral ↔ quantity pairs and memory games with ۰–۱۰ | math.seed.6 |
-| ⬜ | Board game | The 1–10 and 1–20 number tracks with a die, new themes (a garden path, a river) | math.seed.1, math.seed.7 |
-| ⬜ | Hidden part | A number to 5 (then 10), part shown, part under a bowl | math.seed.8 |
-| ⬜ | Story maker | Short adding-to and taking-away stories to 5 / 10 from templates (who, what, how many come or go), told by the voice | math.seed.9 |
-| ⬜ | Compare | Two groups to match one to one; two things to compare by length, height, weight | math.seed.5, math.seed.10 |
-| ⬜ | Pattern maker | Repeating patterns AB, AAB, ABB, ABC in colours, shapes, animals; continue, fix, fill a gap | math.seed.13 |
-| ⬜ | Sort it | Mixed sets to sort by one rule; odd one out | math.seed.12 |
-| ⬜ | Shape hunt | Shapes in many sizes and turns among non-examples | math.seed.14 |
+| St | Id | Practice | What it makes | Objectives |
+|---|---|---|---|---|
+| 🔨 | `math-seed-p1` | Count it | Random groups of 1–10 things (fruit, animals, toys) in lines, circles and scattered: count, then «چندتا؟» | math.seed.2, math.seed.4 |
+| 🔨 | `math-seed-p2` | Quick look | Dot patterns, dice, fingers and five-frames shown for a moment (1–5, then 6–10 as five and more) | math.seed.3 |
+| 🔨 | `math-seed-p3` | Numeral match | Numeral ↔ quantity pairs and memory games with ۰–۱۰ | math.seed.6 |
+| 🔨 | `math-seed-p4` | Board game | The 1–10 and 1–20 number tracks with a die, new themes (a garden path, a river) | math.seed.1, math.seed.7 |
+| 🔨 | `math-seed-p5` | Hidden part | A number to 5 (then 10), part shown, part under a bowl | math.seed.8 |
+| 🔨 | `math-seed-p6` | Story maker | Short adding-to and taking-away stories to 5 / 10 from templates (who, what, how many come or go), told by the voice | math.seed.9 |
+| 🔨 | `math-seed-p7` | Compare | Two groups to match one to one; two things to compare by length, height, weight | math.seed.5, math.seed.10 |
+| 🔨 | `math-seed-p8` | Pattern maker | Repeating patterns AB, AAB, ABB, ABC in colours, shapes, animals; continue, fix, fill a gap | math.seed.13 |
+| 🔨 | `math-seed-p9` | Sort it | Mixed sets to sort by one rule; odd one out | math.seed.12 |
+| 🔨 | `math-seed-p10` | Shape hunt | Shapes in many sizes and turns among non-examples | math.seed.14 |
+| 🔨 | `math-seed-p11` | Give me n | Give an animal as many as it asks for; count drum beats and frog hops; feed «۲ + ۳» | math.seed.4, math.seed.2 |
+| 🔨 | `math-seed-p12` | Number order | Dot cards from fewest to most, numerals in order, the next number, one more and one less on the line, counting back | math.seed.1, math.seed.7 |
+| 🔨 | `math-seed-p13` | Parts of five and ten | Fingers held up to count, how many are down, dots ↔ fingers, a number made on a frame | math.seed.3, math.seed.8 |
+| 🔨 | `math-seed-p14` | Size and order | The biggest or smallest animal, what holds more, things and strips to put in order of size | math.seed.10, math.seed.11 |
+| 🔨 | `math-seed-p15` | Where is it? | On, under, next to, in front of in a picture of a room; a way through the park map | math.seed.16, math.seed.17 |
+| 🔨 | `math-seed-p16` | First, next, last | A race to put in order, which one in a line is third, what happened first and last, parts of the day | math.seed.18, math.seed.19 |
+| 🔨 | `math-seed-p17` | Picture graph | Small picture graphs to read (how many, most, fewest), or to fill first | math.seed.20, math.seed.12 |
+| 🔨 | `math-seed-p18` | Guess how many | Many or few at a glance; about 5, 10 or 20 without counting | math.seed.22 |
+| 🔨 | `math-seed-p19` | Hands and feet | Measure in hand spans, footsteps or paper clips; who counts more steps | math.seed.23 |
+| 🔨 | `math-seed-p20` | Build with shapes | A house, tree, boat or fish from shapes; what rolls; what is like a ball, a box or a can | math.seed.15, math.seed.21 |
 
 ### 🌱 جوانه — `sprout`
 
@@ -276,81 +286,96 @@ the core lessons and about half the practice.
 | St | Lesson | Title | Covers | Content types | Objectives | Depth |
 |---|---|---|---|---|---|---|
 | ✅ | `math-sprout-1` | قاب ده‌تایی | Ten-frame: see and build numbers to 10 | lesson (`tenframe`, `make`, `count`) | math.spr.3 | core |
-| ⬜ | `math-sprout-14` | پنج و چندتا | Five and some more: 6–9 on two hands and on a ten-frame at a glance; 9 is one less than 10 | lesson (`tenframe`, `choose`), 🆕 `count` with `flash` | math.spr.3 | core |
+| 🔨 | `math-sprout-14` | پنج و چندتا | Five and some more: 6–9 on two hands and on a ten-frame at a glance; 9 is one less than 10 | lesson (`tenframe`, `choose`, `count` with `flash`) | math.spr.3 | core |
 | ✅ | `math-sprout-2` | چندتا تا ده؟ | Number bonds to 10 | lesson (`tenframe` with `missing`) | math.spr.4 | core |
-| ⬜ | `math-sprout-15` | همه راه‌های ساختن | All the ways to split 5, 6, 7, 8 and 9 into two parts (two-colour counters, beans in two hands), in order | animation, lesson (`make`, `choose`) | math.spr.4 | core |
-| ⬜ | `math-sprout-16` | بازی ده‌تایی | Unit game: pairs that make 10, the missing part, memory game | game (`pairs` with `hidden`, `feed`) | math.spr.4 | core |
+| 🔨 | `math-sprout-15` | همه راه‌های ساختن | All the ways to split 5, 6, 7, 8 and 9 into two parts (six counters turned over one at a time, beans in two hands), in order | animation, lesson (`make`, `choose`), game (`order`) | math.spr.4 | core |
+| 🔨 | `math-sprout-16` | بازی ده‌تایی | Unit game: pairs that make 10, the missing part, memory game | game (`pairs` with `hidden`, `feed`) | math.spr.4 | core |
 | ✅ | `math-sprout-3` | عددهای ۱۱ تا ۲۰ | Teen numbers as ten and some more | lesson (`tenframe`, `make`, `choose`) | math.spr.5 | core |
 | ✅ | `math-sprout-4` | بیشتر یا کمتر؟ | Comparing quantities and numbers | lesson (`compare`) | math.spr.6 | core |
 | ✅ | `math-sprout-5` | جمع تا ده | Addition to 10 | lesson (`tenframe` with `plus`, `choose`) | math.spr.7 | core |
-| ⬜ | `math-sprout-17` | جمله‌های عددی | Writing «+»، «−» and «=»: a picture → a number sentence, a sentence → a picture, saying it as a story | lesson (`choose`), game (`pairs`) | math.spr.11, math.spr.7 | core |
+| 🔨 | `math-sprout-17` | جمله‌های عددی | Writing «+»، «−» and «=»: a picture → a number sentence, a sentence → a picture, saying it as a story | lesson (`choose`), game (`pairs`) | math.spr.11, math.spr.7 | core |
 | ✅ | `math-sprout-6` | کم کردن تا ده | Subtraction to 10 | lesson (`tenframe` with `minus`, `choose`) | math.spr.7 | core |
-| ⬜ | `math-sprout-18` | جزء، جزء، کل | Part-part-whole: the same picture as adding and as taking away (۳ + ۴ = ۷، ۷ − ۴ = ۳), in a whole-and-parts box | animation, lesson (`choose`, `tenframe`) | math.spr.7, math.spr.9 | core |
+| 🔨 | `math-sprout-18` | جزء، جزء، کل | Part-part-whole: the same picture as adding and as taking away (۳ + ۴ = ۷، ۷ − ۴ = ۳), in a whole-and-parts box | animation, lesson (`choose`, `tenframe`) | math.spr.7, math.spr.9 | core |
 | ✅ | `math-sprout-7` | شکل‌ها | Naming and recognising 2D shapes, turned and stretched | lesson (`shape`) | math.spr.12 | core |
-| ⬜ | `math-sprout-19` | ضلع و گوشه | Describing shapes: counting sides and corners, sorting by them, the shape behind a description | lesson (`shape`, `choose`), game (`sort`) | math.spr.12 | core |
-| ⬜ | `math-sprout-20` | شکل‌های فضایی | Cube, cuboid, sphere, cylinder, cone: flat and curved faces, what rolls, where we see them | animation, game (`sort`, `pairs`), home (`doit`) | math.spr.12 | core |
-| ⬜ | `math-sprout-21` | نصف و چهار قسمت مساوی | Halves and quarters of shapes: fair and unfair shares of a sangak, a square, a circle | lesson (`fraction`, `choose`) | math.spr.13 | core |
+| 🔨 | `math-sprout-19` | ضلع و گوشه | Describing shapes: counting sides and corners, sorting by them, the shape behind a description | lesson (`shape`, `choose`), game (`sort`) | math.spr.12 | core |
+| 🔨 | `math-sprout-20` | شکل‌های فضایی | Cube, cuboid, sphere, cylinder, cone: flat and curved faces, what rolls, where we see them | animation, game (`sort`, `pairs`), home (`doit`) | math.spr.12 | core |
+| 🔨 | `math-sprout-21` | نصف و چهار قسمت مساوی | Halves and quarters of shapes: fair and unfair shares of a sangak, a square, a circle | lesson (`fraction`, `choose`) | math.spr.13 | core |
 | ✅ | `math-sprout-8` | بازی جمع | Unit game: addition | animation, game (`feed`, `pairs`, `order`, `pattern`) | math.spr.7 | core |
 | ✅ | `math-sprout-9` | نوشتن عددها | Writing digits ۱–۹ and ۰, each shown being written first (۷ and ۸ side by side as opposites); Persian only, no English version | lesson (`trace` of digits) | math.spr.2 | core |
 | ✅ | `math-sprout-10` | قبل و بعد | Number order to 20: before, after, between (house numbers in an alley, one hop on the number line, then numbers alone; putting ۱۱–۲۰ in order) | animation, lesson (`numline`, `choose`), game (`order` with `ltr`) | math.spr.6 | core |
 | ✅ | `math-sprout-11` | قصه جمع و تفریق | Word problems to 10 told as stories: three animated stories to count (adding and taking away), then stories heard with the number sentence, then a story alone | animation (`story` + `question`), lesson (`choose`) | math.spr.9 | core |
 | ✅ | `math-sprout-12` | صبح، ظهر، شب | Time order: parts of the day (a child's day from breakfast to bed), days of the week from شنبه to جمعه, the day before and after | animation, game (`order`), lesson (`choose`) | math.spr.16 | core |
 | ✅ | `math-sprout-13` | بازی عددها تا بیست | Unit game: numbers to 20: counting out 12, teen numbers as two hands (ten) and dots, counting on, back from 20 and in twos | game (`pairs`, `pattern`, `feed`) | math.spr.1, math.spr.5, math.spr.21 | core |
-| ⬜ | `math-sprout-22` | بازی تفریق | Unit game: taking away to 10, what is left, the missing part | game (`feed`, `pairs`, `sort`) | math.spr.7 | core |
-| ⬜ | `math-sprout-23` | نوشتن عددهای تا بیست | Writing ۱۰ to ۲۰: a ten and its ones (۱ then the ones digit), hearing a number and writing it | lesson (`trace`, `choose`), home (`paper`) | math.spr.2, math.spr.5 | core |
-| ⬜ | `math-sprout-24` | شمردن رو به جلو | Adding by counting on from the bigger number (۸ + ۳: «هشت… نه، ده، یازده») on a number line and with fingers | animation, lesson (`numline`, `choose`) | math.spr.8 | core |
-| ⬜ | `math-sprout-25` | شمردن رو به عقب | Subtracting by counting back and by counting up (۱۲ − ۹: from 9 up to 12) | lesson (`numline`, `choose`) | math.spr.8 | core |
-| ⬜ | `math-sprout-26` | دوتایی‌ها تا بیست | Doubles to ۱۰ + ۱۰ (two hands, egg boxes, a butterfly's wings); a double and one more | animation, lesson (`tenframe`, `choose`), game (`pairs`) | math.spr.8 | core |
-| ⬜ | `math-sprout-27` | جابه‌جا کن، فرقی نمی‌کند | Adding in any order (۲ + ۷ = ۷ + ۲, start from the bigger one), adding three numbers by finding a ten | lesson (`choose`, `tenframe`) | math.spr.8, math.spr.10 | core |
-| ⬜ | `math-sprout-28` | بازی جمع تا بیست | Unit game: counting on, doubles, any order | game (`pairs`, `sort`, `feed`) | math.spr.8 | core |
-| ⬜ | `math-sprout-29` | ترازوی برابر | «=» as balance: both sides the same (۵ = ۲ + ۳، ۴ + ۱ = ۳ + ۲), true or false sentences | lesson (`balance`, `choose`) | math.spr.10 | core |
-| ⬜ | `math-sprout-30` | عدد گم‌شده | The missing number: ۳ + □ = ۷، □ − ۲ = ۵, with a hidden part and a balance | lesson (`balance` with an unknown, `tenframe` with `missing`, `choose`) | math.spr.10, math.spr.4 | core |
-| ⬜ | `math-sprout-31` | زود و درست تا ده | Fact strategies to 10 made quick: +0, +1, +2, doubles, pairs to 10, subtracting by thinking of adding | lesson (`choose`), game (`pairs`, `sort`) | math.spr.7 | core |
-| ⬜ | `math-sprout-32` | تفریق با فکر جمع | Subtracting by thinking of the addition (۹ − ۶: «۶ و چند می‌شود ۹؟»), fact families of three numbers | lesson (`choose`, `tenframe` with `missing`) | math.spr.7, math.spr.8 | core |
-| ⬜ | `math-sprout-33` | چندتا بیشتر؟ | Comparing stories: «چندتا بیشتر / کمتر؟», matching two rows, then the number sentence | animation, lesson (`compare`, `choose`) | math.spr.9 | core |
-| ⬜ | `math-sprout-34` | قصه‌های تا بیست | Word problems to 20: all four kinds, with a drawing first, then a number sentence | animation (`scene` + `question`), lesson (`choose`) | math.spr.9 | core |
-| ⬜ | `math-sprout-35` | یک جمله، چند قصه | Telling and choosing stories for a number sentence; which question fits | lesson (`choose`), story (`talk`) | math.spr.11, math.spr.9 | full |
-| ⬜ | `math-sprout-36` | بکش و حل کن | Problem-solving: drawing a picture or a row of circles to solve a story, then checking the answer | animation, lesson (`choose`), home (`paper`) | math.spr.9 | core |
-| ⬜ | `math-sprout-37` | بازی قصه‌ها | Unit game: story ↔ number sentence, which question, compare stories | game (`pairs`, `sort`) | math.spr.9, math.spr.11 | core |
-| ⬜ | `math-sprout-38` | دسته‌های ده‌تایی تا صد | Counting big groups by making tens (sticks in bundles, eggs in trays): ۲۰، ۳۰ … ۱۰۰ | animation, lesson (`tens`, `count`) | math.spr.1 | core |
-| ⬜ | `math-sprout-39` | دوتا دوتا، پنج‌تا پنج‌تا | Counting in twos (socks, shoes), fives (hands) and tens (fingers of the family) | lesson (`numline`, `choose`), game (`pattern`) | math.spr.21 | core |
-| ⬜ | `math-sprout-40` | شمردن تا صد | Counting on past ۲۹، ۳۹ …; the decade names; counting back from ۴۵; counting a big pile at home | lesson (`numline`, `order`), home (`doit`) | math.spr.1 | core |
-| ⬜ | `math-sprout-41` | خواندن و نوشتن عددهای تا صد | Reading and writing two-digit numbers: the tens digit first, the ones after; «بیست و سه» → ۲۳; numbers that are easy to swap (۳۲ / ۲۳) | lesson (`choose`, `trace`), game (`pairs`) | math.spr.2 | core |
-| ⬜ | `math-sprout-42` | جدول صدتایی | Patterns on a hundred chart: down a column is 10 more, along a row 1 more; finding a hidden number | lesson (`choose`), game (`pattern`) | math.spr.1, math.spr.21 | core |
-| ⬜ | `math-sprout-43` | ده‌تا بیشتر، ده‌تا کمتر | Ten more and ten less on the hundred chart and with bundles, without counting by ones | lesson (`tens`, `choose`) | math.spr.1 | core |
-| ⬜ | `math-sprout-44` | بازی عددها تا صد | Unit game: counting in tens, reading two-digit numbers, hundred-chart puzzles | game (`order`, `pairs`, `pattern`) | math.spr.1, math.spr.2, math.spr.21 | core |
-| ⬜ | `math-sprout-45` | اندازه با واحد | Measuring length with cubes and clips laid end to end, no gaps or overlaps; a smaller unit gives a bigger number | animation, lesson (`measure`, `choose`) | math.spr.15 | core |
-| ⬜ | `math-sprout-46` | کدام درازتر است؟ | Comparing two lengths through a third (a string), ordering three lengths, measuring at home with spoons and steps | lesson (`measure`, `choose`), game (`order`), home (`doit`) | math.spr.15 | core |
-| ⬜ | `math-sprout-47` | سنگین‌تر، جادارتر | Mass on a balance with cubes as units; which jug holds more (counting cups) | lesson (`balance`, `choose`) | math.spr.17 | full |
-| ⬜ | `math-sprout-48` | ساعت کامل | O'clock: the short hand says the hour, the long hand points up; times of a child's day | lesson (`clock`, `choose`) | math.spr.16 | core |
-| ⬜ | `math-sprout-49` | فصل‌ها و ماه‌ها | The four seasons in order, the months of the Persian year in their seasons, the week again | animation, game (`order`, `sort`) | math.spr.16 | full |
-| ⬜ | `math-sprout-50` | پول ما | Iranian banknotes in thousands of tomans, which is worth more, paying for bread and fruit with two notes | lesson (`money`, `choose`) | math.spr.18 | core |
-| ⬜ | `math-sprout-51` | بازی اندازه و زمان | Unit game: lengths, the clock, the week and seasons in order | game (`order`, `pairs`, `sort`) | math.spr.15, math.spr.16 | core |
-| ⬜ | `math-sprout-52` | چوب‌خط | Collecting answers with tally marks (fives tied together), counting tallies, the children's favourite fruit | lesson (`chart`, `choose`), home (`doit`) | math.spr.19 | core |
-| ⬜ | `math-sprout-53` | نمودار تصویری بخوان | Reading a picture graph: how many, which most, how many more | lesson (`chart` read) | math.spr.19 | core |
-| ⬜ | `math-sprout-54` | چپ و راست | Left and right hand, left and right of a thing, a turned person's left | animation, lesson (`choose`), home (`doit`) | math.spr.20 | full |
-| ⬜ | `math-sprout-55` | راه خانه تا مدرسه | Describing and following a route on a picture map: forward two, turn right, next to the bakery | lesson (`map` route, `compass`) | math.spr.20 | full |
-| ⬜ | `math-sprout-56` | الگوهای رشد | Growing patterns: stairs of 1, 2, 3 blocks, triangles of sticks; what comes next and why | animation, game (`pattern`), lesson (`choose`) | math.spr.14 | core |
-| ⬜ | `math-sprout-57` | الگوهای عددی | Number patterns on a track: ۲، ۴، ۶ …، ۵، ۱۰، ۱۵ …، ۲۰، ۱۸، ۱۶ …; the rule in words | game (`pattern`), lesson (`numline`, `choose`) | math.spr.14, math.spr.21 | core |
-| ⬜ | `math-sprout-58` | اول تا دهم | First to tenth (a train of carriages, floors of a building), the fifth one, the last one | lesson (`choose`), game (`order`) | math.spr.22 | core |
-| ⬜ | `math-sprout-59` | بازی شکل‌ها | Unit game: shapes and solids, sides and corners, halves | game (`sort`, `pairs` with `hidden`) | math.spr.12, math.spr.13 | core |
-| ⬜ | `math-sprout-60` | جشن جوانه | Garden review: facts to 10, counting on to 20, a story, a shape, a pattern, a clock, numbers to 100 | game (`pairs`, `order`, `pattern`), lesson (`choose`) | math.spr.1, math.spr.7, math.spr.8, math.spr.9 | core |
+| 🔨 | `math-sprout-22` | بازی تفریق | Unit game: taking away to 10, what is left, the missing part | game (`feed`, `pairs`, `sort`) | math.spr.7 | core |
+| 🔨 | `math-sprout-23` | نوشتن عددهای تا بیست | Writing ۱۰ to ۲۰: a ten and its ones (۱ then the ones digit), hearing a number and choosing it, writing ۱۰–۲۰ on paper; Persian only, no English version | lesson (`trace`, `choose`), home (`paper`) | math.spr.2, math.spr.5 | core |
+| 🔨 | `math-sprout-24` | شمردن رو به جلو | Adding by counting on from the bigger number (۸ + ۳: «هشت… نه، ده، یازده») on a number line and with fingers | animation, lesson (`numline`, `choose`) | math.spr.8 | core |
+| 🔨 | `math-sprout-25` | شمردن رو به عقب | Subtracting by counting back and by counting up (۱۲ − ۹: from 9 up to 12) | lesson (`numline`, `choose`) | math.spr.8 | core |
+| 🔨 | `math-sprout-26` | دوتایی‌ها تا بیست | Doubles to ۱۰ + ۱۰ (two hands, egg boxes, a butterfly's wings); a double and one more | animation, lesson (`tenframe`, `choose`), game (`pairs`) | math.spr.8 | core |
+| 🔨 | `math-sprout-27` | جابه‌جا کن، فرقی نمی‌کند | Adding in any order (۲ + ۷ = ۷ + ۲, start from the bigger one), adding three numbers by finding a ten | lesson (`choose`, `tenframe`) | math.spr.8, math.spr.10 | core |
+| 🔨 | `math-sprout-28` | بازی جمع تا بیست | Unit game: counting on, doubles, any order | game (`pairs`, `sort`, `feed`) | math.spr.8 | core |
+| 🔨 | `math-sprout-29` | ترازوی برابر | «=» as balance: both sides the same (۵ = ۲ + ۳، ۴ + ۱ = ۳ + ۲), true or false sentences | lesson (`balance`, `choose`) | math.spr.10 | core |
+| 🔨 | `math-sprout-30` | عدد گم‌شده | The missing number: ۳ + □ = ۷، □ − ۲ = ۵, with a hidden part and a balance | lesson (`balance` with an unknown, `tenframe` with `missing`, `choose`) | math.spr.10, math.spr.4 | core |
+| 🔨 | `math-sprout-31` | زود و درست تا ده | Fact strategies to 10 made quick: +0, +1, +2, doubles, pairs to 10, subtracting by thinking of adding | lesson (`choose`), game (`pairs`, `sort`) | math.spr.7 | core |
+| 🔨 | `math-sprout-32` | تفریق با فکر جمع | Subtracting by thinking of the addition (۹ − ۶: «۶ و چند می‌شود ۹؟»), fact families of three numbers | lesson (`choose`, `tenframe` with `missing`) | math.spr.7, math.spr.8 | core |
+| 🔨 | `math-sprout-33` | چندتا بیشتر؟ | Comparing stories: «چندتا بیشتر / کمتر؟», matching two rows, then the number sentence | animation, lesson (`compare`, `choose`) | math.spr.9 | core |
+| 🔨 | `math-sprout-34` | قصه‌های تا بیست | Word problems to 20: all four kinds, with a drawing first, then a number sentence | animation (`scene` + `question`), lesson (`choose`) | math.spr.9 | core |
+| 🔨 | `math-sprout-35` | یک جمله، چند قصه | Telling and choosing stories for a number sentence; which question fits | lesson (`choose`), story (`talk`) | math.spr.11, math.spr.9 | full |
+| 🔨 | `math-sprout-36` | بکش و حل کن | Problem-solving: drawing a picture or a row of circles to solve a story, then checking the answer | animation, lesson (`choose`), home (`paper`) | math.spr.9 | core |
+| 🔨 | `math-sprout-37` | بازی قصه‌ها | Unit game: story ↔ number sentence, which question, compare stories | game (`pairs`, `sort`) | math.spr.9, math.spr.11 | core |
+| 🔨 | `math-sprout-38` | دسته‌های ده‌تایی تا صد | Counting big groups by making tens (sticks in bundles, eggs in trays): ۲۰، ۳۰ … ۱۰۰ | animation, lesson (`tens`, `count`) | math.spr.1 | core |
+| 🔨 | `math-sprout-39` | دوتا دوتا، پنج‌تا پنج‌تا | Counting in twos (socks, shoes), fives (hands) and tens (fingers of the family) | lesson (`numline`, `choose`), game (`pattern`) | math.spr.21 | core |
+| 🔨 | `math-sprout-40` | شمردن تا صد | Counting on past ۲۹، ۳۹ …; the decade names; counting back from ۴۵; counting a big pile at home | lesson (`numline`, `order`), home (`doit`) | math.spr.1 | core |
+| 🔨 | `math-sprout-41` | خواندن و نوشتن عددهای تا صد | Reading and writing two-digit numbers: the tens digit first, the ones after; «بیست و سه» → ۲۳; numbers that are easy to swap (۳۲ / ۲۳); Persian only, no English version | lesson (`choose`, `trace`), game (`pairs`) | math.spr.2 | core |
+| 🔨 | `math-sprout-42` | جدول صدتایی | Patterns on a hundred chart: down a column is 10 more, along a row 1 more; finding a hidden number | lesson (`choose`), game (`pattern`) | math.spr.1, math.spr.21 | core |
+| 🔨 | `math-sprout-43` | ده‌تا بیشتر، ده‌تا کمتر | Ten more and ten less on the hundred chart and with bundles, without counting by ones | lesson (`tens`, `choose`) | math.spr.1 | core |
+| 🔨 | `math-sprout-44` | بازی عددها تا صد | Unit game: counting in tens, reading two-digit numbers, hundred-chart puzzles | game (`order`, `pairs`, `pattern`) | math.spr.1, math.spr.2, math.spr.21 | core |
+| 🔨 | `math-sprout-45` | اندازه با واحد | Measuring length with cubes and clips laid end to end, no gaps or overlaps; a smaller unit gives a bigger number | animation, lesson (`measure`, `choose`) | math.spr.15 | core |
+| 🔨 | `math-sprout-46` | کدام درازتر است؟ | Comparing two lengths through a third (a string), ordering three lengths, measuring at home with spoons and steps | lesson (`measure`, `choose`), game (`order`), home (`doit`) | math.spr.15 | core |
+| 🔨 | `math-sprout-47` | سنگین‌تر، جادارتر | Mass on a balance with cubes as units; which jug holds more (counting cups) | lesson (`balance`, `choose`) | math.spr.17 | full |
+| 🔨 | `math-sprout-48` | ساعت کامل | O'clock: the short hand says the hour, the long hand points up; times of a child's day | lesson (`clock`, `choose`) | math.spr.16 | core |
+| 🔨 | `math-sprout-49` | فصل‌ها و ماه‌ها | The four seasons in order, the months of the Persian year in their seasons, the week again | animation, game (`order`, `sort`) | math.spr.16 | full |
+| 🔨 | `math-sprout-50` | پول ما | Iranian banknotes in thousands of tomans, which is worth more, paying for bread and fruit with two notes | lesson (`money`, `choose`) | math.spr.18 | core |
+| 🔨 | `math-sprout-51` | بازی اندازه و زمان | Unit game: lengths, the clock, the week and seasons in order | game (`order`, `pairs`, `sort`) | math.spr.15, math.spr.16 | core |
+| 🔨 | `math-sprout-52` | چوب‌خط | Collecting answers with tally marks (fives tied together), counting tallies, the children's favourite fruit | lesson (`chart`, `choose`), home (`doit`) | math.spr.19 | core |
+| 🔨 | `math-sprout-53` | نمودار تصویری بخوان | Reading a picture graph: how many, which most, how many more | lesson (`chart` read) | math.spr.19 | core |
+| 🔨 | `math-sprout-54` | چپ و راست | Left and right hand, left and right of a thing, a turned person's left | animation, lesson (`choose`), home (`doit`) | math.spr.20 | full |
+| 🔨 | `math-sprout-55` | راه خانه تا مدرسه | Describing and following a route on a picture map: forward two, turn right, next to the bakery | lesson (`map` route, `compass`) | math.spr.20 | full |
+| 🔨 | `math-sprout-56` | الگوهای رشد | Growing patterns: stairs of 1, 2, 3 blocks, triangles of sticks; what comes next and why | animation, game (`pattern`), lesson (`choose`) | math.spr.14 | core |
+| 🔨 | `math-sprout-57` | الگوهای عددی | Number patterns on a track: ۲، ۴، ۶ …، ۵، ۱۰، ۱۵ …، ۲۰، ۱۸، ۱۶ …; the rule in words | game (`pattern`), lesson (`numline`, `choose`) | math.spr.14, math.spr.21 | core |
+| 🔨 | `math-sprout-58` | اول تا دهم | First to tenth (a train of carriages, floors of a building), the fifth one, the last one | lesson (`choose`), game (`order`) | math.spr.22 | core |
+| 🔨 | `math-sprout-59` | بازی شکل‌ها | Unit game: shapes and solids, sides and corners, halves | game (`sort`, `pairs` with `hidden`), lesson (`fraction`) | math.spr.12, math.spr.13 | core |
+| 🔨 | `math-sprout-60` | جشن جوانه | Garden review: facts to 10, counting on to 20, a story, a shape, a pattern, a clock, numbers to 100 | game (`pairs`, `order`, `pattern`), lesson (`choose`) | math.spr.1, math.spr.7, math.spr.8, math.spr.9 | core |
 
 #### Practice
 
-| St | Practice | What it makes | Objectives |
-|---|---|---|---|
-| ⬜ | Facts to 10 | Addition and subtraction facts within 10 by strategy group (+0/+1/+2, doubles, pairs to 10, think-addition), shown first on a ten-frame, later as numbers only; spaced: facts missed come back sooner | math.spr.7, math.spr.4 |
-| ⬜ | Facts to 20 | Counting on and back, doubles and near doubles within 20, with a number line that fades away | math.spr.8 |
-| ⬜ | Number bonds | A whole and one part: find the other part (bond diagrams, hidden counters), to 10 | math.spr.4 |
-| ⬜ | Missing number | ۳ + □ = ۷، □ − ۲ = ۵، true/false sentences (۴ + ۲ = ۵ + ۱) | math.spr.10 |
-| ⬜ | Story problems | Word problems to 10 / 20 from templates: four kinds (add to, take from, put together, compare), unknown in different places; names, places and things from Iranian children's lives | math.spr.9, math.spr.11 |
-| ⬜ | Ten-frame flash | Ten-frames and two hands shown briefly, 1–20 | math.spr.3, math.spr.5 |
-| ⬜ | Number track | Before, after, between, missing numbers on tracks to 20, then on the hundred chart | math.spr.1, math.spr.6 |
-| ⬜ | Read and write | Hear a number, pick or write it; read a two-digit number | math.spr.2 |
-| ⬜ | Skip count | Count by 2, 5, 10 forwards and back; fill a gap | math.spr.21 |
-| ⬜ | Shapes and patterns | Shape by its description, solids in pictures, growing and repeating patterns | math.spr.12, math.spr.14 |
-| ⬜ | Clock and calendar | Read o'clock; day before/after, season of a month | math.spr.16 |
+| St | Id | Practice | What it makes | Objectives |
+|---|---|---|---|---|
+| 🔨 | `math-sprout-p1` | Facts to 10 | Addition and subtraction facts within 10 by strategy group (+0/+1/+2, doubles, pairs to 10, think-addition), shown first on a ten-frame, later as numbers only; spaced: facts missed come back sooner | math.spr.7, math.spr.4 |
+| 🔨 | `math-sprout-p2` | Facts to 20 | Counting on and back, doubles and near doubles within 20, with a number line that fades away | math.spr.8 |
+| 🔨 | `math-sprout-p3` | Number bonds | A whole and one part: find the other part (bond diagrams, hidden counters), to 10 | math.spr.4 |
+| 🔨 | `math-sprout-p4` | Missing number | ۳ + □ = ۷، □ − ۲ = ۵، true/false sentences (۴ + ۲ = ۵ + ۱) | math.spr.10 |
+| 🔨 | `math-sprout-p5` | Story problems | Word problems to 10 / 20 from templates: four kinds (add to, take from, put together, compare), unknown in different places; names, places and things from Iranian children's lives | math.spr.9, math.spr.11 |
+| 🔨 | `math-sprout-p6` | Ten-frame flash | Ten-frames and two hands shown briefly, 1–20 | math.spr.3, math.spr.5 |
+| 🔨 | `math-sprout-p7` | Number track | Before, after, between, missing numbers on tracks to 20, then on the hundred chart | math.spr.1, math.spr.6 |
+| 🔨 | `math-sprout-p8` | Read and write | Hear a number, pick or write it; read a two-digit number | math.spr.2 |
+| 🔨 | `math-sprout-p9` | Skip count | Count by 2, 5, 10 forwards and back; fill a gap | math.spr.21 |
+| 🔨 | `math-sprout-p10` | Shapes and patterns | Shape by its description, solids in pictures, growing and repeating patterns | math.spr.12, math.spr.14 |
+| 🔨 | `math-sprout-p11` | Clock and calendar | Read o'clock; day before/after, season of a month | math.spr.16 |
+| 🔨 | `math-sprout-p12` | Ten and some more | Make a number on the frames, read full and part frames, ten and some more, a bundle and sticks | math.spr.3, math.spr.5, math.spr.4 |
+| 🔨 | `math-sprout-p13` | Compare numbers | Which of two is more or less (with bundles), the biggest or smallest of three, four numbers to order | math.spr.6 |
+| 🔨 | `math-sprout-p14` | Number sentences | The sentence that fits a picture, sums sorted by their answer, sentences paired with answers | math.spr.11, math.spr.7 |
+| 🔨 | `math-sprout-p15` | Number balance | Weights to put on until both pans are level, and which pan goes down when each holds two numbers | math.spr.10 |
+| 🔨 | `math-sprout-p16` | Halves and quarters | Which is cut into equal parts, cut one yourself, name the part coloured, half of a few things | math.spr.13 |
+| 🔨 | `math-sprout-p17` | Measure length | Measure with clips or cubes, the longest or shortest of three, why clips give a bigger number than pencils | math.spr.15 |
+| 🔨 | `math-sprout-p18` | Mass and capacity | Which pan goes down, how many cubes balance a thing, what holds more | math.spr.17 |
+| 🔨 | `math-sprout-p19` | Our money | How much money is shown, pay the exact price, is the money enough | math.spr.18 |
+| 🔨 | `math-sprout-p20` | Tally and picture graph | Tally marks to read; picture graphs to read or fill (how many, how many more, in all) | math.spr.19 |
+| 🔨 | `math-sprout-p21` | Directions | Arrows for left and right, a tortoise moved with arrows, a walk on the neighbourhood map, turns on the compass | math.spr.20 |
+| 🔨 | `math-sprout-p22` | Ordinals | Which one in a line is fifth (to tenth), what place an animal is in, floors in order | math.spr.22 |
+| 🔨 | `math-sprout-p23` | Day and year | A day in order, how long things take (minutes, hours, days), seasons and months in order | math.spr.16 |
+| 🔨 | `math-sprout-p24` | Tens to 100 | Bundles and sticks to read to 100, tens and ones as a number, ten more and ten less | math.spr.1 |
+| 🔨 | `math-sprout-p25` | Sides and corners | How many sides or corners, shapes sorted by three or four sides, solids paired with things | math.spr.12 |
+| 🔨 | `math-sprout-p26` | Pattern detective | The part of a pattern that repeats, the rule of a number pattern, patterns growing by 3 or 4 | math.spr.14 |
 
 ### 🌿 نهال — `sapling`
 
@@ -402,122 +427,143 @@ the core lessons and about half the practice.
 | ✅ | `math-sapling-3` | جمع با ساختن ده | Make-ten strategy (8 + 5 = 8 + 2 + 3) | lesson (`tenframe`, `choose`) | math.sap.1 | core |
 | ✅ | `math-sapling-1` | جمع با پرش قورباغه | Addition on the number line | lesson (`numline`) | math.sap.1, math.sap.25 | core |
 | ✅ | `math-sapling-2` | تفریق با پرش خرگوش | Subtraction on the number line | lesson (`numline`) | math.sap.1, math.sap.25 | core |
-| ⬜ | `math-sapling-22` | تفریق تا بیست با ده | Subtracting through ten (۱۳ − ۵ = ۱۳ − ۳ − ۲) and by counting up to the bigger number | lesson (`tenframe`, `numline`, `choose`) | math.sap.1 | core |
-| ⬜ | `math-sapling-23` | بازی واقعیت‌های عددی | Unit game: facts to 20 by strategy, sorting facts by the strategy that makes them easy | game (`pairs`, `sort`) | math.sap.1 | core |
+| 🔨 | `math-sapling-22` | تفریق تا بیست با ده | Subtracting through ten (۱۳ − ۵ = ۱۳ − ۳ − ۲) and by counting up to the bigger number | lesson (`tenframe`, `numline`, `choose`) | math.sap.1 | core |
+| 🔨 | `math-sapling-23` | بازی واقعیت‌های عددی | Unit game: facts to 20 by strategy, sorting facts by the strategy that makes them easy | game (`pairs`, `sort`) | math.sap.1 | core |
 | ✅ | `math-sapling-4` | دسته‌های ده‌تایی | Place value: tens and ones | lesson (`tens`) | math.sap.2 | core |
 | ✅ | `math-sapling-5` | عددها تا ۱۰۰ | Reading and building numbers to 100 | lesson (`tens`, `choose`) | math.sap.2 | core |
 | ✅ | `math-sapling-6` | مقایسه عددها | Comparing two-digit numbers, < = > | lesson (`compare`) | math.sap.2 | core |
-| ⬜ | `math-sapling-24` | ده‌تا بیشتر، ده‌تا کمتر | Adding and taking tens in the head (۴۷ + ۳۰), the hundred chart, ۱۰۰ as ten tens | lesson (`tens`, `numline`, `choose`) | math.sap.25, math.sap.2 | core |
+| 🔨 | `math-sapling-24` | ده‌تا بیشتر، ده‌تا کمتر | Adding and taking tens in the head (۴۷ + ۳۰), the hundred chart, ۱۰۰ as ten tens | lesson (`tens`, `numline`, `choose`) | math.sap.25, math.sap.2 | core |
 | ✅ | `math-sapling-12` | زوج و فرد، الگوی عددها | Odd and even, number patterns, skip counting | animation, game (`sort`, `pattern`, `order`) | math.sap.6 | core |
 | ✅ | `math-sapling-7` | جمع عددهای دورقمی | Two-digit addition with bundles | lesson (`tens` with `b`, `choose`) | math.sap.4 | core |
 | ✅ | `math-sapling-8` | تفریق عددهای دورقمی | Two-digit subtraction, opening a bundle | lesson (`tens` with negative `b`, `choose`) | math.sap.4 | core |
-| ⬜ | `math-sapling-25` | جمع روی خط خالی | Adding two-digit numbers in the head by jumps on an empty number line (tens, then ones), rounding and adjusting (۴۹ + ۲۶) | animation, lesson (`numline`, `choose`) | math.sap.25, math.sap.4 | core |
-| ⬜ | `math-sapling-26` | تفریق با شمردن رو به بالا | Subtracting by counting up (۶۲ − ۳۸: from ۳۸ to ۴۰ to ۶۰ to ۶۲), and by taking away tens then ones | lesson (`numline`, `choose`) | math.sap.25, math.sap.4 | core |
-| ⬜ | `math-sapling-27` | جمع و تفریق ستونی | The written column method for two-digit numbers, each step next to the bundles (carrying a ten, opening a ten) | 🆕 `column`, lesson (`tens`) | math.sap.4 | core |
-| ⬜ | `math-sapling-28` | حدس بزن، حساب کن، بررسی کن | Estimating a sum or difference to the nearest ten first, checking a subtraction with an addition | lesson (`choose`, `numline`) | math.sap.4, math.sap.12 | core |
-| ⬜ | `math-sapling-29` | بازی جمع و تفریق دورقمی | Unit game: two-digit sums and differences, which way is easiest, find the mistake | game (`pairs`, `sort`) | math.sap.4, math.sap.25 | core |
+| 🔨 | `math-sapling-25` | جمع روی خط خالی | Adding two-digit numbers in the head by jumps on an empty number line (tens, then ones), rounding and adjusting (۴۹ + ۲۶) | animation, lesson (`numline`, `choose`) | math.sap.25, math.sap.4 | core |
+| 🔨 | `math-sapling-26` | تفریق با شمردن رو به بالا | Subtracting by counting up (۶۲ − ۳۸: from ۳۸ to ۴۰ to ۶۰ to ۶۲), and by taking away tens then ones | lesson (`numline`, `choose`) | math.sap.25, math.sap.4 | core |
+| 🔨 | `math-sapling-27` | جمع و تفریق ستونی | The written column method for two-digit numbers, each step next to the bundles (carrying a ten, opening a ten) | `column`, lesson (`tens`) | math.sap.4 | core |
+| 🔨 | `math-sapling-28` | حدس بزن، حساب کن، بررسی کن | Estimating a sum or difference to the nearest ten first, checking a subtraction with an addition | lesson (`choose`, `numline`) | math.sap.4, math.sap.12 | core |
+| 🔨 | `math-sapling-29` | بازی جمع و تفریق دورقمی | Unit game: two-digit sums and differences, which way is easiest, find the mistake | game (`pairs`, `sort`) | math.sap.4, math.sap.25 | core |
 | ✅ | `math-sapling-9` | اندازه‌گیری | Comparing and measuring length with units | lesson (`measure`) | math.sap.15 | core |
-| ⬜ | `math-sapling-30` | سانتی‌متر و خط‌کش | Using a ruler: starting at zero, reading cm, drawing a line of a given length, measuring a pencil that does not start at zero | lesson (`measure`, `choose`), home (`doit`) | math.sap.15 | core |
-| ⬜ | `math-sapling-31` | متر | The metre (100 cm), estimating lengths in the room and the yard, choosing cm or m | lesson (`measure`, `choose`), home (`doit`) | math.sap.15 | core |
+| 🔨 | `math-sapling-30` | سانتی‌متر و خط‌کش | Using a ruler: starting at zero, reading cm, drawing a line of a given length, measuring a pencil that does not start at zero | lesson (`measure`, `choose`), home (`doit`) | math.sap.15 | core |
+| 🔨 | `math-sapling-31` | متر | The metre (100 cm), estimating lengths in the room and the yard, choosing cm or m | lesson (`measure`, `choose`), home (`doit`) | math.sap.15 | core |
 | ✅ | `math-sapling-10` | خرید از نانوایی | Money: adding prices, paying | lesson (`money`) | math.sap.18 | core |
 | ✅ | `math-sapling-11` | خرید از بازار | Money: totals, paying the exact amount | lesson (`money` with `wallet`) | math.sap.18 | core |
 | ✅ | `math-sapling-13` | دوتایی‌ها و خانواده عددها | Doubles (eggs in two bowls, matching doubles to answers), near doubles from a double (۶ + ۷ = ۶ + ۶ + ۱), fact families (۳، ۴، ۷: from a sum to its differences; sorting sums and differences into their families) | game (`pairs`, `sort`), lesson (`choose`) | math.sap.1, math.sap.12 | core |
 | ✅ | `math-sapling-14` | مسئله‌های قصه‌ای | Two-digit word problems: which operation, then the answer (cards from grandma, bread at the bakery, children in a class, buying a book), then a «how many more» problem alone. *Revise:* once `bar` exists, show each problem as a bar model as well | animation (`story` + `question`), lesson (`choose`) | math.sap.11 | core |
-| ⬜ | `math-sapling-32` | مدل نواری: جزء و کل | The bar model for part-whole problems: draw the bar, mark what is known, find the unknown part or whole | animation, 🆕 `bar` | math.sap.11 | core |
-| ⬜ | `math-sapling-33` | مدل نواری: مقایسه | Comparison problems with two bars (how many more, how many fewer, the bigger one) | 🆕 `bar`, lesson (`choose`) | math.sap.11 | core |
-| ⬜ | `math-sapling-34` | عدد مجهول | □ + ۱۸ = ۴۵، ۵۲ − □ = ۲۰: the unknown on a balance and in a bar model; checking with the inverse operation | lesson (`balance` with an unknown, `choose`), 🆕 `bar` | math.sap.12 | core |
-| ⬜ | `math-sapling-35` | مسئله‌های دو مرحله‌ای | Two-step problems (bought two things and got change), drawing the bars, the question behind the question | animation (`scene` + `question`), 🆕 `bar` | math.sap.11 | core |
+| 🔨 | `math-sapling-32` | مدل نواری: جزء و کل | The bar model for part-whole problems: draw the bar, mark what is known, find the unknown part or whole | animation, `bar` | math.sap.11 | core |
+| 🔨 | `math-sapling-33` | مدل نواری: مقایسه | Comparison problems with two bars (how many more, how many fewer, the bigger one) | `bar`, lesson (`choose`) | math.sap.11 | core |
+| 🔨 | `math-sapling-34` | عدد مجهول | □ + ۱۸ = ۴۵، ۵۲ − □ = ۲۰: the unknown on a balance and in a bar model; checking with the inverse operation | lesson (`balance` with an unknown, `choose`), `bar` | math.sap.12 | core |
+| 🔨 | `math-sapling-35` | مسئله‌های دو مرحله‌ای | Two-step problems (bought two things and got change), drawing the bars, the question behind the question | animation (`scene` + `question`), `bar`, lesson (`choose`) | math.sap.11 | core |
 | ✅ | `math-sapling-15` | ساعت | Telling time: o'clock and half past (the two hands, watching the long hand turn from ۳ to ۳ و نیم while the short hand moves on, turning them freely, then reading the clock and setting the hands at times of a child's day) | lesson (`clock`) | math.sap.17 | core |
-| ⬜ | `math-sapling-36` | ربع و پنج دقیقه | Quarter past and quarter to, counting minutes in fives, reading and setting times like ۴:۲۵ | lesson (`clock` with `snap: 5`, `choose`) | math.sap.17 | core |
-| ⬜ | `math-sapling-37` | تقویم | The Persian calendar: 12 months in 4 seasons, days in each month, weeks, reading a date, a family's birthdays | lesson (`choose`), game (`order`), home (`doit`) | math.sap.17 | core |
+| 🔨 | `math-sapling-36` | ربع و پنج دقیقه | Quarter past and quarter to, counting minutes in fives, reading and setting times like ۴:۲۵ | lesson (`clock` with `snap: 5`, `choose`) | math.sap.17 | core |
+| 🔨 | `math-sapling-37` | تقویم | The Persian calendar: 12 months in 4 seasons, days in each month, weeks, reading a date, a family's birthdays | lesson (`choose`), game (`order`), home (`doit`) | math.sap.17 | core |
 | ✅ | `math-sapling-16` | سنگین و سبک | Mass on a two-pan balance: heavier and lighter (bigger is not always heavier), trying things out, weighing fruit with kilogram weights, adding up weights on a held balance, making it balance | lesson (`balance`) | math.sap.16 | core |
-| ⬜ | `math-sapling-38` | کیلوگرم و گرم | Grams and kilograms (۱۰۰۰ g = ۱ kg), reading a kitchen scale, which unit for a feather, a bag of rice | lesson (`balance`, `measure`, `choose`) | math.sap.16 | core |
-| ⬜ | `math-sapling-39` | لیتر | Capacity in litres and half litres: a bottle of water, a pot, filling with cups | lesson (`measure`, `choose`), home (`doit`) | math.sap.16 | core |
+| 🔨 | `math-sapling-38` | کیلوگرم و گرم | Grams and kilograms (۱۰۰۰ g = ۱ kg), reading a kitchen scale, which unit for a feather, a bag of rice | lesson (`balance`, `measure`, `choose`) | math.sap.16 | core |
+| 🔨 | `math-sapling-39` | لیتر | Capacity in litres and half litres: a bottle of water, a pot, filling with cups | lesson (`measure`, `choose`), home (`doit`) | math.sap.16 | core |
 | ✅ | `math-sapling-17` | عددهای سه‌رقمی | Hundreds, tens and ones to 1,000: ten bundles tie into a pack of a hundred, reading and building three-digit numbers (a zero in the tens), opening a hundred to take away, comparing, after ۹۹۹ | lesson (`tens` with hundreds, `compare`, `choose`) | math.sap.2 | core |
-| ⬜ | `math-sapling-40` | ارزش مکانی تا هزار | Expanded form (۳۴۵ = ۳۰۰ + ۴۰ + ۵), the same number in many ways (۳۴ tens and ۵ ones), numbers on a line to 1,000 | lesson (`tens`, `numline`, `choose`) | math.sap.2 | core |
-| ⬜ | `math-sapling-41` | جمع سه‌رقمی | Adding three-digit numbers with bundles, then in columns, carrying into the hundreds | lesson (`tens` with hundreds), 🆕 `column` | math.sap.5 | core |
-| ⬜ | `math-sapling-42` | تفریق سه‌رقمی | Subtracting three-digit numbers, opening a hundred, subtracting across a zero (۴۰۳ − ۱۷۸) | lesson (`tens` with hundreds), 🆕 `column` | math.sap.5 | core |
-| ⬜ | `math-sapling-43` | بازی عددهای سه‌رقمی | Unit game: build, compare and order three-digit numbers, sums and differences with hundreds | game (`order`, `pairs`, `sort`) | math.sap.2, math.sap.5 | core |
-| ⬜ | `math-sapling-44` | چندضلعی‌ها | Polygons by their sides and corners: triangle, quadrilateral, pentagon, hexagon (tiles, a honeycomb) | lesson (`shape`, `choose`), game (`sort`) | math.sap.20 | core |
-| ⬜ | `math-sapling-45` | گوشه راست | Right angles: finding square corners with a folded paper, more and less than a right angle, the square and rectangle by their corners | lesson (`shape`, `choose`), home (`doit`) | math.sap.20 | core |
-| ⬜ | `math-sapling-46` | چهارضلعی‌ها | Square, rectangle, rhombus, parallelogram and others: sides and corners, a square is also a rectangle | lesson (`shape`), game (`sort`) | math.sap.20 | core |
-| ⬜ | `math-sapling-47` | وجه، یال، رأس | Solids: counting faces, edges and corners of cubes, cuboids, pyramids; what a solid looks like from above | animation, lesson (`choose`), home (`doit`) | math.sap.20 | core |
-| ⬜ | `math-sapling-48` | تقارن | Lines of symmetry in shapes, letters, a butterfly and Iranian tiles; completing a symmetric picture | lesson (`choose`), 🆕 `mirror` | math.sap.21 | full |
-| ⬜ | `math-sapling-49` | خانه‌های جدول | Position on a grid (row and column), moving a robot, quarter and half turns | 🆕 `grid`, lesson (`map` route) | math.sap.26 | full |
+| 🔨 | `math-sapling-40` | ارزش مکانی تا هزار | Expanded form (۳۴۵ = ۳۰۰ + ۴۰ + ۵), the same number in many ways (۳۴ tens and ۵ ones), numbers on a line to 1,000 | lesson (`tens`, `numline`, `choose`) | math.sap.2 | core |
+| 🔨 | `math-sapling-41` | جمع سه‌رقمی | Adding three-digit numbers with bundles, then in columns, carrying into the hundreds | lesson (`tens` with hundreds), `column` | math.sap.5 | core |
+| 🔨 | `math-sapling-42` | تفریق سه‌رقمی | Subtracting three-digit numbers, opening a hundred, subtracting across a zero (۴۰۳ − ۱۷۸) | lesson (`tens` with hundreds), `column` | math.sap.5 | core |
+| 🔨 | `math-sapling-43` | بازی عددهای سه‌رقمی | Unit game: build, compare and order three-digit numbers, sums and differences with hundreds | game (`order`, `pairs`, `sort`) | math.sap.2, math.sap.5 | core |
+| 🔨 | `math-sapling-44` | چندضلعی‌ها | Polygons by their sides and corners: triangle, quadrilateral, pentagon, hexagon (tiles, a honeycomb) | lesson (`shape`, `choose`), game (`sort`) | math.sap.20 | core |
+| 🔨 | `math-sapling-45` | گوشه راست | Right angles: finding square corners with a folded paper, more and less than a right angle, the square and rectangle by their corners | lesson (`shape`, `choose`), home (`doit`) | math.sap.20 | core |
+| 🔨 | `math-sapling-46` | چهارضلعی‌ها | Square, rectangle, rhombus, parallelogram and others: sides and corners, a square is also a rectangle | lesson (`shape`), game (`sort`) | math.sap.20 | core |
+| 🔨 | `math-sapling-47` | وجه، یال، رأس | Solids: counting faces, edges and corners of cubes, cuboids, pyramids; what a solid looks like from above | animation, lesson (`choose`), home (`doit`) | math.sap.20 | core |
+| 🔨 | `math-sapling-48` | تقارن | Lines of symmetry in shapes, letters, a butterfly and Iranian tiles; completing a symmetric picture | lesson (`choose`), `mirror` | math.sap.21 | full |
+| 🔨 | `math-sapling-49` | خانه‌های جدول | Position on a grid (row and column), moving a robot, quarter and half turns | `grid`, lesson (`map` route) | math.sap.26 | full |
 | ✅ | `math-sapling-18` | دسته‌های مساوی | Equal groups, repeated addition: the start of multiplication (plates of sweets for guests, feeding in groups, ۳ + ۳ + ۳ + ۳, word problems) | animation, game (`feed`), lesson (`choose`) | math.sap.7 | core |
 | ✅ | `math-sapling-19` | نصف و یک‌چهارم | Halves and quarters of a shape and of a number: sharing 8 biscuits between 2, then 4 (story), equal and unequal halves of a sangak, cutting bread and a cake, colouring and naming a part, sharing 8 sweets between 2 and 4 | animation, lesson (`fraction`) | math.sap.13 | core |
 | ✅ | `math-sapling-20` | نمودار تصویری | Reading and making a picture graph: favourite fruit (how many, fewest, how many more), animals on a farm put into a graph, adding to a weather graph, how children come to school | lesson (`chart`) | math.sap.22 | core |
 | ✅ | `math-sapling-21` | بازی بازار | Unit game: money, adding and subtracting (prices ↔ bills, what 30 thousand toman buys, paying, change, three things together) | game (`sort`, `pairs`), lesson (`money`) | math.sap.18 | core |
-| ⬜ | `math-sapling-50` | قانون الگو | Number patterns: finding the rule (add ۳، take ۵، double), the next and a missing term, a pattern's 10th term | lesson (`choose`), game (`pattern`) | math.sap.6 | core |
-| ⬜ | `math-sapling-51` | الگوهای شکلی | Growing shape patterns put in a table (step, number of sticks), predicting a later step | animation, lesson (`choose`), game (`pattern`) | math.sap.6, math.sap.24 | core |
-| ⬜ | `math-sapling-52` | عددهای چهاررقمی | Thousands: ten hundreds make a box of a thousand, reading and writing four-digit numbers, zeros inside (۳۰۰۵) | lesson (`tens` with thousands, `choose`) | math.sap.3 | core |
-| ⬜ | `math-sapling-53` | مقایسه و ترتیب تا ده‌هزار | Comparing and ordering four-digit numbers, numbers on a line to 10,000, the biggest number from four digits | lesson (`compare`, `numline`), game (`order`) | math.sap.3 | core |
-| ⬜ | `math-sapling-54` | گرد کردن | Rounding to the nearest 10, 100 and 1,000 on a number line; when an about-answer is enough | lesson (`numline`, `choose`) | math.sap.3 | core |
-| ⬜ | `math-sapling-55` | جمع و تفریق چهاررقمی | Column addition and subtraction with four-digit numbers, estimating first | 🆕 `column`, lesson (`choose`) | math.sap.5, math.sap.3 | core |
-| ⬜ | `math-sapling-56` | قسمت‌های مساوی | Unit fractions: ½، ⅓، ¼، ⅙، ⅛ of shapes; equal parts need not look the same; the more parts, the smaller each | animation, lesson (`fraction`) | math.sap.13 | core |
-| ⬜ | `math-sapling-57` | صورت و مخرج | Fractions like ¾ and ⅖: the bottom number says how many equal parts, the top how many we take; reading and writing them; a whole as ۴⁄۴ | lesson (`fraction`, `choose`) | math.sap.13 | core |
-| ⬜ | `math-sapling-58` | کسری از چند چیز | A fraction of a set: ⅓ of 12 walnuts, ¾ of 8 children; sharing into equal groups first | lesson (`fraction` with a set, `choose`) | math.sap.13, math.sap.9 | core |
-| ⬜ | `math-sapling-59` | کسر روی محور | Fractions on the number line: cutting 0–1 into equal parts, ¼، ۲⁄۴، ¾ and ۴⁄۴ = ۱, fractions bigger than one | 🆕 `numline` with fractions, lesson (`choose`) | math.sap.14 | core |
-| ⬜ | `math-sapling-60` | کدام کسر بزرگ‌تر است؟ | Comparing fractions with the same bottom number, and unit fractions (⅓ > ¼: fewer people share), on strips and the number line | lesson (`fraction`, `compare`) | math.sap.14 | core |
-| ⬜ | `math-sapling-61` | کسرهای مساوی | Equal fractions with strips and the line: ½ = ۲⁄۴ = ۴⁄۸، ⅓ = ۲⁄۶ | lesson (`fraction`), 🆕 `numline` with fractions | math.sap.14 | core |
-| ⬜ | `math-sapling-62` | بازی کسرها | Unit game: fraction ↔ picture ↔ number line, ordering, equal fractions | game (`pairs` with `hidden`, `order`, `sort`) | math.sap.13, math.sap.14 | core |
-| ⬜ | `math-sapling-63` | آرایه‌ها | Arrays: rows and columns (an egg tray, a window, a carpet's pattern), ۳ × ۴ and ۴ × ۳ are the same array turned | animation, 🆕 `array` | math.sap.7 | core |
-| ⬜ | `math-sapling-64` | ضرب در ۲، ۵ و ۱۰ | Times tables of 2 (doubles), 5 (hands, half of 10) and 10, from skip counting and arrays | lesson (`numline`, `choose`), 🆕 `array` | math.sap.8 | core |
-| ⬜ | `math-sapling-65` | ضرب در ۴، ۳ و ۶ | 4 as double double, 3 as 2 and 1 more group, 6 as double 3 (splitting an array) | 🆕 `array`, lesson (`choose`) | math.sap.8 | core |
-| ⬜ | `math-sapling-66` | ضرب در ۹، ۸ و ۷ | 9 as 10 groups take one group, 8 as double 4, 7 as 5 and 2; the few facts left | 🆕 `array`, lesson (`choose`) | math.sap.8 | core |
-| ⬜ | `math-sapling-67` | ضرب در صفر و یک | Zero groups and one group; any number × 1, × 0 | animation, lesson (`choose`) | math.sap.8 | core |
-| ⬜ | `math-sapling-68` | جدول ضرب | The multiplication table: patterns in it (the diagonal, turnarounds, even rows), using a known fact to find a new one | lesson (`choose`), game (`pattern`) | math.sap.8, math.sap.6 | core |
-| ⬜ | `math-sapling-69` | بازی جدول ضرب | Unit game: facts by strategy, memory game product ↔ array, the table with holes | game (`pairs` with `hidden`, `sort`, `pattern`) | math.sap.8 | core |
-| ⬜ | `math-sapling-70` | تقسیم: سهم مساوی | Division as sharing: 12 apples on 3 plates, the «÷» sign, sharing in a story | animation, 🆕 `feed` with several plates, lesson (`choose`) | math.sap.9 | core |
-| ⬜ | `math-sapling-71` | تقسیم: چندتا گروه؟ | Division as grouping: 12 eggs in boxes of 4, jumps back on the number line | lesson (`numline`, `choose`), 🆕 `array` | math.sap.9 | core |
-| ⬜ | `math-sapling-72` | ضرب و تقسیم، یک خانواده | Fact families (۳ × ۴ = ۱۲، ۱۲ ÷ ۳ = ۴), dividing by thinking of the times table, the unknown factor | lesson (`choose`), game (`sort`) | math.sap.9, math.sap.12 | core |
-| ⬜ | `math-sapling-73` | باقی‌مانده | Sharing that does not come out equal: what is left over, and what to do with it in a story | animation, lesson (`choose`), 🆕 `feed` with several plates | math.sap.9 | core |
-| ⬜ | `math-sapling-74` | مسئله‌های ضرب و تقسیم | Word problems with equal groups, arrays and sharing, drawn as bar models (times as many) | animation (`scene` + `question`), 🆕 `bar` | math.sap.11 | core |
-| ⬜ | `math-sapling-75` | بازی ضرب و تقسیم | Unit game: multiplication and division facts, which operation, sort stories | game (`pairs`, `sort`) | math.sap.8, math.sap.9 | core |
-| ⬜ | `math-sapling-76` | محیط | Perimeter: walking round a garden, adding the sides, the fence around a yard | animation, lesson (`measure`, `choose`) | math.sap.19 | core |
-| ⬜ | `math-sapling-77` | مساحت با مربع | Area by covering with squares and counting; two shapes with the same area | 🆕 `grid`, lesson (`choose`) | math.sap.19 | core |
-| ⬜ | `math-sapling-78` | مساحت مستطیل | Area of a rectangle as rows × columns of squares, linking to arrays | 🆕 `grid`, 🆕 `array` | math.sap.19, math.sap.7 | core |
-| ⬜ | `math-sapling-79` | محیط یا مساحت؟ | Which one is asked (a fence or a carpet), same perimeter but different area | lesson (`choose`), 🆕 `grid` | math.sap.19 | full |
-| ⬜ | `math-sapling-80` | جمع و تفریق در مسئله | Choosing mental or column methods for bigger numbers, multi-step problems with money and measures | lesson (`choose`), 🆕 `column`, 🆕 `bar` | math.sap.5, math.sap.11 | core |
-| ⬜ | `math-sapling-81` | حساب ذهنی | Adding and subtracting tens and hundreds in the head (۳۴۰ + ۲۰۰، ۷۰۰ − ۲۵۰), near hundreds (۳۹۸ + ۱۲۵) | lesson (`numline`, `choose`) | math.sap.25 | core |
-| ⬜ | `math-sapling-82` | جدول و چوب‌خط | Asking a question, collecting answers in a tally table, turning it into a picture graph | lesson (`chart`, `choose`), home (`doit`) | math.sap.22 | core |
-| ⬜ | `math-sapling-83` | نمودار ستونی | Bar charts with a scale of 2, 5 and 10: reading, making, how many more | lesson (`chart` with `bars`) | math.sap.22 | core |
-| ⬜ | `math-sapling-99` | نمودار نقطه‌ای | Measuring ten pencils or leaves and marking each length on a line plot; which length is most common | lesson (`measure`, `chart`) | math.sap.27, math.sap.15 | full |
-| ⬜ | `math-sapling-84` | حتمی، ممکن، غیرممکن | Chance words for events in a child's life and for picking from a bag; more and less likely | animation, lesson (`choose`), game (`sort`) | math.sap.23 | full |
-| ⬜ | `math-sapling-85` | آزمایش شانس | Trying it: picking marbles from a bag, a spinner, tallying 20 tries, what was likely | 🆕 `spinner`, lesson (`chart`) | math.sap.23, math.sap.22 | full |
-| ⬜ | `math-sapling-86` | ضرب ده‌تایی‌ها | ۳ × ۴۰ as 3 × 4 tens, ۵ × ۲۰۰; the pattern of zeros | lesson (`tens`, `choose`) | math.sap.10 | core |
-| ⬜ | `math-sapling-87` | ضرب با مستطیل | Two-digit × one-digit with the area model (۶ × ۲۳ = ۶ × ۲۰ + ۶ × ۳) | animation, 🆕 `array` (area model) | math.sap.10 | core |
-| ⬜ | `math-sapling-88` | ضرب نوشتنی | The written method for two- and three-digit × one-digit, each step next to the area model | 🆕 `column`, 🆕 `array` (area model) | math.sap.10 | core |
-| ⬜ | `math-sapling-89` | مسئله‌های ضرب | Multiplication word problems with bigger numbers (boxes of 24 bottles, rows of seats) | animation (`scene` + `question`), 🆕 `bar` | math.sap.10, math.sap.11 | core |
-| ⬜ | `math-sapling-90` | بکش، جدول بساز | Problem-solving strategies: drawing a picture and making a table (Iranian textbook «راهبردها»), with worked examples | animation, lesson (`choose`), home (`paper`) | math.sap.24 | core |
-| ⬜ | `math-sapling-91` | حدس بزن و آزمایش کن | Guess and check, and working backwards, with worked examples, then a problem alone | lesson (`choose`), home (`paper`) | math.sap.24 | core |
-| ⬜ | `math-sapling-92` | الگو پیدا کن | Finding a pattern and making a list to solve a problem (handshakes, ways to pay 10 thousand tomans) | lesson (`choose`), game (`pattern`) | math.sap.24, math.sap.6 | full |
-| ⬜ | `math-sapling-93` | چقدر طول کشید؟ | Durations: from 4:15 to 5:00, start and end times, minutes and hours, a week's timetable | lesson (`clock`, `choose`) | math.sap.17 | core |
-| ⬜ | `math-sapling-94` | میلی‌متر و کیلومتر | Millimetres and kilometres: a ruler's small marks, the distance to the next city; changing cm to mm and m to km | lesson (`measure`, `choose`) | math.sap.15 | full |
-| ⬜ | `math-sapling-95` | بازی اندازه‌گیری | Unit game: units for things, clock times, kg and g, perimeter and area | game (`pairs`, `sort`, `order`) | math.sap.15, math.sap.16, math.sap.17, math.sap.19 | core |
-| ⬜ | `math-sapling-96` | بازی شکل‌ها و الگوها | Unit game: polygons, right angles, solids, symmetry, pattern rules | game (`sort`, `pairs` with `hidden`, `pattern`) | math.sap.20, math.sap.6 | core |
-| ⬜ | `math-sapling-97` | بازی مسئله‌ها | Unit game: word problems with the four operations, which bar model fits | game (`pairs`, `sort`) | math.sap.11 | core |
-| ⬜ | `math-sapling-98` | جشن نهال | Garden review: place value to 10,000, column sums, times tables, fractions on a line, time, area, a bar model problem | game (`pairs`, `order`), lesson (`choose`) | math.sap.3, math.sap.5, math.sap.8, math.sap.14, math.sap.19, math.sap.11 | core |
+| 🔨 | `math-sapling-50` | قانون الگو | Number patterns: finding the rule (add ۳، take ۵، double), the next and a missing term, a pattern's 10th term | lesson (`choose`), game (`pattern`) | math.sap.6 | core |
+| 🔨 | `math-sapling-51` | الگوهای شکلی | Growing shape patterns put in a table (step, number of sticks), predicting a later step | animation, lesson (`choose`), game (`pattern`) | math.sap.6, math.sap.24 | core |
+| 🔨 | `math-sapling-52` | عددهای چهاررقمی | Thousands: ten hundreds make a box of a thousand, reading and writing four-digit numbers, zeros inside (۳۰۰۵) | lesson (`tens` with thousands, `choose`) | math.sap.3 | core |
+| 🔨 | `math-sapling-53` | مقایسه و ترتیب تا ده‌هزار | Comparing and ordering four-digit numbers, numbers on a line to 10,000, the biggest number from four digits | lesson (`compare`, `numline`), game (`order`) | math.sap.3 | core |
+| 🔨 | `math-sapling-54` | گرد کردن | Rounding to the nearest 10, 100 and 1,000 on a number line; when an about-answer is enough | lesson (`numline`, `choose`) | math.sap.3 | core |
+| 🔨 | `math-sapling-55` | جمع و تفریق چهاررقمی | Column addition and subtraction with four-digit numbers, estimating first | `column`, lesson (`choose`) | math.sap.5, math.sap.3 | core |
+| 🔨 | `math-sapling-56` | قسمت‌های مساوی | Unit fractions: ½، ⅓، ¼، ⅙، ⅛ of shapes; equal parts need not look the same; the more parts, the smaller each | animation, lesson (`fraction`) | math.sap.13 | core |
+| 🔨 | `math-sapling-57` | صورت و مخرج | Fractions like ¾ and ⅖: the bottom number says how many equal parts, the top how many we take; reading and writing them; a whole as ۴⁄۴ | lesson (`fraction`, `choose`) | math.sap.13 | core |
+| 🔨 | `math-sapling-58` | کسری از چند چیز | A fraction of a set: ⅓ of 12 walnuts, ¾ of 8 children; sharing into equal groups first | lesson (`fraction` with a set, `choose`) | math.sap.13, math.sap.9 | core |
+| 🔨 | `math-sapling-59` | کسر روی محور | Fractions on the number line: cutting 0–1 into equal parts, ¼، ۲⁄۴، ¾ and ۴⁄۴ = ۱, fractions bigger than one | `numline` with fractions, lesson (`choose`) | math.sap.14 | core |
+| 🔨 | `math-sapling-60` | کدام کسر بزرگ‌تر است؟ | Comparing fractions with the same bottom number, and unit fractions (⅓ > ¼: fewer people share), on strips and the number line | lesson (`fraction`, `compare`) | math.sap.14 | core |
+| 🔨 | `math-sapling-61` | کسرهای مساوی | Equal fractions with strips and the line: ½ = ۲⁄۴ = ۴⁄۸، ⅓ = ۲⁄۶ | lesson (`fraction`), `numline` with fractions | math.sap.14 | core |
+| 🔨 | `math-sapling-62` | بازی کسرها | Unit game: fraction ↔ picture ↔ number line, ordering, equal fractions | game (`pairs` with `hidden`, `order`, `sort`) | math.sap.13, math.sap.14 | core |
+| 🔨 | `math-sapling-63` | آرایه‌ها | Arrays: rows and columns (an egg tray, a window, a carpet's pattern), ۳ × ۴ and ۴ × ۳ are the same array turned | animation, `array`, lesson (`choose`) | math.sap.7 | core |
+| 🔨 | `math-sapling-64` | ضرب در ۲، ۵ و ۱۰ | Times tables of 2 (doubles), 5 (hands, half of 10) and 10, from skip counting and arrays | lesson (`numline`, `choose`), `array` | math.sap.8 | core |
+| 🔨 | `math-sapling-65` | ضرب در ۴، ۳ و ۶ | 4 as double double, 3 as 2 and 1 more group, 6 as double 3 (splitting an array) | `array`, lesson (`choose`) | math.sap.8 | core |
+| 🔨 | `math-sapling-66` | ضرب در ۹، ۸ و ۷ | 9 as 10 groups take one group, 8 as double 4, 7 as 5 and 2; the few facts left | `array`, lesson (`choose`) | math.sap.8 | core |
+| 🔨 | `math-sapling-67` | ضرب در صفر و یک | Zero groups and one group; any number × 1, × 0 | animation, lesson (`choose`) | math.sap.8 | core |
+| 🔨 | `math-sapling-68` | جدول ضرب | The multiplication table: patterns in it (the diagonal, turnarounds, even rows), using a known fact to find a new one | lesson (`choose`), game (`pattern`) | math.sap.8, math.sap.6 | core |
+| 🔨 | `math-sapling-69` | بازی جدول ضرب | Unit game: facts by strategy, memory game product ↔ array, the table with holes | game (`pairs` with `hidden`, `sort`, `pattern`) | math.sap.8 | core |
+| 🔨 | `math-sapling-70` | تقسیم: سهم مساوی | Division as sharing: 12 apples on 3 plates, the «÷» sign, sharing in a story | animation, `feed` with several plates, lesson (`choose`) | math.sap.9 | core |
+| 🔨 | `math-sapling-71` | تقسیم: چندتا گروه؟ | Division as grouping: 12 eggs in boxes of 4, jumps back on the number line | lesson (`numline`, `choose`), `array` | math.sap.9 | core |
+| 🔨 | `math-sapling-72` | ضرب و تقسیم، یک خانواده | Fact families (۳ × ۴ = ۱۲، ۱۲ ÷ ۳ = ۴), dividing by thinking of the times table, the unknown factor | lesson (`choose`), game (`sort`) | math.sap.9, math.sap.12 | core |
+| 🔨 | `math-sapling-73` | باقی‌مانده | Sharing that does not come out equal: what is left over, and what to do with it in a story | animation, lesson (`choose`), `feed` with several plates | math.sap.9 | core |
+| 🔨 | `math-sapling-74` | مسئله‌های ضرب و تقسیم | Word problems with equal groups, arrays and sharing, drawn as bar models (times as many) | animation (`scene` + `question`), `bar` | math.sap.11 | core |
+| 🔨 | `math-sapling-75` | بازی ضرب و تقسیم | Unit game: multiplication and division facts, which operation, sort stories | game (`pairs`, `sort`) | math.sap.8, math.sap.9 | core |
+| 🔨 | `math-sapling-76` | محیط | Perimeter: walking round a garden, adding the sides, the fence around a yard | animation, lesson (`measure`, `choose`) | math.sap.19 | core |
+| 🔨 | `math-sapling-77` | مساحت با مربع | Area by covering with squares and counting; two shapes with the same area | `grid`, lesson (`choose`) | math.sap.19 | core |
+| 🔨 | `math-sapling-78` | مساحت مستطیل | Area of a rectangle as rows × columns of squares, linking to arrays | `grid`, `array`, lesson (`choose`) | math.sap.19, math.sap.7 | core |
+| 🔨 | `math-sapling-79` | محیط یا مساحت؟ | Which one is asked (a fence or a carpet), same perimeter but different area | lesson (`choose`), `grid` | math.sap.19 | full |
+| 🔨 | `math-sapling-80` | جمع و تفریق در مسئله | Choosing mental or column methods for bigger numbers, multi-step problems with money and measures | lesson (`choose`), `column`, `bar` | math.sap.5, math.sap.11 | core |
+| 🔨 | `math-sapling-81` | حساب ذهنی | Adding and subtracting tens and hundreds in the head (۳۴۰ + ۲۰۰، ۷۰۰ − ۲۵۰), near hundreds (۳۹۸ + ۱۲۵) | lesson (`numline`, `choose`) | math.sap.25 | core |
+| 🔨 | `math-sapling-82` | جدول و چوب‌خط | Asking a question, collecting answers in a tally table, turning it into a picture graph | lesson (`chart`, `choose`), home (`doit`) | math.sap.22 | core |
+| 🔨 | `math-sapling-83` | نمودار ستونی | Bar charts with a scale of 2, 5 and 10: reading, making, how many more | lesson (`chart` with `bars`) | math.sap.22 | core |
+| 🔨 | `math-sapling-99` | نمودار نقطه‌ای | Measuring pencils and marking each length (whole centimetres) with a ✖ on a line plot made as a picture graph; which length is most common, the range; halves and quarters of a centimetre are not built yet | lesson (`measure`, `chart`) | math.sap.27, math.sap.15 | full |
+| 🔨 | `math-sapling-84` | حتمی، ممکن، غیرممکن | Chance words for events in a child's life and for picking from a bag; more and less likely | animation, lesson (`choose`), game (`sort`) | math.sap.23 | full |
+| 🔨 | `math-sapling-85` | آزمایش شانس | Trying it: picking marbles from a bag, a spinner, tallying 20 tries, what was likely | `spinner`, lesson (`chart`) | math.sap.23, math.sap.22 | full |
+| 🔨 | `math-sapling-86` | ضرب ده‌تایی‌ها | ۳ × ۴۰ as 3 × 4 tens, ۵ × ۲۰۰; the pattern of zeros | lesson (`tens`, `choose`) | math.sap.10 | core |
+| 🔨 | `math-sapling-87` | ضرب با مستطیل | Two-digit × one-digit with the area model (۶ × ۲۳ = ۶ × ۲۰ + ۶ × ۳) | animation, `array` (area model) | math.sap.10 | core |
+| 🔨 | `math-sapling-88` | ضرب نوشتنی | The written method for two- and three-digit × one-digit, each step next to the area model | `column`, `array` (area model) | math.sap.10 | core |
+| 🔨 | `math-sapling-89` | مسئله‌های ضرب | Multiplication word problems with bigger numbers (boxes of 24 bottles, rows of seats) | animation (`scene` + `question`), `bar`, lesson (`choose`) | math.sap.10, math.sap.11 | core |
+| 🔨 | `math-sapling-90` | بکش، جدول بساز | Problem-solving strategies: drawing a picture and making a table (Iranian textbook «راهبردها»), with worked examples | animation, lesson (`choose`), home (`paper`) | math.sap.24 | core |
+| 🔨 | `math-sapling-91` | حدس بزن و آزمایش کن | Guess and check, and working backwards, with worked examples, then a problem alone | lesson (`choose`), home (`paper`) | math.sap.24 | core |
+| 🔨 | `math-sapling-92` | الگو پیدا کن | Finding a pattern and making a list to solve a problem (handshakes, ways to pay 10 thousand tomans) | lesson (`choose`), game (`pattern`) | math.sap.24, math.sap.6 | full |
+| 🔨 | `math-sapling-93` | چقدر طول کشید؟ | Durations: from 4:15 to 5:00, start and end times, minutes and hours, a week's timetable | lesson (`clock`, `choose`) | math.sap.17 | core |
+| 🔨 | `math-sapling-94` | میلی‌متر و کیلومتر | Millimetres and kilometres: a ruler's small marks, the distance to the next city; changing cm to mm and m to km | lesson (`measure`, `choose`) | math.sap.15 | full |
+| 🔨 | `math-sapling-95` | بازی اندازه‌گیری | Unit game: units for things, clock times, kg and g, perimeter and area | game (`pairs`, `sort`, `order`) | math.sap.15, math.sap.16, math.sap.17, math.sap.19 | core |
+| 🔨 | `math-sapling-96` | بازی شکل‌ها و الگوها | Unit game: polygons, right angles, solids, symmetry, pattern rules | game (`sort`, `pairs` with `hidden`, `pattern`) | math.sap.20, math.sap.6 | core |
+| 🔨 | `math-sapling-97` | بازی مسئله‌ها | Unit game: word problems with the four operations, which bar model fits | game (`pairs`, `sort`) | math.sap.11 | core |
+| 🔨 | `math-sapling-98` | جشن نهال | Garden review: place value to 10,000, column sums, times tables, fractions on a line, time, area, a bar model problem | game (`pairs`, `order`), lesson (`choose`) | math.sap.3, math.sap.5, math.sap.8, math.sap.14, math.sap.19, math.sap.11 | core |
 
 #### Practice
 
-| St | Practice | What it makes | Objectives |
-|---|---|---|---|
-| ⬜ | Facts to 20 | Addition and subtraction facts within 20, grouped by strategy (make ten, doubles, near doubles, think-addition); spaced and interleaved; a fact missed comes back sooner | math.sap.1 |
-| ⬜ | Place value | Build, read, write and compare numbers to 1,000 then 10,000 with bundles, flats and cubes; expanded form; ten more, a hundred less | math.sap.2, math.sap.3 |
-| ⬜ | Mental sums | Two-digit and three-digit sums and differences to do in the head (jumps of tens, near tens and hundreds) | math.sap.25 |
-| ⬜ | Column sums | Two-, three- and four-digit additions and subtractions with and without regrouping, with an estimate first | math.sap.4, math.sap.5 |
-| ⬜ | Times tables | Facts for the tables of 2, 5, 10, then 4, 3, 6, then 9, 8, 7, in the order taught, with arrays that fade away; mixed with division facts once taught; spaced and interleaved | math.sap.8, math.sap.9 |
-| ⬜ | Multiply and share | Two- and three-digit × one-digit, sharing with remainders | math.sap.10, math.sap.9 |
-| ⬜ | Missing numbers | □ + a = b, a − □ = b, a × □ = b, □ ÷ a = b | math.sap.12 |
-| ⬜ | Word problems | One- and two-step problems from templates (part-whole, compare, equal groups, times as many, change), with a bar model to draw; Iranian names, shops, prices and places | math.sap.11 |
-| ⬜ | Fractions | Fraction of a shape, of a set, on a number line; compare, equal fractions | math.sap.13, math.sap.14 |
-| ⬜ | Time | Clock faces to the minute, durations, dates in the Persian calendar | math.sap.17 |
-| ⬜ | Measures | Read a ruler, a scale, a jug; choose the unit; convert m ↔ cm, kg ↔ g | math.sap.15, math.sap.16 |
-| ⬜ | Money | Prices to add, pay, give change | math.sap.18 |
-| ⬜ | Perimeter and area | Shapes on a grid: perimeter, area by counting and by rows × columns | math.sap.19 |
-| ⬜ | Graphs | Tally tables, picture graphs and bar charts with questions | math.sap.22 |
-| ⬜ | Patterns | Number and shape sequences: next, missing, rule | math.sap.6 |
+| St | Id | Practice | What it makes | Objectives |
+|---|---|---|---|---|
+| 🔨 | `math-sapling-p1` | Facts to 20 | Addition and subtraction facts within 20, grouped by strategy (make ten, doubles, near doubles, think-addition); spaced and interleaved; a fact missed comes back sooner | math.sap.1 |
+| 🔨 | `math-sapling-p2` | Place value | Build, read, write and compare numbers to 1,000 then 10,000 with bundles, flats and cubes; expanded form; ten more, a hundred less | math.sap.2, math.sap.3 |
+| 🔨 | `math-sapling-p3` | Mental sums | Two-digit and three-digit sums and differences to do in the head (jumps of tens, near tens and hundreds) | math.sap.25 |
+| 🔨 | `math-sapling-p4` | Column sums | Two-, three- and four-digit additions and subtractions with and without regrouping, with an estimate first | math.sap.4, math.sap.5 |
+| 🔨 | `math-sapling-p5` | Times tables | Facts for the tables of 2, 5, 10, then 4, 3, 6, then 9, 8, 7, in the order taught, with arrays that fade away; mixed with division facts once taught; spaced and interleaved | math.sap.8, math.sap.9 |
+| 🔨 | `math-sapling-p6` | Multiply and share | Two- and three-digit × one-digit, sharing with remainders | math.sap.10, math.sap.9 |
+| 🔨 | `math-sapling-p7` | Missing numbers | □ + a = b, a − □ = b, a × □ = b, □ ÷ a = b | math.sap.12 |
+| 🔨 | `math-sapling-p8` | Word problems | One- and two-step problems from templates (part-whole, compare, equal groups, times as many, change), with a bar model to draw; Iranian names, shops, prices and places | math.sap.11 |
+| 🔨 | `math-sapling-p9` | Fractions | Fraction of a shape, of a set, on a number line; compare, equal fractions | math.sap.13, math.sap.14 |
+| 🔨 | `math-sapling-p10` | Time | Clock faces to the minute, durations, dates in the Persian calendar | math.sap.17 |
+| 🔨 | `math-sapling-p11` | Measures | Read a ruler, a scale, a jug; choose the unit; convert m ↔ cm, kg ↔ g | math.sap.15, math.sap.16 |
+| 🔨 | `math-sapling-p12` | Money | Prices to add, pay, give change | math.sap.18 |
+| 🔨 | `math-sapling-p13` | Perimeter and area | Shapes on a grid: perimeter, area by counting and by rows × columns | math.sap.19 |
+| 🔨 | `math-sapling-p14` | Graphs | Tally tables, picture graphs and bar charts with questions | math.sap.22 |
+| 🔨 | `math-sapling-p15` | Patterns | Number and shape sequences: next, missing, rule | math.sap.6 |
+| 🔨 | `math-sapling-p16` | Fact families | Facts to sort by their answer, each sum paired with the difference that undoes it, the wrong fact among three | math.sap.1, math.sap.12 |
+| 🔨 | `math-sapling-p17` | Number line jumps | Jumps through ten on the number line, jumps of ten, +9 as ten and one back, runs of numbers ten apart | math.sap.25, math.sap.1 |
+| 🔨 | `math-sapling-p18` | Add and take with bundles | Two-digit numbers read from bundles, added (tying a bundle) and taken away (opening one) | math.sap.4, math.sap.2 |
+| 🔨 | `math-sapling-p19` | Estimate and check | The round number a sum is near, is a worked answer right, which answer makes sense | math.sap.4, math.sap.5, math.sap.24 |
+| 🔨 | `math-sapling-p20` | Order big numbers | Four numbers to order (to 100, 1,000, 10,000), the biggest number from three digits, between which hundreds | math.sap.2, math.sap.3 |
+| 🔨 | `math-sapling-p21` | Equal groups | Sharing on plates, a repeated sum as a times sentence, arrays to count and build | math.sap.7 |
+| 🔨 | `math-sapling-p22` | Times-table games | A memory game of facts and answers, numbers sorted into a table or not, the division that undoes a fact | math.sap.8, math.sap.9 |
+| 🔨 | `math-sapling-p23` | Times and sharing stories | Equal groups, sharing, how many groups, what is left over, a price times a number | math.sap.11, math.sap.9, math.sap.10 |
+| 🔨 | `math-sapling-p24` | Fractions in words | A half, a quarter or another fraction of a number, unit fractions to order, fractions sorted by more or less than a half | math.sap.13, math.sap.14 |
+| 🔨 | `math-sapling-p25` | Clock words and time passing | A time in numbers matched with its words, minutes in an hour, half and quarter, the time some minutes later | math.sap.17 |
+| 🔨 | `math-sapling-p26` | Calendar and units of time | Days in a week, months in a year, the week and months in order, a date some days later | math.sap.17 |
+| 🔨 | `math-sapling-p27` | Measure problems | Lengths added and compared, longer or heavier in mixed units (1 m or 90 cm, 1 kg or 800 g) | math.sap.15, math.sap.16 |
+| 🔨 | `math-sapling-p28` | Shopping problems | Is the money enough, the change for two things, how many one note buys | math.sap.18, math.sap.11 |
+| 🔨 | `math-sapling-p29` | Polygons | Find a pentagon, hexagon or octagon; count sides and right angles; sort four-sided shapes | math.sap.20 |
+| 🔨 | `math-sapling-p30` | Solids | Solids paired with things, faces, edges and corners of a cube, box or pyramid, flat or curved faces | math.sap.20 |
+| 🔨 | `math-sapling-p31` | Symmetry | Every line of symmetry of a shape, the mirror half of a tile pattern, how many lines a shape has | math.sap.21 |
+| 🔨 | `math-sapling-p32` | Grid squares | The square in a column and row, a piece moved to a square with the arrows | math.sap.26 |
+| 🔨 | `math-sapling-p33` | Chance | Sentences sorted as certain, possible or impossible; the likelier colour from a bag; a spinner to try | math.sap.23 |
+| 🔨 | `math-sapling-p34` | Tables and line plots | Tally marks to read, bar charts with a difference to find, a line plot made from measurements | math.sap.22, math.sap.27 |
+| 🔨 | `math-sapling-p35` | Problem solving | Guess and check, a table that grows (legs, wheels), working backwards | math.sap.24 |
+| 🔨 | `math-sapling-p36` | Perimeter or area? | A square's perimeter from its side, tiles in rows on a floor, whether a job needs perimeter or area | math.sap.19 |
 
 ### 🌳 درخت — `tree`
 
@@ -572,73 +618,73 @@ lessons and about half the practice.
 |---|---|---|---|---|---|---|
 | ⬜ | `math-tree-1` | عددهای بزرگ | Place value to 1,000,000, reading big numbers in groups of three, rounding | lesson (`choose`, `compare`) · `tens` with thousands | math.tree.1 | core |
 | ⬜ | `math-tree-19` | میلیون و میلیارد | Millions and billions: populations, distances, the classes of three digits, reading and writing them, rounding to estimate | lesson (`choose`, `numline`) | math.tree.1 | core |
-| ⬜ | `math-tree-2` | جمع و تفریق ستونی | Column addition and subtraction of big numbers with carrying and borrowing, estimating first | 🆕 `column` (written method, digit by digit) | math.tree.2 | core |
-| ⬜ | `math-tree-3` | ضرب با آرایه | Two-digit × two-digit with the area model (۲۳ × ۱۴ as four rectangles); commutativity and the distributive law seen in the array | animation · 🆕 `array` | math.tree.3 | core |
-| ⬜ | `math-tree-5` | ضرب دورقمی | The written method for 2-digit × 2-digit, then 3-digit × 2-digit, each line next to the area model | 🆕 `array` (area model), 🆕 `column` | math.tree.3 | core |
+| ⬜ | `math-tree-2` | جمع و تفریق ستونی | Column addition and subtraction of big numbers with carrying and borrowing, estimating first | `column` (written method, digit by digit) | math.tree.2 | core |
+| ⬜ | `math-tree-3` | ضرب با آرایه | Two-digit × two-digit with the area model (۲۳ × ۱۴ as four rectangles); commutativity and the distributive law seen in the array | animation · `array` | math.tree.3 | core |
+| ⬜ | `math-tree-5` | ضرب دورقمی | The written method for 2-digit × 2-digit, then 3-digit × 2-digit, each line next to the area model | `array` (area model), `column` | math.tree.3 | core |
 | ⬜ | `math-tree-4` | جدول ضرب | Times tables 2–10 reviewed by patterns, not by rote: the facts still slow, with strategies | game (`pattern`, `pairs` with `hidden`), lesson (`choose`) | math.tree.3 | core |
 | ⬜ | `math-tree-6` | تقسیم: سهم مساوی | Division of bigger numbers as sharing hundreds, tens and ones; remainders and what they mean in a story | animation, game · 🆕 `feed` with several plates | math.tree.4 | core |
 | ⬜ | `math-tree-7` | تقسیم ستونی | Long division (3-digit ÷ 1-digit, as in the placement check), then by two-digit numbers | 🆕 `column` (division layout) | math.tree.4 | core |
 | ⬜ | `math-tree-20` | بخش‌پذیری | Divisibility tests for 2, 5, 10, then 3 and 9; why they work (bundles) | lesson (`choose`), game (`sort`) | math.tree.28 | full |
 | ⬜ | `math-tree-8` | بازی ضرب و تقسیم | Unit game | game (`pairs`, `sort`, `pattern`) | math.tree.3, math.tree.4 | core |
-| ⬜ | `math-tree-21` | ترتیب عملیات | Which operation first: brackets, × and ÷ before + and −; writing one expression for a two-step problem | lesson (`choose`), 🆕 `bar` | math.tree.5 | core |
-| ⬜ | `math-tree-22` | شمارنده‌ها و مضرب‌ها | Factors from arrays (all the rectangles of 12), multiples, primes as numbers with one rectangle | 🆕 `array`, game (`sort`) | math.tree.6 | core |
+| ⬜ | `math-tree-21` | ترتیب عملیات | Which operation first: brackets, × and ÷ before + and −; writing one expression for a two-step problem | lesson (`choose`), `bar` | math.tree.5 | core |
+| ⬜ | `math-tree-22` | شمارنده‌ها و مضرب‌ها | Factors from arrays (all the rectangles of 12), multiples, primes as numbers with one rectangle | `array`, game (`sort`) | math.tree.6 | core |
 | ⬜ | `math-tree-23` | الگو و قانون | Number and shape patterns: the rule in words, the 100th term, patterns in a carpet | lesson (`choose`), game (`pattern`) | math.tree.7 | core |
 | ⬜ | `math-tree-24` | ماشین ورودی و خروجی | Input–output machines: find the rule, run it backwards, write it with a letter | 🆕 `machine`, lesson (`choose`) | math.tree.7 | core |
 | ⬜ | `math-tree-9` | کسرها | Fractions as parts of a whole, of a set and as a point on the number line; fractions bigger than one | animation, lesson (`numline`, `fraction`) | math.tree.8 | core |
 | ⬜ | `math-tree-10` | کسرهای مساوی | Equivalent fractions, simplifying, comparing and ordering with different bottom numbers | lesson (`fraction`, `compare`) | math.tree.8 | core |
-| ⬜ | `math-tree-25` | جمع و تفریق کسرها | Adding and subtracting with the same bottom number, then with different ones (finding equal fractions first) | lesson (`fraction`), 🆕 `numline` with fractions | math.tree.9 | core |
+| ⬜ | `math-tree-25` | جمع و تفریق کسرها | Adding and subtracting with the same bottom number, then with different ones (finding equal fractions first) | lesson (`fraction`), `numline` with fractions | math.tree.9 | core |
 | ⬜ | `math-tree-26` | عدد مخلوط | Mixed numbers ↔ improper fractions, adding and subtracting mixed numbers (two and a half sangaks) | lesson (`fraction`, `choose`) | math.tree.9 | core |
 | ⬜ | `math-tree-27` | ضرب کسر | A whole number × a fraction (۳ × ⅖), a fraction of a fraction with the area model | 🆕 `array` (area model), lesson (`fraction`) | math.tree.10 | core |
-| ⬜ | `math-tree-28` | تقسیم کسر | How many halves in 3? Dividing by a fraction with strips and the number line, then the rule | 🆕 `numline` with fractions, lesson (`choose`) | math.tree.10 | core |
+| ⬜ | `math-tree-28` | تقسیم کسر | How many halves in 3? Dividing by a fraction with strips and the number line, then the rule | `numline` with fractions, lesson (`choose`) | math.tree.10 | core |
 | ⬜ | `math-tree-11` | عددهای اعشاری | Tenths and hundredths, with lengths (cm, m) and money | lesson (`measure`, `choose`) | math.tree.11 | core |
 | ⬜ | `math-tree-29` | ارزش مکانی اعشار | Thousandths, comparing and rounding decimals, decimals on the number line, decimal ↔ fraction | lesson (`numline`, `compare`, `choose`) | math.tree.11 | core |
-| ⬜ | `math-tree-30` | جمع و تفریق اعشاری | Adding and subtracting decimals, lining up the place values, money and measures | 🆕 `column`, lesson (`choose`) | math.tree.12 | core |
+| ⬜ | `math-tree-30` | جمع و تفریق اعشاری | Adding and subtracting decimals, lining up the place values, money and measures | `column`, lesson (`choose`) | math.tree.12 | core |
 | ⬜ | `math-tree-31` | ضرب و تقسیم اعشاری | × and ÷ by 10, 100, 1000; decimal × whole number, decimal × decimal by the area model; dividing a decimal | 🆕 `array` (area model), lesson (`choose`) | math.tree.12 | core |
-| ⬜ | `math-tree-32` | نسبت | Ratio: 2 cups of rice to 3 cups of water, ratio tables, equal ratios | animation, lesson (`choose`), 🆕 `bar` | math.tree.13 | core |
-| ⬜ | `math-tree-33` | تناسب | Proportion: price for more, the map scale, the unitary method, solving a proportion | lesson (`choose`), 🆕 `bar` | math.tree.13 | core |
-| ⬜ | `math-tree-34` | درصد | Percent as out of a hundred (a 10 × 10 grid), percent ↔ fraction ↔ decimal | 🆕 `grid`, lesson (`choose`) | math.tree.14 | core |
-| ⬜ | `math-tree-35` | تخفیف بازار | Percent of an amount, discounts and price rises at the bazaar | animation, lesson (`money`, `choose`), 🆕 `bar` | math.tree.14 | core |
+| ⬜ | `math-tree-32` | نسبت | Ratio: 2 cups of rice to 3 cups of water, ratio tables, equal ratios | animation, lesson (`choose`), `bar` | math.tree.13 | core |
+| ⬜ | `math-tree-33` | تناسب | Proportion: price for more, the map scale, the unitary method, solving a proportion | lesson (`choose`), `bar` | math.tree.13 | core |
+| ⬜ | `math-tree-34` | درصد | Percent as out of a hundred (a 10 × 10 grid), percent ↔ fraction ↔ decimal | `grid`, lesson (`choose`) | math.tree.14 | core |
+| ⬜ | `math-tree-35` | تخفیف بازار | Percent of an amount, discounts and price rises at the bazaar | animation, lesson (`money`, `choose`), `bar` | math.tree.14 | core |
 | ⬜ | `math-tree-15` | زاویه و خط | Right angles, parallel and perpendicular lines | lesson (`shape`, `choose`) | math.tree.15, math.tree.16 | core |
 | ⬜ | `math-tree-36` | نقاله | Measuring and drawing angles with a protractor; acute, obtuse, straight; estimating first | 🆕 `angle` | math.tree.15 | core |
 | ⬜ | `math-tree-37` | چهارضلعی‌ها | Square, rectangle, rhombus, parallelogram, trapezium: their sides, angles and diagonals; how they are related | lesson (`shape`), game (`sort`) | math.tree.16 | core |
 | ⬜ | `math-tree-38` | مثلث‌ها | Triangles by sides and angles; the angles add to 180° (tearing off the corners) | animation, 🆕 `angle`, game (`sort`) | math.tree.16 | core |
-| ⬜ | `math-tree-14` | محیط و مساحت | Perimeter and area on a grid; area of a rectangle by formula | 🆕 `grid` (count squares, draw shapes) | math.tree.17 | core |
-| ⬜ | `math-tree-39` | مساحت متوازی‌الاضلاع و مثلث | Cutting and moving: a parallelogram becomes a rectangle, a triangle is half a parallelogram; the trapezium | animation, 🆕 `grid` | math.tree.17 | core |
+| ⬜ | `math-tree-14` | محیط و مساحت | Perimeter and area on a grid; area of a rectangle by formula | `grid` (count squares, draw shapes) | math.tree.17 | core |
+| ⬜ | `math-tree-39` | مساحت متوازی‌الاضلاع و مثلث | Cutting and moving: a parallelogram becomes a rectangle, a triangle is half a parallelogram; the trapezium | animation, `grid` | math.tree.17 | core |
 | ⬜ | `math-tree-40` | دایره | Centre, radius, diameter; drawing with a compass; circles in Iranian tiles | animation, lesson (`shape`, `choose`) | math.tree.18 | core |
 | ⬜ | `math-tree-41` | محیط و مساحت دایره | Circumference by rolling a wheel (about 3.14 diameters), area by cutting into slices | animation, lesson (`measure`, `choose`) | math.tree.18 | core |
 | ⬜ | `math-tree-17` | شکل‌های فضایی | Cube, cuboid, prism, pyramid, cylinder, sphere, cone; faces, edges and nets | animation, game (`sort`), 🆕 `solid` | math.tree.19 | core |
 | ⬜ | `math-tree-42` | حجم | Volume by filling a box with unit cubes, length × width × height, cm³ and litres | animation, 🆕 `solid` | math.tree.19 | core |
-| ⬜ | `math-tree-16` | تقارن | Lines of symmetry, completing a symmetric picture | 🆕 `mirror` | math.tree.20 | core |
-| ⬜ | `math-tree-43` | چرخش و انتقال | Turning a shape by a quarter and half turn, sliding it on a grid; centres of symmetry; tiling patterns | 🆕 `grid`, animation | math.tree.29 | full |
+| ⬜ | `math-tree-16` | تقارن | Lines of symmetry, completing a symmetric picture | `mirror` | math.tree.20 | core |
+| ⬜ | `math-tree-43` | چرخش و انتقال | Turning a shape by a quarter and half turn, sliding it on a grid; centres of symmetry; tiling patterns | `grid`, animation | math.tree.29 | full |
 | ⬜ | `math-tree-12` | واحدهای اندازه‌گیری | Length, mass, volume units; converting | lesson (`measure`, `choose`), home | math.tree.21 | core |
 | ⬜ | `math-tree-13` | زمان و تقویم | Minutes, hours, days, the months of the Persian calendar | lesson (`clock` with `snap: 5`), game (`order`) | math.tree.21 | core |
 | ⬜ | `math-tree-18` | جدول و نمودار ستونی | Tables and bar charts | lesson (`chart` with `bars`) | math.tree.22 | core |
 | ⬜ | `math-tree-44` | نمودار خط شکسته | Line graphs: temperature through a day, a plant's growth; reading between points | 🆕 `chart` with lines | math.tree.22 | core |
 | ⬜ | `math-tree-45` | میانگین | The mean as evening out (moving blocks between towers), then as a sum ÷ count; pie charts read as fractions | animation, lesson (`chart`, `choose`) | math.tree.22 | core |
-| ⬜ | `math-tree-46` | احتمال | Probability from 0 to 1: equally likely outcomes of a die and a spinner, then 50 tries to compare | 🆕 `spinner`, lesson (`choose`) | math.tree.23 | full |
-| ⬜ | `math-tree-47` | مدل نواری با کسر | Bar models for fraction problems (⅖ of the money was spent, what is left) | 🆕 `bar`, animation | math.tree.24 | core |
+| ⬜ | `math-tree-46` | احتمال | Probability from 0 to 1: equally likely outcomes of a die and a spinner, then 50 tries to compare | `spinner`, lesson (`choose`) | math.tree.23 | full |
+| ⬜ | `math-tree-47` | مدل نواری با کسر | Bar models for fraction problems (⅖ of the money was spent, what is left) | `bar`, animation | math.tree.24 | core |
 | ⬜ | `math-tree-48` | راهبردهای حل مسئله | The textbook strategies (draw, table, pattern, guess and check, work backwards, simplify) on multi-step problems, with worked examples | lesson (`choose`), home (`paper`) | math.tree.24 | core |
-| ⬜ | `math-tree-49` | مختصات | Points on a grid with two axes, plotting shapes from coordinates, a treasure map | 🆕 `grid` with axes | math.tree.25 | core |
+| ⬜ | `math-tree-49` | مختصات | Points on a grid with two axes, plotting shapes from coordinates, a treasure map | `grid` with axes | math.tree.25 | core |
 | ⬜ | `math-tree-50` | عددهای زیر صفر | Negative numbers: a thermometer in Hamedan in winter, floors below the ground, the number line both ways | lesson (`numline`, `compare`) | math.tree.26 | full |
 | ⬜ | `math-tree-51` | حرف به جای عدد | A letter for an unknown number; working out ۳ × n + ۲ for some n; one-step equations on a balance | lesson (`balance` with an unknown, `choose`) | math.tree.27 | core |
 
 #### Practice
 
-| St | Practice | What it makes | Objectives |
-|---|---|---|---|
-| ⬜ | Times-table keep-up | Spaced recall of the facts still slow (each child's own), mixed with division facts | math.tree.3, math.tree.4 |
-| ⬜ | Big numbers | Read, write, compare, round numbers to billions | math.tree.1 |
-| ⬜ | Written methods | Column +, −, × and long division with numbers of a chosen size, estimate first, step-by-step feedback on the digit that went wrong | math.tree.2, math.tree.3, math.tree.4 |
-| ⬜ | Order of operations | Expressions with brackets to work out; an expression for a story | math.tree.5 |
-| ⬜ | Fraction line | Fractions, mixed numbers and decimals to place on a number line, compare and order | math.tree.8, math.tree.11 |
-| ⬜ | Fraction operations | +, −, ×, ÷ with fractions and mixed numbers, simplest form | math.tree.9, math.tree.10 |
-| ⬜ | Decimal operations | +, −, ×, ÷ with decimals; × and ÷ by 10, 100, 1000 | math.tree.12 |
-| ⬜ | Ratio and percent | Ratio tables, proportions, percent of an amount, discounts, from templates with Iranian prices and recipes | math.tree.13, math.tree.14 |
-| ⬜ | Geometry | Angles to measure, quadrilaterals and triangles to classify, missing angles | math.tree.15, math.tree.16 |
-| ⬜ | Area, perimeter, volume | Shapes and boxes with random sizes: perimeter, area (rectangle, parallelogram, triangle, trapezium, circle), volume | math.tree.17, math.tree.18, math.tree.19 |
-| ⬜ | Units | Conversions between units of length, mass, capacity and time | math.tree.21 |
-| ⬜ | Data | Random small data sets: mean, a bar chart or line graph to read | math.tree.22 |
-| ⬜ | Word problems | Multi-step problems from templates (fractions of amounts, rates, change, area), with a bar model | math.tree.24 |
+| St | Id | Practice | What it makes | Objectives |
+|---|---|---|---|---|
+| ⬜ | `math-tree-p1` | Times-table keep-up | Spaced recall of the facts still slow (each child's own), mixed with division facts | math.tree.3, math.tree.4 |
+| ⬜ | `math-tree-p2` | Big numbers | Read, write, compare, round numbers to billions | math.tree.1 |
+| ⬜ | `math-tree-p3` | Written methods | Column +, −, × and long division with numbers of a chosen size, estimate first, step-by-step feedback on the digit that went wrong | math.tree.2, math.tree.3, math.tree.4 |
+| ⬜ | `math-tree-p4` | Order of operations | Expressions with brackets to work out; an expression for a story | math.tree.5 |
+| ⬜ | `math-tree-p5` | Fraction line | Fractions, mixed numbers and decimals to place on a number line, compare and order | math.tree.8, math.tree.11 |
+| ⬜ | `math-tree-p6` | Fraction operations | +, −, ×, ÷ with fractions and mixed numbers, simplest form | math.tree.9, math.tree.10 |
+| ⬜ | `math-tree-p7` | Decimal operations | +, −, ×, ÷ with decimals; × and ÷ by 10, 100, 1000 | math.tree.12 |
+| ⬜ | `math-tree-p8` | Ratio and percent | Ratio tables, proportions, percent of an amount, discounts, from templates with Iranian prices and recipes | math.tree.13, math.tree.14 |
+| ⬜ | `math-tree-p9` | Geometry | Angles to measure, quadrilaterals and triangles to classify, missing angles | math.tree.15, math.tree.16 |
+| ⬜ | `math-tree-p10` | Area, perimeter, volume | Shapes and boxes with random sizes: perimeter, area (rectangle, parallelogram, triangle, trapezium, circle), volume | math.tree.17, math.tree.18, math.tree.19 |
+| ⬜ | `math-tree-p11` | Units | Conversions between units of length, mass, capacity and time | math.tree.21 |
+| ⬜ | `math-tree-p12` | Data | Random small data sets: mean, a bar chart or line graph to read | math.tree.22 |
+| ⬜ | `math-tree-p13` | Word problems | Multi-step problems from templates (fractions of amounts, rates, change, area), with a bar model | math.tree.24 |
 
 ### 🌲 جنگل — `forest`
 
@@ -699,18 +745,18 @@ lessons and about half the practice.
 | ⬜ | `math-forest-8` | معادله با ترازو | Unknowns and simple equations | lesson (`balance` with an unknown: a thing labelled «؟», both pans open, then `question`) | math.for.3 | core |
 | ⬜ | `math-forest-17` | زاویه‌ها و خط‌های موازی | Vertical, supplementary and complementary angles; angles where a line crosses two parallels; giving the reason for each step | animation, 🆕 `angle` | math.for.4 | core |
 | ⬜ | `math-forest-18` | زاویه‌های چندضلعی | Angle sum of a triangle and of polygons by cutting into triangles; regular polygons and tiling | animation, 🆕 `angle` | math.for.4 | core |
-| ⬜ | `math-forest-6` | عامل‌ها و عددهای اول | Factors, multiples, primes, divisibility | game (`sort`), 🆕 `array` | math.for.5 | core |
+| ⬜ | `math-forest-6` | عامل‌ها و عددهای اول | Factors, multiples, primes, divisibility | game (`sort`), `array` | math.for.5 | core |
 | ⬜ | `math-forest-19` | تجزیه به عامل‌های اول | Factor trees, writing a number as a product of primes, the HCF and LCM, the sieve of Eratosthenes | lesson (`choose`), game (`sort`) | math.for.5 | core |
 | ⬜ | `math-forest-20` | حجم منشور و استوانه | Volume as base area × height for prisms and cylinders | animation, 🆕 `solid` | math.for.6 | core |
 | ⬜ | `math-forest-21` | مساحت جانبی و کل | Nets of prisms and cylinders, lateral and total surface area | 🆕 `solid`, lesson (`choose`) | math.for.6 | core |
-| ⬜ | `math-forest-7` | توان | Powers and square numbers | 🆕 `array`, lesson (`choose`) | math.for.7 | core |
-| ⬜ | `math-forest-22` | جذر | Square roots of perfect squares, estimating the root of other numbers between two whole numbers | lesson (`numline`, `choose`), 🆕 `grid` | math.for.7 | core |
-| ⬜ | `math-forest-11` | مختصات | Coordinates in all four quadrants on a grid and a map | 🆕 `grid` with axes | math.for.26 | core |
+| ⬜ | `math-forest-7` | توان | Powers and square numbers | `array`, lesson (`choose`) | math.for.7 | core |
+| ⬜ | `math-forest-22` | جذر | Square roots of perfect squares, estimating the root of other numbers between two whole numbers | lesson (`numline`, `choose`), `grid` | math.for.7 | core |
+| ⬜ | `math-forest-11` | مختصات | Coordinates in all four quadrants on a grid and a map | `grid` with axes | math.for.26 | core |
 | ⬜ | `math-forest-23` | بردار | Directed segments, translation vectors, adding vectors head to tail, vectors as coordinates | animation, 🆕 `grid` with axes | math.for.8 | full |
 | ⬜ | `math-forest-12` | میانگین | Mean, median, reading data | lesson (`chart`, `choose`) | math.for.9 | core |
 | ⬜ | `math-forest-24` | نمودارها و تفسیر | Choosing a chart (bar, line, pie), drawing it, misleading graphs, what conclusion the data supports | lesson (`chart`), 🆕 `chart` with lines and pies | math.for.9 | core |
-| ⬜ | `math-forest-13` | احتمال | Chance: dice, spinners, experiments | 🆕 `spinner` (repeat an experiment, tally), home | math.for.10 | core |
-| ⬜ | `math-forest-25` | شمردن حالت‌ها | Listing outcomes in a table and a tree (two dice, a coin and a die), the probability of combined events | lesson (`choose`), 🆕 `spinner` | math.for.10 | core |
+| ⬜ | `math-forest-13` | احتمال | Chance: dice, spinners, experiments | `spinner` (repeat an experiment, tally), home | math.for.10 | core |
+| ⬜ | `math-forest-25` | شمردن حالت‌ها | Listing outcomes in a table and a tree (two dice, a coin and a die), the probability of combined events | lesson (`choose`), `spinner` | math.for.10 | core |
 | ⬜ | `math-forest-1` | عمل‌ها با کسر | Adding, subtracting, multiplying and dividing fractions, now with negative fractions | lesson (`fraction`, `choose`) | math.for.11 | core |
 | ⬜ | `math-forest-2` | عمل‌ها با اعشار | Decimal operations with signs; money and measures | lesson (`choose`), 🆕 `column` | math.for.11 | core |
 | ⬜ | `math-forest-26` | عددهای گویا | Rational numbers on the line, between any two another one, ordering and calculating with them | lesson (`numline`, `compare`) | math.for.11 | core |
@@ -723,39 +769,39 @@ lessons and about half the practice.
 | ⬜ | `math-forest-33` | نماد علمی و ریشه | Scientific notation (the sun's distance, a cell's size), simplifying roots, cube roots | lesson (`choose`, `numline`) | math.for.15 | core |
 | ⬜ | `math-forest-3` | درصد | Percentages: discounts at the bazaar | animation, lesson (`money`, `choose`) | math.for.16 | core |
 | ⬜ | `math-forest-5` | نسبت و تناسب | Ratio and proportion with recipes | animation, lesson (`choose`) | math.for.16 | core |
-| ⬜ | `math-forest-34` | تناسب معکوس و سود | Inverse proportion (more workers, fewer days), percent change, profit, simple interest | lesson (`choose`), 🆕 `bar` | math.for.16 | core |
+| ⬜ | `math-forest-34` | تناسب معکوس و سود | Inverse proportion (more workers, fewer days), percent change, profit, simple interest | lesson (`choose`), `bar` | math.for.16 | core |
 | ⬜ | `math-forest-35` | مجموعه‌ها | Sets and their notation, subsets, union, intersection and difference with Venn diagrams; probability with sets | animation, game (`sort`), lesson (`choose`) | math.for.17, math.for.10 | full |
 | ⬜ | `math-forest-36` | عددهای حقیقی | Rational and irrational numbers (√۲ is not a fraction), the real number line, decimals that end, repeat or neither | lesson (`numline`, `choose`) | math.for.18 | core |
 | ⬜ | `math-forest-37` | قدر مطلق و تقریب | Absolute value as distance from zero, approximating roots and π, error of an approximation | lesson (`numline`, `choose`) | math.for.18 | core |
 | ⬜ | `math-forest-38` | استدلال | Conjecture, example and counterexample, the steps of a proof, inductive and deductive reasoning | lesson (`choose`), home (`paper`) | math.for.19 | core |
 | ⬜ | `math-forest-39` | تشابه | Similar triangles and shapes, the scale factor, enlargements, heights from shadows | animation, 🆕 `grid` | math.for.19, math.for.24 | core |
 | ⬜ | `math-forest-40` | نامعادله | Inequalities, their solutions on the line, solving linear inequalities (and turning the sign when × −1) | lesson (`numline`, `balance`, `choose`) | math.for.20 | core |
-| ⬜ | `math-forest-10` | خط و شیب | Plotting y = ax + b from a table, slope as steepness (a ramp, a hill road), the equation from two points | 🆕 `grid` with axes, animation | math.for.21 | core |
-| ⬜ | `math-forest-41` | معادله خط | Writing the equation of a line, parallel lines, reading intercepts | 🆕 `grid` with axes, lesson (`choose`) | math.for.21 | core |
-| ⬜ | `math-forest-42` | دستگاه معادله‌ها | Two linear equations: where two lines meet, solving by substitution and elimination, word problems | 🆕 `grid` with axes, lesson (`balance`, `choose`) | math.for.21 | core |
+| ⬜ | `math-forest-10` | خط و شیب | Plotting y = ax + b from a table, slope as steepness (a ramp, a hill road), the equation from two points | `grid` with axes, animation | math.for.21 | core |
+| ⬜ | `math-forest-41` | معادله خط | Writing the equation of a line, parallel lines, reading intercepts | `grid` with axes, lesson (`choose`) | math.for.21 | core |
+| ⬜ | `math-forest-42` | دستگاه معادله‌ها | Two linear equations: where two lines meet, solving by substitution and elimination, word problems | `grid` with axes, lesson (`balance`, `choose`) | math.for.21 | core |
 | ⬜ | `math-forest-43` | عبارت‌های گویا | Simplifying, adding and multiplying rational expressions, dividing polynomials | lesson (`choose`), home (`paper`) | math.for.22 | full |
 | ⬜ | `math-forest-44` | حجم هرم، مخروط و کره | Pyramid and cone as a third of a prism and cylinder (pouring sand), sphere volume and area | animation, 🆕 `solid` | math.for.23 | core |
-| ⬜ | `math-forest-45` | تبدیل‌ها و رسم | Reflection, rotation, translation and enlargement on a grid; ruler-and-compass constructions (perpendicular bisector, angle bisector) | 🆕 `grid`, 🆕 `mirror`, animation | math.for.24 | core |
-| ⬜ | `math-forest-46` | تابع | Functions as machines, tables, graphs and formulas; is it a function? | 🆕 `machine`, 🆕 `grid` with axes | math.for.25 | core |
-| ⬜ | `math-forest-47` | معادله درجه دوم | Quadratic equations by factorising, completing the square and the formula; the parabola y = ax² | lesson (`choose`), 🆕 `tiles`, 🆕 `grid` with axes | math.for.27 | full |
+| ⬜ | `math-forest-45` | تبدیل‌ها و رسم | Reflection, rotation, translation and enlargement on a grid; ruler-and-compass constructions (perpendicular bisector, angle bisector) | 🆕 `grid`, `mirror`, animation | math.for.24 | core |
+| ⬜ | `math-forest-46` | تابع | Functions as machines, tables, graphs and formulas; is it a function? | 🆕 `machine`, `grid` with axes | math.for.25 | core |
+| ⬜ | `math-forest-47` | معادله درجه دوم | Quadratic equations by factorising, completing the square and the formula; the parabola y = ax² | lesson (`choose`), 🆕 `tiles`, `grid` with axes | math.for.27 | full |
 | ⬜ | `math-forest-48` | نمونه و پراکندگی | Histograms and box plots, median and interquartile range, comparing two classes, why a fair sample matters | lesson (`chart`, `choose`), 🆕 `chart` with lines and pies | math.for.28 | core |
-| ⬜ | `math-forest-49` | نمودار پراکنش | Scatter plots of two measurements (height and arm span of the family), association, a line by eye | 🆕 `grid` with axes, lesson (`choose`) | math.for.29 | core |
+| ⬜ | `math-forest-49` | نمودار پراکنش | Scatter plots of two measurements (height and arm span of the family), association, a line by eye | `grid` with axes, lesson (`choose`) | math.for.29 | core |
 
 #### Practice
 
-| St | Practice | What it makes | Objectives |
-|---|---|---|---|
-| ⬜ | Integer and rational arithmetic | Signed whole numbers, fractions and decimals for all four operations, with the number line on request | math.for.2, math.for.11 |
-| ⬜ | Primes and factors | Factorise, HCF, LCM, divisibility | math.for.5 |
-| ⬜ | Powers and roots | Laws of exponents, scientific notation, square roots and estimates | math.for.7, math.for.15, math.for.18 |
-| ⬜ | Expressions | Simplify, expand, factorise, evaluate; worked step shown after a mistake | math.for.3, math.for.12, math.for.22 |
-| ⬜ | Equations and inequalities | Linear equations and inequalities with random coefficients; word problems from templates to write as equations | math.for.3, math.for.20 |
-| ⬜ | Lines | A line from two points, slope, intercept; systems of two equations | math.for.21 |
-| ⬜ | Angles and triangles | Missing angles with reasons, Pythagoras, similar triangles | math.for.4, math.for.13, math.for.19 |
-| ⬜ | Area and volume | Prisms, cylinders, pyramids, cones, spheres with random sizes | math.for.6, math.for.23 |
-| ⬜ | Ratio and percent | Proportions, percent change, profit and interest from templates | math.for.16 |
-| ⬜ | Data and chance | Data sets for mean, median, mode, range; outcomes and probabilities | math.for.9, math.for.10, math.for.17 |
-| ⬜ | Vectors | Vector sums, translations on a grid | math.for.8 |
+| St | Id | Practice | What it makes | Objectives |
+|---|---|---|---|---|
+| ⬜ | `math-forest-p1` | Integer and rational arithmetic | Signed whole numbers, fractions and decimals for all four operations, with the number line on request | math.for.2, math.for.11 |
+| ⬜ | `math-forest-p2` | Primes and factors | Factorise, HCF, LCM, divisibility | math.for.5 |
+| ⬜ | `math-forest-p3` | Powers and roots | Laws of exponents, scientific notation, square roots and estimates | math.for.7, math.for.15, math.for.18 |
+| ⬜ | `math-forest-p4` | Expressions | Simplify, expand, factorise, evaluate; worked step shown after a mistake | math.for.3, math.for.12, math.for.22 |
+| ⬜ | `math-forest-p5` | Equations and inequalities | Linear equations and inequalities with random coefficients; word problems from templates to write as equations | math.for.3, math.for.20 |
+| ⬜ | `math-forest-p6` | Lines | A line from two points, slope, intercept; systems of two equations | math.for.21 |
+| ⬜ | `math-forest-p7` | Angles and triangles | Missing angles with reasons, Pythagoras, similar triangles | math.for.4, math.for.13, math.for.19 |
+| ⬜ | `math-forest-p8` | Area and volume | Prisms, cylinders, pyramids, cones, spheres with random sizes | math.for.6, math.for.23 |
+| ⬜ | `math-forest-p9` | Ratio and percent | Proportions, percent change, profit and interest from templates | math.for.16 |
+| ⬜ | `math-forest-p10` | Data and chance | Data sets for mean, median, mode, range; outcomes and probabilities | math.for.9, math.for.10, math.for.17 |
+| ⬜ | `math-forest-p11` | Vectors | Vector sums, translations on a grid | math.for.8 |
 
 ### Step types needed
 
@@ -763,6 +809,7 @@ New step types and options this plan uses (marked 🆕 in the rows), in the orde
 ones already in "New step types" in `CURRICULUM.md` (`array`, `column`, `grid`, `feed` with several plates,
 `mirror`, `spinner`) are listed again here with the math lessons that now need them; the rest are new. When one is
 built, move it into `CURRICULUM.md` ("Content types" and "New step types") and remove the 🆕 from these rows.
+Built so far, and moved there: `count` with `flash`, `track` and `tangram` (`js/steps/numbers.js`).
 
 | Step type / option | What it does | Used by |
 |---|---|---|
@@ -771,8 +818,6 @@ built, move it into `CURRICULUM.md` ("Content types" and "New step types") and r
 | `array` | Rows × columns of things, splitting an array (۷ × ۶ = ۵ × ۶ + ۲ × ۶), and the area model for bigger numbers, fractions, decimals and binomials | `math-sapling-63/64/65/66/71/78/87/88`, `math-tree-3/5/22/27/31`, `math-forest-6/7/27` |
 | `grid` | A squared grid: draw shapes, count squares (area, perimeter), move and turn shapes, plot points; `axes` for coordinates in one, then four quadrants, and graphs of lines | `math-sapling-49/77/78/79`, `math-tree-14/34/39/43/49`, `math-forest-10/11/22/23/29/39/41/42/45/46` |
 | `numline` with fractions | Fractions, mixed numbers and decimals on the number line: cut a unit into equal parts, place and compare | `math-sapling-59/61`, `math-tree-25/28` |
-| `count` with `flash` | Show dots, fingers, dice or a ten-frame for a moment, then ask how many (subitising) | `math-seed-11/13`, `math-sprout-14` |
-| `track` | A linear number board game (Siegler & Ramani): roll a die, move counting each square, say the number you land on; tracks 1–10, 1–20, 1–100 | `math-seed-31` |
 | `feed` with several plates | Sharing into equal groups, with what is left over | `math-sapling-70/73`, `math-tree-6` |
 | `mirror` | Complete a symmetric picture, find lines of symmetry, reflect a shape | `math-sapling-48`, `math-tree-16`, `math-forest-45` |
 | `spinner` | Repeat a chance experiment (spinner, die, coin, bag of marbles), tally results, compare with what was expected | `math-sapling-85`, `math-tree-46`, `math-forest-13/25` |
@@ -780,7 +825,6 @@ built, move it into `CURRICULUM.md` ("Content types" and "New step types") and r
 | `solid` | Turn a 3D solid, count faces, edges and corners, fold and unfold its net, fill it with unit cubes | `math-tree-17/42`, `math-forest-20/21/44` |
 | `machine` | An input–output machine: numbers go in, the rule comes out; find the rule, run it backwards | `math-tree-24`, `math-forest-46` |
 | `tiles` | Algebra tiles and plus/minus counters: integers, like terms, multiplying and factorising | `math-forest-15/16/27/28` |
-| `tangram` | Fill an outline with shapes (turning and flipping them) | `math-seed-24` |
 | `chart` with lines and pies | Line graphs and pie charts in the `chart` step | `math-tree-44`, `math-forest-24` |
 
 Practice generators are not step types: they are a way to make many items for the existing and new steps (a

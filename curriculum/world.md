@@ -181,7 +181,7 @@ garden also has an objective for it.
 
 Me, my family, my home, my neighbourhood; the first picture maps; Nowruz; children around the world.
 
-**Sizing:** 2 years × 36 weeks × 1 session = 72 sessions: **24 lessons** (8 built) and 48 practice and review
+**Sizing:** 2 years × 36 weeks × 1 session = 72 sessions: **24 lessons** (all built or being built) and 48 practice and review
 sessions. Before: 8 lessons, no objectives.
 
 #### Objectives
@@ -210,45 +210,62 @@ sessions. Before: 8 lessons, no objectives.
 | St | Lesson | Title | Covers | Content types | Objectives | Depth |
 |---|---|---|---|---|---|---|
 | ✅ | `world-seed-1` | من و خانواده‌ام | My family: who is who, what we do together; every family is different (families in Shiraz, Gonbad, Rasht, Ahvaz) | animation, story (`talk`), game (`pairs`), home | world.seed.1 | core |
-| ⬜ | `world-seed-9` | وقتی کوچک بودم | I was a baby, now I am bigger: what I can do now; baby → child → grown-up → grandparent | animation, game (`order`), story (`talk`), home (look at baby photos with a parent) | world.seed.10 | core |
-| ⬜ | `world-seed-10` | صبح، ظهر، شب | The order of a day (waking, breakfast, play, lunch, sleep); yesterday, today, tomorrow | animation, game (`order`), lesson (`choose`) | world.seed.9 | core |
-| ⬜ | `world-seed-11` | نوبت می‌گیریم | Rules at home and in a group: taking turns, sharing, helping, saying sorry | animation, story (`talk`), game (`sort` helps / doesn't help), home | world.seed.11 | core |
-| ⬜ | `world-seed-12` | بالا، پایین، کنار | Position words with toys and a picture of a room: on, under, next to, in front of, behind | animation, `map` (picture map, find), lesson (`choose`), home (hide a toy and say where) | world.seed.8 | core |
+| 🔨 | `world-seed-9` | وقتی کوچک بودم | I was a baby, now I am bigger: what I can do now; baby → child → grown-up → grandparent | animation, game (`order`), story (`talk`), home (look at baby photos with a parent) | world.seed.10 | core |
+| 🔨 | `world-seed-10` | صبح، ظهر، شب | The order of a day (waking, breakfast, play, lunch, sleep); yesterday, today, tomorrow | animation, game (`order`), lesson (`choose`) | world.seed.9 | core |
+| 🔨 | `world-seed-11` | نوبت می‌گیریم | Rules at home and in a group: taking turns, sharing, helping, saying sorry | animation, story (`talk`), game (`sort` helps / doesn't help), home | world.seed.11 | core |
+| 🔨 | `world-seed-12` | بالا، پایین، کنار | Position words with toys and a picture of a room: on, under, next to, in front of, behind | animation, `map` (picture map, find), lesson (`choose`), home (hide a toy and say where) | world.seed.8 | core |
 | ✅ | `world-seed-2` | خانه ما از بالا | Looking from above: a room seen from above, finding things on a picture map of a room and of a whole home; a ball from above is a circle | animation, `map` (picture map), lesson (`choose`), home (draw a map of your room) | world.seed.2 | core |
 | ✅ | `world-seed-3` | محله ما | Places in the neighbourhood (نانوایی، مدرسه، پارک، درمانگاه) and the people who work there; crossing the street with a grown-up | animation, `map` (neighbourhood, tap to hear), game (`pairs`, `sort`), lesson (`choose`), home (walk and name places) | world.seed.3 | core |
 | ✅ | `world-seed-4` | راه خانه تا نانوایی | Following a route on a picture map; near and far | animation, `map` (route, near / far), game (`order`), home (walk and draw the route) | world.seed.4 | core |
-| ⬜ | `world-seed-13` | لازم دارم، دوست دارم | Needs (food, water, a home, clothes) and wants (a toy, a sweet); at the shop we pay | animation, game (`sort` need / want), lesson (`choose`), home (name one need and one want at the shop) | world.seed.12 | full |
-| ⬜ | `world-seed-14` | پارک مال همه است | Shared places: the park, the street, the bus; keeping them clean, being kind to plants and animals there | animation, game (`sort`), home (pick up litter with a grown-up, with gloves) | world.seed.16 | full |
+| 🔨 | `world-seed-13` | لازم دارم، دوست دارم | Needs (food, water, a home, clothes) and wants (a toy, a sweet); at the shop we pay | animation, game (`sort` need / want), lesson (`choose`), home (name one need and one want at the shop) | world.seed.12 | full |
+| 🔨 | `world-seed-14` | پارک مال همه است | Shared places: the park, the street, the bus; keeping them clean, being kind to plants and animals there | animation, game (`sort`), home (pick up litter with a grown-up, with gloves) | world.seed.16 | full |
 | ✅ | `world-seed-5` | نوروز | Nowruz: spring, cleaning the house, سبزه, هفت‌سین, visiting family, عیدی | animation, game (`pairs` with `hidden`, `sort`), lesson (`choose`), story (`talk`), home | world.seed.5 | core |
 | ✅ | `world-seed-6` | بازی‌های بچه‌های ایران | Traditional games (لی‌لی، هفت‌سنگ، یه‌قل‌دوقل، قایم‌موشک) played by children in Tehran, Tabriz, Khorramabad and Chabahar | animation, lesson (`count`), home (`doit`) | world.seed.6 | full |
-| ⬜ | `world-seed-15` | شب یلدا | The longest night: the family together, pomegranates and watermelon, stories from grandparents | animation, game (`pairs`), story (`talk`), home | world.seed.5 | full |
-| ⬜ | `world-seed-16` | لباس‌ها و آهنگ‌های ایران | Iran's peoples through daily clothes, music and a word of their language (Kurdish, Turkmen, Baluch, Gilak, Qashqai, Arab families); everyone is Iranian | animation, game (`pairs`), story (`talk`) | world.seed.15 | full |
+| 🔨 | `world-seed-15` | شب یلدا | The longest night: the family together, pomegranates and watermelon, stories from grandparents | animation, game (`pairs`), story (`talk`), home | world.seed.5 | full |
+| 🔨 | `world-seed-16` | لباس‌ها و آهنگ‌های ایران | Iran's peoples through their celebration clothes, their music (daf, dutar, qeychak, laleva, karna, drum) and the language they speak at home, named only (Kurdish, Turkmen, Baluch, Gilak, Qashqai, Arab families, each in its city on the map); everyone is Iranian. Words in these languages come in `world-sprout-6`, with recordings | animation, game (`pairs`), story (`talk`) | world.seed.15 | full |
 | ✅ | `world-seed-7` | بچه‌های دنیا | Children around the world (Iran, Japan, Kenya, Brazil): food, school, games, weather, hello; same first, then different | animation, game (`sort` same / different, `pairs`), story (`talk`) | world.seed.7 | core |
-| ⬜ | `world-seed-17` | خانه‌ها در دنیا | Homes in many places: a flat in a city, a mud-brick house in Yazd, a nomad tent, a house on stilts, a snow house; why they differ | animation, game (`pairs` home ↔ place) | world.seed.14 | full |
+| 🔨 | `world-seed-17` | خانه‌ها در دنیا | Homes in many places: a flat in a city, a mud-brick house with a windcatcher in Yazd, a nomad tent, a house on stilts, a snow house; why they differ (weather, land, moving with the flock); what each is made of | animation, game (`pairs` home ↔ place, `pairs` with `hidden` home ↔ material), story (`talk`), home (build a little house) | world.seed.14 | full |
 | ✅ | `world-seed-8` | بازی خانه و محله | Unit game: workers and places, rooms of a home, a day with the family, Nowruz in order | game (`pairs` with `hidden`, `sort`, `order`) | world.seed.2, world.seed.3, world.seed.5, world.seed.9 | core |
-| ⬜ | `world-seed-18` | من کجا زندگی می‌کنم؟ | My home, my city or village, my country Iran: a picture of Iran's shape with a dot for "here" | animation, `map` (Iran outline), lesson (`choose`), home (say your city's name) | world.seed.13 | core |
-| ⬜ | `world-seed-19` | قدیم و جدید | Old and new things: a lantern and a lamp, a samovar and a kettle, a letter and a phone; asking a grandparent | animation, game (`sort` old / new), home (find something old at home) | world.seed.10 | core |
-| ⬜ | `world-seed-20` | نقشه گنج | A treasure map of a park: find the tree, the pond, the slide; follow the path with position words | `map` (picture map, route), lesson (`choose`), home (a treasure hunt with a drawn map) | world.seed.2, world.seed.4, world.seed.8 | core |
-| ⬜ | `world-seed-21` | هر کس یک کار | Jobs that help us (baker, farmer, nurse, driver, builder) and the tools they use | animation, game (`pairs` worker ↔ tool) | world.seed.3, world.seed.12 | full |
-| ⬜ | `world-seed-22` | سلام بچه‌های دنیا | More children: India, Egypt, Canada, China; homes, breakfast, the way to school; same first | animation, game (`sort` same / different), story (`talk`) | world.seed.7 | core |
-| ⬜ | `world-seed-23` | با هم می‌سازیم | Doing a big job together: building a sandcastle, laying the sofreh; everyone has a part | animation, game (`order`), home (`doit`: a job together) | world.seed.11 | core |
-| ⬜ | `world-seed-24` | بازی شهر من | Unit game: old and new, need and want, from above, my city and my country | game (`sort`, `pairs` with `hidden`), `map` | world.seed.8, world.seed.10, world.seed.12, world.seed.13 | core |
+| 🔨 | `world-seed-18` | من کجا زندگی می‌کنم؟ | My home, my city or village, my country Iran: a picture of Iran's shape with a dot for "here" | animation, `map` (Iran outline), lesson (`choose`), home (say your city's name) | world.seed.13 | core |
+| 🔨 | `world-seed-19` | قدیم و جدید | Old and new things: a lantern and a lamp, a samovar and a kettle, a letter and a phone; asking a grandparent | animation, game (`pairs` old ↔ new, `sort` old / new), story (`talk`: ask a grandparent), home (find something old at home) | world.seed.10 | core |
+| 🔨 | `world-seed-20` | نقشه گنج | A treasure map of a park: find the tree, the pond, the slide; follow the path with position words | `map` (picture map, route), lesson (`choose`), home (a treasure hunt with a drawn map) | world.seed.2, world.seed.4, world.seed.8 | core |
+| 🔨 | `world-seed-21` | هر کس یک کار | Jobs that help us (farmer, baker, driver, builder, nurse; a woman farmer and a man nurse) and what they work with; bread comes from many people's work | animation, game (`pairs` worker ↔ what they work with, `pairs` with `hidden`), story (`talk`) | world.seed.3, world.seed.12 | full |
+| 🔨 | `world-seed-22` | سلام بچه‌های دنیا | More children: India (Chennai), Egypt (Cairo), Canada, China (Beijing); same first (home and family, breakfast, school, play), then different: breakfast, the way to school, steep roofs for snow, hello in their languages | animation, game (`sort` same / different, `pairs`), story (`talk`) | world.seed.7 | core |
+| 🔨 | `world-seed-23` | با هم می‌سازیم | Doing a big job together: building a sandcastle, laying the sofreh; everyone has a part | animation, game (`order`), home (`doit`: a job together) | world.seed.11 | core |
+| 🔨 | `world-seed-24` | بازی شهر من | Unit game: old and new, need and want, from above, my city and my country | game (`sort`, `pairs` with `hidden`), `map` | world.seed.8, world.seed.10, world.seed.12, world.seed.13 | core |
 
 #### Practice
 
-| St | Practice | What it makes | Objectives |
-|---|---|---|---|
-| ⬜ | Picture-map finder | Rooms, a home, a park and a street with things hidden in new places; "find the …", "what is next to …" | world.seed.2, world.seed.8 |
-| ⬜ | Route maker | Short routes on picture maps (home → bakery → park), near / far questions | world.seed.4 |
-| ⬜ | Sorting bank | old / new, need / want, helps / doesn't help, worker ↔ place, home ↔ place, with new pictures each time | world.seed.3, world.seed.10, world.seed.11, world.seed.12, world.seed.14 |
-| ⬜ | Day and year in order | The parts of a day, the steps of Nowruz and of Yalda, in order | world.seed.5, world.seed.9 |
+| St | Id | Practice | What it makes | Objectives |
+|---|---|---|---|---|
+| 🔨 | `world-seed-p1` | Picture-map finder | A room from the side ("what is under the table?", from world-seed-12), then rooms, a home, a park and a street with things hidden in new places | world.seed.2, world.seed.8 |
+| 🔨 | `world-seed-p2` | Route maker | Short routes on picture maps (home → bakery → park), near / far questions | world.seed.4 |
+| 🔨 | `world-seed-p3` | Sorting bank | old / new, need / want, helps / doesn't help, worker ↔ place, home ↔ place, with new pictures each time | world.seed.3, world.seed.10, world.seed.11, world.seed.12, world.seed.14 |
+| 🔨 | `world-seed-p4` | Day and year in order | The parts of a day, the steps of Nowruz and of Yalda, in order | world.seed.5, world.seed.9 |
+| 🔨 | `world-seed-p5` | Sort again | A sort from the lesson (or the two before it) again, with other items | world.seed.1, world.seed.2, world.seed.3, world.seed.4, world.seed.5, world.seed.6, world.seed.7, world.seed.8, world.seed.9, world.seed.10, world.seed.11, world.seed.12, world.seed.13, world.seed.14, world.seed.15, world.seed.16 |
+| 🔨 | `world-seed-p6` | Which basket? | One item from the lesson's sort: choose its basket | world.seed.1, world.seed.2, world.seed.3, world.seed.4, world.seed.5, world.seed.6, world.seed.7, world.seed.8, world.seed.9, world.seed.10, world.seed.11, world.seed.12, world.seed.13, world.seed.14, world.seed.15, world.seed.16 |
+| 🔨 | `world-seed-p7` | Odd one out | Three items of one basket and one of another from the lesson's sort: which is different? | world.seed.1, world.seed.2, world.seed.3, world.seed.4, world.seed.5, world.seed.6, world.seed.7, world.seed.8, world.seed.9, world.seed.10, world.seed.11, world.seed.12, world.seed.13, world.seed.14, world.seed.15, world.seed.16 |
+| 🔨 | `world-seed-p8` | Pairs again | The lesson's pairs again, a few at a time, sometimes as a memory game | world.seed.1, world.seed.2, world.seed.3, world.seed.4, world.seed.5, world.seed.6, world.seed.7, world.seed.8, world.seed.9, world.seed.10, world.seed.11, world.seed.12, world.seed.13, world.seed.14, world.seed.15, world.seed.16 |
+| 🔨 | `world-seed-p9` | What goes with it? | One card of the lesson's pairs: choose its match | world.seed.1, world.seed.2, world.seed.3, world.seed.4, world.seed.5, world.seed.6, world.seed.7, world.seed.8, world.seed.9, world.seed.10, world.seed.11, world.seed.12, world.seed.13, world.seed.14, world.seed.15, world.seed.16 |
+| 🔨 | `world-seed-p10` | In order again | Part of the lesson's order or timeline, to put in order again | world.seed.1, world.seed.2, world.seed.3, world.seed.4, world.seed.5, world.seed.6, world.seed.7, world.seed.8, world.seed.9, world.seed.10, world.seed.11, world.seed.12, world.seed.13, world.seed.14, world.seed.15, world.seed.16 |
+| 🔨 | `world-seed-p11` | On the map again | One of the lesson's map tasks again (find, route, square, distance) | world.seed.1, world.seed.2, world.seed.3, world.seed.4, world.seed.5, world.seed.6, world.seed.7, world.seed.8, world.seed.9, world.seed.10, world.seed.11, world.seed.12, world.seed.13, world.seed.14, world.seed.15, world.seed.16 |
+| 🔨 | `world-seed-p12` | Answer again | One of the lesson's questions again, options shuffled | world.seed.1, world.seed.2, world.seed.3, world.seed.4, world.seed.5, world.seed.6, world.seed.7, world.seed.8, world.seed.9, world.seed.10, world.seed.11, world.seed.12, world.seed.13, world.seed.14, world.seed.15, world.seed.16 |
+| 🔨 | `world-seed-p13` | Who is this? | Family members by picture and who did what in Kian's family (choose) | world.seed.1 |
+| 🔨 | `world-seed-p14` | When I was a baby | A baby could / I can now (sort) | world.seed.10 |
+| 🔨 | `world-seed-p15` | Growing up in order | Baby, child, grown-up, old; how Taraneh grew (order) | world.seed.10 |
+| 🔨 | `world-seed-p16` | Each game, what it needs | Game ↔ what you need: hopscotch, haft sang, yeqol-doqol, hide-and-seek, skipping (pairs) | world.seed.6 |
+| 🔨 | `world-seed-p17` | Count and play | Count the stones, cups or squares of a game (count) | world.seed.6 |
+| 🔨 | `world-seed-p18` | Which game? | Which game is it, and a safety rule (choose) | world.seed.6 |
+| 🔨 | `world-seed-p19` | Which instrument? | Who plays which instrument, in which family (choose) | world.seed.15 |
+| 🔨 | `world-seed-p20` | Better together | Taking turns, sharing, saying sorry, building together (choose) | world.seed.11 |
+| 🔨 | `world-seed-p21` | City or country? | City / country (sort); home, street, city, country (order) | world.seed.13 |
 
 ### 🌱 جوانه — `sprout`
 
 My story and my family, my city or village, the map of Iran, directions, the globe, the festivals and peoples of
 Iran, rules, money, then and now, windows on the world.
 
-**Sizing:** 2 years × 36 weeks × 1½ sessions = 108 sessions: **36 lessons** (8 built) and 72 practice and review
+**Sizing:** 2 years × 36 weeks × 1½ sessions = 108 sessions: **36 lessons** (all built or being built) and 72 practice and review
 sessions. Before: 8 lessons, no objectives.
 
 #### Objectives
@@ -282,55 +299,70 @@ sessions. Before: 8 lessons, no objectives.
 
 | St | Lesson | Title | Covers | Content types | Objectives | Depth |
 |---|---|---|---|---|---|---|
-| ⬜ | `world-sprout-9` | داستان زندگی من | My life in order: born, first steps, first words, now; a line of my life with pictures | animation, game (`order`), home (make a life line with photos), parent tip | world.spr.8 | core |
-| ⬜ | `world-sprout-10` | هفته و سال | The days of the week; the four seasons and the twelve months of the Iranian year in order; my birthday month | animation, game (`order`), lesson (`choose`) | world.spr.21 | full |
-| ⬜ | `world-sprout-11` | خانواده‌ها تغییر می‌کنند | Families are alike and different; a new baby, moving house, grandparents living with us; thanking grown-ups | animation, story (`talk`), game (`sort`) | world.spr.9 | full |
-| ⬜ | `world-sprout-12` | بازی داستان من | Unit game: my life in order, the week and the year, families | game (`order`, `pairs`, `sort`) | world.spr.8, world.spr.9, world.spr.21 | core |
+| 🔨 | `world-sprout-9` | داستان زندگی من | My life in order: born, first steps, first words, now; a line of my life with pictures | animation, game (`order`), home (make a life line with photos), parent tip | world.spr.8 | core |
+| 🔨 | `world-sprout-10` | هفته و سال | The days of the week; the four seasons and the twelve months of the Iranian year in order; my birthday month | animation, game (`order`), lesson (`choose`) | world.spr.21 | full |
+| 🔨 | `world-sprout-11` | خانواده‌ها تغییر می‌کنند | Families are alike and different; a new baby, moving house, grandparents living with us; thanking grown-ups | animation, story (`talk`), game (`sort`) | world.spr.9 | full |
+| 🔨 | `world-sprout-12` | بازی داستان من | Unit game: my life in order, the week and the year, families | game (`order`, `pairs`, `sort`) | world.spr.8, world.spr.9, world.spr.21 | core |
 | ✅ | `world-sprout-1` | شهر و روستا | Life in a city (Mashhad) and in a village (Kurdistan): homes, work, getting around; what is the same in both | animation (with `question`), game (`sort` city / village / both, `pairs`), story (`talk`) | world.spr.1 | core |
-| ⬜ | `world-sprout-13` | زندگی عشایر | Nomads (Qashqai, Bakhtiari, Shahsavan): moving with the seasons, black tents, herds, گبه | animation, game (`sort` city / village / nomads), story (`talk`) | world.spr.1 | core |
-| ⬜ | `world-sprout-14` | خانه‌ها با هم فرق دارند | Homes across Iran and why: mud brick and windcatchers in Yazd, sloping roofs in Gilan, Masuleh's stepped houses, Kandovan's rock houses | animation, game (`pairs` home ↔ region), home (draw your home) | world.spr.13 | full |
+| 🔨 | `world-sprout-13` | زندگی عشایر | Nomads (Qashqai, Bakhtiari, Shahsavan): moving with the seasons, black tents, herds, گبه | animation (with `question`), game (`sort` city / village / nomads, `sort` summer / winter pastures), story (`talk`), home (weave a paper gabbeh) | world.spr.1 | core |
+| 🔨 | `world-sprout-14` | خانه‌ها با هم فرق دارند | Homes across Iran and why: mud brick and windcatchers in Yazd, sloping roofs in Gilan, Masuleh's stepped houses, Kandovan's rock houses | animation (with `question`), game (`pairs` home ↔ region, `pairs` with `hidden`), home (draw your home) | world.spr.13 | full |
 | ✅ | `world-sprout-2` | نقشه چیست؟ | From a picture to a map: a village seen from above, then the same village with symbols and a legend (راهنمای نقشه) | animation, `map` (picture map, then symbols with a legend), game (`pairs` thing ↔ symbol), lesson (`choose`), home (draw your street with symbols) | world.spr.2 | core |
 | ✅ | `world-sprout-3` | شمال، جنوب، شرق، غرب | The four directions; the sun rises in the east, is in the south at noon (in Iran) and sets in the west; facing north, east is on the right; a compass shows north | animation, `compass` (with the sun; only north shown), lesson (`choose`), home (label the walls of a room) | world.spr.3 | core |
-| ⬜ | `world-sprout-15` | مدرسه ما | Places in a school and the people who work there; finding them on a school plan | animation, `map` (school plan, find), game (`pairs` person ↔ place) | world.spr.14, world.spr.2 | full |
-| ⬜ | `world-sprout-16` | نشانی خانه ما | An address in order (country, province, city, street, alley, number); the route from home to school on a picture map. The address is said aloud to the parent and never stored | animation, game (`order`), `map` (route), home (say your address to a parent) | world.spr.15 | core |
-| ⬜ | `world-sprout-35` | نقشه محله من | Fieldwork: walk the street with a grown-up, note what is there, then draw a map with symbols and a legend | `map` (symbols with a legend), home (walk and draw), parent tip | world.spr.2, world.spr.15 | full |
+| 🔨 | `world-sprout-15` | مدرسه ما | Places in a school and the people who work there; finding them on a school plan | animation, `map` (school plan, find), game (`pairs` person ↔ place), home (draw a map of your school) | world.spr.14, world.spr.2 | full |
+| 🔨 | `world-sprout-16` | نشانی خانه ما | An address in order (country, province, city, street, alley, number); the route from home to school on a picture map. The address is said aloud to the parent and never stored | animation, game (`order`), `map` (route), home (say your address to a parent) | world.spr.15 | core |
+| 🔨 | `world-sprout-35` | نقشه محله من | Fieldwork: walk the street with a grown-up, note what is there, then draw a map with symbols and a legend | `map` (symbols with a legend), home (walk and draw), parent tip | world.spr.2, world.spr.15 | full |
 | ✅ | `world-sprout-4` | ایران روی نقشه | The shape of Iran, the Caspian Sea, the Persian Gulf and the Sea of Oman, big cities found with directions, the provinces, finding my own province | `map` (Iran: seas, cities, provinces, my province), home (find Iran on a globe or atlas) | world.spr.4 | core |
-| ⬜ | `world-sprout-17` | کره زمین | The Earth is round; a globe is a small Earth; more water than land; the seven continents and the oceans; Iran is in Asia | animation, 🆕 `map` (world), lesson (`choose`), home (find Iran on a globe) | world.spr.18 | core |
-| ⬜ | `world-sprout-18` | جاهای گرم، جاهای سرد | The equator and the poles; hot and cold places and how people dress, build and play there | animation, game (`sort` hot / cold), 🆕 `map` (world) | world.spr.18, world.spr.19 | core |
+| 🔨 | `world-sprout-17` | کره زمین | The Earth is round; a globe is a small Earth; more water than land; the seven continents and the oceans; Iran is in Asia | animation, `map` (world), lesson (`choose`), home (find Iran on a globe) | world.spr.18 | core |
+| 🔨 | `world-sprout-18` | جاهای گرم، جاهای سرد | The equator and the poles; hot and cold places (a rainforest, the ice of Antarctica) and how people dress there; why Iran has hot summers and cold winters | animation (with `question`), game (`sort` hot / cold), `map` (world, with the equator), story (`talk`) | world.spr.18, world.spr.19 | core |
 | ✅ | `world-sprout-5` | جشن‌های سال | Festivals through the year: Nowruz, سیزده‌به‌در، مهرگان، یلدا، چهارشنبه‌سوری (and fire safety) | animation, game (`order` on the year, `pairs`), lesson (`choose`), story (`talk`) | world.spr.5 | core |
 | ✅ | `world-sprout-6` | سلام به زبان‌های ایران | Hello and thank you in Azerbaijani, Kurdish, Arabic, Turkmen, Balochi and Armenian; every language is valuable. The words are shown, never said by the device voice: **needs recordings by native speakers** (a slot per word) | animation, game (`pairs`), story (`talk`), home (ask how grandparents say it) | world.spr.6 | core |
-| ⬜ | `world-sprout-36` | سازهای ایران | Instruments of Iran's peoples (تار، کمانچه، دوتار، نی، دهل، قیچک) and where they are played; listening. **Needs recordings** | animation, game (`pairs` instrument ↔ region), home (listen with a parent) | world.spr.6 | full |
+| 🔨 | `world-sprout-36` | سازهای ایران | Instruments of Iran's peoples (تار، کمانچه، دوتار، نی، دهل، قیچک) and where they are played; listening. **Needs recordings** | animation, game (`pairs` instrument ↔ region, `pairs` instrument ↔ how it is played), story (`talk`), home (listen with a parent) | world.spr.6 | full |
 | ✅ | `world-sprout-7` | سفره‌های ایران | Regional foods and why they grow there (rice in Gilan, dates in Bushehr, pistachios in Kerman, saffron in Khorasan, fish on the coasts) | animation, `map` (Iran's provinces), game (`pairs`), story (`talk`), home (cook one dish) | world.spr.7 | full |
 | ✅ | `world-sprout-8` | بازی نقشه | Unit game: the seas of Iran, directions, a symbol map, city and village, festivals, where foods grow | game (`pairs` with `hidden`, `sort`), `map`, `compass` | world.spr.2, world.spr.3, world.spr.4, world.spr.5, world.spr.7 | core |
-| ⬜ | `world-sprout-19` | چرا قانون داریم؟ | Rules at home, at school and in a game; what happens in a game with no rules; fair rules | animation, game (`sort` fair / not fair), story (`talk`) | world.spr.10 | core |
-| ⬜ | `world-sprout-20` | با هم کار می‌کنیم | Working together: sharing a job, listening, each a part; همیاری in a village (helping with the harvest) | animation, game (`order`), home (`doit`: a family job together) | world.spr.10 | core |
-| ⬜ | `world-sprout-21` | کمک به محله | Neighbours and the people who help a neighbourhood; how a child can help (a kind word, watering a tree, keeping the alley clean) | animation, game (`sort`), home | world.spr.20 | full |
-| ⬜ | `world-sprout-22` | بازی با هم | Unit game: rules, working together, helping | game (`sort`, `pairs`, `order`) | world.spr.10, world.spr.20 | core |
-| ⬜ | `world-sprout-23` | نیاز و خواسته | Needs and wants; a family's needs and how a family meets them by working | animation, game (`sort` need / want), lesson (`choose`) | world.spr.11 | core |
-| ⬜ | `world-sprout-24` | پول از کجا می‌آید؟ | Work and pay; buying with a little money; choosing one thing; a money box for saving | animation, lesson (`money`), game (`sort`), home (a money box) | world.spr.11 | core |
-| ⬜ | `world-sprout-25` | از مزرعه تا سفره | The journey of bread and of milk: farmer, mill or dairy, truck, shop, home; who does what | animation, game (`order`) | world.spr.16 | full |
-| ⬜ | `world-sprout-26` | درست مصرف کنیم | Not wasting water, bread and electricity; turning off the tap and the light | animation, game (`sort`), home (`doit`) | world.spr.12 | full |
-| ⬜ | `world-sprout-27` | بازیافت | Reduce, reuse, recycle: sorting paper, plastic, glass and food waste; making a toy from a box | animation, game (`sort`), home | world.spr.12 | full |
-| ⬜ | `world-sprout-28` | بازی بازارچه | Unit game: a pretend shop with prices, need and want, where food comes from, sorting rubbish | game (`sort`, `order`, `pairs`), lesson (`money`) | world.spr.11, world.spr.12, world.spr.16 | core |
-| ⬜ | `world-sprout-29` | سفر در قدیم و امروز | Getting around then and now: walking, mules and caravans, the first trains, buses, planes | animation, game (`sort` then / now, `order`) | world.spr.17 | core |
-| ⬜ | `world-sprout-30` | از چاپار تا پیام | Messages then and now: چاپار riders, letters and the post office, the telephone, a message today | animation, game (`order`), home (write a card to a relative) | world.spr.17 | full |
-| ⬜ | `world-sprout-31` | بازی‌های پدربزرگ و مادربزرگ | Oral history, first step: ask a grandparent what they played and what school was like; then and now | story (`talk`), game (`sort` then / now), home (interview a grandparent), parent tip (keep it to everyday life) | world.spr.17, world.spr.8 | core |
-| ⬜ | `world-sprout-32` | آدم‌هایی که دنیا را بهتر کردند | A few people from long ago and what we still have from them: Ibn Sina's medicine book, Ferdowsi's stories, Parvin Etesami's poems, the inventor of the bicycle | animation, game (`pairs` person ↔ gift) | world.spr.22 | full |
-| ⬜ | `world-sprout-33` | یک روز با بچه‌ای در دنیا | A day with a child in Tokyo, Cairo, Mexico City and a village in India: breakfast, getting to school, play, bedtime; compared with my day | animation, game (`sort` same / different), story (`talk`) | world.spr.19 | core |
-| ⬜ | `world-sprout-34` | بازی دور دنیا | Unit game: continents and oceans, hot and cold places, then and now, children of the world | game (`pairs` with `hidden`, `sort`), 🆕 `map` (world) | world.spr.17, world.spr.18, world.spr.19 | core |
+| 🔨 | `world-sprout-19` | چرا قانون داریم؟ | Rules at home, at school and in a game; what happens in a game with no rules; fair rules | animation (with `question`), game (`sort` fair / not fair, `sort` home / school / game), story (`talk`), home (write the family's rules) | world.spr.10 | core |
+| 🔨 | `world-sprout-20` | با هم کار می‌کنیم | Working together: sharing a job, listening, each a part; همیاری in a village (neighbours help pick a grandfather's apples, then help the next neighbour) | animation, game (`order`), home (`doit`: a family job together, helping a neighbour) | world.spr.10 | core |
+| 🔨 | `world-sprout-21` | کمک به محله | Neighbours and the people who help a neighbourhood; how a child can help (a kind word, watering a tree, keeping the alley clean) | animation (with `question`), game (`sort` helps / doesn't help, `sort` who helps how), story (`talk`), home | world.spr.20 | full |
+| 🔨 | `world-sprout-22` | بازی با هم | Unit game: rules, working together, helping | game (`sort`, `pairs`, `pairs` with `hidden`, `order`) | world.spr.10, world.spr.20 | core |
+| 🔨 | `world-sprout-23` | نیاز و خواسته | Needs and wants; a family's needs and how a family meets them by working | animation, game (`sort` need / want), lesson (`choose`) | world.spr.11 | core |
+| 🔨 | `world-sprout-24` | پول از کجا می‌آید؟ | Work and pay; buying with a little money; choosing one thing; a money box for saving | animation, lesson (`money`), game (`sort`), home (a money box) | world.spr.11 | core |
+| 🔨 | `world-sprout-25` | از مزرعه تا سفره | The journey of bread and of milk: farmer, mill or dairy, truck, shop, home; who does what | animation, game (`order`, `pairs` food ↔ where it comes from) | world.spr.16 | full |
+| 🔨 | `world-sprout-26` | درست مصرف کنیم | Not wasting water, bread and electricity; turning off the tap and the light | animation, game (`sort`), home (`doit`) | world.spr.12 | full |
+| 🔨 | `world-sprout-27` | بازیافت | Reduce, reuse, recycle: sorting paper, plastic, glass and food waste; making a toy from a box | animation, game (`sort`), home | world.spr.12 | full |
+| 🔨 | `world-sprout-28` | بازی بازارچه | Unit game: a pretend shop with prices, need and want, where food comes from, sorting rubbish | game (`sort`, `order`, `pairs`), lesson (`money`) | world.spr.11, world.spr.12, world.spr.16 | core |
+| 🔨 | `world-sprout-29` | سفر در قدیم و امروز | Getting around then and now: walking, mules and caravans, the first trains, buses, planes | animation (with `question`), game (`sort` then / now, `order`) | world.spr.17 | core |
+| 🔨 | `world-sprout-30` | از چاپار تا پیام | Messages then and now: چاپار riders, letters and the post office, the telephone, a message today | animation, game (`order`, `sort` fast / slow), home (write a card to a relative) | world.spr.17 | full |
+| 🔨 | `world-sprout-31` | بازی‌های پدربزرگ و مادربزرگ | Oral history, first step: ask a grandparent what they played and what school was like; then and now | story (`talk`), `timeline` (fuzzy bands), game (`sort` then / now / both), home (interview a grandparent), parent tip (keep it to everyday life) | world.spr.17, world.spr.8 | core |
+| 🔨 | `world-sprout-32` | آدم‌هایی که دنیا را بهتر کردند | A few people from long ago and what we still have from them: Ibn Sina's medicine book, Ferdowsi's stories, Parvin Etesami's poems, the inventor of the bicycle | animation, game (`pairs` person ↔ gift), `timeline` (fuzzy bands), home (read a Shahnameh story or a poem) | world.spr.22 | full |
+| 🔨 | `world-sprout-33` | یک روز با بچه‌ای در دنیا | A day with a child in Tokyo, Cairo, Mexico City and a village in India: breakfast, getting to school, play, bedtime; compared with my day | animation (with `question`), game (`sort` same / different, `pairs` child ↔ flag, `order` my day), story (`talk`) | world.spr.19 | core |
+| 🔨 | `world-sprout-34` | بازی دور دنیا | Unit game: continents and oceans, hot and cold places, then and now, children of the world | game (`pairs` with `hidden`, `pairs` with flags, `sort`), `map` (world) | world.spr.17, world.spr.18, world.spr.19 | core |
 
 #### Practice
 
-| St | Practice | What it makes | Objectives |
-|---|---|---|---|
-| ⬜ | Direction drill | Compass tasks with the sun at a new time each round; "the park is … of the school" on picture maps | world.spr.3 |
-| ⬜ | Symbol and legend bank | Thing ↔ symbol pairs and small symbol maps with a legend, new layouts each time | world.spr.2, world.spr.14 |
-| ⬜ | Iran map quiz (first) | Find a sea, Tehran, a big city by direction, my province | world.spr.4 |
-| ⬜ | Year wheel | The days, months, seasons and festivals in order, starting at a random point | world.spr.5, world.spr.21 |
-| ⬜ | Globe finder | Find a continent or an ocean, hot or cold places | world.spr.18 |
-| ⬜ | Then and now bank | Pictures of travel, messages, games, homes and tools sorted then / now | world.spr.8, world.spr.17 |
-| ⬜ | Shop and choose | Prices and a few coins: what can you buy, what do you save (uses `money`) | world.spr.11 |
-| ⬜ | Sorting bank | city / village / nomads, need / want, recycling bins, fair / not fair | world.spr.1, world.spr.10, world.spr.11, world.spr.12 |
+| St | Id | Practice | What it makes | Objectives |
+|---|---|---|---|---|
+| 🔨 | `world-sprout-p1` | Direction drill | Compass tasks with the sun at a new time each round; "the park is … of the school" on picture maps | world.spr.3 |
+| 🔨 | `world-sprout-p2` | Symbol and legend bank | Thing ↔ symbol pairs and small symbol maps with a legend, new layouts each time | world.spr.2, world.spr.14 |
+| 🔨 | `world-sprout-p3` | Iran map quiz (first) | Find a sea, Tehran, a big city by direction, my province | world.spr.4 |
+| 🔨 | `world-sprout-p4` | Year wheel | The days, months, seasons and festivals in order, starting at a random point | world.spr.5, world.spr.21 |
+| 🔨 | `world-sprout-p5` | Globe finder | Find a continent or an ocean, hot or cold places | world.spr.18 |
+| 🔨 | `world-sprout-p6` | Then and now bank | Pictures of travel, messages, games, homes and tools sorted then / now | world.spr.8, world.spr.17 |
+| 🔨 | `world-sprout-p7` | Shop and choose | Prices and a few coins: what can you buy, what do you save (uses `money`) | world.spr.11 |
+| 🔨 | `world-sprout-p8` | Sorting bank | city / village / nomads, need / want, recycling bins, fair / not fair | world.spr.1, world.spr.10, world.spr.11, world.spr.12 |
+| 🔨 | `world-sprout-p9` | Sort again | A sort from the lesson (or the two before it) again, with other items | world.spr.1, world.spr.2, world.spr.3, world.spr.4, world.spr.5, world.spr.6, world.spr.7, world.spr.8, world.spr.9, world.spr.10, world.spr.11, world.spr.12, world.spr.13, world.spr.14, world.spr.15, world.spr.16, world.spr.17, world.spr.18, world.spr.19, world.spr.20, world.spr.21, world.spr.22 |
+| 🔨 | `world-sprout-p10` | Which basket? | One item from the lesson's sort: choose its basket | world.spr.1, world.spr.2, world.spr.3, world.spr.4, world.spr.5, world.spr.6, world.spr.7, world.spr.8, world.spr.9, world.spr.10, world.spr.11, world.spr.12, world.spr.13, world.spr.14, world.spr.15, world.spr.16, world.spr.17, world.spr.18, world.spr.19, world.spr.20, world.spr.21, world.spr.22 |
+| 🔨 | `world-sprout-p11` | Odd one out | Three items of one basket and one of another from the lesson's sort: which is different? | world.spr.1, world.spr.2, world.spr.3, world.spr.4, world.spr.5, world.spr.6, world.spr.7, world.spr.8, world.spr.9, world.spr.10, world.spr.11, world.spr.12, world.spr.13, world.spr.14, world.spr.15, world.spr.16, world.spr.17, world.spr.18, world.spr.19, world.spr.20, world.spr.21, world.spr.22 |
+| 🔨 | `world-sprout-p12` | Pairs again | The lesson's pairs again, a few at a time, sometimes as a memory game | world.spr.1, world.spr.2, world.spr.3, world.spr.4, world.spr.5, world.spr.6, world.spr.7, world.spr.8, world.spr.9, world.spr.10, world.spr.11, world.spr.12, world.spr.13, world.spr.14, world.spr.15, world.spr.16, world.spr.17, world.spr.18, world.spr.19, world.spr.20, world.spr.21, world.spr.22 |
+| 🔨 | `world-sprout-p13` | What goes with it? | One card of the lesson's pairs: choose its match | world.spr.1, world.spr.2, world.spr.3, world.spr.4, world.spr.5, world.spr.6, world.spr.7, world.spr.8, world.spr.9, world.spr.10, world.spr.11, world.spr.12, world.spr.13, world.spr.14, world.spr.15, world.spr.16, world.spr.17, world.spr.18, world.spr.19, world.spr.20, world.spr.21, world.spr.22 |
+| 🔨 | `world-sprout-p14` | In order again | Part of the lesson's order or timeline, to put in order again | world.spr.1, world.spr.2, world.spr.3, world.spr.4, world.spr.5, world.spr.6, world.spr.7, world.spr.8, world.spr.9, world.spr.10, world.spr.11, world.spr.12, world.spr.13, world.spr.14, world.spr.15, world.spr.16, world.spr.17, world.spr.18, world.spr.19, world.spr.20, world.spr.21, world.spr.22 |
+| 🔨 | `world-sprout-p15` | On the map again | One of the lesson's map tasks again (find, route, square, distance) | world.spr.1, world.spr.2, world.spr.3, world.spr.4, world.spr.5, world.spr.6, world.spr.7, world.spr.8, world.spr.9, world.spr.10, world.spr.11, world.spr.12, world.spr.13, world.spr.14, world.spr.15, world.spr.16, world.spr.17, world.spr.18, world.spr.19, world.spr.20, world.spr.21, world.spr.22 |
+| 🔨 | `world-sprout-p16` | Answer again | One of the lesson's questions again, options shuffled | world.spr.1, world.spr.2, world.spr.3, world.spr.4, world.spr.5, world.spr.6, world.spr.7, world.spr.8, world.spr.9, world.spr.10, world.spr.11, world.spr.12, world.spr.13, world.spr.14, world.spr.15, world.spr.16, world.spr.17, world.spr.18, world.spr.19, world.spr.20, world.spr.21, world.spr.22 |
+| 🔨 | `world-sprout-p17` | Before, after, now | Sequence words on Bardia's life line (choose) | world.spr.8 |
+| 🔨 | `world-sprout-p18` | Why is the house like this? | Why homes differ: sloping roofs, windcatchers, Masuleh, Kandovan (choose) | world.spr.13 |
+| 🔨 | `world-sprout-p19` | The sun and directions | Where the sun rises and sets; east on your right facing north (choose) | world.spr.3 |
+| 🔨 | `world-sprout-p20` | An address in order | Made-up addresses from the country to the house number (order) | world.spr.15 |
+| 🔨 | `world-sprout-p21` | Iran: which one? | Seas, the capital, the provinces, a city by its direction (choose) | world.spr.4 |
+| 🔨 | `world-sprout-p22` | Languages and instruments | Thank-you words of Iran's languages; instruments (choose) | world.spr.6 |
+| 🔨 | `world-sprout-p23` | Rules and teamwork | Fair rules, a game with no rules, working together (choose) | world.spr.10 |
 
 ### 🌿 نهال — `sapling`
 
@@ -338,7 +370,7 @@ Iran's land, climates, rivers and provinces; how people live with a dry land; re
 how a town works; goods, services and the bazaar; long ago, from the Stone Age to the first villages; local
 history; the continents and Iran's neighbours; World Heritage.
 
-**Sizing:** 2 years × 36 weeks × 2 sessions = 144 sessions: **48 lessons** and 96 practice and review sessions.
+**Sizing:** 2 years × 36 weeks × 2 sessions = 144 sessions: **48 lessons** (all built or being built) and 96 practice and review sessions.
 Before: 9 planned lessons, no objectives.
 
 #### Objectives
@@ -374,67 +406,82 @@ Before: 9 planned lessons, no objectives.
 
 | St | Lesson | Title | Covers | Content types | Objectives | Depth |
 |---|---|---|---|---|---|---|
-| ⬜ | `world-sapling-10` | هشت جهت | The eight directions (شمال‌شرقی …); describing where a city is from Tehran | animation, `compass`, `map` (Iran, cities) | world.sap.5 | core |
-| ⬜ | `world-sapling-11` | خانه‌های نقشه | A grid with letters and numbers: «پارک در خانه ب۳ است»; finding and naming squares | animation, 🆕 `map` (grid), lesson (`choose`) | world.sap.5 | core |
-| ⬜ | `world-sapling-12` | نقشه کوچک، زمین بزرگ | Scale: the same park drawn bigger and smaller; a scale bar; which is further | animation, 🆕 `map` (scale bar), lesson (`choose`) | world.sap.6 | full |
-| ⬜ | `world-sapling-13` | ساخته طبیعت، ساخته آدم | Physical and human features on photos and maps | animation, game (`sort`), `map` | world.sap.10 | core |
-| ⬜ | `world-sapling-14` | بازی نقشه‌خوان | Unit game: directions, grid squares, scale, features | game (`sort`, `pairs`), `compass`, 🆕 `map` (grid) | world.sap.5, world.sap.6, world.sap.10 | core |
-| ⬜ | `world-sapling-1` | کوه، دشت، کویر، دریا | Landforms of Iran: Alborz, Zagros, Damavand, Dasht-e Kavir, Lut, the coasts | animation, 🆕 `map` (relief) | world.sap.1 | core |
-| ⬜ | `world-sapling-40` | بلندی و پستی روی نقشه | Relief colours (green low, brown high, white peaks); reading Iran's relief map | animation, 🆕 `map` (relief), lesson (`choose`) | world.sap.1, world.sap.6 | full |
-| ⬜ | `world-sapling-15` | رودها و دریاچه‌های ایران | Karun, Sefidrud, Zayandeh Rud, Aras, Lake Urmia; where rivers start and end | animation, `map` (Iran), game (`pairs`) | world.sap.1 | core |
-| ⬜ | `world-sapling-2` | چهار فصل در یک روز | Iran's climates: snow in Ardabil while it is warm in Chabahar; why; weather and climate | animation, game (`sort` cities by climate), `map` | world.sap.2 | core |
-| ⬜ | `world-sapling-41` | هوای امروز | Weather symbols on a map of Iran; reading a simple forecast; what to wear | animation, `map` (Iran, symbols), lesson (`choose`) | world.sap.2 | full |
-| ⬜ | `world-sapling-42` | شهرها کجا ساخته شدند؟ | Why towns grow by rivers, on plains, at crossroads and on coasts (Ahvaz, Isfahan, Tabriz, Bandar Abbas) | animation, `map` (Iran), lesson (`choose`) | world.sap.24 | core |
-| ⬜ | `world-sapling-3` | استان‌های ایران | The provinces and their centres; my province | `map` (provinces), game (`pairs` with `hidden`) | world.sap.3 | core |
-| ⬜ | `world-sapling-16` | استان من و همسایه‌هایش | My province: its centre, its land, the provinces around it, what it is known for | `map` (provinces, my province), story (`talk`), home (ask what our province is known for) | world.sap.3 | core |
-| ⬜ | `world-sapling-17` | بازی سفر در ایران | Unit game: a trip across Iran by landform, river, climate and province | game (`pairs` with `hidden`, `sort`), `map` | world.sap.1, world.sap.2, world.sap.3 | core |
-| ⬜ | `world-sapling-4` | قنات و بادگیر | Living with little water: qanat, windcatcher, ab-anbar, yakhchal (inquiry: why did people build them?) | animation, game (`order`), home | world.sap.4 | core |
-| ⬜ | `world-sapling-18` | آب شهر ما از کجا می‌آید؟ | From a river, a well or a dam to the tap; why Iran is dry; saving water at home | animation, game (`order`), home (`doit`: measure the water a tap wastes) | world.sap.18 | core |
-| ⬜ | `world-sapling-19` | بازی آب | Unit game: water then and now | game (`order`, `sort`) | world.sap.4, world.sap.18 | full |
-| ⬜ | `world-sapling-20` | مردم استان‌ها | Daily life in five regions (Azerbaijan, Kurdistan, Gilan, Khuzestan, Sistan and Baluchestan): clothes, food, celebrations, a word of the language; what everyone shares | animation, game (`pairs`), story (`talk`) | world.sap.19 | core |
-| ⬜ | `world-sapling-43` | زبان‌ها و خط‌های ایران | Persian, Azerbaijani, Kurdish, Arabic, Balochi, Armenian and Assyrian: many share letters; the same word in several | animation, game (`pairs`) | world.sap.19 | full |
-| ⬜ | `world-sapling-21` | قصه‌های مردم ایران | Folk tales from several regions (gentle ones); what they teach | story (`passage` or heard `story`), game (`order`) | world.sap.19 | full |
-| ⬜ | `world-sapling-6` | دست‌های هنرمند | Crafts of Iran by region: carpet, tilework, قلمکار، خاتم، pottery | animation, game (`pairs`), home | world.sap.12 | full |
-| ⬜ | `world-sapling-22` | بازی مردم ایران | Unit game: regions, languages, crafts, tales | game (`pairs` with `hidden`, `sort`), `map` | world.sap.12, world.sap.19 | core |
-| ⬜ | `world-sapling-23` | شهر ما چطور کار می‌کند؟ | Water, electricity, rubbish collection, the fire station, the library, the post: what each does; the town's people working for everyone | animation, game (`pairs` service ↔ job) | world.sap.17 | core |
-| ⬜ | `world-sapling-24` | با هم تصمیم می‌گیریم | Deciding together in a class or a family: say your idea, listen, choose (a show of hands for a game), accept the choice | animation, story (`talk`), lesson (`choose`) | world.sap.22 | core |
-| ⬜ | `world-sapling-25` | بازی شهر ما | Unit game: services, helpers, deciding together | game (`pairs`, `sort`) | world.sap.17, world.sap.22 | core |
-| ⬜ | `world-sapling-29` | قدیم، خیلی قدیم | A simple timeline: me, my parents, my grandparents, long ago, very long ago; putting pictures in place | animation, 🆕 `timeline`, game (`order`) | world.sap.14 | core |
-| ⬜ | `world-sapling-46` | باستان‌شناس کوچک | How archaeologists dig: layers (the deeper, the older), finding and asking about objects | animation, 🆕 `source` (look closely), game (`order` layers) | world.sap.20, world.sap.15 | core |
-| ⬜ | `world-sapling-30` | شکارچی‌ها و گردآورنده‌ها | The Stone Age on the Iranian plateau: caves in the Zagros and the Khorramabad valley, stone tools, fire | animation, 🆕 `source` (a stone tool), game (`sort`) | world.sap.15, world.sap.20 | core |
-| ⬜ | `world-sapling-31` | نخستین کشاورزان | The first farmers and herders (Ganj Dareh, the Zagros): wheat, goats, the first villages | animation, game (`order`), 🆕 `timeline` | world.sap.15 | core |
-| ⬜ | `world-sapling-32` | از سفال تا فلز | Pottery, copper and bronze, then iron (Sialk, Marlik); what changed in daily life | animation, game (`order`), 🆕 `source` (a pot) | world.sap.15 | full |
-| ⬜ | `world-sapling-33` | بازی خط زمان | Unit game: long ago in order, from caves to villages | 🆕 `timeline`, game (`order`, `pairs`) | world.sap.14, world.sap.15 | core |
-| ⬜ | `world-sapling-34` | شهر من در قدیم | Local history: old photos, an old building, why a street has its name; asking an elder | animation, 🆕 `source` (an old photo), home (find one old place in town), parent tip | world.sap.16, world.sap.20 | full |
-| ⬜ | `world-sapling-47` | خانه‌های قدیمی | A courtyard house: هشتی، حوض، ایوان، زیرزمین; how life in it differed from a flat today | animation (tour), game (`sort` then / now) | world.sap.16 | full |
-| ⬜ | `world-sapling-35` | اولین قطار، اولین چاپخانه | Events beyond living memory: the little train to Shahr-e Rey (۱۲۶۷), the first printing house; how we know (photos, newspapers) | animation, 🆕 `source`, game (`order`) | world.sap.21 | full |
-| ⬜ | `world-sapling-48` | بازی شهر من در گذشته | Unit game: then and now, old houses, firsts, sources | game (`sort`, `order`), 🆕 `timeline` | world.sap.14, world.sap.16, world.sap.21 | full |
-| ⬜ | `world-sapling-26` | کالا و خدمات | Goods and services; producers and consumers; jobs in a village and a city | animation, game (`sort` goods / services) | world.sap.11 | core |
-| ⬜ | `world-sapling-44` | کار در روستا، کار در شهر | Farming, herding and fishing; workshops and factories; shops and offices: who makes what | animation, game (`sort`), `map` (Iran) | world.sap.11 | full |
-| ⬜ | `world-sapling-5` | بازار و کاروانسرا | Trade then and now: the bazaar, caravanserais, today's markets and ports | animation, game (`sort` then / now) | world.sap.11 | core |
-| ⬜ | `world-sapling-45` | پول در قدیم | Swapping, then coins, then paper money, then cards; why money makes trade easier | animation, game (`order`) | world.sap.11, world.sap.23 | full |
-| ⬜ | `world-sapling-27` | این یا آن؟ | Choosing when you can't have everything: what you give up; saving for something bigger | animation, lesson (`money`, `choose`), home (a saving goal) | world.sap.23 | core |
-| ⬜ | `world-sapling-28` | بازی بازار | Unit game: goods and services, producers, choices, money then and now | game (`sort`, `pairs`), lesson (`money`) | world.sap.11, world.sap.23 | core |
-| ⬜ | `world-sapling-7` | قاره‌ها و اقیانوس‌ها | The seven continents and five oceans; the globe and the flat map | animation, 🆕 `map` (world) | world.sap.7 | core |
-| ⬜ | `world-sapling-36` | خط استوا و نیم‌کره‌ها | The equator, the north and south halves; seasons are opposite in Australia | animation, 🆕 `map` (world), lesson (`choose`) | world.sap.7 | core |
-| ⬜ | `world-sapling-8` | همسایه‌های ایران | Neighbouring countries by land and sea, their capitals and languages; Nowruz shared with neighbours | 🆕 `map` (region), game (`pairs`) | world.sap.8 | core |
-| ⬜ | `world-sapling-37` | دو شهر، دو کشور | Comparing a small place in Iran with one abroad (Bandar Abbas and Mombasa, Rasht and a town in Japan): land, weather, homes, work, school | animation, game (`sort` same / different), story (`talk`) | world.sap.9 | full |
-| ⬜ | `world-sapling-38` | بازی دنیا | Unit game: continents, oceans, the equator, neighbours and capitals; flags of the neighbours, Iran's as the family chose | game (`pairs` with `hidden`), 🆕 `map` (world, region), 🆕 flag faces | world.sap.7, world.sap.8 | core |
-| ⬜ | `world-sapling-39` | میراث جهانی چیست؟ | Places that belong to the whole world: what UNESCO World Heritage is, why we protect it, how to visit kindly | animation, game (`sort` protect / harm) | world.sap.13 | full |
-| ⬜ | `world-sapling-9` | ایران‌گردی | Unit game: a virtual trip around Iran's World Heritage sites | animation (tour), game (`pairs`, `order`), `map` | world.sap.13, world.sap.1, world.sap.3 | full |
+| 🔨 | `world-sapling-10` | هشت جهت | The eight directions (شمال‌شرقی …); describing where a city is from Tehran | animation, `compass`, `map` (Iran, cities), lesson (`choose`) | world.sap.5 | core |
+| 🔨 | `world-sapling-11` | خانه‌های نقشه | A grid with letters and numbers: «پارک در خانه ب۳ است»; finding and naming squares | animation, `map` (grid), lesson (`choose`) | world.sap.5 | core |
+| 🔨 | `world-sapling-12` | نقشه کوچک، زمین بزرگ | Scale: the same park drawn bigger and smaller; a scale bar; which is further | animation, `map` (scale bar), lesson (`choose`) | world.sap.6 | full |
+| 🔨 | `world-sapling-13` | ساخته طبیعت، ساخته آدم | Physical and human features on photos and maps | animation (with `question`), game (`sort`), `map` | world.sap.10 | core |
+| 🔨 | `world-sapling-14` | بازی نقشه‌خوان | Unit game: directions, grid squares, scale, features | game (`sort`, `pairs`), `compass`, `map` (grid) | world.sap.5, world.sap.6, world.sap.10 | core |
+| 🔨 | `world-sapling-1` | کوه، دشت، کویر، دریا | Landforms of Iran: Alborz, Zagros, Damavand, Dasht-e Kavir, Lut, the coasts | animation, `map` (relief) | world.sap.1 | core |
+| 🔨 | `world-sapling-40` | بلندی و پستی روی نقشه | Relief colours (green low, brown high, white peaks); reading Iran's relief map | animation, `map` (relief), lesson (`choose`) | world.sap.1, world.sap.6 | full |
+| 🔨 | `world-sapling-15` | رودها و دریاچه‌های ایران | Karun, Sefidrud, Zayandeh Rud, Aras, Lake Urmia; where rivers start and end | animation, `map` (Iran), game (`pairs`) | world.sap.1 | core |
+| 🔨 | `world-sapling-2` | چهار فصل در یک روز | Iran's climates: snow in Ardabil while it is warm in Chabahar; why; weather and climate | animation, game (`sort` cities by climate), `map` | world.sap.2 | core |
+| 🔨 | `world-sapling-41` | هوای امروز | Weather symbols on a map of Iran; reading a simple forecast; what to wear | animation, `map` (Iran, symbols), lesson (`choose`) | world.sap.2 | full |
+| 🔨 | `world-sapling-42` | شهرها کجا ساخته شدند؟ | Why towns grow by rivers, on plains, at crossroads and on coasts (Ahvaz, Isfahan, Tabriz, Bandar Abbas) | animation, `map` (Iran), lesson (`choose`) | world.sap.24 | core |
+| 🔨 | `world-sapling-3` | استان‌های ایران | The provinces and their centres; my province | `map` (provinces, centres), game (`pairs`, `pairs` with `hidden`), lesson (`choose`) | world.sap.3 | core |
+| 🔨 | `world-sapling-16` | استان من و همسایه‌هایش | My province: its centre, its land, the provinces around it (Yazd's and Gilan's neighbours as examples), what it is known for | `map` (provinces, my province), game (`pairs`), story (`talk`), home (ask what our province is known for) | world.sap.3 | core |
+| 🔨 | `world-sapling-17` | بازی سفر در ایران | Unit game: a trip across Iran by landform, river, climate and province (Tabriz to Bandar Abbas by road) | game (`pairs` with `hidden`, `sort`), `map` (route, relief, provinces) | world.sap.1, world.sap.2, world.sap.3 | core |
+| 🔨 | `world-sapling-4` | قنات و بادگیر | Living with little water: qanat, windcatcher, ab-anbar, yakhchal (inquiry: why did people build them?) | animation, game (`order`, `pairs`), lesson (`choose`), home (make a little windcatcher) | world.sap.4 | core |
+| 🔨 | `world-sapling-18` | آب شهر ما از کجا می‌آید؟ | From a river, a well or a dam to the tap; why Iran is dry; saving water at home | animation, game (`order`, `sort` saves / wastes), lesson (`choose`), home (measure the water a dripping tap wastes) | world.sap.18 | core |
+| 🔨 | `world-sapling-19` | بازی آب | Unit game: water then and now (old and new ways that do the same job) | game (`order`, `sort`, `pairs`) | world.sap.4, world.sap.18 | full |
+| 🔨 | `world-sapling-20` | مردم استان‌ها | Daily life in five regions (Azerbaijan, Kurdistan, Gilan, Khuzestan, Sistan and Baluchestan): weather, food, clothes, a word of the language (the thank-yous of `world-sprout-6`); what everyone shares (Nowruz, tea and guests) | animation, game (`pairs`), lesson (`choose`), story (`talk`) | world.sap.19 | core |
+| 🔨 | `world-sapling-43` | زبان‌ها و خط‌های ایران | Persian, Azerbaijani, Kurdish, Arabic, Balochi, Armenian and Assyrian: many share letters; the same word («آب») in several (words need a speaker's review, like `world-sprout-6`) | animation, game (`pairs`), lesson (`choose`), story (`talk`) | world.sap.19 | full |
+| 🔨 | `world-sapling-21` | قصه‌های مردم ایران | Folk tales told across Iran (gentle ones): Mulla Nasreddin's "Eat, my coat!" (told in Persian, Turkish, Kurdish and Arabic) and Rumi's elephant in the dark; what they teach | animation (the Mulla tale), story (`passage`, `talk`), game (`order`), lesson (`choose`) | world.sap.19 | full |
+| 🔨 | `world-sapling-6` | دست‌های هنرمند | Crafts of Iran by region: carpet (Tabriz), tilework and قلمکار (Isfahan), خاتم (Shiraz), turquoise pottery (Lalejin) | animation, game (`pairs`), lesson (`choose`), home (find a handicraft at home) | world.sap.12 | full |
+| 🔨 | `world-sapling-22` | بازی مردم ایران | Unit game: regions, languages, crafts, tales | game (`pairs` with `hidden`, `sort`), `map` (provinces, cities), lesson (`choose`) | world.sap.12, world.sap.19 | core |
+| 🔨 | `world-sapling-23` | شهر ما چطور کار می‌کند؟ | Electricity, rubbish collection, the fire station, the library, the post (water: `world-sapling-18`): what each does; the town's people working for everyone, and how we help | animation (a walk down the street), game (`pairs` service ↔ job), lesson (`choose`) | world.sap.17 | core |
+| 🔨 | `world-sapling-24` | با هم تصمیم می‌گیریم | Deciding together in a class or a family: say your idea, listen, choose (a show of hands for a game), accept the choice | animation, game (`order`), story (`talk`), lesson (`choose`) | world.sap.22 | core |
+| 🔨 | `world-sapling-25` | بازی شهر ما | Unit game: services, helpers, deciding together | game (`pairs`, `pairs` with `hidden`, `sort`, `order`) | world.sap.17, world.sap.22 | core |
+| 🔨 | `world-sapling-29` | قدیم، خیلی قدیم | A simple timeline: me, my parents, my grandparents, long ago, very long ago; putting pictures in place | animation (a walk back along the timeline), `timeline`, game (`order`), lesson (`choose`), story (`talk`) | world.sap.14 | core |
+| 🔨 | `world-sapling-46` | باستان‌شناس کوچک | How archaeologists dig: layers (the deeper, the older), finding and asking about objects | animation, `source` (look closely: a painted shard), game (`order` layers), lesson (`choose`) | world.sap.20, world.sap.15 | core |
+| 🔨 | `world-sapling-30` | شکارچی‌ها و گردآورنده‌ها | The Stone Age on the Iranian plateau: caves in the Zagros and the Khorramabad valley, gathering and hunting (said, not shown), stone tools, fire | animation, `source` (a stone tool), game (`sort`), lesson (`choose`) | world.sap.15, world.sap.20 | core |
+| 🔨 | `world-sapling-31` | نخستین کشاورزان | The first farmers and herders (Ganj Dareh, the Zagros): wheat, goats, the first villages | animation, game (`order`), `timeline`, lesson (`choose`) | world.sap.15 | core |
+| 🔨 | `world-sapling-32` | از سفال تا فلز | Pottery, copper and bronze, then iron (Sialk, Marlik); what changed in daily life | animation, game (`order`, `pairs`), `source` (a pot), lesson (`choose`) | world.sap.15 | full |
+| 🔨 | `world-sapling-33` | بازی خط زمان | Unit game: long ago in order, from caves to villages to metal | `timeline`, game (`order`, `pairs`, `pairs` with `hidden`) | world.sap.14, world.sap.15 | core |
+| 🔨 | `world-sapling-34` | شهر من در قدیم | Local history: old photos, an old building, why a street has its name; asking an elder | animation, `source` (an old photo), game (`sort` sources), lesson (`choose`), home (find one old place in town), parent tip | world.sap.16, world.sap.20 | full |
+| 🔨 | `world-sapling-47` | خانه‌های قدیمی | A courtyard house: هشتی، حوض، ایوان، زیرزمین; how life in it differed from a flat today | animation (tour), game (`pairs`, `sort` then / now), lesson (`choose`) | world.sap.16 | full |
+| 🔨 | `world-sapling-35` | اولین قطار، اولین چاپخانه | Events beyond living memory: books copied by hand, the first printing house (Tabriz), the little train to Shahr-e Rey (۱۲۶۷); how we know (photos, newspapers) | animation, `source` (an old photo of the train), game (`order`), lesson (`choose`) | world.sap.21 | full |
+| 🔨 | `world-sapling-48` | بازی شهر من در گذشته | Unit game: then and now, old houses, firsts, sources | game (`sort`, `order`, `pairs` with `hidden`), `timeline` | world.sap.14, world.sap.16, world.sap.21 | full |
+| 🔨 | `world-sapling-26` | کالا و خدمات | Goods and services; producers and consumers (jobs in a village and a city: `world-sapling-44`) | animation (a walk down the street), game (`sort` goods / services, `pairs`), lesson (`choose`) | world.sap.11 | core |
+| 🔨 | `world-sapling-44` | کار در روستا، کار در شهر | Farming, herding and fishing; workshops and factories; shops and offices: who makes what; village and town help each other | animation (from the sea to the city), game (`sort`, `pairs`), `map` (Iran) | world.sap.11 | full |
+| 🔨 | `world-sapling-5` | بازار و کاروانسرا | Trade then and now: camel caravans, caravanserais, the covered bazaar (Tabriz), today's ports and lorries | animation, game (`sort` then / now, `order`), `map` (Iran) | world.sap.11 | core |
+| 🔨 | `world-sapling-45` | پول در قدیم | Swapping, then coins, then paper money, then cards; why money makes trade easier | animation, game (`order`), lesson (`choose`) | world.sap.11, world.sap.23 | full |
+| 🔨 | `world-sapling-27` | این یا آن؟ | Choosing when you can't have everything: what you give up; saving for something bigger | animation, lesson (`money`, `choose`), home (a saving goal) | world.sap.23 | core |
+| 🔨 | `world-sapling-28` | بازی بازار | Unit game: goods and services, producers, choices, money then and now | game (`sort`, `pairs`, `order`), lesson (`money`) | world.sap.11, world.sap.23 | core |
+| 🔨 | `world-sapling-7` | قاره‌ها و اقیانوس‌ها | The seven continents and five oceans; the globe and the flat map (a peeled orange: flat maps stretch) | animation, `map` (world), game (`pairs` with `hidden`), lesson (`choose`) | world.sap.7 | core |
+| 🔨 | `world-sapling-36` | خط استوا و نیم‌کره‌ها | The equator, the north and south halves; seasons are opposite in Australia; warm all year near the equator | animation, `map` (world, equator), lesson (`choose`), game (`sort` north / south) | world.sap.7 | core |
+| 🔨 | `world-sapling-8` | همسایه‌های ایران | Neighbouring countries by land and sea, their capitals and languages; Nowruz shared with neighbours | `map` (region, capitals), game (`pairs`, `pairs` with `hidden`), lesson (`choose`) | world.sap.8 | core |
+| 🔨 | `world-sapling-37` | دو شهر، دو کشور | Comparing a small place in Iran with one abroad: Bandar Abbas and Mombasa (sea, weather, port work, language); Rasht and a town in Japan in the talk | animation, `map` (world), game (`sort` same / different), lesson (`choose`), story (`talk`) | world.sap.9 | full |
+| 🔨 | `world-sapling-38` | بازی دنیا | Unit game: continents, oceans, the equator, neighbours and capitals; flags of the neighbours (not yet Oman's and Afghanistan's), Iran's as the family chose | game (`pairs` with `hidden`, `sort`), `map` (world, region), flag faces, lesson (`choose`) | world.sap.7, world.sap.8 | core |
+| 🔨 | `world-sapling-39` | میراث جهانی چیست؟ | Places that belong to the whole world: what UNESCO World Heritage is (built: Eram Garden; natural: the Lut desert), why we protect it, how to visit kindly | animation, game (`sort` protect / harm, `sort` built / natural), lesson (`choose`) | world.sap.13 | full |
+| 🔨 | `world-sapling-9` | ایران‌گردی | Unit game: a virtual trip around Iran's World Heritage sites (Tabriz bazaar, the Hyrcanian forests, Shushtar's waterworks, Eram Garden, Yazd, the Lut desert) | animation (tour), game (`pairs` with `hidden`, `order`, `sort`), `map` (route), story (`talk`) | world.sap.13, world.sap.1, world.sap.3 | full |
 
 #### Practice
 
-| St | Practice | What it makes | Objectives |
-|---|---|---|---|
-| ⬜ | Province quiz | Find a province, match a province to its centre, name the neighbours of a province (all 31, a few each round, hard ones more often) | world.sap.3 |
-| ⬜ | Iran's land | Find a mountain range, desert, river, lake or sea; which climate fits a city | world.sap.1, world.sap.2 |
-| ⬜ | Grid and compass | A new map with a grid each round: "what is in ج۲?", "go north-east from …" | world.sap.5 |
-| ⬜ | Scale | How far on a scale bar; which of two places is further | world.sap.6 |
-| ⬜ | World and neighbours | Find a continent, ocean, the equator, a neighbour; neighbour ↔ capital; neighbour flags (Iran's flag as the parent chose) | world.sap.7, world.sap.8 |
-| ⬜ | Timeline ordering (first) | Pictures to place on now / grandparents / long ago / very long ago | world.sap.14, world.sap.15 |
-| ⬜ | Heritage and crafts match | Site ↔ city, craft ↔ region, with photos | world.sap.12, world.sap.13 |
-| ⬜ | Market sort | Goods / services, producer / consumer, choices with a budget | world.sap.11, world.sap.23 |
+| St | Id | Practice | What it makes | Objectives |
+|---|---|---|---|---|
+| 🔨 | `world-sapling-p1` | Province quiz | Find a province, match a province to its centre, name the neighbours of a province (all 31, a few each round, hard ones more often) | world.sap.3 |
+| 🔨 | `world-sapling-p2` | Iran's land | Find a mountain range, desert, river, lake or sea; which climate fits a city | world.sap.1, world.sap.2 |
+| 🔨 | `world-sapling-p3` | Grid and compass | A new map with a grid each round: "what is in ج۲?", "go north-east from …" | world.sap.5 |
+| 🔨 | `world-sapling-p4` | Scale | How far on a scale bar; which of two places is further | world.sap.6 |
+| 🔨 | `world-sapling-p5` | World and neighbours | Find a continent, ocean, the equator, a neighbour; neighbour ↔ capital; neighbour flags (Iran's flag as the parent chose) | world.sap.7, world.sap.8 |
+| 🔨 | `world-sapling-p6` | Timeline ordering (first) | Pictures to place on now / grandparents / long ago / very long ago | world.sap.14, world.sap.15 |
+| 🔨 | `world-sapling-p7` | Heritage and crafts match | Site ↔ city, craft ↔ region, with photos | world.sap.12, world.sap.13 |
+| 🔨 | `world-sapling-p8` | Market sort | Goods / services, producer / consumer, choices with a budget | world.sap.11, world.sap.23 |
+| 🔨 | `world-sapling-p9` | Sort again | A sort from the lesson (or the two before it) again, with other items | world.sap.1, world.sap.2, world.sap.3, world.sap.4, world.sap.5, world.sap.6, world.sap.7, world.sap.8, world.sap.9, world.sap.10, world.sap.11, world.sap.12, world.sap.13, world.sap.14, world.sap.15, world.sap.16, world.sap.17, world.sap.18, world.sap.19, world.sap.20, world.sap.21, world.sap.22, world.sap.23, world.sap.24 |
+| 🔨 | `world-sapling-p10` | Which basket? | One item from the lesson's sort: choose its basket | world.sap.1, world.sap.2, world.sap.3, world.sap.4, world.sap.5, world.sap.6, world.sap.7, world.sap.8, world.sap.9, world.sap.10, world.sap.11, world.sap.12, world.sap.13, world.sap.14, world.sap.15, world.sap.16, world.sap.17, world.sap.18, world.sap.19, world.sap.20, world.sap.21, world.sap.22, world.sap.23, world.sap.24 |
+| 🔨 | `world-sapling-p11` | Odd one out | Three items of one basket and one of another from the lesson's sort: which is different? | world.sap.1, world.sap.2, world.sap.3, world.sap.4, world.sap.5, world.sap.6, world.sap.7, world.sap.8, world.sap.9, world.sap.10, world.sap.11, world.sap.12, world.sap.13, world.sap.14, world.sap.15, world.sap.16, world.sap.17, world.sap.18, world.sap.19, world.sap.20, world.sap.21, world.sap.22, world.sap.23, world.sap.24 |
+| 🔨 | `world-sapling-p12` | Pairs again | The lesson's pairs again, a few at a time, sometimes as a memory game | world.sap.1, world.sap.2, world.sap.3, world.sap.4, world.sap.5, world.sap.6, world.sap.7, world.sap.8, world.sap.9, world.sap.10, world.sap.11, world.sap.12, world.sap.13, world.sap.14, world.sap.15, world.sap.16, world.sap.17, world.sap.18, world.sap.19, world.sap.20, world.sap.21, world.sap.22, world.sap.23, world.sap.24 |
+| 🔨 | `world-sapling-p13` | What goes with it? | One card of the lesson's pairs: choose its match | world.sap.1, world.sap.2, world.sap.3, world.sap.4, world.sap.5, world.sap.6, world.sap.7, world.sap.8, world.sap.9, world.sap.10, world.sap.11, world.sap.12, world.sap.13, world.sap.14, world.sap.15, world.sap.16, world.sap.17, world.sap.18, world.sap.19, world.sap.20, world.sap.21, world.sap.22, world.sap.23, world.sap.24 |
+| 🔨 | `world-sapling-p14` | In order again | Part of the lesson's order or timeline, to put in order again | world.sap.1, world.sap.2, world.sap.3, world.sap.4, world.sap.5, world.sap.6, world.sap.7, world.sap.8, world.sap.9, world.sap.10, world.sap.11, world.sap.12, world.sap.13, world.sap.14, world.sap.15, world.sap.16, world.sap.17, world.sap.18, world.sap.19, world.sap.20, world.sap.21, world.sap.22, world.sap.23, world.sap.24 |
+| 🔨 | `world-sapling-p15` | On the map again | One of the lesson's map tasks again (find, route, square, distance) | world.sap.1, world.sap.2, world.sap.3, world.sap.4, world.sap.5, world.sap.6, world.sap.7, world.sap.8, world.sap.9, world.sap.10, world.sap.11, world.sap.12, world.sap.13, world.sap.14, world.sap.15, world.sap.16, world.sap.17, world.sap.18, world.sap.19, world.sap.20, world.sap.21, world.sap.22, world.sap.23, world.sap.24 |
+| 🔨 | `world-sapling-p16` | Answer again | One of the lesson's questions again, options shuffled | world.sap.1, world.sap.2, world.sap.3, world.sap.4, world.sap.5, world.sap.6, world.sap.7, world.sap.8, world.sap.9, world.sap.10, world.sap.11, world.sap.12, world.sap.13, world.sap.14, world.sap.15, world.sap.16, world.sap.17, world.sap.18, world.sap.19, world.sap.20, world.sap.21, world.sap.22, world.sap.23, world.sap.24 |
+| 🔨 | `world-sapling-p17` | Eight directions | An arrow's direction; the direction between two (choose) | world.sap.5 |
+| 🔨 | `world-sapling-p18` | What land is this? | Mountain, desert, sea, plain; relief colours (choose) | world.sap.1 |
+| 🔨 | `world-sapling-p19` | Why a town here? | Water, plains, crossroads, coasts (choose) | world.sap.24 |
+| 🔨 | `world-sapling-p20` | What the tales say | The Mulla and the coat, the elephant in the dark (choose) | world.sap.19 |
+| 🔨 | `world-sapling-p21` | Deciding together | Say, listen, vote, accept (choose) | world.sap.22 |
+| 🔨 | `world-sapling-p22` | Which came first? | Two things from the past: which was earlier (choose) | world.sap.14, world.sap.21 |
+| 🔨 | `world-sapling-p23` | Saving | Weeks of saving to buy something; the cost of a choice (choose) | world.sap.23 |
 
 ### 🌳 درخت — `tree`
 
@@ -494,19 +541,19 @@ lessons when the garden is planned in detail, before it is built. Before: 13 pla
 
 | St | Lesson | Title | Covers | Content types | Objectives | Depth |
 |---|---|---|---|---|---|---|
-| ⬜ | `world-tree-1` | از کجا می‌دانیم؟ | What history is; sources (objects, buildings, writing, memories); what a source can and cannot tell | animation, 🆕 `source` (look closely), 🆕 `timeline`, home (interview a grandparent) | world.tree.2 | core |
-| ⬜ | `world-tree-14` | سال، قرن، هزاره | Years, centuries and millennia; before and after year one; the Iranian calendar and the world calendar side by side | animation, 🆕 `timeline`, lesson (`choose`) | world.tree.1 | core |
+| ⬜ | `world-tree-1` | از کجا می‌دانیم؟ | What history is; sources (objects, buildings, writing, memories); what a source can and cannot tell | animation, `source` (look closely), `timeline`, home (interview a grandparent) | world.tree.2 | core |
+| ⬜ | `world-tree-14` | سال، قرن، هزاره | Years, centuries and millennia; before and after year one; the Iranian calendar and the world calendar side by side | animation, `timeline`, lesson (`choose`) | world.tree.1 | core |
 | ⬜ | `world-tree-26` | نقشه دقیق | Four- and six-figure grid references; map symbols and a key on a detailed town map | animation, 🆕 `map` (grid), lesson (`choose`) | world.tree.20 | core |
 | ⬜ | `world-tree-27` | نقشه‌های موضوعی | Maps of rainfall, population and products of Iran; making a bar chart from a map | 🆕 `map` (thematic), `chart` | world.tree.21 | core |
-| ⬜ | `world-tree-2` | نخستین شهرها | Shahr-e Sukhteh, Jiroft, Susa and Elam: why cities began, what people made (the first animation on a cup, the artificial eye) | animation, 🆕 `source`, 🆕 `timeline` | world.tree.3 | core |
-| ⬜ | `world-tree-15` | تمدن‌های کهن دنیا | Sumer, Egypt, the Indus and Shang China: rivers, cities, writing, how they lived; compared with Elam | animation, 🆕 `timeline`, game (`sort`), 🆕 `map` (world) | world.tree.4 | core |
+| ⬜ | `world-tree-2` | نخستین شهرها | Shahr-e Sukhteh, Jiroft, Susa and Elam: why cities began, what people made (the first animation on a cup, the artificial eye) | animation, `source`, `timeline` | world.tree.3 | core |
+| ⬜ | `world-tree-15` | تمدن‌های کهن دنیا | Sumer, Egypt, the Indus and Shang China: rivers, cities, writing, how they lived; compared with Elam | animation, `timeline`, game (`sort`), `map` (world) | world.tree.4 | core |
 | ⬜ | `world-tree-3` | از خط میخی تا خط فارسی | How writing began and changed: cuneiform, Elamite, Old Persian, Pahlavi, today's Persian script | animation, game (`order`, `pairs`) | world.tree.5 | full |
-| ⬜ | `world-tree-16` | ایلام و ماد | Elam at Chogha Zanbil; the Medes and Hegmataneh (Hamadan); how we know | animation (tour), 🆕 `source`, 🆕 `timeline` | world.tree.3, world.tree.6 | core |
-| ⬜ | `world-tree-4` | تخت جمشید و راه شاهی | The Achaemenids: Persepolis, the Royal Road and the چاپار post, many peoples in one land | animation (tour), 🆕 `source` (the reliefs), 🆕 `map` | world.tree.6 | core |
-| ⬜ | `world-tree-17` | یونانی‌ها و ایرانی‌ها | Daily life in ancient Greece (Athens); how Herodotus described Persians and what Persian sources show; two sides of one story | animation, 🆕 `source`, game (`sort` Greek / Persian / both) | world.tree.7 | full |
-| ⬜ | `world-tree-44` | بیستون و طاق بستان | Kermanshah: Darius's inscription at Bisotun (how it was read), the Sasanian reliefs at Taq-e Bostan | animation (tour), 🆕 `source` | world.tree.8, world.tree.2 | full |
-| ⬜ | `world-tree-5` | جاده‌ها و دانشگاه‌ها | Parthians and Sasanians: the Silk Road, Gondishapur, inventions and games (نرد) | animation, 🆕 `timeline`, game (`sort`) | world.tree.8 | core |
-| ⬜ | `world-tree-18` | زندگی در ایران باستان | Farming, qanats, coins, crafts, families and festivals in ancient Iran (one factual sentence on beliefs, no judgement) | animation, game (`sort`), 🆕 `source` (a coin) | world.tree.9 | full |
+| ⬜ | `world-tree-16` | ایلام و ماد | Elam at Chogha Zanbil; the Medes and Hegmataneh (Hamadan); how we know | animation (tour), `source`, `timeline` | world.tree.3, world.tree.6 | core |
+| ⬜ | `world-tree-4` | تخت جمشید و راه شاهی | The Achaemenids: Persepolis, the Royal Road and the چاپار post, many peoples in one land | animation (tour), `source` (the reliefs), 🆕 `map` | world.tree.6 | core |
+| ⬜ | `world-tree-17` | یونانی‌ها و ایرانی‌ها | Daily life in ancient Greece (Athens); how Herodotus described Persians and what Persian sources show; two sides of one story | animation, `source`, game (`sort` Greek / Persian / both) | world.tree.7 | full |
+| ⬜ | `world-tree-44` | بیستون و طاق بستان | Kermanshah: Darius's inscription at Bisotun (how it was read), the Sasanian reliefs at Taq-e Bostan | animation (tour), `source` | world.tree.8, world.tree.2 | full |
+| ⬜ | `world-tree-5` | جاده‌ها و دانشگاه‌ها | Parthians and Sasanians: the Silk Road, Gondishapur, inventions and games (نرد) | animation, `timeline`, game (`sort`) | world.tree.8 | core |
+| ⬜ | `world-tree-18` | زندگی در ایران باستان | Farming, qanats, coins, crafts, families and festivals in ancient Iran (one factual sentence on beliefs, no judgement) | animation, game (`sort`), `source` (a coin) | world.tree.9 | full |
 | ⬜ | `world-tree-29` | مردم ایران کجا زندگی می‌کنند؟ | Iran's population; where people live and why (water, plains, work); a population map | 🆕 `map` (thematic), `chart` | world.tree.24 | core |
 | ⬜ | `world-tree-30` | آب ایران | Rivers, groundwater, qanats and dams; farming uses most water; saving water | animation, game (`order`), `chart` | world.tree.25 | core |
 | ⬜ | `world-tree-42` | دریاهای ایران | The Caspian, the Persian Gulf and the Sea of Oman: depth, salt, islands (Qeshm, Kish, Hormuz), ports, fishing | animation, `map` (Iran, seas), game (`pairs`) | world.tree.38 | core |
@@ -514,15 +561,15 @@ lessons when the garden is planned in detail, before it is built. Before: 13 pla
 | ⬜ | `world-tree-34` | حق‌های من، وظیفه‌های من | Children's rights (play, school, care, safety, being heard) and the responsibilities that go with them | animation, game (`sort` right / responsibility), parent tip | world.tree.29 | core |
 | ⬜ | `world-tree-24` | مدار و نصف‌النهار | Latitude and longitude, the equator, the tropics, the hemispheres, the prime meridian; finding Tehran | animation, 🆕 `map` (world, lines), lesson (`choose`) | world.tree.18 | core |
 | ⬜ | `world-tree-25` | ساعت در دنیا | Day and night as the Earth turns; time zones; calling a cousin in another country | animation, lesson (`choose`), `clock` | world.tree.19 | full |
-| ⬜ | `world-tree-10` | کشورها و پایتخت‌ها | Countries, capitals and flags by continent (a chosen set); Iran's flag as the family chose | 🆕 `map` (world), game (`pairs` with `hidden`), 🆕 flag faces | world.tree.17 | core |
+| ⬜ | `world-tree-10` | کشورها و پایتخت‌ها | Countries, capitals and flags by continent (a chosen set); Iran's flag as the family chose | `map` (world), game (`pairs` with `hidden`), flag faces | world.tree.17 | core |
 | ⬜ | `world-tree-6` | زبان فارسی می‌ماند | Persian after the 7th century: new script, Rudaki, Ferdowsi and the Shahnameh's stories (gentle ones) | animation, story (`passage`), game (`order`) | world.tree.10 | core |
-| ⬜ | `world-tree-7` | دانشمندان ایرانی | Khwarizmi, Razi, Ibn Sina, Biruni, Khayyam (the Jalali calendar), Tusi's observatory | animation, game (`pairs`), 🆕 `timeline` | world.tree.11 | core |
-| ⬜ | `world-tree-19` | خانه دانش در بغداد | Baghdad around 900: translators, paper, libraries; scholars from Iran and elsewhere working together | animation, 🆕 `source`, game (`pairs`) | world.tree.11 | full |
-| ⬜ | `world-tree-22` | مایاها | The Maya around 900: cities, farming, numbers with zero, the calendar; compared with Iran at the same time | animation, 🆕 `timeline`, game (`sort` Iran / Maya / both) | world.tree.15 | full |
+| ⬜ | `world-tree-7` | دانشمندان ایرانی | Khwarizmi, Razi, Ibn Sina, Biruni, Khayyam (the Jalali calendar), Tusi's observatory | animation, game (`pairs`), `timeline` | world.tree.11 | core |
+| ⬜ | `world-tree-19` | خانه دانش در بغداد | Baghdad around 900: translators, paper, libraries; scholars from Iran and elsewhere working together | animation, `source`, game (`pairs`) | world.tree.11 | full |
+| ⬜ | `world-tree-22` | مایاها | The Maya around 900: cities, farming, numbers with zero, the calendar; compared with Iran at the same time | animation, `timeline`, game (`sort` Iran / Maya / both) | world.tree.15 | full |
 | ⬜ | `world-tree-20` | مدرسه‌ها و کاروانسراها | Seljuk times: the Nizamiyya schools, caravanserais on the roads, brick domes, Khayyam's calendar | animation (tour), game (`pairs`) | world.tree.12 | full |
-| ⬜ | `world-tree-21` | بعد از مغول‌ها | What was destroyed and what was rebuilt: the Maragheh observatory, Soltaniyeh, Timurid tilework and books (no battle scenes) | animation, game (`sort` changed / stayed), 🆕 `timeline` | world.tree.13, world.tree.16 | full |
+| ⬜ | `world-tree-21` | بعد از مغول‌ها | What was destroyed and what was rebuilt: the Maragheh observatory, Soltaniyeh, Timurid tilework and books (no battle scenes) | animation, game (`sort` changed / stayed), `timeline` | world.tree.13, world.tree.16 | full |
 | ⬜ | `world-tree-23` | چرا؟ و بعد چه شد؟ | Cause and consequence, change and continuity, practised on the qanat, paper and the Silk Road | animation, game (`sort` cause / consequence), lesson (`choose`) | world.tree.16 | core |
-| ⬜ | `world-tree-9` | خط زمان ایران | Unit game: putting Iran's history in order | 🆕 `timeline`, game (`order`, `pairs`) | world.tree.1, world.tree.16 | core |
+| ⬜ | `world-tree-9` | خط زمان ایران | Unit game: putting Iran's history in order | `timeline`, game (`order`, `pairs`) | world.tree.1, world.tree.16 | core |
 | ⬜ | `world-tree-11` | زندگی در آب‌وهوای مختلف | World climate zones and biomes, and how homes, clothes and food fit them | animation, game (`sort`), 🆕 `map` | world.tree.22 | core |
 | ⬜ | `world-tree-28` | کوه، رود، آتشفشان، زلزله | How mountains and rivers shape land; volcanoes and earthquakes around the world and in Iran; living safely with them (calm, no frightening pictures) | animation, game (`sort`), 🆕 `map` (world, relief) | world.tree.23 | core |
 | ⬜ | `world-tree-31` | کار و تولید در ایران | Farming, herding, fishing, mines, factories, oil and gas, tourism: where in Iran, on a product map | 🆕 `map` (thematic), game (`pairs`) | world.tree.26 | core |
@@ -532,8 +579,8 @@ lessons when the garden is planned in detail, before it is built. Before: 13 pla
 | ⬜ | `world-tree-39` | راه‌ها و بندرها | Roads, railways, airports and ports of Iran; how a parcel or a load of dates travels | 🆕 `map` (Iran, routes), game (`order`) | world.tree.35 | full |
 | ⬜ | `world-tree-32` | داد و ستد میان کشورها | Why countries trade; imports and exports; the ports of Bandar Abbas and Chabahar | animation, game (`sort` import / export) | world.tree.27 | full |
 | ⬜ | `world-tree-33` | دخل و خرج | A small budget: income, spending, saving; opportunity cost; a family trip plan | lesson (`money`, `choose`), `chart` | world.tree.28 | core |
-| ⬜ | `world-tree-8` | اصفهان نصف جهان | Safavid Isfahan: the square, the bridges, trade with the world | animation (tour), 🆕 `source`, 🆕 `map` | world.tree.14 | core |
-| ⬜ | `world-tree-37` | دو منطقه، دو قاره | Comparing Gilan with a region in Europe (the Alps) or the Americas (the Amazon): land, climate, work, life | animation, game (`sort` same / different), 🆕 `map` (world) | world.tree.32 | full |
+| ⬜ | `world-tree-8` | اصفهان نصف جهان | Safavid Isfahan: the square, the bridges, trade with the world | animation (tour), `source`, 🆕 `map` | world.tree.14 | core |
+| ⬜ | `world-tree-37` | دو منطقه، دو قاره | Comparing Gilan with a region in Europe (the Alps) or the Americas (the Amazon): land, climate, work, life | animation, game (`sort` same / different), `map` (world) | world.tree.32 | full |
 | ⬜ | `world-tree-12` | یک روز با بچه‌های دنیا | A school day for children in five countries: same and different (inquiry) | animation, game (`sort`), story (`talk`) | world.tree.33 | full |
 | ⬜ | `world-tree-13` | سال نو در دنیا | How people welcome the new year around the world; Nowruz across many countries | animation, game (`pairs`, `order`) | world.tree.33 | full |
 | ⬜ | `world-tree-36` | تصمیم خوب | The steps of a decision (the problem, choices, good and bad sides, choose, look back); deciding as a group | animation, game (`order`), lesson (`choose`) | world.tree.31 | full |
@@ -541,17 +588,17 @@ lessons when the garden is planned in detail, before it is built. Before: 13 pla
 
 #### Practice
 
-| St | Practice | What it makes | Objectives |
-|---|---|---|---|
-| ⬜ | Countries and capitals | Find a country, match a capital, by continent, from a chosen set that grows; flags (Iran's flag as the parent chose) | world.tree.17 |
-| ⬜ | Latitude and longitude | Find the place at given lines, give the lines of a city, hemispheres | world.tree.18 |
-| ⬜ | Time zones | "It is 10 in Tehran: what time is it in …?" | world.tree.19 |
-| ⬜ | Grid references | Four- and six-figure references on generated maps | world.tree.20 |
-| ⬜ | Iran timeline | Events, buildings and people of Iran's history to put in order, with eras; before / after questions | world.tree.1, world.tree.3, world.tree.6, world.tree.8, world.tree.10, world.tree.11, world.tree.14 |
-| ⬜ | Source questions | A new object, building or page each time with «چه می‌بینی؟ چه فکر می‌کنی؟ چه سؤالی داری؟» | world.tree.2 |
-| ⬜ | Iran's resources | Product ↔ province, seas, ports, energy sources, population and rainfall maps read as charts | world.tree.21, world.tree.24, world.tree.26, world.tree.35, world.tree.37, world.tree.38 |
-| ⬜ | Budget | Generated incomes, prices and goals: plan, save, name the opportunity cost | world.tree.28 |
-| ⬜ | Climate and landforms sort | Place ↔ climate zone, biome, landform | world.tree.22, world.tree.23 |
+| St | Id | Practice | What it makes | Objectives |
+|---|---|---|---|---|
+| ⬜ | `world-tree-p1` | Countries and capitals | Find a country, match a capital, by continent, from a chosen set that grows; flags (Iran's flag as the parent chose) | world.tree.17 |
+| ⬜ | `world-tree-p2` | Latitude and longitude | Find the place at given lines, give the lines of a city, hemispheres | world.tree.18 |
+| ⬜ | `world-tree-p3` | Time zones | "It is 10 in Tehran: what time is it in …?" | world.tree.19 |
+| ⬜ | `world-tree-p4` | Grid references | Four- and six-figure references on generated maps | world.tree.20 |
+| ⬜ | `world-tree-p5` | Iran timeline | Events, buildings and people of Iran's history to put in order, with eras; before / after questions | world.tree.1, world.tree.3, world.tree.6, world.tree.8, world.tree.10, world.tree.11, world.tree.14 |
+| ⬜ | `world-tree-p6` | Source questions | A new object, building or page each time with «چه می‌بینی؟ چه فکر می‌کنی؟ چه سؤالی داری؟» | world.tree.2 |
+| ⬜ | `world-tree-p7` | Iran's resources | Product ↔ province, seas, ports, energy sources, population and rainfall maps read as charts | world.tree.21, world.tree.24, world.tree.26, world.tree.35, world.tree.37, world.tree.38 |
+| ⬜ | `world-tree-p8` | Budget | Generated incomes, prices and goals: plan, save, name the opportunity cost | world.tree.28 |
+| ⬜ | `world-tree-p9` | Climate and landforms sort | Place ↔ climate zone, biome, landform | world.tree.22, world.tree.23 |
 
 ### 🌲 جنگل — `forest`
 
@@ -610,37 +657,37 @@ detail. Before: 14 planned lessons, no objectives.
 
 | St | Lesson | Title | Covers | Content types | Objectives | Depth |
 |---|---|---|---|---|---|---|
-| ⬜ | `world-forest-15` | مورخ چطور کار می‌کند؟ | Significance, evidence, accounts that disagree; primary and secondary sources; two travellers describe Isfahan | animation, 🆕 `source`, game (`sort` primary / secondary) | world.for.1 | core |
-| ⬜ | `world-forest-4` | نقشه‌های دنیا | How maps improved: Biruni measuring the Earth, travellers, satellites; different maps, different views | animation, 🆕 `source`, 🆕 `map` | world.for.21, world.for.1 | core |
+| ⬜ | `world-forest-15` | مورخ چطور کار می‌کند؟ | Significance, evidence, accounts that disagree; primary and secondary sources; two travellers describe Isfahan | animation, `source`, game (`sort` primary / secondary) | world.for.1 | core |
+| ⬜ | `world-forest-4` | نقشه‌های دنیا | How maps improved: Biruni measuring the Earth, travellers, satellites; different maps, different views | animation, `source`, 🆕 `map` | world.for.21, world.for.1 | core |
 | ⬜ | `world-forest-2` | جاده ابریشم | Trade and ideas moving: paper, rice, oranges, numbers; Iran in the middle | animation, 🆕 `map` (routes), game (`pairs`) | world.for.2 | core |
-| ⬜ | `world-forest-1` | دنیا از ۵۰۰ تا ۱۵۰۰ | China, the Islamic world (one factual sentence), Europe's middle ages, Mali, and the Mongol empire joining Asia; what each gave the others | animation, 🆕 `timeline`, game (`sort`), 🆕 `map` (world) | world.for.3 | full |
+| ⬜ | `world-forest-1` | دنیا از ۵۰۰ تا ۱۵۰۰ | China, the Islamic world (one factual sentence), Europe's middle ages, Mali, and the Mongol empire joining Asia; what each gave the others | animation, `timeline`, game (`sort`), `map` (world) | world.for.3 | full |
 | ⬜ | `world-forest-16` | کشتی‌ها و نقشه‌های تازه | Ships, compasses and new maps; Zheng He and the Portuguese; Hormuz and the Gulf trade; what travelled (potatoes, tomatoes, tea) | animation, 🆕 `map` (routes), game (`pairs`) | world.for.4 | full |
 | ⬜ | `world-forest-19` | چهره زمین | Plates, earthquakes and mountains; weathering, rivers and coasts; Iran's earthquakes (calm, with the drill in `health-all-2`) | animation, 🆕 `map` (world, relief), game (`sort`) | world.for.13 | core |
 | ⬜ | `world-forest-20` | آب‌وهوا و تغییر آن | Weather and climate; the ice age to today; climate change and what it means for Iran's water and dust; what helps | animation, `chart`, game (`sort` cause / effect) | world.for.14 | core |
-| ⬜ | `world-forest-21` | زیست‌بوم‌ها در خطر | World biomes; threats; protected areas in Iran (Touran, Golestan, the Hyrcanian forests), the Asiatic cheetah | animation, 🆕 `map` (world, Iran), game (`pairs`) | world.for.15 | core |
-| ⬜ | `world-forest-17` | از صفویه تا قاجار | Iran from about ۸۸۰ to ۱۲۵۰ (هجری شمسی): trade, crafts, carpets and the arts, cities; changes of rulers in one line each; the lands north of the Aras lost in the treaties with Russia, as a fact (no battle scenes) | animation, 🆕 `timeline`, 🆕 `map` | world.for.7 | core |
-| ⬜ | `world-forest-5` | قاجار: دنیای تازه | The Qajar era: Dar ul-Funun, the first newspapers, photography, the telegraph; what changed and what stayed | animation, 🆕 `source`, 🆕 `timeline` | world.for.8 | core |
-| ⬜ | `world-forest-11` | مشروطه: قانون و مجلس | The Constitutional Revolution: people asked for law; what a constitution and a parliament are; the first مجلس (1285) | animation, 🆕 `source`, 🆕 `timeline`, lesson (`choose`) | world.for.9 | core |
+| ⬜ | `world-forest-21` | زیست‌بوم‌ها در خطر | World biomes; threats; protected areas in Iran (Touran, Golestan, the Hyrcanian forests), the Asiatic cheetah | animation, `map` (world, Iran), game (`pairs`) | world.for.15 | core |
+| ⬜ | `world-forest-17` | از صفویه تا قاجار | Iran from about ۸۸۰ to ۱۲۵۰ (هجری شمسی): trade, crafts, carpets and the arts, cities; changes of rulers in one line each; the lands north of the Aras lost in the treaties with Russia, as a fact (no battle scenes) | animation, `timeline`, 🆕 `map` | world.for.7 | core |
+| ⬜ | `world-forest-5` | قاجار: دنیای تازه | The Qajar era: Dar ul-Funun, the first newspapers, photography, the telegraph; what changed and what stayed | animation, `source`, `timeline` | world.for.8 | core |
+| ⬜ | `world-forest-11` | مشروطه: قانون و مجلس | The Constitutional Revolution: people asked for law; what a constitution and a parliament are; the first مجلس (1285) | animation, `source`, `timeline`, lesson (`choose`) | world.for.9 | core |
 | ⬜ | `world-forest-34` | قانون چیست؟ | Why laws exist; how laws are made in general (proposal, discussion, vote, record), using the first مجلس as the example; no institution of today | animation, game (`order`, `sort`) | world.for.28 | core |
 | ⬜ | `world-forest-35` | حق و مسئولیت | Rights and responsibilities of people; how the law protects them in general; respecting others' rights | animation, game (`sort`), story (`talk`) | world.for.29 | core |
-| ⬜ | `world-forest-37` | رسانه و راستی | Who made it, why, when; fact and opinion; checking a photo or a claim with a second source | animation, 🆕 `source`, game (`sort` fact / opinion) | world.for.31 | core |
+| ⬜ | `world-forest-37` | رسانه و راستی | Who made it, why, when; fact and opinion; checking a photo or a claim with a second source | animation, `source`, game (`sort` fact / opinion) | world.for.31 | core |
 | ⬜ | `world-forest-28` | تولید، توزیع، مصرف | From raw material to factory to shop; primary, secondary and service work; smart buying | animation, game (`sort` sector), `chart` | world.for.23 | core |
 | ⬜ | `world-forest-29` | بازار و قیمت | Supply and demand with saffron and watermelons; why prices change | animation, lesson (`choose`), `chart` | world.for.24 | core |
 | ⬜ | `world-forest-30` | بانک و پس‌انداز | What banks do, saving and interest, borrowing, rising prices in simple terms | animation, lesson (`money`, `choose`) | world.for.24 | core |
 | ⬜ | `world-forest-31` | بهره‌وری | Doing more with the same: water on a farm, energy at home, time at school | animation, game (`sort`) | world.for.25 | full |
 | ⬜ | `world-forest-36` | تعاون | Working together for a shared aim; how a cooperative (a carpet-weavers' or a farmers' cooperative) works | animation, game (`order`), story (`talk`) | world.for.30 | full |
 | ⬜ | `world-forest-32` | وقتی حادثه می‌آید | Insurance as sharing risk; preparing a family plan; neighbours helping after a flood or earthquake (calm, practical) | animation, lesson (`choose`), home | world.for.26 | full |
-| ⬜ | `world-forest-3` | اختراع‌هایی که دنیا را عوض کرد | Paper, printing, the compass, Hindu–Arabic numbers, steam, electricity: causes and consequences | animation, game (`order`), 🆕 `timeline` | world.for.5 | core |
+| ⬜ | `world-forest-3` | اختراع‌هایی که دنیا را عوض کرد | Paper, printing, the compass, Hindu–Arabic numbers, steam, electricity: causes and consequences | animation, game (`order`), `timeline` | world.for.5 | core |
 | ⬜ | `world-forest-6` | از کارگاه تا کارخانه | The industrial revolution, the growth of cities, and what it meant for daily life and nature | animation, game (`sort` before / after) | world.for.6 | core |
-| ⬜ | `world-forest-23` | آسیا و جنوب غربی آسیا | Asia's land, rivers and peoples (China, India); Southwest Asia's deserts, water and oil; Iran's place (no regional politics) | animation, 🆕 `map` (world, region), game (`pairs`) | world.for.18 | core |
-| ⬜ | `world-forest-24` | اروپا و آفریقا | The land and people of Europe and of Africa; a region in each compared | animation, 🆕 `map` (world), game (`sort`) | world.for.19 | core |
-| ⬜ | `world-forest-25` | آمریکا و اقیانوسیه | The land and people of the Americas, Australia and the Pacific islands | animation, 🆕 `map` (world), game (`pairs`) | world.for.20 | core |
+| ⬜ | `world-forest-23` | آسیا و جنوب غربی آسیا | Asia's land, rivers and peoples (China, India); Southwest Asia's deserts, water and oil; Iran's place (no regional politics) | animation, `map` (world, region), game (`pairs`) | world.for.18 | core |
+| ⬜ | `world-forest-24` | اروپا و آفریقا | The land and people of Europe and of Africa; a region in each compared | animation, `map` (world), game (`sort`) | world.for.19 | core |
+| ⬜ | `world-forest-25` | آمریکا و اقیانوسیه | The land and people of the Americas, Australia and the Pacific islands | animation, `map` (world), game (`pairs`) | world.for.20 | core |
 | ⬜ | `world-forest-26` | نقشه‌های لایه‌لایه | Satellite images, map projections, layered maps (water, roads, towns) to answer a question; an atlas | 🆕 `map` (layers), lesson (`choose`) | world.for.21 | core |
 | ⬜ | `world-forest-7` | مردم و شهرها | Population, where people live and why, moving to cities | 🆕 `map`, `chart` | world.for.16 | core |
 | ⬜ | `world-forest-22` | توسعه با عدد | Comparing countries with data (life expectancy, years at school, income); what helps a country develop; no blame | `chart`, game (`sort`), 🆕 `map` (world, thematic) | world.for.17 | full |
 | ⬜ | `world-forest-27` | پژوهش میدانی | Fieldwork: count, ask and note in your street (trees, shops, traffic), then map and chart it | `paper`, home, `chart` | world.for.22 | full |
-| ⬜ | `world-forest-12` | ایران در قرن چهاردهم | Iran from about ۱۳۰۰ to ۱۳۷۰, by years: the railway, new schools and universities, more girls at school, radio, cinema, cities growing | animation, 🆕 `timeline`, game (`sort` before / after) | world.for.10 | core |
-| ⬜ | `world-forest-18` | دنیا در قرن بیستم | Flight, antibiotics, vaccines, computers, the Moon landing; countries working together (UNESCO, WHO); no wars | animation, 🆕 `timeline`, game (`order`) | world.for.12 | full |
+| ⬜ | `world-forest-12` | ایران در قرن چهاردهم | Iran from about ۱۳۰۰ to ۱۳۷۰, by years: the railway, new schools and universities, more girls at school, radio, cinema, cities growing | animation, `timeline`, game (`sort` before / after) | world.for.10 | core |
+| ⬜ | `world-forest-18` | دنیا در قرن بیستم | Flight, antibiotics, vaccines, computers, the Moon landing; countries working together (UNESCO, WHO); no wars | animation, `timeline`, game (`order`) | world.for.12 | full |
 | ⬜ | `world-forest-13` | ایران امروز | Today's Iran: cities and the metro, science and space, artists and athletes, nature and water | animation (tour), `map`, game (`pairs`) | world.for.10, world.for.27 | core |
 | ⬜ | `world-forest-14` | تاریخ خانواده ما | Oral history: interview a grandparent about school, games and home; compare then and now | home, `paper`, game (`sort` then / now), parent tip | world.for.11 | full |
 | ⬜ | `world-forest-38` | فرهنگ و هویت | What culture is; how cultures meet and change; I can be from my town, my people, Iran and the world at once | animation, story (`talk`), game (`sort`) | world.for.32 | full |
@@ -653,14 +700,14 @@ detail. Before: 14 planned lessons, no objectives.
 
 #### Practice
 
-| St | Practice | What it makes | Objectives |
-|---|---|---|---|
-| ⬜ | World map quiz | Countries, capitals, rivers, mountains and regions of each continent from a larger chosen set; flags (Iran's flag as the parent chose) | world.for.18, world.for.19, world.for.20 |
-| ⬜ | Iran and world timeline | Events of Iran and the world to place together on one timeline; "what was happening in … at the same time?" | world.for.3, world.for.5, world.for.7, world.for.8, world.for.9, world.for.10, world.for.12 |
-| ⬜ | Sources and perspectives | A source a time: who made it, when, why, what it shows, what is missing; two accounts of one event (distant history only) | world.for.1, world.for.31 |
-| ⬜ | Data and maps | Population, rainfall, development and climate data as maps and charts with questions | world.for.14, world.for.16, world.for.17, world.for.21 |
-| ⬜ | Economics scenarios | Prices with supply and demand, savings with interest, insurance, budgets | world.for.23, world.for.24, world.for.26 |
-| ⬜ | Heritage and landmarks | World Heritage site ↔ country and city, Iran's sites on the map | world.for.27 |
+| St | Id | Practice | What it makes | Objectives |
+|---|---|---|---|---|
+| ⬜ | `world-forest-p1` | World map quiz | Countries, capitals, rivers, mountains and regions of each continent from a larger chosen set; flags (Iran's flag as the parent chose) | world.for.18, world.for.19, world.for.20 |
+| ⬜ | `world-forest-p2` | Iran and world timeline | Events of Iran and the world to place together on one timeline; "what was happening in … at the same time?" | world.for.3, world.for.5, world.for.7, world.for.8, world.for.9, world.for.10, world.for.12 |
+| ⬜ | `world-forest-p3` | Sources and perspectives | A source a time: who made it, when, why, what it shows, what is missing; two accounts of one event (distant history only) | world.for.1, world.for.31 |
+| ⬜ | `world-forest-p4` | Data and maps | Population, rainfall, development and climate data as maps and charts with questions | world.for.14, world.for.16, world.for.17, world.for.21 |
+| ⬜ | `world-forest-p5` | Economics scenarios | Prices with supply and demand, savings with interest, insurance, budgets | world.for.23, world.for.24, world.for.26 |
+| ⬜ | `world-forest-p6` | Heritage and landmarks | World Heritage site ↔ country and city, Iran's sites on the map | world.for.27 |
 
 ### Step types needed
 

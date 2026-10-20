@@ -234,4 +234,250 @@ window.B = B;
     // A small dotted ring, to point at something (origin: its middle).
     "read-ring-small": '<circle r="6" fill="none" stroke="#f59e0b" stroke-width=".9" stroke-dasharray="1.6 1.2"/>'
   });
+  /* ---------- Seed listening lessons: questions, poems, the sound train, classic tales, information ---------- */
+  var DARK = "#3d2c22";
+  function eyes(x, y, r) { return '<g stroke="none" fill="' + DARK + '"><ellipse cx="' + x + '" cy="' + y + '" rx="' + (r || .5) + '" ry="' + ((r || .5) * 1.4) + '"/></g>'; }
+  Object.assign(B.RIG, {
+    "read-bg-kitchen": backdrop("kitchen"), "read-bg-sky": backdrop("sky"), "read-bg-night": backdrop("night"), "read-bg-bedroom": backdrop("bedroom"),
+    // An empty group, to hold other parts (under) so they show and hide together.
+    "read-group": "<g></g>",
+
+    /* A flower (look: { c: petal colour }), origin at the bottom of its stem, 16 tall. "top" (the upper stem and the
+       head) turns at the middle of the stem: turned about 70° the flower hangs its head (thirsty). */
+    "read-flower": function (k) {
+      var c = (k && k.c) || "#e46b8a";
+      var petals = [[0, -16.4], [2.3, -14.7], [1.4, -12], [-1.4, -12], [-2.3, -14.7]].map(function (p) {
+        return '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="1.7" fill="' + c + '"/>'; }).join("");
+      return g('<path d="M0 0V-6" fill="none" stroke="#4f8f3c" stroke-width=".9"/><path d="M0-2.6c-2.4-1.6-3.6-.4-3.6.6 1.4.4 2.6.2 3.6-.6z" fill="#7dbb5a" stroke-width=".35"/>' +
+        '<g data-part="top" data-pivot="0 -6"><path d="M0-6V-12.4" fill="none" stroke="#4f8f3c" stroke-width=".9"/>' + petals +
+        '<circle cx="0" cy="-14.2" r="1.3" fill="#fcd34d"/></g>', ' stroke-width=".4"');
+    },
+    /* A watering can held by its handle (origin: the top of the handle); the spout points right, its end at
+       (10.5, .5). Turned about +35° it pours (the spout's end goes down to about (8.3, 6.4)). */
+    "read-can": g('<path d="M-3 2.4Q0-2 3 2.4" fill="none" stroke="#3f7f50" stroke-width="1"/><rect x="-4" y="2" width="8" height="7" rx="1.2" fill="#5aa36a"/>' +
+      '<path d="M3.6 6.4L10 1.2" fill="none" stroke="#3f7f50" stroke-width="1.1"/><path d="M9.4.6l2.2-1 .6 2.2z" fill="#5aa36a" stroke-width=".35"/>' +
+      '<path d="M-2.6 4h5.2" fill="none" stroke="#7fc48f" stroke-width=".6"/>', ' stroke-width=".45"'),
+
+    // Under water (stage units at their place): water, sand and weeds, for the fish of the rhyme.
+    "read-water": g('<rect width="160" height="90" fill="#8fd0ec" stroke="none"/><path d="M0 78c30-4 60 2 90-1s50-1 70 1v12H0z" fill="#f1dfb0" stroke-width=".4"/>' +
+      '<g fill="none" stroke="#4f8f3c" stroke-width="1.2" stroke-linecap="round"><path d="M14 80c-3-6 3-10 0-16s3-10 0-14"/><path d="M20 80c3-5-2-9 1-14"/><path d="M140 79c-3-6 3-10 0-16s3-10 0-14"/><path d="M148 80c3-6-3-10 0-16"/></g>' +
+      '<g fill="#fff" stroke="none" opacity=".5"><path d="M0 8c20 2 40-2 60 0s40 2 60 0 30-2 40 0v-8H0z"/></g>'),
+    // A red fish seen from the side, facing right (origin: its middle); its tail ("tail") can wag.
+    "read-fish-red": g('<g data-part="tail" data-pivot="-6 0"><path d="M-5.6 0l-5.4-4.4c-1 3-1 5.8 0 8.8z" fill="#c2410c"/></g>' +
+      '<ellipse rx="7.4" ry="4.6" fill="#e5483f"/><path d="M-1-4.2c1.4-2.4 4-2.6 5.4-.6" fill="#c2410c"/><path d="M0 1.4c1.6 1 1.6 2.6 0 3.2" fill="#c2410c" stroke-width=".35"/>' +
+      '<path d="M2.4-3.4c1.6 2 1.6 4.8 0 6.8" fill="none" stroke="#c2410c" stroke-width=".5"/>' + eyes(4.4, -1, .7) + '<path d="M6.4 1.4q.6.4 1 0" fill="none" stroke-width=".35"/>', ' stroke-width=".45"'),
+    /* A rabbit seen from the side, facing right (origin: under its feet), 18 tall. Its ears ("earF", "earB") turn
+       where they meet the head, so they can wiggle. */
+    "read-rabbit": g('<g data-part="earB" data-pivot="4.6 -12.6"><ellipse cx="3.8" cy="-17" rx="1.3" ry="4.4" fill="#ece5da" transform="rotate(-12 3.8 -17)"/></g>' +
+      '<ellipse cx="-1" cy="-5.4" rx="6.6" ry="5" fill="#f4efe6"/><circle cx="-7" cy="-6.4" r="1.8" fill="#fff"/>' +
+      '<ellipse cx="2.6" cy="-.9" rx="3.4" ry="1.1" fill="#f4efe6"/><ellipse cx="-4.4" cy="-.9" rx="2.6" ry="1.1" fill="#f4efe6"/>' +
+      '<circle cx="5" cy="-10" r="3.8" fill="#f4efe6"/>' + eyes(6.4, -10.8, .55) + '<circle cx="8.6" cy="-9.4" r=".6" fill="#e8737e" stroke="none"/>' +
+      '<circle cx="5.6" cy="-8.6" r=".9" fill="#f28b82" opacity=".5" stroke="none"/>' +
+      '<g data-part="earF" data-pivot="5.6 -13"><ellipse cx="5.6" cy="-17.6" rx="1.4" ry="4.6" fill="#f4efe6" transform="rotate(8 5.6 -17.6)"/><ellipse cx="5.8" cy="-17.4" rx=".6" ry="3.2" fill="#f7c0c8" stroke="none" transform="rotate(8 5.8 -17.4)"/></g>', ' stroke-width=".45"'),
+    /* A saj (a domed iron plate over a little fire) for baking thin bread (origin: the middle of its bottom). On it,
+       "dough" (raw) and "bread" (baked, hidden); "fire" can flicker. */
+    "read-saj": g('<g data-part="fire" data-pivot="0 -2"><path d="M-6 0c0-3 1.6-4 2.4-6.4.8 2.4 1.6 2.4 2.4 0 .8 2.4 2.4 3.2 2.4 6.4.8-2.4 2.4-2.4 2.4 0z" fill="#f59e0b" stroke="none"/><path d="M-3 0c0-1.6.8-2.4 1.6-4 .8 1.6 1.6 1.6 2.4 0 .8 1.6 1.6 2.4 1.6 4z" fill="#fcd34d" stroke="none"/></g>' +
+      '<rect x="-15" y="-4" width="5" height="4" rx="1" fill="#9a8f84"/><rect x="10" y="-4" width="5" height="4" rx="1" fill="#9a8f84"/>' +
+      '<path d="M-16-4.4Q0-10.4 16-4.4z" fill="#5c5f66"/>' +
+      '<g data-part="dough"><path d="M-10-6.2Q0-10.6 10-6.2Q0-8.4-10-6.2z" fill="#f6e7c8" stroke-width=".35"/></g>' +
+      '<g data-part="bread" style="opacity:0"><path d="M-10.6-6.2Q0-11 10.6-6.2Q0-8.2-10.6-6.2z" fill="#d9954a" stroke-width=".35"/><path d="M-5-7.6h1M-1-8.4h1M3-7.8h1" fill="none" stroke="#a0683f" stroke-width=".5"/></g>', ' stroke-width=".45"'),
+
+    /* The sound train (read-seed-22). Rails across the stage (stage units: the rails' top at y 72), an engine and
+       wagons (origin: the middle of their bottom, on the rails), all facing right. Wheels ("wheel1", "wheel2")
+       turn; a wagon's "glow" lights up while its sound is said. look: { c } for the wagon's colour. */
+    "read-track": g('<g fill="#a0683f" stroke-width=".35">' + Array.apply(null, Array(26)).map(function (_, i) {
+      return '<rect x="' + (i * 8 - 40) + '" y="72.4" width="5" height="2.2" rx=".5"/>'; }).join("") + '</g><path d="M-40 72.4H220" fill="none" stroke="#6b6f76" stroke-width="1.2"/>'),
+    "read-engine": g('<rect x="-14" y="-17" width="10" height="11" rx="1" fill="#3f6f8f"/><rect x="-12.4" y="-15.4" width="6.8" height="4.4" rx=".6" fill="#cdeaf7"/>' +
+      '<path d="M-15.6-17.6h13.2" fill="none" stroke-width="1.4"/><rect x="-4" y="-12.6" width="16" height="6.6" rx="2.6" fill="#e5483f"/>' +
+      '<path d="M6-12.6v-5h3.6v5" fill="#3d2c22"/><path d="M5.4-17.8h4.8" fill="none" stroke-width="1"/><circle cx="12" cy="-9.2" r="1.2" fill="#fcd34d"/>' +
+      '<path d="M-15-6h29l-1.4 2.2H-15z" fill="#5c5f66"/><path d="M14-4.6l2.4 2" fill="none" stroke-width=".8"/>' +
+      '<g data-part="wheel1" data-pivot="-8 -2.4"><circle cx="-8" cy="-2.4" r="2.4" fill="#3d2c22"/><path d="M-8-4.4v4M-10-2.4h4" fill="none" stroke="#9a8f84" stroke-width=".5"/></g>' +
+      '<g data-part="wheel2" data-pivot="6 -2.4"><circle cx="6" cy="-2.4" r="2.4" fill="#3d2c22"/><path d="M6-4.4v4M4-2.4h4" fill="none" stroke="#9a8f84" stroke-width=".5"/></g>' +
+      '<path d="M-16-6h-2" fill="none" stroke-width="1"/>', ' stroke-width=".5"'),
+    "read-wagon": function (k) {
+      var c = (k && k.c) || "#f59e0b";
+      return g('<g data-part="glow" style="opacity:0"><rect x="-12.4" y="-16" width="24.8" height="13.4" rx="3" fill="#fde68a" stroke="none"/></g>' +
+        '<rect x="-10.4" y="-14" width="20.8" height="9.4" rx="1.6" fill="' + c + '"/><path d="M-10.4-11h20.8" fill="none" stroke="#fff" stroke-width=".5" opacity=".7"/>' +
+        '<path d="M-12-6h-2M12-6h2" fill="none" stroke-width="1"/>' +
+        '<g data-part="wheel1" data-pivot="-5.6 -2.4"><circle cx="-5.6" cy="-2.4" r="2.4" fill="#3d2c22"/><path d="M-5.6-4.4v4M-7.6-2.4h4" fill="none" stroke="#9a8f84" stroke-width=".5"/></g>' +
+        '<g data-part="wheel2" data-pivot="5.6 -2.4"><circle cx="5.6" cy="-2.4" r="2.4" fill="#3d2c22"/><path d="M5.6-4.4v4M3.6-2.4h4" fill="none" stroke="#9a8f84" stroke-width=".5"/></g>', ' stroke-width=".5"');
+    },
+
+    /* «کدو قلقله‌زن» (read-seed-23). A wolf seen from the side, facing right (origin: under its feet), about 30 long
+       and 22 tall, friendly rather than fierce. Its legs (legF, legB, armF, armB) swing when it walks; its head
+       ("head") turns where it meets the neck, to nod or to look. */
+    "read-wolf": function () {
+      var leg = function (name, x, c) { return '<g data-part="' + name + '" data-pivot="' + x + ' -9"><rect x="' + (x - 1.3) + '" y="-9.6" width="2.6" height="9.6" rx="1.2" fill="' + c + '"/></g>'; };
+      return g(leg("armB", 7, "#7d858f") + leg("legB", -8, "#7d858f") +
+        '<g data-part="tail" data-pivot="-11 -13"><path d="M-11-13c-5-1-7 2-9 5 3 0 6 0 8-2" fill="#9aa3ad"/><path d="M-19.4-8.4c1 .2 2 .1 2.6-.4" fill="none" stroke="#e4e7eb" stroke-width=".8"/></g>' +
+        '<path d="M-12-13c0-4 6-6 13-6s11 2 11 6-3 6-12 6-12-2-12-6z" fill="#9aa3ad"/><path d="M-6-8.6c4 1 9 1 13 0" fill="none" stroke="#e4e7eb" stroke-width="1.2"/>' +
+        leg("armF", 9, "#9aa3ad") + leg("legF", -6, "#9aa3ad") +
+        '<g data-part="head" data-pivot="9 -15"><path d="M8-15c0-4 3-7 6-7l1.4-4 1.6 3.6 1.6-3.4 1 4.4c2 1.6 2.6 3.6 2.6 5.4l3.6 1.2c.8.4.8 1.4 0 1.8L19-11c-4 1.4-9 .6-11-4z" fill="#9aa3ad"/>' +
+        '<path d="M19-12.6l5.2-1.4c.8.4.8 1.4 0 1.8L19-11z" fill="#e4e7eb" stroke-width=".35"/><circle cx="25.2" cy="-13.2" r=".9" fill="#3d2c22"/>' + eyes(17, -17.4, .55) +
+        '<path d="M15.4-19.4l-.8-3 1.6 2" fill="#d9dde2" stroke="none"/><circle cx="17" cy="-14" r="1" fill="#f28b82" opacity=".5" stroke="none"/>' +
+        '<path d="M20.4-11.2q1.6.8 3 0" fill="none" stroke-width=".35"/></g>', ' stroke-width=".45"');
+    },
+    /* A big pumpkin, origin in its middle (so it can roll), 11 around. Its lid ("lid", the top with the stem) opens
+       on a hinge at its left. */
+    "read-pumpkin": g('<ellipse cx="-5" cy="0" rx="7" ry="10" fill="#ef8a2c"/><ellipse cx="5" cy="0" rx="7" ry="10" fill="#ef8a2c"/><ellipse rx="6.4" ry="10.6" fill="#f6a03c"/>' +
+      '<path d="M-3.4-6c-1.4 3-1.4 8 0 11" fill="none" stroke="#fff" stroke-width="1" opacity=".45"/>' +
+      '<g data-part="lid" data-pivot="-6 -7.4"><path d="M-6-7.4c3-2.6 9-2.6 12 0-3 1-9 1-12 0z" fill="#e07a1e"/><path d="M0-9.2c-.4-2 .2-3.4 1.6-4" fill="none" stroke="#5a7a2a" stroke-width="1.2"/>' +
+      '<path d="M1.6-12.6c1.8-1 3.6-.4 4.2 1-1.8.4-3.2 0-4.2-1z" fill="#5aa36a" stroke-width=".35"/></g>', ' stroke-width=".5"'),
+    // A small house seen from the front with a door (origin: the middle of its bottom), 30 wide; look: { c } wall colour.
+    "read-cottage": function (k) {
+      var c = (k && k.c) || "#f2d4a8";
+      return g('<path d="M-13 0v-18h26V0z" fill="' + c + '"/><path d="M-16-17l16-12 16 12z" fill="#b5523b"/><rect x="-4" y="-11" width="8" height="11" rx="1" fill="#8a5a36"/>' +
+        '<rect x="-11" y="-14" width="5" height="5" fill="#bfe3f5"/><rect x="6" y="-14" width="5" height="5" fill="#bfe3f5"/>', ' stroke-width=".5"');
+    },
+    // A long country road and grass, 480 wide (stage units at their place, from y 56 down), for a journey.
+    "read-road-wide": g('<path d="M-20 56h520v40H-20z" fill="#8cc66b" stroke="none"/><path d="M-20 56h520" fill="none" stroke-width=".5"/>' +
+      '<path d="M-20 74c60-3 120 3 180 0s120-3 180 0 120 3 160 0v8c-40 3-100-3-160 0s-120 3-180 0-120-3-180 0z" fill="#e8d5a8" stroke="none"/>' +
+      [30, 110, 170, 250, 300, 390, 440].map(function (x, i) { return '<path d="M' + x + " " + (62 + (i % 3) * 8) + 'l-1.5-3M' + x + " " + (62 + (i % 3) * 8) + 'v-3.6M' + x + " " + (62 + (i % 3) * 8) + 'l1.5-3" fill="none" stroke="#5a9a45" stroke-width=".7"/>'; }).join("")),
+    // Far hills, 300 wide (stage units), to put at depth 0.3 behind a journey.
+    "read-hills-wide": g('<path d="M-20 58c20-14 40-16 60-8s40-10 70-8 40 12 60 6 40-14 70-8 40 10 60 4v14H-20z" fill="#a9d68b" stroke-width=".4"/>'),
+    // A round tree (origin: the bottom of its trunk), 22 tall.
+    "read-tree-round": g('<path d="M-1.6 0l.4-10h2.4l.4 10z" fill="#9a6b45"/><circle cx="0" cy="-15" r="8" fill="#5fae5a"/><circle cx="-3" cy="-17" r="2.4" fill="#7dbb5a" stroke="none"/>', ' stroke-width=".5"'),
+
+    /* «اتل متل» (read-seed-24): a cow's empty pail (origin: the middle of its bottom) and a rug to sit on (origin: its
+       middle). */
+    "read-pail": g('<path d="M-4.4-7.6Q0-12 4.4-7.6" fill="none" stroke-width=".6"/><path d="M-4.6-7.6h9.2l-1.2 7.6h-6.8z" fill="#c8d3dc"/><ellipse cx="0" cy="-7.6" rx="4.6" ry="1.2" fill="#8a96a3"/>', ' stroke-width=".45"'),
+    "read-rug": g('<ellipse rx="58" ry="7" fill="#b5523b"/><ellipse rx="52" ry="5.4" fill="#e7c27a" stroke="none"/><ellipse rx="48" ry="4.4" fill="#9c3f33"/><path d="M-10 0l10-3 10 3-10 3z" fill="#e7c27a"/>', ' stroke-width=".5"'),
+
+    /* Heard stories 2 (read-seed-30). A toy block (look: { c }), 8 square, origin at the middle of its bottom. */
+    "read-block": function (k) {
+      return g('<rect x="-4" y="-8" width="8" height="8" rx="1" fill="' + ((k && k.c) || "#e5483f") + '"/><rect x="-2.4" y="-6.4" width="4.8" height="4.8" rx=".6" fill="#fff" opacity=".35" stroke="none"/>', ' stroke-width=".45"');
+    },
+    // A straw nest (origin: the middle of its bottom), 16 wide, and an egg in it (origin: its bottom) with a crack ("crack", hidden).
+    "read-nest": g('<path d="M-8-4.4c2 5 14 5 16 0z" fill="#c98a4b"/><path d="M-7.4-3.2c4 1.4 10 1.4 14.8 0M-6.4-1.6c4 1 9 1 12.8 0" fill="none" stroke="#8a5a36" stroke-width=".4"/><path d="M-8-4.4c4-1 12-1 16 0" fill="none" stroke="#8a5a36" stroke-width=".5"/>', ' stroke-width=".45"'),
+    "read-egg": g('<path d="M0-8c2.4 0 3.6 3.6 3.6 5.4S2 0 0 0-3.6-.8-3.6-2.6-2.4-8 0-8z" fill="#fbf3e2"/><g data-part="crack" style="opacity:0"><path d="M-3.2-4.2l1.6 1.2 1.2-1.6 1.4 1.4 1.2-1.2 1.2.8" fill="none" stroke-width=".45"/></g>', ' stroke-width=".45"'),
+    // A bed seen from the side (origin: the middle of its bottom), 40 wide, and a laundry basket full of clothes (origin: same).
+    "read-bed": g('<rect x="-20" y="-12" width="40" height="7" rx="1" fill="#c98a4b"/><path d="M-20-12v12M20-15v15" fill="none" stroke="#8a5a36" stroke-width="1.6"/>' +
+      '<rect x="-18.6" y="-15" width="37" height="3.4" rx="1.4" fill="#fff"/><rect x="11" y="-17.6" width="7" height="3.4" rx="1.4" fill="#bfe3f5"/><path d="M-18-15c8-3 20-3 26 0z" fill="#7cb3e0"/>', ' stroke-width=".45"'),
+    "read-laundry": g('<path d="M-8-11h16l-1.6 11H-6.4z" fill="#d9b27a"/><path d="M-7.4-7.4h14.8M-7-3.8h14" fill="none" stroke="#a0683f" stroke-width=".4"/><rect x="-9" y="-12" width="18" height="2.4" rx="1" fill="#c98a4b"/>', ' stroke-width=".45"'),
+    "read-laundry-top": g('<path d="M-7-12c1-3 4-4 6-2 2-3 6-2 8 1z" fill="#e46b8a"/><path d="M-2-13c1-2 4-2 5 0z" fill="#5b9bd5"/>', ' stroke-width=".4"'),
+
+    /* A short information text (read-seed-34). The ground seen cut open (stage units at its place): grass above and
+       brown soil below, from y 50. */
+    "read-soil": g('<rect width="160" height="50" fill="#cdeaf7" stroke="none"/><path d="M0 50h160v40H0z" fill="#9a6b45" stroke="none"/><path d="M0 50h160v3H0z" fill="#8cc66b"/><path d="M0 50h160" fill="none" stroke-width=".5"/>' +
+      '<g fill="#7a5232" stroke="none"><circle cx="20" cy="64" r="1"/><circle cx="44" cy="78" r="1.4"/><circle cx="120" cy="70" r="1.2"/><circle cx="140" cy="84" r="1"/><circle cx="104" cy="82" r=".8"/><circle cx="30" cy="84" r="1.2"/></g>'),
+    // A bean seed (origin: its middle), the soil that covers it ("read-hole-cover", stage units), its roots (drawn)
+    // and the plant (origin: where it comes out of the soil, at 80, 50).
+    "read-bean": g('<ellipse rx="2.6" ry="1.7" fill="#b5523b"/><path d="M-.6-1q.8 1 .2 2" fill="none" stroke="#fff" stroke-width=".35" opacity=".7"/>', ' stroke-width=".4"'),
+    "read-hole-cover": g('<path d="M72 50c4-3 12-3 16 0z" fill="#7a5232"/>', ' stroke-width=".4"'),
+    "read-roots": '<g fill="none" stroke="#f1e2c4" stroke-width=".9" stroke-linecap="round"><path d="M80 64c-1 4 1 8-1 12"/><path d="M80 66c-3 2-5 5-6 9"/><path d="M80 66c3 2 5 6 5 10"/></g>',
+    "read-plant": g('<g data-part="stem" data-pivot="0 0"><path d="M0 0V-14" fill="none" stroke="#4f8f3c" stroke-width="1.2"/></g>' +
+      '<g data-part="leaf1" data-pivot="0 -6"><path d="M0-6c-5-3-8-1-8 1 3 1 6 1 8-1z" fill="#7dbb5a"/></g><g data-part="leaf2" data-pivot="0 -9"><path d="M0-9c5-3 8-1 8 1-3 1-6 1-8-1z" fill="#7dbb5a"/></g>' +
+      '<g data-part="leaf3" data-pivot="0 -13"><path d="M0-13c-5-4-9-2-9 0 3 1.4 7 1.4 9 0z" fill="#5fae5a"/></g><g data-part="leaf4" data-pivot="0 -14"><path d="M0-14c4-5 8-4 8-2-2 2-6 3-8 2z" fill="#5fae5a"/></g>', ' stroke-width=".45"'),
+    // A bee hive (a straw skep) on a post (origin: the bottom of the post), with a little door.
+    "read-hive": g('<path d="M-1 0v-8h2V0z" fill="#8a5a36"/><path d="M-9-8c0-10 4-15 9-15s9 5 9 15z" fill="#e7c27a"/><path d="M-8.4-12h16.8M-7.4-16h14.8M-5-20h10" fill="none" stroke="#c98a4b" stroke-width=".6"/><path d="M-2-8a2 2 0 0 1 4 0z" fill="#3d2c22"/>', ' stroke-width=".5"'),
+    // A rabbit's burrow under the grass (stage units at its place): a hole at (230, 58) and a tunnel to a round room.
+    "read-burrow": g('<path d="M200 56h80v34h-80z" fill="#9a6b45" stroke="none"/><path d="M225 58c0-3 10-3 10 0 2 10 8 16 18 18 6 1 10 4 10 7s-6 5-14 5-14-2-14-6c0-2 2-4 4-5-8-3-14-10-14-19z" fill="#5c3d26" stroke-width=".4"/>'),
+    // A pond (stage units at its place, around 400, 70), for the fish.
+    "read-pond": g('<ellipse cx="400" cy="72" rx="34" ry="10" fill="#5fb0d8"/><path d="M380 70c3-2 6 2 9 0M404 75c3-2 6 2 9 0" fill="none" stroke="#fff" stroke-width=".6"/><g fill="#4f8f3c" stroke-width=".4"><path d="M368 66c-1-6 1-10 2-12 1 2 1 6 0 12z"/><path d="M432 68c-1-6 1-10 2-12 1 2 1 6 0 12z"/></g>', ' stroke-width=".5"'),
+    // A twig in a bird's beak (origin: its middle).
+    "read-twig": g('<path d="M-4 0h8M1 0l2-1.6" fill="none" stroke="#8a5a36" stroke-width=".8"/>'),
+
+    /* «خاله سوسکه» (read-seed-31). The beetle, seen from the side and facing right (origin: under her feet), about
+       16 long: "dress" (a red skirt) and "shoes" are hidden until she dresses; her legs (legF, legB) swing when she
+       walks. */
+    "read-beetle": g('<g data-part="legB" data-pivot="-2 -4"><path d="M-2-4l-1.6 4M3-4l1 4" fill="none" stroke-width=".7"/></g>' +
+      '<path d="M-7-4c0-5 3-8 7-8s7 3 7 8z" fill="#5b3a29"/><path d="M0-12v8" fill="none" stroke-width=".45"/><path d="M-3-10.6c1.4-.8 3-1 4-.8" fill="none" stroke="#fff" stroke-width=".6" opacity=".4"/>' +
+      '<g data-part="dress" style="opacity:0"><path d="M-7.4-6.4c3-1.6 11-1.6 14.4 0l1 3.4H-8.4z" fill="#e5483f"/><g fill="#fff" stroke="none"><circle cx="-4" cy="-4.4" r=".6"/><circle cx="0" cy="-4.8" r=".6"/><circle cx="4" cy="-4.4" r=".6"/></g></g>' +
+      '<g data-part="legF" data-pivot="0 -4"><path d="M0-4l1.2 4M-5-4l-1.2 4" fill="none" stroke-width=".7"/></g>' +
+      '<g data-part="shoes" style="opacity:0"><g fill="#e5483f"><ellipse cx="1.6" cy="-.4" rx="1.2" ry=".7"/><ellipse cx="-6" cy="-.4" rx="1.2" ry=".7"/></g></g>' +
+      '<circle cx="8.6" cy="-6.6" r="3.2" fill="#6b4a33"/><path d="M8.6-9.6c0-2 1-3 2.4-3.4M10-9.2c1-1.6 2.4-2 3.6-1.8" fill="none" stroke-width=".45"/>' +
+      '<circle cx="9.8" cy="-7.2" r="1.1" fill="#fff" stroke-width=".3"/>' + eyes(10.1, -7.1, .45) + '<path d="M9.4-5q.8.5 1.6 0" fill="none" stroke="#fff" stroke-width=".35"/>', ' stroke-width=".45"'),
+    // Mr Mouse, seen from the side and facing right (origin: under his feet), about 16 long; legs legF, legB swing.
+    "read-mouse": g('<g data-part="legB" data-pivot="-3 -3"><path d="M-3-3.4v3.4" fill="none" stroke-width=".9"/></g>' +
+      '<path d="M-7-4c-4 0-6 2-9 1" fill="none" stroke="#e8737e" stroke-width=".6"/><path d="M-7-4c0-4 3-7 8-7 4 0 7 3 8 7z" fill="#c9c3bd"/>' +
+      '<g data-part="legF" data-pivot="4 -3"><path d="M4-3.4v3.4" fill="none" stroke-width=".9"/></g>' +
+      '<circle cx="6" cy="-10.4" r="2.6" fill="#c9c3bd"/><circle cx="6" cy="-10.4" r="1.4" fill="#f7c0c8" stroke="none"/>' +
+      '<path d="M6-7.6c2-1 4-.8 5.6 1.6-1.8.8-3.8.8-5.6-1.6z" fill="#c9c3bd"/><circle cx="11.6" cy="-6.2" r=".6" fill="#e8737e" stroke="none"/>' + eyes(8.2, -7.6, .45) +
+      '<path d="M3.6-11.6h5.6l-.6-2.6h-4.4z" fill="#3f6f8f" stroke-width=".35"/><path d="M3-11.6h6.8" fill="none" stroke-width=".5"/>', ' stroke-width=".45"'),
+    // A garden pool (حوض), seen a little from above (stage units at its place, around 64, 74).
+    "read-pool": g('<path d="M30 66h68l6 16H24z" fill="#5b9bd5"/><path d="M28 66h72" fill="none" stroke="#e7dccb" stroke-width="2.4"/><path d="M24 82h80" fill="none" stroke="#e7dccb" stroke-width="2.4"/>' +
+      '<path d="M40 72c3-2 6 2 9 0M70 76c3-2 6 2 9 0" fill="none" stroke="#fff" stroke-width=".6"/>', ' stroke-width=".5"'),
+    // A ladder (origin: its bottom), 22 tall.
+    "read-ladder": g('<path d="M-3.4 0l1.4-22M3.4 0L2-22" fill="none" stroke="#a0683f" stroke-width="1"/><path d="M-3-4h6M-2.6-9h5.4M-2.4-14h4.8M-2.1-19h4.2" fill="none" stroke="#c98a4b" stroke-width=".8"/>')
+  });
+  /* ---------- Sprout listening and sound lessons (read-sprout-7 … 20) ---------- */
+  Object.assign(B.RIG, {
+    /* One sound of a spoken word as a coloured block (look: { c }), 14 wide and 12 tall, origin in its middle. Words
+       are rows of blocks, the first sound on the right. */
+    "read-sblock": function (k) {
+      return g('<rect x="-7" y="-6" width="14" height="12" rx="3" fill="' + ((k && k.c) || "#5b9bd5") + '"/><path d="M-4.4-3.4h5" fill="none" stroke="#fff" stroke-width=".9" opacity=".6"/>', ' stroke-width=".5"');
+    },
+    // A garden wall of bricks between two yards (stage units at its place: x 90 to 100, from y 30 down).
+    "read-wall": g('<rect x="90" y="30" width="10" height="56" fill="#c9774f"/><path d="M90 37h10M90 44h10M90 51h10M90 58h10M90 65h10M90 72h10M90 79h10M95 30v7M95 44v7M95 58v7M95 72v7M92.5 37v7M97.5 51v7M92.5 65v7M97.5 79v7" fill="none" stroke="#a65a3a" stroke-width=".4"/>' +
+      '<rect x="89" y="28" width="12" height="3" rx="1" fill="#b5523b"/>', ' stroke-width=".5"'),
+    /* A glass jar (origin: the middle of its bottom), 16 wide and 22 tall; the water inside ("water") grows up from
+       the bottom (sy), so stones dropped in can raise it. */
+    "read-jar": g('<g data-part="water" data-pivot="0 0"><path d="M-6.4 0h12.8v-18h-12.8z" fill="#5b9bd5" stroke="none" opacity=".85"/></g>' +
+      '<path d="M-4-22h8v3c3 1 5 3 5 6V0H-9v-13c0-3 2-5 5-6z" fill="#d6ecf7" fill-opacity=".35"/><path d="M-4.6-22h9.2" fill="none" stroke-width=".9"/>' +
+      '<path d="M-6.6-12c-.4 3-.4 7 0 10" fill="none" stroke="#fff" stroke-width=".8" opacity=".8"/>', ' stroke-width=".5"'),
+    // A small stone (origin: its middle).
+    "read-pebble": g('<ellipse rx="2" ry="1.5" fill="#9a8f84"/><path d="M-1-.6q.6-.4 1.2-.2" fill="none" stroke="#fff" stroke-width=".3" opacity=".7"/>', ' stroke-width=".35"'),
+    /* A crow seen from the side, facing right (origin: under its feet), about 16 long; its head ("head") dips to
+       drink or to pick up a stone, turning where it meets the body. */
+    "read-crow": g('<path d="M-1 0l-1-4M2 0l1-4" fill="none" stroke="#6b6f76" stroke-width=".6"/>' +
+      '<path d="M-6-8l-6 2 1.6 1.4L-5-5z" fill="#2d2d33"/><ellipse cx="0" cy="-7" rx="6.4" ry="4.2" fill="#2d2d33"/><path d="M-4-8c3-2.4 6-2 8 0" fill="none" stroke="#5c5f66" stroke-width=".5"/>' +
+      '<g data-part="head" data-pivot="4 -9"><circle cx="6" cy="-11" r="3.2" fill="#2d2d33"/><path d="M8.6-12l4.4 1.2-4.2 1.2z" fill="#6b6f76"/><circle cx="6.9" cy="-12" r=".8" fill="#fff" stroke="none"/><circle cx="7.1" cy="-12" r=".4" fill="#3d2c22" stroke="none"/></g>', ' stroke-width=".45"'),
+    // An ear of wheat on its stalk (origin: the bottom of the stalk), 20 tall.
+    "read-wheat": g('<path d="M0 0V-14" fill="none" stroke="#c9a14a" stroke-width=".8"/><path d="M0-6c-2-1-3-3-3-5" fill="none" stroke="#c9a14a" stroke-width=".6"/>' +
+      '<g fill="#e7c27a">' + [-14, -16, -18].map(function (y) { return '<ellipse cx="-1.2" cy="' + y + '" rx="1" ry="1.6"/><ellipse cx="1.2" cy="' + y + '" rx="1" ry="1.6"/>'; }).join("") + '<ellipse cx="0" cy="-19.6" rx="1" ry="1.6"/></g>', ' stroke-width=".3"'),
+    /* A hand mill (two round stones; origin: the middle of its bottom), 26 wide: the top stone ("top") turns, and the
+       flour that comes out ("flour") grows. */
+    "read-quern": g('<g data-part="flour" data-pivot="16 0"><path d="M9 0c2-5 12-5 14 0z" fill="#fffaf0"/></g><ellipse cx="0" cy="-3" rx="13" ry="3.4" fill="#9a8f84"/><path d="M-13-3v-3h26v3" fill="#9a8f84"/>' +
+      '<g data-part="top" data-pivot="0 -9"><ellipse cx="0" cy="-9" rx="11" ry="3" fill="#b8aea3"/><path d="M-11-9v-2.4h22V-9" fill="#b8aea3"/><ellipse cx="0" cy="-11.4" rx="11" ry="3" fill="#cfc6bc"/><circle cx="0" cy="-11.4" r="1.4" fill="#6b6f76"/>' +
+      '<path d="M6-11.6v-6" fill="none" stroke="#8a5a36" stroke-width="1.4"/></g>', ' stroke-width=".5"'),
+    /* A wide bowl (origin: the middle of its bottom), 28 wide, with flour in it ("flour") that becomes dough ("dough",
+       hidden). */
+    "read-bowl": g('<g data-part="flour"><path d="M-10-8c3-4 17-4 20 0z" fill="#fffaf0"/></g><g data-part="dough" style="opacity:0"><path d="M-9-8c1-6 17-6 18 0z" fill="#f6e7c8"/></g>' +
+      '<path d="M-14-8h28c-1 6-6 8-14 8s-13-2-14-8z" fill="#5b9bd5"/><path d="M-10-5h20" fill="none" stroke="#fff" stroke-width=".5" opacity=".6"/>', ' stroke-width=".5"'),
+    // A few seeds on the grass (stage units at their place, around 76, 84).
+    "read-seeds": '<g fill="#a0683f">' + [[68, 84], [72, 86], [77, 83.6], [81, 85.4], [86, 84.4], [74, 82.6]].map(function (p) { return '<ellipse cx="' + p[0] + '" cy="' + p[1] + '" rx=".9" ry=".55"/>'; }).join("") + "</g>"
+  });
+  /* ---------- the alphabet table (read-sapling-36) ---------- */
+  var ALEF = "ا ب پ ت ث ج چ ح خ د ذ ر ز ژ س ش ص ض ط ظ ع غ ف ق ک گ ل م ن و ه ی".split(" ");
+  Object.assign(B.RIG, {
+    /* The 32 letters in a table, 8 to a row, read from the right (stage units at their place). Each letter is a
+       piece "l1" … "l32" (hidden until a track shows it), on a card. */
+    "read-alphabet": function () {
+      return g('<rect x="10" y="10" width="140" height="70" rx="4" fill="#fffaf0"/>' + ALEF.map(function (c, i) {
+        var x = 136 - (i % 8) * 16, y = 22 + Math.floor(i / 8) * 16;
+        return '<g data-part="l' + (i + 1) + '" data-pivot="' + x + " " + y + '" style="opacity:0"><rect x="' + (x - 7) + '" y="' + (y - 7) + '" width="14" height="14" rx="2.5" fill="#fde68a" stroke-width=".4"/>' +
+          '<text x="' + x + '" y="' + (y + 3.6) + '" font-size="10"' + TXT + ">" + c + "</text></g>";
+      }).join(""), ' stroke-width=".5"');
+    }
+  });
+  /* ---------- Sapling stories (read-sapling-46, 48) ---------- */
+  Object.assign(B.RIG, {
+    // A cap (origin: where it sits on a head, the middle of its brim), 9 wide.
+    "read-hat": g('<path d="M-4.4 0c0-4 1.8-5.6 4.4-5.6S4.4-4 4.4 0z" fill="#e5483f"/><path d="M2 0h5.4c.6 0 .6.9 0 .9H-4.4V0z" fill="#c2410c"/><circle cx="0" cy="-5.6" r=".7" fill="#fcd34d"/>', ' stroke-width=".4"'),
+    // A hunter's net (origin: the middle of its bottom), 34 wide and 22 tall, thrown over something.
+    "read-net": function () {
+      var lines = "";
+      for (var i = -16; i <= 16; i += 4) lines += '<path d="M' + i + ' 0Q' + (i * 0.8) + ' -11 ' + (i * 0.6) + ' -22" />';
+      for (var j = -4; j >= -20; j -= 4) lines += '<path d="M' + (-16 + (-j) * 0.18) + " " + j + 'H' + (16 - (-j) * 0.18) + '" />';
+      return '<g fill="none" stroke="#8a5a36" stroke-width=".55">' + lines + "</g>";
+    },
+    // A piece of the net, bitten open (origin: its middle).
+    "read-net-hole": '<ellipse rx="5" ry="4" fill="#cdeaf7" stroke="#8a5a36" stroke-width=".4" stroke-dasharray="1 1"/>'
+  });
+  /* ---------- Sapling poem and fable (read-sapling-78, 79) ---------- */
+  Object.assign(B.RIG, {
+    // A night sky over dark hills, with no moon (stage units at their place), for a moon that rises.
+    "read-night-sky": '<rect width="160" height="90" fill="#26365f"/><g fill="#fff3b0">' + [[40, 10], [62, 22], [90, 8], [112, 26], [132, 12], [150, 30], [28, 30], [76, 34]].map(function (p) {
+      return '<circle cx="' + p[0] + '" cy="' + p[1] + '" r=".7"/>'; }).join("") + '</g><path d="M0 58c24-10 46-10 66-4s44 0 62-6 26-2 32 2v40H0z" fill="#3c5a52" stroke="#1d2a40" stroke-width=".5"/><path d="M0 64c40-4 90-4 160 0v26H0z" fill="#33503f"/>',
+    // Moonlight on the valley (stage units at its place): a pale glow over the hills, to fade in.
+    "read-moonlight": '<ellipse cx="80" cy="66" rx="70" ry="14" fill="#fff8d6" opacity=".35"/><ellipse cx="80" cy="64" rx="40" ry="8" fill="#fff8d6" opacity=".35"/>',
+    // A low bed seen from the side for a sleeping child (origin: the middle of its bottom), 44 wide.
+    "read-bed-low": g('<rect x="-22" y="-8" width="44" height="6" rx="1.4" fill="#c98a4b"/><path d="M-22-8v8M22-11v11" fill="none" stroke="#8a5a36" stroke-width="1.6"/><rect x="-20.4" y="-11" width="41" height="3.4" rx="1.4" fill="#fff"/>' +
+      '<rect x="13" y="-13.4" width="7" height="3" rx="1.4" fill="#bfe3f5"/>', ' stroke-width=".45"'),
+    "read-blanket": g('<path d="M-18-10c4-3 26-3 30 0v4h-30z" fill="#7cb3e0"/><path d="M-12-9.6l3 3M-4-10l3 3M4-10l3 3" fill="none" stroke="#fff" stroke-width=".5" opacity=".7"/>', ' stroke-width=".45"'),
+    // A stick held by two birds (origin: its middle), 30 long.
+    "read-stick": g('<path d="M-15 0H15" fill="none" stroke="#8a5a36" stroke-width="1.4"/><path d="M-15 0H15" fill="none" stroke="#c98a4b" stroke-width=".6"/>'),
+    // A pond seen a little from above (stage units at their place, around 40, 80).
+    "read-pond-small": g('<ellipse cx="40" cy="80" rx="26" ry="7" fill="#5fb0d8"/><path d="M28 79c2-1.4 4 1.4 6 0M46 82c2-1.4 4 1.4 6 0" fill="none" stroke="#fff" stroke-width=".6"/>', ' stroke-width=".5"')
+  });
 })();

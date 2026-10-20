@@ -17,12 +17,24 @@
   // Paired with the home hub, or the hub itself (js/sync.js).
   function synced() { return !!(B.sync && B.sync.available && B.sync.paired()); }
 
+  // Whole-lesson reviews, for lessons that have no practice set yet (the others come back as practice: js/practice.js).
   function dueReviews(p) {
     var now = Date.now();
     return Object.keys(p.lessons).filter(function (id) {
       var r = p.lessons[id];
-      return r.mastered && r.due <= now && B.lessonById(id);
+      return r.mastered && r.due <= now && B.lessonById(id) && !(B.lessonGens && B.lessonGens(id).length);
     });
+  }
+  // Subjects with practice sets due for review: one mixed «مرور» each.
+  function dueReviewSubjects(p) {
+    return B.dueSets ? B.SUBJECTS.filter(function (s) { return B.dueSets(p, s.id).length; }) : [];
+  }
+  function reviewTile(p, s) {
+    return el("a", { class: "tile review-tile", href: "#/review/" + s.id }, [
+      el("span", { class: "big", text: "🔄" }),
+      el("span", { class: "name", text: B.t("pathReviewTitle") + ": " + s.name }),
+      el("span", { class: "sub", text: B.t("pathReviewSub", { n: B.fa(Math.min(B.dueSets(p, s.id).length, 4)) }) })
+    ]);
   }
 
   // ---------- Profiles ----------
@@ -115,19 +127,28 @@
       el("a", { class: "btn quiet", href: "#/", text: B.t("switchChild") }),
       el("a", { class: "btn quiet", href: "#/parent", text: B.t("parents") })
     ]));
+    // Practice that is there any time, outside the gardens (the calm corner, js/practice.js `home: true`).
+    var corner = B.practiceOnHome ? B.practiceOnHome(p) : [];
+    if (corner.length) app.appendChild(el("div", { class: "row home-practice" }, corner.map(function (g) {
+      return el("a", { class: "btn secondary", href: "#/practice/" + g.subject + "/" + g.id + "/home", text: g.emoji + " " + g.title });
+    })));
     // With a weekly plan, today's lessons come first (reviews are already part of them).
     var today = B.todayAgenda(p);
     if (today && today.items.length) {
       app.appendChild(el("h2", { text: B.t("todayPlanTitle") }));
       app.appendChild(el("p", { class: "hint", text: B.t("todayPlanHint") }));
-      app.appendChild(lessonGrid(p, today.items.map(function (it) { return it.lesson; })));
+      app.appendChild(agendaGrid(p, today.items));
       if (today.activity) app.appendChild(el("p", { class: "note", text: "🏡 " + B.t("todayActivity", { text: today.activity.text }) }));
     }
-    var due = today ? [] : dueReviews(p);
-    if (due.length) {
+    // Mixed reviews of practice sets show whenever they are due, unless today's plan already has them.
+    var planned = today ? today.items.map(function (it) { return it.id; }) : [];
+    var due = today ? [] : dueReviews(p), dueSubjects = dueReviewSubjects(p).filter(function (s) { return planned.indexOf("review-" + s.id) < 0; });
+    if (due.length || dueSubjects.length) {
       app.appendChild(el("h2", { text: B.t("reviewTitle") }));
       app.appendChild(el("p", { class: "hint", text: B.t("reviewHint") }));
-      app.appendChild(lessonGrid(p, due.map(B.lessonById)));
+      var rg = lessonGrid(p, due.map(B.lessonById));
+      dueSubjects.forEach(function (s) { rg.insertBefore(reviewTile(p, s), rg.firstChild); });
+      app.appendChild(rg);
     }
     app.appendChild(el("h2", { text: B.t("whatToday") }));
     var grid = el("div", { class: "grid" });
@@ -139,6 +160,20 @@
       ]));
     });
     app.appendChild(grid);
+  }
+
+  // Today's plan: lessons, practice sets, quizzes and reviews (js/plan.js).
+  function agendaGrid(p, items) {
+    var grid = el("div", { class: "grid" });
+    items.forEach(function (it) {
+      var done = it.done || (it.kind === "lesson" && p.lessons[it.id] && p.lessons[it.id].done && !it.review);
+      grid.appendChild(el("a", { class: "tile" + (it.done ? " done" : ""), href: it.href }, [
+        el("span", { class: "big", text: it.emoji }),
+        el("span", { class: "name", text: it.title }),
+        el("span", { class: "sub", text: it.done ? "✓" : it.review ? B.t("reviewTag") : done ? B.t("stateDone") : "" })
+      ]));
+    });
+    return grid;
   }
 
   function lessonGrid(p, lessons) {
@@ -167,6 +202,16 @@
       level ? badge(level) : null
     ]));
     var lessons = B.lessonsFor(id, level);
+    // Seed, Sprout and Sapling: one path, lesson → its practice → … → a unit quiz (js/practice.js).
+    if (lessons.length && B.gardenPath && B.inPath(level)) {
+      if (B.dueSets(p, id).length) app.appendChild(el("div", { class: "grid", style: "margin-top:14px" }, [reviewTile(p, sub)]));
+      app.appendChild(pathGrid(p, B.gardenPath(p, id, level)));
+      var free = practiceArea(p, id, level);
+      if (free) app.appendChild(el("details", { class: "free-practice" }, [el("summary", { text: B.t("pathFreePractice") }), free]));
+      return;
+    }
+    var practice = practiceArea(p, id, level);
+    if (practice) app.appendChild(practice);
     if (!lessons.length) {
       app.appendChild(el("div", { class: "card", style: "margin-top:16px" }, [
         el("p", { class: "prompt", text: B.t("comingSoonTitle") }),
@@ -175,6 +220,146 @@
       return;
     }
     app.appendChild(lessonGrid(p, lessons));
+  }
+
+  // ---------- The garden's path ----------
+  function stars(n) { return "⭐".repeat(n || 0) + "☆".repeat(3 - (n || 0)); }
+  function pathGrid(p, items) {
+    var grid = el("div", { class: "grid path-grid" });
+    items.forEach(function (it) {
+      var face, sub;
+      if (it.kind === "lesson") {
+        var r = it.rec;
+        face = [it.lesson.emoji, it.lesson.title];
+        sub = !r ? "" : r.mastered ? B.t("stateMastered") : r.done ? B.t("stateDone") : B.t("statePracticing");
+      } else if (it.kind === "set") {
+        face = ["🔁", B.t("pathSet")];
+        sub = it.done ? (it.rec.due <= Date.now() ? B.t("pathSetDue") : "✓") : "";
+      } else {
+        face = ["⭐", B.t("pathQuizTitle")];
+        sub = it.done ? stars(it.rec.stars) : "";
+      }
+      var cls = "tile path-" + it.kind + (it.done ? " done" : "") + (it.next ? " next" : "");
+      grid.appendChild(it.open
+        ? el("a", it.next ? { class: cls, href: B.pathHref(it), "aria-current": "step" } : { class: cls, href: B.pathHref(it) }, [
+          el("span", { class: "big", text: face[0] }), el("span", { class: "name", text: face[1] }), el("span", { class: "sub", text: it.next ? B.t("pathNextTag") : sub })
+        ])
+        : el("span", { class: cls + " locked", "aria-disabled": "true" }, [
+          el("span", { class: "big", text: "🔒" }), el("span", { class: "name", text: face[1] }), el("span", { class: "sub", text: "" })
+        ]));
+    });
+    return grid;
+  }
+
+  // The «ادامه» button: the next thing in the garden's path that the child has not done.
+  function nextButton(p, subject, id, primary) {
+    var sub = B.subjectById(subject), level = sub && sub.leveled ? B.levelOf(p, subject) : null;
+    if (!B.gardenPath || !B.inPath(level)) return null;
+    var next = B.pathNext(p, subject, level, id);
+    return next ? el("a", { class: primary ? "btn" : "btn secondary", href: B.pathHref(next), text: B.t("pathContinue") }) : null;
+  }
+
+  /* Plays a practice session (a lesson's set, a unit quiz, a review, free practice), records it and shows a gentle
+     end: thanks, the stars of a quiz, «ادامه» to the next thing in the path. */
+  function runPractice(p, lesson, back, again) {
+    clear();
+    B.playLesson(lesson, app, function (res) {
+      var out = B.finishPractice(p, lesson, res);
+      if (lesson.kind !== "free") B.logPractice(p, lesson.kind === "review" ? lesson.id : lesson.sets[0]);
+      B.save();
+      B.noteProgress();
+      clear();
+      var msg = lesson.kind === "quiz" ? B.t("pathQuizDone", { stars: B.fa(out.stars) })
+        : B.t(!res.scored ? "practiceDoneQuiet" : res.firstTry < res.scored ? "practiceDoneMissed" : "practiceDone");
+      var next = lesson.kind === "set" || lesson.kind === "quiz" ? nextButton(p, lesson.subject, lesson.sets[0], true) : null;
+      app.appendChild(el("div", { class: "lesson" }, [
+        el("p", { class: "celebrate", text: lesson.kind === "quiz" ? stars(out.stars) : res.scored ? "💪" : "🌷" }),
+        el("p", { class: "prompt", text: msg }),
+        el("div", { class: "row", style: "justify-content:center" }, [
+          next,
+          el("button", { class: next ? "btn secondary" : "btn", type: "button", text: B.t(lesson.kind === "quiz" ? "pathQuizAgain" : "practiceAgain"), onclick: again }),
+          el("a", { class: "btn secondary", href: back, text: B.t(back === "#/home" ? "back" : "otherLessons") })
+        ])
+      ]));
+      B.speak(msg.replace(/[⭐☆]/g, ""));
+    }, function () { go(back); });
+  }
+
+  function viewSet(lessonId) {
+    var p = B.currentProfile(), l = B.lessonById(lessonId);
+    if (!p || !l) return go("#/");
+    if (B.leaveEnglish) B.leaveEnglish();
+    var lesson = B.setSession(p, lessonId);
+    if (!lesson) return go("#/subject/" + l.subject);
+    runPractice(p, lesson, "#/subject/" + l.subject, function () { viewSet(lessonId); });
+  }
+  function viewQuiz(lessonId) {
+    var p = B.currentProfile(), l = B.lessonById(lessonId);
+    if (!p || !l) return go("#/");
+    if (B.leaveEnglish) B.leaveEnglish();
+    var lesson = B.quizSession(p, lessonId);
+    if (!lesson) return go("#/subject/" + l.subject);
+    runPractice(p, lesson, "#/subject/" + l.subject, function () { viewQuiz(lessonId); });
+  }
+  function viewReview(subject) {
+    var p = B.currentProfile();
+    if (!p || !B.subjectById(subject)) return go("#/");
+    if (B.leaveEnglish) B.leaveEnglish();
+    var lesson = B.reviewSession(p, subject);
+    if (!lesson) return go("#/subject/" + subject);
+    runPractice(p, lesson, "#/subject/" + subject, function () {
+      if (B.dueSets(p, subject).length) viewReview(subject); else go("#/subject/" + subject);
+    });
+  }
+
+  // ---------- Practice (js/practice.js): fresh items every time, never scored as a lesson ----------
+  function practiceArea(p, subject, level) {
+    var gens = B.practiceFor ? B.practiceFor(subject, level) : [];
+    if (!gens.length) return null;
+    var ctx = B.practiceContext(p, subject);
+    var open = gens.filter(function (g) { return !B.practiceMissing(g, ctx).length; });
+    var grid = el("div", { class: "grid practice-grid" });
+    if (open.length > 1) {
+      var due = B.practiceDue(p, subject, level);
+      grid.appendChild(el("a", { class: "tile practice-mix", href: "#/practice/" + subject }, [
+        el("span", { class: "big", text: "🔁" }),
+        el("span", { class: "name", text: B.t("practiceStart") }),
+        el("span", { class: "sub", text: due ? B.t("practiceDue", { n: B.fa(due) }) : B.t("practiceMix") })
+      ]));
+    }
+    gens.forEach(function (g) {
+      var missing = B.practiceMissing(g, ctx), need = missing.length && B.lessonById(missing[0]);
+      grid.appendChild(missing.length
+        ? el("span", { class: "tile locked", "aria-disabled": "true" }, [
+          el("span", { class: "big", text: "🔒" }),
+          el("span", { class: "name", text: g.title }),
+          el("span", { class: "sub", text: need ? B.t("practiceLocked", { lesson: need.title }) : "" })
+        ])
+        : el("a", { class: "tile", href: "#/practice/" + subject + "/" + g.id }, [
+          el("span", { class: "big", text: g.emoji }),
+          el("span", { class: "name", text: g.title })
+        ]));
+    });
+    return el("section", { class: "practice-area" }, [
+      el("h2", { text: B.t("practiceArea") }),
+      el("p", { class: "hint", text: open.length ? B.t("practiceHint") : B.t("practiceNothing") }),
+      grid
+    ]);
+  }
+
+  function viewPractice(subject, genId, from) {
+    var p = B.currentProfile();
+    var sub = B.subjectById(subject);
+    if (!p || !sub) return go("#/");
+    var gen = genId ? B.practiceById(genId) : null;
+    var level = gen && gen.level ? gen.level : sub.leveled ? B.levelOf(p, subject) : null;
+    var back = from === "home" ? "#/home" : "#/subject/" + subject;
+    // A new session is made in Persian (the English switch remakes the same items in English).
+    if (B.leaveEnglish) B.leaveEnglish();
+    var lesson = B.practiceSession(p, subject, level, { only: genId || null });
+    if (!lesson) return go(back);
+    // Nothing scored (a check-in, a calm tool) ends with thanks, not praise for practising (runPractice).
+    runPractice(p, lesson, back, function () { viewPractice(subject, genId, from); });
   }
 
   function viewLesson(id) {
@@ -200,13 +385,16 @@
       B.save();
       B.noteProgress();
       clear();
-      var msg = mastered ? B.t("mastered") : B.t("practiced");
+      // In a garden's path «ادامه» leads on, usually to this lesson's practice.
+      var next = nextButton(p, lesson.subject, id, true);
+      var msg = mastered ? B.t("mastered") : B.t(next ? "pathPracticed" : "practiced");
       app.appendChild(el("div", { class: "lesson" }, [
         el("p", { class: "celebrate", text: mastered ? "🎉" : "💪" }),
         el("p", { class: "prompt", text: msg }),
         el("div", { class: "row", style: "justify-content:center" }, [
-          mastered ? null : el("button", { class: "btn", type: "button", text: B.t("again"), onclick: function () { viewLesson(id); } }),
-          el("a", { class: mastered ? "btn" : "btn secondary", href: back, text: B.t("otherLessons") })
+          next,
+          mastered ? null : el("button", { class: next ? "btn secondary" : "btn", type: "button", text: B.t("again"), onclick: function () { viewLesson(id); } }),
+          el("a", { class: mastered && !next ? "btn" : "btn secondary", href: back, text: B.t("otherLessons") })
         ])
       ]));
       B.speak(msg);
@@ -238,6 +426,20 @@
         el("div", { class: "row" }, [select, B.PLACEMENT[sub.id] ? el("a", { class: "btn secondary", href: "#/place/" + sub.id, text: B.t("placement") }) : null])
       ]));
     });
+    // Iran's flag in «ایران و جهان»: the family's choice, side by side with plain names (js/steps/world.js).
+    if (B.flagSvg) {
+      var chosen = B.family().flag || null;
+      app.appendChild(el("div", { class: "card", style: "margin:14px 0" }, [
+        el("h2", { style: "margin-top:0", text: B.t("parentFlagTitle") }),
+        el("p", { class: "hint", text: B.t("parentFlagHint") }),
+        el("div", { class: "row flag-choice", role: "group", "aria-label": B.t("parentFlagTitle") }, [["current", "parentFlagCurrent"], ["lion-sun", "parentFlagLionSun"], [null, "parentFlagNone"]].map(function (o) {
+          return el("button", { class: "flag-option", type: "button", "aria-pressed": chosen === o[0] ? "true" : "false", onclick: function (e) {
+            B.setFamily("flag", o[0]);
+            Array.prototype.forEach.call(e.currentTarget.parentNode.children, function (b) { b.setAttribute("aria-pressed", b === e.currentTarget ? "true" : "false"); });
+          } }, [o[0] ? B.flagSvg("iran-" + o[0]) : B.flagSvg("none"), el("span", { text: B.t(o[1]) })]);
+        }))
+      ]));
+    }
     app.appendChild(el("div", { class: "card", style: "margin:14px 0" }, [
       el("h2", { style: "margin-top:0", text: B.t("planCardTitle") }),
       el("p", { class: "hint", text: B.t("planCardHint", { name: p.name }) }),
@@ -406,6 +608,10 @@
       case "home": return viewHome();
       case "subject": return viewSubject(parts[1]);
       case "lesson": return viewLesson(parts[1]);
+      case "practice": return viewPractice(parts[1], parts[2], parts[3]);
+      case "set": return viewSet(parts[1]);
+      case "quiz": return viewQuiz(parts[1]);
+      case "review": return viewReview(parts[1]);
       case "parent": return viewParent();
       case "place": return viewPlacement(parts[1]);
       case "backup": return viewBackup();

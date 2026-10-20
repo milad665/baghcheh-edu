@@ -37,7 +37,7 @@ struct State {
     port: u16,
     hub_token: String,
     rev: u64,
-    data: Value, // {profiles: [...], deleted: {...}}
+    data: Value, // {profiles: [...], deleted: {...}, family: {...}}
     devices: Vec<Value>, // [{token, paired}]
     code: Option<Code>,
     backed_up_rev: Option<u64>,
@@ -57,6 +57,7 @@ pub fn start(dir: PathBuf) -> Result<Option<Hub>, Box<dyn std::error::Error>> {
     let data = json!({
         "profiles": saved.get("profiles").cloned().filter(Value::is_array).unwrap_or(json!([])),
         "deleted": saved.get("deleted").cloned().filter(Value::is_object).unwrap_or(json!({})),
+        "family": saved.get("family").cloned().filter(Value::is_object).unwrap_or(json!({})),
     });
     let devices = read_json(&dir.join("devices.json")).get("devices").and_then(Value::as_array).cloned().unwrap_or_default();
 
@@ -161,7 +162,9 @@ fn api(req: &mut Request, path: &str, query: &str, state: &Shared) -> Res {
             let (Some(profiles), Some(deleted)) = (b.get("profiles").filter(|v| v.is_array()), b.get("deleted").filter(|v| v.is_object())) else {
                 return json_res(400, json!({"error": "bad"}));
             };
-            let data = json!({"profiles": profiles, "deleted": deleted});
+            // Family settings (js/common.js); a device from before they existed keeps the hub's copy.
+            let family = b.get("family").filter(|v| v.is_object()).cloned().unwrap_or_else(|| st.data["family"].clone());
+            let data = json!({"profiles": profiles, "deleted": deleted, "family": family});
             if data != st.data {
                 st.data = data;
                 st.rev += 1;
@@ -214,7 +217,7 @@ fn api(req: &mut Request, path: &str, query: &str, state: &Shared) -> Res {
 }
 
 fn state_json(st: &State) -> Value {
-    json!({"rev": st.rev, "profiles": st.data["profiles"], "deleted": st.data["deleted"]})
+    json!({"rev": st.rev, "profiles": st.data["profiles"], "deleted": st.data["deleted"], "family": st.data["family"]})
 }
 
 fn read_body(req: &mut Request) -> Option<Value> {
@@ -301,7 +304,7 @@ fn daily_backup(state: &Shared) {
     let name = format!("baghcheh-{}.json", chrono::Local::now().format("%Y-%m-%d"));
     let backup = json!({
         "app": "baghcheh", "format": 1, "exported": now_ms(),
-        "profiles": st.data["profiles"], "deleted": st.data["deleted"],
+        "profiles": st.data["profiles"], "deleted": st.data["deleted"], "family": st.data["family"],
     });
     if write_atomic(&st.dir.join("backups").join(&name), &backup).is_ok() {
         st.backed_up_rev = Some(st.rev);

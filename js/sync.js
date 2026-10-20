@@ -70,7 +70,7 @@
   }
   function shared() {
     var s = B.load();
-    return { profiles: s.profiles, deleted: s.deleted || {} };
+    return { profiles: s.profiles, deleted: s.deleted || {}, family: s.family || {} };
   }
 
   // ---- Syncing ----
@@ -93,8 +93,8 @@
       if (r.changed) saveQuietly();
       knownRev = hub.rev;
       var mine = shared();
-      if (stable(mine) === stable({ profiles: hub.profiles, deleted: hub.deleted })) return r;
-      return request("PUT", "/api/state", { rev: hub.rev, profiles: mine.profiles, deleted: mine.deleted }).then(function (put) {
+      if (stable(mine) === stable({ profiles: hub.profiles, deleted: hub.deleted, family: hub.family || {} })) return r;
+      return request("PUT", "/api/state", { rev: hub.rev, profiles: mine.profiles, deleted: mine.deleted, family: mine.family }).then(function (put) {
         if (put.status === 409 && tries > 1) return attempt(tries - 1).then(function (r2) { r2.changed = r2.changed || r.changed; return r2; });
         if (put.status !== 200 || !put.data) throw "offline";
         knownRev = put.data.rev;
@@ -162,7 +162,7 @@
         s.changesSinceBackup = 0;
         if (!s.current && s.profiles.length === 1) s.current = s.profiles[0].id;
         saveQuietly();
-        if (stable(shared()) !== stable({ profiles: hub.profiles, deleted: hub.deleted })) S.now().catch(function () {});
+        if (stable(shared()) !== stable({ profiles: hub.profiles, deleted: hub.deleted, family: hub.family || {} })) S.now().catch(function () {});
       }
     } catch (e) { /* falls back to the browser's copy and keeps trying */ }
   } else {

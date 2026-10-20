@@ -25,25 +25,32 @@ window.B = B;
 
   /* One thing on a card or tile: a string (a letter, word or emoji), a number (shown in Persian digits), or
      { label, pic, dots, say, audio }: a picture, a word under it, or dots to count (audio: a recording of it, in pairs). */
-  function key(v) { return typeof v === "object" && v !== null ? String(v.value != null ? v.value : v.label != null ? v.label : v.pic) : String(v); }
+  function key(v) { return typeof v === "object" && v !== null ? String(v.value != null ? v.value : v.label != null ? v.label : v.flag || v.pic) : String(v); }
   function isPic(t) { return /^[^؀-ۿA-Za-z0-9۰-۹]+$/.test(t); }
   function face(v) {
     if (typeof v === "number") return el("span", { class: "face num", text: B.fa(v) });
     if (typeof v === "string") return el("span", { class: "face " + (isPic(v) ? "pic" : "word"), text: v });
     var parts = [];
-    if (v.pic) parts.push(el("span", { class: "face-pic", text: v.pic }));
+    // size: the picture bigger or smaller (1 as usual), to put things in order by size; bar: a strip that long.
+    if (v.pic) parts.push(el("span", v.size ? { class: "face-pic", text: v.pic, style: "font-size:" + (2.6 * v.size) + "rem" } : { class: "face-pic", text: v.pic }));
+    if (v.bar) parts.push(el("span", { class: "strip face-bar", style: "--len:" + v.bar }));
+    if (v.shape && E.shapeSvg) parts.push(E.shapeSvg(v.shape));
+    // a country's flag (js/steps/world.js; "iran" is the flag the parent chose)
+    if (v.flag && B.flagFace) parts.push(B.flagFace(v.flag));
     if (v.dots) {
       var d = el("span", { class: "dots", role: "img", "aria-label": B.fa(v.dots) });
       for (var i = 0; i < v.dots; i++) d.appendChild(el("i"));
       parts.push(d);
     }
+    // fingers or a die face (js/steps/numbers.js draws them)
+    if ((v.fingers != null || v.dice != null) && E.quickPic) parts.push(E.quickPic(v.fingers != null ? "fingers" : "dice", v.fingers != null ? v.fingers : v.dice));
     if (v.label != null) parts.push(el("span", { class: typeof v.label === "number" ? "num" : "word", text: typeof v.label === "number" ? B.fa(v.label) : v.label }));
     return el("span", { class: "face" + (parts.length > 1 ? " stack" : "") }, parts);
   }
   function aria(v) {
     if (typeof v === "number") return B.fa(v);
     if (typeof v === "string") return v;
-    return v.say || (v.label != null ? B.fa(v.label) : v.dots ? B.fa(v.dots) : v.pic);
+    return v.say || (v.label != null ? B.fa(v.label) : v.dots ? B.fa(v.dots) : v.fingers != null ? B.fa(v.fingers) : v.dice ? B.fa(v.dice) : v.flag && B.flagName ? B.flagName(v.flag) : v.pic);
   }
 
   function feedback(box) {

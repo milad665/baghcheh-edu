@@ -18,8 +18,9 @@ B.EN = B.EN || {};
   var NO_ENGLISH = { read: true, english: true };
   var FA_DIGITS = "۰۱۲۳۴۵۶۷۸۹";
 
+  // A practice session (js/practice.js) brings its own English version: lesson.english() makes the same items in English.
   B.hasEnglish = function (lesson) {
-    return !!lesson && !NO_ENGLISH[lesson.subject] && !!B.EN[lesson.id];
+    return !!lesson && !NO_ENGLISH[lesson.subject] && (!!lesson.english || !!B.EN[lesson.id]);
   };
 
   function latin(v) {
@@ -42,7 +43,7 @@ B.EN = B.EN || {};
     }
     return latin(o);
   }
-  B.englishLesson = function (lesson) { return merge(lesson, B.EN[lesson.id]); };
+  B.englishLesson = function (lesson) { return lesson.english ? merge(lesson.english()) : merge(lesson, B.EN[lesson.id]); };
 
   // ---- Switching the player's words, digits and voice to English, and back ----
   var saved = null;

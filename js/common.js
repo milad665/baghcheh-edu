@@ -46,6 +46,17 @@ window.B = B;
   // A deleted child leaves a tombstone in s.deleted ({id: time}) so syncing does not bring them back.
   B.touch = function (p) { p.updatedAt = Date.now(); };
 
+  // Family settings, shared by every child on this device (and synced and backed up like the children):
+  // s.family = { flag: "current" | "lion-sun" | null (Iran's flag in lessons, chosen by the parent), updatedAt }.
+  B.family = function () { return B.load().family || {}; };
+  B.setFamily = function (key, value) {
+    var s = B.load();
+    s.family = s.family || {};
+    s.family[key] = value;
+    s.family.updatedAt = Date.now();
+    B.save();
+  };
+
   B.removeProfile = function (id) {
     var s = B.load();
     s.deleted = s.deleted || {};
@@ -56,7 +67,7 @@ window.B = B;
 
   B.backup = function () {
     var s = B.load();
-    return { app: "baghcheh", format: 1, exported: Date.now(), profiles: s.profiles, deleted: s.deleted || {} };
+    return { app: "baghcheh", format: 1, exported: Date.now(), profiles: s.profiles, deleted: s.deleted || {}, family: s.family || {} };
   };
 
   function rank(r) { return r ? (r.mastered ? 100 : 0) + (r.box || 0) + (r.done ? 1 : 0) : -1; }
@@ -77,6 +88,11 @@ window.B = B;
         if (t > (s.deleted[id] || 0)) { s.deleted[id] = t; r.changed = true; }
       });
     }
+    // Family settings: the copy changed last wins.
+    if (data.family && typeof data.family === "object" && (data.family.updatedAt || 0) > ((s.family || {}).updatedAt || 0)) {
+      s.family = copy(data.family);
+      r.changed = true;
+    }
     data.profiles.forEach(function (p) {
       if (!validProfile(p)) return;
       var here = s.profiles.find(function (x) { return x.id === p.id; });
@@ -94,10 +110,13 @@ window.B = B;
       Object.keys(p.log || {}).forEach(function (day) {
         here.log = here.log || {};
         var mine = here.log[day] = here.log[day] || { l: [], a: [] }, theirs = p.log[day] || {};
-        ["l", "a"].forEach(function (f) {
+        ["l", "a", "p"].forEach(function (f) {
+          mine[f] = mine[f] || [];
           (theirs[f] || []).forEach(function (id) { if (mine[f].indexOf(id) < 0) { mine[f].push(id); r.changed = true; } });
         });
       });
+      // Practice (js/practice.js): per generator, the record practised last wins.
+      if (B.mergePractice && B.mergePractice(here, p.practice)) r.changed = true;
       // Weekly plan: the copy saved last wins.
       if (p.plan && (!here.plan || (p.plan.updatedAt || 0) > (here.plan.updatedAt || 0))) {
         here.plan = copy(p.plan);
@@ -125,7 +144,7 @@ window.B = B;
     if (!data || data.app !== "baghcheh" || !Array.isArray(data.profiles)) throw new Error("not a backup");
     var s = B.load();
     s.deleted = s.deleted || {};
-    data = { profiles: data.profiles.filter(validProfile).map(function (p) {
+    data = { family: data.family, profiles: data.profiles.filter(validProfile).map(function (p) {
       if (!s.deleted[p.id]) return p;
       delete s.deleted[p.id];
       p = copy(p);
@@ -233,7 +252,7 @@ window.B = B;
     // When a new release takes over, reload once so the page runs entirely on the new files.
     // Skipped on the very first install, when there was no previous version.
     var hadController = !!navigator.serviceWorker.controller, reloading = false;
-    function busy() { return /^#\/(lesson|place)\//.test(location.hash); }
+    function busy() { return /^#\/(lesson|place|practice|set|quiz|review)\//.test(location.hash); }
     function reloadWhenFree() {
       if (reloading) return;
       if (busy()) { window.addEventListener("hashchange", reloadWhenFree, { once: true }); return; }

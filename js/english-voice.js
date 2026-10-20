@@ -57,7 +57,7 @@ window.B = B;
      something, or went on), the rest is not said late. */
   B.speakSeq = function (items, then) {
     var faVoice = "speechSynthesis" in window && speechSynthesis.getVoices().find(function (v) { return /^fa/i.test(v.lang); });
-    var list = items.filter(function (it) { return it.text && (it.lang === "fa" ? faVoice : enVoice || it.file); });
+    var list = items.filter(function (it) { return it.lang === "fa" ? it.text && faVoice : it.file || (it.text && enVoice); });
     var i = 0, stopped = false;
     if ("speechSynthesis" in window) speechSynthesis.cancel();
     function next() {

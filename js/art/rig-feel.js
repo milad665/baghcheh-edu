@@ -319,4 +319,138 @@ window.B = B;
     // Steam rising from warm bread (origin: its bottom middle); the lines are a piece that drifts up.
     "fl-steam": part("rise", "0 0", '<path d="M-3 0q-1.4-2 0-4t0-4M1 -1q-1.4-2 0-4t0-4M5 0q-1.4-2 0-4t0-4" fill="none" stroke="#c9b09a" stroke-width=".8" stroke-linecap="round"/>')
   });
+
+  /* ---------- for the Seed lessons and the newer lessons for every age ---------- */
+  var SAM = { shirt: "#e5483f", pants: "#3f5f8a", hair: "#5b3a22", style: "short" };
+  // A phone on a video call (origin: the phone's bottom middle), showing someone's head and shoulders.
+  function callOf(o) {
+    return g('<rect x="-7" y="-26" width="14" height="26" rx="2.4" fill="#4a5568"/><rect x="-5.6" y="-23.6" width="11.2" height="19.6" rx="1" fill="#dff1f7"/>' +
+      '<g transform="translate(0 2.4) scale(.62)">' + headOf(o) + "</g>" + '<circle cy="-1.8" r=".8" fill="#fff" stroke-width=".3"/>');
+  }
+  Object.assign(B.RIG, {
+    /* ---------- people ---------- */
+    // Shirin in socks (for putting her shoes on herself: fl-shoe goes over each sock). Same key, same look.
+    "fl-shirin-sock": kid({ kind: "girl", key: "fl-shirin", shirt: "#fcd34d", dress: "#f59e0b", pants: "#b5523b", hair: "#3b2418", style: "long", shoe: "#fff" }),
+    "fl-aunt": kid({ kind: "woman", key: "fl-aunt", scarf: "#5b9bd5", shirt: "#e5483f", dress: "#b5523b", long: 1, pants: "#b5523b", hair: "#4a2f22", style: "long" }),
+    "fl-nika": kid({ kind: "girl", key: "fl-nika", shirt: "#e46b8a", dress: "#8e6bbf", pants: "#3f5f8a", hair: "#2d1d14", style: "long" }),
+    "fl-boy2": kid({ shirt: "#a0683f", pants: "#4a5568", hair: "#3b2418", style: "short" }),
+    "fl-boy3": kid({ shirt: "#8a9bb0", pants: "#3f5f8a", hair: "#2d1d14", style: "tuft" }),
+    "fl-teacher": kid({ shirt: "#5a9a45", pants: "#3f3a33", hair: "#4a2f22", style: "short", glasses: 1 }),
+    "fl-rabbit-mama": animal({ kind: "rabbit", fur: "#d8cfc4", belly: "#fff", apron: "#f28baa" }),
+    "fl-call-sam": callOf(SAM),
+    // A framed photo of Sam (origin: the bottom of the frame).
+    "fl-photo": g('<rect x="-8" y="-20" width="16" height="20" rx="1" fill="#c98a4b"/><rect x="-6.4" y="-18.4" width="12.8" height="16.8" fill="#dff1e0"/>' +
+      '<g transform="translate(0 4) scale(.5)">' + headOf(SAM) + "</g>"),
+    /* The calm turtle, from the side, facing right (origin: the middle of her feet, about 30 long). Her head, legs and
+       tail are pieces that go into her shell (move them back, they hide behind it); the shell rises as she breathes. */
+    "fl-turtle": g(
+      part("legB", "-6 -5", '<rect x="-8.2" y="-6" width="4.4" height="6" rx="2" fill="#8bc34a"/>') +
+      part("legF", "6 -5", '<rect x="3.8" y="-6" width="4.4" height="6" rx="2" fill="#8bc34a"/>') +
+      part("tail", "-11 -5", '<path d="M-11-6.4l-4.4 1.6 4.4 1.4z" fill="#8bc34a"/>') +
+      part("head", "11 -7", '<path d="M10-8.6h6v4.4h-6z" fill="#8bc34a"/><circle cx="18" cy="-10" r="4.6" fill="#8bc34a"/>' + face(18.4, -10.2, 0.42)) +
+      part("shell", "0 -4", '<path d="M-13-4c0-8.4 5.6-13.6 13-13.6S13-12.4 13-4z" fill="#5a9a45"/>' +
+        '<path d="M-6.6-4l1.6-6.4h10l1.6 6.4M-5-10.4L0-15.6l5 5.2" fill="none" stroke="#3f7a35" stroke-width=".6"/>' +
+        '<rect x="-14" y="-5.4" width="28" height="2.6" rx="1.3" fill="#d9c27a"/>')),
+    /* A big open hand to count helpers on (origin: the bottom of the wrist; about 46 tall). Each finger has a
+       glow piece at its tip, g1 (the thumb, on the right) to g5 (the little finger, on the left). */
+    "fl-hand": g('<g fill="' + SKIN + '">' +
+      '<rect x="-12.4" y="-40" width="5" height="16" rx="2.5"/><rect x="-6.6" y="-45" width="5.2" height="20" rx="2.6"/>' +
+      '<rect x="-.6" y="-46" width="5.2" height="21" rx="2.6"/><rect x="5.4" y="-43" width="5" height="18" rx="2.5"/>' +
+      '<path d="M9-24c3-4 6-8 9.6-9.4 2.2-.8 3.6 1.2 2.4 3.4l-6.6 10.4z"/>' +
+      '<path d="M-13-27c0-3 2-4 4-4h18c3 0 5 2 5 5v8c0 8-5 13-14 13s-13-6-13-13z"/><rect x="-7.6" y="-6" width="15" height="6" fill="' + SKIN + '"/></g>' +
+      '<path d="M-6-27.4v-2M0-27.6v-2M6-27v-2" fill="none" stroke-width=".4"/>' +
+      [[19.6, -32], [7.9, -41], [2, -44], [-4, -43], [-9.9, -38]].map(function (p, i) {
+        return part("g" + (i + 1), p[0] + " " + p[1], '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="3.6" fill="#fde68a" stroke="none" opacity=".9"/>', 1);
+      }).join("")),
+    // A shelf on the wall (origin: the middle of its board), high up.
+    "fl-shelf": g('<rect x="-14" y="-1.6" width="28" height="3.2" rx=".8" fill="#c98a4b"/><path d="M-10 1.6l2 4M10 1.6l-2 4" fill="none" stroke-width=".8"/>'),
+    /* A calm place, imagined (origin: its middle; 80 × 44): grandma's garden in a big soft thought cloud, with a
+       tree, a pool whose water ripples (ripple), three flowers (f1–f3) and a sparrow (bird). */
+    "fl-dream": g('<ellipse rx="40" ry="22" fill="#d7eefa"/>' +
+      '<path d="M-40 0A40 22 0 0 0 40 0z" fill="#b5dc7f" stroke="none"/><path d="M-40 0h80" fill="none" stroke="#8bb85a" stroke-width=".4"/>' +
+      '<g fill="#6fae4f"><circle cx="-20" cy="-8" r="7"/><circle cx="-13" cy="-11" r="6"/><circle cx="-26" cy="-12" r="5"/></g><rect x="-19.6" y="-4" width="3" height="6" fill="#8a5a3a"/>' +
+      '<ellipse cx="12" cy="9" rx="13" ry="4" fill="#5b9bd5"/>' + part("ripple", "12 9", '<ellipse cx="12" cy="9" rx="10" ry="2.6" fill="#8fd0ea" stroke="none"/>') +
+      ["-30 10 #f28baa", "-6 12 #e5483f", "30 8 #fcd34d"].map(function (s, i) {
+        var p = s.split(" ");
+        return part("f" + (i + 1), p[0] + " " + p[1], '<path d="M' + p[0] + " " + p[1] + 'v-6" fill="none" stroke="#5a9a45" stroke-width=".8"/><path d="M' + p[0] + " " + (p[1] - 2) + 'c-2 0-3-1.4-3-2.6 1.6 0 2.6.8 3 2z" fill="#5a9a45" stroke-width=".3"/>' +
+          '<g fill="' + p[2] + '">' + [0, 72, 144, 216, 288].map(function (a) {
+            var r = a * Math.PI / 180;
+            return '<circle cx="' + (+p[0] + 1.7 * Math.sin(r)).toFixed(2) + '" cy="' + (p[1] - 8 - 1.7 * Math.cos(r)).toFixed(2) + '" r="1.5"/>';
+          }).join("") + '</g><circle cx="' + p[0] + '" cy="' + (p[1] - 8) + '" r="1.1" fill="#fcd34d"/>');
+      }).join("") +
+      part("bird", "-14 -16", '<g transform="translate(-14 -16) scale(1.5) translate(14 16)"><ellipse cx="-14" cy="-16" rx="2.6" ry="1.8" fill="#a8683a"/><circle cx="-11.6" cy="-17.4" r="1.3" fill="#a8683a"/><path d="M-10.4-17.4l1.2.4-1.2.4" fill="#f59e0b" stroke-width=".3"/><circle cx="-11.3" cy="-17.7" r=".3" fill="' + INK + '" stroke="none"/></g>') +
+      '<ellipse rx="40" ry="22" fill="none" stroke-width=".8"/>'),
+    // A sheet of paper on the table (origin: its bottom middle) with a picture for a friend that can be drawn (pic).
+    "fl-paper": g('<rect x="-14" y="-20" width="28" height="20" rx=".8" fill="#fffdf6"/>' +
+      part("pic", null, '<g fill="none" stroke-width=".8"><circle cx="-8" cy="-14" r="2.6" stroke="#fbbf24"/>' +
+        '<circle cx="-2" cy="-9" r="2.2" stroke="#3d2c22"/><path d="M-2-6.8v4.6M-4.4-5h4.8M-2-2.2l-2 2M-2-2.2l2 2" stroke="#3d2c22"/>' +
+        '<circle cx="6" cy="-9" r="2.2" stroke="#e5483f"/><path d="M6-6.8v4.6M3.6-5h4.8M6-2.2l-2 2M6-2.2l2 2" stroke="#e5483f"/>' +
+        '<path d="M2-15.4c-1-1.4-2.6-.6-2 .8.4.8 2 1.8 2 1.8s1.6-1 2-1.8c.6-1.4-1-2.2-2-.8z" stroke="#f28baa"/></g>') +
+      // a scribble over the picture, hidden until someone scribbles on it
+      part("scribble", null, '<path d="M-11-16l8 3-7 3 9 2-8 4 10 1M0-15l9 4-8 2 10 3-9 2" fill="none" stroke="#3d2c22" stroke-width=".9"/>', 1)),
+    "fl-pencil": g('<path d="M0 0l-1-2.6 6-6 2 2-6 6z" fill="#fcd34d"/><path d="M0 0l-1-2.6 1.6 1z" fill="' + INK + '"/>'),
+    /* A wash basin from the front (origin: the floor under it), low enough for a child; the tap's water runs in a
+       piece (water) that is hidden until it is turned on. */
+    "fl-sink": g('<rect x="-3" y="-15" width="6" height="15" fill="#fff"/><path d="M-14-16h28l-2 6c-1 2-3 3-6 3h-12c-3 0-5-1-6-3z" fill="#fff"/>' +
+      '<rect x="-15" y="-17.6" width="30" height="2.6" rx="1.2" fill="#e8f1f6"/><path d="M-1-17.6v-5h5v2" fill="none" stroke="#9aa5b1" stroke-width="1.4"/>' +
+      part("water", null, '<path d="M4-20.4v3.6" fill="none" stroke="#7cc4f0" stroke-width="1.2"/>', 1)),
+    // A plate (origin: its bottom middle), and a watering can (origin: its bottom middle; the spout is on the left).
+    "fl-plate": g('<ellipse cy="-1.4" rx="6" ry="1.8" fill="#fff"/><ellipse cy="-1.7" rx="3.6" ry=".9" fill="#e8e2da" stroke="none"/>'),
+    "fl-can": g('<path d="M-5-8l-6-5" fill="none" stroke="' + INK + '" stroke-width="1.8"/><path d="M-5-8l-6-5" fill="none" stroke="#5bb5a5" stroke-width=".9"/>' +
+      '<rect x="-5" y="-10" width="10" height="10" rx="1.6" fill="#5bb5a5"/><path d="M-2-10c0-3 4-3 4 0" fill="none" stroke-width=".9"/>'),
+    // One shoe, the same size as a child's shoe in kid() (origin: its middle; it goes over a sock).
+    "fl-shoe": g('<ellipse rx="2.9" ry="1.5" fill="#7a4a2e"/><path d="M-1.4-.8h2.6" fill="none" stroke="#fff" stroke-width=".4"/>'),
+    // A plant in a pot (origin: the bottom of the pot); the leaves are a piece that can grow.
+    "fl-plant": g('<path d="M-5-7h10l-1.4 7h-7.2z" fill="#c98a4b"/>' +
+      part("leaves", "0 -7", '<path d="M0-7v-8" fill="none" stroke="#5a9a45" stroke-width=".8"/><path d="M0-10c-4 0-6-3-6-5 3 0 5 2 6 5zM0-12c3.6 0 5.6-2.6 5.6-4.6-3 0-4.8 2-5.6 4.6z" fill="#8bc34a"/><circle cy="-16" r="1.8" fill="#f28baa"/>')),
+    // A low shoe rack (origin: its bottom middle).
+    "fl-rack": g('<rect x="-12" y="-7" width="24" height="7" rx=".8" fill="#c98a4b"/><path d="M-12-3.6h24" fill="none" stroke-width=".4"/>'),
+    /* A door in the room's wall (origin: its bottom middle; 22 × 42). The door itself (leaf) opens on its left
+       hinge, showing the hall behind it. */
+    "fl-door": g('<rect x="-11" y="-42" width="22" height="42" fill="#7a5a44"/>' +
+      part("leaf", "-11 0", '<rect x="-11" y="-42" width="22" height="42" fill="#c98a4b"/><rect x="-8" y="-38" width="16" height="15" rx=".8" fill="none" stroke-width=".4"/><rect x="-8" y="-19" width="16" height="15" rx=".8" fill="none" stroke-width=".4"/><circle cx="7.4" cy="-21" r="1" fill="#fcd34d"/>')),
+    // A present (origin: its bottom middle); the lid is a piece that lifts off.
+    "fl-gift": g('<rect x="-6" y="-10" width="12" height="10" fill="#5b9bd5"/><rect x="-1.2" y="-10" width="2.4" height="10" fill="#fcd34d" stroke="none"/>' +
+      part("lid", "0 -10", '<rect x="-7" y="-13" width="14" height="3.4" fill="#4a86c0"/><rect x="-1.2" y="-13" width="2.4" height="3.4" fill="#fcd34d" stroke="none"/><path d="M0-13c-3-3-5-1-3 0zM0-13c3-3 5-1 3 0z" fill="#fcd34d"/>')),
+    // A little toy car, from the side (origin: the bottom middle).
+    "fl-car": g('<path d="M-7-2v-4l2-3h7l3 3h2v4z" fill="#e5483f"/><rect x="-3.6" y="-8.2" width="3" height="2.2" fill="#bfe3f5" stroke-width=".3"/><circle cx="-4" cy="-1.6" r="1.8" fill="#4a5568"/><circle cx="4.6" cy="-1.6" r="1.8" fill="#4a5568"/>'),
+    // A low table (origin: the middle of the floor under it; its top is 18 up).
+    "fl-table": g('<rect x="-20" y="-19" width="40" height="3" rx="1" fill="#c98a4b"/><path d="M-17-16v16M17-16v16" fill="none" stroke="' + INK + '" stroke-width="2.2"/><path d="M-17-16v16M17-16v16" fill="none" stroke="#a0683f" stroke-width="1.2"/>'),
+    // Nothing: an empty group, for moving several parts together (put them under it).
+    "fl-none": "<g></g>",
+    /* A child's bike seen from the front (origin: where the wheel touches the ground): the wheel in front of the
+       rider's legs and the handlebar in front of the hands (the rider goes under the same group, before it). */
+    "fl-bike-front": g('<ellipse cy="-8" rx="2.6" ry="8" fill="#4a5568"/><ellipse cy="-8" rx="1.2" ry="6.2" fill="#9aa5b1" stroke="none"/>' +
+      '<path d="M-1.6-9l-.6-6.6M1.6-9l.6-6.6" fill="none" stroke="' + INK + '" stroke-width="1.6"/><path d="M-1.6-9l-.6-6.6M1.6-9l.6-6.6" fill="none" stroke="#e5483f" stroke-width=".8"/>' +
+      '<rect x="-2" y="-17.6" width="4" height="2.6" rx="1" fill="#e5483f"/><circle cy="-16.2" r=".9" fill="#fde68a" stroke-width=".3"/>' +
+      '<path d="M-14-18h28" fill="none" stroke="' + INK + '" stroke-width="1.8"/><path d="M-14-18h28" fill="none" stroke="#9aa5b1" stroke-width=".9"/>' +
+      '<rect x="-15.6" y="-19.2" width="3.6" height="2.4" rx="1" fill="#3d2c22"/><rect x="12" y="-19.2" width="3.6" height="2.4" rx="1" fill="#3d2c22"/>'),
+    // The same bike lying on the grass after a tumble, seen from the front (origin: its middle on the ground).
+    "fl-bike-down": g('<ellipse cx="-2" cy="-2.4" rx="9" ry="2.4" fill="#4a5568"/><path d="M-4-3.4h14" fill="none" stroke="' + INK + '" stroke-width="1.6"/><path d="M-4-3.4h14" fill="none" stroke="#e5483f" stroke-width=".8"/>' +
+      '<path d="M10-8v10" fill="none" stroke="' + INK + '" stroke-width="1.8"/><path d="M10-8v10" fill="none" stroke="#9aa5b1" stroke-width=".9"/>'),
+    // A box of crayons (origin: its bottom middle).
+    "fl-crayons": g('<g stroke-width=".3"><rect x="-4.6" y="-11" width="2" height="6" fill="#e5483f"/><rect x="-2.2" y="-12" width="2" height="7" fill="#5b9bd5"/>' +
+      '<rect x=".2" y="-11.4" width="2" height="6.4" fill="#fcd34d"/><rect x="2.6" y="-10.6" width="2" height="5.6" fill="#8bc34a"/></g>' +
+      '<rect x="-6" y="-7" width="12" height="7" rx=".8" fill="#f59e0b"/>'),
+    // Rain over the whole stage (stage units): short slanted streaks; fall is a piece that slides down.
+    "fl-rain": part("fall", null, '<path d="M39.1 33.6l-1.6 5M59.7 37.0l-1.6 5M99.6 5.8l-1.6 5M4.1 50.6l-1.6 5M42.5 15.6l-1.6 5M157.3 29.3l-1.6 5M132.5 29.6l-1.6 5M101.7 10.7l-1.6 5M101.0 52.3l-1.6 5M83.6 45.0l-1.6 5M106.7 5.7l-1.6 5M120.3 36.3l-1.6 5M49.0 3.8l-1.6 5M137.0 29.4l-1.6 5M114.1 53.0l-1.6 5M113.4 55.4l-1.6 5M63.6 48.5l-1.6 5M71.4 56.3l-1.6 5M139.1 7.7l-1.6 5M23.2 14.6l-1.6 5M152.6 27.3l-1.6 5M99.8 19.5l-1.6 5M81.1 24.4l-1.6 5M56.7 35.9l-1.6 5M93.1 54.4l-1.6 5M108.4 55.9l-1.6 5M135.6 59.5l-1.6 5M106.7 11.5l-1.6 5M136.3 57.9l-1.6 5M143.1 35.0l-1.6 5M113.4 14.2l-1.6 5M131.7 35.3l-1.6 5M46.5 5.7l-1.6 5M135.2 59.4l-1.6 5M15.8 48.4l-1.6 5M66.0 10.7l-1.6 5M47.8 46.6l-1.6 5M138.2 4.6l-1.6 5M97.9 4.6l-1.6 5M114.1 21.2l-1.6 5M139.4 58.9l-1.6 5M80.8 59.9l-1.6 5M50.3 6.5l-1.6 5M95.6 3.8l-1.6 5M32.8 25.7l-1.6 5M97.2 11.1l-1.6 5" fill="none" stroke="#6fb3dd" stroke-width=".7" stroke-linecap="round"/>'),
+    /* A traffic light for problem solving (origin: the bottom of its pole); each lamp (red, yellow, green) is dark
+       until its piece (lr, ly, lg) is shown. */
+    "fl-light": g('<rect x="-1.2" y="-18" width="2.4" height="18" fill="#4a5568"/><rect x="-6" y="-46" width="12" height="30" rx="3" fill="#3d3d3d"/>' +
+      '<circle cy="-40" r="3.6" fill="#5a2a2a"/><circle cy="-31" r="3.6" fill="#5a4a1e"/><circle cy="-22" r="3.6" fill="#1f4a2a"/>' +
+      part("lr", null, '<circle cy="-40" r="3.6" fill="#ef5350"/><circle cy="-40" r="6" fill="#ef5350" stroke="none" opacity=".25"/>', 1) +
+      part("ly", null, '<circle cy="-31" r="3.6" fill="#fcd34d"/><circle cy="-31" r="6" fill="#fcd34d" stroke="none" opacity=".25"/>', 1) +
+      part("lg", null, '<circle cy="-22" r="3.6" fill="#8bc34a"/><circle cy="-22" r="6" fill="#8bc34a" stroke="none" opacity=".25"/>', 1)),
+    // A splash of paint water over a drawing (origin: its middle).
+    "fl-spill": '<path d="M-7-2c-2-4 2-7 5-5 2-3 7-2 7 2 4 0 5 5 1 6 1 4-5 5-6 2-3 3-8 1-7-2-3 0-3-3 0-3z" fill="#5b9bd5" opacity=".75"/>',
+    // A flower vase on a shelf (origin: its bottom), and the same vase in pieces on the floor.
+    "fl-vase": g('<path d="M-3-12c-2-3-1-4 0-5h6c1 1 2 2 0 5 3 2 4 6 2 10-1 2-9 2-10 0-2-4-1-8 2-10z" fill="#5bb5a5"/><path d="M-4-6h8" fill="none" stroke="#fff" stroke-width=".6"/>' +
+      '<path d="M0-17v-5M-2-17l-3-4M2-17l3-4" fill="none" stroke="#5a9a45" stroke-width=".7"/><circle cy="-23" r="1.6" fill="#f28baa"/><circle cx="-5" cy="-21.6" r="1.4" fill="#fcd34d"/><circle cx="5" cy="-21.6" r="1.4" fill="#e5483f"/>'),
+    "fl-vase-broken": g('<path d="M-9 0l2-4 3 1 1 3z" fill="#5bb5a5"/><path d="M-1 0l1-5 4 2-1 3z" fill="#5bb5a5"/><path d="M6 0l2-3 3 1v2z" fill="#5bb5a5"/>' +
+      '<path d="M-6-1l-4-3M12-1l3-2" fill="none" stroke="#5a9a45" stroke-width=".7"/><circle cx="-11" cy="-4" r="1.4" fill="#f28baa"/><circle cx="15" cy="-3" r="1.3" fill="#fcd34d"/>'),
+    // Little thought dots rising up and to the right from a head (origin: the lowest one).
+    "fl-dots": g('<circle r="1" fill="#fff"/><circle cx="3.4" cy="-3.4" r="1.6" fill="#fff"/><circle cx="7.6" cy="-7.6" r="2.2" fill="#fff"/>'),
+    // Musical notes (origin: their bottom), for humming while we wait.
+    "fl-notes": '<g fill="#8b6fc7"><ellipse cx="-2" cy="-1" rx="1.4" ry="1"/><rect x="-.8" y="-7" width=".5" height="6"/><ellipse cx="3" cy="-3" rx="1.4" ry="1"/><rect x="4.2" y="-9" width=".5" height="6"/><path d="M-.3-7l5-2v1l-5 2z"/></g>'
+  });
 })();

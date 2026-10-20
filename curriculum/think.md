@@ -159,30 +159,48 @@ generated practice). The anchor is Barefoot's early years and Estonia's kinderga
 | St | Lesson | Title | Covers | Content types | Objectives | Depth |
 |---|---|---|---|---|---|---|
 | ✅ | `think-seed-1` | الگوها | Spotting and continuing patterns | game (`pattern`), home (`unplugged`) | think.seed.1 | core |
-| ⬜ | `think-seed-5` | الگوی صدا و حرکت | Patterns heard and moved: clap-stamp, a carpet border, beads; the child makes a pattern for the parent to continue | animation, game (`pattern`), home (`unplugged`) | think.seed.1 | full |
+| 🔨 | `think-seed-5` | الگوی صدا و حرکت | Patterns heard and moved: clap-stamp, a carpet border, beads; the child makes a pattern for the parent to continue | animation, game (`pattern`), home (`unplugged`) | think.seed.1 | full |
 | ✅ | `think-seed-2` | دسته‌بندی | Sorting by one rule (colour, kind), matching pairs, ordering by how many | game (`sort`, `pairs`, `order`), home (`unplugged`) | think.seed.2, think.seed.3, think.seed.8 | core |
-| ⬜ | `think-seed-6` | مثل هم، فرق دارد | Same and different: two pictures with one change, matching shadows, which one is different | lesson (`choose`), game (`pairs`), home (`unplugged`) | think.seed.3, think.seed.11 | core |
-| ⬜ | `think-seed-7` | بازی دسته‌بندی | Unit game: sort by colour, then by shape, then by size; order from small to big | game (`sort`, `order`, `pairs`), home (`unplugged`) | think.seed.2, think.seed.8 | core |
+| 🔨 | `think-seed-6` | مثل هم، فرق دارد | Same and different: two pictures with one change, matching shadows, which one is different | lesson (`choose`), game (`pairs`), home (`unplugged`) | think.seed.3, think.seed.11 | core |
+| 🔨 | `think-seed-7` | بازی دسته‌بندی | Unit game: sort by colour, then by shape, then by size; order from small to big | game (`sort`, `order`, `pairs`), home (`unplugged`) | think.seed.2, think.seed.8 | core |
 | ✅ | `think-seed-3` | قدم به قدم | Sequences: the steps of everyday tasks | animation, game (`order`), home (`unplugged`) | think.seed.4 | core |
-| ⬜ | `think-seed-8` | اول، بعد، آخر | First, then, last: getting dressed, planting a seed, making tea for grandma; putting a short story in order | animation, game (`order`), home (`unplugged`) | think.seed.4 | core |
-| ⬜ | `think-seed-9` | ربات‌بازی | Following directions: a child guides a parent "robot" one step at a time (scene); which arrow takes the cat to the milk? | animation, lesson (`choose`), home (`unplugged`) | think.seed.5 | core |
+| 🔨 | `think-seed-8` | اول، بعد، آخر | First, then, last: a short story animated in order (snow falls, a snowman is made, the sun comes out, it melts); getting dressed, planting a seed, making tea for grandma | animation, game (`order`), home (`unplugged`) | think.seed.4 | core |
+| 🔨 | `think-seed-9` | ربات‌بازی | Following directions: a child guides a parent "robot" one step at a time (scene); which arrow takes the cat to the milk? | animation, lesson (`choose`), home (`unplugged`) | think.seed.5 | core |
 | ✅ | `think-seed-4` | راه لاک‌پشت | First programs: arrows on a small grid, going around a rock | coding (`code` arrows), home (`unplugged`) | think.seed.6, think.seed.5 | core |
-| ⬜ | `think-seed-10` | لاک‌پشت گیر کرد | A program with one wrong arrow: run it, see where the turtle bumps, change that arrow | coding (`code` with `given`), home (`unplugged`) | think.seed.7, think.seed.6 | full |
-| ⬜ | `think-seed-11` | بازی راه | Unit game: arrow grids 3×3 and 4×4, one or two rocks, a fix-it board at the end | coding (`code` arrows, `given`), home (`unplugged`) | think.seed.6, think.seed.7 | core |
-| ⬜ | `think-seed-12` | معما | Picture puzzles: what is missing from the picture, which piece fits the hole, which shadow belongs to the cat | lesson (`choose`), game (`pairs`), home (`unplugged`) | think.seed.11 | full |
-| ⬜ | `think-seed-13` | دستگاه‌ها | Devices at home: phone, tablet, computer, TV; screen, keys, mouse; what each is for (calling grandma, photos, drawing) | animation, game (`pairs`), lesson (`choose`), home (`unplugged`) | think.seed.9 | full |
-| ⬜ | `think-seed-14` | با بزرگ‌ترها | Screen rules: ask first, stop when time is up (the timer rings), tell a grown-up about anything scary; good habits sorted | animation, game (`sort`), lesson (`choose`), parent tip | think.seed.10 | core |
+| 🔨 | `think-seed-10` | لاک‌پشت گیر کرد | A program with one wrong arrow: run it, see where the turtle bumps, change that arrow | coding (`code` with `given`), home (`unplugged`) | think.seed.7, think.seed.6 | full |
+| 🔨 | `think-seed-11` | بازی راه | Unit game: arrow grids 3×3 and 4×4, one or two rocks, a fix-it board at the end | coding (`code` arrows, `given`), home (`unplugged`) | think.seed.6, think.seed.7 | core |
+| 🔨 | `think-seed-12` | معما | Picture puzzles: what is missing from the picture, which piece fits the hole, which shadow belongs to the cat | lesson (`choose`), game (`pairs`), home (`unplugged`) | think.seed.11 | full |
+| 🔨 | `think-seed-13` | دستگاه‌ها | Devices at home: phone, tablet, computer, TV; screen, keys, mouse; what each is for (calling grandma, photos, drawing) | animation, game (`pairs`), lesson (`choose`), home (`unplugged`) | think.seed.9 | full |
+| 🔨 | `think-seed-14` | با بزرگ‌ترها | Screen rules: ask first, stop when time is up (the timer rings), tell a grown-up about anything scary; good habits sorted | animation, game (`sort`), lesson (`choose`), parent tip, home (`unplugged`) | think.seed.10 | core |
 
 #### Practice
 
-| St | Practice | What it makes | Objectives |
-|---|---|---|---|
-| ⬜ | Pattern generator | AB, AAB, ABB, ABC patterns from picture sets (fruit, animals, colours, shapes), 1–3 missing places | think.seed.1 |
-| ⬜ | Sort-by-one-rule generator | 6–8 pictures, two or three baskets by colour, shape, kind or size; the rule changes between rounds | think.seed.2, think.seed.8 |
-| ⬜ | Everyday-sequence bank | 3–4 picture steps of home tasks (washing hands, making a sandwich, watering plants) to put in order | think.seed.4 |
-| ⬜ | Arrow-grid generator | 3×3 and 4×4 grids, 1–4 arrows, 0–1 rocks; the shortest program is checked by search, so every board is solvable | think.seed.6, think.seed.5 |
-| ⬜ | One-wrong-arrow generator | A solved arrow board with one arrow changed, to run and fix | think.seed.7 |
-| ⬜ | Same-or-different bank | Pairs of pictures with one difference; shadow matching | think.seed.3, think.seed.11 |
+| St | Id | Practice | What it makes | Objectives |
+|---|---|---|---|---|
+| 🔨 | `think-seed-p1` | Pattern generator | AB, AAB, ABB, ABC patterns from picture sets (fruit, animals, colours, shapes), 1–3 missing places | think.seed.1 |
+| 🔨 | `think-seed-p2` | Sort-by-one-rule generator | 6–8 pictures, two or three baskets by colour, kind or size, and things to put in order by size; the rule changes between rounds | think.seed.2, think.seed.8 |
+| 🔨 | `think-seed-p3` | Everyday-sequence bank | 3–4 picture steps of home tasks (washing hands, making a sandwich, watering plants) to put in order | think.seed.4 |
+| 🔨 | `think-seed-p4` | Arrow-grid generator | 3×3 and 4×4 grids, 1–4 arrows, 0–1 rocks; the shortest program is checked by search, so every board is solvable | think.seed.6, think.seed.5 |
+| 🔨 | `think-seed-p5` | One-wrong-arrow generator | A solved arrow board with one arrow changed, to run and fix | think.seed.7 |
+| 🔨 | `think-seed-p6` | Same-or-different bank | Which one is different, which one is the same as this picture; shadow matching | think.seed.3, think.seed.11 |
+| 🔨 | `think-seed-p7` | Repeating-part finder | A pattern; which part repeats? (choose the unit) | think.seed.1 |
+| 🔨 | `think-seed-p8` | Pattern or not? | Rows of pictures to sort: a real pattern, or one with a mistake | think.seed.1 |
+| 🔨 | `think-seed-p9` | Things that go together | Match pairs that belong together (sock and shoe, bee and flower) | think.seed.3 |
+| 🔨 | `think-seed-p10` | What is the basket's rule? | Three pictures from one basket: what do they share (a colour or a kind)? | think.seed.2 |
+| 🔨 | `think-seed-p11` | Order by how many | Dot cards to put in order from fewest to most | think.seed.8 |
+| 🔨 | `think-seed-p12` | What changed? | A row of pictures before and after: which picture is new? | think.seed.3, think.seed.11 |
+| 🔨 | `think-seed-p13` | First and last | The steps of a home task: which comes first, which comes last? | think.seed.4 |
+| 🔨 | `think-seed-p14` | The missing step | A home task in pictures with one step missing: which picture goes in the gap? | think.seed.4 |
+| 🔨 | `think-seed-p15` | How many arrows? | A row with the cat and the milk: which arrows take the cat there? | think.seed.5, think.seed.6 |
+| 🔨 | `think-seed-p16` | Where will the cat stop? | A row and a short arrow program: predict where the cat ends | think.seed.5 |
+| 🔨 | `think-seed-p17` | Arrows and directions | Match each arrow to a picture that goes that way (up, down, right, left) | think.seed.5 |
+| 🔨 | `think-seed-p18` | What is missing? | A set of pictures, then the same set with one taken away: which one is gone? | think.seed.11 |
+| 🔨 | `think-seed-p19` | What is each device for? | Match devices to what we do with them (call grandma, take a photo, listen to music) | think.seed.9 |
+| 🔨 | `think-seed-p20` | Device or not? | Sort pictures: devices, and things that are not devices | think.seed.9 |
+| 🔨 | `think-seed-p21` | Which device? | A job (talking to grandma far away, watching a cartoon): which device do we use? | think.seed.9 |
+| 🔨 | `think-seed-p22` | Good screen habits | Sort habits: good ones, and ones to change | think.seed.10 |
+| 🔨 | `think-seed-p23` | Screens: what do we do? | Short situations (the timer rings, something scary, a new game) and what to do | think.seed.10 |
+| 🔨 | `think-seed-p24` | Situation and action | Match each screen situation to what we do | think.seed.10 |
 
 ### 🌱 جوانه — `sprout`
 
@@ -213,36 +231,70 @@ sessions: **19 lessons** and 53 practice and review sessions. CSTA Level 1A and 
 | St | Lesson | Title | Covers | Content types | Objectives | Depth |
 |---|---|---|---|---|---|---|
 | ✅ | `think-sprout-1` | کدام جور نیست؟ | Odd one out: finding the rule | lesson (`choose`), game (`sort`), home (`unplugged`) | think.spr.1 | core |
-| ⬜ | `think-sprout-6` | دو قانون | Sorting by two rules at once: red and round, big and green; a picture that fits both baskets | lesson (`choose`), game (`sort`), home (`unplugged`) | think.spr.1 | full |
+| 🔨 | `think-sprout-6` | دو قانون | Sorting by two rules at once: red and round, big and green; a picture that fits both baskets | lesson (`choose`), game (`sort`), home (`unplugged`) | think.spr.1 | full |
 | ✅ | `think-sprout-2` | اگر… آن‌وقت… | Conditions in everyday life | lesson (`choose`), game (`sort`), home (`unplugged`) | think.spr.2 | core |
-| ⬜ | `think-sprout-7` | درست یا نادرست؟ | True or false about a picture ("all the cats are black"), "not": the basket for things that are *not* fruit | lesson (`choose`), game (`sort`), home (`unplugged`) | think.spr.2 | core |
+| 🔨 | `think-sprout-7` | درست یا نادرست؟ | True or false about a picture ("all the cats are black"), "not": the basket for things that are *not* fruit | lesson (`choose`), game (`sort`), home (`unplugged`) | think.spr.2 | core |
 | ✅ | `think-sprout-3` | الگوهای سخت‌تر | Longer and growing patterns | game (`pattern`), home (`unplugged`) | think.spr.3 | core |
-| ⬜ | `think-sprout-8` | بازی الگو و قانون | Unit game: odd one out, sorting by a rule, growing patterns, true or false | game (`pattern`, `sort`), lesson (`choose`), home (`unplugged`) | think.spr.1, think.spr.2, think.spr.3 | core |
-| ⬜ | `think-sprout-9` | کار بزرگ، کارهای کوچک | Decomposing: "get ready for school" is many small jobs (scene); order the small jobs; write a picture algorithm for watering the plants | animation, game (`order`), home (`unplugged`) | think.spr.6 | core |
-| ⬜ | `think-sprout-10` | راه کوتاه‌تر | Two ways to the same place: count the steps of each and pick the shorter; two algorithms for the same job | lesson (`choose`), coding (`code` arrows with `max`), home (`unplugged`) | think.spr.6, think.spr.4 | full |
+| 🔨 | `think-sprout-8` | بازی الگو و قانون | Unit game: odd one out, sorting by a rule, growing patterns, true or false | game (`pattern`, `sort`), lesson (`choose`), home (`unplugged`) | think.spr.1, think.spr.2, think.spr.3 | core |
+| 🔨 | `think-sprout-9` | کار بزرگ، کارهای کوچک | Decomposing: "get ready for school" is many small jobs (scene); order the small jobs; write a picture algorithm for watering the plants | animation, game (`order`), home (`unplugged`) | think.spr.6 | core |
+| 🔨 | `think-sprout-10` | راه کوتاه‌تر | Two ways to the same place: count the steps of each and pick the shorter; two algorithms for the same job | lesson (`choose`), coding (`code` arrows with `max`), home (`unplugged`) | think.spr.6, think.spr.4 | full |
 | ✅ | `think-sprout-4` | برنامه با فلش | Programs with arrows and walls | coding (`code` arrows), home (`unplugged`) | think.spr.4 | core |
-| ⬜ | `think-sprout-11` | اول فکر کن | Predict before running: where will the rabbit end? Then build the whole program first and run once | lesson (`choose`), coding (`code` arrows), home (`unplugged`) | think.spr.4 | core |
+| 🔨 | `think-sprout-11` | اول فکر کن | Predict before running: where will the rabbit end? Then build the whole program first and run once | lesson (`choose`), coding (`code` arrows), home (`unplugged`) | think.spr.4 | core |
 | ✅ | `think-sprout-5` | اشکال را پیدا کن | Debugging: fix a given program | coding (`code` with `given`), home (`unplugged`) | think.spr.5 | core |
-| ⬜ | `think-sprout-12` | بازی برنامه | Unit game: arrow grids 5×5 with walls, a block limit, two programs to fix | coding (`code` arrows, `given`), home (`unplugged`) | think.spr.4, think.spr.5 | core |
-| ⬜ | `think-sprout-13` | رمز تصویری | A picture code: each picture stands for an arrow or a word; read a secret message, write one for the parent | lesson (`choose`), game (`pairs`), home (`unplugged`) | think.spr.7 | full |
-| ⬜ | `think-sprout-14` | بشمار و بگو | Sort toys, then count each group with tally marks; which is most, how many more? | game (`sort`), lesson (`count`, `choose`), home (`unplugged`) | think.spr.8 | full |
-| ⬜ | `think-sprout-15` | اجزای رایانه | Parts of a computer and a phone; what goes in (keyboard, microphone, camera) and what comes out (screen, speaker) | animation, game (`pairs`, `sort`), home (`unplugged`) | think.spr.9 | core |
-| ⬜ | `think-sprout-16` | دستگاه کار نمی‌کند! | No sound, dark screen, empty battery: what is wrong, what to try first (is it charged? is the sound on?), when to ask a grown-up | animation, lesson (`choose`), home (`unplugged`) | think.spr.10 | full |
-| ⬜ | `think-sprout-17` | رمز عبور | A password is a key to a door (scene); who may know it; logging out when you finish | animation, game (`sort`), lesson (`choose`), parent tip | think.spr.11 | core |
-| ⬜ | `think-sprout-18` | پیام مهربان | Kind and unkind messages; a scary or unkind message: stop, don't answer, tell a grown-up | animation, game (`sort`), lesson (`choose`), parent tip | think.spr.12 | core |
-| ⬜ | `think-sprout-19` | معمای سرنخ | Clue puzzles: three children, three pets, two clues; a maze; telling how you found it | lesson (`choose`), home (`unplugged`) | think.spr.13 | full |
+| 🔨 | `think-sprout-12` | بازی برنامه | Unit game: arrow grids 5×5 with walls, a block limit, two programs to fix | coding (`code` arrows, `given`), home (`unplugged`) | think.spr.4, think.spr.5 | core |
+| 🔨 | `think-sprout-13` | رمز تصویری | A picture code: each picture stands for an arrow or a word; read a secret message, write one for the parent | lesson (`choose`), game (`pairs`), home (`unplugged`) | think.spr.7 | full |
+| 🔨 | `think-sprout-14` | بشمار و بگو | Sort toys, then count each group with tally marks; which is most, how many more? | game (`sort`), animation (tally marks), lesson (`count`, `choose`), home (`unplugged`) | think.spr.8 | full |
+| 🔨 | `think-sprout-15` | اجزای رایانه | Parts of a computer and a phone; what goes in (keyboard, microphone, camera) and what comes out (screen, speaker) | animation, game (`pairs`, `sort`), lesson (`choose`), home (`unplugged`) | think.spr.9 | core |
+| 🔨 | `think-sprout-16` | دستگاه کار نمی‌کند! | No sound, dark screen, empty battery: what is wrong, what to try first (is it charged? is the sound on?), when to ask a grown-up | animation, lesson (`choose`), home (`unplugged`) | think.spr.10 | full |
+| 🔨 | `think-sprout-17` | رمز عبور | A password is a key to a door (scene); who may know it; logging out when you finish | animation, game (`sort`), lesson (`choose`), parent tip, home (`unplugged`) | think.spr.11 | core |
+| 🔨 | `think-sprout-18` | پیام مهربان | Kind and unkind messages; a scary or unkind message: stop, don't answer, tell a grown-up | animation, game (`sort`), lesson (`choose`), parent tip, home (`unplugged`) | think.spr.12 | core |
+| 🔨 | `think-sprout-19` | معمای سرنخ | Clue puzzles: three children, three pets, two clues; a maze; telling how you found it | lesson (`choose`), home (`unplugged`) | think.spr.13 | full |
 
 #### Practice
 
-| St | Practice | What it makes | Objectives |
-|---|---|---|---|
-| ⬜ | Odd-one-out and two-rule bank | Sets of four pictures with one rule (kind, colour, use, where it lives); sorting by two properties | think.spr.1 |
-| ⬜ | If-then rule cards | A rule and a situation in pictures ("if it rains, take the umbrella"), with "not" | think.spr.2 |
-| ⬜ | Growing-pattern generator | Picture patterns that grow by one; number patterns +1, +2, +10 | think.spr.3 |
-| ⬜ | Arrow-grid generator with walls | 5×5 grids, 3–8 blocks, 1–5 walls, a block limit; "predict the end" questions from a random program | think.spr.4 |
-| ⬜ | Bug generator | A correct arrow program with one block changed, removed or added | think.spr.5 |
-| ⬜ | Picture-code messages | A code table and a 3–5 symbol message to read or write | think.spr.7 |
-| ⬜ | Clue-puzzle bank | 3×3 who-has-what puzzles with 2–3 clues; small mazes | think.spr.13 |
+| St | Id | Practice | What it makes | Objectives |
+|---|---|---|---|---|
+| 🔨 | `think-sprout-p1` | Odd-one-out and two-rule bank | Sets of four pictures with one rule (kind, colour, use, where it lives); sorting by two properties | think.spr.1 |
+| 🔨 | `think-sprout-p2` | If-then rule cards | A rule and a situation in pictures ("if it rains, take the umbrella"), with "not" | think.spr.2 |
+| 🔨 | `think-sprout-p3` | Growing-pattern generator | Picture patterns that grow by one; number patterns +1, +2, +10 | think.spr.3 |
+| 🔨 | `think-sprout-p4` | Arrow-grid generator with walls | 5×5 grids, 3–8 blocks, 1–5 walls, a block limit | think.spr.4 |
+| 🔨 | `think-sprout-p5` | Bug generator | A correct arrow program with one block changed, removed or added | think.spr.5 |
+| 🔨 | `think-sprout-p6` | Picture-code messages | A code table and a 3–5 symbol message to read or write | think.spr.7 |
+| 🔨 | `think-sprout-p7` | Clue-puzzle bank | Who-has-what puzzles: three children, three pets, two clues | think.spr.13 |
+| 🔨 | `think-sprout-p8` | What do they share? | Four pictures with one thing in common (lives in water, flies, we wear it…): what is it? | think.spr.1 |
+| 🔨 | `think-sprout-p9` | Sort like the examples | Two or three baskets shown only by an example: find the rule and sort | think.spr.1 |
+| 🔨 | `think-sprout-p10` | Fits both rules | Which picture is both of two things (red and round)? After think-sprout-6 | think.spr.1 |
+| 🔨 | `think-sprout-p11` | If this, then that | Match each condition to what we do (rain and umbrella, night and bed) | think.spr.2 |
+| 🔨 | `think-sprout-p12` | True or false? | A group of pictures and a sentence about it (all, one, none; with "not" after think-sprout-7) | think.spr.2 |
+| 🔨 | `think-sprout-p13` | Follow the rule | Sort by an if-rule (if it can fly, in the sky basket); "not" rules after think-sprout-7 | think.spr.2 |
+| 🔨 | `think-sprout-p14` | What is the rule? | A number pattern: what is its rule (+1, +2, +10, −1)? | think.spr.3 |
+| 🔨 | `think-sprout-p15` | The wrong number | A number pattern with one wrong number: which one? | think.spr.3 |
+| 🔨 | `think-sprout-p16` | Small jobs in order | A big job broken into small jobs, to put in order | think.spr.6 |
+| 🔨 | `think-sprout-p17` | Not part of the job | A big job and three small jobs: which one does not belong? | think.spr.6 |
+| 🔨 | `think-sprout-p18` | Which big job? | Sort small jobs into the two big jobs they belong to | think.spr.6 |
+| 🔨 | `think-sprout-p19` | The shorter way | Two arrow programs that reach the same place: which is shorter? | think.spr.6, think.spr.4 |
+| 🔨 | `think-sprout-p20` | The shortest program | Grids with walls where the block limit is exactly the shortest way (checked by search) | think.spr.4 |
+| 🔨 | `think-sprout-p21` | Predict the end | A row and an arrow program going both ways: where will the rabbit end? | think.spr.4 |
+| 🔨 | `think-sprout-p22` | Which arrow is wrong? | A row and a program with one wrong arrow: which one? | think.spr.5 |
+| 🔨 | `think-sprout-p23` | Code table pairs | A code table (fruit, animals or shapes) and its pictures to match with arrows | think.spr.7 |
+| 🔨 | `think-sprout-p24` | Write the message | An arrow program to write as a picture message, cards in order | think.spr.7 |
+| 🔨 | `think-sprout-p25` | Which is most? | A mixed group of pictures: which kind is most, how many more? | think.spr.8 |
+| 🔨 | `think-sprout-p26` | Tally marks | Tally marks to read and compare | think.spr.8 |
+| 🔨 | `think-sprout-p27` | Order the groups | Groups of pictures to put in order from fewest to most | think.spr.8 |
+| 🔨 | `think-sprout-p28` | In or out? | Sort computer parts: what goes in (keyboard, microphone), what comes out (screen, speaker) | think.spr.9 |
+| 🔨 | `think-sprout-p29` | Part and job | Match each part of a computer or phone to its job | think.spr.9 |
+| 🔨 | `think-sprout-p30` | Which part? | A job (hearing music, typing a name): which part do we use? | think.spr.9 |
+| 🔨 | `think-sprout-p31` | What to try first | Match each problem (no sound, empty battery) to what to try first | think.spr.10 |
+| 🔨 | `think-sprout-p32` | It doesn't work! | Short device problems: what to try, and when to ask a grown-up | think.spr.10 |
+| 🔨 | `think-sprout-p33` | Steps to fix it | The steps of trying to fix a device, in order | think.spr.10 |
+| 🔨 | `think-sprout-p34` | Who may know it? | Sort people: who may know your password, who may not | think.spr.11 |
+| 🔨 | `think-sprout-p35` | Password situations | Short situations about passwords and logging out, and what to do | think.spr.11 |
+| 🔨 | `think-sprout-p36` | Passwords: true or false? | Sentences about passwords to judge | think.spr.11 |
+| 🔨 | `think-sprout-p37` | Kind or unkind? | Sort messages: kind ones and unkind ones | think.spr.12 |
+| 🔨 | `think-sprout-p38` | A scary message | Situations with a scary or unkind message: what to do | think.spr.12 |
+| 🔨 | `think-sprout-p39` | A kinder way | An unkind sentence: which is a kinder way to say it? | think.spr.12 |
+| 🔨 | `think-sprout-p40` | Who is first in line? | Three children and two clues about the line: who is first, who is last? | think.spr.13 |
+| 🔨 | `think-sprout-p41` | Who am I? | Riddles with three clues and pictures to choose from | think.spr.13 |
 
 ### 🌿 نهال — `sapling`
 
@@ -260,7 +312,7 @@ practice). CSTA Level 1A and England's key stage 1 are finished, and 1B and key 
 | `think.sap.4` | Sort by comparing neighbours and swapping, and say the steps of the method (an algorithm) | algorithms | core | — | `order`, `choose` in `think-sapling-4` |
 | `think.sap.5` | Search in an organised way: one by one in a mixed list, from the middle in a sorted one, and say which is faster | algorithms | full | — | `choose` in `think-sapling-8`, `think-sapling-9` |
 | `think.sap.6` | Write precise instructions, plan a program before building it (goal, path, blocks), and choose the better of two programs (1A-AP-12, 1B-AP-08) | algorithms | full | — | `choose`, `code` with `max` in `think-sapling-25`, `think-sapling-10` |
-| `think.sap.7` | Read and make a picture from a grid of coloured squares by a number code; encode and decode a letter code (1A-AP-09) | data | full | — | 🆕 `pixels`, `pairs` in `think-sapling-15`, `think-sapling-16` |
+| `think.sap.7` | Read and make a picture from a grid of coloured squares by a number code; encode and decode a letter code (1A-AP-09) | data | full | — | `pixels`, `pairs` in `think-sapling-15`, `think-sapling-16` |
 | `think.sap.8` | Collect answers to a question, put them in a table and use it to answer and to guess (1A-DA-06, 1A-DA-07) | data | full | — | `chart`, `choose` in `think-sapling-17` |
 | `think.sap.9` | Save, find, copy and delete work on a device; put files in folders (1A-DA-05) | systems | full | — | `sort`, `choose` in `think-sapling-19` |
 | `think.sap.10` | Explain that computers follow programs written by people, tell hardware from software, and find computers in everyday things (1A-CS-01, 1B-CS-02) | systems | core | — | `sort`, `choose` in `think-sapling-18`, `think-sapling-26` |
@@ -276,44 +328,86 @@ practice). CSTA Level 1A and England's key stage 1 are finished, and 1B and key 
 |---|---|---|---|---|---|---|
 | ✅ | `think-sapling-1` | به چپ بچرخ، به راست بچرخ | Left and right from the character's point of view; first forward-and-turn program | lesson (`choose`), coding (`code` turn), home (`unplugged`) | think.sap.1 | core |
 | ✅ | `think-sapling-2` | جلو برو، بچرخ | Forward and turn blocks | coding (`code` turn), home (`unplugged`) | think.sap.1 | core |
-| ⬜ | `think-sapling-6` | بازی ربات | Unit game: turn programs on 5×5 grids facing every way, one to fix | coding (`code` turn, `given`), home (`unplugged`) | think.sap.1, think.sap.3 | core |
+| 🔨 | `think-sapling-6` | بازی ربات | Unit game: turn programs on 5×5 grids facing every way, one to fix | coding (`code` turn, `given`), home (`unplugged`) | think.sap.1, think.sap.3 | core |
 | ✅ | `think-sapling-3` | تکرار | The repeat block; shorter programs within a block limit; fixing a repeat count | animation, coding (`code` with `repeat`), home (`unplugged`) | think.sap.2 | core |
-| ⬜ | `think-sapling-7` | تکه تکراری | Find the part of a path that repeats (stairs, a square, a zigzag), then say how many times; pattern of moves | animation, game (`pattern`), coding (`code` with `repeat`, `max`), home (`unplugged`) | think.sap.2 | core |
-| ✅ | `think-sapling-4` | مرتب کردن | Ordering numbers and the days of the week; sorting by swapping neighbours (an algorithm). Revise: the last `sort` step (food or not food) is classifying, not ordering; replace it with an ordering-by-swaps step | game (`order`, `sort`), animation, home (`unplugged`) | think.sap.4 | core |
-| ⬜ | `think-sapling-8` | پیدا کردن | Searching: looking one by one in a mixed row of cards, and from the middle in a sorted row; "guess my number" with higher and lower (scene) | animation, lesson (`choose`), home (`unplugged`) | think.sap.5 | full |
-| ⬜ | `think-sapling-9` | بازی مرتب کن، پیدا کن | Unit game: order by swaps, find a card in few looks, sort by a rule | game (`order`, `sort`), lesson (`choose`), home (`unplugged`) | think.sap.4, think.sap.5 | core |
-| ⬜ | `think-sapling-25` | دستور دقیق | Precise instructions: the parent follows the child's sandwich recipe word for word (scene); which instruction is unclear? which steps are missing? | animation, lesson (`choose`), game (`order`), home (`unplugged`) | think.sap.6 | full |
-| ✅ | `think-sapling-5` | برنامه‌های بزرگ‌تر | Longer programs combining turns and repeats within a block limit, including one to debug. Revise: only 4 steps; add one or two boards (5–9 steps per lesson) | coding (`code` with `repeat`, `given`), home (`unplugged`) | think.sap.2, think.sap.3 | core |
-| ⬜ | `think-sapling-10` | اول نقشه بکش | Plan first: trace the path with a finger, then write the blocks; two programs for the same board: which is shorter, which is easier to read? | lesson (`choose`), coding (`code` with `repeat`, `max`), home (`unplugged`) | think.sap.6, think.sap.2 | full |
-| ⬜ | `think-sapling-11` | کارآگاه اشکال | Debugging habits: run, watch where it goes wrong, change one thing, run again; a bug in the repeat count and a bug inside the repeat | coding (`code` with `repeat`, `given`), home (`unplugged`) | think.sap.3 | core |
-| ⬜ | `think-sapling-12` | بازی برنامه‌های بزرگ | Unit game: bigger boards with repeats and a block limit, two programs to fix | coding (`code` with `repeat`, `given`, `max`), home (`unplugged`) | think.sap.2, think.sap.3, think.sap.6 | core |
-| ⬜ | `think-sapling-13` | «و» و «یا» | Rules with "and" and "or": the basket for things that are red *and* round, or red *or* round; true or false | lesson (`choose`), game (`sort`), home (`unplugged`) | think.sap.15 | core |
-| ⬜ | `think-sapling-14` | معمای جدول | Logic grids 3×3 with clues; the wolf, the goat and the cabbage crossing the river in order | animation, lesson (`choose`), game (`order`), home (`unplugged`) | think.sap.14 | full |
-| ⬜ | `think-sapling-15` | تصویر با مربع | A picture on a screen is made of small squares; colour squares by a number code to make a picture; read a code from a picture | animation, 🆕 `pixels`, home (`unplugged`) | think.sap.7 | full |
-| ⬜ | `think-sapling-16` | رمز و پیام | A number for each letter: decode a short message, write your name in code, swap codes with the parent | lesson (`choose`), game (`pairs`), home (`unplugged`) | think.sap.7 | full |
-| ⬜ | `think-sapling-17` | پرسیدن و شمردن | Ask the family a question, count the answers in a table, read it in a picture graph; what would a new guest choose? | lesson (`chart`, `choose`), home (`unplugged`) | think.sap.8 | full |
-| ⬜ | `think-sapling-18` | رایانه دستور می‌گیرد | Computers follow programs that people write; hardware you can touch, software you can't; a computer inside the washing machine, the traffic light, the bakery's oven | animation, game (`sort`), lesson (`choose`), home (`unplugged`) | think.sap.10 | core |
-| ⬜ | `think-sapling-19` | پوشه‌ها | Saving a drawing, finding it again, folders inside folders like boxes in a cupboard, the bin | animation, game (`sort`), lesson (`choose`), home (`unplugged`) | think.sap.9 | full |
-| ⬜ | `think-sapling-20` | اینترنت چیست؟ | Computers joined across cities; a message to an aunt in another city goes through many stops (scene); once shared, many can see it | animation, game (`order`), lesson (`choose`), home (`unplugged`) | think.sap.11 | full |
-| ⬜ | `think-sapling-26` | بازی رایانه و اینترنت | Unit game: what has a computer inside, hardware or software, put a message's journey in order | game (`sort`, `order`, `pairs`), home (`unplugged`) | think.sap.10, think.sap.11 | core |
-| ⬜ | `think-sapling-21` | اطلاعات من | What is private (full name, address, school, photos of home) and what is fine to share; ask a parent before sharing anything (people online are in `health-tree-2`) | animation, game (`sort`), lesson (`choose`), parent tip | think.sap.12 | core |
-| ⬜ | `think-sapling-22` | رمز قوی | A strong password from a sentence only you know; never share it; log out on a shared computer | animation, lesson (`choose`), game (`sort`), parent tip | think.sap.12 | core |
-| ⬜ | `think-sapling-23` | وقت صفحه، وقت بازی | How do I feel after a long time on a screen? Things to do away from screens; the family's screen plan | animation, game (`sort`), lesson (`choose`), parent tip | think.sap.13 | full |
-| ⬜ | `think-sapling-27` | بازی امن بمان | Unit game: private or fine to share, strong or weak password, what to do next | game (`sort`, `pairs`), lesson (`choose`), home (`unplugged`) | think.sap.12, think.sap.13 | core |
-| ⬜ | `think-sapling-24` | بازی معما | Unit game: logic grids, river crossings, mazes; telling how you solved it | lesson (`choose`), game (`order`), home (`unplugged`) | think.sap.14 | full |
+| 🔨 | `think-sapling-7` | تکه تکراری | Find the part of a path that repeats (stairs, three sides round a pond, bigger stairs), then say how many times; pattern of moves | animation, game (`pattern`), coding (`code` with `repeat`, `max`), home (`unplugged`) | think.sap.2 | core |
+| ✅ | `think-sapling-4` | مرتب کردن | Ordering numbers and the days of the week; sorting by swapping neighbours (an algorithm): which two neighbours to swap first, and is the row sorted now? | game (`order`), animation, lesson (`choose`), home (`unplugged`) | think.sap.4 | core |
+| 🔨 | `think-sapling-8` | پیدا کردن | Searching: looking one by one in a mixed row of cards, and from the middle in a sorted row; "guess my number" with higher and lower (scene) | animation, lesson (`choose`), home (`unplugged`) | think.sap.5 | full |
+| 🔨 | `think-sapling-9` | بازی مرتب کن، پیدا کن | Unit game: order by swaps, find a card in few looks, sort by a rule | game (`order`, `sort`), lesson (`choose`), home (`unplugged`) | think.sap.4, think.sap.5 | core |
+| 🔨 | `think-sapling-25` | دستور دقیق | Precise instructions: the parent follows the child's sandwich recipe word for word (scene); which instruction is unclear? which steps are missing? | animation, lesson (`choose`), game (`order`), home (`unplugged`) | think.sap.6 | full |
+| ✅ | `think-sapling-5` | برنامه‌های بزرگ‌تر | Longer programs combining turns and repeats within a block limit: stairs down, round a wall, round a garden, and two to debug (a repeat count) | coding (`code` with `repeat`, `given`), home (`unplugged`) | think.sap.2, think.sap.3 | core |
+| 🔨 | `think-sapling-10` | اول نقشه بکش | Plan first: trace the path with a finger, then write the blocks; two programs for the same board: which is shorter, which is easier to read? | lesson (`choose`), coding (`code` with `repeat`, `max`), home (`unplugged`) | think.sap.6, think.sap.2 | full |
+| 🔨 | `think-sapling-11` | کارآگاه اشکال | Debugging habits: run, watch where it goes wrong, change one thing, run again; a bug in the repeat count and a bug inside the repeat | coding (`code` with `repeat`, `given`), home (`unplugged`) | think.sap.3 | core |
+| 🔨 | `think-sapling-12` | بازی برنامه‌های بزرگ | Unit game: bigger boards with repeats and a block limit, two programs to fix | coding (`code` with `repeat`, `given`, `max`), home (`unplugged`) | think.sap.2, think.sap.3, think.sap.6 | core |
+| 🔨 | `think-sapling-13` | «و» و «یا» | Rules with "and" and "or": the basket for things that are red *and* round, or red *or* round; true or false | lesson (`choose`), game (`sort`), home (`unplugged`) | think.sap.15 | core |
+| 🔨 | `think-sapling-14` | معمای جدول | Logic grids 3×3 with clues; the wolf, the goat and the cabbage crossing the river in order | animation, lesson (`choose`), game (`order`), home (`unplugged`) | think.sap.14 | full |
+| 🔨 | `think-sapling-15` | تصویر با مربع | A picture on a screen is made of small squares; colour squares by a number code to make a picture; read a code from a picture | animation, lesson (`pixels`), home (`unplugged`) | think.sap.7 | full |
+| 🔨 | `think-sapling-16` | رمز و پیام | A number for each letter: decode a short message, write your name in code, swap codes with the parent | lesson (`choose`), game (`pairs`), home (`unplugged`) | think.sap.7 | full |
+| 🔨 | `think-sapling-17` | پرسیدن و شمردن | Ask the family a question, count the answers in a table, read it in a picture graph; what would a new guest choose? | lesson (`chart`, `choose`), home (`unplugged`) | think.sap.8 | full |
+| 🔨 | `think-sapling-18` | رایانه دستور می‌گیرد | Computers follow programs that people write; hardware you can touch, software you can't; a computer inside the washing machine, the traffic light, the bakery's oven | animation, game (`sort`), lesson (`choose`), home (`unplugged`) | think.sap.10 | core |
+| 🔨 | `think-sapling-19` | پوشه‌ها | Saving a drawing, finding it again, folders inside folders like boxes in a cupboard, the bin | animation, game (`sort`), lesson (`choose`), home (`unplugged`) | think.sap.9 | full |
+| 🔨 | `think-sapling-20` | اینترنت چیست؟ | Computers joined across cities; a message to an aunt in another city goes through many stops (scene); once shared, many can see it | animation, game (`order`), lesson (`choose`), home (`unplugged`) | think.sap.11 | full |
+| 🔨 | `think-sapling-26` | بازی رایانه و اینترنت | Unit game: what has a computer inside, hardware or software, put a message's journey in order | game (`sort`, `order`, `pairs`), lesson (`choose`), home (`unplugged`) | think.sap.10, think.sap.11 | core |
+| 🔨 | `think-sapling-21` | اطلاعات من | What is private (full name, address, school, photos of home) and what is fine to share; ask a parent before sharing anything (people online are in `health-tree-2`) | animation, game (`sort`), lesson (`choose`), parent tip | think.sap.12 | core |
+| 🔨 | `think-sapling-22` | رمز قوی | A strong password from a sentence only you know; never share it; log out on a shared computer | animation, lesson (`choose`), game (`sort`), parent tip | think.sap.12 | core |
+| 🔨 | `think-sapling-23` | وقت صفحه، وقت بازی | How do I feel after a long time on a screen? Things to do away from screens; the family's screen plan | animation, game (`sort`), lesson (`choose`), parent tip | think.sap.13 | full |
+| 🔨 | `think-sapling-27` | بازی امن بمان | Unit game: private or fine to share, strong or weak password, what to do next | game (`sort`, `pairs`), lesson (`choose`), home (`unplugged`) | think.sap.12, think.sap.13 | core |
+| 🔨 | `think-sapling-24` | بازی معما | Unit game: logic grids, river crossings, mazes; telling how you solved it | lesson (`choose`), game (`order`), home (`unplugged`) | think.sap.14 | full |
 
 #### Practice
 
-| St | Practice | What it makes | Objectives |
-|---|---|---|---|
-| ⬜ | Turn-grid generator | 5×5 and 6×6 boards for forward and turn blocks, any starting direction, walls, a block limit; solvable by search | think.sap.1 |
-| ⬜ | Repeat-path generator | Paths built from a repeating unit (stairs, zigzag, square, spiral) with a block limit that only a repeat meets | think.sap.2 |
-| ⬜ | Debug generator | A correct turn-and-repeat program with one fault: a wrong turn, a wrong count, a block outside the repeat | think.sap.3 |
-| ⬜ | Sort-and-search drill | Number cards to sort by swaps; find a card in a sorted row in few looks | think.sap.4, think.sap.5 |
-| ⬜ | And-or sorting bank | Pictures with two properties and an "and" or "or" rule | think.sap.15 |
-| ⬜ | Logic-grid bank | 3×3 logic grids with 2–4 clues; river-crossing variants | think.sap.14 |
-| ⬜ | Pixel pictures | 8×8 pictures and their number codes, to draw or to read | think.sap.7 |
-| ⬜ | Safety scenarios | Short picture situations (a site asks for your address, a friend asks your password) with what to do | think.sap.12 |
+| St | Id | Practice | What it makes | Objectives |
+|---|---|---|---|---|
+| 🔨 | `think-sapling-p1` | Turn-grid generator | 5×5 and 6×6 boards for forward and turn blocks, any starting direction, walls, a block limit; solvable by search | think.sap.1 |
+| 🔨 | `think-sapling-p2` | Repeat-path generator | Paths built from a repeating unit (stairs, zigzag, the sides of a square) with a block limit that only a repeat meets | think.sap.2 |
+| 🔨 | `think-sapling-p3` | Debug generator | A correct turn-and-repeat program with one fault: a wrong turn, a wrong count, a block outside the repeat | think.sap.3 |
+| 🔨 | `think-sapling-p4` | Sort-and-search drill | Number cards to sort by swaps; find a card in a sorted row in few looks | think.sap.4, think.sap.5 |
+| 🔨 | `think-sapling-p5` | And-or sorting bank | Pictures with two properties and an "and" or "or" rule | think.sap.15 |
+| 🔨 | `think-sapling-p6` | Logic-grid bank | 3×3 logic grids with 2 clues; river-crossing variants | think.sap.14 |
+| 🔨 | `think-sapling-p7` | Pixel pictures | 8×8 pictures and their number codes, to draw or to read | think.sap.7 |
+| 🔨 | `think-sapling-p8` | Safety scenarios | Short picture situations (a site asks for your address, a friend asks your password) with what to do | think.sap.12 |
+| 🔨 | `think-sapling-p9` | Which way now? | A robot facing one way and some turns: which way does it face now? | think.sap.1 |
+| 🔨 | `think-sapling-p10` | Which turn? | A robot and the way it should face: turn right, turn left or turn around? | think.sap.1 |
+| 🔨 | `think-sapling-p11` | First turn programs | Small boards that need one turn (forward and turn blocks); solvable by search | think.sap.1 |
+| 🔨 | `think-sapling-p12` | Fix the turn program | A forward-and-turn program with one wrong block, to run and fix (checked to fail) | think.sap.3 |
+| 🔨 | `think-sapling-p13` | How many times? | A long program: how many times does the piece repeat? Which repeat block is the same? | think.sap.2 |
+| 🔨 | `think-sapling-p14` | Open the repeat | A repeat block: which long program does the same? | think.sap.2 |
+| 🔨 | `think-sapling-p15` | Pattern of moves | Move blocks in a repeating pattern, to continue | think.sap.2 |
+| 🔨 | `think-sapling-p16` | Sorted or not? | Rows of numbers to sort: in order, or not | think.sap.4 |
+| 🔨 | `think-sapling-p17` | Days and months | Days of the week and months of the year to put in order | think.sap.4 |
+| 🔨 | `think-sapling-p18` | Guess my number | Bigger or smaller: what is the best next guess? | think.sap.5 |
+| 🔨 | `think-sapling-p19` | One by one | Looking one by one in a mixed row: how many looks to find the card? | think.sap.5 |
+| 🔨 | `think-sapling-p20` | The clearer instruction | Two instructions: which one is exact enough to follow? | think.sap.6 |
+| 🔨 | `think-sapling-p21` | The missing step | A recipe with one step missing: which one? | think.sap.6 |
+| 🔨 | `think-sapling-p22` | Recipe in order | The exact steps of a recipe, to put in order | think.sap.6 |
+| 🔨 | `think-sapling-p23` | Fewer blocks | Two programs that do the same: which uses fewer blocks? | think.sap.6, think.sap.2 |
+| 🔨 | `think-sapling-p24` | "And", "or": true or false? | A group of pictures and a sentence with "and" or "or" | think.sap.15 |
+| 🔨 | `think-sapling-p25` | Which one fits? | Three pictures: which one fits an "and" or an "or" rule? | think.sap.15 |
+| 🔨 | `think-sapling-p26` | Who is tallest? | Four children and three clues: who is tallest, who is shortest? | think.sap.14 |
+| 🔨 | `think-sapling-p27` | Number riddle | A number from clues (between, even or odd, not…) | think.sap.14 |
+| 🔨 | `think-sapling-p28` | Count in the code | A row of a colour code: how many squares of one colour? | think.sap.7 |
+| 🔨 | `think-sapling-p29` | Three-colour pictures | Small pictures with a three-colour number code, to paint | think.sap.7 |
+| 🔨 | `think-sapling-p30` | Secret word | A number for each letter: decode a short word | think.sap.7 |
+| 🔨 | `think-sapling-p31` | Write it in code | A word: which number code is it? | think.sap.7 |
+| 🔨 | `think-sapling-p32` | Letters and numbers | Match letters to their numbers in the code | think.sap.7 |
+| 🔨 | `think-sapling-p33` | Most and fewest | A table of answers: which is most, which is fewest? | think.sap.8 |
+| 🔨 | `think-sapling-p34` | How many more? | A table or picture graph: how many more, how many in all? | think.sap.8 |
+| 🔨 | `think-sapling-p35` | Count the votes | Votes to sort into the table's rows | think.sap.8 |
+| 🔨 | `think-sapling-p36` | Hardware or software? | Sort: things you can touch, and programs | think.sap.10 |
+| 🔨 | `think-sapling-p37` | A computer inside? | Sort: things with a computer inside, and things without | think.sap.10 |
+| 🔨 | `think-sapling-p38` | Programs | Questions about who writes programs and what computers do | think.sap.10 |
+| 🔨 | `think-sapling-p39` | Into folders | Sort files into the right folders | think.sap.9 |
+| 🔨 | `think-sapling-p40` | Where is the file? | A file inside folders: which way leads to it? | think.sap.9 |
+| 🔨 | `think-sapling-p41` | Save, find, bin | Situations about saving, finding and throwing away files | think.sap.9 |
+| 🔨 | `think-sapling-p42` | A message's journey | The stops of a message across the internet, in order | think.sap.11 |
+| 🔨 | `think-sapling-p43` | Internet: true or false? | Sentences about the internet and sharing | think.sap.11 |
+| 🔨 | `think-sapling-p44` | Needs the internet? | Sort: things that need the internet, and things that don't | think.sap.11 |
+| 🔨 | `think-sapling-p45` | Private or fine to share? | Sort information: private, or fine to share | think.sap.12 |
+| 🔨 | `think-sapling-p46` | The stronger password | Two passwords: which is harder to guess? | think.sap.12 |
+| 🔨 | `think-sapling-p47` | Strong or weak? | Sort passwords: strong and weak | think.sap.12 |
+| 🔨 | `think-sapling-p48` | My information: true or false? | Sentences about private information to judge | think.sap.12 |
+| 🔨 | `think-sapling-p49` | Screen or no screen? | Sort activities: on a screen, and away from screens | think.sap.13 |
+| 🔨 | `think-sapling-p50` | After a long time on a screen | How do we feel, what do we do? | think.sap.13 |
 
 ### 🌳 درخت — `tree`
 
@@ -327,71 +421,71 @@ written when this garden is planned in detail.
 
 | Code | Can do | Strand | Depth | School | Checked by |
 |---|---|---|---|---|---|
-| `think.tree.1` | Use conditions in programs: "if there is a wall ahead, turn", if/else, so one program works on several boards (1B-AP-10) | programming | core | پایه ششم، کار و فناوری، برنامه‌نویسی (اسکرچ) | 🆕 `code` if-block in `think-tree-1` |
-| `think.tree.2` | Start parts of a program with events (when the flag is tapped, when the character is touched) to make a small interactive story, and control a simulated device such as a traffic light (1B-AP-10; England KS2) | programming | full | پایه ششم، کار و فناوری، برنامه‌نویسی (اسکرچ) | 🆕 `stage` in `think-tree-4` |
-| `think.tree.3` | Use "repeat until" and repeats inside repeats (1B-AP-10) | programming | core | پایه ششم، کار و فناوری، برنامه‌نویسی (اسکرچ) | 🆕 `code` repeat-until in `think-tree-5` |
-| `think.tree.4` | Make and use a variable (a counter, a score) that a program stores and changes (1B-AP-09) | programming | core | پایه ششم، کار و فناوری، برنامه‌نویسی (اسکرچ) | 🆕 `code` counter in `think-tree-6` |
-| `think.tree.5` | Make a new block from a group of blocks (a function), name it and reuse it, to split a program into parts (1B-AP-11) | programming | core | — | 🆕 `code` function block in `think-tree-2` |
-| `think.tree.6` | Draw shapes with a pen character: angles, repeating to make polygons and rosettes | programming | full | — | 🆕 `turtle` in `think-tree-7` |
-| `think.tree.7` | Write an algorithm as numbered steps and as a flowchart (start, action, question, end), and follow one (2-AP-10; earlier than CSTA, an addition from Iran's grade 6) | algorithms | full | پایه ششم، کار و فناوری، الگوریتم و روندنما | 🆕 `flowchart` in `think-tree-8` |
+| `think.tree.1` | Use conditions in programs: "if there is a wall ahead, turn", if/else, so one program works on several boards (1B-AP-10) | programming | core | پایه ششم، کار و فناوری، برنامه‌نویسی (اسکرچ) | `code` if-block in `think-tree-1` |
+| `think.tree.2` | Start parts of a program with events (when the flag is tapped, when the character is touched) to make a small interactive story, and control a simulated device such as a traffic light (1B-AP-10; England KS2) | programming | full | پایه ششم، کار و فناوری، برنامه‌نویسی (اسکرچ) | `stage` in `think-tree-4` |
+| `think.tree.3` | Use "repeat until" and repeats inside repeats (1B-AP-10) | programming | core | پایه ششم، کار و فناوری، برنامه‌نویسی (اسکرچ) | `code` repeat-until in `think-tree-5` |
+| `think.tree.4` | Make and use a variable (a counter, a score) that a program stores and changes (1B-AP-09) | programming | core | پایه ششم، کار و فناوری، برنامه‌نویسی (اسکرچ) | `code` counter in `think-tree-6` |
+| `think.tree.5` | Make a new block from a group of blocks (a function), name it and reuse it, to split a program into parts (1B-AP-11) | programming | core | — | `code` function block in `think-tree-2` |
+| `think.tree.6` | Draw shapes with a pen character: angles, repeating to make polygons and rosettes | programming | full | — | `turtle` in `think-tree-7` |
+| `think.tree.7` | Write an algorithm as numbered steps and as a flowchart (start, action, question, end), and follow one (2-AP-10; earlier than CSTA, an addition from Iran's grade 6) | algorithms | full | پایه ششم، کار و فناوری، الگوریتم و روندنما | `flowchart` in `think-tree-8` |
 | `think.tree.8` | Compare algorithms by counting their steps: guess a number in the fewest questions (halving), two ways of sorting (1B-AP-08) | algorithms | full | — | `choose`, `order` in `think-tree-3` |
-| `think.tree.9` | Test and debug systematically: predict, trace block by block, change one thing at a time, test the unusual cases (1B-AP-15) | debugging | core | — | 🆕 `code` step-by-step run in `think-tree-9` |
-| `think.tree.10` | Change ("remix") an existing program to add something new, and say whose work it builds on (1B-AP-12, 1B-AP-14, 1B-IC-21) | programming | full | — | 🆕 `stage` with `given` in `think-tree-10` |
-| `think.tree.11` | Show numbers 0–31 in binary with five cards, and explain that computers keep text, pictures and sounds as numbers | data | core | — | 🆕 `binary` in `think-tree-11` |
+| `think.tree.9` | Test and debug systematically: predict, trace block by block, change one thing at a time, test the unusual cases (1B-AP-15) | debugging | core | — | `code` step-by-step run in `think-tree-9` |
+| `think.tree.10` | Change ("remix") an existing program to add something new, and say whose work it builds on (1B-AP-12, 1B-AP-14, 1B-IC-21) | programming | full | — | `stage` with `given` in `think-tree-10` |
+| `think.tree.11` | Show numbers 0–31 in binary with five cards, and explain that computers keep text, pictures and sounds as numbers | data | core | — | `binary` in `think-tree-11` |
 | `think.tree.12` | Collect data with a survey, organise it in a table and a chart, see a pattern and make a careful claim (1B-DA-06, 1B-DA-07) | data | full | پایه ششم، تفکر و پژوهش، فصل ۲ «روش گردآوری اطلاعات» | `chart`, `choose` in `think-tree-12` |
 | `think.tree.13` | Explain how the parts of a computer work together: input, processor, memory, storage, output; hardware and software as a system (1B-CS-01, 1B-CS-02) | systems | core | پایه ششم، کار و فناوری، آشنایی با اجزای رایانه | `sort`, `order`, `choose` in `think-tree-13` |
 | `think.tree.14` | Use troubleshooting steps for common problems: restart, check cables and settings, try one thing at a time, ask for help clearly (1B-CS-03) | systems | full | — | `choose`, `order` in `think-tree-14` |
 | `think.tree.15` | Explain how a message crosses the internet in small packets that are put back together, and what an address is (1B-NI-04) | systems | full | — | `order`, `choose` in `think-tree-15` |
-| `think.tree.16` | Type in Persian and English with both hands on the home row; write, save and find a short document (an addition from Iran's grade 6) | digital | full | پایه ششم، کار و فناوری، تایپ و نوشتن در رایانه | 🆕 `type` in `think-tree-16` |
+| `think.tree.16` | Type in Persian and English with both hands on the home row; write, save and find a short document (an addition from Iran's grade 6) | digital | full | پایه ششم، کار و فناوری، تایپ و نوشتن در رایانه | `type` in `think-tree-16` |
 | `think.tree.17` | Search well (good keywords), know that a search engine chooses and ranks its results, and check whether information is true: who wrote it, when, does another source agree? | digital | core | پایه ششم، تفکر و پژوهش، فصل ۲ «از کجا بدانم؟» | `choose`, `sort` in `think-tree-17` |
 | `think.tree.18` | Protect accounts and devices: strong different passwords, don't share them, spot tricks ("you won a prize!"), ask before downloading (1B-NI-05) | digital | core | — | `sort`, `choose` in `think-tree-18` |
 | `think.tree.19` | Explain what a digital footprint is, be respectful online, and know what to do about online bullying (save, block, tell) | digital | core | — | `sort`, `choose` in `think-tree-19` |
-| `think.tree.20` | Explain in simple words what artificial intelligence is: a program that learns from many examples, can be wrong, and is only as good as its examples; teach a simple sorter | digital | full | پایه ششم، کار و فناوری، هوش مصنوعی به زبان ساده (چاپ ۱۴۰۴) | 🆕 `train` in `think-tree-20` |
+| `think.tree.20` | Explain in simple words what artificial intelligence is: a program that learns from many examples, can be wrong, and is only as good as its examples; teach a simple sorter | digital | full | پایه ششم، کار و فناوری، هوش مصنوعی به زبان ساده (چاپ ۱۴۰۴) | `train` in `think-tree-20` |
 | `think.tree.21` | Say how computers changed how people live and work (before and after), and how to make technology easier for everyone, including people who cannot see or hear well (1B-IC-18, 1B-IC-19) | digital | full | پایه ششم، کار و فناوری، رایانه‌ها همه‌جا هستند (چاپ ۱۴۰۴) | `choose`, `sort` in `think-tree-21` |
-| `think.tree.22` | Solve multi-step puzzles (4×4 logic grids, 4×4 and 6×6 sudoku, weighing puzzles), break a big problem into parts and explain the reasoning | puzzles | full | پایه ششم، تفکر و پژوهش، فصل ۳ «نظام‌مندی» | 🆕 `logicgrid` in `think-tree-22` |
+| `think.tree.22` | Solve multi-step puzzles (4×4 logic grids, 4×4 and 6×6 sudoku, weighing puzzles), break a big problem into parts and explain the reasoning | puzzles | full | پایه ششم، تفکر و پژوهش، فصل ۳ «نظام‌مندی» | `logicgrid` in `think-tree-22` |
 | `think.tree.23` | Plan a small program project (a game or story): goal, parts, build, test with someone, improve, and describe the choices made (1B-AP-13, 1B-AP-17) | programming | full | پایه ششم، تفکر و پژوهش، فصل ۲ «پروژه پژوهشی» | 🆕 `stage`, `paper` in `think-tree-23` |
 
 #### Lessons
 
 | St | Lesson | Title | Covers | Content types | Objectives | Depth |
 |---|---|---|---|---|---|---|
-| ⬜ | `think-tree-13` | درون رایانه | Input, processor, memory, storage, output: the path of a key press to a letter on the screen (scene); hardware and software together | animation, game (`sort`, `order`), lesson (`choose`), home (`unplugged`) | think.tree.13 | core |
-| ⬜ | `think-tree-16` | تایپ با ده انگشت | The home row in Persian and English, short words, saving and finding a document | 🆕 `type`, lesson (`choose`), parent tip | think.tree.16 | full |
-| ⬜ | `think-tree-8` | الگوریتم و روندنما | Steps as a numbered list and as a flowchart: start, do, ask a question, end; follow a flowchart for making tea | animation, 🆕 `flowchart`, game (`order`), home (`unplugged`) | think.tree.7 | full |
-| ⬜ | `think-tree-1` | اگر دیوار بود | Conditions inside programs: "if wall ahead, turn right"; one program that works on three different boards | 🆕 `code` if-block, home (`unplugged`) | think.tree.1 | core |
-| ⬜ | `think-tree-5` | تا وقتی که… | "Repeat until you reach the flag"; a repeat inside a repeat for a row of squares | 🆕 `code` repeat-until, home (`unplugged`) | think.tree.3 | core |
-| ⬜ | `think-tree-9` | قدم به قدم اجرا کن | Run one block at a time and watch; predict, then check; test on the unusual board | 🆕 `code` step-by-step run, home (`unplugged`) | think.tree.9 | core |
-| ⬜ | `think-tree-2` | دستور تازه بساز | Functions: name a group of blocks and reuse it | 🆕 `code` function block, home (`unplugged`) | think.tree.5 | core |
-| ⬜ | `think-tree-6` | شمارنده | A variable: the robot counts the apples it picks; set, add one, check the count | animation, 🆕 `code` counter, home (`unplugged`) | think.tree.4 | core |
-| ⬜ | `think-tree-7` | قلم و زاویه | A pen character draws: forward and turn by an angle; a square, a triangle, a star, a rosette of repeats | 🆕 `turtle`, home (`unplugged`) | think.tree.6 | full |
-| ⬜ | `think-tree-4` | وقتی پرچم را زدی | Events: when the flag is tapped, when the cat is touched; a two-character story that talks and moves; a traffic light that changes when the button is pressed | 🆕 `stage`, home (`unplugged`) | think.tree.2 | full |
-| ⬜ | `think-tree-10` | برنامه دیگران | Open a friend's program, change it to add a scene, and write whose work it was | 🆕 `stage` with `given`, parent tip | think.tree.10 | full |
-| ⬜ | `think-tree-23` | پروژه من | Plan a small game or story on paper (goal, characters, events), build it, let someone try it, improve it | 🆕 `stage`, 🆕 `paper`, parent tip | think.tree.23 | full |
-| ⬜ | `think-tree-3` | جست‌وجو | Searching: guess the number in the fewest questions by halving each time; count the steps of two ways of sorting | animation, game (`order`), lesson (`choose`), home (`unplugged`) | think.tree.8 | full |
-| ⬜ | `think-tree-11` | عددهای دودویی | Binary numbers with five dot cards (1, 2, 4, 8, 16): show 0 to 31, and why computers use only 0 and 1 | animation, 🆕 `binary`, home (`unplugged`) | think.tree.11 | core |
-| ⬜ | `think-tree-12` | پرسش‌نامه | A family survey: ask, tally, table, chart; what does it show, and what can't we say from it? | lesson (`chart`, `choose`), home (`unplugged`) | think.tree.12 | full |
-| ⬜ | `think-tree-14` | عیب‌یابی | No internet, no sound, a frozen program: check one thing at a time, in a sensible order, and ask for help clearly | animation, lesson (`choose`), game (`order`), home (`unplugged`) | think.tree.14 | full |
-| ⬜ | `think-tree-15` | بسته‌های پیام | A message is cut into numbered packets, they take different roads and are put back in order (scene, then an unplugged game with paper strips) | animation, game (`order`), lesson (`choose`), home (`unplugged`) | think.tree.15 | full |
-| ⬜ | `think-tree-17` | از کجا بدانم؟ | Good search words; why some results come first (and some are ads); who wrote it, when, does another source agree; a photo can be edited | animation, lesson (`choose`), game (`sort`), home (`unplugged`) | think.tree.17 | core |
-| ⬜ | `think-tree-18` | حساب امن | Strong and different passwords, tricks that ask for them ("you won a prize!"), asking before downloading | animation, game (`sort`), lesson (`choose`), parent tip | think.tree.18 | core |
-| ⬜ | `think-tree-19` | ردپای دیجیتال | What we post stays and can be found; kind and respectful messages; online bullying: save, block, tell | animation, game (`sort`), lesson (`choose`), parent tip | think.tree.19 | core |
-| ⬜ | `think-tree-20` | ماشینی که یاد می‌گیرد | Teach a program to tell apples from oranges with examples; give it a bad example and see it go wrong | animation, 🆕 `train`, lesson (`choose`), home (`unplugged`) | think.tree.20 | full |
-| ⬜ | `think-tree-21` | قبل و بعد از رایانه | Letters and emails, maps and navigation, the bakery's oven; technology that helps people who cannot see or hear | animation, lesson (`choose`), game (`sort`), home (`unplugged`) | think.tree.21 | full |
-| ⬜ | `think-tree-22` | معمای بزرگ | 4×4 logic grids and sudoku: one clue at a time, what we know for sure, splitting the puzzle into parts | 🆕 `logicgrid`, lesson (`choose`), home (`unplugged`) | think.tree.22 | full |
+| 🔨 | `think-tree-13` | درون رایانه | Input, processor, memory, storage, output: the path of a key press to a letter on the screen (scene); hardware and software together | animation, game (`sort`, `order`), lesson (`choose`), home (`unplugged`) | think.tree.13 | core |
+| 🔨 | `think-tree-16` | تایپ با ده انگشت | The home row in Persian and English, short words, saving and finding a document | lesson (`type`, `choose`), parent tip | think.tree.16 | full |
+| 🔨 | `think-tree-8` | الگوریتم و روندنما | Steps as a numbered list and as a flowchart: start, do, ask a question, end; follow a flowchart for making tea | animation, lesson (`flowchart`), game (`order`), home (`unplugged`) | think.tree.7 | full |
+| 🔨 | `think-tree-1` | اگر دیوار بود | Conditions inside programs: "if wall ahead, turn right"; one program that works on three different boards | coding (`code` if-block, several boards), home (`unplugged`) | think.tree.1 | core |
+| 🔨 | `think-tree-5` | تا وقتی که… | "Repeat until you reach the flag"; a repeat inside a repeat for a row of squares | coding (`code` repeat-until, repeat inside repeat), home (`unplugged`) | think.tree.3 | core |
+| 🔨 | `think-tree-9` | قدم به قدم اجرا کن | Run one block at a time and watch; predict, then check; test on the unusual board | lesson (`choose`), coding (`code` step-by-step run), home (`unplugged`) | think.tree.9 | core |
+| 🔨 | `think-tree-2` | دستور تازه بساز | Functions: name a group of blocks and reuse it | coding (`code` function block), home (`unplugged`) | think.tree.5 | core |
+| 🔨 | `think-tree-6` | شمارنده | A variable: the robot counts the apples it picks; set, add one, check the count | animation, coding (`code` counter), home (`unplugged`) | think.tree.4 | core |
+| 🔨 | `think-tree-7` | قلم و زاویه | A pen character draws: forward and turn by an angle; a square, a triangle, a star, a rosette of repeats | coding (`turtle`), home (`unplugged`) | think.tree.6 | full |
+| 🔨 | `think-tree-4` | وقتی پرچم را زدی | Events: when the flag is tapped, when the cat is touched; a two-character story that talks and moves; a traffic light that changes when the button is pressed | coding (`stage`), home (`unplugged`) | think.tree.2 | full |
+| 🔨 | `think-tree-10` | برنامه دیگران | Open a friend's program, change it to add a scene, and say whose work it was; why remixing with credit is good | coding (`stage` with `given`), lesson (`choose`), parent tip | think.tree.10 | full |
+| 🔨 | `think-tree-23` | پروژه من | Plan a small game or story on paper (goal, characters, events), build it, let someone try it, improve it; what to do with someone's feedback | coding (`stage`), home (`paper`), lesson (`choose`), parent tip | think.tree.23 | full |
+| 🔨 | `think-tree-3` | جست‌وجو | Searching: guess the number in the fewest questions by halving each time; halving in a dictionary; two ways of sorting | animation, game (`order`), lesson (`choose`), home (`unplugged`) | think.tree.8 | full |
+| 🔨 | `think-tree-11` | عددهای دودویی | Binary numbers with five dot cards (1, 2, 4, 8, 16): show 0 to 31, and why computers use only 0 and 1 | animation, lesson (`binary`, `choose`), home (`unplugged`) | think.tree.11 | core |
+| 🔨 | `think-tree-12` | پرسش‌نامه | A survey: ask, tally, bar chart, adding new answers; what does it show, and what can't we say from it? a fair question | lesson (`chart`, `choose`), home (`unplugged`) | think.tree.12 | full |
+| 🔨 | `think-tree-14` | عیب‌یابی | No internet, no sound, a frozen program: check one thing at a time, in a sensible order, and ask for help clearly | animation, lesson (`choose`), game (`order`), home (`unplugged`) | think.tree.14 | full |
+| 🔨 | `think-tree-15` | بسته‌های پیام | A message is cut into numbered packets, they take different roads and are put back in order (scene, then an unplugged game with paper strips) | animation, game (`order`), lesson (`choose`), home (`unplugged`) | think.tree.15 | full |
+| 🔨 | `think-tree-17` | از کجا بدانم؟ | Good search words; why some results come first (and some are ads); who wrote it, when, does another source agree; a photo can be edited | animation, lesson (`choose`), game (`sort`), home (`unplugged`) | think.tree.17 | core |
+| 🔨 | `think-tree-18` | حساب امن | Strong and different passwords, tricks that ask for them ("you won a prize!"), asking before downloading | animation, game (`sort`), lesson (`choose`), parent tip | think.tree.18 | core |
+| 🔨 | `think-tree-19` | ردپای دیجیتال | What we post stays and can be found; kind and respectful messages; online bullying: save, block, tell | animation, game (`sort`), lesson (`choose`), parent tip | think.tree.19 | core |
+| 🔨 | `think-tree-20` | ماشینی که یاد می‌گیرد | Teach a program to tell apples from oranges with examples; give it a bad example and see it go wrong | animation, lesson (`train`, `choose`), home (`unplugged`) | think.tree.20 | full |
+| 🔨 | `think-tree-21` | قبل و بعد از رایانه | Letters and emails, maps and navigation, the bakery's oven; technology that helps people who cannot see or hear | animation, lesson (`choose`), game (`sort`), home (`unplugged`) | think.tree.21 | full |
+| 🔨 | `think-tree-22` | معمای بزرگ | 4×4 logic grids and sudoku: one clue at a time, what we know for sure, splitting the puzzle into parts | game (`logicgrid`), lesson (`choose`), home (`unplugged`) | think.tree.22 | full |
 
 #### Practice
 
-| St | Practice | What it makes | Objectives |
-|---|---|---|---|
-| ⬜ | Several-boards generator | Three or more boards that one program with conditions must solve together (walls in different places) | think.tree.1, think.tree.3 |
-| ⬜ | Function puzzles | Boards with a repeated shape (three steps of stairs, two squares) where a named block meets the block limit | think.tree.5 |
-| ⬜ | Counter puzzles | Collect exactly n things, stop when the count reaches n | think.tree.4 |
-| ⬜ | Turtle challenges | Draw this shape: polygons, stars, letters, rosettes; the angle is the puzzle | think.tree.6 |
-| ⬜ | Flowchart bank | Everyday and maths flowcharts to follow, and gaps to fill | think.tree.7 |
-| ⬜ | Binary drill | Numbers to show with cards, cards to read, secret messages in binary | think.tree.11 |
-| ⬜ | Sudoku and logic-grid generator | 4×4 and 6×6 sudoku, 4×4 logic grids with unique solutions | think.tree.22 |
-| ⬜ | Typing drill | Persian and English words from the home row outwards, from words the child can read | think.tree.16 |
-| ⬜ | Is-it-true scenarios | A headline, a photo or a message with clues to check; safe and unsafe requests | think.tree.17, think.tree.18 |
+| St | Id | Practice | What it makes | Objectives |
+|---|---|---|---|---|
+| 🔨 | `think-tree-p1` | Several-boards generator | Three or more boards that one program with conditions must solve together (walls in different places) | think.tree.1, think.tree.3 |
+| 🔨 | `think-tree-p2` | Function puzzles | Boards with a repeated shape (three steps of stairs, two squares) where a named block meets the block limit | think.tree.5 |
+| 🔨 | `think-tree-p3` | Counter puzzles | Collect exactly n things, stop when the count reaches n | think.tree.4 |
+| 🔨 | `think-tree-p4` | Turtle challenges | Draw this shape: polygons, a star, rosettes; the angle is the puzzle | think.tree.6 |
+| 🔨 | `think-tree-p5` | Flowchart bank | Everyday and maths flowcharts to follow, and gaps to fill | think.tree.7 |
+| 🔨 | `think-tree-p6` | Binary drill | Numbers to show with cards, cards to read, secret messages in binary | think.tree.11 |
+| 🔨 | `think-tree-p7` | Sudoku and logic-grid generator | 4×4 and 6×6 sudoku, 4×4 logic grids with unique solutions | think.tree.22 |
+| 🔨 | `think-tree-p8` | Typing drill | Persian and English words from the home row outwards, from words the child can read | think.tree.16 |
+| 🔨 | `think-tree-p9` | Is-it-true scenarios | A headline, a photo or a message with clues to check; safe and unsafe requests | think.tree.17, think.tree.18 |
 
 ### 🌲 جنگل — `forest`
 
@@ -461,15 +555,15 @@ lessons: further units on each topic, games and projects) are written when this 
 
 #### Practice
 
-| St | Practice | What it makes | Objectives |
-|---|---|---|---|
-| ⬜ | Text-programming exercises | Short tasks checked by hidden test cases, from `print` to functions, ordered by the lessons taught so far | think.for.1, think.for.2, think.for.3, think.for.4, think.for.5, think.for.6 |
-| ⬜ | Predict-the-output bank | A short program; what does it print? (tracing variables, conditions, loops) | think.for.2, think.for.3, think.for.4, think.for.8 |
-| ⬜ | Bug-fix bank | Programs with one syntax or logic error and a failing test | think.for.9 |
-| ⬜ | Encoding drill | Binary, character codes, RGB colours, file-size estimates | think.for.12 |
-| ⬜ | Cipher drill | Shift and substitution messages to encode and decode | think.for.17 |
-| ⬜ | Phishing and false-news scenarios | Messages, posts and pictures with clues to check | think.for.17, think.for.19 |
-| ⬜ | Graph-puzzle generator | Small maps for shortest path, least road and colouring | think.for.23 |
+| St | Id | Practice | What it makes | Objectives |
+|---|---|---|---|---|
+| ⬜ | `think-forest-p1` | Text-programming exercises | Short tasks checked by hidden test cases, from `print` to functions, ordered by the lessons taught so far | think.for.1, think.for.2, think.for.3, think.for.4, think.for.5, think.for.6 |
+| ⬜ | `think-forest-p2` | Predict-the-output bank | A short program; what does it print? (tracing variables, conditions, loops) | think.for.2, think.for.3, think.for.4, think.for.8 |
+| ⬜ | `think-forest-p3` | Bug-fix bank | Programs with one syntax or logic error and a failing test | think.for.9 |
+| ⬜ | `think-forest-p4` | Encoding drill | Binary, character codes, RGB colours, file-size estimates | think.for.12 |
+| ⬜ | `think-forest-p5` | Cipher drill | Shift and substitution messages to encode and decode | think.for.17 |
+| ⬜ | `think-forest-p6` | Phishing and false-news scenarios | Messages, posts and pictures with clues to check | think.for.17, think.for.19 |
+| ⬜ | `think-forest-p7` | Graph-puzzle generator | Small maps for shortest path, least road and colouring | think.for.23 |
 
 ### Step types needed
 
@@ -480,22 +574,22 @@ Python). In the order they are needed:
 
 | Step type / option | What it does | Used by |
 |---|---|---|
-| `pixels` | Colour the squares of a grid by a number code to make a picture, or read the code of a picture; later RGB colours and run-length codes | `think-sapling-15`, `think-forest-2` |
-| `code` if-block | "If wall ahead / if on a colour … else …" blocks; a step can hold several boards that one program must solve | `think-tree-1` |
-| `code` repeat-until | "Repeat until at the goal"; check that repeats inside repeats work in the editor | `think-tree-5` |
-| `code` step-by-step run | Run one block at a time, with the block and the character's state highlighted | `think-tree-9` |
-| `code` function block | Define a named block from a group of blocks and use it in the program | `think-tree-2` |
-| `code` counter | A variable block: set, add one, compare ("if count = 3") | `think-tree-6` |
-| `turtle` | A pen character: forward n, turn by an angle, pen up and down, repeat; the goal is a shape to match | `think-tree-7` (and `pycode` with `turtle` in Forest) |
-| `flowchart` | Follow a flowchart (start, action, question, end) one box at a time, or fill its empty boxes | `think-tree-8`, `think-forest-8` |
-| `binary` | Dot cards (1, 2, 4, 8, 16, …) to flip to make or read a number; later bytes and letters | `think-tree-11`, `think-forest-2` |
-| `type` | Typing practice in Persian and English: an on-screen keyboard shows the finger, words from what the child can read | `think-tree-16` |
-| `train` | Teach a simple classifier with labelled picture examples, then test it on new ones; bad examples give wrong answers | `think-tree-20`, `think-forest-20` |
-| `logicgrid` | A logic-grid and sudoku board: tick and cross cells from clues; checks a unique solution | `think-tree-22` |
-| `stage` | Blocks with events (when the flag is tapped, when touched), say and move, for two or more characters on a stage; can start from a `given` program to remix | `think-tree-4`, `think-tree-10`, `think-tree-23` |
-| `pycode` | Text programming: a small, offline Python subset written in JavaScript (`print`, `input`, variables, `if`/`elif`/`else`, `for`, `while`, lists, `def`, `turtle`, `random`), left-to-right code area, hidden test cases, clear Persian error messages; option to show the block version beside the text | `think-forest-1` to `think-forest-12`, `think-forest-14` |
-| `sheet` | A small spreadsheet: cells, `SUM` and `AVERAGE`, sorting, and a chart from a range | `think-forest-13` |
-| `graph` | Dots and lines to tap: find the shortest path, join all dots with the least total, colour so neighbours differ | `think-forest-23` |
-| `gates` | Switches, AND, OR and NOT gates and a lamp; build a half adder | `think-forest-24` |
+| `pixels` | Colour the squares of a grid by a number code to make a picture, or read the code of a picture. **Built** (`js/steps/thinking.js`); still to do: RGB colours and run-length codes | `think-sapling-15`, `think-forest-2` |
+| `code` if-block | "If wall ahead / if on a colour … else …" blocks; a step can hold several boards that one program must solve **Built** (`js/steps/coding.js`). | `think-tree-1` |
+| `code` repeat-until | "Repeat until at the goal"; check that repeats inside repeats work in the editor **Built** (`js/steps/coding.js`). | `think-tree-5` |
+| `code` step-by-step run | Run one block at a time, with the block and the character's state highlighted **Built** (`js/steps/coding.js`). | `think-tree-9` |
+| `code` function block | Define a named block from a group of blocks and use it in the program **Built** (`js/steps/coding.js`). | `think-tree-2` |
+| `code` counter | A variable block: set, add one, compare ("if count = 3") **Built** (`js/steps/coding.js`). | `think-tree-6` |
+| `turtle` | A pen character: forward n, turn by an angle, pen up and down, repeat; the goal is a shape to match **Built** (`js/steps/thinking.js`). | `think-tree-7` (and `pycode` with `turtle` in Forest) |
+| `flowchart` | Follow a flowchart (start, action, question, end) one box at a time, or fill its empty boxes **Built** (`js/steps/thinking.js`). | `think-tree-8`, `think-forest-8` |
+| `binary` | Dot cards (1, 2, 4, 8, 16, …) to flip to make or read a number; later bytes and letters **Built** (`js/steps/thinking.js`). | `think-tree-11`, `think-forest-2` |
+| `type` | Typing practice in Persian and English: an on-screen keyboard shows the finger, words from what the child can read **Built** (`js/steps/thinking.js`). | `think-tree-16` |
+| `train` | Teach a simple classifier with labelled picture examples, then test it on new ones; bad examples give wrong answers **Built** (`js/steps/thinking.js`). | `think-tree-20`, `think-forest-20` |
+| `logicgrid` | A logic-grid and sudoku board: tick and cross cells from clues; checks a unique solution **Built** (`js/steps/thinking.js`). | `think-tree-22` |
+| `stage` | Blocks with events (when the flag is tapped, when touched), say and move, for two or more characters on a stage; can start from a `given` program to remix **Built** (`js/steps/thinking.js`). | `think-tree-4`, `think-tree-10`, `think-tree-23` |
+| `pycode` | Text programming: a small, offline Python subset written in JavaScript (`print`, `input`, variables, `if`/`elif`/`else`, `for`, `while`, lists, `def`, `turtle`, `random`), left-to-right code area, hidden test cases, clear Persian error messages; option to show the block version beside the text **Built** (`js/steps/python.js`). | `think-forest-1` to `think-forest-12`, `think-forest-14` |
+| `sheet` | A small spreadsheet: cells, `SUM` and `AVERAGE`, sorting, and a chart from a range **Built** (`js/steps/thinking.js`). | `think-forest-13` |
+| `graph` | Dots and lines to tap: find the shortest path, join all dots with the least total, colour so neighbours differ **Built** (`js/steps/thinking.js`). | `think-forest-23` |
+| `gates` | Switches, AND, OR and NOT gates and a lamp; build a half adder **Built** (`js/steps/thinking.js`). | `think-forest-24` |
 
 `paper` is already built and is used by `think-tree-23`, `think-forest-12`, `think-forest-21`: add them to its row in CURRICULUM.md.
