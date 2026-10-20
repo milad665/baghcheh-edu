@@ -159,6 +159,8 @@
         sub.leveled ? el("span", { class: "sub" }, [badge(B.levelOf(p, sub.id))]) : null
       ]));
     });
+    // Recess: free games outside the lessons (js/recess.js).
+    if (B.recessHomeTile) grid.appendChild(B.recessHomeTile(p));
     app.appendChild(grid);
   }
 
@@ -205,7 +207,8 @@
     // Seed, Sprout and Sapling: one path, lesson → its practice → … → a unit quiz (js/practice.js).
     if (lessons.length && B.gardenPath && B.inPath(level)) {
       if (B.dueSets(p, id).length) app.appendChild(el("div", { class: "grid", style: "margin-top:14px" }, [reviewTile(p, sub)]));
-      app.appendChild(pathGrid(p, B.gardenPath(p, id, level)));
+      var items = B.gardenPath(p, id, level);
+      app.appendChild(pathGrid(p, B.pathWithGames ? B.pathWithGames(p, items) : items));
       var free = practiceArea(p, id, level);
       if (free) app.appendChild(el("details", { class: "free-practice" }, [el("summary", { text: B.t("pathFreePractice") }), free]));
       return;
@@ -232,6 +235,18 @@
         var r = it.rec;
         face = [it.lesson.emoji, it.lesson.title];
         sub = !r ? "" : r.mastered ? B.t("stateMastered") : r.done ? B.t("stateDone") : B.t("statePracticing");
+      } else if (it.kind === "game") {
+        // A recess game after its lesson: open once the lesson is done, never needed to go on (js/recess.js).
+        face = [it.game.emoji, it.game.name];
+        sub = it.done ? B.t("recessPlayed") : B.t("recessPathTag");
+        grid.appendChild(it.open
+          ? el("a", { class: "tile path-game" + (it.done ? " done" : ""), href: B.gameHref(it.game) }, [
+            el("span", { class: "big", text: face[0] }), el("span", { class: "name", text: face[1] }), el("span", { class: "sub", text: "🎈 " + sub })
+          ])
+          : el("span", { class: "tile path-game locked", "aria-disabled": "true" }, [
+            el("span", { class: "big", text: "🔒" }), el("span", { class: "name", text: face[1] }), el("span", { class: "sub", text: "🎈 " + B.t("recessPathTag") })
+          ]));
+        return;
       } else if (it.kind === "set") {
         face = ["🔁", B.t("pathSet")];
         sub = it.done ? (it.rec.due <= Date.now() ? B.t("pathSetDue") : "✓") : "";
@@ -395,7 +410,9 @@
           next,
           mastered ? null : el("button", { class: next ? "btn secondary" : "btn", type: "button", text: B.t("again"), onclick: function () { viewLesson(id); } }),
           el("a", { class: mastered && !next ? "btn" : "btn secondary", href: back, text: B.t("otherLessons") })
-        ])
+        ].concat((B.gamesAfter ? B.gamesAfter(id) : []).map(function (g) {
+          return el("a", { class: "btn secondary", href: B.gameHref(g), text: B.t("recessAfterLesson", { name: g.name }) });
+        })))
       ]));
       B.speak(msg);
     }, function () { go(back); });
@@ -440,6 +457,7 @@
         }))
       ]));
     }
+    if (B.recessParentCard) app.appendChild(B.recessParentCard(p));
     app.appendChild(el("div", { class: "card", style: "margin:14px 0" }, [
       el("h2", { style: "margin-top:0", text: B.t("planCardTitle") }),
       el("p", { class: "hint", text: B.t("planCardHint", { name: p.name }) }),
@@ -615,6 +633,10 @@
       case "parent": return viewParent();
       case "place": return viewPlacement(parts[1]);
       case "backup": return viewBackup();
+      case "play":
+        if (!B.currentProfile() || !B.viewRecess) return go("#/");
+        clear();
+        return B.viewRecess(app, B.currentProfile());
       case "plan": return B.currentProfile() ? B.viewPlan(app, B.currentProfile(), "#/parent") : go("#/");
       case "sync":
       case "pair":
@@ -626,5 +648,7 @@
   }
 
   window.addEventListener("hashchange", route);
+  // Back from a recess game (games/) with the browser's back button: the page comes back as it was, so show it fresh.
+  window.addEventListener("pageshow", function (e) { if (e.persisted) route(); });
   route();
 })();

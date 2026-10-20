@@ -17,6 +17,11 @@ window.B = B;
     return memory;
   };
 
+  // Another tab or a recess game (games/shared/profile.js) changed the stored data: read it again next time.
+  window.addEventListener("storage", function (e) { if (e.key === KEY) memory = null; });
+  // A recess game page wrote the child's profile while this page was away (back/forward cache): read it again.
+  window.addEventListener("pageshow", function (e) { if (e.persisted) memory = null; });
+
   B.save = function () {
     try { localStorage.setItem(KEY, JSON.stringify(memory)); } catch (e) { /* stays in memory */ }
     if (B.onSave) B.onSave();
@@ -30,6 +35,8 @@ window.B = B;
   // Erases this device only: it also forgets any home hub it was paired with (see js/sync.js),
   // so the other devices keep their copy.
   B.eraseAll = function () {
+    (memory ? memory.profiles : []).forEach(function (p) { B.forgetGames(p.id); });
+    B.forgetGames("guest");
     memory = { profiles: [], current: null, deleted: {} };
     try { localStorage.removeItem(KEY); } catch (e) { /* nothing stored */ }
     if (B.onEraseAll) B.onEraseAll();
@@ -57,7 +64,25 @@ window.B = B;
     B.save();
   };
 
+  // The recess games keep a child's drawings, photos, recorded stories and bigger saves on this device only
+  // (games/shared/profile.js: localStorage "baghcheh.games.<id>.*" and IndexedDB "baghcheh-games-<id>*").
+  B.forgetGames = function (id) {
+    var prefix = "baghcheh.games." + id + ".";
+    try {
+      Object.keys(localStorage).forEach(function (k) { if (k.indexOf(prefix) === 0) localStorage.removeItem(k); });
+    } catch (e) { /* storage blocked */ }
+    try {
+      if (!window.indexedDB) return;
+      var names = ["baghcheh-games-" + id, "baghcheh-games-" + id + "-storyTheater"];
+      names.forEach(function (n) { indexedDB.deleteDatabase(n); });
+      if (indexedDB.databases) indexedDB.databases().then(function (list) {
+        list.forEach(function (d) { if (d.name && d.name.indexOf("baghcheh-games-" + id + "-") === 0 && names.indexOf(d.name) < 0) indexedDB.deleteDatabase(d.name); });
+      }).catch(function () {});
+    } catch (e) { /* not available */ }
+  };
+
   B.removeProfile = function (id) {
+    B.forgetGames(id);
     var s = B.load();
     s.deleted = s.deleted || {};
     s.deleted[id] = Date.now();
@@ -110,10 +135,19 @@ window.B = B;
       Object.keys(p.log || {}).forEach(function (day) {
         here.log = here.log || {};
         var mine = here.log[day] = here.log[day] || { l: [], a: [] }, theirs = p.log[day] || {};
-        ["l", "a", "p"].forEach(function (f) {
+        ["l", "a", "p", "g"].forEach(function (f) {
           mine[f] = mine[f] || [];
           (theirs[f] || []).forEach(function (id) { if (mine[f].indexOf(id) < 0) { mine[f].push(id); r.changed = true; } });
         });
+      });
+      // Recess games (js/recess.js): per game, the progress saved last wins; minutes per day, the larger count.
+      Object.keys(p.games || {}).forEach(function (g) {
+        here.games = here.games || {};
+        if (!here.games[g] || ((p.games[g] || {}).t || 0) > (here.games[g].t || 0)) { here.games[g] = copy(p.games[g]); r.changed = true; }
+      });
+      Object.keys(p.recess || {}).forEach(function (day) {
+        here.recess = here.recess || {};
+        if ((+p.recess[day] || 0) > (here.recess[day] || 0)) { here.recess[day] = +p.recess[day]; r.changed = true; }
       });
       // Practice (js/practice.js): per generator, the record practised last wins.
       if (B.mergePractice && B.mergePractice(here, p.practice)) r.changed = true;
@@ -126,13 +160,14 @@ window.B = B;
         here.name = p.name;
         here.avatar = p.avatar;
         here.levels = copy(p.levels);
+        if (p.recessLimit === undefined) delete here.recessLimit; else here.recessLimit = p.recessLimit;
         here.updatedAt = p.updatedAt;
         r.changed = true;
       }
       r.updated++;
     });
     var before = s.profiles.length;
-    s.profiles = s.profiles.filter(function (p) { return !buried(s, p); });
+    s.profiles = s.profiles.filter(function (p) { if (buried(s, p)) { B.forgetGames(p.id); return false; } return true; });
     r.removed = before - s.profiles.length;
     if (r.removed) r.changed = true;
     if (s.current && !s.profiles.some(function (p) { return p.id === s.current; })) s.current = null;

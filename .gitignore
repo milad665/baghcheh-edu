@@ -25,3 +25,6 @@ Thumbs.db
 *.jks
 *.p12
 *.pem
+
+# API keys for tools/ (never committed)
+.env

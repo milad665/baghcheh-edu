@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="fa" dir="ltr">
+<head>
+<!-- باغچه: زنگ تفریح. Ported from the original Letter Trace: Persian only, progress per child (games/shared/profile.js). -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="باغچه">
+<meta name="theme-color" content="#e0e7ff">
+<link rel="icon" href="../../icon.svg" type="image/svg+xml">
+<link rel="manifest" href="../../manifest.webmanifest">
+<link rel="stylesheet" href="../shared/kit.css">
+<title>حرف‌های انگلیسی — زنگ تفریح باغچه</title>
+<style>
+  body { background: linear-gradient(160deg, #e0e7ff 0%, #fce7f3 55%, #fef9c3 100%); }
+  .glyphs { display: block; width: auto; max-width: 100%; overflow: visible; }
+  .tile .glyphs { height: 50px; } .tile.big .glyphs { height: 74px; }
+  .chip .glyphs { height: 78px; } .pickme .glyphs { height: 84px; } #wordText .glyphs { height: 76px; }
+
+  /* ---------- picker ---------- */
+  #pick { flex-direction: column; align-items: center; padding: max(24px, env(safe-area-inset-top)) 20px 20px; gap: 2.4vh; overflow-y: auto; touch-action: pan-y; }
+  #pick .title { margin-top: 46px; font-size: clamp(40px, 7vw, 76px); }
+  .tile { width: 84px; height: 76px; border-radius: 20px; position: relative; padding: 12px 8px; }
+  .tile.big { width: 120px; height: 108px; border-radius: 28px; padding: 16px 10px; }
+  .tile .st { position: absolute; top: -10px; right: -8px; font-size: 24px; }
+  .tile.half { background: #fef9c3; }
+  .tile.done { background: #fde68a; }
+  #alphabet { display: grid; grid-template-columns: repeat(auto-fill, 84px); gap: 12px; width: min(100%, 900px); justify-content: center; }
+
+  /* ---------- tracing ---------- */
+  #trace { align-items: center; justify-content: center; gap: 3vw; padding: 90px 20px 20px; flex-wrap: wrap; }
+  #board { height: min(76vh, 125vw); aspect-ratio: 120 / 190; background: #fff; border-radius: 36px; box-shadow: 0 10px 30px rgba(79, 70, 229, .15); touch-action: none; position: relative; }
+  #board svg { width: 100%; height: 100%; display: block; }
+  #side { display: flex; flex-direction: column; align-items: center; gap: 18px; min-width: 240px; }
+  #pair { display: flex; gap: 14px; align-items: center; }
+  .chip { width: 96px; height: 110px; border-radius: 26px; background: rgba(255,255,255,.65); display: grid; place-items: center; padding: 14px 10px; position: relative; border: 5px solid transparent; }
+  .chip.now { background: #fff; border-color: #6366f1; box-shadow: 0 6px 0 rgba(79, 70, 229, .15); }
+  .chip .ok { position: absolute; top: -12px; right: -10px; font-size: 28px; }
+  .arrow { font-size: 34px; color: #6366f1; font-weight: 900; }
+  #quiz { display: none; gap: 16px; }
+  #quiz.on { display: flex; }
+  .pickme { width: 110px; height: 120px; border-radius: 30px; padding: 16px 12px; }
+  .pickme.glow { box-shadow: 0 6px 0 rgba(40,50,90,.18), 0 0 0 6px #fde047; animation: kit-pulse 1s infinite; }
+  #word { display: none; flex-direction: column; align-items: center; gap: 10px; }
+  #word.on { display: flex; animation: kit-pop .5s cubic-bezier(.3,1.6,.5,1); }
+  #wordPic { font-size: clamp(80px, 14vh, 130px); line-height: 1; }
+  #wordText { height: 100px; background: #fff; padding: 12px 26px; border-radius: 999px; box-shadow: 0 5px 0 rgba(0,0,0,.08); }
+  #wordBtns { display: flex; gap: 18px; margin-top: 6px; }
+  .startDot { animation: dotPulse 1s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes dotPulse { 50% { transform: scale(1.35); } }
+</style>
+</head>
+<body>
+
+<section id="pick" class="screen on">
+  <a class="btn corner left" id="homeBtn" href="../../index.html#/play" aria-label="برگشت به زنگ تفریح">🏠</a>
+  <button id="soundBtn" class="btn corner right" aria-label="صدا روشن یا خاموش">🔊</button>
+  <h1 id="title" class="title"></h1>
+  <div id="alphabet"></div>
+</section>
+
+<section id="trace" class="screen">
+  <button id="backBtn" class="btn corner left" aria-label="همه حرف‌ها">🏠</button>
+  <div id="board"></div>
+  <div id="side">
+    <div id="pair"></div>
+    <div id="quiz"></div>
+    <div id="word">
+      <div id="wordPic"></div>
+      <div id="wordText"></div>
+      <div id="wordBtns">
+        <button id="againBtn" class="btn big" aria-label="دوباره بکش">🔁</button>
+        <button id="nextBtn" class="btn big go" aria-label="حرف بعدی">➡️</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="../shared/profile.js"></script>
+<script src="../shared/lines.js"></script>
+<script src="../shared/voice.js"></script>
+<script src="../shared/saved.js"></script>
+<script src="../shared/kit.js"></script>
+<script>
+(() => {
+  const { $, pick, shuffle } = Kit;
+
+  // ---------- letter shapes, in writing order ----------
+  // Writing lines: top 10, middle 70, base 130, tail of g/j/p/q/y down to 165.
+  const L = (x1, y1, x2, y2) => [[x1, y1], [x2, y2]];
+  // arc from angle a0 to a1 (degrees, 0 = right, 90 = down), in either direction
+  const A = (cx, cy, rx, ry, a0, a1) => {
+    const n = Math.max(6, Math.round(Math.abs(a1 - a0) / 8)), pts = [];
+    for (let i = 0; i <= n; i++) { const a = (a0 + (a1 - a0) * i / n) * Math.PI / 180; pts.push([cx + rx * Math.cos(a), cy + ry * Math.sin(a)]); }
+    return pts;
+  };
+  const join = (...parts) => parts.reduce((all, p) => all.concat(all.length ? p.slice(1) : p), []);
+  const BIG = {
+    A: [L(50, 10, 15, 130), L(50, 10, 85, 130), L(30, 88, 70, 88)],
+    B: [L(20, 10, 20, 130), join(L(20, 10, 55, 10), A(55, 40, 30, 30, -90, 90), L(55, 70, 20, 70)), join(L(20, 70, 60, 70), A(60, 100, 30, 30, -90, 90), L(60, 130, 20, 130))],
+    C: [A(55, 70, 42, 60, -40, -320)],
+    D: [L(20, 10, 20, 130), join(L(20, 10, 40, 10), A(40, 70, 45, 60, -90, 90), L(40, 130, 20, 130))],
+    E: [L(20, 10, 20, 130), L(20, 10, 80, 10), L(20, 70, 70, 70), L(20, 130, 80, 130)],
+    F: [L(20, 10, 20, 130), L(20, 10, 80, 10), L(20, 70, 70, 70)],
+    G: [join(A(55, 70, 42, 60, -40, -315), L(85, 112, 86, 76), L(86, 76, 60, 76))],
+    H: [L(20, 10, 20, 130), L(80, 10, 80, 130), L(20, 70, 80, 70)],
+    I: [L(50, 10, 50, 130)],
+    J: [join(L(65, 10, 65, 100), A(42, 100, 23, 28, 0, 180))],
+    K: [L(20, 10, 20, 130), L(80, 10, 20, 78), L(40, 58, 82, 130)],
+    L: [join(L(20, 10, 20, 130), L(20, 130, 80, 130))],
+    M: [join(L(15, 130, 15, 10), L(15, 10, 50, 85), L(50, 85, 85, 10), L(85, 10, 85, 130))],
+    N: [join(L(20, 130, 20, 10), L(20, 10, 80, 130), L(80, 130, 80, 10))],
+    O: [A(50, 70, 38, 60, -90, -450)],
+    P: [L(20, 10, 20, 130), join(L(20, 10, 55, 10), A(55, 40, 30, 30, -90, 90), L(55, 70, 20, 70))],
+    Q: [A(50, 70, 38, 60, -90, -450), L(60, 104, 86, 136)],
+    R: [L(20, 10, 20, 130), join(L(20, 10, 55, 10), A(55, 40, 30, 30, -90, 90), L(55, 70, 20, 70)), L(45, 70, 82, 130)],
+    S: [join(A(50, 40, 30, 30, -30, -270), A(50, 100, 30, 30, -90, 150))],
+    T: [L(15, 10, 85, 10), L(50, 10, 50, 130)],
+    U: [join(L(20, 10, 20, 95), A(50, 95, 30, 35, 180, 0), L(80, 95, 80, 10))],
+    V: [join(L(15, 10, 50, 130), L(50, 130, 85, 10))],
+    W: [join(L(8, 10, 28, 130), L(28, 130, 50, 50), L(50, 50, 72, 130), L(72, 130, 92, 10))],
+    X: [L(20, 10, 80, 130), L(80, 10, 20, 130)],
+    Y: [L(20, 10, 50, 68), join(L(80, 10, 50, 68), L(50, 68, 50, 130))],
+    Z: [join(L(20, 10, 80, 10), L(80, 10, 20, 130), L(20, 130, 80, 130))],
+  };
+  // small letters in simple school print (round a and g, like in reading books)
+  const BOWL = A(50, 100, 28, 30, -15, -365);          // the round part of a, d, g, q
+  const BOWL_R = A(50, 100, 28, 30, 180, 540);         // the round part of b and p, drawn from the stem
+  const ARCH = (x, w) => join(A(x + w / 2, 96, w / 2, 26, 180, 360), L(x + w, 96, x + w, 130));
+  const SMALL = {
+    a: [BOWL, L(78, 70, 78, 130)],
+    b: [L(22, 10, 22, 130), BOWL_R],
+    c: [A(54, 100, 30, 30, -40, -320)],
+    d: [BOWL, L(78, 10, 78, 130)],
+    e: [join(L(22, 100, 78, 100), A(50, 100, 28, 30, 0, -320))],
+    f: [join(A(64, 32, 20, 22, -20, -180), L(44, 32, 44, 130)), L(26, 72, 66, 72)],
+    g: [BOWL, join(L(78, 70, 78, 148), A(54, 148, 24, 18, 0, 160))],
+    h: [L(22, 10, 22, 130), ARCH(22, 52)],
+    i: [L(50, 72, 50, 130), L(50, 42, 50, 47)],
+    j: [join(L(58, 72, 58, 148), A(36, 148, 22, 18, 0, 160)), L(58, 42, 58, 47)],
+    k: [L(22, 10, 22, 130), L(72, 70, 22, 108), L(38, 98, 74, 130)],
+    l: [L(50, 10, 50, 130)],
+    m: [L(14, 72, 14, 130), ARCH(14, 36), ARCH(50, 36)],
+    n: [L(22, 72, 22, 130), ARCH(22, 52)],
+    o: [A(50, 100, 28, 30, -90, -450)],
+    p: [L(22, 72, 22, 165), BOWL_R],
+    q: [BOWL, L(78, 72, 78, 165)],
+    r: [L(26, 72, 26, 130), A(54, 98, 28, 26, 180, 305)],
+    s: [join(A(50, 86, 20, 15, -30, -270), A(50, 115, 20, 15, -90, 150))],
+    t: [join(L(46, 30, 46, 116), A(60, 116, 14, 14, 180, 90)), L(28, 72, 68, 72)],
+    u: [join(L(22, 72, 22, 104), A(48, 104, 26, 26, 180, 0), L(74, 104, 74, 72)), L(74, 72, 74, 130)],
+    v: [join(L(20, 72, 50, 130), L(50, 130, 80, 72))],
+    w: [join(L(10, 72, 28, 130), L(28, 130, 50, 84), L(50, 84, 72, 130), L(72, 130, 90, 72))],
+    x: [L(24, 72, 76, 130), L(76, 72, 24, 130)],
+    y: [L(22, 72, 50, 128), L(80, 72, 40, 165)],
+    z: [join(L(24, 72, 76, 72), L(76, 72, 24, 130), L(24, 130, 76, 130))],
+  };
+  const EXTRA = { '-': [L(10, 100, 50, 100)] };
+  // a word for each letter (the English word the Persian voice describes, e.g. «اِی مثل اَپِل، یعنی سیب»)
+  const WORDS = {
+    A: { en: ['apple', '🍎'], nl: ['aap', '🐒'], de: ['affe', '🐒'], es: ['abeja', '🐝'] },
+    B: { en: ['ball', '⚽'], nl: ['bal', '⚽'], de: ['ball', '⚽'], es: ['barco', '⛵'] },
+    C: { en: ['cat', '🐱'], nl: ['citroen', '🍋'], de: ['clown', '🤡'], es: ['casa', '🏠'] },
+    D: { en: ['dog', '🐶'], nl: ['dolfijn', '🐬'], de: ['dino', '🦕'], es: ['dado', '🎲'] },
+    E: { en: ['egg', '🥚'], nl: ['eend', '🦆'], de: ['ente', '🦆'], es: ['elefante', '🐘'] },
+    F: { en: ['fish', '🐟'], nl: ['fiets', '🚲'], de: ['fisch', '🐟'], es: ['flor', '🌸'] },
+    G: { en: ['giraffe', '🦒'], nl: ['giraf', '🦒'], de: ['giraffe', '🦒'], es: ['gato', '🐱'] },
+    H: { en: ['house', '🏠'], nl: ['huis', '🏠'], de: ['haus', '🏠'], es: ['helado', '🍦'] },
+    I: { en: ['ice cream', '🍦'], nl: ['inktvis', '🐙'], de: ['igel', '🦔'], es: ['isla', '🏝️'] },
+    J: { en: ['juice', '🧃'], nl: ['jas', '🧥'], de: ['jacke', '🧥'], es: ['jirafa', '🦒'] },
+    K: { en: ['kite', '🪁'], nl: ['koe', '🐄'], de: ['katze', '🐱'], es: ['kiwi', '🥝'] },
+    L: { en: ['lion', '🦁'], nl: ['leeuw', '🦁'], de: ['lama', '🦙'], es: ['luna', '🌙'] },
+    M: { en: ['moon', '🌙'], nl: ['maan', '🌙'], de: ['mond', '🌙'], es: ['manzana', '🍎'] },
+    N: { en: ['nose', '👃'], nl: ['neus', '👃'], de: ['nase', '👃'], es: ['nube', '☁️'] },
+    O: { en: ['octopus', '🐙'], nl: ['olifant', '🐘'], de: ['ohr', '👂'], es: ['oso', '🐻'] },
+    P: { en: ['pig', '🐷'], nl: ['paard', '🐴'], de: ['pinguin', '🐧'], es: ['perro', '🐶'] },
+    Q: { en: ['queen', '👸'], nl: ['quiz', '❓'], de: ['qualle', '🪼'], es: ['queso', '🧀'] },
+    R: { en: ['rainbow', '🌈'], nl: ['regenboog', '🌈'], de: ['regenbogen', '🌈'], es: ['rana', '🐸'] },
+    S: { en: ['sun', '☀️'], nl: ['slang', '🐍'], de: ['sonne', '☀️'], es: ['sol', '☀️'] },
+    T: { en: ['tree', '🌳'], nl: ['taart', '🎂'], de: ['tiger', '🐯'], es: ['tortuga', '🐢'] },
+    U: { en: ['umbrella', '☂️'], nl: ['uil', '🦉'], de: ['uhu', '🦉'], es: ['uva', '🍇'] },
+    V: { en: ['violin', '🎻'], nl: ['vis', '🐟'], de: ['vogel', '🐦'], es: ['vaca', '🐄'] },
+    W: { en: ['whale', '🐳'], nl: ['walvis', '🐳'], de: ['wal', '🐳'], es: ['wafle', '🧇'] },
+    X: { en: ['x-ray', '🩻'], nl: ['xylofoon', '🎶'], de: ['xylophon', '🎶'], es: ['taxi', '🚕'] },
+    Y: { en: ['yo-yo', '🪀'], nl: ['yoga', '🧘'], de: ['yoga', '🧘'], es: ['yoyó', '🪀'] },
+    Z: { en: ['zebra', '🦓'], nl: ['zon', '☀️'], de: ['zebra', '🦓'], es: ['zanahoria', '🥕'] },
+  };
+  // small letters that are easy to mix up, used in the "which one is small a?" question
+  const LOOKALIKES = [['b', 'd', 'p', 'q'], ['m', 'n', 'u', 'h'], ['i', 'l', 'j', 't'], ['a', 'o', 'e', 'c'], ['v', 'w', 'y'], ['f', 't', 'k'], ['g', 'q', 'y', 'j'], ['s', 'z', 'c'], ['k', 'x', 'h'], ['r', 'n']];
+  const INKS = ['#ec4899', '#8b5cf6', '#3b82f6', '#10b981', '#f59e0b'];
+
+  // resample every stroke so tracing is even
+  function resample(pts, step = 3) {
+    const out = [pts[0]];
+    for (let i = 1; i < pts.length; i++) {
+      const [x0, y0] = pts[i - 1], [x1, y1] = pts[i], d = Math.hypot(x1 - x0, y1 - y0), n = Math.max(1, Math.round(d / step));
+      for (let k = 1; k <= n; k++) out.push([x0 + (x1 - x0) * k / n, y0 + (y1 - y0) * k / n]);
+    }
+    return out;
+  }
+  for (const set of [BIG, SMALL]) for (const k in set) set[k] = set[k].map(s => resample(s));
+  const shapeOf = ch => BIG[ch] || SMALL[ch] || EXTRA[ch];
+  const pathD = pts => 'M' + pts.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' L');
+
+  // draw text with the same strokes she traces (so the letters always look the same)
+  function glyphs(text, { color = '#334155', mark = -1, markColor = '#db2777', width = 13 } = {}) {
+    let x = 0, out = '';
+    [...text].forEach((ch, i) => {
+      if (ch === ' ') { x += 40; return; }
+      const strokes = shapeOf(ch); if (!strokes) return;
+      const xs = strokes.flat().map(p => p[0]), minX = Math.min(...xs), maxX = Math.max(...xs);
+      const col = i === mark ? markColor : color;
+      out += `<g transform="translate(${x - minX + width / 2} 0)">` + strokes.map(s => `<path d="${pathD(s)}" fill="none" stroke="${col}" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round"/>`).join('') + '</g>';
+      x += maxX - minX + width + 14;
+    });
+    return `<svg class="glyphs" viewBox="0 0 ${Math.max(1, x - 14 + width)} 175" xmlns="http://www.w3.org/2000/svg">${out}</svg>`;
+  }
+
+  const save = Kit.store('letter-trace');
+  const saved = save.get({ done: [], small: [] });
+  const isDone = ch => saved.done.includes(ch) && saved.small.includes(ch);
+  const show = id => document.querySelectorAll('.screen').forEach(s => s.classList.toggle('on', s.id === id));
+
+  // ---------- picker ----------
+  Kit.title('title', 'حرف‌های انگلیسی');
+  Kit.soundButton('soundBtn');
+  function tile(ch, big) {
+    const b = document.createElement('button');
+    const both = isDone(ch), one = saved.done.includes(ch) || saved.small.includes(ch);
+    b.className = 'btn tile' + (big ? ' big' : '') + (both ? ' done' : one ? ' half' : '');
+    b.innerHTML = glyphs(ch + ch.toLowerCase(), { color: big ? '#db2777' : '#4f46e5', width: 16 }) + (both ? '<span class="st">⭐</span>' : '');
+    b.setAttribute('aria-label', 'حرف ' + ch);
+    b.onclick = () => { Kit.sfx.pop(); open(ch); };
+    return b;
+  }
+  function paintPicker() {
+    $('alphabet').innerHTML = ''; Object.keys(BIG).forEach(ch => $('alphabet').appendChild(tile(ch)));
+  }
+  paintPicker();
+  Kit.say('lt.pick');
+
+  // ---------- one letter: big, then small, then a question, then a word ----------
+  let letter = null, stage = 'big', strokes = [], si = 0, prog = 0, tracing = false, ink = INKS[0], misses = 0;
+  const TOL = 15;
+
+  function open(ch) {
+    letter = ch; misses = 0;
+    ink = INKS[Object.keys(BIG).indexOf(ch) % INKS.length];
+    show('trace');
+    startStage('big');
+  }
+  function startStage(s) {
+    stage = s;
+    $('quiz').classList.remove('on'); $('word').classList.remove('on');
+    $('board').style.display = s === 'big' || s === 'small' ? '' : 'none';
+    paintPair();
+    if (s === 'big' || s === 'small') {
+      strokes = s === 'big' ? BIG[letter] : SMALL[letter.toLowerCase()]; si = 0; prog = 0;
+      paint();
+      Kit.say(s === 'big' ? 'lt.big.' + letter : 'lt.small.' + letter, 'lt.start');
+    }
+    if (s === 'quiz') quiz();
+  }
+  function paintPair() {
+    const done = { big: ['small', 'quiz', 'word'].includes(stage), small: ['quiz', 'word'].includes(stage) };
+    const chip = (ch, key) => `<div class="chip ${stage === key ? 'now' : ''}">${glyphs(ch, { color: stage === key || done[key] ? ink : '#cbd5e1', width: 15 })}${done[key] ? '<span class="ok">✅</span>' : ''}</div>`;
+    $('pair').innerHTML = chip(letter, 'big') + '<span class="arrow">→</span>' + chip(letter.toLowerCase(), 'small');
+  }
+
+  function paint() {
+    let s = '<svg viewBox="-10 -10 120 190" xmlns="http://www.w3.org/2000/svg">';
+    // writing lines: top, middle, bottom, and the line for tails
+    s += '<line x1="-10" y1="10" x2="110" y2="10" stroke="#e0e7ff" stroke-width="1.5"/><line x1="-10" y1="70" x2="110" y2="70" stroke="#c7d2fe" stroke-width="1.5" stroke-dasharray="4 4"/><line x1="-10" y1="130" x2="110" y2="130" stroke="#a5b4fc" stroke-width="2"/><line x1="-10" y1="165" x2="110" y2="165" stroke="#eef2ff" stroke-width="1.5" stroke-dasharray="2 5"/>';
+    for (const st of strokes) s += `<path d="${pathD(st)}" fill="none" stroke="#e2e8f0" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>`;
+    for (const st of strokes) s += `<path d="${pathD(st)}" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="3 5" stroke-linecap="round"/>`;
+    for (let i = 0; i < si && i < strokes.length; i++) s += `<path d="${pathD(strokes[i])}" fill="none" stroke="${ink}" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>`;
+    if (si < strokes.length) {
+      const st = strokes[si];
+      if (prog > 0) s += `<path d="${pathD(st.slice(0, prog + 1))}" fill="none" stroke="${ink}" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>`;
+      const [x, y] = st[prog], ahead = st[Math.min(st.length - 1, prog + 6)];
+      const ang = Math.atan2(ahead[1] - y, ahead[0] - x) * 180 / Math.PI;
+      s += `<g transform="translate(${x} ${y})"><circle class="startDot" r="9" fill="#22c55e" stroke="#fff" stroke-width="3"/>`;
+      if (!tracing && st.length > 4) s += `<path d="M14 -6 L24 0 L14 6 Z" fill="#22c55e" transform="rotate(${ang})"/>`;
+      s += '</g>';
+    }
+    $('board').innerHTML = s + '</svg>';
+  }
+  function toLetter(e) {
+    const svg = $('board').querySelector('svg'), pt = svg.createSVGPoint();
+    pt.x = e.clientX; pt.y = e.clientY;
+    const p = pt.matrixTransform(svg.getScreenCTM().inverse());
+    return [p.x, p.y];
+  }
+  // move forward along the stroke only while the finger stays near it
+  function follow(e) {
+    const st = strokes[si], [x, y] = toLetter(e);
+    let best = -1;
+    for (let i = prog; i < Math.min(st.length, prog + 10); i++) if (Math.hypot(st[i][0] - x, st[i][1] - y) < TOL) best = i;
+    if (best > prog || (st.length <= 3 && best >= 0)) {
+      if (Math.floor(best / 6) > Math.floor(prog / 6)) Kit.tone(500 + best * 4, .05, { type: 'triangle', vol: .08 });
+      prog = Math.max(prog, best); paint();
+      if (prog >= st.length - 2) strokeDone();
+    }
+  }
+  function strokeDone() {
+    tracing = false; si++; prog = 0; Kit.sfx.ding(); paint();
+    if (si < strokes.length) { Kit.say('lt.next'); return; }
+    Kit.sfx.yay(); Kit.burstAt($('board'), ['⭐', '✨', '🌟'], 16, 200);
+    const list = stage === 'big' ? saved.done : saved.small;
+    if (!list.includes(letter)) { list.push(letter); save.set(saved); }
+    setTimeout(() => startStage(stage === 'big' ? 'small' : 'quiz'), 1300);
+  }
+  $('board').addEventListener('pointerdown', e => {
+    if ((stage !== 'big' && stage !== 'small') || si >= strokes.length) return;
+    e.preventDefault();
+    const [x, y] = toLetter(e), st = strokes[si];
+    if (Math.hypot(st[prog][0] - x, st[prog][1] - y) > TOL * 1.4) { Kit.sfx.oops(); return; }
+    tracing = true; try { $('board').setPointerCapture(e.pointerId); } catch (err) {}
+    follow(e);
+  });
+  $('board').addEventListener('pointermove', e => {
+    if (!tracing) return;
+    const evs = e.getCoalescedEvents ? e.getCoalescedEvents() : [];
+    (evs.length ? evs : [e]).forEach(ev => { if (tracing) follow(ev); });
+  });
+  const lift = () => { if (tracing) { tracing = false; paint(); } };
+  $('board').addEventListener('pointerup', lift);
+  $('board').addEventListener('pointercancel', lift);
+
+  // "which one is small a?" with letters that look alike
+  function quiz() {
+    misses = 0;
+    const want = letter.toLowerCase();
+    const near = LOOKALIKES.filter(g => g.includes(want)).flat().filter(c => c !== want);
+    const others = shuffle([...new Set(near)]);
+    while (others.length < 2) { const c = pick(Object.keys(SMALL)); if (c !== want && !others.includes(c)) others.push(c); }
+    const box = $('quiz'); box.innerHTML = '';
+    for (const c of shuffle([want, ...others.slice(0, 2)])) {
+      const b = document.createElement('button'); b.className = 'btn pickme'; b.innerHTML = glyphs(c, { color: '#4f46e5', width: 15 });
+      b.dataset.c = c; b.setAttribute('aria-label', 'حرف ' + c);
+      b.onclick = () => {
+        if (stage !== 'quiz') return;
+        if (c !== want) {
+          misses++; Kit.flash(b, 'wobble'); Kit.sfx.oops(); Kit.say('lt.thatIs.' + c, 'lt.find.' + letter);
+          if (misses >= 2) box.querySelectorAll('.pickme').forEach(x => x.classList.toggle('glow', x.dataset.c === want));
+          return;
+        }
+        Kit.sfx.ding(); Kit.burstAt(b, ['✨', '⭐'], 10, 110);
+        showWord();
+      };
+      box.appendChild(b);
+    }
+    box.classList.add('on');
+    Kit.say('lt.find.' + letter);
+  }
+
+  function showWord() {
+    stage = 'word'; paintPair(); $('board').style.display = 'none';
+    $('quiz').classList.remove('on');
+    const [word, pic] = WORDS[letter].en;
+    $('wordPic').textContent = pic;
+    const starts = word[0].toLowerCase() === letter.toLowerCase();
+    $('wordText').innerHTML = glyphs(word, { mark: starts ? 0 : -1, width: 14 });
+    $('word').classList.add('on');
+    Kit.say('lt.' + letter);
+  }
+
+  $('againBtn').onclick = () => { Kit.sfx.pop(); open(letter); };
+  $('nextBtn').onclick = () => {
+    Kit.sfx.pop();
+    const order = Object.keys(BIG);
+    const next = order.find(k => !isDone(k)) || order[(order.indexOf(letter) + 1) % order.length];
+    open(next);
+  };
+  $('backBtn').onclick = () => { Kit.sfx.pop(); paintPicker(); show('pick'); };
+})();
+</script>
+</body>
+</html>

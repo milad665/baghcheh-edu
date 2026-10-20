@@ -57,6 +57,13 @@ tools/build-flags.js    makes js/maps/flags.js from public-domain SVG flags (nod
 tools/strokes-preview.html  every model in js/strokes.js with numbered strokes and arrows, to check by eye
 tools/art-preview.html  every drawing and backdrop, and the emoji in lessons that have no drawing yet
 audio/  fonts/      optional recorded audio / self-hosted Baloo Bhaijaan 2 font
+js/recess.js        «زنگ تفریح» (recess): the catalog of games (B.GAMES), the recess page, games in the garden's path,
+                    the parent's daily recess time
+games/<id>/index.html   the recess games, one self-contained page each (Persian only)
+games/shared/       what the games share: profile.js (the child playing, progress per child, play time and the break
+                    reminder), lines.js (every spoken line), voice.js, kit.js, kit.css, saved.js (photos and drawings
+                    in the child's own IndexedDB), robot.js
+audio/games/        the games' recorded Persian lines, one mp3 per line in games/shared/lines.js
 ```
 
 ## Run locally
@@ -348,6 +355,26 @@ reports any that are missing).
 
 Before publishing a new lesson, have it reviewed by at least one Persian-speaking teacher (see `policies.html#accuracy`).
 
+## Adding a recess game
+
+The recess games («زنگ تفریح») are plain pages outside the lesson player. Their plan is in `CURRICULUM.md`,
+"Recess games". To add one:
+
+1. Add a row to that table (its id is permanent: children's progress is stored by it), then add the game to
+   `B.GAMES` in `js/recess.js`: `id` (its folder), `name`, `emoji`, `group`, `about` (for parents), `after` (lesson ids
+   it follows in a garden's path, or `[]`) and `gardens`.
+2. Make `games/<id>/index.html` (start from `games/memory-match/index.html`): `<html lang="fa" dir="ltr">`, scripts
+   from `../shared/` in the order `profile.js`, `lines.js`, `voice.js`, then `saved.js`/`robot.js`/`kit.js` as needed,
+   relative paths only (the site may live in a subfolder or on a USB stick), 🏠 to `../../index.html#/play`, every
+   visible text in Persian (`STYLE.md`), digits with `Kit.fa`, the title with `Kit.title` (word by word, so Persian
+   letters stay joined).
+3. Progress: `Kit.store('<id>')` for small things (kept in the child's profile, backed up and synced);
+   `Kit.store('<id>', { device: true })`, `Child.key()` or `Child.db()` for bulky things that stay on the device.
+   Never put pictures or audio in the profile.
+4. Spoken lines go in `games/shared/lines.js` (`key: [text, version]`) with a recording in `audio/games/<key>.mp3`.
+   A line with an empty version uses the device's Persian voice until it is recorded.
+5. Add the page to `FILES` in `sw.js` and to the table in `guide.html#recess`.
+
 ## Practice generators
 
 Lessons teach; practice builds fluency. Every garden of every subject plan has a `#### Practice` table, and each row
@@ -464,7 +491,7 @@ The framework's functions: `B.lessonGens(lessonId)` (a set), `B.practicePath(sub
 ## Release checklist
 
 1. Add any new file to `FILES` in `sw.js` (and to `TOP`/`DIRS` in `desktop/src-tauri/build.rs` and the
-   `copySite` task in `android/build.gradle` if it is outside `js/`, `css/`, `fonts/`, `audio/`).
+   `copySite` task in `android/build.gradle` if it is outside `js/`, `css/`, `fonts/`, `audio/`, `games/`).
 2. Bump `VERSION` in `sw.js`, or returning visitors keep the old files.
 3. Update the date at the top of `policies.html` if the policies changed.
 4. For the apps, bump `version` in `desktop/src-tauri/tauri.conf.json` and `Cargo.toml`, and `versionCode`/`versionName` in `android/build.gradle`.

@@ -46,7 +46,7 @@ android {
 
 def copySite = tasks.register("copySite", Copy) {
     from(rootDir.parentFile) {
-        include "*.html", "manifest.webmanifest", "icon.svg", "js/**", "css/**", "fonts/**", "audio/**"
+        include "*.html", "manifest.webmanifest", "icon.svg", "js/**", "css/**", "fonts/**", "audio/**", "games/**"
         exclude "**/*.md"
     }
     into layout.buildDirectory.dir("site/site")

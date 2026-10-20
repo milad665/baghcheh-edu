@@ -264,8 +264,31 @@
     pane.appendChild(el("h2", { text: B.t("browseOther") }));
     pane.appendChild(el("div", { class: "row" }, [
       el("a", { class: "btn secondary", href: "#/placement", text: "🧭 " + B.t("browsePlacement") }),
-      el("a", { class: "btn secondary", href: "#/activities", text: "🏡 " + B.t("browseActivities") })
+      el("a", { class: "btn secondary", href: "#/activities", text: "🏡 " + B.t("browseActivities") }),
+      B.GAMES ? el("a", { class: "btn secondary", href: "#/recess", text: "🎈 " + B.t("recessTitle") }) : null
     ]));
+  }
+
+  // ---------- Recess games (js/recess.js): played as a guest, nothing is kept ----------
+  function viewRecessGames() {
+    pane.innerHTML = "";
+    pane.appendChild(el("div", { class: "row" }, [el("a", { class: "btn quiet", href: "#/", text: B.t("browseBack") })]));
+    pane.appendChild(el("h1", { text: "🎈 " + B.t("recessTitle") }));
+    pane.appendChild(el("p", { class: "lead", text: B.t("browseRecessLead") }));
+    B.GAME_GROUPS.forEach(function (gr) {
+      pane.appendChild(el("h2", { text: gr.emoji + " " + gr.name }));
+      B.GAMES.filter(function (g) { return g.group === gr.id; }).forEach(function (g) {
+        pane.appendChild(el("div", { class: "card", style: "margin:10px 0" }, [
+          el("h3", { style: "margin-top:0" }, [g.emoji + " " + g.name + " ", code(g.id)]),
+          el("p", { text: g.about }),
+          el("p", { class: "row browse-meta" }, g.gardens.map(badge).concat(g.after.map(function (id) {
+            var l = B.lessonById(id);
+            return l ? el("a", { href: "#/lesson/" + id, text: B.t("browseRecessAfter", { lesson: l.emoji + " " + l.title }) }) : null;
+          }))),
+          el("a", { class: "btn secondary", href: B.gameHref(g) + "?guest", text: B.t("browsePlayGame") })
+        ]));
+      });
+    });
   }
 
   // ---------- One lesson ----------
@@ -572,6 +595,7 @@
     else if (id) viewLesson(id);
     else if (h === "#/placement") viewPlacement();
     else if (h === "#/activities") viewActivities();
+    else if (h === "#/recess" && B.GAMES) viewRecessGames();
     else viewOverview();
     renderList();
     var cur = list.querySelector('[aria-current="page"]');

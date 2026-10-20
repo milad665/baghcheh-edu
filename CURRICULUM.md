@@ -225,12 +225,64 @@ must be added to this table, or `tools/check-plan.js` fails.
 | 🔨 | Animations that show what they say | `js/scene.js`, `js/art/rig*.js`, `tools/storyboard.html` | Every animation in every subject is now a `scene` step (no `story` left): 92 lessons, 606 frames, checked against their captions in the storyboard. The engine has moving parts, paths, walking people (`walker`, full bodies for every person emoji), camera pans with depth, the child rubbing or tapping, and a slower pace. Left: commit, then teacher review of the pictures |
 | 🔨 | Practice generators (the framework) | `js/practice.js` (registry, context, sessions, spaced repetition), `js/practice/<subject>.js` (the generators), «تمرین» on each garden's page (`js/app.js`), `browse.html`, `tools/check-plan.js`, `tools/check-reading.js` | Built: the registry and the plan link (the Id column of every practice table), sessions mixing generators, interleaved, in Persian or English, missed items brought back next time and then after 1, 3 and 7 days (kept with the child's profile, backed up and synced), the content browser's fresh samples, and [practice in the course](#practice-in-the-course): each garden's path (lesson → its practice set → … → unit quiz), set reviews at 1–120 days mixed into one «مرور», quizzes with stars, practice in the parent's weekly plan and log. Still to do: every lesson in Seed, Sprout and Sapling with at least 3 generators (`node tools/check-plan.js --coverage`), practice following the depth a parent chooses |
 | ⬜ | Depth per subject, chosen by the parent | «بخش والدین» (`js/app.js`, `js/plan.js`) | «پایه»، «کامل»، «همراه مدرسه» per child and subject (see [depth](#a-full-curriculum-as-deep-as-each-family-wants)). Core shows only `core` lessons; alongside school asks for the school grade and puts that grade's objectives first. The weekly plan and the daily time follow the depth |
+| ✅ | Recess games («زنگ تفریح») | `games/`, `js/recess.js`, `audio/games/` | 22 free games outside the lessons, Persian only, progress per child, a daily time with a gentle reminder: see [Recess games](#recess-games-زنگ-تفریح). Left: teacher review of the games' Persian |
 | ⬜ | Recorded audio for every lesson | `audio/` | Record Seed and Sprout first (children who cannot read yet need it most) |
 | ⬜ | «ایران و جهان» in the parent guide and the method page | `guide.html`, `method.html` | A method section on inquiry, maps, historical thinking and windows-and-mirrors, with references (C3 Framework, Seixas, Bishop), and the neutrality rules for history |
 | 🔨 | Iran's flag, chosen by the parent | «بخش والدین» (`js/app.js`, `js/strings.js`), stored with the family's settings (`B.family()` in `js/common.js`) | Built: the current flag, the lion-and-sun flag, or not chosen (the default), drawn side by side with plain names and no comment; for every child in the family; kept in backups, merged (the copy changed last wins) and synced to the home hub (`desktop/src-tauri/src/hub.rs` keeps `family`). Lessons ask for `flag: "iran"`; until a parent chooses, the child sees an empty flag with «پرچم ایران را از پدر و مادرت بپرس.» |
 | 🔨 | Map data for «ایران و جهان» | `js/maps/` | Simplified SVG outlines from Natural Earth (public domain), self-hosted and small; no outside requests. **Built:** Iran (`js/maps/iran.js`, made by `tools/build-iran-map.js`: provinces, seas, provincial centres, neighbours as plain shapes, the scale), Iran's relief (`js/maps/iran-relief.js`, same tool: height bands from NOAA's ETOPO1, public domain; the Alborz and Zagros, Dasht-e Kavir and Lut, four peaks), the region and the world (`js/maps/region.js`, `js/maps/world.js`, made by `tools/build-world-map.js`: a chosen set of 77 named countries with capitals, Iran's neighbours by land and sea, seas, continents, oceans, the equator; every other country and every disputed area a plain shape with no name), and flags (`js/maps/flags.js`, made by `tools/build-flags.js` from public-domain files on Wikimedia Commons; Iran's two flags are used only through the parent's choice). Left out for now: Oman's flag (its file on Commons is under Oman's own licence, not public domain: to be drawn) and Afghanistan's (which flag to show is for the reviewers). Still to do: the world's relief, thematic maps and layers, latitude and longitude lines, trade routes drawn as paths |
 | ⬜ | Reviewers for «ایران و جهان» | `policies.html#accuracy` | A history or geography teacher reviews every lesson; speakers of each language record the «سلام» audio |
 | ⬜ | Off-screen activities for «ایران و جهان» | `js/activities.js` | Oral history with grandparents, drawing the street, a museum or old-house visit, a regional dish |
+
+## Recess games (زنگ تفریح)
+
+Free, creative games outside the lessons, from the "First Game" project, in Persian only with the recorded Persian
+voice (`audio/games/`). They are **not lessons**: nothing in them is scored as a lesson, they never block the path, and
+they are not rewards for lessons. Each is a page in `games/<id>/` with the shared layer in `games/shared/`; the catalog
+(names, groups, what each practises, the lessons they follow) is `B.GAMES` in `js/recess.js`. Ids are permanent, like
+lesson ids: each child's progress is stored by them.
+
+- **Where children find them.** «🎈 زنگ تفریح» on the child's home screen (`#/play`), grouped as below, with the games
+  of lessons the child has finished first. A game with a lesson in "Follows" also shows in that garden's path right
+  after the lesson's practice set, open once the lesson is done and never needed to go on; the lesson's end screen
+  offers it too.
+- **Per child.** Small progress lives in the child's profile (`p.games[id] = { d, t }`: backed up and synced, the copy
+  saved last wins when merging); drawings, photos, recorded stories and other bulky things stay on the device in the
+  child's own storage (`Child.key`, `Child.db`), and go when the child is removed.
+- **Time.** Minutes are counted per day (`p.recess`); the suggested recess time a day is Seed 15, Sprout 15, Sapling 20,
+  Tree and Forest 30 minutes, after lessons (`guide.html#recess`, with the WHO and AAP guidance behind it). When it is
+  reached the game reminds the child once to play away from the screen; the parent can change the time or turn the
+  reminder off («بخش والدین»), or allow 10 more minutes. Games played each day go into the learning log (`p.log[day].g`).
+- **Voice.** 620 recorded Persian lines, informal spoken Persian (the way a parent talks to a young child, `STYLE.md`
+  rule 4). Left out: lines that name the original personal edition's child, and the vet's «خانم دکتر» lines (they assume
+  a girl).
+- **Adding a game:** see `README.md`, "Adding a recess game".
+
+St: ✅ committed. Group: its row on the recess page (`B.GAME_GROUPS`).
+
+| St | Id | Game | Group | Follows | Gardens | Supports |
+|---|---|---|---|---|---|---|
+| ✅ | magic-doodles | نقاشی جادویی (Magic Doodles) | make | `read-seed-28` | Seed, Sprout, Sapling | drawing and telling what it shows (`read-seed-28`) |
+| ✅ | mirror-painter | نقاش آینه‌ای (Mirror Painter) | make | — | Seed, Sprout, Sapling | symmetry, seen and made (no lesson yet: line symmetry is Tree in math) |
+| ✅ | music-painter | نقاشی آهنگ‌ساز (Music Painter) | make | `science-seed-21` | Seed, Sprout, Sapling | high and low sounds, instruments (`science-seed-21`) |
+| ✅ | creature-lab | آزمایشگاه موجودات (Creature Lab) | make | — | Seed, Sprout, Sapling | imagination and care |
+| ✅ | rhythm-copy | گروه موسیقی حیوان‌ها (Rhythm Copy) | make | `think-seed-5` | Seed, Sprout, Sapling | sound patterns, careful listening, memory (`think-seed-5`) |
+| ✅ | story-theater | تئاتر قصه (Story Theater) | pretend | `read-seed-32` | Seed, Sprout, Sapling | telling a story in order, speaking (`read-seed-32`) |
+| ✅ | beep-boop-robot | ربات بیب‌بوپ (Beep Boop Robot) | think | `think-seed-9` | Seed, Sprout, Sapling | sequencing, programs of arrows, debugging, then repeat (`think-seed-9`) |
+| ✅ | robot-factory | کارخانه ربات‌سازی (Robot Factory) | think | `think-seed-12` | Seed, Sprout | following a picture recipe, finding the difference (`think-seed-12`) |
+| ✅ | pattern-train | قطار الگو (Pattern Train) | think | `think-seed-1` | Seed, Sprout | AB to AABB, size and gap patterns (`think-seed-1`) |
+| ✅ | shadow-match | سایه‌ها را پیدا کن (Shadow Match) | think | `think-seed-6` | Seed, Sprout | same and different shapes, turned and resized shadows (`think-seed-6`) |
+| ✅ | memory-match | جفت‌ها را پیدا کن (Memory Match) | think | `read-seed-18` | Seed, Sprout, Sapling | memory, pairs (`read-seed-18`) |
+| ✅ | maze-mouse | موش و پنیر (Maze Mouse) | think | `math-seed-22` | Seed, Sprout, Sapling | finding a way, planning (`math-seed-22`) |
+| ✅ | doodle-puzzles | پازل نقاشی‌ها (Doodle Puzzles) | think | — | Seed, Sprout, Sapling | spatial sense, from the child’s own drawings |
+| ✅ | sink-or-float | زیر آب یا روی آب؟ (Sink or Float) | think | `science-sprout-3` | Seed, Sprout | guess, try, see: sinking and floating (`science-sprout-3`) |
+| ✅ | counting-garden | باغچه شمارش (Counting Garden) | words | `math-seed-2` | Seed, Sprout | counting 1 to 10, the last number says how many (`math-seed-2`) |
+| ✅ | animal-safari | سافاری حیوان‌ها (Animal Safari) | words | `science-seed-4` | Seed, Sprout | animal names and sounds, listening vocabulary (`science-seed-4`) |
+| ✅ | wheres-teddy | تدی کجاست؟ (Where’s Teddy?) | words | `world-seed-12` | Seed, Sprout | position words روی، زیر، کنار، توی، پشت (`world-seed-12`) |
+| ✅ | letter-trace | حرف‌های انگلیسی (Letter Trace) | words | `english-seed-37` | Seed, Sprout | the 26 English letters, big and small, with Persian narration (`english-seed-37`) |
+| ✅ | feelings-friends | دوستان و احساس‌ها (Feelings Friends) | pretend | `feel-seed-4` | Seed, Sprout | naming feelings, kind ways to help (`feel-seed-4`) |
+| ✅ | little-vet | درمانگاه حیوان‌ها (Little Vet) | pretend | `health-seed-13` | Seed, Sprout | caring, simple first aid: wash, cover, cool, rest (`health-seed-13`) |
+| ✅ | cake-shop | شیرینی‌فروشی (Cake Shop) | pretend | `math-seed-1` | Seed, Sprout | counting candles (`math-seed-1`), pretend play |
+| ✅ | dress-up | اتاق لباس‌پوشی (Dress-Up Studio) | pretend | — | Seed, Sprout | pretend play: jobs and stories |
 
 ## New step types
 

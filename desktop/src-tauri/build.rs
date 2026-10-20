@@ -5,7 +5,7 @@ use std::{env, fs, path::Path};
 const TOP: &[&str] = &["index.html", "guide.html", "method.html", "policies.html", "open.html", "browse.html",
     "manifest.webmanifest", "icon.svg", "sw.js"];
 // downloads/ holds the Android APK when CI has built it, so tablets can get it straight from the hub.
-const DIRS: &[&str] = &["js", "css", "fonts", "audio", "downloads"];
+const DIRS: &[&str] = &["js", "css", "fonts", "audio", "games", "downloads"];
 
 fn walk(root: &Path, rel: &str, out: &mut Vec<String>) {
     let dir = root.join(rel);

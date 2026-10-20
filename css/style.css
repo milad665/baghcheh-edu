@@ -167,6 +167,8 @@ main {
 .refs li { margin-bottom: 0.6em; line-height: 1.6; }
 
 table.levels { width: 100%; border-collapse: collapse; margin: 1em 0; }
+.table-wrap { overflow-x: auto; }
+.table-wrap table.levels { min-width: 560px; }
 table.levels th, table.levels td { border-bottom: 1px solid var(--line); padding: 8px 6px; text-align: right; vertical-align: top; }
 
 .site-footer {
@@ -2158,3 +2160,15 @@ td.gt-out { background: #fff8e1; }
 .path-grid .tile.locked:hover { transform: none; box-shadow: 0 5px 0 var(--t-edge); }
 .free-practice { margin-top: 24px; }
 .free-practice summary { cursor: pointer; font-weight: 800; }
+/* recess (js/recess.js): the home tile, games in the garden's path, today's minutes */
+.grid > .tile.recess-tile { --t: var(--c4); --t-soft: var(--c4-soft); --t-edge: var(--c4-edge); background: linear-gradient(160deg, var(--c4-soft), var(--c2-soft)); }
+.path-grid .tile.path-game { border-style: dashed; padding-top: 12px; }
+.path-grid .tile.path-game .big { font-size: 2.2rem; }
+.recess-meter { max-width: 420px; margin: 10px 0 4px; }
+.recess-bar { height: 14px; border-radius: 999px; background: var(--line); overflow: hidden; }
+.recess-bar span { display: block; height: 100%; border-radius: 999px; background: var(--primary); transition: width 0.4s; }
+.recess-meter.over .recess-bar span { background: var(--c1); }
+.recess-meter .hint { margin: 6px 0 0; }
+.recess-guide { margin-top: 28px; }
+.recess-guide summary { cursor: pointer; font-weight: 800; }
+.recess-guide li { margin: 4px 0; }

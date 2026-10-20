@@ -3,7 +3,9 @@
 
    p.plan = { days: [0..6] (0 = Saturday, the first day of the Iranian week), time: "17:00", minutes: 20, updatedAt }
    p.log  = { "2026-10-18": { l: [lesson ids finished that day], a: [activity ids done that day],
-                              p: [practice done that day: "set:<lesson id>", "quiz:<lesson id>", "review-<subject>"] } }
+                              p: [practice done that day: "set:<lesson id>", "quiz:<lesson id>", "review-<subject>"],
+                              g: [recess games played that day (js/recess.js)] } }
+   p.recess = { "2026-10-18": seconds of recess games that day } (games/shared/profile.js)
    The plan fills a day's minutes with lessons (10 minutes), their practice sets, quizzes and reviews (5 minutes each),
    following each garden's path (js/practice.js, "Practice in the course" in CURRICULUM.md). */
 (function () {
@@ -425,12 +427,14 @@
     var e = entry(p, key(d));
     box.innerHTML = "";
     box.appendChild(el("h3", { text: fullFmt.format(d) }));
-    if (!e.l.length && !e.a.length && !e.p.length) { box.appendChild(el("p", { class: "hint", text: B.t("dayEmpty") })); return; }
+    var games = (e.g || []).map(B.gameById || function () { return null; }).filter(Boolean), playMin = B.recessMinutes ? B.recessMinutes(p, d) : 0;
+    if (!e.l.length && !e.a.length && !e.p.length && !games.length && !playMin) { box.appendChild(el("p", { class: "hint", text: B.t("dayEmpty") })); return; }
     var ul = el("ul");
     e.l.forEach(function (id) { var l = B.lessonById(id); if (l) ul.appendChild(el("li", { text: "✓ " + l.emoji + " " + l.title })); });
     e.p.forEach(function (id) { var it = loggedItem(id); if (it) ul.appendChild(el("li", { text: "✓ " + it.emoji + " " + it.title })); });
     var acts = [].concat.apply([], Object.keys(B.ACTIVITIES || {}).map(function (k) { return B.ACTIVITIES[k]; }));
     e.a.forEach(function (id) { var a = acts.find(function (x) { return x.id === id; }); if (a) ul.appendChild(el("li", { text: "🏡 " + a.text })); });
+    if (games.length || playMin) ul.appendChild(el("li", { text: B.t("recessDayLog", { min: B.fa(playMin) }) + (games.length ? ": " + games.map(function (g) { return g.emoji + " " + g.name; }).join("، ") : "") }));
     box.appendChild(ul);
   }
 })();
