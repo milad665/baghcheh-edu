@@ -154,60 +154,60 @@ Listen, point, say. Sound play (Letters and Sounds Phase 1) gets the ear ready f
 | St | Lesson | Title | Covers | Content types | Objectives | Depth |
 |---|---|---|---|---|---|---|
 | ✅ | `english-seed-1` | سلام و خداحافظ | Hello, goodbye, my name is | animation, lesson (`words`, `listen`), parent tip | english.seed.1 | core |
-| 🔨 | `english-seed-9` | اسم تو چیست؟ | What's your name? I'm … How are you? I'm fine. Mina and Reza meet, then turn and ask the child, who answers aloud | animation, lesson (`words`, `listen`), parent tip | english.seed.1, english.seed.6 | core |
-| 🔨 | `english-seed-10` | بلند شو، بنشین | Action words: stand up, sit down, clap your hands, jump, turn around; «Sara says» (do it only when Sara says) | animation, lesson (`listen`), home (`doit`), parent tip | english.seed.2 | core |
+| ✅ | `english-seed-9` | اسم تو چیست؟ | What's your name? I'm … How are you? I'm fine. Mina and Reza meet, then turn and ask the child, who answers aloud | animation, lesson (`words`, `listen`), parent tip | english.seed.1, english.seed.6 | core |
+| ✅ | `english-seed-10` | بلند شو، بنشین | Action words: stand up, sit down, clap your hands, jump, turn around; «Sara says» (do it only when Sara says) | animation, lesson (`listen`), home (`doit`), parent tip | english.seed.2 | core |
 | ✅ | `english-seed-2` | رنگ‌ها | Colours | animation, lesson (`words`, `listen`), game (`pairs`), parent tip | english.seed.3 | core |
-| 🔨 | `english-seed-11` | رنگ‌های بیشتر | pink, orange, purple, brown, black, white; What colour is it? It's red. | lesson (`words`, `listen`), game (`pairs`), parent tip | english.seed.3, english.seed.6 | core |
+| ✅ | `english-seed-11` | رنگ‌های بیشتر | pink, orange, purple, brown, black, white; What colour is it? It's red. | lesson (`words`, `listen`), game (`pairs`), parent tip | english.seed.3, english.seed.6 | core |
 | ✅ | `english-seed-3` | عددها تا ده | Numbers 1–10 | animation, lesson (`words`, `listen`), game (`pairs`), parent tip | english.seed.4 | core |
-| 🔨 | `english-seed-12` | چندتا؟ | How many? Counting things in a picture; show me three fingers | lesson (`listen`), game (`pairs`), parent tip | english.seed.4, english.seed.6 | core |
-| 🔨 | `english-seed-13` | گوش کن! | Sounds around us (Phase 1): which made this sound (a knock on the door, rain, a bell, a clock, a car horn: our own synthesised sounds)? Loud and quiet | lesson (`listen` with `audio`), game (`pairs`), parent tip | english.seed.8 | full |
+| ✅ | `english-seed-12` | چندتا؟ | How many? Counting things in a picture; show me three fingers | lesson (`listen`), game (`pairs`), parent tip | english.seed.4, english.seed.6 | core |
+| ✅ | `english-seed-13` | گوش کن! | Sounds around us (Phase 1): which made this sound (a knock on the door, rain, a bell, a clock, a car horn: our own synthesised sounds)? Loud and quiet | lesson (`listen` with `audio`), game (`pairs`), parent tip | english.seed.8 | full |
 | ✅ | `english-seed-4` | حیوان‌ها | Animals | animation, lesson, game (`pairs`), parent tip | english.seed.3 | core |
-| 🔨 | `english-seed-14` | مثل حیوان‌ها | Hop like a frog, fly like a bird, swim like a fish; what animals say (ribbit, tweet) | animation, lesson (`listen`), home (`doit`), parent tip | english.seed.2, english.seed.3 | core |
+| ✅ | `english-seed-14` | مثل حیوان‌ها | Hop like a frog, fly like a bird, swim like a fish; what animals say (ribbit, tweet) | animation, lesson (`listen`), home (`doit`), parent tip | english.seed.2, english.seed.3 | core |
 | ✅ | `english-seed-5` | خانواده | Family words | animation, lesson, parent tip | english.seed.3 | core |
-| 🔨 | `english-seed-15` | این مامان من است | This is my mum. Who's this? It's my grandpa. | animation, lesson (`listen`), parent tip | english.seed.3, english.seed.6 | core |
+| ✅ | `english-seed-15` | این مامان من است | This is my mum. Who's this? It's my grandpa. | animation, lesson (`listen`), parent tip | english.seed.3, english.seed.6 | core |
 | ✅ | `english-seed-6` | بدن من | Body parts | animation, lesson, parent tip | english.seed.3 | core |
-| 🔨 | `english-seed-16` | دست بزن به دماغت | Touch your nose, clap your hands, stamp your feet; our own action chant | animation, lesson (`listen`), home (`doit`), parent tip | english.seed.2, english.seed.5 | core |
+| ✅ | `english-seed-16` | دست بزن به دماغت | Touch your nose, clap your hands, stamp your feet; our own action chant | animation, lesson (`listen`), home (`doit`), parent tip | english.seed.2, english.seed.5 | core |
 | ✅ | `english-seed-7` | خوراکی‌ها | Food and drink words; asking with «please» at breakfast | animation, lesson (`words`, `listen`), game (`pairs` with `hidden`), parent tip | english.seed.3, english.seed.7 | core |
-| 🔨 | `english-seed-17` | لطفاً، ممنون | Can I have an apple, please? Here you are. Thank you. Yes, please / No, thank you | animation, lesson (`listen`), parent tip | english.seed.7 | full |
+| ✅ | `english-seed-17` | لطفاً، ممنون | Can I have an apple, please? Here you are. Thank you. Yes, please / No, thank you | animation, lesson (`listen`), parent tip | english.seed.7 | full |
 | ✅ | `english-seed-8` | بازی کلمه‌ها | Unit game: words from the Seed garden (animals, food, body, family, numbers, animal sounds) | game (`pairs`, `sort`) | english.seed.3 | core |
-| 🔨 | `english-seed-18` | بازی با ضرب | Phase 1: copy a beat, clap the rhythm of a chant, fast and slow (synthesised claps) | lesson (`listen`), home (`doit`), parent tip | english.seed.8, english.seed.5 | full |
-| 🔨 | `english-seed-19` | اسباب‌بازی‌ها | ball, doll, car, teddy, kite, train; I've got a ball | animation, lesson (`words`, `listen`), game (`pairs`), parent tip | english.seed.3 | core |
-| 🔨 | `english-seed-20` | هم‌قافیه | Rhyme: cat–hat, dog–frog; which one rhymes? Finish the rhyme | lesson (`listen`), game (`pairs`), parent tip | english.seed.8 | full |
-| 🔨 | `english-seed-21` | لباس‌ها | hat, shoes, coat, dress, T-shirt, socks; put on your hat | animation, lesson (`words`, `listen`), parent tip | english.seed.3, english.seed.2 | core |
-| 🔨 | `english-seed-22` | صدای اول | I spy (Phase 1, alliteration): s-s-sun; which one starts with /m/? | lesson (`listen`), game (`sort`), parent tip | english.seed.9 | core |
-| 🔨 | `english-seed-23` | خانه من | kitchen, bedroom, bathroom; door, window, chair, bed (in the picture); a cat goes from room to room; Where's the cat? In the kitchen. | animation, lesson (`words`, `listen`), parent tip | english.seed.3 | core |
-| 🔨 | `english-seed-24` | حال من | happy, sad, angry, tired, hungry, scared; I'm happy. How are you? (faces shown, not explained) | animation, lesson (`words`, `listen`), parent tip | english.seed.12 | full |
-| 🔨 | `english-seed-25` | قصه: گربه کجاست؟ | Picture story with a repeated line («Is it in the box? No!»), heard slowly; point to the cat | animation, story (`scene` + `question`), lesson (`listen`), parent tip | english.seed.11 | full |
-| 🔨 | `english-seed-26` | بازی اسباب‌بازی و لباس | Unit game: toys, clothes, home | game (`pairs`, `sort`), parent tip | english.seed.3 | core |
-| 🔨 | `english-seed-27` | حرف زدن رباتی | Oral blending (Phase 1): a robot says r-e-d, c-a-t; tap the picture | lesson (`listen`), parent tip | english.seed.10 | full |
-| 🔨 | `english-seed-28` | هوا | sunny, rainy, windy, cloudy, snowy; What's the weather like? It's sunny. | animation, lesson (`words`, `listen`), parent tip | english.seed.3, english.seed.6 | full |
-| 🔨 | `english-seed-29` | شکل‌ها و اندازه‌ها | circle, square, triangle, star; big, small, long, short | lesson (`words`, `listen`), game (`sort`), parent tip | english.seed.3 | full |
-| 🔨 | `english-seed-30` | کارهایی که می‌کنم | run, jump, swim, climb, sing, dance, eat, sleep; I can jump! (sleep in words and listening only) | animation, lesson (`words`, `listen`), home (`doit`), parent tip | english.seed.2, english.seed.3 | core |
-| 🔨 | `english-seed-31` | بازی صدای اول | Sort pictures by first sound (s, m, t, b) | game (`sort`, `pairs`), parent tip | english.seed.9 | core |
-| 🔨 | `english-seed-32` | کلاس من | book, pen, pencil, bag, crayon; open your book, show me a pencil | animation, lesson (`words`, `listen`), parent tip | english.seed.3, english.seed.2 | core |
-| 🔨 | `english-seed-33` | قصه: خرس گرسنه | Story with a repeated line («I'm hungry! An apple, please.») | animation, story (`scene` + `question`), lesson (`listen`), parent tip | english.seed.11, english.seed.7 | full |
-| 🔨 | `english-seed-34` | کلمه را تکه کن | Oral segmenting: say sun in sounds like the robot; how many sounds? | lesson (`listen`, `clap` with `sounds: true`), parent tip | english.seed.10 | full |
-| 🔨 | `english-seed-35` | در پارک | tree, flower, sun, sky, bird, bike; outdoors words | animation, lesson (`words`, `listen`), parent tip | english.seed.3 | full |
-| 🔨 | `english-seed-36` | این چیست؟ | What's this? It's a … Is it a cat? Yes / No. One-word and chunk answers | animation, lesson (`listen`, `words`), parent tip | english.seed.6 | core |
-| 🔨 | `english-seed-37` | حرف‌های انگلیسی | English goes left to right and has its own letters; my name in English letters (seen, not taught) | lesson (`listen`), game (`sort`), parent tip | english.seed.13 | full |
-| 🔨 | `english-seed-38` | شعر من | A longer action chant with words from the garden; say it along | animation, lesson (`listen`), home (`doit`), parent tip | english.seed.5 | core |
-| 🔨 | `english-seed-39` | قصه: روز سارا | A day in pictures with known words; point and answer | animation, story (`scene` + `question`), lesson (`listen`), parent tip | english.seed.11 | full |
-| 🔨 | `english-seed-40` | بازی بزرگ دانه | Garden game: words of every theme, first sounds | game (`pairs`, `sort`), parent tip | english.seed.3, english.seed.9 | core |
+| ✅ | `english-seed-18` | بازی با ضرب | Phase 1: copy a beat, clap the rhythm of a chant, fast and slow (synthesised claps) | lesson (`listen`), home (`doit`), parent tip | english.seed.8, english.seed.5 | full |
+| ✅ | `english-seed-19` | اسباب‌بازی‌ها | ball, doll, car, teddy, kite, train; I've got a ball | animation, lesson (`words`, `listen`), game (`pairs`), parent tip | english.seed.3 | core |
+| ✅ | `english-seed-20` | هم‌قافیه | Rhyme: cat–hat, dog–frog; which one rhymes? Finish the rhyme | lesson (`listen`), game (`pairs`), parent tip | english.seed.8 | full |
+| ✅ | `english-seed-21` | لباس‌ها | hat, shoes, coat, dress, T-shirt, socks; put on your hat | animation, lesson (`words`, `listen`), parent tip | english.seed.3, english.seed.2 | core |
+| ✅ | `english-seed-22` | صدای اول | I spy (Phase 1, alliteration): s-s-sun; which one starts with /m/? | lesson (`listen`), game (`sort`), parent tip | english.seed.9 | core |
+| ✅ | `english-seed-23` | خانه من | kitchen, bedroom, bathroom; door, window, chair, bed (in the picture); a cat goes from room to room; Where's the cat? In the kitchen. | animation, lesson (`words`, `listen`), parent tip | english.seed.3 | core |
+| ✅ | `english-seed-24` | حال من | happy, sad, angry, tired, hungry, scared; I'm happy. How are you? (faces shown, not explained) | animation, lesson (`words`, `listen`), parent tip | english.seed.12 | full |
+| ✅ | `english-seed-25` | قصه: گربه کجاست؟ | Picture story with a repeated line («Is it in the box? No!»), heard slowly; point to the cat | animation, story (`scene` + `question`), lesson (`listen`), parent tip | english.seed.11 | full |
+| ✅ | `english-seed-26` | بازی اسباب‌بازی و لباس | Unit game: toys, clothes, home | game (`pairs`, `sort`), parent tip | english.seed.3 | core |
+| ✅ | `english-seed-27` | حرف زدن رباتی | Oral blending (Phase 1): a robot says r-e-d, c-a-t; tap the picture | lesson (`listen`), parent tip | english.seed.10 | full |
+| ✅ | `english-seed-28` | هوا | sunny, rainy, windy, cloudy, snowy; What's the weather like? It's sunny. | animation, lesson (`words`, `listen`), parent tip | english.seed.3, english.seed.6 | full |
+| ✅ | `english-seed-29` | شکل‌ها و اندازه‌ها | circle, square, triangle, star; big, small, long, short | lesson (`words`, `listen`), game (`sort`), parent tip | english.seed.3 | full |
+| ✅ | `english-seed-30` | کارهایی که می‌کنم | run, jump, swim, climb, sing, dance, eat, sleep; I can jump! (sleep in words and listening only) | animation, lesson (`words`, `listen`), home (`doit`), parent tip | english.seed.2, english.seed.3 | core |
+| ✅ | `english-seed-31` | بازی صدای اول | Sort pictures by first sound (s, m, t, b) | game (`sort`, `pairs`), parent tip | english.seed.9 | core |
+| ✅ | `english-seed-32` | کلاس من | book, pen, pencil, bag, crayon; open your book, show me a pencil | animation, lesson (`words`, `listen`), parent tip | english.seed.3, english.seed.2 | core |
+| ✅ | `english-seed-33` | قصه: خرس گرسنه | Story with a repeated line («I'm hungry! An apple, please.») | animation, story (`scene` + `question`), lesson (`listen`), parent tip | english.seed.11, english.seed.7 | full |
+| ✅ | `english-seed-34` | کلمه را تکه کن | Oral segmenting: say sun in sounds like the robot; how many sounds? | lesson (`listen`, `clap` with `sounds: true`), parent tip | english.seed.10 | full |
+| ✅ | `english-seed-35` | در پارک | tree, flower, sun, sky, bird, bike; outdoors words | animation, lesson (`words`, `listen`), parent tip | english.seed.3 | full |
+| ✅ | `english-seed-36` | این چیست؟ | What's this? It's a … Is it a cat? Yes / No. One-word and chunk answers | animation, lesson (`listen`, `words`), parent tip | english.seed.6 | core |
+| ✅ | `english-seed-37` | حرف‌های انگلیسی | English goes left to right and has its own letters; my name in English letters (seen, not taught) | lesson (`listen`), game (`sort`), parent tip | english.seed.13 | full |
+| ✅ | `english-seed-38` | شعر من | A longer action chant with words from the garden; say it along | animation, lesson (`listen`), home (`doit`), parent tip | english.seed.5 | core |
+| ✅ | `english-seed-39` | قصه: روز سارا | A day in pictures with known words; point and answer | animation, story (`scene` + `question`), lesson (`listen`), parent tip | english.seed.11 | full |
+| ✅ | `english-seed-40` | بازی بزرگ دانه | Garden game: words of every theme, first sounds | game (`pairs`, `sort`), parent tip | english.seed.3, english.seed.9 | core |
 
 #### Practice
 
 | St | Id | Practice | What it makes | Objectives |
 |---|---|---|---|---|
-| 🔨 | `english-seed-p1` | Word bank by theme | Picture + English audio for every Seed word, by theme (colours, numbers, animals, family, body, food, toys, clothes, home, classroom, weather, actions); makes `listen` and `pairs` items from the themes learned | english.seed.3, english.seed.4 |
-| 🔨 | `english-seed-p2` | «Sara says» | Endless action instructions from a list of verbs and body parts (`listen` with action pictures, and off-screen) | english.seed.2 |
-| 🔨 | `english-seed-p3` | Sound play | Rhyme pairs and first-sound sets from the word bank; oral blending of short words (robot talk) | english.seed.8, english.seed.9, english.seed.10 |
-| 🔨 | `english-seed-p4` | Question time | What's this? What colour? How many? Who's this? on pictures from the word bank | english.seed.6 |
-| 🔨 | `english-seed-p5` | Memory pairs | Face-down picture cards that say their word; find the pairs (`pairs` hidden), from the words of the lessons done, this lesson's first | english.seed.3 |
-| 🔨 | `english-seed-p6` | Odd one out | Three pictures of one theme and one of another, each saying its word: which one does not belong? (`listen`) | english.seed.3 |
-| 🔨 | `english-seed-p7` | Say it, then check | A picture: the child says its word aloud, then taps the one of three spoken words that is right (`listen` with sound buttons) | english.seed.3, english.seed.1 |
-| 🔨 | `english-seed-p8` | Sort by theme | Picture cards that say their word, into two theme baskets (animals or food, toys or clothes …) (`sort`) | english.seed.3 |
-| 🔨 | `english-seed-p9` | What do you say? | Everyday moments (morning, bedtime, a present, meeting someone, asking for something, how I feel): hear the phrase and tap the moment, or hear the moment and choose what to say | english.seed.1, english.seed.7, english.seed.12 |
-| 🔨 | `english-seed-p10` | Little stories | Two or three short sentences heard, with a question and pictures to choose (who, where, what happened) | english.seed.11, english.seed.6 |
+| ✅ | `english-seed-p1` | Word bank by theme | Picture + English audio for every Seed word, by theme (colours, numbers, animals, family, body, food, toys, clothes, home, classroom, weather, actions); makes `listen` and `pairs` items from the themes learned | english.seed.3, english.seed.4 |
+| ✅ | `english-seed-p2` | «Sara says» | Endless action instructions from a list of verbs and body parts (`listen` with action pictures, and off-screen) | english.seed.2 |
+| ✅ | `english-seed-p3` | Sound play | Rhyme pairs and first-sound sets from the word bank; oral blending of short words (robot talk) | english.seed.8, english.seed.9, english.seed.10 |
+| ✅ | `english-seed-p4` | Question time | What's this? What colour? How many? Who's this? on pictures from the word bank | english.seed.6 |
+| ✅ | `english-seed-p5` | Memory pairs | Face-down picture cards that say their word; find the pairs (`pairs` hidden), from the words of the lessons done, this lesson's first | english.seed.3 |
+| ✅ | `english-seed-p6` | Odd one out | Three pictures of one theme and one of another, each saying its word: which one does not belong? (`listen`) | english.seed.3 |
+| ✅ | `english-seed-p7` | Say it, then check | A picture: the child says its word aloud, then taps the one of three spoken words that is right (`listen` with sound buttons) | english.seed.3, english.seed.1 |
+| ✅ | `english-seed-p8` | Sort by theme | Picture cards that say their word, into two theme baskets (animals or food, toys or clothes …) (`sort`) | english.seed.3 |
+| ✅ | `english-seed-p9` | What do you say? | Everyday moments (morning, bedtime, a present, meeting someone, asking for something, how I feel): hear the phrase and tap the moment, or hear the moment and choose what to say | english.seed.1, english.seed.7, english.seed.12 |
+| ✅ | `english-seed-p10` | Little stories | Two or three short sentences heard, with a question and pictures to choose (who, where, what happened) | english.seed.11, english.seed.6 |
 
 ### 🌱 جوانه — `sprout`
 
@@ -241,80 +241,80 @@ and writing letters; listening and speaking grow with the Starters themes.
 | St | Lesson | Title | Covers | Content types | Objectives | Depth |
 |---|---|---|---|---|---|---|
 | ✅ | `english-sprout-1` | حرف‌های s a t p | Sounds s a t p; sat, pat, tap | lesson (`letter`, `listen`), game (`sort`, `pairs`, `build`), parent tip | english.spr.1, english.spr.2 | core |
-| 🔨 | `english-sprout-12` | بخوان با s a t p | Blending: at, sat, pat, tap, sap; sound buttons under each letter, then the whole word | lesson (`listen`, `blend` in English), game (`pairs`), parent tip | english.spr.2 | core |
+| ✅ | `english-sprout-12` | بخوان با s a t p | Blending: at, sat, pat, tap, sap; sound buttons under each letter, then the whole word | lesson (`listen`, `blend` in English), game (`pairs`), parent tip | english.spr.2 | core |
 | ✅ | `english-sprout-2` | حرف‌های i n m d | i n m d | lesson, game (`sort`, `build`, `pairs`), parent tip | english.spr.1, english.spr.2 | core |
-| 🔨 | `english-sprout-13` | کلمه‌های تازه | Read and build pin, tin, man, sit, dad, and, mat; first tricky word: the | lesson (`listen`), game (`build`, `pairs`), parent tip | english.spr.2, english.spr.3 | core |
-| 🔨 | `english-sprout-14` | نوشتن حرف‌های اول | Writing s a t p i n m d on the line, from the right starting point | lesson (`trace` of Latin letters), parent tip | english.spr.9 | core |
+| ✅ | `english-sprout-13` | کلمه‌های تازه | Read and build pin, tin, man, sit, dad, and, mat; first tricky word: the | lesson (`listen`), game (`build`, `pairs`), parent tip | english.spr.2, english.spr.3 | core |
+| ✅ | `english-sprout-14` | نوشتن حرف‌های اول | Writing s a t p i n m d on the line, from the right starting point | lesson (`trace` of Latin letters), parent tip | english.spr.9 | core |
 | ✅ | `english-sprout-3` | حرف‌های g o c k | g o c k | lesson, game, parent tip | english.spr.1, english.spr.2 | core |
-| 🔨 | `english-sprout-15` | سگ و گربه | Read dog, cat, pot, kid, cot; tricky words I, no, go, to | lesson (`listen`), game (`pairs`, `build`), parent tip | english.spr.2, english.spr.7 | core |
+| ✅ | `english-sprout-15` | سگ و گربه | Read dog, cat, pot, kid, cot; tricky words I, no, go, to | lesson (`listen`), game (`pairs`, `build`), parent tip | english.spr.2, english.spr.7 | core |
 | ✅ | `english-sprout-4` | حرف‌های e u r | e u r | lesson, game (`build`, `pairs`), parent tip | english.spr.1, english.spr.2 | core |
-| 🔨 | `english-sprout-16` | جمله‌های کوچک | Read captions: a red cap, a pet in a cot, get up | game (`pairs`, `order`), parent tip | english.spr.8, english.spr.7 | core |
+| ✅ | `english-sprout-16` | جمله‌های کوچک | Read captions: a red cap, a pet in a cot, get up | game (`pairs`, `order`), parent tip | english.spr.8, english.spr.7 | core |
 | ✅ | `english-sprout-5` | حرف‌های h b f l | h b f l | lesson, game, parent tip | english.spr.1, english.spr.2 | core |
-| 🔨 | `english-sprout-17` | ff، ll، ss، ck | Double letters and ck: off, bell, doll, kiss, duck, sock, lock | lesson (`letter`, `listen`), game (`sort`, `build`), parent tip | english.spr.4 | core |
-| 🔨 | `english-sprout-18` | بازی خواندن ۱ | Read short words with the letters so far; sort by middle sound | game (`pairs`, `sort`, `build`), parent tip | english.spr.2, english.spr.3 | core |
-| 🔨 | `english-sprout-19` | عددها تا بیست | Numbers 11–20; How old are you? I'm six. | animation, lesson (`words`, `listen`), game (`pairs`), parent tip | english.spr.16, english.spr.12 | core |
+| ✅ | `english-sprout-17` | ff، ll، ss، ck | Double letters and ck: off, bell, doll, kiss, duck, sock, lock | lesson (`letter`, `listen`), game (`sort`, `build`), parent tip | english.spr.4 | core |
+| ✅ | `english-sprout-18` | بازی خواندن ۱ | Read short words with the letters so far; sort by middle sound | game (`pairs`, `sort`, `build`), parent tip | english.spr.2, english.spr.3 | core |
+| ✅ | `english-sprout-19` | عددها تا بیست | Numbers 11–20; How old are you? I'm six. | animation, lesson (`words`, `listen`), game (`pairs`), parent tip | english.spr.16, english.spr.12 | core |
 | ✅ | `english-sprout-6` | حرف‌های j v w x y z q | The remaining letters (x heard at the end: box, fox; q with u: queen); fox. *Revise: seven letters is too many for one lesson; keep j v w x here and leave y z qu to `english-sprout-21`* | lesson (`letter`, `listen`), game (`pairs`, `build`), parent tip | english.spr.1 | core |
-| 🔨 | `english-sprout-20` | دوباره: j v w x | Read and build jam, van, web, fox, box, wet | lesson (`listen`), game (`pairs`, `build`), parent tip | english.spr.1, english.spr.2 | core |
-| 🔨 | `english-sprout-21` | y، z، qu | yes, yet, zip, buzz, quiz, quick | lesson (`letter`, `listen`), game (`pairs`, `build`), parent tip | english.spr.1, english.spr.4 | core |
+| ✅ | `english-sprout-20` | دوباره: j v w x | Read and build jam, van, web, fox, box, wet | lesson (`listen`), game (`pairs`, `build`), parent tip | english.spr.1, english.spr.2 | core |
+| ✅ | `english-sprout-21` | y، z، qu | yes, yet, zip, buzz, quiz, quick | lesson (`letter`, `listen`), game (`pairs`, `build`), parent tip | english.spr.1, english.spr.4 | core |
 | ✅ | `english-sprout-7` | حرف بزرگ، حرف کوچک | Uppercase ↔ lowercase, b and d, names start with a capital (Sara, Reza) | game (`pairs`, `sort`), lesson (`listen`), parent tip | english.spr.9, english.spr.1 | core |
-| 🔨 | `english-sprout-22` | الفبا | Letter names A–Z in order (our own alphabet chant); spell your name: S-A-R-A | animation, lesson (`listen`), game (`order`), parent tip | english.spr.15 | full |
+| ✅ | `english-sprout-22` | الفبا | Letter names A–Z in order (our own alphabet chant); spell your name: S-A-R-A | animation, lesson (`listen`), game (`order`), parent tip | english.spr.15 | full |
 | ✅ | `english-sprout-8` | کلمه‌های پرکاربرد | First sight words: I, a, the, is, see, my; reading «I see my cat.» | animation, game (`pairs`, `build`, `order`), lesson (`listen`), parent tip | english.spr.7, english.spr.8 | core |
 | ✅ | `english-sprout-9` | sh، ch، th | Two letters, one sound; fish, bath, shop | lesson (`letter`, `listen`), game (`sort`, `build`), parent tip | english.spr.4 | core |
-| 🔨 | `english-sprout-23` | ng و nk | ring, sing, king, bank, pink, think | lesson (`letter`, `listen`), game (`sort`, `build`), parent tip | english.spr.4 | core |
+| ✅ | `english-sprout-23` | ng و nk | ring, sing, king, bank, pink, think | lesson (`letter`, `listen`), game (`sort`, `build`), parent tip | english.spr.4 | core |
 | ✅ | `english-sprout-10` | نوشتن حرف‌ها | Writing small letters on the line, from the right starting point, by family: round (c a d), tall sticks (l t), humps (n), s; the rest on paper (parent tip). *Revise: `english-sprout-14` and `english-sprout-51` now cover the other letters on screen* | lesson (`trace` of Latin letters), parent tip | english.spr.9 | core |
 | ✅ | `english-sprout-11` | نوشتن کلمه‌ها | Hear a short word, build it, then write it letter by letter (cat, sun; bed on paper) | game (`build`), lesson (`trace` of Latin letters), parent tip | english.spr.10, english.spr.3 | core |
-| 🔨 | `english-sprout-24` | بازی دو حرف، یک صدا | Sort and read words with sh, ch, th, ng, ck | game (`sort`, `pairs`, `build`), parent tip | english.spr.4 | core |
-| 🔨 | `english-sprout-25` | مدرسه | pencil, rubber, ruler, desk, board, teacher; Have you got a pencil? Yes, I have. | animation, lesson (`words`, `listen`), parent tip | english.spr.11, english.spr.12, english.spr.14 | core |
-| 🔨 | `english-sprout-26` | ai و ee | rain, tail, wait; see, tree, feet | lesson (`letter`, `listen`), game (`sort`, `build`), parent tip | english.spr.5 | core |
-| 🔨 | `english-sprout-27` | igh و oa | night, light, high; boat, coat, goat | lesson (`letter`, `listen`), game (`pairs`, `build`), parent tip | english.spr.5 | core |
-| 🔨 | `english-sprout-28` | oo بلند، oo کوتاه | moon, food, zoo; book, look, foot | lesson (`letter`, `listen`), game (`sort`), parent tip | english.spr.5 | core |
-| 🔨 | `english-sprout-29` | کلمه‌های پرکاربرد ۲ | he, she, we, me, be, was, you, they, all, are, her | game (`pairs`, `order`), lesson (`listen`), parent tip | english.spr.7 | core |
-| 🔨 | `english-sprout-30` | قصه: بز در قایق | Decodable story «The goat in the boat» with questions | story (`passage`), parent tip | english.spr.8 | core |
-| 🔨 | `english-sprout-31` | ar و or | car, star, farm; fork, corn, horse | lesson (`letter`, `listen`), game (`sort`, `build`), parent tip | english.spr.5 | core |
-| 🔨 | `english-sprout-32` | ur، ow، oi | fur, burn; cow, town; coin, oil | lesson (`letter`, `listen`), game (`sort`), parent tip | english.spr.5 | full |
-| 🔨 | `english-sprout-33` | ear، air، er | ear, hear; hair, chair; sister, letter | lesson (`letter`, `listen`), game (`pairs`), parent tip | english.spr.5 | full |
-| 🔨 | `english-sprout-34` | بازی صداهای دوحرفی | Sort and read words with vowel digraphs | game (`sort`, `pairs`, `build`), parent tip | english.spr.5 | core |
-| 🔨 | `english-sprout-35` | لباس‌های من | Clothes and colours: I've got a blue T-shirt. She's got a purple dress, pink shoes; I've got a red hat (order) | animation, lesson (`words`, `listen`), game (`order`), parent tip | english.spr.11, english.spr.14 | core |
-| 🔨 | `english-sprout-36` | اتاق من | bed, lamp, sofa, cupboard, mirror; There's a lamp in my room. | animation, lesson (`words`, `listen`), parent tip | english.spr.11, english.spr.14 | full |
-| 🔨 | `english-sprout-37` | گوش کن و رنگ کن | Listen and do (the Starters task): colour the cat red, point to the frog, find the small ball | lesson (`listen`), parent tip | english.spr.13 | core |
-| 🔨 | `english-sprout-38` | دو حرف کنار هم ۱ | Final blends: hand, milk, tent, jump, lamp, nest | lesson (`listen`), game (`pairs`, `build`), parent tip | english.spr.6 | core |
-| 🔨 | `english-sprout-39` | دو حرف کنار هم ۲ | First blends: frog, stop, crab, flag, swim, drum | lesson (`listen`), game (`pairs`, `build`), parent tip | english.spr.6 | core |
-| 🔨 | `english-sprout-40` | کلمه‌های بلندتر | Two-part words: rabbit, picnic, lunchbox, helmet; clap the parts, then read | lesson (`clap` in English), game (`build`), parent tip | english.spr.6 | full |
-| 🔨 | `english-sprout-41` | کلمه‌های پرکاربرد ۳ | said, have, like, so, do, some, come, were, there, one, what, when, out | game (`pairs`, `order`), lesson (`listen`), parent tip | english.spr.7 | core |
-| 🔨 | `english-sprout-42` | بازی خواندن ۲ | Read captions with blends and match the picture | game (`pairs`, `order`), parent tip | english.spr.6, english.spr.8 | core |
-| 🔨 | `english-sprout-43` | قصه: قورباغه و اردک | Decodable story «The frog and the duck» with questions | story (`passage`), parent tip | english.spr.8 | core |
-| 🔨 | `english-sprout-44` | قصه را گوش کن | A heard story of known words (a cat, a bird and a tree); put the pictures in order | animation, game (`order`), lesson (`listen`), parent tip | english.spr.13 | core |
-| 🔨 | `english-sprout-45` | حیوان‌های بیشتر | crocodile, giraffe, hippo, monkey, snake, spider; It's big. It's small. It's green. It's got a long neck; It's got eight legs (heard). | animation, lesson (`words`, `listen`), parent tip | english.spr.11, english.spr.14 | full |
-| 🔨 | `english-sprout-46` | دوست داری؟ | rice, chicken, carrots, banana, ice cream; Do you like …? Yes, I do. / No, I don't. | animation, lesson (`words`, `listen`), parent tip | english.spr.11, english.spr.12 | core |
-| 🔨 | `english-sprout-47` | صورت و بدن | hair, face, arm, leg, long, short; He's got brown hair. | animation, lesson (`words`, `listen`), parent tip | english.spr.11, english.spr.14 | full |
-| 🔨 | `english-sprout-48` | من می‌توانم | I can swim. Can you jump? Yes, I can. / No, I can't. | animation, lesson (`listen`), game (`order`), parent tip | english.spr.12, english.spr.14 | core |
-| 🔨 | `english-sprout-49` | این و آن | What's this? What's that? Near and far, shown by pointing | animation, lesson (`listen`), parent tip | english.spr.14, english.spr.12 | full |
-| 🔨 | `english-sprout-50` | سؤال‌ها | What? Who? Where? How many? How old? Heard and answered | animation, lesson (`listen`), parent tip | english.spr.12 | core |
-| 🔨 | `english-sprout-51` | نوشتن حرف‌های بزرگ | Writing capital letters, and the small letters not yet written | lesson (`trace` of Latin letters), parent tip | english.spr.9 | core |
-| 🔨 | `english-sprout-52` | دیکته کلمه | Hear a word, build it with letters (no picture first), then see it | game (`build` with `hidden`), parent tip | english.spr.3, english.spr.10 | core |
-| 🔨 | `english-sprout-53` | نوشتن جمله کوتاه | Write a short caption that is said: a fish in a dish | game (`build` with `hidden`), `paper`, parent tip | english.spr.10 | full |
-| 🔨 | `english-sprout-54` | بازی و اسباب‌بازی | kite, robot, doll, bike, game; Let's play! | animation, lesson (`words`, `listen`), parent tip | english.spr.11 | full |
-| 🔨 | `english-sprout-55` | قصه: ماهی بزرگ | Decodable story «The big fish» with tricky words and questions | story (`passage`), parent tip | english.spr.8, english.spr.7 | core |
-| 🔨 | `english-sprout-56` | یک صدا را عوض کن | Change one sound: cat → hat → hot → hop | game (`build`), parent tip | english.spr.3 | full |
-| 🔨 | `english-sprout-57` | بلند بخوان | Read a short decodable text aloud, then again; the parent marks the hard words; a question on each text | story (`readaloud` in English, `passage`), parent tip | english.spr.8 | full |
-| 🔨 | `english-sprout-58` | بازی بزرگ کلمه‌ها | Garden game: words of the Sprout themes | game (`pairs`, `sort`), parent tip | english.spr.11 | core |
-| 🔨 | `english-sprout-59` | بازی بزرگ صداها | Garden game: every letter and letter pair taught | game (`pairs`, `sort`, `build`), parent tip | english.spr.1, english.spr.4, english.spr.5 | core |
-| 🔨 | `english-sprout-60` | ببین چه بلدی | End of the garden: read words and two sentences, listen and point (Starters style); a note for the parent on what to practise | lesson (`listen`), game (`pairs`), story (`passage`), parent tip | english.spr.2, english.spr.8, english.spr.13 | core |
+| ✅ | `english-sprout-24` | بازی دو حرف، یک صدا | Sort and read words with sh, ch, th, ng, ck | game (`sort`, `pairs`, `build`), parent tip | english.spr.4 | core |
+| ✅ | `english-sprout-25` | مدرسه | pencil, rubber, ruler, desk, board, teacher; Have you got a pencil? Yes, I have. | animation, lesson (`words`, `listen`), parent tip | english.spr.11, english.spr.12, english.spr.14 | core |
+| ✅ | `english-sprout-26` | ai و ee | rain, tail, wait; see, tree, feet | lesson (`letter`, `listen`), game (`sort`, `build`), parent tip | english.spr.5 | core |
+| ✅ | `english-sprout-27` | igh و oa | night, light, high; boat, coat, goat | lesson (`letter`, `listen`), game (`pairs`, `build`), parent tip | english.spr.5 | core |
+| ✅ | `english-sprout-28` | oo بلند، oo کوتاه | moon, food, zoo; book, look, foot | lesson (`letter`, `listen`), game (`sort`), parent tip | english.spr.5 | core |
+| ✅ | `english-sprout-29` | کلمه‌های پرکاربرد ۲ | he, she, we, me, be, was, you, they, all, are, her | game (`pairs`, `order`), lesson (`listen`), parent tip | english.spr.7 | core |
+| ✅ | `english-sprout-30` | قصه: بز در قایق | Decodable story «The goat in the boat» with questions | story (`passage`), parent tip | english.spr.8 | core |
+| ✅ | `english-sprout-31` | ar و or | car, star, farm; fork, corn, horse | lesson (`letter`, `listen`), game (`sort`, `build`), parent tip | english.spr.5 | core |
+| ✅ | `english-sprout-32` | ur، ow، oi | fur, burn; cow, town; coin, oil | lesson (`letter`, `listen`), game (`sort`), parent tip | english.spr.5 | full |
+| ✅ | `english-sprout-33` | ear، air، er | ear, hear; hair, chair; sister, letter | lesson (`letter`, `listen`), game (`pairs`), parent tip | english.spr.5 | full |
+| ✅ | `english-sprout-34` | بازی صداهای دوحرفی | Sort and read words with vowel digraphs | game (`sort`, `pairs`, `build`), parent tip | english.spr.5 | core |
+| ✅ | `english-sprout-35` | لباس‌های من | Clothes and colours: I've got a blue T-shirt. She's got a purple dress, pink shoes; I've got a red hat (order) | animation, lesson (`words`, `listen`), game (`order`), parent tip | english.spr.11, english.spr.14 | core |
+| ✅ | `english-sprout-36` | اتاق من | bed, lamp, sofa, cupboard, mirror; There's a lamp in my room. | animation, lesson (`words`, `listen`), parent tip | english.spr.11, english.spr.14 | full |
+| ✅ | `english-sprout-37` | گوش کن و رنگ کن | Listen and do (the Starters task): colour the cat red, point to the frog, find the small ball | lesson (`listen`), parent tip | english.spr.13 | core |
+| ✅ | `english-sprout-38` | دو حرف کنار هم ۱ | Final blends: hand, milk, tent, jump, lamp, nest | lesson (`listen`), game (`pairs`, `build`), parent tip | english.spr.6 | core |
+| ✅ | `english-sprout-39` | دو حرف کنار هم ۲ | First blends: frog, stop, crab, flag, swim, drum | lesson (`listen`), game (`pairs`, `build`), parent tip | english.spr.6 | core |
+| ✅ | `english-sprout-40` | کلمه‌های بلندتر | Two-part words: rabbit, picnic, lunchbox, helmet; clap the parts, then read | lesson (`clap` in English), game (`build`), parent tip | english.spr.6 | full |
+| ✅ | `english-sprout-41` | کلمه‌های پرکاربرد ۳ | said, have, like, so, do, some, come, were, there, one, what, when, out | game (`pairs`, `order`), lesson (`listen`), parent tip | english.spr.7 | core |
+| ✅ | `english-sprout-42` | بازی خواندن ۲ | Read captions with blends and match the picture | game (`pairs`, `order`), parent tip | english.spr.6, english.spr.8 | core |
+| ✅ | `english-sprout-43` | قصه: قورباغه و اردک | Decodable story «The frog and the duck» with questions | story (`passage`), parent tip | english.spr.8 | core |
+| ✅ | `english-sprout-44` | قصه را گوش کن | A heard story of known words (a cat, a bird and a tree); put the pictures in order | animation, game (`order`), lesson (`listen`), parent tip | english.spr.13 | core |
+| ✅ | `english-sprout-45` | حیوان‌های بیشتر | crocodile, giraffe, hippo, monkey, snake, spider; It's big. It's small. It's green. It's got a long neck; It's got eight legs (heard). | animation, lesson (`words`, `listen`), parent tip | english.spr.11, english.spr.14 | full |
+| ✅ | `english-sprout-46` | دوست داری؟ | rice, chicken, carrots, banana, ice cream; Do you like …? Yes, I do. / No, I don't. | animation, lesson (`words`, `listen`), parent tip | english.spr.11, english.spr.12 | core |
+| ✅ | `english-sprout-47` | صورت و بدن | hair, face, arm, leg, long, short; He's got brown hair. | animation, lesson (`words`, `listen`), parent tip | english.spr.11, english.spr.14 | full |
+| ✅ | `english-sprout-48` | من می‌توانم | I can swim. Can you jump? Yes, I can. / No, I can't. | animation, lesson (`listen`), game (`order`), parent tip | english.spr.12, english.spr.14 | core |
+| ✅ | `english-sprout-49` | این و آن | What's this? What's that? Near and far, shown by pointing | animation, lesson (`listen`), parent tip | english.spr.14, english.spr.12 | full |
+| ✅ | `english-sprout-50` | سؤال‌ها | What? Who? Where? How many? How old? Heard and answered | animation, lesson (`listen`), parent tip | english.spr.12 | core |
+| ✅ | `english-sprout-51` | نوشتن حرف‌های بزرگ | Writing capital letters, and the small letters not yet written | lesson (`trace` of Latin letters), parent tip | english.spr.9 | core |
+| ✅ | `english-sprout-52` | دیکته کلمه | Hear a word, build it with letters (no picture first), then see it | game (`build` with `hidden`), parent tip | english.spr.3, english.spr.10 | core |
+| ✅ | `english-sprout-53` | نوشتن جمله کوتاه | Write a short caption that is said: a fish in a dish | game (`build` with `hidden`), `paper`, parent tip | english.spr.10 | full |
+| ✅ | `english-sprout-54` | بازی و اسباب‌بازی | kite, robot, doll, bike, game; Let's play! | animation, lesson (`words`, `listen`), parent tip | english.spr.11 | full |
+| ✅ | `english-sprout-55` | قصه: ماهی بزرگ | Decodable story «The big fish» with tricky words and questions | story (`passage`), parent tip | english.spr.8, english.spr.7 | core |
+| ✅ | `english-sprout-56` | یک صدا را عوض کن | Change one sound: cat → hat → hot → hop | game (`build`), parent tip | english.spr.3 | full |
+| ✅ | `english-sprout-57` | بلند بخوان | Read a short decodable text aloud, then again; the parent marks the hard words; a question on each text | story (`readaloud` in English, `passage`), parent tip | english.spr.8 | full |
+| ✅ | `english-sprout-58` | بازی بزرگ کلمه‌ها | Garden game: words of the Sprout themes | game (`pairs`, `sort`), parent tip | english.spr.11 | core |
+| ✅ | `english-sprout-59` | بازی بزرگ صداها | Garden game: every letter and letter pair taught | game (`pairs`, `sort`, `build`), parent tip | english.spr.1, english.spr.4, english.spr.5 | core |
+| ✅ | `english-sprout-60` | ببین چه بلدی | End of the garden: read words and two sentences, listen and point (Starters style); a note for the parent on what to practise | lesson (`listen`), game (`pairs`), story (`passage`), parent tip | english.spr.2, english.spr.8, english.spr.13 | core |
 
 #### Practice
 
 | St | Id | Practice | What it makes | Objectives |
 |---|---|---|---|---|
-| 🔨 | `english-sprout-p1` | Sound cards | Letters and letter pairs taught so far, in mixed order: hear and tap, see and say | english.spr.1, english.spr.4, english.spr.5 |
-| 🔨 | `english-sprout-p2` | Decodable words | Words made only of the sounds taught so far (a word list tagged by sound): read and match, build, sort | english.spr.2, english.spr.3, english.spr.6 |
-| 🔨 | `english-sprout-p3` | Decodable sentences | Sentences from the decodable words and the tricky words taught so far, with a picture to match | english.spr.7, english.spr.8 |
-| 🔨 | `english-sprout-p4` | Dictation | Hear a decodable word and build it from its sounds (`build` with `hidden`); writing it on paper stays in the lessons (`english-sprout-52`, `english-sprout-53`) | english.spr.3, english.spr.10 |
-| 🔨 | `english-sprout-p5` | Word bank (Starters) | Picture + audio for every Sprout word by theme, numbers to 20 | english.spr.11, english.spr.16 |
-| 🔨 | `english-sprout-p6` | Listen and do | Colour, point and find instructions made from known words and colours | english.spr.13 |
-| 🔨 | `english-sprout-p7` | Questions and answers | Have you got …? Do you like …? Can you …? with pictures from the word bank | english.spr.12, english.spr.14 |
-| 🔨 | `english-sprout-p8` | First letters | Pictures (not only decodable words) that say their word, sorted by the letter they start with, from the letters taught (`sort`) | english.spr.1 |
-| 🔨 | `english-sprout-p9` | Letter match | Letter ↔ picture of a word that starts with its sound, and capital ↔ small letter after english-sprout-7 (`pairs`) | english.spr.1, english.spr.15 |
-| 🔨 | `english-sprout-p10` | Word and picture | Decodable words and the Starters words of the lessons done, matched to their pictures (`pairs`), and the odd word out | english.spr.2, english.spr.11 |
+| ✅ | `english-sprout-p1` | Sound cards | Letters and letter pairs taught so far, in mixed order: hear and tap, see and say | english.spr.1, english.spr.4, english.spr.5 |
+| ✅ | `english-sprout-p2` | Decodable words | Words made only of the sounds taught so far (a word list tagged by sound): read and match, build, sort | english.spr.2, english.spr.3, english.spr.6 |
+| ✅ | `english-sprout-p3` | Decodable sentences | Sentences from the decodable words and the tricky words taught so far, with a picture to match | english.spr.7, english.spr.8 |
+| ✅ | `english-sprout-p4` | Dictation | Hear a decodable word and build it from its sounds (`build` with `hidden`); writing it on paper stays in the lessons (`english-sprout-52`, `english-sprout-53`) | english.spr.3, english.spr.10 |
+| ✅ | `english-sprout-p5` | Word bank (Starters) | Picture + audio for every Sprout word by theme, numbers to 20 | english.spr.11, english.spr.16 |
+| ✅ | `english-sprout-p6` | Listen and do | Colour, point and find instructions made from known words and colours | english.spr.13 |
+| ✅ | `english-sprout-p7` | Questions and answers | Have you got …? Do you like …? Can you …? with pictures from the word bank | english.spr.12, english.spr.14 |
+| ✅ | `english-sprout-p8` | First letters | Pictures (not only decodable words) that say their word, sorted by the letter they start with, from the letters taught (`sort`) | english.spr.1 |
+| ✅ | `english-sprout-p9` | Letter match | Letter ↔ picture of a word that starts with its sound, and capital ↔ small letter after english-sprout-7 (`pairs`) | english.spr.1, english.spr.15 |
+| ✅ | `english-sprout-p10` | Word and picture | Decodable words and the Starters words of the lessons done, matched to their pictures (`pairs`), and the odd word out | english.spr.2, english.spr.11 |
 
 ### 🌿 نهال — `sapling`
 
@@ -351,79 +351,79 @@ the first grammar from the Movers list; writing a few sentences.
 |---|---|---|---|---|---|---|
 | ✅ | `english-sapling-1` | I can see | Reading and building "I can see a …" | animation, lesson (`listen`), game (`order`, `pairs`), parent tip | english.sap.4, english.sap.12 | core |
 | ✅ | `english-sapling-2` | سؤال و جواب | What is this? It is a … | animation, lesson (`listen`), game (`order`), parent tip | english.sap.14, english.sap.9 | core |
-| 🔨 | `english-sapling-9` | I am, you are | I'm Sara. He's my brother. She's eight. They're my friends. Short forms | animation, lesson (`listen`), game (`order`, `sort`), parent tip | english.sap.9 | core |
-| 🔨 | `english-sapling-10` | Is he? Yes, he is. | Questions and no with be: Is it a cat? No, it isn't. I'm not tired. | animation, lesson (`listen`), game (`order`), parent tip | english.sap.9, english.sap.14 | core |
+| ✅ | `english-sapling-9` | I am, you are | I'm Sara. He's my brother. She's eight. They're my friends. Short forms | animation, lesson (`listen`), game (`order`, `sort`), parent tip | english.sap.9 | core |
+| ✅ | `english-sapling-10` | Is he? Yes, he is. | Questions and no with be: Is it a cat? No, it isn't. I'm not tired. | animation, lesson (`listen`), game (`order`), parent tip | english.sap.9, english.sap.14 | core |
 | ✅ | `english-sapling-3` | جمله‌های هر روز | Everyday phrases | animation, lesson (`words`, `listen`), game (`order`), parent tip | english.sap.17, english.sap.14 | core |
-| 🔨 | `english-sapling-11` | ay و a-e | day, play, say; cake, name, game (the e at the end changes the a) | lesson (`letter`, `listen`), game (`sort`, `build`), parent tip | english.sap.1 | core |
-| 🔨 | `english-sapling-12` | ie و i-e | pie, tie; bike, time, five (and igh: light) | lesson (`letter`, `listen`), game (`sort`, `build`), parent tip | english.sap.1 | core |
+| ✅ | `english-sapling-11` | ay و a-e | day, play, say; cake, name, game (the e at the end changes the a) | lesson (`letter`, `listen`), game (`sort`, `build`), parent tip | english.sap.1 | core |
+| ✅ | `english-sapling-12` | ie و i-e | pie, tie; bike, time, five (and igh: light) | lesson (`letter`, `listen`), game (`sort`, `build`), parent tip | english.sap.1 | core |
 | ✅ | `english-sapling-4` | دوست دارم | I like … / I don't like …: hear, show with a face, read and sort sentences, build them | animation, lesson (`words`, `listen`), game (`sort`, `order`), parent tip | english.sap.10 | core |
-| 🔨 | `english-sapling-13` | Do you like? | Do you like …? Yes, I do. He likes … She doesn't like … | animation, lesson (`listen`), game (`sort`, `order`), parent tip | english.sap.10, english.sap.14 | core |
-| 🔨 | `english-sapling-14` | o-e و ow | home, rope, nose; snow, slow, yellow | lesson (`letter`, `listen`), game (`sort`, `build`), parent tip | english.sap.1 | core |
-| 🔨 | `english-sapling-15` | u-e، ew، ue | cube, tube; new, few; blue, glue | lesson (`letter`, `listen`), game (`sort`), parent tip | english.sap.1 | core |
+| ✅ | `english-sapling-13` | Do you like? | Do you like …? Yes, I do. He likes … She doesn't like … | animation, lesson (`listen`), game (`sort`, `order`), parent tip | english.sap.10, english.sap.14 | core |
+| ✅ | `english-sapling-14` | o-e و ow | home, rope, nose; snow, slow, yellow | lesson (`letter`, `listen`), game (`sort`, `build`), parent tip | english.sap.1 | core |
+| ✅ | `english-sapling-15` | u-e، ew، ue | cube, tube; new, few; blue, glue | lesson (`letter`, `listen`), game (`sort`), parent tip | english.sap.1 | core |
 | ✅ | `english-sapling-5` | یکی، چندتا | Plural -s: one cat, two cats; hear it, read it, sort one / many | lesson (`words`, `listen`), game (`sort`, `pairs`), parent tip | english.sap.13, english.sap.3 | core |
-| 🔨 | `english-sapling-16` | -es و -ies | boxes, buses, babies; and children, feet, mice, men | lesson (`listen`), game (`sort`, `build`), parent tip | english.sap.3 | core |
+| ✅ | `english-sapling-16` | -es و -ies | boxes, buses, babies; and children, feet, mice, men | lesson (`listen`), game (`sort`, `build`), parent tip | english.sap.3 | core |
 | ✅ | `english-sapling-6` | کجاست؟ | in, on, under, next to, shown with pictures of where things are; hear it, then read the sentence | animation, lesson (`words`, `listen`), parent tip | english.sap.13 | core |
-| 🔨 | `english-sapling-17` | There is، there are | There's a cat under the bed. There are two books. Is there …? How many … are there? | animation, lesson (`listen`), game (`order`), parent tip | english.sap.13, english.sap.8 | core |
-| 🔨 | `english-sapling-18` | خانه ما | upstairs, downstairs, kitchen, sofa, shower, garden; Where's Mum? She's in the kitchen. | animation, lesson (`words`, `listen`), parent tip | english.sap.8, english.sap.15 | core |
+| ✅ | `english-sapling-17` | There is، there are | There's a cat under the bed. There are two books. Is there …? How many … are there? | animation, lesson (`listen`), game (`order`), parent tip | english.sap.13, english.sap.8 | core |
+| ✅ | `english-sapling-18` | خانه ما | upstairs, downstairs, kitchen, sofa, shower, garden; Where's Mum? She's in the kitchen. | animation, lesson (`words`, `listen`), parent tip | english.sap.8, english.sap.15 | core |
 | ✅ | `english-sapling-7` | قصه کوتاه | A short story heard first, then read with questions (Sara's dog and ball); a second one read alone (Reza's cat) | animation, story (`passage`), parent tip | english.sap.4, english.sap.5 | core |
-| 🔨 | `english-sapling-19` | ea، ee، ey | sea, leaf, read; tree; key; and ea in bread | lesson (`letter`, `listen`), game (`sort`), parent tip | english.sap.1, english.sap.2 | core |
-| 🔨 | `english-sapling-20` | ou، ow، oy، oi، aw | out, house; cow; boy, toy; coin; saw, draw | lesson (`letter`, `listen`), game (`sort`), parent tip | english.sap.1 | full |
-| 🔨 | `english-sapling-21` | ir، ur، er، wh، ph | bird, girl; nurse; her; when, white; phone | lesson (`letter`, `listen`), game (`sort`), parent tip | english.sap.1 | full |
+| ✅ | `english-sapling-19` | ea، ee، ey | sea, leaf, read; tree; key; and ea in bread | lesson (`letter`, `listen`), game (`sort`), parent tip | english.sap.1, english.sap.2 | core |
+| ✅ | `english-sapling-20` | ou، ow، oy، oi، aw | out, house; cow; boy, toy; coin; saw, draw | lesson (`letter`, `listen`), game (`sort`), parent tip | english.sap.1 | full |
+| ✅ | `english-sapling-21` | ir، ur، er، wh، ph | bird, girl; nurse; her; when, white; phone | lesson (`letter`, `listen`), game (`sort`), parent tip | english.sap.1 | full |
 | ✅ | `english-sapling-8` | نوشتن جمله | Writing a short sentence: capital letter, spaces between words, full stop; copy one, then write their own on paper | lesson (`listen`), game (`order`), `paper`, parent tip | english.sap.6 | core |
-| 🔨 | `english-sapling-22` | نقطه و علامت سؤال | Full stop or question mark? Capital letters for names and I; join with and | game (`sort`, `order`), lesson (`listen`), `paper`, parent tip | english.sap.6 | core |
-| 🔨 | `english-sapling-23` | ساعت چند است؟ | o'clock and half past; What time is it? It's seven o'clock. | animation, lesson (`listen`, `clock`), parent tip | english.sap.16 | core |
-| 🔨 | `english-sapling-24` | روزهای هفته | Monday to Sunday; Today is …; On Friday I … | animation, lesson (`words`, `listen`), game (`order`), parent tip | english.sap.16, english.sap.10 | core |
-| 🔨 | `english-sapling-25` | ماه‌ها و تولد | January to December; When's your birthday? It's in May. | lesson (`words`, `listen`), game (`order`), parent tip | english.sap.16 | full |
-| 🔨 | `english-sapling-26` | روز من | I get up, I have breakfast, I go to school, I go to bed (present simple) | animation, lesson (`listen`), game (`order`), parent tip | english.sap.10, english.sap.8 | core |
-| 🔨 | `english-sapling-27` | روز او | She gets up at seven. He goes to school. Does he …? | animation, lesson (`listen`), game (`sort`, `order`), parent tip | english.sap.10 | core |
-| 🔨 | `english-sapling-28` | قصه: روز رضا | A story about a day, read with questions | story (`passage`), parent tip | english.sap.5, english.sap.4 | core |
-| 🔨 | `english-sapling-29` | بازی هر روز | Put a day in order; sort I play / she plays | game (`order`, `sort`), parent tip | english.sap.10 | core |
-| 🔨 | `english-sapling-30` | یک حرف، دو صدا | c in cat and city, g in goat and giraffe, y in yes, my and happy | lesson (`listen`), game (`sort`), parent tip | english.sap.2 | full |
-| 🔨 | `english-sapling-31` | الان چه می‌کنی؟ | I'm reading. What are you doing? She's eating. | animation, lesson (`listen`), game (`order`), parent tip | english.sap.11 | full |
-| 🔨 | `english-sapling-32` | در پارک | A busy park picture: what are they doing? Listen and find the person | animation, lesson (`listen`), parent tip | english.sap.11, english.sap.15 | full |
-| 🔨 | `english-sapling-33` | -ing و -ed | run → running, make → making, play → played, hop → hopped | lesson (`listen`), game (`sort`, `build`), parent tip | english.sap.3 | full |
-| 🔨 | `english-sapling-34` | توانایی‌ها | Can you swim? I can ride a bike. He can't whistle. | animation, lesson (`listen`), game (`sort`), parent tip | english.sap.12, english.sap.14 | core |
-| 🔨 | `english-sapling-35` | این کار را بکن | Open the door. Don't run. Let's play! | animation, lesson (`listen`), parent tip | english.sap.12, english.sap.15 | core |
-| 🔨 | `english-sapling-36` | مال کیست؟ | my, your, his, her, our, their; Sara's bag; Whose is this? | animation, lesson (`listen`), game (`pairs`), parent tip | english.sap.13 | core |
-| 🔨 | `english-sapling-37` | چه شکلی است؟ | tall, short, long hair, curly hair, glasses, beard; She's tall and she's got long hair. | animation, lesson (`words`, `listen`), game (`pairs`), parent tip | english.sap.18, english.sap.9 | full |
-| 🔨 | `english-sapling-38` | a، an، some | a banana, an egg, some milk, some bread | lesson (`listen`), game (`sort`), parent tip | english.sap.13 | full |
-| 🔨 | `english-sapling-39` | در شهر | shop, park, hospital, library, bus stop; Where's the park? It's next to the school. | animation, lesson (`words`, `listen`), parent tip | english.sap.8, english.sap.13 | core |
-| 🔨 | `english-sapling-40` | شغل‌ها | teacher, doctor, farmer, driver, nurse, cook; What does she do? She's a nurse. | animation, lesson (`words`, `listen`), parent tip | english.sap.8, english.sap.10 | core |
-| 🔨 | `english-sapling-41` | هوا و فصل‌ها | spring, summer, autumn, winter; It's hot in summer. | animation, lesson (`words`, `listen`), parent tip | english.sap.8, english.sap.9 | core |
-| 🔨 | `english-sapling-42` | حالم خوب نیست | What's the matter? I've got a headache, a cold, a stomachache | animation, lesson (`words`, `listen`), parent tip | english.sap.8, english.sap.14 | full |
-| 🔨 | `english-sapling-43` | ورزش و سرگرمی | football, swimming, painting, reading; I like playing football. | animation, lesson (`words`, `listen`), parent tip | english.sap.8, english.sap.10 | full |
-| 🔨 | `english-sapling-44` | در مغازه | Can I have …, please? How much is it? Here you are. Thank you. | animation, lesson (`listen`), game (`order`), parent tip | english.sap.17, english.sap.15 | full |
-| 🔨 | `english-sapling-45` | بازی کلمه‌های نهال | Words of the Sapling themes | game (`pairs`, `sort`), parent tip | english.sap.8 | core |
-| 🔨 | `english-sapling-46` | گفت‌وگو را گوش کن | Short dialogues; choose the picture that matches (Movers listening style) | lesson (`listen`), parent tip | english.sap.15 | core |
-| 🔨 | `english-sapling-47` | متن اطلاعاتی | A short fact text (camels, our school); find the detail | story (`passage`), parent tip | english.sap.5 | full |
-| 🔨 | `english-sapling-48` | قصه: کلاه گم‌شده | A longer story (about 100 words) with questions | animation, story (`passage`), parent tip | english.sap.4, english.sap.5 | core |
-| 🔨 | `english-sapling-49` | روان بخوان | Read a passage aloud twice; the parent marks the hard words; a question on each | story (`readaloud` in English, `passage`), parent tip | english.sap.4 | full |
-| 🔨 | `english-sapling-50` | درباره من بنویس | Write 3–4 sentences about myself from a model (name, age, family, likes) | game (`order`), `paper`, parent tip | english.sap.7, english.sap.6 | full |
-| 🔨 | `english-sapling-51` | درباره تصویر بنویس | There is … The boy is … Three sentences about a picture | lesson (`listen`), `paper`, parent tip | english.sap.7 | full |
-| 🔨 | `english-sapling-52` | کلمه‌های پرسشی | Who, what, where, when, how many, how old; answer with a whole sentence | animation, lesson (`listen`), game (`pairs`), parent tip | english.sap.14 | core |
-| 🔨 | `english-sapling-53` | آشنا شدن | This is my friend. Nice to meet you. Where are you from? I'm from Iran. | animation, lesson (`listen`), game (`order`), parent tip | english.sap.14, english.sap.17 | core |
-| 🔨 | `english-sapling-54` | دیکته جمله | Hear a sentence, build it, then write it on paper | game (`order`, `build` with `hidden`), `paper`, parent tip | english.sap.6, english.sap.3 | core |
-| 🔨 | `english-sapling-55` | کلمه‌های سخت‌نویس | because, friend, school, people, could, would, laugh | game (`build`, `pairs`), parent tip | english.sap.3 | full |
-| 🔨 | `english-sapling-56` | کارت تولد | Dear …, Happy birthday! Love, …; write a card on paper | lesson (`listen`), `paper`, parent tip | english.sap.7 | full |
-| 🔨 | `english-sapling-57` | قصه شنیدنی | A longer story heard (Reza's dog runs off and comes back); put the pictures in order and answer | animation, game (`order`), lesson (`listen`), parent tip | english.sap.15 | full |
-| 🔨 | `english-sapling-58` | بازی جمله‌سازی | Build sentences from word cards: who, does what, where | game (`order`), parent tip | english.sap.9, english.sap.10, english.sap.6 | core |
-| 🔨 | `english-sapling-59` | بازی بزرگ نهال | Garden game: words and sentences of the Sapling garden | game (`pairs`, `sort`, `order`), parent tip | english.sap.8, english.sap.13 | core |
-| 🔨 | `english-sapling-60` | ببین چه بلدی | End of the garden: read a short text, listen to dialogues, answer questions (Movers style); a note for the parent | lesson (`listen`), story (`passage`), parent tip | english.sap.4, english.sap.15, english.sap.14 | core |
+| ✅ | `english-sapling-22` | نقطه و علامت سؤال | Full stop or question mark? Capital letters for names and I; join with and | game (`sort`, `order`), lesson (`listen`), `paper`, parent tip | english.sap.6 | core |
+| ✅ | `english-sapling-23` | ساعت چند است؟ | o'clock and half past; What time is it? It's seven o'clock. | animation, lesson (`listen`, `clock`), parent tip | english.sap.16 | core |
+| ✅ | `english-sapling-24` | روزهای هفته | Monday to Sunday; Today is …; On Friday I … | animation, lesson (`words`, `listen`), game (`order`), parent tip | english.sap.16, english.sap.10 | core |
+| ✅ | `english-sapling-25` | ماه‌ها و تولد | January to December; When's your birthday? It's in May. | lesson (`words`, `listen`), game (`order`), parent tip | english.sap.16 | full |
+| ✅ | `english-sapling-26` | روز من | I get up, I have breakfast, I go to school, I go to bed (present simple) | animation, lesson (`listen`), game (`order`), parent tip | english.sap.10, english.sap.8 | core |
+| ✅ | `english-sapling-27` | روز او | She gets up at seven. He goes to school. Does he …? | animation, lesson (`listen`), game (`sort`, `order`), parent tip | english.sap.10 | core |
+| ✅ | `english-sapling-28` | قصه: روز رضا | A story about a day, read with questions | story (`passage`), parent tip | english.sap.5, english.sap.4 | core |
+| ✅ | `english-sapling-29` | بازی هر روز | Put a day in order; sort I play / she plays | game (`order`, `sort`), parent tip | english.sap.10 | core |
+| ✅ | `english-sapling-30` | یک حرف، دو صدا | c in cat and city, g in goat and giraffe, y in yes, my and happy | lesson (`listen`), game (`sort`), parent tip | english.sap.2 | full |
+| ✅ | `english-sapling-31` | الان چه می‌کنی؟ | I'm reading. What are you doing? She's eating. | animation, lesson (`listen`), game (`order`), parent tip | english.sap.11 | full |
+| ✅ | `english-sapling-32` | در پارک | A busy park picture: what are they doing? Listen and find the person | animation, lesson (`listen`), parent tip | english.sap.11, english.sap.15 | full |
+| ✅ | `english-sapling-33` | -ing و -ed | run → running, make → making, play → played, hop → hopped | lesson (`listen`), game (`sort`, `build`), parent tip | english.sap.3 | full |
+| ✅ | `english-sapling-34` | توانایی‌ها | Can you swim? I can ride a bike. He can't whistle. | animation, lesson (`listen`), game (`sort`), parent tip | english.sap.12, english.sap.14 | core |
+| ✅ | `english-sapling-35` | این کار را بکن | Open the door. Don't run. Let's play! | animation, lesson (`listen`), parent tip | english.sap.12, english.sap.15 | core |
+| ✅ | `english-sapling-36` | مال کیست؟ | my, your, his, her, our, their; Sara's bag; Whose is this? | animation, lesson (`listen`), game (`pairs`), parent tip | english.sap.13 | core |
+| ✅ | `english-sapling-37` | چه شکلی است؟ | tall, short, long hair, curly hair, glasses, beard; She's tall and she's got long hair. | animation, lesson (`words`, `listen`), game (`pairs`), parent tip | english.sap.18, english.sap.9 | full |
+| ✅ | `english-sapling-38` | a، an، some | a banana, an egg, some milk, some bread | lesson (`listen`), game (`sort`), parent tip | english.sap.13 | full |
+| ✅ | `english-sapling-39` | در شهر | shop, park, hospital, library, bus stop; Where's the park? It's next to the school. | animation, lesson (`words`, `listen`), parent tip | english.sap.8, english.sap.13 | core |
+| ✅ | `english-sapling-40` | شغل‌ها | teacher, doctor, farmer, driver, nurse, cook; What does she do? She's a nurse. | animation, lesson (`words`, `listen`), parent tip | english.sap.8, english.sap.10 | core |
+| ✅ | `english-sapling-41` | هوا و فصل‌ها | spring, summer, autumn, winter; It's hot in summer. | animation, lesson (`words`, `listen`), parent tip | english.sap.8, english.sap.9 | core |
+| ✅ | `english-sapling-42` | حالم خوب نیست | What's the matter? I've got a headache, a cold, a stomachache | animation, lesson (`words`, `listen`), parent tip | english.sap.8, english.sap.14 | full |
+| ✅ | `english-sapling-43` | ورزش و سرگرمی | football, swimming, painting, reading; I like playing football. | animation, lesson (`words`, `listen`), parent tip | english.sap.8, english.sap.10 | full |
+| ✅ | `english-sapling-44` | در مغازه | Can I have …, please? How much is it? Here you are. Thank you. | animation, lesson (`listen`), game (`order`), parent tip | english.sap.17, english.sap.15 | full |
+| ✅ | `english-sapling-45` | بازی کلمه‌های نهال | Words of the Sapling themes | game (`pairs`, `sort`), parent tip | english.sap.8 | core |
+| ✅ | `english-sapling-46` | گفت‌وگو را گوش کن | Short dialogues; choose the picture that matches (Movers listening style) | lesson (`listen`), parent tip | english.sap.15 | core |
+| ✅ | `english-sapling-47` | متن اطلاعاتی | A short fact text (camels, our school); find the detail | story (`passage`), parent tip | english.sap.5 | full |
+| ✅ | `english-sapling-48` | قصه: کلاه گم‌شده | A longer story (about 100 words) with questions | animation, story (`passage`), parent tip | english.sap.4, english.sap.5 | core |
+| ✅ | `english-sapling-49` | روان بخوان | Read a passage aloud twice; the parent marks the hard words; a question on each | story (`readaloud` in English, `passage`), parent tip | english.sap.4 | full |
+| ✅ | `english-sapling-50` | درباره من بنویس | Write 3–4 sentences about myself from a model (name, age, family, likes) | game (`order`), `paper`, parent tip | english.sap.7, english.sap.6 | full |
+| ✅ | `english-sapling-51` | درباره تصویر بنویس | There is … The boy is … Three sentences about a picture | lesson (`listen`), `paper`, parent tip | english.sap.7 | full |
+| ✅ | `english-sapling-52` | کلمه‌های پرسشی | Who, what, where, when, how many, how old; answer with a whole sentence | animation, lesson (`listen`), game (`pairs`), parent tip | english.sap.14 | core |
+| ✅ | `english-sapling-53` | آشنا شدن | This is my friend. Nice to meet you. Where are you from? I'm from Iran. | animation, lesson (`listen`), game (`order`), parent tip | english.sap.14, english.sap.17 | core |
+| ✅ | `english-sapling-54` | دیکته جمله | Hear a sentence, build it, then write it on paper | game (`order`, `build` with `hidden`), `paper`, parent tip | english.sap.6, english.sap.3 | core |
+| ✅ | `english-sapling-55` | کلمه‌های سخت‌نویس | because, friend, school, people, could, would, laugh | game (`build`, `pairs`), parent tip | english.sap.3 | full |
+| ✅ | `english-sapling-56` | کارت تولد | Dear …, Happy birthday! Love, …; write a card on paper | lesson (`listen`), `paper`, parent tip | english.sap.7 | full |
+| ✅ | `english-sapling-57` | قصه شنیدنی | A longer story heard (Reza's dog runs off and comes back); put the pictures in order and answer | animation, game (`order`), lesson (`listen`), parent tip | english.sap.15 | full |
+| ✅ | `english-sapling-58` | بازی جمله‌سازی | Build sentences from word cards: who, does what, where | game (`order`), parent tip | english.sap.9, english.sap.10, english.sap.6 | core |
+| ✅ | `english-sapling-59` | بازی بزرگ نهال | Garden game: words and sentences of the Sapling garden | game (`pairs`, `sort`, `order`), parent tip | english.sap.8, english.sap.13 | core |
+| ✅ | `english-sapling-60` | ببین چه بلدی | End of the garden: read a short text, listen to dialogues, answer questions (Movers style); a note for the parent | lesson (`listen`), story (`passage`), parent tip | english.sap.4, english.sap.15, english.sap.14 | core |
 
 #### Practice
 
 | St | Id | Practice | What it makes | Objectives |
 |---|---|---|---|---|
-| 🔨 | `english-sapling-p1` | Spelling sorter | Words tagged by sound and spelling (ai/ay/a-e …): sort them, read them, build them | english.sap.1, english.sap.2 |
-| 🔨 | `english-sapling-p2` | Word endings | -s/-es/-ies, -ing, -ed from a verb and noun list, with the spelling rules | english.sap.3 |
-| 🔨 | `english-sapling-p3` | Sentence builder | Sentences from frames (be, have got, present simple, present continuous, can, there is) and the word bank, to put in order, make negative or make a question | english.sap.6, english.sap.9, english.sap.10, english.sap.11, english.sap.12, english.sap.13 |
-| 🔨 | `english-sapling-p4` | Story bank | Short graded stories and fact texts (50–100 words) with questions, using only taught spellings and words | english.sap.4, english.sap.5 |
-| 🔨 | `english-sapling-p5` | Word bank (Movers) | Picture + audio for every Sapling word by theme | english.sap.8, english.sap.18 |
-| 🔨 | `english-sapling-p6` | Clocks and calendars | Times (o'clock, half past), days and months to hear and match | english.sap.16 |
-| 🔨 | `english-sapling-p7` | Dialogue bank | Short dialogues heard, with a picture or answer to choose | english.sap.14, english.sap.15, english.sap.17 |
-| 🔨 | `english-sapling-p8` | Questions and answers | A question heard (What's your name? How old …? Where …? What time …? Do you …? Is she …? Can he …?): choose the answer that fits | english.sap.14, english.sap.9, english.sap.10 |
-| 🔨 | `english-sapling-p9` | Spell it | A picture and its word said: build it from letter tiles, with a tile that does not belong (`build`), words of the spellings and endings taught | english.sap.3, english.sap.1 |
-| 🔨 | `english-sapling-p10` | Find the mistake | Three sentences, one with a mistake (capital letter, full stop, a/an, is/are, plural, word order): which one is wrong? | english.sap.6, english.sap.9, english.sap.13 |
+| ✅ | `english-sapling-p1` | Spelling sorter | Words tagged by sound and spelling (ai/ay/a-e …): sort them, read them, build them | english.sap.1, english.sap.2 |
+| ✅ | `english-sapling-p2` | Word endings | -s/-es/-ies, -ing, -ed from a verb and noun list, with the spelling rules | english.sap.3 |
+| ✅ | `english-sapling-p3` | Sentence builder | Sentences from frames (be, have got, present simple, present continuous, can, there is) and the word bank, to put in order, make negative or make a question | english.sap.6, english.sap.9, english.sap.10, english.sap.11, english.sap.12, english.sap.13 |
+| ✅ | `english-sapling-p4` | Story bank | Short graded stories and fact texts (50–100 words) with questions, using only taught spellings and words | english.sap.4, english.sap.5 |
+| ✅ | `english-sapling-p5` | Word bank (Movers) | Picture + audio for every Sapling word by theme | english.sap.8, english.sap.18 |
+| ✅ | `english-sapling-p6` | Clocks and calendars | Times (o'clock, half past), days and months to hear and match | english.sap.16 |
+| ✅ | `english-sapling-p7` | Dialogue bank | Short dialogues heard, with a picture or answer to choose | english.sap.14, english.sap.15, english.sap.17 |
+| ✅ | `english-sapling-p8` | Questions and answers | A question heard (What's your name? How old …? Where …? What time …? Do you …? Is she …? Can he …?): choose the answer that fits | english.sap.14, english.sap.9, english.sap.10 |
+| ✅ | `english-sapling-p9` | Spell it | A picture and its word said: build it from letter tiles, with a tile that does not belong (`build`), words of the spellings and endings taught | english.sap.3, english.sap.1 |
+| ✅ | `english-sapling-p10` | Find the mistake | Three sentences, one with a mistake (capital letter, full stop, a/an, is/are, plural, word order): which one is wrong? | english.sap.6, english.sap.9, english.sap.13 |
 
 ### 🌳 درخت — `tree`
 
@@ -462,42 +462,42 @@ garden is built (each unit: teaching lessons, a game, and a story or animation w
 
 | St | Lesson | Title | Covers | Content types | Objectives | Depth |
 |---|---|---|---|---|---|---|
-| 🔨 | `english-tree-1` | هر روز | Present simple: daily routines; always, usually, sometimes, never | animation, lesson (`listen`), game (`order`, `sort`), parent tip | english.tree.12 | core |
-| 🔨 | `english-tree-2` | تاریخ و برنامه | Dates (the third of May), ordinals, quarter past and to, a school timetable | lesson (`listen`, `clock`), game (`order`, `pairs`), parent tip | english.tree.11 | core |
-| 🔨 | `english-tree-3` | الان چه می‌کنی؟ | Present continuous next to the present simple: now or every day? | animation, lesson (`listen`, `choose`), game (`sort`), parent tip | english.tree.12 | core |
-| 🔨 | `english-tree-4` | قصه‌های کوتاه | Reading short stories (150 words) with questions | story (`passage`), animation (`scene` + question), parent tip | english.tree.5 | core |
-| 🔨 | `english-tree-5` | توصیف کن | Adjectives: big, small, happy, tall, old, beautiful; describing a picture aloud | animation, lesson (`words`, `listen`, `record`), game (`sort`), parent tip | english.tree.3 | core |
-| 🔨 | `english-tree-6` | بنویس چه می‌بینی | Writing three to five sentences about a picture | lesson (`listen`), `paper`, parent tip | english.tree.8 | core |
-| 🔨 | `english-tree-7` | دیروز | was and were: I was at home. Were you happy? | animation, lesson (`listen`), game (`sort`), parent tip | english.tree.13 | core |
-| 🔨 | `english-tree-8` | دیروز چه کردی؟ | Regular past -ed and its three sounds: walked, played, wanted | lesson (`listen`), game (`sort`), parent tip | english.tree.13, english.tree.20 | core |
-| 🔨 | `english-tree-9` | فعل‌های بی‌قاعده | went, saw, ate, had, came, made, took, got | animation, game (`pairs`, `sort`), parent tip | english.tree.13 | core |
-| 🔨 | `english-tree-10` | Did you …? | Past questions and negatives: Did you go? I didn't see it. | animation, lesson (`listen`), game (`order`), parent tip | english.tree.13 | core |
-| 🔨 | `english-tree-11` | قصه بگو | Tell a story from four pictures: first, then, after that, finally | animation, game (`order`), lesson (`record`), parent tip | english.tree.4 | full |
-| 🔨 | `english-tree-12` | بزرگ‌تر، بزرگ‌ترین | taller, the tallest, more beautiful, the best | animation, lesson (`listen`), game (`sort`, `order`), parent tip | english.tree.15 | core |
-| 🔨 | `english-tree-13` | کدام تندتر است؟ | Compare animals and places in a short text: Which is faster, a horse or a camel? | story (`passage`), game (`sort`), parent tip | english.tree.15, english.tree.5 | full |
-| 🔨 | `english-tree-14` | تند و آهسته | Adverbs: quickly, slowly, carefully, well | animation, lesson (`listen`), game (`sort`), parent tip | english.tree.15 | full |
-| 🔨 | `english-tree-15` | برنامه‌های من | going to: I'm going to visit my grandma. What are you going to do? | animation, lesson (`listen`), game (`order`), parent tip | english.tree.14 | core |
-| 🔨 | `english-tree-16` | فکر می‌کنم … | will for guesses and offers: It will rain. I'll help you. | animation, lesson (`listen`), game (`sort`), parent tip | english.tree.14 | full |
-| 🔨 | `english-tree-17` | باید و نباید | must, mustn't, have to, should: rules at the pool, advice for a cold | animation, lesson (`listen`), game (`sort`), parent tip | english.tree.16 | full |
-| 🔨 | `english-tree-18` | چقدر؟ چندتا؟ | some/any, much/many, a lot of: a shopping list and a kitchen | lesson (`listen`), game (`sort`), parent tip | english.tree.17 | full |
-| 🔨 | `english-tree-19` | مال من، مال تو | me, him, her, us, them; mine, yours; Whose is it? | lesson (`listen`), game (`pairs`), parent tip | english.tree.18 | core |
-| 🔨 | `english-tree-20` | چرا؟ چون … | why and because, which, how often; joining two sentences | animation, lesson (`listen`), game (`order`), parent tip | english.tree.18, english.tree.8 | core |
-| 🔨 | `english-tree-21` | دنیای اطراف | Nature and materials: forest, desert, river; made of wood, metal, glass | animation, lesson (`words`, `listen`), game (`sort`), parent tip | english.tree.11 | core |
-| 🔨 | `english-tree-22` | سفر | airport, station, ticket, map; countries and nationalities | animation, lesson (`words`, `listen`), game (`pairs`), parent tip | english.tree.11, english.tree.2 | full |
-| 🔨 | `english-tree-23` | درس‌های مدرسه | maths, science, art, history; What's your favourite subject? | lesson (`words`, `listen`), game (`pairs`), parent tip | english.tree.11, english.tree.2 | core |
-| 🔨 | `english-tree-24` | گوش کن: پیام‌ها | Announcements and instructions: catch the time, the number, the spelled name | lesson (`listen`), parent tip | english.tree.1 | core |
-| 🔨 | `english-tree-25` | گوش کن: قصه | A longer story heard; what happened first, why | animation, lesson (`listen`), game (`order`), parent tip | english.tree.1 | full |
-| 🔨 | `english-tree-26` | معنی را حدس بزن | Guess a new word from the sentence and the picture; what is this text about? | lesson (`choose`), story (`passage`), parent tip | english.tree.7 | full |
-| 🔨 | `english-tree-27` | متن اطلاعاتی | A fact text (200 words): the main idea and three details | story (`passage`), parent tip | english.tree.5, english.tree.7 | core |
-| 🔨 | `english-tree-28` | قفسه کتاب | Reading graded stories alone from the story bank, and a reading log for the parent | story (`passage`), parent tip | english.tree.6 | full |
-| 🔨 | `english-tree-29` | کارت‌پستال و ایمیل | Write a postcard and a short email: greeting, three things, ending | lesson (`listen`), `paper`, parent tip | english.tree.9 | full |
-| 🔨 | `english-tree-30` | پاراگراف من | A paragraph of 5–8 sentences with and, but, because, then; plan, write, check | game (`order`), lesson (`listen`), `paper`, parent tip | english.tree.8 | core |
-| 🔨 | `english-tree-31` | پسوندها و هم‌آواها | -ful, -ly, -er, -est spelling; there/their, to/two, see/sea | game (`build`, `sort`), parent tip | english.tree.10 | full |
-| 🔨 | `english-tree-32` | کلمه‌سازی و فرهنگ لغت | football, bedroom; unhappy; teacher; alphabetical order in a dictionary | game (`build`, `order`), parent tip | english.tree.19 | full |
-| 🔨 | `english-tree-33` | تکیه و آهنگ | Word stress (TEAcher, comPUter), questions going up | lesson (`listen`, `record`), parent tip | english.tree.20 | full |
-| 🔨 | `english-tree-34` | شهر من | Describe a place: what it is like, what it is famous for, there is / there are | animation, lesson (`listen`, `record`), parent tip | english.tree.3, english.tree.11 | core |
-| 🔨 | `english-tree-35` | آخر هفته | What did you do at the weekend? What are you going to do? A conversation | animation, lesson (`listen`, `dialogue`), parent tip | english.tree.2, english.tree.13, english.tree.14 | core |
-| 🔨 | `english-tree-36` | ببین چه بلدی | End of the garden: read, listen and write (Flyers style); a note for the parent | lesson (`listen`), story (`passage`), `paper`, parent tip | english.tree.1, english.tree.5 | core |
+| ✅ | `english-tree-1` | هر روز | Present simple: daily routines; always, usually, sometimes, never | animation, lesson (`listen`), game (`order`, `sort`), parent tip | english.tree.12 | core |
+| ✅ | `english-tree-2` | تاریخ و برنامه | Dates (the third of May), ordinals, quarter past and to, a school timetable | lesson (`listen`, `clock`), game (`order`, `pairs`), parent tip | english.tree.11 | core |
+| ✅ | `english-tree-3` | الان چه می‌کنی؟ | Present continuous next to the present simple: now or every day? | animation, lesson (`listen`, `choose`), game (`sort`), parent tip | english.tree.12 | core |
+| ✅ | `english-tree-4` | قصه‌های کوتاه | Reading short stories (150 words) with questions | story (`passage`), animation (`scene` + question), parent tip | english.tree.5 | core |
+| ✅ | `english-tree-5` | توصیف کن | Adjectives: big, small, happy, tall, old, beautiful; describing a picture aloud | animation, lesson (`words`, `listen`, `record`), game (`sort`), parent tip | english.tree.3 | core |
+| ✅ | `english-tree-6` | بنویس چه می‌بینی | Writing three to five sentences about a picture | lesson (`listen`), `paper`, parent tip | english.tree.8 | core |
+| ✅ | `english-tree-7` | دیروز | was and were: I was at home. Were you happy? | animation, lesson (`listen`), game (`sort`), parent tip | english.tree.13 | core |
+| ✅ | `english-tree-8` | دیروز چه کردی؟ | Regular past -ed and its three sounds: walked, played, wanted | lesson (`listen`), game (`sort`), parent tip | english.tree.13, english.tree.20 | core |
+| ✅ | `english-tree-9` | فعل‌های بی‌قاعده | went, saw, ate, had, came, made, took, got | animation, game (`pairs`, `sort`), parent tip | english.tree.13 | core |
+| ✅ | `english-tree-10` | Did you …? | Past questions and negatives: Did you go? I didn't see it. | animation, lesson (`listen`), game (`order`), parent tip | english.tree.13 | core |
+| ✅ | `english-tree-11` | قصه بگو | Tell a story from four pictures: first, then, after that, finally | animation, game (`order`), lesson (`record`), parent tip | english.tree.4 | full |
+| ✅ | `english-tree-12` | بزرگ‌تر، بزرگ‌ترین | taller, the tallest, more beautiful, the best | animation, lesson (`listen`), game (`sort`, `order`), parent tip | english.tree.15 | core |
+| ✅ | `english-tree-13` | کدام تندتر است؟ | Compare animals and places in a short text: Which is faster, a horse or a camel? | story (`passage`), game (`sort`), parent tip | english.tree.15, english.tree.5 | full |
+| ✅ | `english-tree-14` | تند و آهسته | Adverbs: quickly, slowly, carefully, well | animation, lesson (`listen`), game (`sort`), parent tip | english.tree.15 | full |
+| ✅ | `english-tree-15` | برنامه‌های من | going to: I'm going to visit my grandma. What are you going to do? | animation, lesson (`listen`), game (`order`), parent tip | english.tree.14 | core |
+| ✅ | `english-tree-16` | فکر می‌کنم … | will for guesses and offers: It will rain. I'll help you. | animation, lesson (`listen`), game (`sort`), parent tip | english.tree.14 | full |
+| ✅ | `english-tree-17` | باید و نباید | must, mustn't, have to, should: rules at the pool, advice for a cold | animation, lesson (`listen`), game (`sort`), parent tip | english.tree.16 | full |
+| ✅ | `english-tree-18` | چقدر؟ چندتا؟ | some/any, much/many, a lot of: a shopping list and a kitchen | lesson (`listen`), game (`sort`), parent tip | english.tree.17 | full |
+| ✅ | `english-tree-19` | مال من، مال تو | me, him, her, us, them; mine, yours; Whose is it? | lesson (`listen`), game (`pairs`), parent tip | english.tree.18 | core |
+| ✅ | `english-tree-20` | چرا؟ چون … | why and because, which, how often; joining two sentences | animation, lesson (`listen`), game (`order`), parent tip | english.tree.18, english.tree.8 | core |
+| ✅ | `english-tree-21` | دنیای اطراف | Nature and materials: forest, desert, river; made of wood, metal, glass | animation, lesson (`words`, `listen`), game (`sort`), parent tip | english.tree.11 | core |
+| ✅ | `english-tree-22` | سفر | airport, station, ticket, map; countries and nationalities | animation, lesson (`words`, `listen`), game (`pairs`), parent tip | english.tree.11, english.tree.2 | full |
+| ✅ | `english-tree-23` | درس‌های مدرسه | maths, science, art, history; What's your favourite subject? | lesson (`words`, `listen`), game (`pairs`), parent tip | english.tree.11, english.tree.2 | core |
+| ✅ | `english-tree-24` | گوش کن: پیام‌ها | Announcements and instructions: catch the time, the number, the spelled name | lesson (`listen`), parent tip | english.tree.1 | core |
+| ✅ | `english-tree-25` | گوش کن: قصه | A longer story heard; what happened first, why | animation, lesson (`listen`), game (`order`), parent tip | english.tree.1 | full |
+| ✅ | `english-tree-26` | معنی را حدس بزن | Guess a new word from the sentence and the picture; what is this text about? | lesson (`choose`), story (`passage`), parent tip | english.tree.7 | full |
+| ✅ | `english-tree-27` | متن اطلاعاتی | A fact text (200 words): the main idea and three details | story (`passage`), parent tip | english.tree.5, english.tree.7 | core |
+| ✅ | `english-tree-28` | قفسه کتاب | Reading graded stories alone from the story bank, and a reading log for the parent | story (`passage`), parent tip | english.tree.6 | full |
+| ✅ | `english-tree-29` | کارت‌پستال و ایمیل | Write a postcard and a short email: greeting, three things, ending | lesson (`listen`), `paper`, parent tip | english.tree.9 | full |
+| ✅ | `english-tree-30` | پاراگراف من | A paragraph of 5–8 sentences with and, but, because, then; plan, write, check | game (`order`), lesson (`listen`), `paper`, parent tip | english.tree.8 | core |
+| ✅ | `english-tree-31` | پسوندها و هم‌آواها | -ful, -ly, -er, -est spelling; there/their, to/two, see/sea | game (`build`, `sort`), parent tip | english.tree.10 | full |
+| ✅ | `english-tree-32` | کلمه‌سازی و فرهنگ لغت | football, bedroom; unhappy; teacher; alphabetical order in a dictionary | game (`build`, `order`), parent tip | english.tree.19 | full |
+| ✅ | `english-tree-33` | تکیه و آهنگ | Word stress (TEAcher, comPUter), questions going up | lesson (`listen`, `record`), parent tip | english.tree.20 | full |
+| ✅ | `english-tree-34` | شهر من | Describe a place: what it is like, what it is famous for, there is / there are | animation, lesson (`listen`, `record`), parent tip | english.tree.3, english.tree.11 | core |
+| ✅ | `english-tree-35` | آخر هفته | What did you do at the weekend? What are you going to do? A conversation | animation, lesson (`listen`, `dialogue`), parent tip | english.tree.2, english.tree.13, english.tree.14 | core |
+| ✅ | `english-tree-36` | ببین چه بلدی | End of the garden: read, listen and write (Flyers style); a note for the parent | lesson (`listen`), story (`passage`), `paper`, parent tip | english.tree.1, english.tree.5 | core |
 
 #### Practice
 
@@ -552,40 +552,40 @@ the rows below are the units' first lessons; the rest are added unit by unit bef
 
 | St | Lesson | Title | Covers | Content types | Objectives | Depth |
 |---|---|---|---|---|---|---|
-| 🔨 | `english-forest-5` | آشنایی | Introducing yourself and others, spelling names, nationalities | animation, lesson (`listen`, `dialogue`), parent tip | english.for.1 | core |
-| 🔨 | `english-forest-6` | خانواده و ظاهر | Age, birthdays, family, jobs, appearance | animation, lesson (`listen`), game (`pairs`), parent tip | english.for.2 | core |
-| 🔨 | `english-forest-4` | درباره من | Writing a short paragraph about yourself | game (`order`), `paper`, parent tip | english.for.2, english.for.19 | core |
-| 🔨 | `english-forest-7` | خانه و نشانی | My house, address, phone number, email | animation, lesson (`listen`), parent tip | english.for.3 | core |
-| 🔨 | `english-forest-2` | گفت‌وگو | Everyday dialogues: shop, directions, introducing yourself | animation, lesson (`listen`, `choose`), parent tip | english.for.3, english.for.1 | core |
-| 🔨 | `english-forest-8` | غذای محبوب | Favourite food; How about …? Let's … Would you like …? | animation, lesson (`listen`, `dialogue`), parent tip | english.for.4 | core |
-| 🔨 | `english-forest-9` | هفته من | Routines, frequency words, wh-questions | animation, lesson (`listen`), game (`sort`, `order`), parent tip | english.for.5, english.for.15 | core |
-| 🔨 | `english-forest-10` | توانایی و سلامت | can, be good at; What's wrong? You should … Why don't you …? | animation, lesson (`listen`), parent tip | english.for.5 | core |
-| 🔨 | `english-forest-11` | شهر و روستا | What's it like? It's famous for … There are many … | animation, lesson (`listen`, `record`), parent tip | english.for.6 | core |
-| 🔨 | `english-forest-12` | هوا و سرگرمی | The weather; I like reading. What do you do in your free time? | animation, lesson (`listen`, `record`), parent tip | english.for.6 | core |
-| 🔨 | `english-forest-13` | شخصیت | Personality words and comparing people | animation, lesson (`listen`), game (`sort`), parent tip | english.for.7 | core |
-| 🔨 | `english-forest-14` | سفر | A journey: plans, tickets, what happened | animation, story (`passage`), parent tip | english.for.8 | core |
-| 🔨 | `english-forest-1` | دیروز | Past simple | story (`passage`), game (`sort`), parent tip | english.for.14 | core |
-| 🔨 | `english-forest-15` | جشن‌ها | Nowruz, Yalda, Mehregan and festivals elsewhere; a text and a short description in the past simple | animation, story (`passage`), `paper`, parent tip | english.for.25, english.for.14 | full |
-| 🔨 | `english-forest-16` | خدمات | Bank, post office, hospital, asking for help politely | animation, lesson (`listen`), parent tip | english.for.9 | full |
-| 🔨 | `english-forest-17` | رسانه | News, TV, radio, the internet; what is true? | lesson (`listen`), story (`passage`), parent tip | english.for.9 | full |
-| 🔨 | `english-forest-18` | سلامت و آسیب | Injuries and first aid words; I cut my finger | animation, lesson (`listen`), parent tip | english.for.9 | full |
-| 🔨 | `english-forest-3` | متن بلندتر | Longer texts, main idea | story (`passage`), parent tip | english.for.17 | core |
-| 🔨 | `english-forest-19` | داشتم می‌رفتم که … | Past continuous with when and while | animation, story (`passage`), game (`order`), parent tip | english.for.10 | full |
-| 🔨 | `english-forest-20` | تا حالا …؟ | Present perfect: Have you ever …? I've never … | animation, lesson (`listen`), game (`sort`), parent tip | english.for.11 | full |
-| 🔨 | `english-forest-21` | تازه، هنوز | just, yet, already | lesson (`listen`), game (`sort`), parent tip | english.for.11 | full |
-| 🔨 | `english-forest-22` | ساخته می‌شود | The passive: Rugs are made in Kashan. It was built in … | animation, lesson (`listen`), game (`sort`), parent tip | english.for.12 | full |
-| 🔨 | `english-forest-23` | اگر … | First conditional: If it rains, we'll stay at home. | animation, lesson (`listen`), game (`order`), parent tip | english.for.12 | full |
-| 🔨 | `english-forest-24` | کسی که، چیزی که | who, which, that; although, so, however | lesson (`listen`), game (`order`), parent tip | english.for.13 | full |
-| 🔨 | `english-forest-25` | گوش کن: برنامه رادیویی | A longer talk or interview; notes and questions | lesson (`listen`), parent tip | english.for.16 | core |
-| 🔨 | `english-forest-26` | کتاب من | A short graded book read alone over weeks, a chapter at a time, with questions | story (`passage`), parent tip | english.for.18 | full |
-| 🔨 | `english-forest-27` | ایمیل | An email of 80–100 words: plan, write, check with a checklist | game (`order`), lesson (`listen`), `paper`, parent tip | english.for.19 | core |
-| 🔨 | `english-forest-28` | قصه بنویس | A short story with a beginning, a problem and an end, with linking words | story (`passage`), `paper`, parent tip | english.for.20, english.for.13 | full |
-| 🔨 | `english-forest-29` | نظر من | An opinion paragraph: I think … because … However … | game (`order`), lesson (`listen`), `paper`, parent tip | english.for.20 | full |
-| 🔨 | `english-forest-30` | موافقم، مخالفم | Agreeing, disagreeing, giving reasons, asking someone to repeat | animation, lesson (`listen`, `dialogue`), parent tip | english.for.22 | full |
-| 🔨 | `english-forest-31` | یک ارائه کوتاه | Plan and give a 1–2 minute talk from notes, recorded and listened back to | lesson (`record`), `paper`, parent tip | english.for.23 | full |
-| 🔨 | `english-forest-32` | فرهنگ لغت و دفتر لغت | Word class, stress and examples in a dictionary; a vocabulary notebook | lesson (`listen`, `choose`), home (`paper`), parent tip | english.for.21 | full |
-| 🔨 | `english-forest-33` | خانواده کلمه‌ها | happy, happiness, unhappy, happily; words of the Key and Preliminary topics | game (`pairs`, `sort`, `build`), parent tip | english.for.24 | core |
-| 🔨 | `english-forest-34` | ببین چه بلدی | End of the course: reading, listening and writing (Key style, with B1 parts) | lesson (`listen`), story (`passage`), `paper`, parent tip | english.for.16, english.for.17 | core |
+| ✅ | `english-forest-5` | آشنایی | Introducing yourself and others, spelling names, nationalities | animation, lesson (`listen`, `dialogue`), parent tip | english.for.1 | core |
+| ✅ | `english-forest-6` | خانواده و ظاهر | Age, birthdays, family, jobs, appearance | animation, lesson (`listen`), game (`pairs`), parent tip | english.for.2 | core |
+| ✅ | `english-forest-4` | درباره من | Writing a short paragraph about yourself | game (`order`), `paper`, parent tip | english.for.2, english.for.19 | core |
+| ✅ | `english-forest-7` | خانه و نشانی | My house, address, phone number, email | animation, lesson (`listen`), parent tip | english.for.3 | core |
+| ✅ | `english-forest-2` | گفت‌وگو | Everyday dialogues: shop, directions, introducing yourself | animation, lesson (`listen`, `choose`), parent tip | english.for.3, english.for.1 | core |
+| ✅ | `english-forest-8` | غذای محبوب | Favourite food; How about …? Let's … Would you like …? | animation, lesson (`listen`, `dialogue`), parent tip | english.for.4 | core |
+| ✅ | `english-forest-9` | هفته من | Routines, frequency words, wh-questions | animation, lesson (`listen`), game (`sort`, `order`), parent tip | english.for.5, english.for.15 | core |
+| ✅ | `english-forest-10` | توانایی و سلامت | can, be good at; What's wrong? You should … Why don't you …? | animation, lesson (`listen`), parent tip | english.for.5 | core |
+| ✅ | `english-forest-11` | شهر و روستا | What's it like? It's famous for … There are many … | animation, lesson (`listen`, `record`), parent tip | english.for.6 | core |
+| ✅ | `english-forest-12` | هوا و سرگرمی | The weather; I like reading. What do you do in your free time? | animation, lesson (`listen`, `record`), parent tip | english.for.6 | core |
+| ✅ | `english-forest-13` | شخصیت | Personality words and comparing people | animation, lesson (`listen`), game (`sort`), parent tip | english.for.7 | core |
+| ✅ | `english-forest-14` | سفر | A journey: plans, tickets, what happened | animation, story (`passage`), parent tip | english.for.8 | core |
+| ✅ | `english-forest-1` | دیروز | Past simple | story (`passage`), game (`sort`), parent tip | english.for.14 | core |
+| ✅ | `english-forest-15` | جشن‌ها | Nowruz, Yalda, Mehregan and festivals elsewhere; a text and a short description in the past simple | animation, story (`passage`), `paper`, parent tip | english.for.25, english.for.14 | full |
+| ✅ | `english-forest-16` | خدمات | Bank, post office, hospital, asking for help politely | animation, lesson (`listen`), parent tip | english.for.9 | full |
+| ✅ | `english-forest-17` | رسانه | News, TV, radio, the internet; what is true? | lesson (`listen`), story (`passage`), parent tip | english.for.9 | full |
+| ✅ | `english-forest-18` | سلامت و آسیب | Injuries and first aid words; I cut my finger | animation, lesson (`listen`), parent tip | english.for.9 | full |
+| ✅ | `english-forest-3` | متن بلندتر | Longer texts, main idea | story (`passage`), parent tip | english.for.17 | core |
+| ✅ | `english-forest-19` | داشتم می‌رفتم که … | Past continuous with when and while | animation, story (`passage`), game (`order`), parent tip | english.for.10 | full |
+| ✅ | `english-forest-20` | تا حالا …؟ | Present perfect: Have you ever …? I've never … | animation, lesson (`listen`), game (`sort`), parent tip | english.for.11 | full |
+| ✅ | `english-forest-21` | تازه، هنوز | just, yet, already | lesson (`listen`), game (`sort`), parent tip | english.for.11 | full |
+| ✅ | `english-forest-22` | ساخته می‌شود | The passive: Rugs are made in Kashan. It was built in … | animation, lesson (`listen`), game (`sort`), parent tip | english.for.12 | full |
+| ✅ | `english-forest-23` | اگر … | First conditional: If it rains, we'll stay at home. | animation, lesson (`listen`), game (`order`), parent tip | english.for.12 | full |
+| ✅ | `english-forest-24` | کسی که، چیزی که | who, which, that; although, so, however | lesson (`listen`), game (`order`), parent tip | english.for.13 | full |
+| ✅ | `english-forest-25` | گوش کن: برنامه رادیویی | A longer talk or interview; notes and questions | lesson (`listen`), parent tip | english.for.16 | core |
+| ✅ | `english-forest-26` | کتاب من | A short graded book read alone over weeks, a chapter at a time, with questions | story (`passage`), parent tip | english.for.18 | full |
+| ✅ | `english-forest-27` | ایمیل | An email of 80–100 words: plan, write, check with a checklist | game (`order`), lesson (`listen`), `paper`, parent tip | english.for.19 | core |
+| ✅ | `english-forest-28` | قصه بنویس | A short story with a beginning, a problem and an end, with linking words | story (`passage`), `paper`, parent tip | english.for.20, english.for.13 | full |
+| ✅ | `english-forest-29` | نظر من | An opinion paragraph: I think … because … However … | game (`order`), lesson (`listen`), `paper`, parent tip | english.for.20 | full |
+| ✅ | `english-forest-30` | موافقم، مخالفم | Agreeing, disagreeing, giving reasons, asking someone to repeat | animation, lesson (`listen`, `dialogue`), parent tip | english.for.22 | full |
+| ✅ | `english-forest-31` | یک ارائه کوتاه | Plan and give a 1–2 minute talk from notes, recorded and listened back to | lesson (`record`), `paper`, parent tip | english.for.23 | full |
+| ✅ | `english-forest-32` | فرهنگ لغت و دفتر لغت | Word class, stress and examples in a dictionary; a vocabulary notebook | lesson (`listen`, `choose`), home (`paper`), parent tip | english.for.21 | full |
+| ✅ | `english-forest-33` | خانواده کلمه‌ها | happy, happiness, unhappy, happily; words of the Key and Preliminary topics | game (`pairs`, `sort`, `build`), parent tip | english.for.24 | core |
+| ✅ | `english-forest-34` | ببین چه بلدی | End of the course: reading, listening and writing (Key style, with B1 parts) | lesson (`listen`), story (`passage`), `paper`, parent tip | english.for.16, english.for.17 | core |
 
 #### Practice
 

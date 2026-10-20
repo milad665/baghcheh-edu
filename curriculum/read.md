@@ -200,72 +200,72 @@ a third) of the Seed garden's 20–30 minutes a day.
 | St | Lesson | Title | Covers | Content types | Objectives | Depth |
 |---|---|---|---|---|---|---|
 | ✅ | `read-seed-1` | کدام شبیه است؟ | Visual discrimination: shapes, then letter shapes | lesson (`choose`) | read.seed.1 | core |
-| 🔨 | `read-seed-11` | این صدای چیست؟ | Everyday sounds and voices (who says «میو»?), loud and soft, then two spoken words: same or different (توپ / توت) | lesson (`choose` with `say`), game (`pairs`) | read.seed.9 | core |
+| ✅ | `read-seed-11` | این صدای چیست؟ | Everyday sounds and voices (who says «میو»?), loud and soft, then two spoken words: same or different (توپ / توت) | lesson (`choose` with `say`), game (`pairs`) | read.seed.9 | core |
 | ✅ | `read-seed-2` | با هم ببینیم و بگوییم | Dialogic talk about picture scenes with a grown-up | story (`talk`) | read.seed.2, read.seed.6 | core |
-| 🔨 | `read-seed-12` | اسم چیزها | Everyday words by group: fruit, animals, clothes, things at home; hear and tap, sort into baskets, then name things in a picture with a grown-up | lesson (`choose` with `say`), game (`sort`), story (`talk`) | read.seed.3 | core |
-| 🔨 | `read-seed-13` | بزرگ و کوچک، پر و خالی | Opposites and describing words (بزرگ/کوچک، پر/خالی، گرم/سرد، تند/آرام) with pictures that show them, then pairs of opposites; تمیز/کثیف waits for pictures that show it; position words are in `math-seed-6` | lesson (`choose` with `say`), game (`pairs`) | read.seed.4 | core |
-| 🔨 | `read-seed-14` | گوش کن و انجام بده | Two- and three-step instructions: what to take first and whom to give it to, then put in order what the voice asks (two and three steps), then do it at home («قاشق را بیاور و روی سفره بگذار») | lesson (`choose` with `say`), game (`order` with `numbered`), home (`doit`) | read.seed.5 | core |
+| ✅ | `read-seed-12` | اسم چیزها | Everyday words by group: fruit, animals, clothes, things at home; hear and tap, sort into baskets, then name things in a picture with a grown-up | lesson (`choose` with `say`), game (`sort`), story (`talk`) | read.seed.3 | core |
+| ✅ | `read-seed-13` | بزرگ و کوچک، پر و خالی | Opposites and describing words (بزرگ/کوچک، پر/خالی، گرم/سرد، تند/آرام) with pictures that show them, then pairs of opposites; تمیز/کثیف waits for pictures that show it; position words are in `math-seed-6` | lesson (`choose` with `say`), game (`pairs`) | read.seed.4 | core |
+| ✅ | `read-seed-14` | گوش کن و انجام بده | Two- and three-step instructions: what to take first and whom to give it to, then put in order what the voice asks (two and three steps), then do it at home («قاشق را بیاور و روی سفره بگذار») | lesson (`choose` with `say`), game (`order` with `numbered`), home (`doit`) | read.seed.5 | core |
 | ✅ | `read-seed-3` | بازی ببین و پیدا کن | Matching, sequencing, patterns | animation, game (`pairs`, `order`, `pattern`) | read.seed.21, read.seed.1 | core |
-| 🔨 | `read-seed-15` | با هم ببینیم و بگوییم: بازار | Dialogic talk, second scenes: a bazaar and a park; the grown-up asks open questions and stretches the child's answer | story (`talk`) | read.seed.2, read.seed.6 | core |
-| 🔨 | `read-seed-16` | چه کسی؟ کجا؟ چرا؟ | Question words: a short scene, the voice asks who / where / what / why, the child taps the picture answer; then the child asks the grown-up a question | animation (`scene` + `question`), lesson (`choose` with `say`), story (`talk`) | read.seed.6 | core |
-| 🔨 | `read-seed-17` | امروز چه کردی؟ | Telling in order: put a morning in order (waking, washing, breakfast, play), then tell the grown-up about today with «اول، بعد، آخرش» | game (`order` with `numbered`), story (`talk`) | read.seed.7 | core |
-| 🔨 | `read-seed-18` | بازی کلمه‌ها | Unit game: groups of words, opposites, memory pairs of words heard and pictures | game (`sort`, `pairs` with `hidden`) | read.seed.3, read.seed.4 | core |
+| ✅ | `read-seed-15` | با هم ببینیم و بگوییم: بازار | Dialogic talk, second scenes: a bazaar and a park; the grown-up asks open questions and stretches the child's answer | story (`talk`) | read.seed.2, read.seed.6 | core |
+| ✅ | `read-seed-16` | چه کسی؟ کجا؟ چرا؟ | Question words: a short scene, the voice asks who / where / what / why, the child taps the picture answer; then the child asks the grown-up a question | animation (`scene` + `question`), lesson (`choose` with `say`), story (`talk`) | read.seed.6 | core |
+| ✅ | `read-seed-17` | امروز چه کردی؟ | Telling in order: put a morning in order (waking, washing, breakfast, play), then tell the grown-up about today with «اول، بعد، آخرش» | game (`order` with `numbered`), story (`talk`) | read.seed.7 | core |
+| ✅ | `read-seed-18` | بازی کلمه‌ها | Unit game: groups of words, opposites, memory pairs of words heard and pictures | game (`sort`, `pairs` with `hidden`) | read.seed.3, read.seed.4 | core |
 | ✅ | `read-seed-4` | کلمه‌های هم‌قافیه | Rhyme: hear which words sound alike at the end (picture + spoken word) | animation, lesson (`choose` with `say`), game (`pairs`) | read.seed.10 | core |
-| 🔨 | `read-seed-19` | شعر قافیه‌دار | Rhyme in a short children's poem: hear it, then pick the word that ends the line | animation (`scene`), lesson (`choose` with `say`) | read.seed.10, read.seed.19 | core |
+| ✅ | `read-seed-19` | شعر قافیه‌دار | Rhyme in a short children's poem: hear it, then pick the word that ends the line | animation (`scene`), lesson (`choose` with `say`) | read.seed.10, read.seed.19 | core |
 | ✅ | `read-seed-5` | دست بزن، بشمار | Syllables: clap and count the parts of a word (one to three parts) | animation, lesson (`clap`, `choose`) | read.seed.11 | core |
-| 🔨 | `read-seed-20` | چند کلمه شنیدی؟ | Words in a spoken sentence: one clap per word (two to five words); long and short words (more claps = longer word; a big thing can have a short name) | lesson (`clap` with `words`, `choose` with `say`) | read.seed.11 | core |
+| ✅ | `read-seed-20` | چند کلمه شنیدی؟ | Words in a spoken sentence: one clap per word (two to five words); long and short words (more claps = longer word; a big thing can have a short name) | lesson (`clap` with `words`, `choose` with `say`) | read.seed.11 | core |
 | ✅ | `read-seed-6` | با چه صدایی شروع می‌شود؟ | First sound of a word (oral, pictures only): م، س، ب، ت | animation, lesson (`choose` with `say`), game (`sort` by first sound, `pairs`) | read.seed.12 | core |
 | ✅ | `read-seed-7` | قصه گوش کن | Listening comprehension: three heard stories, what happened first/next/last, how a character felt, retelling | animation (`scene` + `question`), game (`order` with `numbered`), story (`talk`) | read.seed.8, read.seed.7 | core |
-| 🔨 | `read-seed-23` | کدو قلقله‌زن | A classic tale heard as an animation (the old woman, the wolf, the pumpkin), the pictures put in order, then retold to a grown-up | animation (`scene`), game (`order`), story (`talk`) | read.seed.20, read.seed.8 | full |
-| 🔨 | `read-seed-24` | اتل متل | Rhymes and finger plays: say along, fill in the missing rhyming word, then say it to someone at home | animation (`scene`), lesson (`choose` with `say`), home (`doit`) | read.seed.19, read.seed.10 | full |
+| ✅ | `read-seed-23` | کدو قلقله‌زن | A classic tale heard as an animation (the old woman, the wolf, the pumpkin), the pictures put in order, then retold to a grown-up | animation (`scene`), game (`order`), story (`talk`) | read.seed.20, read.seed.8 | full |
+| ✅ | `read-seed-24` | اتل متل | Rhymes and finger plays: say along, fill in the missing rhyming word, then say it to someone at home | animation (`scene`), lesson (`choose` with `say`), home (`doit`) | read.seed.19, read.seed.10 | full |
 | ✅ | `read-seed-8` | کتاب از کجا شروع می‌شود؟ | Print concepts: writing vs pictures, right to left, top to bottom, words and spaces, the first word | animation, lesson (`choose`), story (`talk` with a real book) | read.seed.15 | core |
-| 🔨 | `read-seed-25` | نوشته‌ها دور و بر ما | Writing all around: which pictures have writing (a sign, a bread bag, a book, a medicine box), what it might say; find three writings at home | lesson (`choose`), home (`doit`) | read.seed.16 | core |
-| 🔨 | `read-seed-26` | اسم من | The grown-up writes the child's name on a card: find it among others, hear its first sound, decorate it; names of the family | home (`doit`), story (`talk`), lesson (`choose` with `say`) | read.seed.16, read.seed.12 | core |
+| ✅ | `read-seed-25` | نوشته‌ها دور و بر ما | Writing all around: which pictures have writing (a sign, a bread bag, a book, a medicine box), what it might say; find three writings at home | lesson (`choose`), home (`doit`) | read.seed.16 | core |
+| ✅ | `read-seed-26` | اسم من | The grown-up writes the child's name on a card: find it among others, hear its first sound, decorate it; names of the family | home (`doit`), story (`talk`), lesson (`choose` with `say`) | read.seed.16, read.seed.12 | core |
 | ✅ | `read-seed-9` | خط‌های رنگی | Pre-writing: lines top to bottom and right to left, slants, a bowl, hills, waves, zigzags, a circle; each shown being drawn first, then traced; drawing them on paper | lesson (`trace` with `path`), home (`doit`) | read.seed.17 | core |
-| 🔨 | `read-seed-27` | مداد را درست بگیر | Holding a pencil (three fingers), sitting, the paper; dot-to-dot shapes traced, then on paper | lesson (`intro`, `trace` with `path`), home (`doit`) | read.seed.17 | core |
-| 🔨 | `read-seed-28` | بکش و بگو | Early writing: draw a picture of something that happened, tell what it says; the grown-up writes the words under it and reads them back | home (`doit`), story (`talk`) | read.seed.18, read.seed.7 | core |
+| ✅ | `read-seed-27` | مداد را درست بگیر | Holding a pencil (three fingers), sitting, the paper; dot-to-dot shapes traced, then on paper | lesson (`intro`, `trace` with `path`), home (`doit`) | read.seed.17 | core |
+| ✅ | `read-seed-28` | بکش و بگو | Early writing: draw a picture of something that happened, tell what it says; the grown-up writes the words under it and reads them back | home (`doit`), story (`talk`) | read.seed.18, read.seed.7 | core |
 | ✅ | `read-seed-10` | بازی صداها | Unit game: rhyme, syllables, first sound (پ، د) | game (`pairs` with `hidden`, `sort`) | read.seed.10, read.seed.11, read.seed.12 | core |
-| 🔨 | `read-seed-21` | صدای آخر | Last sound of a word (oral, pictures): which ends with «م»? sort by last sound | lesson (`choose` with `say`), game (`sort`) | read.seed.13 | full |
-| 🔨 | `read-seed-22` | صداها را به هم بچسبان | Oral blending: hear parts (سـ… یب), then sounds (س… ی… ب), tap the picture; a train whose wagons join | animation (`scene`), lesson (`choose` with `say`) | read.seed.14 | core |
-| 🔨 | `read-seed-29` | بازی قطار صداها | Unit game: blend sounds to a picture, sort pictures by first and last sound | game (`pairs`, `sort`) | read.seed.14, read.seed.13, read.seed.12 | core |
-| 🔨 | `read-seed-30` | قصه گوش کن ۲ | Three more heard stories: why a character felt that way, what will happen next, a different ending | animation (`scene` + `question`), story (`talk`) | read.seed.8, read.seed.6 | core |
-| 🔨 | `read-seed-31` | خاله سوسکه | A second classic tale (shortened, gentle), heard as an animation, put in order, retold | animation (`scene`), game (`order`), story (`talk`) | read.seed.20, read.seed.7 | full |
-| 🔨 | `read-seed-32` | قصه را تو بگو | A four-picture story with no words: put it in order, then tell it; the grown-up asks «بعدش چه شد؟» | game (`order` with `numbered`), story (`talk`) | read.seed.7 | core |
-| 🔨 | `read-seed-33` | با هم ببینیم و بگوییم: آشپزخانه | Dialogic talk, third scenes: a kitchen and a family meal; naming, describing, why | story (`talk`) | read.seed.2, read.seed.3 | core |
-| 🔨 | `read-seed-34` | کتاب علمی گوش کن | A short information text heard with a scene (a seed becomes a plant; animals' homes), questions, one thing learned | animation (`scene` + `question`), story (`talk`) | read.seed.22 | core |
-| 🔨 | `read-seed-35` | کاسه، دندانه، حلقه | Pre-writing shapes that letters use: a bowl, teeth, a loop, a dot above and below, a long stroke down; each shown, traced, then on paper | lesson (`trace` with `path`), home (`doit`) | read.seed.17 | core |
-| 🔨 | `read-seed-37` | حرف اول اسم من | A taste of letters: the first letter of the child's name (from a card the grown-up writes) and آ ب م, each shown, heard and found among shapes; no reading yet (listed in `tools/check-reading.js` with no letters: this lesson is `full`, so Sprout still teaches آ ب م for reading) | lesson (`choose` with `say`, `trace`), home (`doit`) | read.seed.23, read.seed.16 | full |
-| 🔨 | `read-seed-36` | بازی باغچه دانه | Garden game: rhyme, syllables, first and last sounds, word groups, a story in order | game (`pairs` with `hidden`, `sort`, `order`) | read.seed.10, read.seed.11, read.seed.12, read.seed.13, read.seed.3 | core |
+| ✅ | `read-seed-21` | صدای آخر | Last sound of a word (oral, pictures): which ends with «م»? sort by last sound | lesson (`choose` with `say`), game (`sort`) | read.seed.13 | full |
+| ✅ | `read-seed-22` | صداها را به هم بچسبان | Oral blending: hear parts (سـ… یب), then sounds (س… ی… ب), tap the picture; a train whose wagons join | animation (`scene`), lesson (`choose` with `say`) | read.seed.14 | core |
+| ✅ | `read-seed-29` | بازی قطار صداها | Unit game: blend sounds to a picture, sort pictures by first and last sound | game (`pairs`, `sort`) | read.seed.14, read.seed.13, read.seed.12 | core |
+| ✅ | `read-seed-30` | قصه گوش کن ۲ | Three more heard stories: why a character felt that way, what will happen next, a different ending | animation (`scene` + `question`), story (`talk`) | read.seed.8, read.seed.6 | core |
+| ✅ | `read-seed-31` | خاله سوسکه | A second classic tale (shortened, gentle), heard as an animation, put in order, retold | animation (`scene`), game (`order`), story (`talk`) | read.seed.20, read.seed.7 | full |
+| ✅ | `read-seed-32` | قصه را تو بگو | A four-picture story with no words: put it in order, then tell it; the grown-up asks «بعدش چه شد؟» | game (`order` with `numbered`), story (`talk`) | read.seed.7 | core |
+| ✅ | `read-seed-33` | با هم ببینیم و بگوییم: آشپزخانه | Dialogic talk, third scenes: a kitchen and a family meal; naming, describing, why | story (`talk`) | read.seed.2, read.seed.3 | core |
+| ✅ | `read-seed-34` | کتاب علمی گوش کن | A short information text heard with a scene (a seed becomes a plant; animals' homes), questions, one thing learned | animation (`scene` + `question`), story (`talk`) | read.seed.22 | core |
+| ✅ | `read-seed-35` | کاسه، دندانه، حلقه | Pre-writing shapes that letters use: a bowl, teeth, a loop, a dot above and below, a long stroke down; each shown, traced, then on paper | lesson (`trace` with `path`), home (`doit`) | read.seed.17 | core |
+| ✅ | `read-seed-37` | حرف اول اسم من | A taste of letters: the first letter of the child's name (from a card the grown-up writes) and آ ب م, each shown, heard and found among shapes; no reading yet (listed in `tools/check-reading.js` with no letters: this lesson is `full`, so Sprout still teaches آ ب م for reading) | lesson (`choose` with `say`, `trace`), home (`doit`) | read.seed.23, read.seed.16 | full |
+| ✅ | `read-seed-36` | بازی باغچه دانه | Garden game: rhyme, syllables, first and last sounds, word groups, a story in order | game (`pairs` with `hidden`, `sort`, `order`) | read.seed.10, read.seed.11, read.seed.12, read.seed.13, read.seed.3 | core |
 
 #### Practice
 
 | St | Id | Practice | What it makes | Objectives |
 |---|---|---|---|---|
-| 🔨 | `read-seed-p1` | Picture-talk cards | A bank of scenes (home, bazaar, park, kitchen, village, seaside, many regions) with three open questions for the grown-up | read.seed.2, read.seed.6 |
-| 🔨 | `read-seed-p2` | Word-picture bank | Everyday words with picture and voice, by group, for sort and memory games; opposites in pairs | read.seed.3, read.seed.4 |
-| 🔨 | `read-seed-p3` | Sound-game generator | Rhyme pairs, syllable counts, first and last sounds and blending from a bank of picture words with their syllables and sounds | read.seed.9, read.seed.10, read.seed.11, read.seed.12, read.seed.13, read.seed.14 |
-| 🔨 | `read-seed-p4` | Heard-story library | Short stories and classic tales with scenes and questions (who, what next, how did they feel) | read.seed.8, read.seed.20 |
-| 🔨 | `read-seed-p5` | Rhyme and poem bank | Nursery rhymes and short children's poems with voice, to say along | read.seed.19 |
-| 🔨 | `read-seed-p6` | Line-tracing generator | Paths of growing difficulty (lines, curves, loops, dots) to trace, and a printable sheet for paper | read.seed.17 |
-| 🔨 | `read-seed-p7` | کدام شبیه است؟ | the same shape (then a letter's shape) among others that differ in one detail. | read.seed.1 |
-| 🔨 | `read-seed-p8` | کارت‌های جفت | memory games: two cards the same; later things and their opposites. | read.seed.21, read.seed.4 |
-| 🔨 | `read-seed-p9` | بعدی کدام است؟ | patterns to continue, and growing things put in order. | read.seed.21 |
-| 🔨 | `read-seed-p10` | این صدای کیست؟ | everyday sounds and animal voices heard, the picture that makes them found. | read.seed.9 |
-| 🔨 | `read-seed-p11` | گوش کن و جواب بده | a little scene heard, then who / where / what / why. | read.seed.6, read.seed.2 |
-| 🔨 | `read-seed-p12` | در تصویر پیدا کن | a picture made of things; which of these is in it? | read.seed.2, read.seed.3 |
-| 🔨 | `read-seed-p13` | کدام جور نیست؟ | three of a group and one that does not belong; later, opposites. | read.seed.3, read.seed.4 |
-| 🔨 | `read-seed-p14` | گوش کن و انجام بده | a two- or three-step instruction heard; what first, what next, what last. | read.seed.5 |
-| 🔨 | `read-seed-p15` | به ترتیب بچین | what the voice said, a morning, a story: put the pictures in order. | read.seed.5, read.seed.7 |
-| 🔨 | `read-seed-p16` | اول کدام بود؟ | two moments of a story or a day; which came first (or last)? | read.seed.7, read.seed.8 |
-| 🔨 | `read-seed-p17` | چه حسی داشت؟ | a moment heard; how did the child (or animal) feel? | read.seed.8 |
-| 🔨 | `read-seed-p18` | کتاب و نوشته | writing or picture; where reading starts; what a sign by a shop might say. | read.seed.15, read.seed.16 |
-| 🔨 | `read-seed-p19` | صداها را جدا کن | picture words sorted by ear: rhyme, number of claps, first sound, last sound. | read.seed.10, read.seed.11, read.seed.12, read.seed.13 |
-| 🔨 | `read-seed-p20` | جفت صداها | memory pairs by ear: a voice and who makes it, rhyming pictures, pictures that start alike, sounds that join into a word. | read.seed.9, read.seed.10, read.seed.12, read.seed.14 |
-| 🔨 | `read-seed-p21` | دست بزن | clap a word's parts; later, clap the words of a short sentence (not scored). | read.seed.11 |
-| 🔨 | `read-seed-p22` | از کجا شروع کنیم؟ | the way lines go: down, right to left, where a circle starts. | read.seed.17, read.seed.15 |
-| 🔨 | `read-seed-p23` | روی کاغذ | a task on paper for the grown-up to tick: lines and shapes, then a drawing to tell about. | read.seed.17, read.seed.18 |
-| 🔨 | `read-seed-p24` | حرف اول | the first sound of names, and (after the taste of letters) آ ب م found among others. | read.seed.23, read.seed.16, read.seed.12 |
-| 🔨 | `read-seed-p25` | شنیدیم، یاد گرفتیم | a short fact heard (how a seed grows, where animals live); one question. | read.seed.22 |
+| ✅ | `read-seed-p1` | Picture-talk cards | A bank of scenes (home, bazaar, park, kitchen, village, seaside, many regions) with three open questions for the grown-up | read.seed.2, read.seed.6 |
+| ✅ | `read-seed-p2` | Word-picture bank | Everyday words with picture and voice, by group, for sort and memory games; opposites in pairs | read.seed.3, read.seed.4 |
+| ✅ | `read-seed-p3` | Sound-game generator | Rhyme pairs, syllable counts, first and last sounds and blending from a bank of picture words with their syllables and sounds | read.seed.9, read.seed.10, read.seed.11, read.seed.12, read.seed.13, read.seed.14 |
+| ✅ | `read-seed-p4` | Heard-story library | Short stories and classic tales with scenes and questions (who, what next, how did they feel) | read.seed.8, read.seed.20 |
+| ✅ | `read-seed-p5` | Rhyme and poem bank | Nursery rhymes and short children's poems with voice, to say along | read.seed.19 |
+| ✅ | `read-seed-p6` | Line-tracing generator | Paths of growing difficulty (lines, curves, loops, dots) to trace, and a printable sheet for paper | read.seed.17 |
+| ✅ | `read-seed-p7` | کدام شبیه است؟ | the same shape (then a letter's shape) among others that differ in one detail. | read.seed.1 |
+| ✅ | `read-seed-p8` | کارت‌های جفت | memory games: two cards the same; later things and their opposites. | read.seed.21, read.seed.4 |
+| ✅ | `read-seed-p9` | بعدی کدام است؟ | patterns to continue, and growing things put in order. | read.seed.21 |
+| ✅ | `read-seed-p10` | این صدای کیست؟ | everyday sounds and animal voices heard, the picture that makes them found. | read.seed.9 |
+| ✅ | `read-seed-p11` | گوش کن و جواب بده | a little scene heard, then who / where / what / why. | read.seed.6, read.seed.2 |
+| ✅ | `read-seed-p12` | در تصویر پیدا کن | a picture made of things; which of these is in it? | read.seed.2, read.seed.3 |
+| ✅ | `read-seed-p13` | کدام جور نیست؟ | three of a group and one that does not belong; later, opposites. | read.seed.3, read.seed.4 |
+| ✅ | `read-seed-p14` | گوش کن و انجام بده | a two- or three-step instruction heard; what first, what next, what last. | read.seed.5 |
+| ✅ | `read-seed-p15` | به ترتیب بچین | what the voice said, a morning, a story: put the pictures in order. | read.seed.5, read.seed.7 |
+| ✅ | `read-seed-p16` | اول کدام بود؟ | two moments of a story or a day; which came first (or last)? | read.seed.7, read.seed.8 |
+| ✅ | `read-seed-p17` | چه حسی داشت؟ | a moment heard; how did the child (or animal) feel? | read.seed.8 |
+| ✅ | `read-seed-p18` | کتاب و نوشته | writing or picture; where reading starts; what a sign by a shop might say. | read.seed.15, read.seed.16 |
+| ✅ | `read-seed-p19` | صداها را جدا کن | picture words sorted by ear: rhyme, number of claps, first sound, last sound. | read.seed.10, read.seed.11, read.seed.12, read.seed.13 |
+| ✅ | `read-seed-p20` | جفت صداها | memory pairs by ear: a voice and who makes it, rhyming pictures, pictures that start alike, sounds that join into a word. | read.seed.9, read.seed.10, read.seed.12, read.seed.14 |
+| ✅ | `read-seed-p21` | دست بزن | clap a word's parts; later, clap the words of a short sentence (not scored). | read.seed.11 |
+| ✅ | `read-seed-p22` | از کجا شروع کنیم؟ | the way lines go: down, right to left, where a circle starts. | read.seed.17, read.seed.15 |
+| ✅ | `read-seed-p23` | روی کاغذ | a task on paper for the grown-up to tick: lines and shapes, then a drawing to tell about. | read.seed.17, read.seed.18 |
+| ✅ | `read-seed-p24` | حرف اول | the first sound of names, and (after the taste of letters) آ ب م found among others. | read.seed.23, read.seed.16, read.seed.12 |
+| ✅ | `read-seed-p25` | شنیدیم، یاد گرفتیم | a short fact heard (how a seed grows, where animals live); one question. | read.seed.22 |
 
 ### 🌱 جوانه — `sprout`
 
@@ -306,55 +306,55 @@ Persian session is 15–20 minutes.
 
 | St | Lesson | Title | Covers | Content types | Objectives | Depth |
 |---|---|---|---|---|---|---|
-| 🔨 | `read-sprout-7` | صداها را بشمار | Sounds in a spoken word: hear «باد», tap a counter for each sound (ب، ا، د), then join sounds back into the word | animation (`scene`: a word pulled apart into sounds), lesson (`choose` with `say`), lesson (`boxes`: a counter into a box for each sound) | read.spr.1 | core |
-| 🔨 | `read-sprout-8` | صدا کجاست؟ | Where a sound is: start, middle or end of a word (س in سیب، کاسه، خروس) | lesson (`choose` with `say`), game (`sort`) | read.spr.2 | core |
-| 🔨 | `read-sprout-9` | بخش و صدا | Syllables then sounds: clap «بادام» into با‑دام, then pull «با» into ب، ا (the way پایه اول splits words) | lesson (`clap`, `choose` with `say`) | read.spr.4, read.spr.1 | core |
-| 🔨 | `read-sprout-10` | یک صدا را عوض کن | Change one sound to make a new word (سیب → سیر، ماه → مار، موش → گوش، شیر → سیر، دست → شست), take sounds away (گوشت → گوش، بادام → باد); every word has a picture | animation (`scene`), lesson (`choose` with `say`) | read.spr.3 | core |
-| 🔨 | `read-sprout-11` | بازی صداها ۲ | Unit game: count sounds, sort by where a sound is, join sounds to pictures | game (`sort`, `pairs` with `hidden`) | read.spr.1, read.spr.2, read.spr.4 | core |
-| 🔨 | `read-sprout-12` | تصویر را بخوان: خانه | Picture reading as پایه اول opens: a home in the morning; who, where, what is happening, what next; answers in sentences | story (`talk`), lesson (`choose`) | read.spr.11 | core |
-| 🔨 | `read-sprout-13` | تصویر را بخوان: کوچه و بازار | Picture reading: a street, a bakery, a fruit shop; jobs and the words of the city | story (`talk`), lesson (`choose` with `say`) | read.spr.11, read.spr.12 | core |
-| 🔨 | `read-sprout-14` | تصویر را بخوان: روستا و طبیعت | Picture reading: a village, fields, a river, animals; the words of nature and the seasons | story (`talk`), game (`sort` by season) | read.spr.11, read.spr.12 | core |
-| 🔨 | `read-sprout-15` | قصه چهار تصویری | Picture series with no words: order the four pictures, then tell the story with a beginning, middle and end | game (`order` with `numbered`), story (`talk`) | read.spr.13 | core |
-| 🔨 | `read-sprout-16` | کلمه‌های تازه | Theme words, ten at a time with picture and voice: the body, jobs, feelings, the weather; memory game | lesson (`choose` with `say`), game (`pairs` with `hidden`) | read.spr.12 | core |
-| 🔨 | `read-sprout-17` | چطور؟ چرا؟ | Explaining: how to wash hands or plant a seed (order the steps, then tell them); why the ice cream melted | game (`order`), story (`talk`) | read.spr.17, read.spr.13 | core |
-| 🔨 | `read-sprout-18` | قصه گوش کن ۳ | Longer heard stories: the character's problem, how it was solved, what will happen next | animation (`scene` + `question`), story (`talk`) | read.spr.14 | core |
-| 🔨 | `read-sprout-19` | شنیدیم، یاد گرفتیم | A short information text heard with a scene (bees and honey; how bread is made), questions | animation (`scene` + `question`) | read.spr.15 | core |
-| 🔨 | `read-sprout-20` | شعر بخوان، حفظ کن | A children's poem heard and said along: its rhythm (clap the beats), its rhymes, then by heart for the family | animation (`scene`), lesson (`clap`, `choose` with `say`), home (`doit`) | read.spr.16 | core |
-| 🔨 | `read-sprout-21` | روی خط | Writing readiness: sitting, the pencil, the paper; strokes between two lines (down, across from right, a bowl, a tooth, a loop) | lesson (`intro`, `trace` with `path`), home (`paper`) | read.spr.10 | core |
-| 🔨 | `read-sprout-22` | اسمم را می‌نویسم | Copying one's name from a card the grown-up writes, then the names of the family; letters are not taught yet, only copied | home (`paper`), story (`talk`) | read.spr.18 | core |
+| ✅ | `read-sprout-7` | صداها را بشمار | Sounds in a spoken word: hear «باد», tap a counter for each sound (ب، ا، د), then join sounds back into the word | animation (`scene`: a word pulled apart into sounds), lesson (`choose` with `say`), lesson (`boxes`: a counter into a box for each sound) | read.spr.1 | core |
+| ✅ | `read-sprout-8` | صدا کجاست؟ | Where a sound is: start, middle or end of a word (س in سیب، کاسه، خروس) | lesson (`choose` with `say`), game (`sort`) | read.spr.2 | core |
+| ✅ | `read-sprout-9` | بخش و صدا | Syllables then sounds: clap «بادام» into با‑دام, then pull «با» into ب، ا (the way پایه اول splits words) | lesson (`clap`, `choose` with `say`) | read.spr.4, read.spr.1 | core |
+| ✅ | `read-sprout-10` | یک صدا را عوض کن | Change one sound to make a new word (سیب → سیر، ماه → مار، موش → گوش، شیر → سیر، دست → شست), take sounds away (گوشت → گوش، بادام → باد); every word has a picture | animation (`scene`), lesson (`choose` with `say`) | read.spr.3 | core |
+| ✅ | `read-sprout-11` | بازی صداها ۲ | Unit game: count sounds, sort by where a sound is, join sounds to pictures | game (`sort`, `pairs` with `hidden`) | read.spr.1, read.spr.2, read.spr.4 | core |
+| ✅ | `read-sprout-12` | تصویر را بخوان: خانه | Picture reading as پایه اول opens: a home in the morning; who, where, what is happening, what next; answers in sentences | story (`talk`), lesson (`choose`) | read.spr.11 | core |
+| ✅ | `read-sprout-13` | تصویر را بخوان: کوچه و بازار | Picture reading: a street, a bakery, a fruit shop; jobs and the words of the city | story (`talk`), lesson (`choose` with `say`) | read.spr.11, read.spr.12 | core |
+| ✅ | `read-sprout-14` | تصویر را بخوان: روستا و طبیعت | Picture reading: a village, fields, a river, animals; the words of nature and the seasons | story (`talk`), game (`sort` by season) | read.spr.11, read.spr.12 | core |
+| ✅ | `read-sprout-15` | قصه چهار تصویری | Picture series with no words: order the four pictures, then tell the story with a beginning, middle and end | game (`order` with `numbered`), story (`talk`) | read.spr.13 | core |
+| ✅ | `read-sprout-16` | کلمه‌های تازه | Theme words, ten at a time with picture and voice: the body, jobs, feelings, the weather; memory game | lesson (`choose` with `say`), game (`pairs` with `hidden`) | read.spr.12 | core |
+| ✅ | `read-sprout-17` | چطور؟ چرا؟ | Explaining: how to wash hands or plant a seed (order the steps, then tell them); why the ice cream melted | game (`order`), story (`talk`) | read.spr.17, read.spr.13 | core |
+| ✅ | `read-sprout-18` | قصه گوش کن ۳ | Longer heard stories: the character's problem, how it was solved, what will happen next | animation (`scene` + `question`), story (`talk`) | read.spr.14 | core |
+| ✅ | `read-sprout-19` | شنیدیم، یاد گرفتیم | A short information text heard with a scene (bees and honey; how bread is made), questions | animation (`scene` + `question`) | read.spr.15 | core |
+| ✅ | `read-sprout-20` | شعر بخوان، حفظ کن | A children's poem heard and said along: its rhythm (clap the beats), its rhymes, then by heart for the family | animation (`scene`), lesson (`clap`, `choose` with `say`), home (`doit`) | read.spr.16 | core |
+| ✅ | `read-sprout-21` | روی خط | Writing readiness: sitting, the pencil, the paper; strokes between two lines (down, across from right, a bowl, a tooth, a loop) | lesson (`intro`, `trace` with `path`), home (`paper`) | read.spr.10 | core |
+| ✅ | `read-sprout-22` | اسمم را می‌نویسم | Copying one's name from a card the grown-up writes, then the names of the family; letters are not taught yet, only copied | home (`paper`), story (`talk`) | read.spr.18 | core |
 | ✅ | `read-sprout-1` | «آ» و «ب» | آ ا ب; آب، بابا | lesson (`intro`, `choose`, `trace`, `blend`) | read.spr.5, read.spr.6 | core |
 | ✅ | `read-sprout-2` | «د» و «م» | د م | lesson | read.spr.5, read.spr.6 | core |
 | ✅ | `read-sprout-3` | «س» و «ـَ» | س and the short vowel ـَ | lesson | read.spr.5, read.spr.6 | core |
-| 🔨 | `read-sprout-23` | «آ ب د م س» را بنویس | Handwriting of the letters taught: each form shown being written, traced, then on paper (آ، ب، بـ، د، م، مـ، س، سـ); words آب، بابا، بادام | lesson (`trace`), home (`paper`) | read.spr.9 | core |
+| ✅ | `read-sprout-23` | «آ ب د م س» را بنویس | Handwriting of the letters taught: each form shown being written, traced, then on paper (آ، ب، بـ، د، م، مـ، س، سـ); words آب، بابا، بادام | lesson (`trace`), home (`paper`) | read.spr.9 | core |
 | ✅ | `read-sprout-4` | بازی حرف‌ها و صداها | Unit game: letters ↔ sounds, building words | game (`pairs`, `build`, `sort`) | read.spr.5, read.spr.6 | core |
-| 🔨 | `read-sprout-24` | جدول بخش‌ها | Reading syllables: بَ با بـ، دَ دا، مَ ما، سَ سا, then words (بابا، سَبَد، اَسب، بادام); finding the syllable that was said | lesson (`blend`, `choose` with `say`) | read.spr.6, read.spr.4 | core |
+| ✅ | `read-sprout-24` | جدول بخش‌ها | Reading syllables: بَ با بـ، دَ دا، مَ ما، سَ سا, then words (بابا، سَبَد، اَسب، بادام); finding the syllable that was said | lesson (`blend`, `choose` with `say`) | read.spr.6, read.spr.4 | core |
 | ✅ | `read-sprout-5` | اولین جمله‌ها | First decodable phrases with آ ب د م س ـَ (بابا آمَد. بابا آب داد.) | story (`passage`), lesson (`blend`) | read.spr.7 | core |
 | ✅ | `read-sprout-6` | کلمه‌ها را بساز | Spelling with known letters: hear a word, build it letter by letter (dictation: no word or picture shown until the end) | game (`build` with `hidden` and `extra`) | read.spr.8 | core |
-| 🔨 | `read-sprout-25` | بلند بخوان: جوانه | Fluency with the letters taught: short decodable lines read aloud, the grown-up marks the hard words, then a re-read | story (`readaloud`) | read.spr.7, read.spr.6 | core |
-| 🔨 | `read-sprout-26` | املای اول | Dictation on paper: the grown-up says five words of the letters taught, the child writes them, then checks against the answers | home (`paper`), game (`build` with `hidden`) | read.spr.8, read.spr.9 | core |
-| 🔨 | `read-sprout-27` | بازی باغچه جوانه | Garden game: sounds, letters, syllables, words and a sentence to put in order | game (`pairs` with `hidden`, `build`, `order`, `sort`) | read.spr.1, read.spr.5, read.spr.6, read.spr.7 | core |
+| ✅ | `read-sprout-25` | بلند بخوان: جوانه | Fluency with the letters taught: short decodable lines read aloud, the grown-up marks the hard words, then a re-read | story (`readaloud`) | read.spr.7, read.spr.6 | core |
+| ✅ | `read-sprout-26` | املای اول | Dictation on paper: the grown-up says five words of the letters taught, the child writes them, then checks against the answers | home (`paper`), game (`build` with `hidden`) | read.spr.8, read.spr.9 | core |
+| ✅ | `read-sprout-27` | بازی باغچه جوانه | Garden game: sounds, letters, syllables, words and a sentence to put in order | game (`pairs` with `hidden`, `build`, `order`, `sort`) | read.spr.1, read.spr.5, read.spr.6, read.spr.7 | core |
 
 #### Practice
 
 | St | Id | Practice | What it makes | Objectives |
 |---|---|---|---|---|
-| 🔨 | `read-sprout-p1` | Sound-game generator (phonemes) | From a bank of picture words with their sounds: count the sounds, where is the sound, join sounds, change a sound | read.spr.1, read.spr.2, read.spr.3, read.spr.4 |
-| 🔨 | `read-sprout-p2` | Decodable library: first letters | Syllables, words, phrases and sentences that use only آ ب د م س ـَ (checked by `tools/check-reading.js`), to read and to match to pictures | read.spr.6, read.spr.7 |
-| 🔨 | `read-sprout-p3` | Dictation bank: first letters | Words of the letters taught, said aloud, to build with tiles or write on paper (answers for the grown-up) | read.spr.8, read.spr.9 |
-| 🔨 | `read-sprout-p4` | Handwriting sheets | Printable lines with the letter forms and words taught, model first, then to copy | read.spr.9, read.spr.10, read.spr.18 |
-| 🔨 | `read-sprout-p5` | Picture-reading cards | Scenes and four-picture stories with questions for the grown-up | read.spr.11, read.spr.13, read.spr.17 |
-| 🔨 | `read-sprout-p6` | Theme-word bank | Picture words by theme for memory and sort games | read.spr.12 |
-| 🔨 | `read-sprout-p7` | Heard-story and poem library | Stories, information texts and poems with scenes and questions | read.spr.14, read.spr.15, read.spr.16 |
-| 🔨 | `read-sprout-p8` | خانه‌های صدا | sound boxes: a counter for each sound of a heard word (not scored). | read.spr.1 |
-| 🔨 | `read-sprout-p9` | صداها را جدا کن | picture words sorted by how many sounds, or by where a sound is. | read.spr.1, read.spr.2 |
-| 🔨 | `read-sprout-p10` | یک صدا فرق دارد | memory pairs of two pictures whose names differ in one sound. | read.spr.3 |
-| 🔨 | `read-sprout-p11` | چرا؟ | something that happened, heard; why did it happen? (explaining, causes). | read.spr.17, read.spr.14 |
-| 🔨 | `read-sprout-p12` | حرف را پیدا کن | a letter taught, heard and found among letters that look alike. | read.spr.5 |
-| 🔨 | `read-sprout-p13` | حرف و تصویر | letters matched to the pictures whose names start with their sound. | read.spr.5 |
-| 🔨 | `read-sprout-p14` | کلمه بساز | a picture and its word built from letter or syllable tiles (shown, not dictation). | read.spr.6, read.spr.4 |
-| 🔨 | `read-sprout-p15` | کدام بخش را شنیدی؟ | a syllable heard; the child finds it among others. | read.spr.4, read.spr.6 |
-| 🔨 | `read-sprout-p16` | جمله بساز | words put in order to make a sentence (each word decodable). | read.spr.7 |
-| 🔨 | `read-sprout-p17` | بلند بخوان | a short decodable line read aloud, the grown-up marks the hard words (not scored). | read.spr.7, read.spr.6 |
+| ✅ | `read-sprout-p1` | Sound-game generator (phonemes) | From a bank of picture words with their sounds: count the sounds, where is the sound, join sounds, change a sound | read.spr.1, read.spr.2, read.spr.3, read.spr.4 |
+| ✅ | `read-sprout-p2` | Decodable library: first letters | Syllables, words, phrases and sentences that use only آ ب د م س ـَ (checked by `tools/check-reading.js`), to read and to match to pictures | read.spr.6, read.spr.7 |
+| ✅ | `read-sprout-p3` | Dictation bank: first letters | Words of the letters taught, said aloud, to build with tiles or write on paper (answers for the grown-up) | read.spr.8, read.spr.9 |
+| ✅ | `read-sprout-p4` | Handwriting sheets | Printable lines with the letter forms and words taught, model first, then to copy | read.spr.9, read.spr.10, read.spr.18 |
+| ✅ | `read-sprout-p5` | Picture-reading cards | Scenes and four-picture stories with questions for the grown-up | read.spr.11, read.spr.13, read.spr.17 |
+| ✅ | `read-sprout-p6` | Theme-word bank | Picture words by theme for memory and sort games | read.spr.12 |
+| ✅ | `read-sprout-p7` | Heard-story and poem library | Stories, information texts and poems with scenes and questions | read.spr.14, read.spr.15, read.spr.16 |
+| ✅ | `read-sprout-p8` | خانه‌های صدا | sound boxes: a counter for each sound of a heard word (not scored). | read.spr.1 |
+| ✅ | `read-sprout-p9` | صداها را جدا کن | picture words sorted by how many sounds, or by where a sound is. | read.spr.1, read.spr.2 |
+| ✅ | `read-sprout-p10` | یک صدا فرق دارد | memory pairs of two pictures whose names differ in one sound. | read.spr.3 |
+| ✅ | `read-sprout-p11` | چرا؟ | something that happened, heard; why did it happen? (explaining, causes). | read.spr.17, read.spr.14 |
+| ✅ | `read-sprout-p12` | حرف را پیدا کن | a letter taught, heard and found among letters that look alike. | read.spr.5 |
+| ✅ | `read-sprout-p13` | حرف و تصویر | letters matched to the pictures whose names start with their sound. | read.spr.5 |
+| ✅ | `read-sprout-p14` | کلمه بساز | a picture and its word built from letter or syllable tiles (shown, not dictation). | read.spr.6, read.spr.4 |
+| ✅ | `read-sprout-p15` | کدام بخش را شنیدی؟ | a syllable heard; the child finds it among others. | read.spr.4, read.spr.6 |
+| ✅ | `read-sprout-p16` | جمله بساز | words put in order to make a sentence (each word decodable). | read.spr.7 |
+| ✅ | `read-sprout-p17` | بلند بخوان | a short decodable line read aloud, the grown-up marks the hard words (not scored). | read.spr.7, read.spr.6 |
 
 ### 🌿 نهال — `sapling`
 
@@ -425,7 +425,7 @@ handwriting, writing tasks). Numbers used: Sapling has 45–60 minutes a day; in
 | ✅ | `read-sapling-3` | «ن» و «ز» | ن ز | lesson, story (`passage`) | read.sap.1, read.sap.6 | core |
 | ✅ | `read-sapling-4` | «ش» و «ـِ» | ش and the short vowel ـِ | lesson, story | read.sap.1, read.sap.6 | core |
 | ✅ | `read-sapling-5` | «ـُ» و «ک» | the short vowel ـُ, ک | lesson, story | read.sap.1, read.sap.6 | core |
-| 🔨 | `read-sapling-29` | «و» | Consonant «و» (v) as in پایه اول درس ۹: وَرزِش، آواز، گاو؛ «او» or «و»? «و» for "and" (formal «وَ», everyday «وُ») | lesson (`intro`, `choose`, `trace`, `blend`), story (`passage`) | read.sap.4 | core |
+| ✅ | `read-sapling-29` | «و» | Consonant «و» (v) as in پایه اول درس ۹: وَرزِش، آواز، گاو؛ «او» or «و»? «و» for "and" (formal «وَ», everyday «وُ») | lesson (`intro`, `choose`, `trace`, `blend`), story (`passage`) | read.sap.4 | core |
 | ✅ | `read-sapling-18` | بازی کلمه‌ها | Unit game: words so far | game (`pairs`, `build`, `sort`, `order`) | read.sap.1, read.sap.6 | core |
 | ✅ | `read-sapling-6` | جمله بخوانیم، معنا بفهمیم | Reading sentences for meaning | story (`passage` ×4) | read.sap.6 | core |
 | ✅ | `read-sapling-7` | «ه» و «ـه» | ه and final ـه (as a vowel) | lesson, story | read.sap.1, read.sap.4 | core |
@@ -435,7 +435,7 @@ handwriting, writing tasks). Numbers used: Sapling has 45–60 minutes a day; in
 | ✅ | `read-sapling-11` | «ف» و «ق» | ف ق | lesson, story | read.sap.1 | core |
 | ✅ | `read-sapling-19` | بازی کلمه‌ها ۲ | Unit game | game (`sort`, `build`, `pairs`, `order`) | read.sap.1, read.sap.6 | core |
 | ✅ | `read-sapling-12` | «یـ» و «ژ» | consonant ی, ژ | lesson, story | read.sap.1 | core |
-| 🔨 | `read-sapling-30` | «خود» و «خواهر» | «و» read as «اُ» (تو، خود، دو، خوش) and silent «و» in «خوا» (خواهر، خواب، خواندن), as in پایه اول درس ۱۳ and ۱۵ | lesson (`intro`, `choose`, `blend`), story (`passage`) | read.sap.4 | core |
+| ✅ | `read-sapling-30` | «خود» و «خواهر» | «و» read as «اُ» (تو، خود، دو، خوش) and silent «و» in «خوا» (خواهر، خواب، خواندن), as in پایه اول درس ۱۳ and ۱۵ | lesson (`intro`, `choose`, `blend`), story (`passage`) | read.sap.4 | core |
 | ✅ | `read-sapling-13` | «ص» و «ث» | ص ث (same sound as س) | lesson, story | read.sap.2 | core |
 | ✅ | `read-sapling-14` | «ذ»، «ض» و «ظ» | ذ ض ظ (same sound as ز) | lesson, story | read.sap.2 | core |
 | ✅ | `read-sapling-15` | «ط» و «ح» | ط ح | lesson, story | read.sap.2 | core |
@@ -450,104 +450,104 @@ handwriting, writing tasks). Numbers used: Sapling has 45–60 minutes a day; in
 | ✅ | `read-sapling-26` | کلمه‌ها را به هم بنویس | Writing joined letters: the forms of «ب», then whole words (بابا، نان، لب، سیب، دست), each joined piece in one go, dots last | lesson (`intro`, `trace` with joined forms and whole words from `js/strokes.js`) | read.sap.8 | core |
 | ✅ | `read-sapling-27` | قصه‌های کوتاه | Three short decodable stories (Rasht, Bushehr, Sanandaj), each shown as an animation first, then read, with questions | animation, story (`passage`) | read.sap.6 | core |
 | ✅ | `read-sapling-28` | بلند بخوان | Fluency: five short passages read aloud; the parent marks the hard words, they practise them, the child re-reads (accuracy only, never a timer) | story (`readaloud`: parent-marked, not scored) | read.sap.10 | core |
-| 🔨 | `read-sapling-31` | دندانه‌دارها را بنویس | Handwriting: ب پ ت ث ن ی in every form, joined in words (تاب، نان، پنیر، بینی), on the line, dots last; then on paper | lesson (`intro`, `trace` with joined forms), home (`paper`) | read.sap.8 | core |
-| 🔨 | `read-sapling-32` | کاسه‌دارها را بنویس | Handwriting: س ش ص ض and the bowls of ن ق ل ی at the end (سوسن، شیش، صابون، قاشق) | lesson (`trace` with joined forms), home (`paper`) | read.sap.8 | core |
-| 🔨 | `read-sapling-33` | «ج چ ح خ» و «ع غ» را بنویس | Handwriting: the hook letters and the forms of ع غ (بچه، حلزون، جعبه، باغ) | lesson (`trace` with joined forms), home (`paper`) | read.sap.8 | core |
-| 🔨 | `read-sapling-34` | «ک گ ف ق م ه ط ظ» را بنویس | Handwriting: the tall and round letters (کفش، گلدان، مهتاب، طوطی، ظرف) | lesson (`trace` with joined forms), home (`paper`) | read.sap.8 | core |
-| 🔨 | `read-sapling-35` | حرف‌هایی که نمی‌چسبند | ا د ذ ر ز ژ و never join the next letter: sort letters, find the gaps in words (دارو، روز، ژاله), write words with them | game (`sort`), lesson (`trace`), home (`paper`) | read.sap.5, read.sap.8 | core |
-| 🔨 | `read-sapling-36` | جدول الفبا | The 32 letters in order with their names (الف، بِ، پِ … واو، ه، ی) as پایه اول ends; put letters in order; say a word's letters by name | animation (`scene`), game (`order`), lesson (`choose` with `say`) | read.sap.30 | core |
-| 🔨 | `read-sapling-37` | با هم بخوانیم | Longer vowelled texts with every letter: a short story and a poem, read with a grown-up, then alone; questions | story (`passage`, `readaloud`) | read.sap.6, read.sap.10 | core |
-| 🔨 | `read-sapling-38` | املای جمله | Dictation of short sentences: the grown-up reads, the child writes on paper, then checks word by word against the answer; tiles for the hardest words | home (`paper`), game (`build` with `hidden`) | read.sap.7, read.sap.8 | core |
-| 🔨 | `read-sapling-39` | نشانه‌ها کم می‌شوند | Fading marks: the same text with all marks, then marks only on new words; finding a word's vowels from the sentence (گُل یا گِل؟) | story (`passage`), lesson (`choose`) | read.sap.11 | core |
-| 🔨 | `read-sapling-40` | کلمه‌های پرکاربرد | Common words read without marks at a glance (است، این، آن، که، را، با، از، می‌رود، بود), each one first decoded, then found fast in sentences | game (`pairs` with `hidden`), lesson (`choose`) | read.sap.11, read.sap.10 | core |
-| 🔨 | `read-sapling-41` | بلند بخوان ۲ | Fluency with fewer marks: short texts read aloud, hard words practised, re-read with expression | story (`readaloud`) | read.sap.10, read.sap.12 | core |
-| 🔨 | `read-sapling-42` | هم‌معنی | Synonyms: match pairs, then pick the word that can replace one in a sentence (شاد/خوشحال، زیبا/قشنگ) | game (`pairs`), lesson (`choose`) | read.sap.16 | core |
-| 🔨 | `read-sapling-43` | مخالف | Opposites: pairs, then finish a sentence with the opposite (بالا/پایین، روز/شب، زود/دیر) | game (`pairs` with `hidden`), lesson (`choose`) | read.sap.16 | core |
-| 🔨 | `read-sapling-44` | یکی، چندتا | Singular and plural with ـها and ـان (گل‌ها، درختان); which takes which | game (`sort`), lesson (`choose`) | read.sap.20 | core |
-| 🔨 | `read-sapling-45` | بازی کلمه‌ها ۴ | Unit game: synonyms, opposites, plurals, common words | game (`pairs`, `sort`) | read.sap.16, read.sap.20, read.sap.11 | core |
-| 🔨 | `read-sapling-46` | قصه و آدم‌هایش | Story comprehension: who, where, what happened; put the events in order; retell to the grown-up | animation (`scene`), story (`passage`, `talk`), game (`order`) | read.sap.13 | core |
-| 🔨 | `read-sapling-47` | چرا این‌طور شد؟ | Inference: why, how did they feel, what will happen next; a word's meaning from the sentence | story (`passage`), lesson (`choose`) | read.sap.14 | core |
-| 🔨 | `read-sapling-48` | حکایت | Short حکایت in our own words (the lion and the mouse; the clever child): read, say the lesson, tell it at home | animation (`scene`), story (`passage`, `talk`) | read.sap.14, read.sap.29 | core |
-| 🔨 | `read-sapling-49` | بخوان و حفظ کن | A children's poem written for Baghcheh: read it, clap its rhythm, find its rhymes, say it by heart for the family | story (`readaloud`), lesson (`clap`, `choose`), home (`doit`) | read.sap.29, read.sap.12 | core |
-| 🔨 | `read-sapling-50` | جمله را کامل کن | Sentences: finish a sentence, answer a question with a whole sentence, put a word in the right place | lesson (`choose`), game (`order`) | read.sap.25 | core |
-| 🔨 | `read-sapling-51` | نشانه‌های نوشتن | Punctuation: «.»، «؟»، «!»، «،» and «« »» for what someone says; put the missing mark | lesson (`choose`), story (`passage`) | read.sap.22 | core |
-| 🔨 | `read-sapling-52` | درباره تصویر بنویس | Three to five sentences about a picture on paper: who, where, what is happening; the grown-up ticks a short checklist | lesson (`choose`), home (`paper`) | read.sap.25, read.sap.26 | core |
-| 🔨 | `read-sapling-53` | هم‌صداها در کلمه‌ها | املا of same-sound letters in common words, using the family to decide (صبح ← صبحانه، ظهر ← ظهرها، حیاط) | game (`sort`, `build` with `hidden`), lesson (`choose`) | read.sap.21, read.sap.17 | core |
-| 🔨 | `read-sapling-54` | خانواده کلمه‌ها | Word families: words that share a root (دان، دانا، دانش، دانشمند; کار، کارگر، کارخانه); sort and build | game (`sort`, `build`), lesson (`choose`) | read.sap.17 | core |
-| 🔨 | `read-sapling-55` | کلمه بساز | Suffixes: ـی (ایرانی)، ـچه (باغچه)، ـبان (باغبان)، ـگر (کارگر)، ـدان (نمکدان)، ـستان (گلستان)؛ what each adds | game (`build`), lesson (`choose`) | read.sap.18 | core |
-| 🔨 | `read-sapling-56` | کلمه‌های مرکب | Compound words (گل‌فروش، کتاب‌خانه، آب‌پاش، دست‌کش): split them, say what they mean, write them with a half-space | game (`build`, `pairs`), lesson (`choose`) | read.sap.18 | core |
-| 🔨 | `read-sapling-57` | بازی کلمه‌سازی | Unit game: families, suffixes, compounds | game (`sort`, `build`, `pairs` with `hidden`) | read.sap.17, read.sap.18 | core |
-| 🔨 | `read-sapling-58` | بخوانیم و یاد بگیریم | Information text: title, pictures, captions; find a fact, say what you learned (how rain falls; bees) | story (`passage`), lesson (`choose`) | read.sap.15 | core |
-| 🔨 | `read-sapling-59` | کلمه‌های تازه | Tier 2 words from texts: meet the word in a sentence, a child-friendly meaning, examples, use it (مواظب، تصمیم، کمک کردن) | lesson (`choose` in a sentence), game (`pairs`) | read.sap.19 | core |
-| 🔨 | `read-sapling-60` | برایم تعریف کن | Speaking: tell the family a story or what you learned, in order; the grown-up asks two questions | story (`talk`), home (`doit`) | read.sap.31 | core |
-| 🔨 | `read-sapling-61` | کتاب‌خوانی | Reading a short book alone (from home or a library), then talking about it: who, what, favourite part; a book list for families | story (`talk`), home (`paper`), parent tip (`forparents`) | read.sap.32 | core |
-| 🔨 | `read-sapling-62` | متن بی‌نشانه | Reading without vowel marks: stories and information texts with no marks; when a word could be read two ways, the sentence decides | story (`passage`), lesson (`choose`) | read.sap.11 | core |
-| 🔨 | `read-sapling-63` | روان و با حالت | Fluency: punctuation pauses, a question's tune, a character's voice; read, practise, re-read | story (`readaloud`) | read.sap.12 | core |
-| 🔨 | `read-sapling-64` | اسم | Naming words: people, animals, things, places; proper names (تبریز، سارا) and common names | game (`sort`), lesson (`mark`: tap the names in a sentence) | read.sap.23 | core |
-| 🔨 | `read-sapling-65` | فعل | Action words: what someone does; find the verb at the end of a Persian sentence | game (`sort`), lesson (`mark`) | read.sap.23 | core |
-| 🔨 | `read-sapling-66` | صفت | Describing words: colour, size, how something is (سیب سرخ، کوه بلند); add a describing word to a sentence | lesson (`choose`, `mark`) | read.sap.23 | core |
-| 🔨 | `read-sapling-67` | دیروز، امروز، فردا | Verb tense: past, present, future (رفت، می‌رود، خواهد رفت) | game (`sort`), story (`passage`) | read.sap.24 | core |
-| 🔨 | `read-sapling-68` | من، تو، او | Person: verb endings for من، تو، او، ما، شما، آن‌ها (رفتم، رفتی، رفت …) | lesson (`choose`), game (`pairs`) | read.sap.24 | core |
-| 🔨 | `read-sapling-69` | بازی دستور | Unit game: names, verbs, describing words, tenses | game (`sort`, `pairs`, `order`) | read.sap.23, read.sap.24 | core |
-| 🔨 | `read-sapling-70` | خار یا خوار؟ | Homophones and spelling in context (صد/سد، خار/خوار، خاستن/خواستن، اسرار/اصرار): the sentence decides | lesson (`choose` in a sentence) | read.sap.21 | core |
-| 🔨 | `read-sapling-71` | املای تشدید، تنوین و همزه | Spelling ـّ (بنّا)، ـً (فوراً) and ء ئ (جزء، مسئله; پاییز with «ی», as the Academy's rules write it) in common words | game (`build` with `hidden`), lesson (`choose`) | read.sap.21, read.sap.3 | core |
-| 🔨 | `read-sapling-72` | املای بند | Dictation of a short paragraph on paper, then self-check with the text, then the hard words again with tiles | home (`paper`), game (`build` with `hidden`) | read.sap.7, read.sap.21 | core |
-| 🔨 | `read-sapling-73` | جمله‌ها را به هم وصل کن | Joining sentences with «و»، «امّا»، «چون»، «بعد»؛ which joining word fits | lesson (`choose`), game (`order`) | read.sap.25 | core |
-| 🔨 | `read-sapling-74` | بند بنویسیم | A paragraph: order the sentences of a model paragraph (the first says what it is about), then write one about a picture on paper | game (`order`), home (`paper`), story (`talk`) | read.sap.27, read.sap.26 | core |
-| 🔨 | `read-sapling-75` | قصه بنویس | A story from three pictures: beginning, middle, end; plan with the pictures, write, read it back, fix one thing | game (`order` with `numbered`), home (`paper`), story (`talk`) | read.sap.27 | core |
-| 🔨 | `read-sapling-76` | نامه و دعوت‌نامه | Reading and writing a short letter, a message and an invitation: who to, what, from whom | story (`passage`), home (`paper`) | read.sap.28 | full |
-| 🔨 | `read-sapling-77` | دفتر خاطرات | A diary entry: when, what happened, how I felt; a week of short entries at home | story (`passage`), home (`paper`) | read.sap.28, read.sap.26 | full |
-| 🔨 | `read-sapling-78` | شعر بخوانیم | Children's poems: rhythm, rhyme, picturing the poem; learn one by heart | animation (`scene`), game (`pairs` of rhyming words), home (`doit`), story (`readaloud`), lesson (`choose`) | read.sap.29, read.sap.12 | core |
-| 🔨 | `read-sapling-79` | قصه‌های کهن | An animal fable from کلیله و دمنه and a folk tale (ماه‌پیشونی), retold for Baghcheh: read, the lesson, tell it | animation (`scene`), story (`passage`, `talk`) | read.sap.29, read.sap.14 | core |
-| 🔨 | `read-sapling-80` | به ترتیب الفبا | Alphabetical order by the first, then the second letter; finding a word in a children's dictionary | game (`order`), lesson (`choose`) | read.sap.30 | core |
-| 🔨 | `read-sapling-81` | در فرهنگ لغت | Using a dictionary page: find the word, read its meaning, pick the meaning that fits the sentence | lesson (`choose`), story (`passage`) | read.sap.30, read.sap.19 | core |
-| 🔨 | `read-sapling-82` | سرمشق | Neat handwriting: letter sizes, spaces between words, a model line copied on paper; a paragraph copied without hurry | lesson (`trace` with whole words), home (`paper`) | read.sap.33 | core |
-| 🔨 | `read-sapling-83` | متن علمی ۲ | A longer information text (the sea, the forest): headings, a fact from each part, a new word from its sentence | story (`passage`), lesson (`choose`) | read.sap.15, read.sap.19 | core |
-| 🔨 | `read-sapling-84` | گزارش کوتاه | Reporting: tell, then write three sentences about something seen (a trip to the bakery, a plant growing) | story (`talk`), home (`paper`) | read.sap.31, read.sap.35 | core |
-| 🔨 | `read-sapling-86` | نظر من | Opinion: say what you like best and why; order a model (opinion, reason, «چون», ending), then write one on paper | game (`order`), home (`paper`) | read.sap.34 | core |
-| 🔨 | `read-sapling-87` | درباره‌اش بنویس | Information writing: a topic sentence, three facts from a text, a closing sentence, on paper | story (`passage`), home (`paper`) | read.sap.35 | core |
-| 🔨 | `read-sapling-88` | دو متن، یک موضوع | Two short texts about the same animal or place: sort what is the same and what is different | story (`passage`), game (`sort`) | read.sap.36 | core |
-| 🔨 | `read-sapling-89` | پژوهش کوچک | A question, a book or page with a grown-up, three facts written down, told to the family | home (`paper`), story (`talk`), parent tip (`forparents`) | read.sap.37 | full |
-| 🔨 | `read-sapling-85` | بازی باغچه نهال | Garden game: unvowelled words, families, grammar, homophones, a story in order | game (`sort`, `pairs` with `hidden`, `build`, `order`), lesson (`choose`) | read.sap.11, read.sap.17, read.sap.21, read.sap.23, read.sap.13 | core |
+| ✅ | `read-sapling-31` | دندانه‌دارها را بنویس | Handwriting: ب پ ت ث ن ی in every form, joined in words (تاب، نان، پنیر، بینی), on the line, dots last; then on paper | lesson (`intro`, `trace` with joined forms), home (`paper`) | read.sap.8 | core |
+| ✅ | `read-sapling-32` | کاسه‌دارها را بنویس | Handwriting: س ش ص ض and the bowls of ن ق ل ی at the end (سوسن، شیش، صابون، قاشق) | lesson (`trace` with joined forms), home (`paper`) | read.sap.8 | core |
+| ✅ | `read-sapling-33` | «ج چ ح خ» و «ع غ» را بنویس | Handwriting: the hook letters and the forms of ع غ (بچه، حلزون، جعبه، باغ) | lesson (`trace` with joined forms), home (`paper`) | read.sap.8 | core |
+| ✅ | `read-sapling-34` | «ک گ ف ق م ه ط ظ» را بنویس | Handwriting: the tall and round letters (کفش، گلدان، مهتاب، طوطی، ظرف) | lesson (`trace` with joined forms), home (`paper`) | read.sap.8 | core |
+| ✅ | `read-sapling-35` | حرف‌هایی که نمی‌چسبند | ا د ذ ر ز ژ و never join the next letter: sort letters, find the gaps in words (دارو، روز، ژاله), write words with them | game (`sort`), lesson (`trace`), home (`paper`) | read.sap.5, read.sap.8 | core |
+| ✅ | `read-sapling-36` | جدول الفبا | The 32 letters in order with their names (الف، بِ، پِ … واو، ه، ی) as پایه اول ends; put letters in order; say a word's letters by name | animation (`scene`), game (`order`), lesson (`choose` with `say`) | read.sap.30 | core |
+| ✅ | `read-sapling-37` | با هم بخوانیم | Longer vowelled texts with every letter: a short story and a poem, read with a grown-up, then alone; questions | story (`passage`, `readaloud`) | read.sap.6, read.sap.10 | core |
+| ✅ | `read-sapling-38` | املای جمله | Dictation of short sentences: the grown-up reads, the child writes on paper, then checks word by word against the answer; tiles for the hardest words | home (`paper`), game (`build` with `hidden`) | read.sap.7, read.sap.8 | core |
+| ✅ | `read-sapling-39` | نشانه‌ها کم می‌شوند | Fading marks: the same text with all marks, then marks only on new words; finding a word's vowels from the sentence (گُل یا گِل؟) | story (`passage`), lesson (`choose`) | read.sap.11 | core |
+| ✅ | `read-sapling-40` | کلمه‌های پرکاربرد | Common words read without marks at a glance (است، این، آن، که، را، با، از، می‌رود، بود), each one first decoded, then found fast in sentences | game (`pairs` with `hidden`), lesson (`choose`) | read.sap.11, read.sap.10 | core |
+| ✅ | `read-sapling-41` | بلند بخوان ۲ | Fluency with fewer marks: short texts read aloud, hard words practised, re-read with expression | story (`readaloud`) | read.sap.10, read.sap.12 | core |
+| ✅ | `read-sapling-42` | هم‌معنی | Synonyms: match pairs, then pick the word that can replace one in a sentence (شاد/خوشحال، زیبا/قشنگ) | game (`pairs`), lesson (`choose`) | read.sap.16 | core |
+| ✅ | `read-sapling-43` | مخالف | Opposites: pairs, then finish a sentence with the opposite (بالا/پایین، روز/شب، زود/دیر) | game (`pairs` with `hidden`), lesson (`choose`) | read.sap.16 | core |
+| ✅ | `read-sapling-44` | یکی، چندتا | Singular and plural with ـها and ـان (گل‌ها، درختان); which takes which | game (`sort`), lesson (`choose`) | read.sap.20 | core |
+| ✅ | `read-sapling-45` | بازی کلمه‌ها ۴ | Unit game: synonyms, opposites, plurals, common words | game (`pairs`, `sort`) | read.sap.16, read.sap.20, read.sap.11 | core |
+| ✅ | `read-sapling-46` | قصه و آدم‌هایش | Story comprehension: who, where, what happened; put the events in order; retell to the grown-up | animation (`scene`), story (`passage`, `talk`), game (`order`) | read.sap.13 | core |
+| ✅ | `read-sapling-47` | چرا این‌طور شد؟ | Inference: why, how did they feel, what will happen next; a word's meaning from the sentence | story (`passage`), lesson (`choose`) | read.sap.14 | core |
+| ✅ | `read-sapling-48` | حکایت | Short حکایت in our own words (the lion and the mouse; the clever child): read, say the lesson, tell it at home | animation (`scene`), story (`passage`, `talk`) | read.sap.14, read.sap.29 | core |
+| ✅ | `read-sapling-49` | بخوان و حفظ کن | A children's poem written for Baghcheh: read it, clap its rhythm, find its rhymes, say it by heart for the family | story (`readaloud`), lesson (`clap`, `choose`), home (`doit`) | read.sap.29, read.sap.12 | core |
+| ✅ | `read-sapling-50` | جمله را کامل کن | Sentences: finish a sentence, answer a question with a whole sentence, put a word in the right place | lesson (`choose`), game (`order`) | read.sap.25 | core |
+| ✅ | `read-sapling-51` | نشانه‌های نوشتن | Punctuation: «.»، «؟»، «!»، «،» and «« »» for what someone says; put the missing mark | lesson (`choose`), story (`passage`) | read.sap.22 | core |
+| ✅ | `read-sapling-52` | درباره تصویر بنویس | Three to five sentences about a picture on paper: who, where, what is happening; the grown-up ticks a short checklist | lesson (`choose`), home (`paper`) | read.sap.25, read.sap.26 | core |
+| ✅ | `read-sapling-53` | هم‌صداها در کلمه‌ها | املا of same-sound letters in common words, using the family to decide (صبح ← صبحانه، ظهر ← ظهرها، حیاط) | game (`sort`, `build` with `hidden`), lesson (`choose`) | read.sap.21, read.sap.17 | core |
+| ✅ | `read-sapling-54` | خانواده کلمه‌ها | Word families: words that share a root (دان، دانا، دانش، دانشمند; کار، کارگر، کارخانه); sort and build | game (`sort`, `build`), lesson (`choose`) | read.sap.17 | core |
+| ✅ | `read-sapling-55` | کلمه بساز | Suffixes: ـی (ایرانی)، ـچه (باغچه)، ـبان (باغبان)، ـگر (کارگر)، ـدان (نمکدان)، ـستان (گلستان)؛ what each adds | game (`build`), lesson (`choose`) | read.sap.18 | core |
+| ✅ | `read-sapling-56` | کلمه‌های مرکب | Compound words (گل‌فروش، کتاب‌خانه، آب‌پاش، دست‌کش): split them, say what they mean, write them with a half-space | game (`build`, `pairs`), lesson (`choose`) | read.sap.18 | core |
+| ✅ | `read-sapling-57` | بازی کلمه‌سازی | Unit game: families, suffixes, compounds | game (`sort`, `build`, `pairs` with `hidden`) | read.sap.17, read.sap.18 | core |
+| ✅ | `read-sapling-58` | بخوانیم و یاد بگیریم | Information text: title, pictures, captions; find a fact, say what you learned (how rain falls; bees) | story (`passage`), lesson (`choose`) | read.sap.15 | core |
+| ✅ | `read-sapling-59` | کلمه‌های تازه | Tier 2 words from texts: meet the word in a sentence, a child-friendly meaning, examples, use it (مواظب، تصمیم، کمک کردن) | lesson (`choose` in a sentence), game (`pairs`) | read.sap.19 | core |
+| ✅ | `read-sapling-60` | برایم تعریف کن | Speaking: tell the family a story or what you learned, in order; the grown-up asks two questions | story (`talk`), home (`doit`) | read.sap.31 | core |
+| ✅ | `read-sapling-61` | کتاب‌خوانی | Reading a short book alone (from home or a library), then talking about it: who, what, favourite part; a book list for families | story (`talk`), home (`paper`), parent tip (`forparents`) | read.sap.32 | core |
+| ✅ | `read-sapling-62` | متن بی‌نشانه | Reading without vowel marks: stories and information texts with no marks; when a word could be read two ways, the sentence decides | story (`passage`), lesson (`choose`) | read.sap.11 | core |
+| ✅ | `read-sapling-63` | روان و با حالت | Fluency: punctuation pauses, a question's tune, a character's voice; read, practise, re-read | story (`readaloud`) | read.sap.12 | core |
+| ✅ | `read-sapling-64` | اسم | Naming words: people, animals, things, places; proper names (تبریز، سارا) and common names | game (`sort`), lesson (`mark`: tap the names in a sentence) | read.sap.23 | core |
+| ✅ | `read-sapling-65` | فعل | Action words: what someone does; find the verb at the end of a Persian sentence | game (`sort`), lesson (`mark`) | read.sap.23 | core |
+| ✅ | `read-sapling-66` | صفت | Describing words: colour, size, how something is (سیب سرخ، کوه بلند); add a describing word to a sentence | lesson (`choose`, `mark`) | read.sap.23 | core |
+| ✅ | `read-sapling-67` | دیروز، امروز، فردا | Verb tense: past, present, future (رفت، می‌رود، خواهد رفت) | game (`sort`), story (`passage`) | read.sap.24 | core |
+| ✅ | `read-sapling-68` | من، تو، او | Person: verb endings for من، تو، او، ما، شما، آن‌ها (رفتم، رفتی، رفت …) | lesson (`choose`), game (`pairs`) | read.sap.24 | core |
+| ✅ | `read-sapling-69` | بازی دستور | Unit game: names, verbs, describing words, tenses | game (`sort`, `pairs`, `order`) | read.sap.23, read.sap.24 | core |
+| ✅ | `read-sapling-70` | خار یا خوار؟ | Homophones and spelling in context (صد/سد، خار/خوار، خاستن/خواستن، اسرار/اصرار): the sentence decides | lesson (`choose` in a sentence) | read.sap.21 | core |
+| ✅ | `read-sapling-71` | املای تشدید، تنوین و همزه | Spelling ـّ (بنّا)، ـً (فوراً) and ء ئ (جزء، مسئله; پاییز with «ی», as the Academy's rules write it) in common words | game (`build` with `hidden`), lesson (`choose`) | read.sap.21, read.sap.3 | core |
+| ✅ | `read-sapling-72` | املای بند | Dictation of a short paragraph on paper, then self-check with the text, then the hard words again with tiles | home (`paper`), game (`build` with `hidden`) | read.sap.7, read.sap.21 | core |
+| ✅ | `read-sapling-73` | جمله‌ها را به هم وصل کن | Joining sentences with «و»، «امّا»، «چون»، «بعد»؛ which joining word fits | lesson (`choose`), game (`order`) | read.sap.25 | core |
+| ✅ | `read-sapling-74` | بند بنویسیم | A paragraph: order the sentences of a model paragraph (the first says what it is about), then write one about a picture on paper | game (`order`), home (`paper`), story (`talk`) | read.sap.27, read.sap.26 | core |
+| ✅ | `read-sapling-75` | قصه بنویس | A story from three pictures: beginning, middle, end; plan with the pictures, write, read it back, fix one thing | game (`order` with `numbered`), home (`paper`), story (`talk`) | read.sap.27 | core |
+| ✅ | `read-sapling-76` | نامه و دعوت‌نامه | Reading and writing a short letter, a message and an invitation: who to, what, from whom | story (`passage`), home (`paper`) | read.sap.28 | full |
+| ✅ | `read-sapling-77` | دفتر خاطرات | A diary entry: when, what happened, how I felt; a week of short entries at home | story (`passage`), home (`paper`) | read.sap.28, read.sap.26 | full |
+| ✅ | `read-sapling-78` | شعر بخوانیم | Children's poems: rhythm, rhyme, picturing the poem; learn one by heart | animation (`scene`), game (`pairs` of rhyming words), home (`doit`), story (`readaloud`), lesson (`choose`) | read.sap.29, read.sap.12 | core |
+| ✅ | `read-sapling-79` | قصه‌های کهن | An animal fable from کلیله و دمنه and a folk tale (ماه‌پیشونی), retold for Baghcheh: read, the lesson, tell it | animation (`scene`), story (`passage`, `talk`) | read.sap.29, read.sap.14 | core |
+| ✅ | `read-sapling-80` | به ترتیب الفبا | Alphabetical order by the first, then the second letter; finding a word in a children's dictionary | game (`order`), lesson (`choose`) | read.sap.30 | core |
+| ✅ | `read-sapling-81` | در فرهنگ لغت | Using a dictionary page: find the word, read its meaning, pick the meaning that fits the sentence | lesson (`choose`), story (`passage`) | read.sap.30, read.sap.19 | core |
+| ✅ | `read-sapling-82` | سرمشق | Neat handwriting: letter sizes, spaces between words, a model line copied on paper; a paragraph copied without hurry | lesson (`trace` with whole words), home (`paper`) | read.sap.33 | core |
+| ✅ | `read-sapling-83` | متن علمی ۲ | A longer information text (the sea, the forest): headings, a fact from each part, a new word from its sentence | story (`passage`), lesson (`choose`) | read.sap.15, read.sap.19 | core |
+| ✅ | `read-sapling-84` | گزارش کوتاه | Reporting: tell, then write three sentences about something seen (a trip to the bakery, a plant growing) | story (`talk`), home (`paper`) | read.sap.31, read.sap.35 | core |
+| ✅ | `read-sapling-86` | نظر من | Opinion: say what you like best and why; order a model (opinion, reason, «چون», ending), then write one on paper | game (`order`), home (`paper`) | read.sap.34 | core |
+| ✅ | `read-sapling-87` | درباره‌اش بنویس | Information writing: a topic sentence, three facts from a text, a closing sentence, on paper | story (`passage`), home (`paper`) | read.sap.35 | core |
+| ✅ | `read-sapling-88` | دو متن، یک موضوع | Two short texts about the same animal or place: sort what is the same and what is different | story (`passage`), game (`sort`) | read.sap.36 | core |
+| ✅ | `read-sapling-89` | پژوهش کوچک | A question, a book or page with a grown-up, three facts written down, told to the family | home (`paper`), story (`talk`), parent tip (`forparents`) | read.sap.37 | full |
+| ✅ | `read-sapling-85` | بازی باغچه نهال | Garden game: unvowelled words, families, grammar, homophones, a story in order | game (`sort`, `pairs` with `hidden`, `build`, `order`), lesson (`choose`) | read.sap.11, read.sap.17, read.sap.21, read.sap.23, read.sap.13 | core |
 
 #### Practice
 
 | St | Id | Practice | What it makes | Objectives |
 |---|---|---|---|---|
-| 🔨 | `read-sapling-p1` | Decodable library, growing with the letters | Words, sentences and short stories that use only the letters taught so far (checked by `tools/check-reading.js`), with a picture question; after the alphabet, levelled texts with fewer marks | read.sap.6, read.sap.10, read.sap.11 |
-| 🔨 | `read-sapling-p2` | Dictation bank (املا) | Words, then sentences, then short paragraphs by letter group, same-sound letters and homophones, with audio; tiles or paper, with the answer for the grown-up | read.sap.7, read.sap.21 |
-| 🔨 | `read-sapling-p3` | Handwriting sheets | Printable models of each letter group and joined words, then model lines (سرمشق) | read.sap.8, read.sap.33 |
-| 🔨 | `read-sapling-p4` | Word-family and suffix bank | Roots with their families, suffixes and compounds, for sort and build games | read.sap.17, read.sap.18 |
-| 🔨 | `read-sapling-p5` | Synonym, opposite and plural bank | Pairs and sentences for matching and fill-in games | read.sap.16, read.sap.20 |
-| 🔨 | `read-sapling-p6` | Fluency passages | Short texts for repeated reading aloud, parent-marked, from vowelled to unvowelled | read.sap.10, read.sap.12 |
-| 🔨 | `read-sapling-p7` | Comprehension texts | Stories, حکایت and information texts with who/what/why/what next questions | read.sap.13, read.sap.14, read.sap.15 |
-| 🔨 | `read-sapling-p8` | Grammar sentence bank | Sentences tagged by word class and tense for sort and tap games | read.sap.23, read.sap.24 |
-| 🔨 | `read-sapling-p9` | Writing prompts | Pictures and topics for sentences, paragraphs, stories, letters and diary entries, each with a model and a checklist | read.sap.25, read.sap.26, read.sap.27, read.sap.28 |
-| 🔨 | `read-sapling-p10` | حرف را پیدا کن | a letter taught, found among letters that look alike, or the letter a picture starts with. | read.sap.1, read.sap.30 |
-| 🔨 | `read-sapling-p11` | بخوان و پیدا کن | read a word and tap its picture, or see a picture and tap its word. | read.sap.1, read.sap.6 |
-| 🔨 | `read-sapling-p12` | حرف به حرف بساز | the picture's word built from letter tiles, with one tile too many. | read.sap.1, read.sap.7 |
-| 🔨 | `read-sapling-p13` | کلمه و تصویر | memory pairs and open pairs: each written word with its picture. | read.sap.6 |
-| 🔨 | `read-sapling-p14` | جمله بساز | words (or phrases) put in order to make a sentence; the full stop goes last. | read.sap.9, read.sap.25 |
-| 🔨 | `read-sapling-p15` | شکل‌های حرف | a letter alone and its form at the start of a word; letters that join or not. | read.sap.5, read.sap.8 |
-| 🔨 | `read-sapling-p16` | کدام درست است؟ | a picture and two spellings with a same-sound letter; later homophones in a sentence. | read.sap.7, read.sap.21 |
-| 🔨 | `read-sapling-p17` | نشانه بگذار | which mark ends a sentence (. ؟ !), the comma, and «» for what someone says. | read.sap.9, read.sap.22 |
-| 🔨 | `read-sapling-p18` | اول، بعد، آخر | the sentences of a short story put in order. | read.sap.13, read.sap.27 |
-| 🔨 | `read-sapling-p19` | الفبا | letters in alphabet order, a letter's name, words by their first letter. | read.sap.30 |
-| 🔨 | `read-sapling-p20` | کدام خوانده می‌شود؟ | a word with no marks in a sentence; which way is it read here? | read.sap.11 |
-| 🔨 | `read-sapling-p21` | کلمه‌های پرکاربرد | common words found fast in a sentence, and memory pairs of them. | read.sap.11, read.sap.10 |
-| 🔨 | `read-sapling-p22` | اشتباه را پیدا کن | which pair is not synonyms / opposites; which sentence uses a word wrongly. | read.sap.16, read.sap.20 |
-| 🔨 | `read-sapling-p23` | کلمه‌ها را جدا کن | words sorted: same meaning or opposite, one or many, family, compound or simple. | read.sap.16, read.sap.17, read.sap.20 |
-| 🔨 | `read-sapling-p24` | درست یا نادرست؟ | a short text read, then a sentence about it: true or false? | read.sap.13, read.sap.15 |
-| 🔨 | `read-sapling-p25` | هم‌قافیه‌ها | written words matched with the word that rhymes. | read.sap.29 |
-| 🔨 | `read-sapling-p26` | جمله را کامل کن | the word that completes a sentence: a verb, a joining word (و، امّا، چون، بعد). | read.sap.25, read.sap.34 |
-| 🔨 | `read-sapling-p27` | کدام از این خانواده نیست؟ | four words, one not in the family; or the word a suffix makes. | read.sap.17, read.sap.18 |
-| 🔨 | `read-sapling-p28` | واقعیت یا نظر؟ | sentences sorted into facts and opinions; the sentence that is a fact. | read.sap.15, read.sap.34, read.sap.36 |
-| 🔨 | `read-sapling-p29` | معنی از جمله | a new word met in a sentence; its meaning chosen from the sentence. | read.sap.19, read.sap.14 |
-| 🔨 | `read-sapling-p30` | تعریف کن | something to tell the family, with questions for the grown-up (not scored). | read.sap.31, read.sap.32 |
-| 🔨 | `read-sapling-p32` | کدام کلمه؟ | the noun, the verb or the describing word in a sentence, chosen. | read.sap.23 |
-| 🔨 | `read-sapling-p33` | فعل درست | the right verb form for a person or a time. | read.sap.24, read.sap.23 |
-| 🔨 | `read-sapling-p35` | غلط املایی | three words, one misspelled with a same-sound letter: find it. | read.sap.21, read.sap.7 |
-| 🔨 | `read-sapling-p36` | فرهنگ لغت | a dictionary line read; the meaning that fits a sentence; which word comes first. | read.sap.30, read.sap.19 |
+| ✅ | `read-sapling-p1` | Decodable library, growing with the letters | Words, sentences and short stories that use only the letters taught so far (checked by `tools/check-reading.js`), with a picture question; after the alphabet, levelled texts with fewer marks | read.sap.6, read.sap.10, read.sap.11 |
+| ✅ | `read-sapling-p2` | Dictation bank (املا) | Words, then sentences, then short paragraphs by letter group, same-sound letters and homophones, with audio; tiles or paper, with the answer for the grown-up | read.sap.7, read.sap.21 |
+| ✅ | `read-sapling-p3` | Handwriting sheets | Printable models of each letter group and joined words, then model lines (سرمشق) | read.sap.8, read.sap.33 |
+| ✅ | `read-sapling-p4` | Word-family and suffix bank | Roots with their families, suffixes and compounds, for sort and build games | read.sap.17, read.sap.18 |
+| ✅ | `read-sapling-p5` | Synonym, opposite and plural bank | Pairs and sentences for matching and fill-in games | read.sap.16, read.sap.20 |
+| ✅ | `read-sapling-p6` | Fluency passages | Short texts for repeated reading aloud, parent-marked, from vowelled to unvowelled | read.sap.10, read.sap.12 |
+| ✅ | `read-sapling-p7` | Comprehension texts | Stories, حکایت and information texts with who/what/why/what next questions | read.sap.13, read.sap.14, read.sap.15 |
+| ✅ | `read-sapling-p8` | Grammar sentence bank | Sentences tagged by word class and tense for sort and tap games | read.sap.23, read.sap.24 |
+| ✅ | `read-sapling-p9` | Writing prompts | Pictures and topics for sentences, paragraphs, stories, letters and diary entries, each with a model and a checklist | read.sap.25, read.sap.26, read.sap.27, read.sap.28 |
+| ✅ | `read-sapling-p10` | حرف را پیدا کن | a letter taught, found among letters that look alike, or the letter a picture starts with. | read.sap.1, read.sap.30 |
+| ✅ | `read-sapling-p11` | بخوان و پیدا کن | read a word and tap its picture, or see a picture and tap its word. | read.sap.1, read.sap.6 |
+| ✅ | `read-sapling-p12` | حرف به حرف بساز | the picture's word built from letter tiles, with one tile too many. | read.sap.1, read.sap.7 |
+| ✅ | `read-sapling-p13` | کلمه و تصویر | memory pairs and open pairs: each written word with its picture. | read.sap.6 |
+| ✅ | `read-sapling-p14` | جمله بساز | words (or phrases) put in order to make a sentence; the full stop goes last. | read.sap.9, read.sap.25 |
+| ✅ | `read-sapling-p15` | شکل‌های حرف | a letter alone and its form at the start of a word; letters that join or not. | read.sap.5, read.sap.8 |
+| ✅ | `read-sapling-p16` | کدام درست است؟ | a picture and two spellings with a same-sound letter; later homophones in a sentence. | read.sap.7, read.sap.21 |
+| ✅ | `read-sapling-p17` | نشانه بگذار | which mark ends a sentence (. ؟ !), the comma, and «» for what someone says. | read.sap.9, read.sap.22 |
+| ✅ | `read-sapling-p18` | اول، بعد، آخر | the sentences of a short story put in order. | read.sap.13, read.sap.27 |
+| ✅ | `read-sapling-p19` | الفبا | letters in alphabet order, a letter's name, words by their first letter. | read.sap.30 |
+| ✅ | `read-sapling-p20` | کدام خوانده می‌شود؟ | a word with no marks in a sentence; which way is it read here? | read.sap.11 |
+| ✅ | `read-sapling-p21` | کلمه‌های پرکاربرد | common words found fast in a sentence, and memory pairs of them. | read.sap.11, read.sap.10 |
+| ✅ | `read-sapling-p22` | اشتباه را پیدا کن | which pair is not synonyms / opposites; which sentence uses a word wrongly. | read.sap.16, read.sap.20 |
+| ✅ | `read-sapling-p23` | کلمه‌ها را جدا کن | words sorted: same meaning or opposite, one or many, family, compound or simple. | read.sap.16, read.sap.17, read.sap.20 |
+| ✅ | `read-sapling-p24` | درست یا نادرست؟ | a short text read, then a sentence about it: true or false? | read.sap.13, read.sap.15 |
+| ✅ | `read-sapling-p25` | هم‌قافیه‌ها | written words matched with the word that rhymes. | read.sap.29 |
+| ✅ | `read-sapling-p26` | جمله را کامل کن | the word that completes a sentence: a verb, a joining word (و، امّا، چون، بعد). | read.sap.25, read.sap.34 |
+| ✅ | `read-sapling-p27` | کدام از این خانواده نیست؟ | four words, one not in the family; or the word a suffix makes. | read.sap.17, read.sap.18 |
+| ✅ | `read-sapling-p28` | واقعیت یا نظر؟ | sentences sorted into facts and opinions; the sentence that is a fact. | read.sap.15, read.sap.34, read.sap.36 |
+| ✅ | `read-sapling-p29` | معنی از جمله | a new word met in a sentence; its meaning chosen from the sentence. | read.sap.19, read.sap.14 |
+| ✅ | `read-sapling-p30` | تعریف کن | something to tell the family, with questions for the grown-up (not scored). | read.sap.31, read.sap.32 |
+| ✅ | `read-sapling-p32` | کدام کلمه؟ | the noun, the verb or the describing word in a sentence, chosen. | read.sap.23 |
+| ✅ | `read-sapling-p33` | فعل درست | the right verb form for a person or a time. | read.sap.24, read.sap.23 |
+| ✅ | `read-sapling-p35` | غلط املایی | three words, one misspelled with a same-sound letter: find it. | read.sap.21, read.sap.7 |
+| ✅ | `read-sapling-p36` | فرهنگ لغت | a dictionary line read; the meaning that fits a sentence; which word comes first. | read.sap.30, read.sap.19 |
 
 ### 🌳 درخت — `tree`
 
