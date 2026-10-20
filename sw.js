@@ -2,7 +2,7 @@
    Each VERSION is one complete snapshot of the site: it is downloaded in full on install and then served
    from the cache, so old and new files are never mixed. Bump VERSION on every release (and add new files
    to FILES); open pages switch to the new snapshot by reloading once (see js/common.js). */
-var VERSION = "baghcheh-v23";
+var VERSION = "baghcheh-v24";
 var FILES = [
   "./", "index.html", "guide.html", "method.html", "policies.html", "open.html", "browse.html",
   "css/style.css", "fonts/BalooBhaijaan2.woff", "js/common.js", "js/art.js", "js/art/people.js", "js/art/feelings.js", "js/art/animals.js", "js/art/food.js", "js/art/nature.js", "js/art/home.js", "js/art/things.js", "js/art/scenes.js", "js/art/rig.js", "js/art/rig-science.js", "js/art/rig-feel.js", "js/art/rig-english.js", "js/art/rig-math.js", "js/art/rig-read.js", "js/art/rig-think.js", "js/art/rig-health.js", "js/art/rig-world.js", "js/strings.js", "js/content.js",

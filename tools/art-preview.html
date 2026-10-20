@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <title>Drawing check</title>
 <!-- For checking js/art/*.js by eye: every drawing beside its emoji, at full size and at the size of a small card,
-     every story backdrop, and the emoji used in lessons that have no drawing yet. Open with the dev server at
-     /tools/art-preview.html. Not part of the site. -->
+     every story backdrop, and the emoji used in lessons and practice that have no drawing yet. Open with the dev server
+     at /tools/art-preview.html; ?only=🐒🕷 shows just those drawings. Not part of the site. -->
 <link rel="stylesheet" href="../css/style.css">
 <style>
   body { margin: 16px; }
@@ -17,38 +17,48 @@
   .scenes figure { width: 340px; }
   .scenes .stage { max-width: 320px; }
   .missing { font-size: 30px; letter-spacing: 6px; }
+  .missing small { font-size: 14px; letter-spacing: 0; color: var(--muted, #777); }
 </style>
 </head>
 <body>
-<h2>Drawings</h2>
+<h2>Drawings <span id="count"></span></h2>
 <div class="grid" id="art"></div>
 <h2>Story backdrops</h2>
 <div class="grid scenes" id="scenes"></div>
-<h2>Emoji in lessons with no drawing</h2>
-<p class="missing" id="missing"></p>
-<script src="../js/common.js"></script>
-<script src="../js/strings.js"></script>
-<script src="../js/content.js"></script>
-<script src="../js/art.js"></script>
-<script src="../js/art/people.js"></script>
-<script src="../js/art/feelings.js"></script>
-<script src="../js/art/animals.js"></script>
-<script src="../js/art/food.js"></script>
-<script src="../js/art/nature.js"></script>
-<script src="../js/art/home.js"></script>
-<script src="../js/art/things.js"></script>
-<script src="../js/art/scenes.js"></script>
-<script src="../js/lessons/read.js"></script>
-<script src="../js/lessons/math.js"></script>
-<script src="../js/lessons/feel.js"></script>
-<script src="../js/lessons/english.js"></script>
-<script src="../js/lessons/science.js"></script>
-<script src="../js/lessons/health.js"></script>
-<script src="../js/lessons/thinking.js"></script>
-<script src="../js/lessons/world.js"></script>
+<h2>Emoji with no drawing (Seed, Sprout and Sapling, and lessons for every garden)</h2>
+<p>Most used first. Some are kept as emoji on purpose: interface symbols such as ✅ ❌ ❓ 🔊 🔁, arrows, clock faces, ➕ ✖️ 🟰.</p>
+<h3>In animations (scene and story steps)</h3>
+<p class="missing" id="miss-anim"></p>
+<h3>In other lesson steps</h3>
+<p class="missing" id="miss-other"></p>
+<h3>In practice (js/practice/*.js)</h3>
+<p class="missing" id="miss-practice"></p>
+<!-- A tool, not part of the offline site: no service worker for it. -->
+<script>if (navigator.serviceWorker) navigator.serviceWorker.register = function () { return Promise.resolve(); };</script>
 <script>
-  var el = B.el;
-  Object.keys(B.ART).forEach(function (k) {
+// Loads the same drawing, data and lesson files as the site (read from index.html, in its order), so new art and
+// lesson files show up here without editing this page. Practice files are only read as text, for their emoji.
+var practice = [];
+fetch("../index.html", { cache: "no-store" }).then(function (r) { return r.text(); }).then(function (html) {
+  var srcs = [], m, re = /<script src="([^"]+)"><\/script>/g;
+  while ((m = re.exec(html))) {
+    if (/^js\/(common|strings|content|art)\.js$|^js\/art\/|^js\/lessons\//.test(m[1])) srcs.push("../" + m[1]);
+    else if (/^js\/practice\//.test(m[1])) practice.push("../" + m[1]);
+  }
+  (function next(i) {
+    if (i >= srcs.length) return draw();
+    var sc = document.createElement("script");
+    sc.src = srcs[i] + "?t=" + Date.now();
+    sc.onload = sc.onerror = function () { next(i + 1); };
+    document.body.appendChild(sc);
+  })(0);
+});
+function draw() {
+  var el = B.el, only = new URLSearchParams(location.search).get("only");
+  var keys = Object.keys(B.ART), re = /\p{Extended_Pictographic}(?:\uFE0F|\p{Emoji_Modifier}|\u200D\p{Extended_Pictographic}\uFE0F?)*/gu;
+  if (only) keys = (only.match(re) || []).map(function (k) { return k.replace(/️/g, ""); }).filter(function (k) { return B.ART[k]; });
+  document.getElementById("count").textContent = "(" + keys.length + ")";
+  keys.forEach(function (k) {
     document.getElementById("art").appendChild(el("figure", { class: "stage-like" }, [
       el("div", { class: "big celebrate", text: k }), el("div", { class: "small", text: k + " " + k }), el("figcaption", null, [document.createTextNode(k)])
     ]));
@@ -57,9 +67,34 @@
     var stage = el("div", { class: "stage" }, [B.sceneNode(name)]);
     document.getElementById("scenes").appendChild(el("figure", null, [stage, el("figcaption", { text: name })]));
   });
-  var seen = {}, re = /\p{Extended_Pictographic}(?:️|\p{Emoji_Modifier}|‍\p{Extended_Pictographic}️?)*/gu;
-  (JSON.stringify(B.LESSONS).match(re) || []).forEach(function (m) { if (!B.hasArt(m)) seen[m] = (seen[m] || 0) + 1; });
-  document.getElementById("missing").textContent = Object.keys(seen).sort(function (a, b) { return seen[b] - seen[a]; }).join(" ");
+  // An emoji counts as drawn when it has a drawing or is itself a scene drawing (B.RIG).
+  function tally(text, into) {
+    (text.match(re) || []).forEach(function (m) {
+      var k = m.replace(/️/g, "");
+      if (!B.hasArt(m) && !(B.RIG && (B.RIG[m] || B.RIG[k]))) into[k] = (into[k] || 0) + 1;
+    });
+  }
+  function show(id, seen) {
+    var ks = Object.keys(seen).sort(function (a, b) { return seen[b] - seen[a]; });
+    var p = document.getElementById(id);
+    p.textContent = ks.join(" ") + " ";
+    p.appendChild(el("small", { text: "(" + ks.length + ")" }));
+  }
+  var anim = {}, other = {};
+  B.LESSONS.forEach(function (l) {
+    if (l.level === "tree" || l.level === "forest") return;
+    (l.steps || []).forEach(function (s) { tally(JSON.stringify(s), s.type === "scene" || s.type === "story" ? anim : other); });
+  });
+  show("miss-anim", anim);
+  show("miss-other", other);
+  Promise.all(practice.map(function (src) {
+    return fetch(src + "?t=" + Date.now()).then(function (r) { return r.ok ? r.text() : ""; });
+  })).then(function (texts) {
+    var seen = {};
+    texts.forEach(function (t) { tally(t, seen); });
+    show("miss-practice", seen);
+  });
+}
 </script>
 </body>
 </html>
