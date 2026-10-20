@@ -56,6 +56,9 @@ tools/build-world-map.js makes js/maps/region.js and world.js from Natural Earth
 tools/build-flags.js    makes js/maps/flags.js from public-domain SVG flags (node + svgo)
 tools/strokes-preview.html  every model in js/strokes.js with numbered strokes and arrows, to check by eye
 tools/art-preview.html  every drawing and backdrop, and the emoji in lessons that have no drawing yet
+tools/record-game-voice.mjs  records the recess games' lines in games/shared/lines.js that are new or changed (ElevenLabs, voice
+                    Matilda) into audio/games/ and writes their versions; --dry-run shows the cost (node + ffmpeg;
+                    ELEVENLABS_API_KEY in .env, not committed; then bump VERSION in sw.js)
 audio/  fonts/      optional recorded audio / self-hosted Baloo Bhaijaan 2 font
 js/recess.js        «زنگ تفریح» (recess): the catalog of games (B.GAMES), the recess page, games in the garden's path,
                     the parent's daily recess time
