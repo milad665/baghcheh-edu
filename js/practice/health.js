@@ -632,7 +632,12 @@ B.PRACTICE = B.PRACTICE || [];
       var p = pool(data, "dd", ctx, rng);
       if (!p.fresh || !n) return [];
       var again = againFirst(ctx, data, "dd").slice(0, 2);
-      var ids = again.concat(p.fresh, p.older).filter(function (id, i, a) { return a.indexOf(id) === i; });
+      var texts = {};
+      var ids = again.concat(p.fresh, p.older).filter(function (id, i, a) {
+        var t = item(data, id).fa[1];
+        if (a.indexOf(id) !== i || texts[t]) return false;
+        return (texts[t] = true);
+      });
       var goods = ids.filter(function (id) { return item(data, id).fa[2]; }), bads = ids.filter(function (id) { return !item(data, id).fa[2]; });
       if (goods.length < 2 || bads.length < 2) return [];
       var pick = rng.shuffle(goods.slice(0, 3).concat(bads.slice(0, 3)));

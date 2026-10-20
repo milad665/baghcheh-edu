@@ -1089,11 +1089,18 @@ B.PRACTICE = B.PRACTICE || [];
   function sortBank(rounds) {
     return function (rng, n, ctx) {
       var L = ctx.w("labels"), T = ctx.w("things") || {}, open = rounds.filter(function (r) { return !r.after || ctx.done(r.after); });
-      return rng.sample(open, Math.min(n, 2)).map(function (r) {
-        var per = Math.floor(6 / r.baskets.length), picked = [];
-        r.baskets.forEach(function (bk) { picked = picked.concat(rng.sample(Object.keys(r.items).filter(function (k) { return r.items[k][1] === bk.v; }), per)); });
+      // With one round and room for two steps, the round's things are split between two steps (none shown twice).
+      var plan = rng.sample(open, Math.min(n, 2)).map(function (r) { return { r: r, part: 0, of: 1 }; });
+      if (plan.length === 1 && n >= 2) plan.push({ r: plan[0].r, part: 1, of: 2 }), plan[0].of = 2;
+      return plan.map(function (pl) {
+        var r = pl.r, per = Math.floor(6 / r.baskets.length), picked = [];
+        r.baskets.forEach(function (bk) {
+          var mine = rng.shuffle(Object.keys(r.items).filter(function (k) { return r.items[k][1] === bk.v; }).sort());
+          if (pl.of === 2) { var half = Math.ceil(mine.length / 2); mine = pl.part ? mine.slice(half) : mine.slice(0, half); }
+          picked = picked.concat(mine.slice(0, per));
+        });
         var prompt = ctx.w(r.prompt || "prompt");
-        return { type: "sort", key: r.id, prompt: prompt, say: prompt,
+        return { type: "sort", key: r.id + (pl.of === 2 ? "-" + pl.part : ""), prompt: prompt, say: prompt,
           baskets: r.baskets.map(function (bk) { return { pic: bk.pic, label: L[bk.v], value: bk.v }; }),
           items: rng.shuffle(picked).map(function (k) { var it = r.items[k], o = { pic: it[0], basket: it[1] }; if (T[k]) { o.label = T[k]; o.say = T[k]; } return o; }) };
       });
@@ -1106,9 +1113,14 @@ B.PRACTICE = B.PRACTICE || [];
   /* Matching: table { key: [picture, picture] }, words.a / words.b the cards' words (optional), per pairs a step. */
   function pairsBank(table, per) {
     return function (rng, n, ctx) {
-      var A = ctx.w("a") || {}, Bw = ctx.w("b") || {}, ks = rng.sample(Object.keys(table), per || 4), prompt = ctx.w("prompt");
-      return [{ type: "pairs", key: ks.slice().sort().join(","), prompt: prompt, say: prompt,
-        pairs: ks.map(function (k) { return [card(table[k][0], A[k]), card(table[k][1], Bw[k])]; }) }];
+      var A = ctx.w("a") || {}, Bw = ctx.w("b") || {}, all = rng.shuffle(Object.keys(table)), prompt = ctx.w("prompt");
+      // Room for two steps: the table split in two (three pairs or more each), so no pair comes twice.
+      var size = n >= 2 && all.length >= 6 ? Math.min(per || 4, Math.floor(all.length / 2)) : per || 4;
+      var groups = n >= 2 && all.length >= 6 ? [all.slice(0, size), all.slice(size, size * 2)] : [all.slice(0, size)];
+      return groups.map(function (ks) {
+        return { type: "pairs", key: ks.slice().sort().join(","), prompt: prompt, say: prompt,
+          pairs: ks.map(function (k) { return [card(table[k][0], A[k]), card(table[k][1], Bw[k])]; }) };
+      });
     };
   }
   /* Putting steps in order: seqs { key: [picture, …] }, words.steps { key: [words, …] }; words.jobs { key: name } fills
@@ -1438,7 +1450,7 @@ B.PRACTICE = B.PRACTICE || [];
       tired: ["چشم‌هایت خسته شده. چه کار کنیم؟", "صفحه را کنار می‌گذاریم و بیرون بازی می‌کنیم", "نزدیک‌تر به صفحه می‌نشینیم"],
       dinner: ["وقت شام است. چه کار کنیم؟", "صفحه را خاموش می‌کنیم و با خانواده غذا می‌خوریم", "سر سفره بازی می‌کنیم"],
       button: ["روی صفحه یک دکمه بزرگ آمد که نمی‌دانی چیست. چه کار کنیم؟", "از بزرگ‌ترها می‌پرسیم", "زود رویش می‌زنیم"] } }
-  });
+  }, { per: 4 });
   B.PRACTICE.push({
     id: "think-seed-p24", subject: "think", level: "seed", objectives: ["think.seed.10"], needs: ["think-seed-14"],
     emoji: "🙋", title: "اگر این شد، آن کار",
@@ -1897,7 +1909,7 @@ B.PRACTICE = B.PRACTICE || [];
       jobs: { tablet: "تبلت روشن نمی‌شود", sound: "صدا نمی‌آید", printer: "چاپگر چاپ نمی‌کند" },
       steps: { tablet: ["ببین شارژ دارد؟", "دکمه روشن را نگه دار", "کمی صبر کن", "اگر نشد، به بزرگ‌ترها بگو"], sound: ["ببین صدا بسته است؟", "صدا را زیاد کن", "ببین هدفون درست وصل است؟", "اگر نشد، به بزرگ‌ترها بگو"],
         printer: ["ببین کاغذ دارد؟", "ببین به برق وصل است؟", "روشنش کن", "اگر نشد، به بزرگ‌ترها بگو"] } },
-    make: orderBank({ tablet: ["🔌", "🔘", "⏳", "🧑"], sound: ["🔇", "🔊", "🎧", "🧑"], printer: ["📄", "🔌", "🔘", "🧑"] }, 1)
+    make: orderBank({ tablet: ["🔌", "🔘", "⏳", "🧑"], sound: ["🔇", "🔊", "🎧", "🧑"], printer: ["📄", "🔌", "🔘", "🧑"] }, 2)
   });
 
   /* think-sprout-p34 to p36: passwords (think-sprout-17). */
@@ -2226,7 +2238,7 @@ B.PRACTICE = B.PRACTICE || [];
         seen[key] = true;
         var q = ctx.w("prompt", { x: fa(row[at]) }), right = at + 1, opts = [right, right === 7 ? 6 : right + 1, row[at] <= 7 && row[at] !== right ? row[at] : right - 1];
         opts = opts.filter(function (v, i, a) { return v > 0 && a.indexOf(v) === i; });
-        out.push({ type: "choose", key: key, prompt: q, say: q, show: row.map(fa).join("  "), ltr: true, options: rng.shuffle(opts).map(function (v) { return { label: fa(v), value: String(v) }; }), answer: String(right) });
+        out.push({ type: "choose", key: key, prompt: q, say: q, show: row.map(fa).join("\u2003"), ltr: true, options: rng.shuffle(opts).map(function (v) { return { label: fa(v), value: String(v) }; }), answer: String(right) });
       }
       return out;
     }
@@ -2396,7 +2408,7 @@ B.PRACTICE = B.PRACTICE || [];
         if (!cnt || seen[key]) continue;
         seen[key] = true;
         var q = ctx.w("prompt", { c: C[COLOUR_NAMES[c]] }), opts = [cnt, cnt + 1, cnt > 1 ? cnt - 1 : cnt + 2];
-        out.push({ type: "choose", key: key, prompt: q, say: q, show: row.map(fa).join(" "), ltr: true, options: rng.shuffle(opts).map(function (v) { return { label: fa(v), value: String(v) }; }), answer: String(cnt) });
+        out.push({ type: "choose", key: key, prompt: q, say: q, show: row.map(fa).join("\u2003"), ltr: true, options: rng.shuffle(opts).map(function (v) { return { label: fa(v), value: String(v) }; }), answer: String(cnt) });
       }
       return out;
     }
@@ -2510,10 +2522,14 @@ B.PRACTICE = B.PRACTICE || [];
     emoji: "🗳️", title: "رأی‌ها را بشمار",
     words: { prompt: "هر کس میوه محبوبش را گفت. هر رأی را در ردیف میوه‌اش بگذار.", names: KID_WORDS },
     make: function (rng, n, ctx) {
-      var N = ctx.w("names"), kinds = rng.sample(VOTE_PICS, 3), kids = rng.shuffle(KID_NAMES.slice());
-      return [{ type: "sort", key: kinds.join(""), prompt: ctx.w("prompt"), say: ctx.w("prompt"),
-        baskets: kinds.map(function (k) { return { pic: k, value: k }; }),
-        items: kids.map(function (kid, i) { var f = kinds[i < 3 ? i : rng.int(0, 2)]; return { pic: f, label: N[kid], say: N[kid], basket: f }; }) }];
+      var N = ctx.w("names"), fruit = rng.shuffle(VOTE_PICS);
+      // Two rounds with different fruit (the first three, then the last two and the first).
+      return [fruit.slice(0, 3), fruit.slice(3).concat(fruit[0])].slice(0, n).map(function (kinds) {
+        var kids = rng.shuffle(KID_NAMES.slice());
+        return { type: "sort", key: kinds.join(""), prompt: ctx.w("prompt"), say: ctx.w("prompt"),
+          baskets: kinds.map(function (k) { return { pic: k, value: k }; }),
+          items: kids.map(function (kid, i) { var f = kinds[i < 3 ? i : rng.int(0, 2)]; return { pic: f, label: N[kid], say: N[kid], basket: f }; }) };
+      });
     }
   });
 
@@ -2599,7 +2615,7 @@ B.PRACTICE = B.PRACTICE || [];
       steps: { message: ["سارا پیام را می‌نویسد", "گوشی پیام را می‌فرستد", "پیام از ایستگاه‌های زیادی می‌گذرد", "گوشی خاله پیام را می‌گیرد", "خاله پیام را می‌خواند"],
         photo: ["رضا عکس می‌گیرد", "تبلت عکس را می‌فرستد", "عکس از شهرهای زیادی می‌گذرد", "رایانه پدربزرگ عکس را می‌گیرد", "پدربزرگ عکس را می‌بیند"],
         call: ["مینا تماس می‌گیرد", "صدا و تصویر مینا از گوشی می‌رود", "از ایستگاه‌های زیادی می‌گذرد", "گوشی عمه آن را می‌گیرد", "عمه مینا را می‌بیند و صدایش را می‌شنود"] } },
-    make: orderBank({ message: ["👧", "📱", "📡", "📲", "👩"], photo: ["📷", "💻", "🏙️", "🖥️", "👴"], call: ["📞", "📱", "📡", "📲", "👩"] }, 1)
+    make: orderBank({ message: ["👧", "📱", "📡", "📲", "👩"], photo: ["📷", "💻", "🏙️", "🖥️", "👴"], call: ["📞", "📱", "📡", "📲", "👩"] }, 2)
   });
   pushAsk({
     id: "think-sapling-p43", subject: "think", level: "sapling", objectives: ["think.sap.11"], needs: ["think-sapling-20"], lessons: ["think-sapling-20", "think-sapling-26"],
