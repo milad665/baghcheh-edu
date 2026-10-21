@@ -2,7 +2,7 @@
    Each VERSION is one complete snapshot of the site: it is downloaded in full on install and then served
    from the cache, so old and new files are never mixed. Bump VERSION on every release (and add new files
    to FILES); open pages switch to the new snapshot by reloading once (see js/common.js). */
-var VERSION = "baghcheh-v27";
+var VERSION = "baghcheh-v28";
 // The recess games' voice clips (audio/games/) are kept in a cache of their own that survives new releases: their
 // addresses carry the recording's version (?v=…), so a changed clip is fetched again and the old copy dropped.
 var AUDIO = "baghcheh-games-audio";

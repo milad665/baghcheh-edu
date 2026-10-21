@@ -159,9 +159,9 @@
         sub.leveled ? el("span", { class: "sub" }, [badge(B.levelOf(p, sub.id))]) : null
       ]));
     });
-    // Recess: free games outside the lessons (js/recess.js).
-    if (B.recessHomeTile) grid.appendChild(B.recessHomeTile(p));
     app.appendChild(grid);
+    // Recess: free games outside the lessons (js/recess.js), below the subjects: easy to find, quieter than them.
+    if (B.recessHomeTile) app.appendChild(el("div", { class: "grid recess-row" }, [B.recessHomeTile(p)]));
   }
 
   // Today's plan: lessons, practice sets, quizzes and reviews (js/plan.js).
