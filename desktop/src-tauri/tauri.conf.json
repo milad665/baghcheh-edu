@@ -29,7 +29,7 @@
     ],
     "windows": {
       "webviewInstallMode": { "type": "downloadBootstrapper", "silent": true },
-      "nsis": { "languages": ["Persian", "English"], "displayLanguageSelector": false }
+      "nsis": { "languages": ["Farsi", "English"], "customLanguageFiles": { "Farsi": "nsis/Farsi.nsh" }, "displayLanguageSelector": false }
     }
   }
 }
