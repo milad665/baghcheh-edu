@@ -48,7 +48,7 @@ jobs:
       - name: Collect site files
         run: |
           mkdir _site
-          cp index.html guide.html method.html policies.html open.html browse.html \
+          cp index.html guide.html method.html policies.html open.html browse.html googlede583849d3287c24.html \
              manifest.webmanifest icon.svg sw.js _site/
           cp -R js css fonts audio _site/
           find _site -name "*.md" -delete
