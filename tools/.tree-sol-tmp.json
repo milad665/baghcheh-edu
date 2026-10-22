@@ -1,0 +1,22 @@
+{
+ "think-tree-1#1": {"g": [{"repeat": 7, "body": [{"if": "wall", "body": ["cw"], "else": ["fwd"]}]}]},
+ "think-tree-1#2": {"g": [{"repeat": 7, "body": [{"if": "wall", "body": ["cw"], "else": ["fwd"]}]}]},
+ "think-tree-1#3": {"g": [{"repeat": 7, "body": [{"if": "wall", "body": ["cw"], "else": ["fwd"]}]}]},
+ "think-tree-1#4": {"g": [{"repeat": 7, "body": [{"if": "open", "body": ["fwd"], "else": ["ccw"]}]}]},
+ "think-tree-5#1": {"g": [{"until": "goal", "body": ["fwd"]}]},
+ "think-tree-5#2": {"g": [{"until": "goal", "body": ["fwd"]}]},
+ "think-tree-5#3": {"g": [{"until": "goal", "body": [{"if": "wall", "body": ["cw"], "else": ["fwd"]}]}]},
+ "think-tree-5#4": {"g": [{"repeat": 3, "body": [{"repeat": 5, "body": ["fwd"]}, "cw"]}]},
+ "think-tree-5#5": {"g": [{"until": "wall", "body": ["fwd"]}, "cw", {"until": "wall", "body": ["fwd"]}]},
+ "think-tree-9#2": {"g": [{"repeat": 4, "body": ["fwd", "cw", "fwd", "ccw"]}]},
+ "think-tree-9#3": {"g": [{"repeat": 11, "body": [{"if": "wall", "body": ["cw"], "else": ["fwd"]}]}]},
+ "think-tree-9#5": {"g": [{"until": "goal", "body": ["fwd"]}]},
+ "think-tree-2#1": {"g": ["call", "call", "call", "call"], "f": ["fwd", "cw", "fwd", "ccw"]},
+ "think-tree-2#2": {"g": ["call", "call", "call"], "f": ["fwd", "fwd", "cw"]},
+ "think-tree-2#3": {"g": [{"repeat": 4, "body": ["call"]}], "f": ["fwd", "cw", "fwd", "ccw"]},
+ "think-tree-2#4": {"g": ["call", "fwd", "call", "fwd"], "f": ["ccw", "fwd", "cw", "fwd", "fwd", "cw", "fwd", "ccw"]},
+ "think-tree-6#2": {"g": ["set", {"until": "count", "body": ["fwd", "pick", "inc"]}]},
+ "think-tree-6#3": {"g": ["set", {"until": "count", "body": ["fwd", "pick", "inc"]}]},
+ "think-tree-6#4": {"g": ["set", {"repeat": 3, "body": ["fwd", "pick", "inc"]}]},
+ "think-tree-6#5": {"g": ["set", {"until": "count", "body": ["fwd", {"if": "apple", "body": ["pick", "inc"], "else": []}]}]}
+}
